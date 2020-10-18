@@ -1,0 +1,10 @@
+ManifestFileVersion: 0
+CRC: 458797018
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: paladin
+      Dependencies: {}
+    Info_1:
+      Name: vergilmerc
+      Dependencies: {}

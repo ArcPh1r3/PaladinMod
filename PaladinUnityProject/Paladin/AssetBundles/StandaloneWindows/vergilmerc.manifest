@@ -1,0 +1,34 @@
+ManifestFileVersion: 0
+CRC: 1468915783
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a31d12901972f4e0534b07dd284afa9e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 78e646b6ae298fde47e45a0b49802179
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/Vergil/VergilEXMesh.mesh
+- Assets/Vergil/matYamato.mat
+- Assets/Vergil/matVergilEX.mat
+- Assets/Vergil/matVergilAlt.mat
+- Assets/Vergil/texMotivatorEmission.png
+- Assets/Vergil/VergilCoatlessMesh.mesh
+- Assets/Vergil/VergilAltMesh.mesh
+- Assets/Vergil/matVergil.mat
+- Assets/Vergil/texMotivator.png
+- Assets/Vergil/VergilMesh.mesh
+- Assets/Vergil/texVergilEmission.png
+- Assets/Vergil/texVergilEX.png
+- Assets/Vergil/YamatoMesh.mesh
+Dependencies: []

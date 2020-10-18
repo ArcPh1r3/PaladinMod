@@ -1,0 +1,141 @@
+ManifestFileVersion: 0
+CRC: 99479649
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 50532697cb5e96e5e32e2b4b5261f502
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: dec9c1da3062a68c46a511a21524e013
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 96
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 67079b849227b734694872d8810229b8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2aa2462a23d05b54e9a2ecb2fb686dde, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 183
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 319
+  Script: {instanceID: 0}
+Assets:
+- Assets/Paladin/Anim/WalkF.anim
+- Assets/Paladin/Textures/texPaladinBodyEmission.png
+- Assets/Paladin/Materials/matPaladinLunarBody.mat
+- Assets/Paladin/Anim/PraiseTheSun.anim
+- Assets/Paladin/Textures/texPaladinNkuhanaBodyEmission.png
+- Assets/Paladin/Particles/texLunarEmber.dds
+- Assets/Paladin/Anim/SlashCombo2.anim
+- Assets/Paladin/Textures/texPaladinNkuhanaSwordDull.png
+- Assets/Paladin/Materials/matPaladinPoisonCloth.mat
+- Assets/Paladin/Anim/Whirlwind.anim
+- Assets/Paladin/Materials/matPaladinBody.mat
+- Assets/Paladin/Particles/matEmber.mat
+- Assets/Paladin/Anim/AoESpellAlt.anim
+- Assets/Paladin/Anim/Slash.anim
+- Assets/Paladin/Anim/Sprint.anim
+- Assets/Paladin/Materials/matPaladinSword.mat
+- Assets/Paladin/Anim/WalkB.anim
+- Assets/Paladin/Anim/YawMask.mask
+- Assets/Paladin/Textures/texPaladinSwordDull.png
+- Assets/Paladin/Anim/GestureMask.mask
+- Assets/Paladin/Anim/Run.anim
+- Assets/Paladin/Anim/LightningSpear.anim
+- Assets/Paladin/Materials/matPaladinCloth.mat
+- Assets/Paladin/LightningImpact.prefab
+- Assets/Paladin/Anim/SlashComboOld.anim
+- Assets/Paladin/Particles/matChargeSphere.mat
+- Assets/Paladin/Anim/LightningSpearChargeLoop.anim
+- Assets/Paladin/Anim/Ascend.anim
+- Assets/Paladin/Particles/texLightning.tif
+- Assets/Paladin/Particles/texEmber.tif
+- Assets/Paladin/Anim/Descend.anim
+- Assets/Paladin/Anim/LightningSpearCharge.anim
+- Assets/Paladin/Anim/AimYaw.anim
+- Assets/Paladin/Materials/matPaladinLunarCloth.mat
+- Assets/Paladin/Particles/matEmber 1.mat
+- Assets/Paladin/LightningHitFX.prefab
+- Assets/Paladin/Textures/texPaladinLunarCloth.png
+- Assets/Paladin/mdlPaladin.prefab
+- Assets/Paladin/Textures/texPaladinSwordEmission.png
+- Assets/Paladin/Anim/Slash1ToSprint.anim
+- Assets/Paladin/Particles/texSmoke.png
+- Assets/Paladin/Anim/SprintOld.anim
+- Assets/Paladin/Particles/matSmoke.mat
+- Assets/Paladin/Textures/texPaladinCloth.png
+- Assets/Paladin/PaladinDisplay.prefab
+- Assets/Paladin/texPaladinIcon.png
+- Assets/Paladin/Anim/Jump.anim
+- Assets/Paladin/Anim/Slash2ToSprint.anim
+- Assets/Paladin/Anim/animPaladin.controller
+- Assets/Paladin/Anim/GaelMoment.anim
+- Assets/Paladin/Anim/SlashCombo1.anim
+- Assets/Paladin/Textures/texPaladinSword.png
+- Assets/Paladin/Anim/FireProjectile.anim
+- Assets/Paladin/Materials/matPaladinPoisonBody.mat
+- Assets/Paladin/Anim/AoESpell.anim
+- Assets/Paladin/SlashIcon.png
+- Assets/Paladin/Anim/Idle.anim
+- Assets/Paladin/Textures/texPaladinNkuhanaCloth.png
+- Assets/Paladin/Textures/texPaladinLunarSwordDull.png
+- Assets/Paladin/Textures/texPaladinNkuhanaBody.png
+- Assets/Paladin/SwordBeam.prefab
+- Assets/Paladin/Anim/WalkL.anim
+- Assets/Paladin/LightningSpear.prefab
+- Assets/Paladin/Anim/WalkR.anim
+- Assets/Paladin/Textures/texPaladinLunarBody.png
+- Assets/Paladin/Anim/IdleIn.anim
+- Assets/Paladin/Anim/animPaladinMenu.controller
+- Assets/Paladin/Anim/WhirlwindFull.anim
+- Assets/Paladin/Textures/texPaladinBody.png
+- Assets/Paladin/Anim/AirSlam.anim
+- Assets/Paladin/Materials/matPaladinPoisonSword.mat
+- Assets/Paladin/Textures/texSwordBeam.png
+- Assets/Paladin/Textures/texPaladinLunarBodyEmission.png
+- Assets/Paladin/Textures/texPaladinNkuhanaSwordEmission.png
+- Assets/Paladin/Particles/matLunarEmber.mat
+- Assets/Paladin/Textures/texPaladinLunarSwordEmission.png
+- Assets/Paladin/Particles/matLightning.mat
+- Assets/Paladin/Materials/matPaladinLunarSword.mat
+Dependencies: []
