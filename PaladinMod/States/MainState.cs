@@ -52,6 +52,11 @@ namespace PaladinMod.States
                     this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.PraiseTheSun))), InterruptPriority.Any);
                     return;
                 }
+                else if (Input.GetKeyDown("2"))
+                {
+                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.PointDown))), InterruptPriority.Any);
+                    return;
+                }
             }
         }
 
@@ -61,7 +66,7 @@ namespace PaladinMod.States
 
             if (base.healthComponent && this.swordMat)
             {
-                if (base.healthComponent.combinedHealth >= (0.9f * base.healthComponent.fullCombinedHealth) || base.healthComponent.barrier > 0)
+                if (base.healthComponent.health >= (0.9f * base.healthComponent.fullHealth) || base.healthComponent.barrier > 0)
                 {
                     this.swordActive = true;
                 }

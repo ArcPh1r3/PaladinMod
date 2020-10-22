@@ -168,7 +168,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 0.99598205, b: 0.7028302, a: 1}
-  m_Intensity: 5
+  m_Intensity: 8
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -311,7 +311,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
+      scalar: 0.8
       minScalar: 0.25
       maxCurve:
         serializedVersion: 2
@@ -838,7 +838,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 25
+    angle: 35
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 0
@@ -4081,7 +4081,7 @@ ParticleSystem:
     widthOverTrail:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.25
+      scalar: 0.4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5503,9 +5503,9 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 0
     donutRadius: 0.2
-    m_Position: {x: 0, y: 0, z: 0}
+    m_Position: {x: 0, y: 0, z: -2.84}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 0.40936494, y: 0.27443218, z: 4.732872}
+    m_Scale: {x: 0.40936494, y: 0.27443218, z: 12.698341}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0

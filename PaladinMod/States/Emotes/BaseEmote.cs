@@ -9,6 +9,7 @@ namespace PaladinMod.States.Emotes
         public string soundString;
         public string animString;
         public float duration;
+        public float animDuration;
 
         private uint activePlayID;
         private float initialTime;
@@ -25,8 +26,10 @@ namespace PaladinMod.States.Emotes
 
             if (base.GetAimAnimator()) base.GetAimAnimator().enabled = false;
 
+            if (this.animDuration == 0 && this.duration != 0) this.animDuration = this.duration;
+
             if (this.duration > 0) base.PlayAnimation("FullBody, Override", this.animString, "Emote.playbackRate", this.duration);
-            else base.PlayAnimation("FullBody, Override", this.animString);
+            else base.PlayAnimation("FullBody, Override", this.animString, "Emote.playbackRate", this.animDuration);
 
             this.activePlayID = Util.PlaySound(soundString, base.gameObject);
 
@@ -75,6 +78,12 @@ namespace PaladinMod.States.Emotes
                 {
                     flag = false;
                     this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(PraiseTheSun))), InterruptPriority.Any);
+                    return;
+                }
+                else if (Input.GetKeyDown("2"))
+                {
+                    flag = false;
+                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(PointDown))), InterruptPriority.Any);
                     return;
                 }
             }

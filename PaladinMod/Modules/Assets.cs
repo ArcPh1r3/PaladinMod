@@ -17,11 +17,20 @@ namespace PaladinMod.Modules
         public static Sprite icon1;
         public static Sprite icon2;
         public static Sprite icon3;
+        public static Sprite icon3b;
         public static Sprite icon4;
+        public static Sprite icon4b;
 
         public static GameObject lightningSpear;
         public static GameObject swordBeam;
 
+        public static GameObject healZoneEffectPrefab;
+        public static GameObject torporEffectPrefab;
+
+        public static GameObject swordSwing;
+        public static GameObject spinningSlashFX;
+
+        public static GameObject hitFX;
         public static GameObject lightningHitFX;
         public static GameObject lightningImpactFX;
 
@@ -48,38 +57,42 @@ namespace PaladinMod.Modules
 
             iconP = mainAssetBundle.LoadAsset<Sprite>("SlashIcon");
             icon1 = mainAssetBundle.LoadAsset<Sprite>("SlashIcon");
-            icon2 = mainAssetBundle.LoadAsset<Sprite>("SlashIcon");
-            icon3 = mainAssetBundle.LoadAsset<Sprite>("SlashIcon");
-            icon4 = mainAssetBundle.LoadAsset<Sprite>("SlashIcon");
+            icon2 = mainAssetBundle.LoadAsset<Sprite>("SpinSlashIcon");
+            icon3 = mainAssetBundle.LoadAsset<Sprite>("LightningSpearIcon");
+            icon3b = mainAssetBundle.LoadAsset<Sprite>("LightningBoltIcon");
+            icon4 = mainAssetBundle.LoadAsset<Sprite>("HealZoneIcon");
+            icon4b = mainAssetBundle.LoadAsset<Sprite>("TorporIcon");
 
             lightningSpear = mainAssetBundle.LoadAsset<GameObject>("LightningSpear");
             swordBeam = mainAssetBundle.LoadAsset<GameObject>("SwordBeam");
 
-            lightningHitFX = mainAssetBundle.LoadAsset<GameObject>("LightningHitFX");
-            lightningImpactFX = mainAssetBundle.LoadAsset<GameObject>("LightningImpact");
+            healZoneEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("HealZoneEffect");
+            torporEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("TorporEffect");
 
-            lightningHitFX.AddComponent<DestroyOnTimer>().duration = 8;
-            lightningHitFX.AddComponent<NetworkIdentity>();
-            lightningHitFX.AddComponent<VFXAttributes>().vfxPriority = VFXAttributes.VFXPriority.Always;
-            var effect = lightningHitFX.AddComponent<EffectComponent>();
+            swordSwing = Assets.LoadEffect("PaladinSwing", "");
+            spinningSlashFX = Assets.LoadEffect("SpinSlashEffect", "");
+            hitFX = Assets.LoadEffect("ImpactPaladinSwing", "");
+            lightningHitFX = Assets.LoadEffect("LightningHitFX", "");
+            lightningImpactFX = Assets.LoadEffect("LightningImpact", "Play_mage_R_lightningBlast");
+        }
+
+        private static GameObject LoadEffect(string resourceName, string soundName)
+        {
+            GameObject newEffect = mainAssetBundle.LoadAsset<GameObject>(resourceName);
+
+            newEffect.AddComponent<DestroyOnTimer>().duration = 12;
+            newEffect.AddComponent<NetworkIdentity>();
+            newEffect.AddComponent<VFXAttributes>().vfxPriority = VFXAttributes.VFXPriority.Always;
+            var effect = newEffect.AddComponent<EffectComponent>();
             effect.applyScale = false;
             effect.effectIndex = EffectIndex.Invalid;
             effect.parentToReferencedTransform = true;
             effect.positionAtReferencedTransform = true;
-            effect.soundName = "Play_mage_R_lightningBlast";
+            effect.soundName = soundName;
 
-            lightningImpactFX.AddComponent<DestroyOnTimer>().duration = 8;
-            lightningImpactFX.AddComponent<NetworkIdentity>();
-            lightningImpactFX.AddComponent<VFXAttributes>().vfxPriority = VFXAttributes.VFXPriority.Always;
-            effect = lightningImpactFX.AddComponent<EffectComponent>();
-            effect.applyScale = false;
-            effect.effectIndex = EffectIndex.Invalid;
-            effect.parentToReferencedTransform = true;
-            effect.positionAtReferencedTransform = true;
-            effect.soundName = "";
+            EffectAPI.AddEffect(newEffect);
 
-            EffectAPI.AddEffect(lightningHitFX);
-            EffectAPI.AddEffect(lightningImpactFX);
+            return newEffect;
         }
     }
 }

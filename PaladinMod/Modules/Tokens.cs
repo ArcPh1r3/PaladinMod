@@ -38,17 +38,30 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_PRIMARY_SLASH_NAME", "Divine Blade");
             LanguageAPI.Add("PALADIN_PRIMARY_SLASH_DESCRIPTION", desc);
 
-
-            desc = "Spin forward with your blade dealing <style=cIsDamage>" + 100f * StaticValues.spinSlashDamageCoefficient + "% damage</style>.";
+            desc = "<style=cIsUtility>Stunning.</style> Dash forward, then perform a wide spinning slash, dealing <style=cIsDamage>" + 100f * StaticValues.spinSlashDamageCoefficient + "% damage</style>.";
 
             LanguageAPI.Add("PALADIN_SECONDARY_SPINSLASH_NAME", "Spinning Slash");
             LanguageAPI.Add("PALADIN_SECONDARY_SPINSLASH_DESCRIPTION", desc);
 
-
             desc = "<style=cIsUtility>Shocking.</style> Charge up and throw a <style=cIsUtility>piercing lightning spear</style>, dealing up to <style=cIsDamage>" + 100f * StaticValues.lightningSpearMaxDamageCoefficient + "% damage</style>.";
 
-            LanguageAPI.Add("PALADIN_UTILITY_LIGHTNINGSPEAR_NAME", "Lightning Spear");
+            LanguageAPI.Add("PALADIN_UTILITY_LIGHTNINGSPEAR_NAME", "Sunlight Spear");
             LanguageAPI.Add("PALADIN_UTILITY_LIGHTNINGSPEAR_DESCRIPTION", desc);
+
+            desc = "<style=cIsUtility>Shocking.</style> Throw a small <style=cIsUtility>piercing lightning spear</style> that deals <style=cIsDamage>" + 100f * StaticValues.lightningBoltDamageCoefficient + "% damage</style>. <style=cIsUtility>Hold up to 3 charges.</style>";
+
+            LanguageAPI.Add("PALADIN_UTILITY_LIGHTNINGBOLT_NAME", "Lightning Bolt");
+            LanguageAPI.Add("PALADIN_UTILITY_LIGHTNINGBOLT_DESCRIPTION", desc);
+
+            desc = "<style=cIsUtility>Bless</style> an area for a duration, boosting <style=cIsHealth>armor</style> and gradually <style=cIsHealing>restoring health</style> to all allies in the vicinity.";
+
+            LanguageAPI.Add("PALADIN_SPECIAL_HEALZONE_NAME", "Sacred Sunlight");
+            LanguageAPI.Add("PALADIN_SPECIAL_HEALZONE_DESCRIPTION", desc);
+
+            desc = "<style=cIsUtility>Silence</style> an area for a duration, inflicting <style=cIsHealth>torpor</style> on all enemies in the vicinity as well as <style=cIsDamage>stopping</style> all <style=cIsUtility>projectiles</style>.";
+
+            LanguageAPI.Add("PALADIN_SPECIAL_TORPOR_NAME", "Vow of Silence");
+            LanguageAPI.Add("PALADIN_SPECIAL_TORPOR_DESCRIPTION", desc);
         }
     }
 }

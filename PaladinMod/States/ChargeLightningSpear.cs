@@ -13,7 +13,7 @@ namespace PaladinMod.States
             this.chargeSoundString = "Play_mage_m2_charge";
             this.crosshairOverridePrefab = Resources.Load<GameObject>("Prefabs/Crosshair/ToolbotGrenadeLauncherCrosshair");
             this.maxBloomRadius = 0.1f;
-            this.minBloomRadius = 5;
+            this.minBloomRadius = 1;
 
             base.OnEnter();
 
@@ -29,7 +29,7 @@ namespace PaladinMod.States
         {
             base.FixedUpdate();
 
-            this.chargeEffect.transform.localScale = Vector3.one * 2 * this.CalcCharge();
+            this.chargeEffect.transform.localScale = Vector3.one * 3 * this.CalcCharge();
         }
 
         public override void OnExit()

@@ -14,7 +14,7 @@ namespace PaladinMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "0.0.1")]
+    [BepInPlugin(MODUID, "Paladin", "0.0.2")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -54,18 +54,23 @@ namespace PaladinMod
 
         private void PaladinPlugin_Load()
         {
+            instance = this;
+
             Modules.Assets.PopulateAssets();
 
             CreateDisplayPrefab();
             CreatePrefab();
             RegisterCharacter();
             Modules.Skins.RegisterSkins();
+            Modules.Buffs.RegisterBuffs();
             Modules.Projectiles.RegisterProjectiles();
-            //Modules.ItemDisplays.RegisterDisplays();
+            Modules.ItemDisplays.RegisterDisplays();
             //Modules.Unlockables.RegisterUnlockables();
             Modules.Tokens.AddTokens();
 
             CreateDoppelganger();
+
+            Hook();
         }
 
         private void PaladinPlugin_LoadStart()
@@ -90,6 +95,30 @@ namespace PaladinMod
                 return;
             }
             start();
+        }
+
+        private void Hook()
+        {
+            On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+        }
+
+        private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
+        {
+            orig(self);
+
+            if (self)
+            {
+                if (self.HasBuff(Modules.Buffs.healZoneArmorBuff))
+                {
+                    Reflection.SetPropertyValue<float>(self, "armor", self.armor + StaticValues.healZoneArmor);
+                }
+
+                if (self.HasBuff(Modules.Buffs.torporDebuff))
+                {
+                    Reflection.SetPropertyValue<float>(self, "moveSpeed", self.moveSpeed * (1 - StaticValues.torporSlowAmount));
+                    Reflection.SetPropertyValue<float>(self, "attackSpeed", self.attackSpeed * (1 - StaticValues.torporSlowAmount));
+                }
+            }
         }
 
         private static GameObject CreateModel(GameObject main, int index)
@@ -245,7 +274,7 @@ namespace PaladinMod
 
         private static void CreatePrefab()
         {
-            characterPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), "PaladinNewBody");
+            characterPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), "RobPaladinBody");
 
             characterPrefab.GetComponent<NetworkIdentity>().localPlayerAuthority = true;
 
@@ -285,7 +314,7 @@ namespace PaladinMod
 
             CharacterBody bodyComponent = characterPrefab.GetComponent<CharacterBody>();
             bodyComponent.bodyIndex = -1;
-            bodyComponent.name = "PaladinNewBody";
+            bodyComponent.name = "RobPaladinBody";
             bodyComponent.baseNameToken = "PALADIN_NAME";
             bodyComponent.subtitleNameToken = "PALADIN_SUBTITLE";
             bodyComponent.bodyFlags = CharacterBody.BodyFlags.ImmuneToExecutes;
@@ -308,8 +337,8 @@ namespace PaladinMod
             bodyComponent.levelAttackSpeed = 0;
             bodyComponent.baseCrit = 1;
             bodyComponent.levelCrit = 0;
-            bodyComponent.baseArmor = 30;
-            bodyComponent.levelArmor = 5;
+            bodyComponent.baseArmor = 10;
+            bodyComponent.levelArmor = 1f;
             bodyComponent.baseJumpCount = 1;
             bodyComponent.sprintingSpeedMultiplier = 1.45f;
             bodyComponent.wasLucky = false;
@@ -542,7 +571,7 @@ namespace PaladinMod
             slashHitbox.transform.parent = childLocator.FindChild("Sword").Find("SlashHitbox");
             slashHitbox.transform.localPosition = new Vector3(0f, 0f, 0f);
             slashHitbox.transform.localRotation = Quaternion.identity;
-            slashHitbox.transform.localScale = new Vector3(14f, 14f, 14f);
+            slashHitbox.transform.localScale = new Vector3(15f, 15f, 15f);
 
             HitBox hitBox = slashHitbox.AddComponent<HitBox>();
             slashHitbox.layer = LayerIndex.projectile.intVal;
@@ -558,7 +587,7 @@ namespace PaladinMod
             spinHitbox.transform.parent = childLocator.FindChild("Base");
             spinHitbox.transform.localPosition = new Vector3(0f, 1f, 0f);
             spinHitbox.transform.localRotation = Quaternion.identity;
-            spinHitbox.transform.localScale = new Vector3(24f, 24f, 24f);
+            spinHitbox.transform.localScale = new Vector3(20f, 20f, 20f);
 
             HitBox spinHitBox = spinHitbox.AddComponent<HitBox>();
             spinHitbox.layer = LayerIndex.projectile.intVal;
@@ -616,7 +645,7 @@ namespace PaladinMod
         {
             characterDisplay.AddComponent<NetworkIdentity>();
 
-            string unlockString = "";//"MINER_CHARACTERUNLOCKABLE_REWARD_ID"
+            string unlockString = "";//"PALADIN_CHARACTERUNLOCKABLE_REWARD_ID"
 
             SurvivorDef survivorDef = new SurvivorDef
             {
@@ -643,7 +672,7 @@ namespace PaladinMod
 
         private void CreateDoppelganger()
         {
-            doppelganger = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterMasters/MercMonsterMaster"), "MinerMonsterMaster");
+            doppelganger = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterMasters/MercMonsterMaster"), "PaladinMonsterMaster");
 
             MasterCatalog.getAdditionalEntries += delegate (List<GameObject> list)
             {
@@ -667,7 +696,7 @@ namespace PaladinMod
             PrimarySetup();
             SecondarySetup();
             UtilitySetup();
-            //SpecialSetup();
+            SpecialSetup();
         }
 
         private void PassiveSetup()
@@ -680,11 +709,10 @@ namespace PaladinMod
 
         private void PrimarySetup()
         {
-            LoadoutAPI.AddSkill(typeof(States.Slash1));
-            LoadoutAPI.AddSkill(typeof(States.Slash2));
+            LoadoutAPI.AddSkill(typeof(States.Slash));
 
             SkillDef mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
-            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.Slash1));
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.Slash));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
             mySkillDef.baseRechargeInterval = 0f;
@@ -724,12 +752,11 @@ namespace PaladinMod
 
         private void SecondarySetup()
         {
-            LoadoutAPI.AddSkill(typeof(States.WhirlwindBase));
-            LoadoutAPI.AddSkill(typeof(States.WhirlwindGround));
-            LoadoutAPI.AddSkill(typeof(States.SpinSlash));
+            LoadoutAPI.AddSkill(typeof(States.DashForward));
+            LoadoutAPI.AddSkill(typeof(States.SpinningSlash));
 
             SkillDef mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
-            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.SpinSlash));
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.DashForward));
             mySkillDef.activationStateMachineName = "Body";
             mySkillDef.baseMaxStock = 1;
             mySkillDef.baseRechargeInterval = 5f;
@@ -745,10 +772,13 @@ namespace PaladinMod
             mySkillDef.requiredStock = 1;
             mySkillDef.shootDelay = 0.5f;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Modules.Assets.icon1;
+            mySkillDef.icon = Modules.Assets.icon2;
             mySkillDef.skillDescriptionToken = "PALADIN_SECONDARY_SPINSLASH_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SECONDARY_SPINSLASH_NAME";
             mySkillDef.skillNameToken = "PALADIN_SECONDARY_SPINSLASH_NAME";
+            mySkillDef.keywordTokens = new string[] {
+                "KEYWORD_STUNNING"
+            };
 
             LoadoutAPI.AddSkillDef(mySkillDef);
 
@@ -772,13 +802,13 @@ namespace PaladinMod
             //LoadoutAPI.AddSkill(typeof(States.BaseChargeSpellState));
             //LoadoutAPI.AddSkill(typeof(States.BaseThrowSpellState));
             LoadoutAPI.AddSkill(typeof(States.ChargeLightningSpear));
-            LoadoutAPI.AddSkill(typeof(States.ChargeLightningSpear));
+            LoadoutAPI.AddSkill(typeof(States.ThrowLightningSpear));
 
             SkillDef mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
             mySkillDef.activationState = new SerializableEntityStateType(typeof(States.ChargeLightningSpear));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
-            mySkillDef.baseRechargeInterval = 12f;
+            mySkillDef.baseRechargeInterval = 16f;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
@@ -786,12 +816,12 @@ namespace PaladinMod
             mySkillDef.isBullets = false;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
-            mySkillDef.noSprint = false;
+            mySkillDef.noSprint = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.shootDelay = 0.5f;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Modules.Assets.icon1;
+            mySkillDef.icon = Modules.Assets.icon3;
             mySkillDef.skillDescriptionToken = "PALADIN_UTILITY_LIGHTNINGSPEAR_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_UTILITY_LIGHTNINGSPEAR_NAME";
             mySkillDef.skillNameToken = "PALADIN_UTILITY_LIGHTNINGSPEAR_NAME";
@@ -809,6 +839,123 @@ namespace PaladinMod
             SkillFamily skillFamily = skillLocator.utility.skillFamily;
 
             skillFamily.variants[0] = new SkillFamily.Variant
+            {
+                skillDef = mySkillDef,
+                unlockableName = "",
+                viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+            };
+
+            LoadoutAPI.AddSkill(typeof(States.ChargeBolt));
+            LoadoutAPI.AddSkill(typeof(States.ThrowBolt));
+
+            mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.ChargeBolt));
+            mySkillDef.activationStateMachineName = "Weapon";
+            mySkillDef.baseMaxStock = 3;
+            mySkillDef.baseRechargeInterval = 5;
+            mySkillDef.beginSkillCooldownOnSkillEnd = true;
+            mySkillDef.canceledFromSprinting = false;
+            mySkillDef.fullRestockOnAssign = true;
+            mySkillDef.interruptPriority = InterruptPriority.Skill;
+            mySkillDef.isBullets = false;
+            mySkillDef.isCombatSkill = true;
+            mySkillDef.mustKeyPress = false;
+            mySkillDef.noSprint = true;
+            mySkillDef.rechargeStock = 1;
+            mySkillDef.requiredStock = 1;
+            mySkillDef.shootDelay = 0.5f;
+            mySkillDef.stockToConsume = 1;
+            mySkillDef.icon = Modules.Assets.icon3b;
+            mySkillDef.skillDescriptionToken = "PALADIN_UTILITY_LIGHTNINGBOLT_DESCRIPTION";
+            mySkillDef.skillName = "PALADIN_UTILITY_LIGHTNINGBOLT_NAME";
+            mySkillDef.skillNameToken = "PALADIN_UTILITY_LIGHTNINGBOLT_NAME";
+            mySkillDef.keywordTokens = new string[] {
+                "KEYWORD_SHOCKING"
+            };
+
+            LoadoutAPI.AddSkillDef(mySkillDef);
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = mySkillDef,
+                unlockableName = "",
+                viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+            };
+        }
+
+        private void SpecialSetup()
+        {
+            LoadoutAPI.AddSkill(typeof(States.AimHealZone));
+            LoadoutAPI.AddSkill(typeof(States.CastHealZone));
+
+            SkillDef mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.AimHealZone));
+            mySkillDef.activationStateMachineName = "Weapon";
+            mySkillDef.baseMaxStock = 1;
+            mySkillDef.baseRechargeInterval = 24f;
+            mySkillDef.beginSkillCooldownOnSkillEnd = true;
+            mySkillDef.canceledFromSprinting = false;
+            mySkillDef.fullRestockOnAssign = true;
+            mySkillDef.interruptPriority = InterruptPriority.Skill;
+            mySkillDef.isBullets = false;
+            mySkillDef.isCombatSkill = true;
+            mySkillDef.mustKeyPress = false;
+            mySkillDef.noSprint = true;
+            mySkillDef.rechargeStock = 1;
+            mySkillDef.requiredStock = 1;
+            mySkillDef.shootDelay = 0.5f;
+            mySkillDef.stockToConsume = 1;
+            mySkillDef.icon = Modules.Assets.icon4;
+            mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_HEALZONE_DESCRIPTION";
+            mySkillDef.skillName = "PALADIN_SPECIAL_HEALZONE_NAME";
+            mySkillDef.skillNameToken = "PALADIN_SPECIAL_HEALZONE_NAME";
+
+            LoadoutAPI.AddSkillDef(mySkillDef);
+
+            skillLocator.special = characterPrefab.AddComponent<GenericSkill>();
+            SkillFamily newFamily = ScriptableObject.CreateInstance<SkillFamily>();
+            newFamily.variants = new SkillFamily.Variant[1];
+            LoadoutAPI.AddSkillFamily(newFamily);
+            skillLocator.special.SetFieldValue("_skillFamily", newFamily);
+            SkillFamily skillFamily = skillLocator.special.skillFamily;
+
+            skillFamily.variants[0] = new SkillFamily.Variant
+            {
+                skillDef = mySkillDef,
+                unlockableName = "",
+                viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+            };
+
+            LoadoutAPI.AddSkill(typeof(States.AimTorpor));
+            LoadoutAPI.AddSkill(typeof(States.CastTorpor));
+
+            mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.AimTorpor));
+            mySkillDef.activationStateMachineName = "Weapon";
+            mySkillDef.baseMaxStock = 1;
+            mySkillDef.baseRechargeInterval = 24f;
+            mySkillDef.beginSkillCooldownOnSkillEnd = true;
+            mySkillDef.canceledFromSprinting = false;
+            mySkillDef.fullRestockOnAssign = true;
+            mySkillDef.interruptPriority = InterruptPriority.Skill;
+            mySkillDef.isBullets = false;
+            mySkillDef.isCombatSkill = true;
+            mySkillDef.mustKeyPress = false;
+            mySkillDef.noSprint = true;
+            mySkillDef.rechargeStock = 1;
+            mySkillDef.requiredStock = 1;
+            mySkillDef.shootDelay = 0.5f;
+            mySkillDef.stockToConsume = 1;
+            mySkillDef.icon = Modules.Assets.icon4b;
+            mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_TORPOR_DESCRIPTION";
+            mySkillDef.skillName = "PALADIN_SPECIAL_TORPOR_NAME";
+            mySkillDef.skillNameToken = "PALADIN_SPECIAL_TORPOR_NAME";
+
+            LoadoutAPI.AddSkillDef(mySkillDef);
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
             {
                 skillDef = mySkillDef,
                 unlockableName = "",

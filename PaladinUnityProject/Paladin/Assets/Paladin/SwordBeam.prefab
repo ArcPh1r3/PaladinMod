@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249730842250184349}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0.034}
-  m_LocalScale: {x: 1.1495037, y: 0.095485136, z: 1.9911461}
+  m_LocalScale: {x: 1.1495037, y: 0.1062528, z: 3.8763633}
   m_Children: []
   m_Father: {fileID: 5397212357945143332}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!198 &929459865957550801
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -105,9 +105,9 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
+  moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 0
+  scalingMode: 1
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -266,7 +266,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 128
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1173,7 +1173,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   RotationModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -4679,7 +4679,7 @@ ParticleSystemRenderer:
   m_ApplyActiveColorSpace: 0
   m_AllowRoll: 1
   m_VertexStreams: 0001030405
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 68c5e182ceb56b849a5da8d2d2f890ce, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -4708,7 +4708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4209411042879854552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.81462765, y: 3.5, z: 5.0690393}
+  m_LocalPosition: {x: 2.367855, y: 1.85, z: 4.459085}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6369474166356311509}
