@@ -10,6 +10,7 @@ namespace PaladinMod.Modules
         public static GameObject lightningSpear;
         public static GameObject swordBeam;
 
+        public static GameObject heal;
         public static GameObject healZone;
         public static GameObject torpor;
 
@@ -34,6 +35,25 @@ namespace PaladinMod.Modules
             swordBeam.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
 
             swordBeam.AddComponent<DestroyOnTimer>().duration = 0.25f;
+
+            heal = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinHeal", true);
+            heal.transform.localScale = Vector3.one;
+
+            PaladinMod.PaladinPlugin.Destroy(heal.GetComponent<ProjectileDotZone>());
+
+            heal.AddComponent<DestroyOnTimer>().duration = 5f;
+
+            Misc.PaladinHealController healController = heal.AddComponent<Misc.PaladinHealController>();
+
+            healController.radius = StaticValues.healRadius;
+            healController.healAmount = StaticValues.healAmount;
+
+            PaladinMod.PaladinPlugin.Destroy(heal.transform.GetChild(0).gameObject);
+            GameObject healFX = Assets.healEffectPrefab.InstantiateClone("HealEffect", false);
+            healFX.transform.parent = heal.transform;
+            healFX.transform.localPosition = Vector3.zero;
+
+            healFX.transform.localScale = Vector3.one * StaticValues.healRadius * 2f;
 
             healZone = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinHealZone", true);
             healZone.transform.localScale = Vector3.one;
@@ -76,11 +96,11 @@ namespace PaladinMod.Modules
             torporController.radius = StaticValues.torporRadius;
             torporController.interval = 0.5f;
             torporController.rangeIndicator = null;
-            torporController.buffType = Buffs.healZoneArmorBuff;
+            torporController.buffType = Buffs.torporDebuff;
             torporController.buffDuration = 1.5f;
             torporController.floorWard = false;
             torporController.expires = true;
-            torporController.invertTeamFilter = false;
+            torporController.invertTeamFilter = true;
             torporController.expireDuration = StaticValues.torporDuration;
             torporController.animateRadius = false;
             torporController.healAmount = 0f;
@@ -97,6 +117,7 @@ namespace PaladinMod.Modules
             {
                 list.Add(lightningSpear);
                 list.Add(swordBeam);
+                list.Add(heal);
                 list.Add(healZone);
                 list.Add(torpor);
             };

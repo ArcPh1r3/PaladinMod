@@ -107,6 +107,7 @@ namespace PaladinMod.States
 
         public override void OnExit()
         {
+            //if (this.swordTrailEffect) this.swordTrailEffect.SetActive(false);
             base.OnExit();
         }
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using PaladinMod.Misc;
 using RoR2.Projectile;
+using UnityEngine.Networking;
 
 namespace PaladinMod.States
 {
@@ -179,6 +180,18 @@ namespace PaladinMod.States
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.Skill;
+        }
+
+        public override void OnSerialize(NetworkWriter writer)
+        {
+            base.OnSerialize(writer);
+            writer.Write(this.swingIndex);
+        }
+
+        public override void OnDeserialize(NetworkReader reader)
+        {
+            base.OnDeserialize(reader);
+            this.swingIndex = reader.ReadInt32();
         }
     }
 

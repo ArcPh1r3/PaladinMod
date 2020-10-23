@@ -162,7 +162,7 @@ namespace PaladinMod.Misc
             {
                 if ((teamComponent.transform.position - currentPosition).sqrMagnitude <= radiusSqr)
                 {
-                    CharacterBody charBody = teamComponent.GetComponent<CharacterBody>();
+                    CharacterBody charBody = teamComponent.body;
                     if (charBody)
                     {
                         charBody.AddTimedBuff(this.buffType, this.buffDuration);
@@ -189,16 +189,14 @@ namespace PaladinMod.Misc
                         {
                             if (projectileTeam.teamIndex != this.teamFilter.teamIndex)
                             {
-                                var simple = projectile.GetComponent<ProjectileSimple>();
-                                if (simple) simple.velocity = 0;
+                                Destroy(projectile.gameObject);
                             }
                         }
                         else
                         {
                             if (projectileTeam.teamIndex == this.teamFilter.teamIndex)
                             {
-                                var simple = projectile.GetComponent<ProjectileSimple>();
-                                if (simple) simple.velocity = 0;
+                                Destroy(projectile.gameObject);
                             }
                         }
                     }

@@ -106,7 +106,7 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayGlasses"),
                             childName = "Head",
-                            localPos = new Vector3(0, 00.08f, 0.015f),
+                            localPos = new Vector3(0, 0.8f, 0.15f),
                             localAngles = new Vector3(0, 0, 0),
                             localScale = new Vector3(0.25f, 0.25f, 0.25f),
                             limbMask = LimbFlags.None
@@ -2432,7 +2432,7 @@ namespace PaladinMod.Modules
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayRecycler"),
-                            childName = "Chest",
+                            childName = "Spine3",
                             localPos = new Vector3(0, 0.003f, -0.0028f),
                             localAngles = new Vector3(0, 90, 0),
                             localScale = new Vector3(0.001f, 0.001f, 0.001f),
@@ -2474,7 +2474,7 @@ namespace PaladinMod.Modules
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayWaterPack"),
-                            childName = "Chest",
+                            childName = "Spine3",
                             localPos = new Vector3(0, 0.003f, -0.0024f),
                             localAngles = new Vector3(0, 180, 0),
                             localScale = new Vector3(0.001f, 0.001f, 0.001f),

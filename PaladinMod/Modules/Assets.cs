@@ -18,12 +18,14 @@ namespace PaladinMod.Modules
         public static Sprite icon2;
         public static Sprite icon3;
         public static Sprite icon3b;
+        public static Sprite icon3c;
         public static Sprite icon4;
         public static Sprite icon4b;
 
         public static GameObject lightningSpear;
         public static GameObject swordBeam;
 
+        public static GameObject healEffectPrefab;
         public static GameObject healZoneEffectPrefab;
         public static GameObject torporEffectPrefab;
 
@@ -60,12 +62,14 @@ namespace PaladinMod.Modules
             icon2 = mainAssetBundle.LoadAsset<Sprite>("SpinSlashIcon");
             icon3 = mainAssetBundle.LoadAsset<Sprite>("LightningSpearIcon");
             icon3b = mainAssetBundle.LoadAsset<Sprite>("LightningBoltIcon");
+            icon3c = mainAssetBundle.LoadAsset<Sprite>("HealIcon");
             icon4 = mainAssetBundle.LoadAsset<Sprite>("HealZoneIcon");
             icon4b = mainAssetBundle.LoadAsset<Sprite>("TorporIcon");
 
             lightningSpear = mainAssetBundle.LoadAsset<GameObject>("LightningSpear");
             swordBeam = mainAssetBundle.LoadAsset<GameObject>("SwordBeam");
 
+            healEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("HealEffect");
             healZoneEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("HealZoneEffect");
             torporEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("TorporEffect");
 

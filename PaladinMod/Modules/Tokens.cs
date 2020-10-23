@@ -53,15 +53,22 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_UTILITY_LIGHTNINGBOLT_NAME", "Lightning Bolt");
             LanguageAPI.Add("PALADIN_UTILITY_LIGHTNINGBOLT_DESCRIPTION", desc);
 
+            desc = "Restore <style=cIsHealing>" + StaticValues.healAmount * 100f + "% max health</style> to all allies in an area.";
+
+            LanguageAPI.Add("PALADIN_UTILITY_HEAL_NAME", "Heal");
+            LanguageAPI.Add("PALADIN_UTILITY_HEAL_DESCRIPTION", desc);
+
             desc = "<style=cIsUtility>Bless</style> an area for a duration, boosting <style=cIsHealth>armor</style> and gradually <style=cIsHealing>restoring health</style> to all allies in the vicinity.";
 
             LanguageAPI.Add("PALADIN_SPECIAL_HEALZONE_NAME", "Sacred Sunlight");
             LanguageAPI.Add("PALADIN_SPECIAL_HEALZONE_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Silence</style> an area for a duration, inflicting <style=cIsHealth>torpor</style> on all enemies in the vicinity as well as <style=cIsDamage>stopping</style> all <style=cIsUtility>projectiles</style>.";
+            desc = "<style=cIsUtility>Silence</style> an area for a duration, inflicting <style=cIsHealth>torpor</style> on all enemies in the vicinity as well as <style=cIsDamage>destroying</style> all <style=cIsUtility>projectiles</style>.";
 
             LanguageAPI.Add("PALADIN_SPECIAL_TORPOR_NAME", "Vow of Silence");
             LanguageAPI.Add("PALADIN_SPECIAL_TORPOR_DESCRIPTION", desc);
+
+            LanguageAPI.Add("KEYWORD_TORPOR", "Vow of Silence");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace PaladinMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "0.0.2")]
+    [BepInPlugin(MODUID, "Paladin", "0.0.3")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -354,6 +354,7 @@ namespace PaladinMod
             LoadoutAPI.AddSkill(typeof(States.PaladinMain));
             LoadoutAPI.AddSkill(typeof(States.Emotes.BaseEmote));
             LoadoutAPI.AddSkill(typeof(States.Emotes.PraiseTheSun));
+            LoadoutAPI.AddSkill(typeof(States.Emotes.PointDown));
 
             var stateMachine = bodyComponent.GetComponent<EntityStateMachine>();
             stateMachine.mainStateType = new SerializableEntityStateType(typeof(States.PaladinMain));
@@ -571,7 +572,7 @@ namespace PaladinMod
             slashHitbox.transform.parent = childLocator.FindChild("Sword").Find("SlashHitbox");
             slashHitbox.transform.localPosition = new Vector3(0f, 0f, 0f);
             slashHitbox.transform.localRotation = Quaternion.identity;
-            slashHitbox.transform.localScale = new Vector3(15f, 15f, 15f);
+            slashHitbox.transform.localScale = new Vector3(16f, 16f, 16f);
 
             HitBox hitBox = slashHitbox.AddComponent<HitBox>();
             slashHitbox.layer = LayerIndex.projectile.intVal;
@@ -882,6 +883,41 @@ namespace PaladinMod
                 unlockableName = "",
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
+
+            LoadoutAPI.AddSkill(typeof(States.AimHeal));
+            LoadoutAPI.AddSkill(typeof(States.CastHeal));
+
+            mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.AimHeal));
+            mySkillDef.activationStateMachineName = "Weapon";
+            mySkillDef.baseMaxStock = 1;
+            mySkillDef.baseRechargeInterval = 12;
+            mySkillDef.beginSkillCooldownOnSkillEnd = true;
+            mySkillDef.canceledFromSprinting = false;
+            mySkillDef.fullRestockOnAssign = true;
+            mySkillDef.interruptPriority = InterruptPriority.Skill;
+            mySkillDef.isBullets = false;
+            mySkillDef.isCombatSkill = true;
+            mySkillDef.mustKeyPress = false;
+            mySkillDef.noSprint = true;
+            mySkillDef.rechargeStock = 1;
+            mySkillDef.requiredStock = 1;
+            mySkillDef.shootDelay = 0.5f;
+            mySkillDef.stockToConsume = 1;
+            mySkillDef.icon = Modules.Assets.icon3c;
+            mySkillDef.skillDescriptionToken = "PALADIN_UTILITY_HEAL_DESCRIPTION";
+            mySkillDef.skillName = "PALADIN_UTILITY_HEAL_NAME";
+            mySkillDef.skillNameToken = "PALADIN_UTILITY_HEAL_NAME";
+
+            LoadoutAPI.AddSkillDef(mySkillDef);
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = mySkillDef,
+                unlockableName = "",
+                viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+            };
         }
 
         private void SpecialSetup()
@@ -951,6 +987,9 @@ namespace PaladinMod
             mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_TORPOR_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SPECIAL_TORPOR_NAME";
             mySkillDef.skillNameToken = "PALADIN_SPECIAL_TORPOR_NAME";
+            mySkillDef.keywordTokens = new string[] {
+                "KEYWORD_TORPOR"
+            };
 
             LoadoutAPI.AddSkillDef(mySkillDef);
 

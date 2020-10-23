@@ -8,7 +8,7 @@ namespace PaladinMod.States
 {
     public class SpinningSlash : BaseSkillState
     {
-        public static float baseDuration = 0.25f;
+        public static float baseDuration = 0.6f;
         public static float damageCoefficient = StaticValues.spinSlashDamageCoefficient;
 
         private float duration;
@@ -21,11 +21,11 @@ namespace PaladinMod.States
         public override void OnEnter()
         {
             base.OnEnter();
-            this.duration = SpinSlash.baseDuration / this.attackSpeedStat;
+            this.duration = SpinningSlash.baseDuration / this.attackSpeedStat;
             this.hasFired = false;
 
             Util.PlayScaledSound(EntityStates.Merc.GroundLight.finisherAttackSoundString, base.gameObject, 0.5f);
-            base.PlayAnimation("FullBody, Override", "SpinSlash", "Whirlwind.playbackRate", this.duration * 1.25f);
+            base.PlayAnimation("FullBody, Override", "SpinSlash", "Whirlwind.playbackRate", this.duration);
 
             EffectManager.SimpleMuzzleFlash(Modules.Assets.spinningSlashFX, base.gameObject, "SwingCenter", true);
 

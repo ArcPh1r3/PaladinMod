@@ -4,6 +4,8 @@ namespace PaladinMod.States
 {
     public class AimHealZone : BaseAimSpellState
     {
+        private GameObject chargeEffect;
+
         public override void OnEnter()
         {
             this.chargeEffectPrefab = null;
@@ -11,6 +13,13 @@ namespace PaladinMod.States
             this.spellRadius = StaticValues.healZoneRadius;
 
             base.OnEnter();
+
+            ChildLocator childLocator = base.GetModelChildLocator();
+            if (childLocator)
+            {
+                this.chargeEffect = childLocator.FindChild("HealAimEffect").gameObject;
+                this.chargeEffect.SetActive(true);
+            }
         }
 
         public override void FixedUpdate()
@@ -21,6 +30,11 @@ namespace PaladinMod.States
         public override void OnExit()
         {
             base.OnExit();
+
+            if (this.chargeEffect)
+            {
+                this.chargeEffect.SetActive(false);
+            }
         }
 
         protected override BaseCastSpellState GetNextState()

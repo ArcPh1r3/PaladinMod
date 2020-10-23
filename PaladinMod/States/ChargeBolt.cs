@@ -13,7 +13,7 @@ namespace PaladinMod.States
             this.chargeSoundString = "Play_mage_m2_charge";
             this.crosshairOverridePrefab = Resources.Load<GameObject>("Prefabs/Crosshair/ToolbotGrenadeLauncherCrosshair");
             this.maxBloomRadius = 0.1f;
-            this.minBloomRadius = 5;
+            this.minBloomRadius = 0.1f;
 
             base.OnEnter();
 
@@ -44,7 +44,7 @@ namespace PaladinMod.States
 
         protected override BaseThrowSpellState GetNextState()
         {
-            return new ThrowLightningSpear();
+            return new ThrowBolt();
         }
     }
 }

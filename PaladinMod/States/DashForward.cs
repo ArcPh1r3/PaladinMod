@@ -19,6 +19,7 @@ namespace PaladinMod.States
         public override void OnEnter()
         {
             base.OnEnter();
+            base.characterBody.isSprinting = true;
             this.duration = DashForward.baseDuration;
 
             Util.PlayScaledSound(EntityStates.Croco.Leap.leapSoundString, base.gameObject, 1.75f);
@@ -33,8 +34,20 @@ namespace PaladinMod.States
 
             if (base.characterMotor && base.characterDirection)
             {
-                base.characterMotor.velocity.y *= 0.2f;
                 base.characterMotor.velocity = this.forwardDirection * this.dashSpeed;
+                base.characterMotor.velocity.y = 0f;
+            }
+
+            Transform modelTransform = base.GetModelTransform();
+            if (modelTransform)
+            {
+                TemporaryOverlay temporaryOverlay = modelTransform.gameObject.AddComponent<TemporaryOverlay>();
+                temporaryOverlay.duration = 0.75f;
+                temporaryOverlay.animateShaderAlpha = true;
+                temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                temporaryOverlay.destroyComponentOnEnd = true;
+                temporaryOverlay.originalMaterial = Resources.Load<Material>("Materials/matDoppelganger");
+                temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
             }
 
             if (NetworkServer.active) base.characterBody.AddBuff(BuffIndex.HiddenInvincibility);
@@ -50,7 +63,13 @@ namespace PaladinMod.States
 
         public override void OnExit()
         {
-            if (base.characterMotor) base.characterMotor.disableAirControlUntilCollision = false;
+            base.characterBody.isSprinting = false;
+
+            if (base.characterMotor)
+            {
+                base.characterMotor.disableAirControlUntilCollision = false;
+                base.characterMotor.velocity *= 0.1f;
+            }
 
             if (base.cameraTargetParams)
             {
@@ -66,7 +85,7 @@ namespace PaladinMod.States
         {
             base.FixedUpdate();
 
-            base.characterBody.isSprinting = false;
+            base.characterBody.isSprinting = true;
 
             if (base.fixedAge >= this.duration)
             {
