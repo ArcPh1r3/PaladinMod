@@ -189,6 +189,12 @@ namespace PaladinMod.Misc
                         {
                             if (projectileTeam.teamIndex != this.teamFilter.teamIndex)
                             {
+                                EffectData effectData = new EffectData();
+                                effectData.origin = projectile.transform.position;
+                                effectData.scale = 4;
+
+                                EffectManager.SpawnEffect(Modules.Assets.torporVoidFX, effectData, false);
+
                                 Destroy(projectile.gameObject);
                             }
                         }
@@ -196,6 +202,12 @@ namespace PaladinMod.Misc
                         {
                             if (projectileTeam.teamIndex == this.teamFilter.teamIndex)
                             {
+                                EffectData effectData = new EffectData();
+                                effectData.origin = projectile.transform.position;
+                                effectData.scale = 4;
+
+                                EffectManager.SpawnEffect(Modules.Assets.torporVoidFX, effectData, false);
+
                                 Destroy(projectile.gameObject);
                             }
                         }

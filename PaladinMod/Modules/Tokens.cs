@@ -29,11 +29,20 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADINBODY_POISON_SKIN_NAME", "Poison");
 
 
-            LanguageAPI.Add("PALADIN_PASSIVE_NAME", "Based Beyond Recognition");
-            LanguageAPI.Add("PALADIN_PASSIVE_DESCRIPTION", "While above <style=cIsHealth>90% health</style>, the Paladin is <style=cIsHealing>based</style> and cannot be harmed by <style=cIsUtility>cringe of any kind</style>.");
+            if (UnityEngine.Random.value <= 0.1f)
+            {
+                LanguageAPI.Add("PALADIN_PASSIVE_NAME", "Based Beyond Recognition");
+                LanguageAPI.Add("PALADIN_PASSIVE_DESCRIPTION", "While above <style=cIsHealth>90% health</style>, the Paladin is <style=cIsHealing>based</style> and cannot be harmed by <style=cIsUtility>cringe of any kind</style>.");
 
+                desc = "Slash at nearby enemies for <style=cIsDamage>" + 100f * StaticValues.slashDamageCoefficient + "% damage</style>. Deals <style=cIsDamage>" + 100f * StaticValues.slashBuffDamageCoefficient + "% damage</style> and fires a beam of <style=cIsUtility>holy light</style> if the Paladin is <style=cIsHealing>based</style>.";
+            }
+            else
+            {
+                LanguageAPI.Add("PALADIN_PASSIVE_NAME", "Bulwark's Blessing");
+                LanguageAPI.Add("PALADIN_PASSIVE_DESCRIPTION", "While above <style=cIsHealth>90% health</style>, the Paladin is <style=cIsHealing>blessed</style>, and using <style=cIsHealing>Divine Blade</style> fires beams of light that deal <style=cIsDamage>" + 100f * StaticValues.beamDamageCoefficient + "% damage</style>.");
 
-            desc = "Slash at nearby enemies for <style=cIsDamage>" + 100f * StaticValues.slashDamageCoefficient + "% damage</style>. Deals <style=cIsDamage>" + 100f * StaticValues.slashBuffDamageCoefficient + "% damage</style> and fires a beam of <style=cIsUtility>holy light</style> if the Paladin is <style=cIsHealing>based</style>.";
+                desc = "Slash at nearby enemies for <style=cIsDamage>" + 100f * StaticValues.slashDamageCoefficient + "% damage</style>. Deals <style=cIsDamage>" + 100f * StaticValues.slashBuffDamageCoefficient + "% damage</style> if the Paladin is <style=cIsHealing>blessed</style>.";
+            }
 
             LanguageAPI.Add("PALADIN_PRIMARY_SLASH_NAME", "Divine Blade");
             LanguageAPI.Add("PALADIN_PRIMARY_SLASH_DESCRIPTION", desc);
@@ -68,7 +77,20 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_SPECIAL_TORPOR_NAME", "Vow of Silence");
             LanguageAPI.Add("PALADIN_SPECIAL_TORPOR_DESCRIPTION", desc);
 
-            LanguageAPI.Add("KEYWORD_TORPOR", "Vow of Silence");
+            LanguageAPI.Add("KEYWORD_TORPOR", "<style=cKeywordName>Torpor</style><style=cSub>Applies a <style=cIsHealth>" + StaticValues.torporSlowAmount + "%</style> attack and movement speed <style=cIsDamage>slow</style>.");
+
+
+            LanguageAPI.Add("PALADIN_UNLOCKABLE_ACHIEVEMENT_NAME", "A Paladin's Vow");
+            LanguageAPI.Add("PALADIN_UNLOCKABLE_ACHIEVEMENT_DESC", "Use the Beads of Fealty and become whole once more.");
+            LanguageAPI.Add("PALADIN_UNLOCKABLE_UNLOCKABLE_NAME", "A Paladin's Vow");
+
+            LanguageAPI.Add("PALADIN_MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Paladin: Mastery");
+            LanguageAPI.Add("PALADIN_MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, beat the game or obliterate on Monsoon.");
+            LanguageAPI.Add("PALADIN_MASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Paladin: Mastery");
+
+            LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_ACHIEVEMENT_NAME", "Her Disciple");
+            LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, form a covenant with a goddess of corruption.");
+            LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_UNLOCKABLE_NAME", "Her Discple");
         }
     }
 }

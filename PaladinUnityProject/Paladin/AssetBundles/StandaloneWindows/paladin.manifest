@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3445646690
+CRC: 340481789
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ab620b51daaeb6807a5c6cadfdec5f81
+    Hash: 4a1f10f653f5c87b5d7595c6fcd40623
   TypeTreeHash:
     serializedVersion: 2
     Hash: dec9c1da3062a68c46a511a21524e013
@@ -65,13 +65,16 @@ Assets:
 - Assets/Paladin/Textures/texPaladinBodyEmission.png
 - Assets/Paladin/PaladinSwing.prefab
 - Assets/Paladin/PaladinDisplay.prefab
+- Assets/Paladin/Icons/texMasteryAchievement.png
 - Assets/Paladin/Materials/matPaladinLunarBody.mat
 - Assets/Paladin/Anim/trash/PraiseTheSunOld.anim
 - Assets/Paladin/Textures/texPaladinNkuhanaBodyEmission.png
 - Assets/Paladin/Anim/AimPitch.anim
 - Assets/Paladin/VFX/texLunarEmber.dds
 - Assets/Paladin/Anim/trash/SlashCombo2.anim
+- Assets/Paladin/Anim/Death.anim
 - Assets/Paladin/Textures/texPaladinNkuhanaSwordDull.png
+- Assets/Paladin/VFX/matTorporKill.mat
 - Assets/Paladin/Materials/matPaladinPoisonCloth.mat
 - Assets/Paladin/Anim/trash/Whirlwind.anim
 - Assets/Paladin/Materials/matPaladinBody.mat
@@ -83,6 +86,7 @@ Assets:
 - Assets/Paladin/Anim/AoESpellAlt.anim
 - Assets/Paladin/Anim/trash/Slash.anim
 - Assets/Paladin/VFX/matPaladinSwing.mat
+- Assets/Paladin/Icons/texPaladinAchievement.png
 - Assets/Paladin/Anim/trash/Sprint.anim
 - Assets/Paladin/Anim/CastSpell.anim
 - Assets/Paladin/Materials/matPaladinSword.mat
@@ -96,6 +100,7 @@ Assets:
 - Assets/Paladin/Anim/trash/Run.anim
 - Assets/Paladin/Anim/CombatIdle.anim
 - Assets/Paladin/Anim/LightningSpear.anim
+- Assets/Paladin/VFX/matDeath.mat
 - Assets/Paladin/Materials/matPaladinCloth.mat
 - Assets/Paladin/Anim/ThrowSpell.anim
 - Assets/Paladin/VFX/matTorpor.mat
@@ -104,9 +109,11 @@ Assets:
 - Assets/Paladin/VFX/matChargeHeal.mat
 - Assets/Paladin/VFX/matChargeTorpor.mat
 - Assets/Paladin/LightningImpact.prefab
+- Assets/Paladin/Icons/texPoisonAchievement.png
 - Assets/Paladin/HealEffect.prefab
 - Assets/Paladin/Anim/trash/SlashComboOld.anim
 - Assets/Paladin/VFX/matChargeSphere.mat
+- Assets/Paladin/TorporVoidFX.prefab
 - Assets/Paladin/Anim/Jump.anim
 - Assets/Paladin/ImpactPaladinSwing.prefab
 - Assets/Paladin/Anim/LightningSpearChargeLoop.anim
@@ -129,6 +136,7 @@ Assets:
 - Assets/Paladin/LightningBoltIcon.png
 - Assets/Paladin/Textures/texPaladinLunarCloth.png
 - Assets/Paladin/mdlPaladin.prefab
+- Assets/Paladin/Icons/texMainSkin.png
 - Assets/Paladin/Textures/texPaladinSwordEmission.png
 - Assets/Paladin/Anim/trash/Slash1ToSprint.anim
 - Assets/Paladin/VFX/matHeal.mat
@@ -178,6 +186,7 @@ Assets:
 - Assets/Paladin/Anim/Sprint.anim
 - Assets/Paladin/Anim/trash/WhirlwindFull.anim
 - Assets/Paladin/Textures/texPaladinBody.png
+- Assets/Paladin/VFX/matTorpor2.mat
 - Assets/Paladin/Anim/AirSlam.anim
 - Assets/Paladin/Materials/matPaladinPoisonSword.mat
 - Assets/Paladin/Anim/trash/Slash2.anim

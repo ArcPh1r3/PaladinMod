@@ -43,9 +43,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBugWings"),
                             childName = "Spine3",
-                            localPos = new Vector3(0, 0.004f, -0.002f),
-                            localAngles = new Vector3(45, 0, 0),
-                            localScale = new Vector3(0.001f, 0.001f, 0.001f),
+                            localPos = new Vector3(0, 0.004f, -0.2f),
+                            localAngles = new Vector3(0, 0, 0),
+                            localScale = new Vector3(0.15f, 0.15f, 0.15f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -64,9 +64,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayGoldGat"),
                             childName = "Spine3",
-                            localPos = new Vector3(0.0024f, 0.0075f, 0),
+                            localPos = new Vector3(0.2f, 0.4f, 0),
                             localAngles = new Vector3(0, 90, -45),
-                            localScale = new Vector3(0.0015f, 0.0015f, 0.0015f),
+                            localScale = new Vector3(0.15f, 0.15f, 0.15f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -85,9 +85,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBFG"),
                             childName = "Spine3",
-                            localPos = new Vector3(0.002f, 0.004f, 0),
-                            localAngles = new Vector3(0, 0, 330),
-                            localScale = new Vector3(0.003f, 0.003f, 0.003f),
+                            localPos = new Vector3(0.15f, 0.2f, 0),
+                            localAngles = new Vector3(0, 15, 330),
+                            localScale = new Vector3(0.3f, 0.3f, 0.3f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -106,7 +106,7 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayGlasses"),
                             childName = "Head",
-                            localPos = new Vector3(0, 0.8f, 0.15f),
+                            localPos = new Vector3(0, 0.08f, 0.15f),
                             localAngles = new Vector3(0, 0, 0),
                             localScale = new Vector3(0.25f, 0.25f, 0.25f),
                             limbMask = LimbFlags.None
@@ -115,7 +115,7 @@ namespace PaladinMod.Modules
                 }
             });
 
-            /*list.Add(new ItemDisplayRuleSet.NamedRuleGroup
+            list.Add(new ItemDisplayRuleSet.NamedRuleGroup
             {
                 name = "Syringe",
                 displayRuleGroup = new DisplayRuleGroup
@@ -126,15 +126,15 @@ namespace PaladinMod.Modules
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplaySyringeCluster"),
-                            childName = "Chest",
-                            localPos = new Vector3(0.002f, 0.0048f, 0),
+                            childName = "Spine3",
+                            localPos = new Vector3(0.15f, 0.2f, 0),
                             localAngles = new Vector3(30, 90, 0),
-                            localScale = new Vector3(0.0015f, 0.0015f, 0.0015f),
+                            localScale = new Vector3(0.15f, 0.15f, 0.15f),
                             limbMask = LimbFlags.None
                         }
                     }
                 }
-            });*/
+            });
             
             list.Add(new ItemDisplayRuleSet.NamedRuleGroup
             {
@@ -156,7 +156,7 @@ namespace PaladinMod.Modules
                     }
                 }
             });
-            /*
+            
             list.Add(new ItemDisplayRuleSet.NamedRuleGroup
             {
                 name = "Missile",
@@ -169,9 +169,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayMissileLauncher"),
                             childName = "Spine3",
-                            localPos = new Vector3(-0.0225f, 0.0601f, -0.0129f),
-                            localAngles = new Vector3(0, 0, 14.68f),
-                            localScale = new Vector3(0.008f, 0.008f, 0.008f),
+                            localPos = new Vector3(-0.18f, 0.5f, 0.1f),
+                            localAngles = new Vector3(0, 0, 14f),
+                            localScale = new Vector3(0.08f, 0.08f, 0.08f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -189,16 +189,16 @@ namespace PaladinMod.Modules
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayDagger"),
-                            childName = "Spine2",
+                            childName = "Spine3",
                             localPos = new Vector3(0.005f, 0.0141f, 0),
                             localAngles = new Vector3(0, 0, 0),
-                            localScale = new Vector3(0.08f, 0.08f, 0.08f),
+                            localScale = new Vector3(1, 1, 1),
                             limbMask = LimbFlags.None
                         }
                     }
                 }
             });
-            */
+            
             list.Add(new ItemDisplayRuleSet.NamedRuleGroup
             {
                 name = "Hoof",
@@ -219,7 +219,7 @@ namespace PaladinMod.Modules
                     }
                 }
             });
-            /*
+            
             list.Add(new ItemDisplayRuleSet.NamedRuleGroup
             {
                 name = "ChainLightning",
@@ -231,16 +231,16 @@ namespace PaladinMod.Modules
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayUkulele"),
-                            childName = "Spine3",
-                            localPos = new Vector3(-0.0057f, -0.0011f, -0.022f),
-                            localAngles = new Vector3(0, 180, 90),
-                            localScale = new Vector3(0.05f, 0.05f, 0.05f),
+                            childName = "Sword",
+                            localPos = new Vector3(-0.3f, 0, 3),
+                            localAngles = new Vector3(0, 270, 270),
+                            localScale = new Vector3(4, 4, 4),
                             limbMask = LimbFlags.None
                         }
                     }
                 }
             });
-            */
+            
             list.Add(new ItemDisplayRuleSet.NamedRuleGroup
             {
                 name = "GhostOnKill",
@@ -2161,9 +2161,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteHorn"),
                             childName = "Head",
-                            localPos = new Vector3(-0.001f, 0.002f, 0),
-                            localAngles = new Vector3(0, 180, 0),
-                            localScale = new Vector3(0.001f, 0.001f, 0.001f),
+                            localPos = new Vector3(0.05f, 0.2f, 0.1f),
+                            localAngles = new Vector3(0, 0, 0),
+                            localScale = new Vector3(0.1f, 0.1f, 0.1f),
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -2171,9 +2171,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteHorn"),
                             childName = "Head",
-                            localPos = new Vector3(0.001f, 0.002f, 0),
-                            localAngles = new Vector3(0, 180, 0),
-                            localScale = new Vector3(0.001f, 0.001f, -0.001f),
+                            localPos = new Vector3(-0.05f, 0.2f, 0.1f),
+                            localAngles = new Vector3(0, 0, 0),
+                            localScale = new Vector3(-0.1f, 0.1f, 0.1f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -2192,9 +2192,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteRhinoHorn"),
                             childName = "Head",
-                            localPos = new Vector3(0, 0.0024f, -0.0015f),
-                            localAngles = new Vector3(-45, 180, 0),
-                            localScale = new Vector3(0.004f, 0.004f, 0.004f),
+                            localPos = new Vector3(0, 0.15f, 0.15f),
+                            localAngles = new Vector3(-45, 0, 0),
+                            localScale = new Vector3(0.4f, 0.4f, 0.4f),
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -2202,9 +2202,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteRhinoHorn"),
                             childName = "Head",
-                            localPos = new Vector3(0, 0.0024f, -0.0005f),
-                            localAngles = new Vector3(-60, 180, 0),
-                            localScale = new Vector3(0.003f, 0.003f, 0.003f),
+                            localPos = new Vector3(0, 0.2f, -0.05f),
+                            localAngles = new Vector3(-60, 0, 0),
+                            localScale = new Vector3(0.3f, 0.3f, 0.3f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -2223,9 +2223,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteIceCrown"),
                             childName = "Head",
-                            localPos = new Vector3(0, 0.003f, 0),
-                            localAngles = new Vector3(-90, 180, 0),
-                            localScale = new Vector3(0.0003f, 0.0003f, 0.0003f),
+                            localPos = new Vector3(0, 0.3f, 0),
+                            localAngles = new Vector3(-90, 0, 0),
+                            localScale = new Vector3(0.03f, 0.03f, 0.03f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -2244,9 +2244,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteUrchinCrown"),
                             childName = "Head",
-                            localPos = new Vector3(0, 0.002f, 0),
-                            localAngles = new Vector3(-90, 180, 0),
-                            localScale = new Vector3(0.0006f, 0.0006f, 0.0006f),
+                            localPos = new Vector3(0, 0.2f, 0),
+                            localAngles = new Vector3(-90, 0, 0),
+                            localScale = new Vector3(0.06f, 0.06f, 0.06f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -2265,9 +2265,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteStealthCrown"),
                             childName = "Head",
-                            localPos = new Vector3(0, 0.003f, 0),
-                            localAngles = new Vector3(-90, 180, 0),
-                            localScale = new Vector3(0.0006f, 0.0006f, 0.0006f),
+                            localPos = new Vector3(0, 0.2f, 0),
+                            localAngles = new Vector3(-90, 0, 0),
+                            localScale = new Vector3(0.06f, 0.06f, 0.06f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -2315,7 +2315,7 @@ namespace PaladinMod.Modules
                     }
                 }
             });
-
+            */
             list2.Add(new ItemDisplayRuleSet.NamedRuleGroup
             {
                 name = "Lightning",
@@ -2327,16 +2327,16 @@ namespace PaladinMod.Modules
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.capacitorPrefab,
-                            childName = "Chest",
+                            childName = "Spine3",
                             localPos = new Vector3(0, 0, 0),
                             localAngles = new Vector3(0, 0, 0),
-                            localScale = new Vector3(0.01f, 0.01f, 0.01f),
+                            localScale = new Vector3(1, 1, 1),
                             limbMask = LimbFlags.None
                         }
                     }
                 }
             });
-            
+            /*
             list2.Add(new ItemDisplayRuleSet.NamedRuleGroup
             {
                 name = "BurnNearby",
@@ -2392,8 +2392,8 @@ namespace PaladinMod.Modules
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBatteryArray"),
                             childName = "Spine3",
                             localPos = new Vector3(0, 0, -0.2f),
-                            localAngles = new Vector3(90, 180, 0),
-                            localScale = new Vector3(0.6f, 0.6f, 0.6f),
+                            localAngles = new Vector3(0, 180, 0),
+                            localScale = new Vector3(0.3f, 0.3f, 0.3f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -2433,9 +2433,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayRecycler"),
                             childName = "Spine3",
-                            localPos = new Vector3(0, 0.003f, -0.0028f),
+                            localPos = new Vector3(0, 0.03f, -0.2f),
                             localAngles = new Vector3(0, 90, 0),
-                            localScale = new Vector3(0.001f, 0.001f, 0.001f),
+                            localScale = new Vector3(0.1f, 0.1f, 0.1f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -2475,9 +2475,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayWaterPack"),
                             childName = "Spine3",
-                            localPos = new Vector3(0, 0.003f, -0.0024f),
+                            localPos = new Vector3(0, 0, -0.18f),
                             localAngles = new Vector3(0, 180, 0),
-                            localScale = new Vector3(0.001f, 0.001f, 0.001f),
+                            localScale = new Vector3(0.1f, 0.1f, 0.1f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -2643,9 +2643,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayLifestealOnHit"),
                             childName = "Head",
-                            localPos = new Vector3(-0.002f, 0.004f, 0),
+                            localPos = new Vector3(-0.2f, 0.4f, 0),
                             localAngles = new Vector3(25, 90, 0),
-                            localScale = new Vector3(0.0015f, 0.0015f, 0.0015f),
+                            localScale = new Vector3(0.15f, 0.15f, 0.15f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -2697,7 +2697,7 @@ namespace PaladinMod.Modules
         {
             ItemDisplayRuleSet itemDisplayRuleSet = Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponent<ModelLocator>().modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet;
 
-            capacitorPrefab = PrefabAPI.InstantiateClone(itemDisplayRuleSet.FindEquipmentDisplayRuleGroup("Lightning").rules[0].followerPrefab, "DisplayMinerLightning", true);
+            capacitorPrefab = PrefabAPI.InstantiateClone(itemDisplayRuleSet.FindEquipmentDisplayRuleGroup("Lightning").rules[0].followerPrefab, "DisplayPaladinLightning", true);
             capacitorPrefab.AddComponent<UnityEngine.Networking.NetworkIdentity>();
 
             var limbMatcher = capacitorPrefab.GetComponent<LimbMatcher>();

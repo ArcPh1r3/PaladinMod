@@ -26,6 +26,8 @@ namespace PaladinMod.Modules
             GameObject cloth4 = childLocator.FindChild("Cloth4").gameObject;
             GameObject cloth5 = childLocator.FindChild("Cloth5").gameObject;
 
+            Material commandoMat = Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
+
             LoadoutAPI.SkinDefInfo skinDefInfo = default(LoadoutAPI.SkinDefInfo);
             skinDefInfo.BaseSkins = Array.Empty<SkinDef>();
             skinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
@@ -60,7 +62,7 @@ namespace PaladinMod.Modules
                 }
             };
 
-            skinDefInfo.Icon = Resources.Load<GameObject>("Prefabs/CharacterBodies/HuntressBody").GetComponentInChildren<ModelSkinController>().skins[0].icon;
+            skinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin");
             skinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
             {
                 new SkinDef.MeshReplacement
@@ -87,7 +89,7 @@ namespace PaladinMod.Modules
 
                 if (material)
                 {
-                    material = UnityEngine.Object.Instantiate<Material>(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
+                    material = UnityEngine.Object.Instantiate<Material>(commandoMat);
                     material.SetColor("_Color", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinCloth").GetColor("_Color"));
                     material.SetTexture("_MainTex", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinCloth").GetTexture("_MainTex"));
                     material.SetColor("_EmColor", Color.white);
@@ -137,7 +139,7 @@ namespace PaladinMod.Modules
                 }
             };
 
-            lunarSkinDefInfo.Icon = LoadoutAPI.CreateSkinIcon(new Color(0.5f, 1f, 1f), new Color(0f, 0.35f, 0.53f), new Color(0.9f, 0.9f, 0.9f), new Color(0.1f, 0.01f, 0.1f));
+            lunarSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement");
             lunarSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
             {
                 new SkinDef.MeshReplacement
@@ -150,7 +152,7 @@ namespace PaladinMod.Modules
             lunarSkinDefInfo.NameToken = "PALADINBODY_LUNAR_SKIN_NAME";
             lunarSkinDefInfo.RendererInfos = characterModel.baseRendererInfos;
             lunarSkinDefInfo.RootObject = model;
-            lunarSkinDefInfo.UnlockableName = "";
+            lunarSkinDefInfo.UnlockableName = "PALADIN_MASTERYUNLOCKABLE_REWARD_ID";
 
             rendererInfos = skinDefInfo.RendererInfos;
             array = new CharacterModel.RendererInfo[rendererInfos.Length];
@@ -158,7 +160,7 @@ namespace PaladinMod.Modules
 
             material = array[0].defaultMaterial;
 
-            material = UnityEngine.Object.Instantiate<Material>(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
+            material = UnityEngine.Object.Instantiate<Material>(commandoMat);
             material.SetTexture("_MainTex", Assets.mainAssetBundle.LoadAsset<Material>("matPaladinLunarBody").GetTexture("_MainTex"));
             material.SetColor("_EmColor", Color.white);
             material.SetFloat("_EmPower", 10);
@@ -172,7 +174,7 @@ namespace PaladinMod.Modules
 
                 if (material)
                 {
-                    material = UnityEngine.Object.Instantiate<Material>(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
+                    material = UnityEngine.Object.Instantiate<Material>(commandoMat);
                     Assets.mainAssetBundle.LoadAsset<Material>("matPaladinLunarCloth").GetTexture("_MainTex");
                     material.SetColor("_Color", Color.white);
                     material.SetFloat("_EmPower", 0);
@@ -183,7 +185,7 @@ namespace PaladinMod.Modules
 
             material = array[6].defaultMaterial;
 
-            material = UnityEngine.Object.Instantiate<Material>(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
+            material = UnityEngine.Object.Instantiate<Material>(commandoMat);
             material.SetTexture("_MainTex", Assets.mainAssetBundle.LoadAsset<Material>("matPaladinLunarSword").GetTexture("_MainTex"));
             material.SetColor("_EmColor", Color.white);
             material.SetFloat("_EmPower", StaticValues.maxSwordGlow);
@@ -229,7 +231,7 @@ namespace PaladinMod.Modules
                 }
             };
 
-            poisonSkinDefInfo.Icon = Resources.Load<GameObject>("Prefabs/CharacterBodies/EngiBody").GetComponentInChildren<ModelSkinController>().skins[1].icon;
+            poisonSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("texPoisonAchievement");
             poisonSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
             {
                 new SkinDef.MeshReplacement
@@ -242,7 +244,7 @@ namespace PaladinMod.Modules
             poisonSkinDefInfo.NameToken = "PALADINBODY_POISON_SKIN_NAME";
             poisonSkinDefInfo.RendererInfos = characterModel.baseRendererInfos;
             poisonSkinDefInfo.RootObject = model;
-            poisonSkinDefInfo.UnlockableName = "";
+            poisonSkinDefInfo.UnlockableName = "PALADIN_POISONUNLOCKABLE_REWARD_ID";
 
             rendererInfos = skinDefInfo.RendererInfos;
             array = new CharacterModel.RendererInfo[rendererInfos.Length];
@@ -250,7 +252,7 @@ namespace PaladinMod.Modules
 
             material = array[0].defaultMaterial;
 
-            material = UnityEngine.Object.Instantiate<Material>(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
+            material = UnityEngine.Object.Instantiate<Material>(commandoMat);
             material.SetTexture("_MainTex", Assets.mainAssetBundle.LoadAsset<Material>("matPaladinPoisonBody").GetTexture("_MainTex"));
             material.SetColor("_EmColor", Color.white);
             material.SetFloat("_EmPower", 5);
@@ -264,7 +266,7 @@ namespace PaladinMod.Modules
 
                 if (material)
                 {
-                    material = UnityEngine.Object.Instantiate<Material>(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
+                    material = UnityEngine.Object.Instantiate<Material>(commandoMat);
                     Assets.mainAssetBundle.LoadAsset<Material>("matPaladinPoisonCloth").GetTexture("_MainTex");
                     material.SetColor("_Color", Color.white);
                     material.SetFloat("_EmPower", 0);
@@ -275,7 +277,7 @@ namespace PaladinMod.Modules
 
             material = array[6].defaultMaterial;
 
-            material = UnityEngine.Object.Instantiate<Material>(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
+            material = UnityEngine.Object.Instantiate<Material>(commandoMat);
             material.SetTexture("_MainTex", Assets.mainAssetBundle.LoadAsset<Material>("matPaladinPoisonSword").GetTexture("_MainTex"));
             material.SetColor("_EmColor", Color.white);
             material.SetFloat("_EmPower", StaticValues.maxSwordGlow);

@@ -47,16 +47,21 @@ namespace PaladinMod.States
 
             if (base.isAuthority && base.characterMotor.isGrounded)
             {
-                if (Input.GetKeyDown("1"))
+                if (Input.GetKeyDown(Modules.Config.praiseKeybind.Value))
                 {
                     this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.PraiseTheSun))), InterruptPriority.Any);
                     return;
                 }
-                else if (Input.GetKeyDown("2"))
+                else if (Input.GetKeyDown(Modules.Config.pointKeybind.Value))
                 {
                     this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.PointDown))), InterruptPriority.Any);
                     return;
                 }
+                /*else if (Input.GetKeyDown("3"))
+                {
+                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.TestPose))), InterruptPriority.Any);
+                    return;
+                }*/
             }
         }
 

@@ -76,13 +76,19 @@ namespace PaladinMod.States
         {
             if (this.areaIndicatorInstance)
             {
-                float maxDistance = 80f;
+                float maxDistance = 128f;
 
+                Ray aimRay = base.GetAimRay();
                 RaycastHit raycastHit;
-                if (Physics.Raycast(base.GetAimRay(), out raycastHit, maxDistance, LayerIndex.world.mask))
+                if (Physics.Raycast(aimRay, out raycastHit, maxDistance, LayerIndex.world.mask))
                 {
                     this.areaIndicatorInstance.transform.position = raycastHit.point;
                     this.areaIndicatorInstance.transform.up = raycastHit.normal;
+                }
+                else
+                {
+                    this.areaIndicatorInstance.transform.position = aimRay.GetPoint(maxDistance);
+                    this.areaIndicatorInstance.transform.up = -aimRay.direction;
                 }
             }
         }

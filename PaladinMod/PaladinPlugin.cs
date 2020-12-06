@@ -9,12 +9,13 @@ using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.Networking;
 using KinematicCharacterController;
+using BepInEx.Configuration;
 
 namespace PaladinMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "0.0.3")]
+    [BepInPlugin(MODUID, "Paladin", "0.0.1")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -57,6 +58,7 @@ namespace PaladinMod
             instance = this;
 
             Modules.Assets.PopulateAssets();
+            Modules.Config.ReadConfig();
 
             CreateDisplayPrefab();
             CreatePrefab();
@@ -65,7 +67,7 @@ namespace PaladinMod
             Modules.Buffs.RegisterBuffs();
             Modules.Projectiles.RegisterProjectiles();
             Modules.ItemDisplays.RegisterDisplays();
-            //Modules.Unlockables.RegisterUnlockables();
+            Modules.Unlockables.RegisterUnlockables();
             Modules.Tokens.AddTokens();
 
             CreateDoppelganger();
@@ -646,7 +648,8 @@ namespace PaladinMod
         {
             characterDisplay.AddComponent<NetworkIdentity>();
 
-            string unlockString = "";//"PALADIN_CHARACTERUNLOCKABLE_REWARD_ID"
+            string unlockString = "PALADIN_UNLOCKABLE_REWARD_ID";
+            if (Modules.Config.forceUnlock.Value) unlockString = "";
 
             SurvivorDef survivorDef = new SurvivorDef
             {

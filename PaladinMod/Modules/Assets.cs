@@ -36,6 +36,8 @@ namespace PaladinMod.Modules
         public static GameObject lightningHitFX;
         public static GameObject lightningImpactFX;
 
+        public static GameObject torporVoidFX;
+
         public static void PopulateAssets()
         {
             if (mainAssetBundle == null)
@@ -73,11 +75,20 @@ namespace PaladinMod.Modules
             healZoneEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("HealZoneEffect");
             torporEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("TorporEffect");
 
+            GameObject engiShieldObj = Resources.Load<GameObject>("Prefabs/Projectiles/EngiBubbleShield");
+
+            Material shieldFillMat = UnityEngine.Object.Instantiate<Material>(engiShieldObj.transform.Find("Collision").Find("ActiveVisual").GetComponent<MeshRenderer>().material);
+            Material shieldOuterMat = UnityEngine.Object.Instantiate<Material>(engiShieldObj.transform.Find("Collision").Find("ActiveVisual").Find("Edge").GetComponent<MeshRenderer>().material);
+
+            healZoneEffectPrefab.GetComponentInChildren<ParticleSystemRenderer>().material = shieldOuterMat;
+            torporEffectPrefab.GetComponentInChildren<ParticleSystemRenderer>().material = shieldOuterMat;
+
             swordSwing = Assets.LoadEffect("PaladinSwing", "");
             spinningSlashFX = Assets.LoadEffect("SpinSlashEffect", "");
             hitFX = Assets.LoadEffect("ImpactPaladinSwing", "");
             lightningHitFX = Assets.LoadEffect("LightningHitFX", "");
             lightningImpactFX = Assets.LoadEffect("LightningImpact", "Play_mage_R_lightningBlast");
+            torporVoidFX = Assets.LoadEffect("TorporVoidFX", "RoR2_nullifier_attack1_explode_02");
         }
 
         private static GameObject LoadEffect(string resourceName, string soundName)
