@@ -23,6 +23,8 @@ namespace PaladinMod.Misc
         public float buffDuration;
         [Tooltip("Heal amount (based on percentage)")]
         public float healAmount;
+        [Tooltip("Barrier amount (based on percentage)")]
+        public float barrierAmount;
         [Tooltip("Should the ward be floored on start")]
         public bool floorWard;
         [Tooltip("Does the ward disappear over time?")]
@@ -31,6 +33,7 @@ namespace PaladinMod.Misc
         public bool invertTeamFilter;
         [Tooltip("If set, stops all projectiles in the vicinity.")]
         public bool freezeProjectiles;
+        public bool grounding;
         public float expireDuration;
         public bool animateRadius;
         public AnimationCurve radiusCoefficientCurve;
@@ -170,6 +173,16 @@ namespace PaladinMod.Misc
                         if (healAmount != 0 && charBody.healthComponent)
                         {
                             charBody.healthComponent.HealFraction(this.healAmount, default(ProcChainMask));
+                        }
+
+                        if (barrierAmount != 0 && charBody.healthComponent)
+                        {
+                            charBody.healthComponent.AddBarrier(this.barrierAmount * charBody.healthComponent.fullBarrier);
+                        }
+
+                        if (this.grounding)
+                        {
+                            if (charBody.GetComponent<PaladinGroundController>() == null) charBody.gameObject.AddComponent<PaladinGroundController>().body = charBody;
                         }
                     }
                 }

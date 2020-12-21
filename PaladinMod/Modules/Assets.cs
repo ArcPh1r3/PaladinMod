@@ -31,12 +31,19 @@ namespace PaladinMod.Modules
 
         public static GameObject swordSwing;
         public static GameObject spinningSlashFX;
+        public static GameObject spinningSlashEmpoweredFX;
 
         public static GameObject hitFX;
         public static GameObject lightningHitFX;
         public static GameObject lightningImpactFX;
 
         public static GameObject torporVoidFX;
+
+        public static Mesh defaultMesh;
+        public static Mesh defaultSwordMesh;
+        public static Mesh lunarMesh;
+        public static Mesh lunarSwordMesh;
+        public static Mesh hunterMesh;
 
         public static void PopulateAssets()
         {
@@ -59,7 +66,7 @@ namespace PaladinMod.Modules
 
             charPortrait = mainAssetBundle.LoadAsset<Sprite>("texPaladinIcon").texture;
 
-            iconP = mainAssetBundle.LoadAsset<Sprite>("SlashIcon");
+            iconP = mainAssetBundle.LoadAsset<Sprite>("PassiveIcon");
             icon1 = mainAssetBundle.LoadAsset<Sprite>("SlashIcon");
             icon2 = mainAssetBundle.LoadAsset<Sprite>("SpinSlashIcon");
             icon3 = mainAssetBundle.LoadAsset<Sprite>("LightningSpearIcon");
@@ -80,15 +87,27 @@ namespace PaladinMod.Modules
             Material shieldFillMat = UnityEngine.Object.Instantiate<Material>(engiShieldObj.transform.Find("Collision").Find("ActiveVisual").GetComponent<MeshRenderer>().material);
             Material shieldOuterMat = UnityEngine.Object.Instantiate<Material>(engiShieldObj.transform.Find("Collision").Find("ActiveVisual").Find("Edge").GetComponent<MeshRenderer>().material);
 
+            shieldOuterMat.SetTexture("_EmTex", mainAssetBundle.LoadAsset<Texture>("texHealZone"));
+            Material torporMat = UnityEngine.Object.Instantiate<Material>(shieldOuterMat);
+            torporMat.SetTexture("_EmTex", mainAssetBundle.LoadAsset<Texture>("texTorpor"));
+
             healZoneEffectPrefab.GetComponentInChildren<ParticleSystemRenderer>().material = shieldOuterMat;
-            torporEffectPrefab.GetComponentInChildren<ParticleSystemRenderer>().material = shieldOuterMat;
+            torporEffectPrefab.GetComponentInChildren<ParticleSystemRenderer>().material = UnityEngine.Object.Instantiate<Material>(shieldOuterMat);
+            torporEffectPrefab.GetComponentInChildren<ParticleSystemRenderer>().material.SetColor("_TintColor", Color.red);
 
             swordSwing = Assets.LoadEffect("PaladinSwing", "");
             spinningSlashFX = Assets.LoadEffect("SpinSlashEffect", "");
+            spinningSlashEmpoweredFX = Assets.LoadEffect("EmpSpinSlashEffect", "");
             hitFX = Assets.LoadEffect("ImpactPaladinSwing", "");
             lightningHitFX = Assets.LoadEffect("LightningHitFX", "");
             lightningImpactFX = Assets.LoadEffect("LightningImpact", "Play_mage_R_lightningBlast");
             torporVoidFX = Assets.LoadEffect("TorporVoidFX", "RoR2_nullifier_attack1_explode_02");
+
+            defaultMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladin");
+            defaultSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSword");
+            lunarMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinLunar");
+            lunarSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordLunar");
+            hunterMesh = mainAssetBundle.LoadAsset<Mesh>("HunterMesh");
         }
 
         private static GameObject LoadEffect(string resourceName, string soundName)

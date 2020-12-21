@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using PaladinMod.Misc;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
@@ -16,11 +17,15 @@ namespace PaladinMod.States
         public float selfForce;
         private float duration;
         public float charge;
+        private PaladinSwordController swordController;
 
         public override void OnEnter()
         {
             base.OnEnter();
             this.duration = this.baseDuration / this.attackSpeedStat;
+            this.swordController = base.GetComponent<PaladinSwordController>();
+
+            if (this.swordController) this.swordController.attacking = true;
 
             base.PlayAnimation("Gesture, Override", "LightningSpear", "LightningSpear.playbackRate", this.duration);
 
@@ -44,6 +49,8 @@ namespace PaladinMod.States
         public override void OnExit()
         {
             base.OnExit();
+
+            if (this.swordController) this.swordController.attacking = false;
         }
 
         private void Fire()

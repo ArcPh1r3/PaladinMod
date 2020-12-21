@@ -3,11 +3,84 @@ using UnityEngine;
 using R2API;
 using RoR2;
 using R2API.Utils;
+using System.Collections.Generic;
 
 namespace PaladinMod.Modules
 {
     public static class Skins
     {
+        public static SkinDef CreateSkinDef(string skinName, Sprite skinIcon, CharacterModel.RendererInfo[] rendererInfos, SkinnedMeshRenderer mainRenderer, GameObject root, string unlockName)
+        {
+            LoadoutAPI.SkinDefInfo skinDefInfo = new LoadoutAPI.SkinDefInfo
+            {
+                BaseSkins = Array.Empty<SkinDef>(),
+                GameObjectActivations = new SkinDef.GameObjectActivation[0],
+                Icon = skinIcon,
+                MeshReplacements = new SkinDef.MeshReplacement[0],
+                MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0],
+                Name = skinName,
+                NameToken = skinName,
+                ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0],
+                RendererInfos = rendererInfos,
+                RootObject = root,
+                UnlockableName = unlockName
+            };
+
+            SkinDef skin = LoadoutAPI.CreateNewSkinDef(skinDefInfo);
+
+            return skin;
+        }
+
+        public static SkinDef CreateSkinDef(string skinName, Sprite skinIcon, CharacterModel.RendererInfo[] rendererInfos, SkinnedMeshRenderer mainRenderer, GameObject root, string unlockName, Mesh skinMesh)
+        {
+            LoadoutAPI.SkinDefInfo skinDefInfo = new LoadoutAPI.SkinDefInfo
+            {
+                BaseSkins = Array.Empty<SkinDef>(),
+                GameObjectActivations = new SkinDef.GameObjectActivation[0],
+                Icon = skinIcon,
+                MeshReplacements = new SkinDef.MeshReplacement[]
+                {
+                    new SkinDef.MeshReplacement
+                    {
+                        renderer = mainRenderer,
+                        mesh = skinMesh
+                    }
+                },
+                MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0],
+                Name = skinName,
+                NameToken = skinName,
+                ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0],
+                RendererInfos = rendererInfos,
+                RootObject = root,
+                UnlockableName = unlockName
+            };
+
+            SkinDef skin = LoadoutAPI.CreateNewSkinDef(skinDefInfo);
+
+            return skin;
+        }
+
+        public static Material CreateMaterial(string materialName, float emission, Color emissionColor, float normalStrength)
+        {
+            if (!PaladinPlugin.commandoMat) PaladinPlugin.commandoMat = Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
+
+            Material mat = UnityEngine.Object.Instantiate<Material>(PaladinPlugin.commandoMat);
+            Material tempMat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
+            if (!tempMat)
+            {
+                return PaladinPlugin.commandoMat;
+            }
+
+            mat.SetColor("_Color", tempMat.GetColor("_Color"));
+            mat.SetTexture("_MainTex", tempMat.GetTexture("_MainTex"));
+            mat.SetColor("_EmColor", emissionColor);
+            mat.SetFloat("_EmPower", emission);
+            mat.SetTexture("_EmTex", tempMat.GetTexture("_EmissionMap"));
+            mat.SetFloat("_NormalStrength", normalStrength);
+
+            return mat;
+        }
+
         public static void RegisterSkins()
         {
             GameObject bodyPrefab = PaladinPlugin.characterPrefab;
@@ -20,282 +93,185 @@ namespace PaladinMod.Modules
 
             SkinnedMeshRenderer mainRenderer = Reflection.GetFieldValue<SkinnedMeshRenderer>(characterModel, "mainSkinnedMeshRenderer");
 
-            GameObject cloth1 = childLocator.FindChild("Cloth1").gameObject;
-            GameObject cloth2 = childLocator.FindChild("Cloth2").gameObject;
-            GameObject cloth3 = childLocator.FindChild("Cloth3").gameObject;
-            GameObject cloth4 = childLocator.FindChild("Cloth4").gameObject;
-            GameObject cloth5 = childLocator.FindChild("Cloth5").gameObject;
+            Material commandoMat = PaladinPlugin.commandoMat;
 
-            Material commandoMat = Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
+            List<SkinDef> skinDefs = new List<SkinDef>();
 
-            LoadoutAPI.SkinDefInfo skinDefInfo = default(LoadoutAPI.SkinDefInfo);
-            skinDefInfo.BaseSkins = Array.Empty<SkinDef>();
-            skinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
-            skinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
-
-            skinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[]
+            #region DefaultSkin
+            CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
+            SkinDef defaultSkin = CreateSkinDef("PALADINBODY_DEFAULT_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"), defaultRenderers, mainRenderer, model, "", Assets.defaultMesh);
+            defaultSkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
             {
                 new SkinDef.GameObjectActivation
                 {
-                    gameObject = cloth1,
+                    gameObject = defaultRenderers[5].renderer.gameObject,
                     shouldActivate = true
                 },
                 new SkinDef.GameObjectActivation
                 {
-                    gameObject = cloth2,
-                    shouldActivate = true
-                },
-                new SkinDef.GameObjectActivation
-                {
-                    gameObject = cloth3,
-                    shouldActivate = true
-                },
-                new SkinDef.GameObjectActivation
-                {
-                    gameObject = cloth4,
-                    shouldActivate = true
-                },
-                new SkinDef.GameObjectActivation
-                {
-                    gameObject = cloth5,
-                    shouldActivate = true
+                    gameObject = defaultRenderers[7].renderer.gameObject,
+                    shouldActivate = false
                 }
             };
-
-            skinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin");
-            skinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            defaultSkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
                 new SkinDef.MeshReplacement
                 {
-                    renderer = mainRenderer,
-                    mesh = mainRenderer.sharedMesh
+                    mesh = Assets.defaultMesh,
+                    renderer = defaultRenderers[0].renderer
+                },
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.defaultSwordMesh,
+                    renderer = defaultRenderers[6].renderer
                 }
             };
-            skinDefInfo.Name = "PALADINBODY_DEFAULT_SKIN_NAME";
-            skinDefInfo.NameToken = "PALADINBODY_DEFAULT_SKIN_NAME";
-            skinDefInfo.RendererInfos = characterModel.baseRendererInfos;
-            skinDefInfo.RootObject = model;
-            skinDefInfo.UnlockableName = "";
+            skinDefs.Add(defaultSkin);
+            #endregion
 
-            CharacterModel.RendererInfo[] rendererInfos = skinDefInfo.RendererInfos;
-            CharacterModel.RendererInfo[] array = new CharacterModel.RendererInfo[rendererInfos.Length];
-            rendererInfos.CopyTo(array, 0);
+            #region MasterySkin
+            CharacterModel.RendererInfo[] masteryRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
+            defaultRenderers.CopyTo(masteryRendererInfos, 0);
 
-            Material material = null;
+            Material bodyMat = CreateMaterial("matPaladinLunarBody", 10, Color.white, 0);
+            Material clothMat = CreateMaterial("matPaladinLunarCloth", 0, Color.white, 0);
+            Material swordMat = CreateMaterial("matPaladinLunarSword", StaticValues.maxSwordGlow, Color.white, 0);
 
+            masteryRendererInfos[0].defaultMaterial = bodyMat;
             for (int i = 1; i < 6; i++)
             {
-                material = array[i].defaultMaterial;
-
-                if (material)
-                {
-                    material = UnityEngine.Object.Instantiate<Material>(commandoMat);
-                    material.SetColor("_Color", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinCloth").GetColor("_Color"));
-                    material.SetTexture("_MainTex", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinCloth").GetTexture("_MainTex"));
-                    material.SetColor("_EmColor", Color.white);
-                    material.SetFloat("_EmPower", 0);
-                    material.SetTexture("_EmTex", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinCloth").GetTexture("_EmissionMap"));
-                    material.SetFloat("_NormalStrength", 0f);
-
-                    array[i].defaultMaterial = material;
-                }
+                masteryRendererInfos[i].defaultMaterial = clothMat;
             }
+            masteryRendererInfos[6].defaultMaterial = swordMat;
+            masteryRendererInfos[7].defaultMaterial = clothMat;
 
-            skinDefInfo.RendererInfos = array;
+            SkinDef masterySkin = CreateSkinDef("PALADINBODY_LUNAR_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"), masteryRendererInfos, mainRenderer, model, "PALADIN_MASTERYUNLOCKABLE_REWARD_ID", Assets.defaultMesh);
 
-            SkinDef defaultSkin = LoadoutAPI.CreateNewSkinDef(skinDefInfo);
-
-            LoadoutAPI.SkinDefInfo lunarSkinDefInfo = default(LoadoutAPI.SkinDefInfo);
-            lunarSkinDefInfo.BaseSkins = Array.Empty<SkinDef>();
-            lunarSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
-            lunarSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
-
-            lunarSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[]
+            masterySkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
             {
                 new SkinDef.GameObjectActivation
                 {
-                    gameObject = cloth1,
+                    gameObject = defaultRenderers[5].renderer.gameObject,
                     shouldActivate = false
                 },
                 new SkinDef.GameObjectActivation
                 {
-                    gameObject = cloth2,
-                    shouldActivate = false
-                },
-                new SkinDef.GameObjectActivation
-                {
-                    gameObject = cloth3,
-                    shouldActivate = false
-                },
-                new SkinDef.GameObjectActivation
-                {
-                    gameObject = cloth4,
-                    shouldActivate = false
-                },
-                new SkinDef.GameObjectActivation
-                {
-                    gameObject = cloth5,
-                    shouldActivate = false
+                    gameObject = defaultRenderers[7].renderer.gameObject,
+                    shouldActivate = true
                 }
             };
-
-            lunarSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement");
-            lunarSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            masterySkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
                 new SkinDef.MeshReplacement
                 {
-                    renderer = mainRenderer,
-                    mesh = mainRenderer.sharedMesh
-                }
-            };
-            lunarSkinDefInfo.Name = "PALADINBODY_LUNAR_SKIN_NAME";
-            lunarSkinDefInfo.NameToken = "PALADINBODY_LUNAR_SKIN_NAME";
-            lunarSkinDefInfo.RendererInfos = characterModel.baseRendererInfos;
-            lunarSkinDefInfo.RootObject = model;
-            lunarSkinDefInfo.UnlockableName = "PALADIN_MASTERYUNLOCKABLE_REWARD_ID";
-
-            rendererInfos = skinDefInfo.RendererInfos;
-            array = new CharacterModel.RendererInfo[rendererInfos.Length];
-            rendererInfos.CopyTo(array, 0);
-
-            material = array[0].defaultMaterial;
-
-            material = UnityEngine.Object.Instantiate<Material>(commandoMat);
-            material.SetTexture("_MainTex", Assets.mainAssetBundle.LoadAsset<Material>("matPaladinLunarBody").GetTexture("_MainTex"));
-            material.SetColor("_EmColor", Color.white);
-            material.SetFloat("_EmPower", 10);
-            material.SetTexture("_EmTex", Assets.mainAssetBundle.LoadAsset<Material>("matPaladinLunarBody").GetTexture("_EmissionMap"));
-
-            array[0].defaultMaterial = material;
-
-            for (int i = 1; i < 6; i ++)
-            {
-                material = array[i].defaultMaterial;
-
-                if (material)
-                {
-                    material = UnityEngine.Object.Instantiate<Material>(commandoMat);
-                    Assets.mainAssetBundle.LoadAsset<Material>("matPaladinLunarCloth").GetTexture("_MainTex");
-                    material.SetColor("_Color", Color.white);
-                    material.SetFloat("_EmPower", 0);
-
-                    array[i].defaultMaterial = material;
-                }
-            }
-
-            material = array[6].defaultMaterial;
-
-            material = UnityEngine.Object.Instantiate<Material>(commandoMat);
-            material.SetTexture("_MainTex", Assets.mainAssetBundle.LoadAsset<Material>("matPaladinLunarSword").GetTexture("_MainTex"));
-            material.SetColor("_EmColor", Color.white);
-            material.SetFloat("_EmPower", StaticValues.maxSwordGlow);
-            material.SetTexture("_EmTex", Assets.mainAssetBundle.LoadAsset<Material>("matPaladinLunarSword").GetTexture("_EmissionMap"));
-
-            array[6].defaultMaterial = material;
-
-            lunarSkinDefInfo.RendererInfos = array;
-
-            SkinDef lunarSkin = LoadoutAPI.CreateNewSkinDef(lunarSkinDefInfo);
-
-            LoadoutAPI.SkinDefInfo poisonSkinDefInfo = default(LoadoutAPI.SkinDefInfo);
-            poisonSkinDefInfo.BaseSkins = Array.Empty<SkinDef>();
-            poisonSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
-            poisonSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
-
-            poisonSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[]
-            {
-                new SkinDef.GameObjectActivation
-                {
-                    gameObject = cloth1,
-                    shouldActivate = false
+                    mesh = Assets.lunarMesh,
+                    renderer = defaultRenderers[0].renderer
                 },
-                new SkinDef.GameObjectActivation
-                {
-                    gameObject = cloth2,
-                    shouldActivate = false
-                },
-                new SkinDef.GameObjectActivation
-                {
-                    gameObject = cloth3,
-                    shouldActivate = false
-                },
-                new SkinDef.GameObjectActivation
-                {
-                    gameObject = cloth4,
-                    shouldActivate = false
-                },
-                new SkinDef.GameObjectActivation
-                {
-                    gameObject = cloth5,
-                    shouldActivate = false
-                }
-            };
-
-            poisonSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("texPoisonAchievement");
-            poisonSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
-            {
                 new SkinDef.MeshReplacement
                 {
-                    renderer = mainRenderer,
-                    mesh = mainRenderer.sharedMesh
+                    mesh = Assets.lunarSwordMesh,
+                    renderer = defaultRenderers[6].renderer
                 }
             };
-            poisonSkinDefInfo.Name = "PALADINBODY_POISON_SKIN_NAME";
-            poisonSkinDefInfo.NameToken = "PALADINBODY_POISON_SKIN_NAME";
-            poisonSkinDefInfo.RendererInfos = characterModel.baseRendererInfos;
-            poisonSkinDefInfo.RootObject = model;
-            poisonSkinDefInfo.UnlockableName = "PALADIN_POISONUNLOCKABLE_REWARD_ID";
 
-            rendererInfos = skinDefInfo.RendererInfos;
-            array = new CharacterModel.RendererInfo[rendererInfos.Length];
-            rendererInfos.CopyTo(array, 0);
+            skinDefs.Add(masterySkin);
+            #endregion
 
-            material = array[0].defaultMaterial;
+            #region PoisonSkin
+            CharacterModel.RendererInfo[] poisonRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
+            defaultRenderers.CopyTo(poisonRendererInfos, 0);
 
-            material = UnityEngine.Object.Instantiate<Material>(commandoMat);
-            material.SetTexture("_MainTex", Assets.mainAssetBundle.LoadAsset<Material>("matPaladinPoisonBody").GetTexture("_MainTex"));
-            material.SetColor("_EmColor", Color.white);
-            material.SetFloat("_EmPower", 5);
-            material.SetTexture("_EmTex", Assets.mainAssetBundle.LoadAsset<Material>("matPaladinPoisonBody").GetTexture("_EmissionMap"));
+            bodyMat = CreateMaterial("matPaladinPoisonBody", 10, Color.white, 0);
+            clothMat = CreateMaterial("matPaladinPoisonCloth", 0, Color.white, 0);
+            swordMat = CreateMaterial("matPaladinPoisonSword", StaticValues.maxSwordGlow, Color.white, 0);
 
-            array[0].defaultMaterial = material;
-
+            poisonRendererInfos[0].defaultMaterial = bodyMat;
             for (int i = 1; i < 6; i++)
             {
-                material = array[i].defaultMaterial;
-
-                if (material)
-                {
-                    material = UnityEngine.Object.Instantiate<Material>(commandoMat);
-                    Assets.mainAssetBundle.LoadAsset<Material>("matPaladinPoisonCloth").GetTexture("_MainTex");
-                    material.SetColor("_Color", Color.white);
-                    material.SetFloat("_EmPower", 0);
-
-                    array[i].defaultMaterial = material;
-                }
+                poisonRendererInfos[i].defaultMaterial = clothMat;
             }
+            poisonRendererInfos[6].defaultMaterial = swordMat;
+            poisonRendererInfos[7].defaultMaterial = clothMat;
 
-            material = array[6].defaultMaterial;
-
-            material = UnityEngine.Object.Instantiate<Material>(commandoMat);
-            material.SetTexture("_MainTex", Assets.mainAssetBundle.LoadAsset<Material>("matPaladinPoisonSword").GetTexture("_MainTex"));
-            material.SetColor("_EmColor", Color.white);
-            material.SetFloat("_EmPower", StaticValues.maxSwordGlow);
-            material.SetTexture("_EmTex", Assets.mainAssetBundle.LoadAsset<Material>("matPaladinPoisonSword").GetTexture("_EmissionMap"));
-
-            array[6].defaultMaterial = material;
-
-            poisonSkinDefInfo.RendererInfos = array;
-
-            SkinDef poisonSkin = LoadoutAPI.CreateNewSkinDef(poisonSkinDefInfo);
-
-
-            skinController.skins = new SkinDef[]
+            SkinDef poisonSkin = CreateSkinDef("PALADINBODY_POISON_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texPoisonAchievement"), poisonRendererInfos, mainRenderer, model, "PALADIN_POISONUNLOCKABLE_REWARD_ID", Assets.defaultMesh);
+            poisonSkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
             {
-                defaultSkin,
-                lunarSkin,
-                poisonSkin
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = defaultRenderers[5].renderer.gameObject,
+                    shouldActivate = true
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = defaultRenderers[7].renderer.gameObject,
+                    shouldActivate = false
+                }
             };
+            poisonSkin.meshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.defaultMesh,
+                    renderer = defaultRenderers[0].renderer
+                },
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.defaultSwordMesh,
+                    renderer = defaultRenderers[6].renderer
+                }
+            };
+
+            skinDefs.Add(poisonSkin);
+            #endregion
+
+            #region HunterSkin
+            CharacterModel.RendererInfo[] hunterRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
+            defaultRenderers.CopyTo(hunterRendererInfos, 0);
+
+            bodyMat = CreateMaterial("matHunterBody", 10, Color.white, 0);
+            clothMat = CreateMaterial("matPaladinPoisonCloth", 0, Color.white, 0);
+            swordMat = CreateMaterial("matHunterSword", StaticValues.maxSwordGlow, Color.white, 0);
+
+            hunterRendererInfos[0].defaultMaterial = bodyMat;
+            for (int i = 1; i < 6; i++)
+            {
+                hunterRendererInfos[i].defaultMaterial = clothMat;
+            }
+            hunterRendererInfos[6].defaultMaterial = swordMat;
+            hunterRendererInfos[7].defaultMaterial = clothMat;
+
+            SkinDef hunterSkin = CreateSkinDef("PALADINBODY_HUNTER_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texPoisonAchievement"), hunterRendererInfos, mainRenderer, model, "");
+            hunterSkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
+            {
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = defaultRenderers[5].renderer.gameObject,
+                    shouldActivate = true
+                },
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = defaultRenderers[7].renderer.gameObject,
+                    shouldActivate = false
+                }
+            };
+            hunterSkin.meshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.hunterMesh,
+                    renderer = defaultRenderers[0].renderer
+                },
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.defaultSwordMesh,
+                    renderer = defaultRenderers[6].renderer
+                }
+            };
+
+            skinDefs.Add(hunterSkin);
+            #endregion
+
+            skinController.skins = skinDefs.ToArray();
         }
     }
 }

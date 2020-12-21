@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using PaladinMod.Misc;
 using RoR2;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ namespace PaladinMod.States
         private Animator animator { get; set; }
         private ChildLocator childLocator { get; set; }
         private GameObject chargeEffectInstance { get; set; }
+        private PaladinSwordController swordController;
 
         public override void OnEnter()
         {
@@ -28,6 +30,9 @@ namespace PaladinMod.States
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.animator = base.GetModelAnimator();
             this.childLocator = base.GetModelChildLocator();
+            this.swordController = base.GetComponent<PaladinSwordController>();
+
+            if (this.swordController) this.swordController.attacking = true;
 
             if (this.childLocator)
             {
@@ -88,7 +93,7 @@ namespace PaladinMod.States
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            base.characterBody.isSprinting = false;
+            //base.characterBody.isSprinting = false;
 
             float charge = this.CalcCharge();
             if (base.isAuthority && ((!base.IsKeyDownAuthority() && base.fixedAge >= BaseChargeSpellState.minChargeDuration) || base.fixedAge >= this.duration))

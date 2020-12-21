@@ -11,8 +11,7 @@ namespace PaladinMod.States
         private Material swordMat;
         private float swordTransition;
         private GameObject swordActiveEffect;
-        private GameObject swordTrailEffect;
-        private GameObject swordEmpoweredTrailEffect;
+        private ParticleSystem swordTrailEffect;
         private PaladinSwordController swordController;
         private ChildLocator childLocator;
 
@@ -36,8 +35,7 @@ namespace PaladinMod.States
             if (this.childLocator)
             {
                 this.swordActiveEffect = this.childLocator.FindChild("SwordActiveEffect").gameObject;
-                this.swordTrailEffect = this.childLocator.FindChild("SwordTrailEffect").gameObject;
-                this.swordEmpoweredTrailEffect = this.childLocator.FindChild("SwordPassiveTrailEffect").gameObject;
+                this.swordTrailEffect = this.childLocator.FindChild("SwordTrailEffect").gameObject.GetComponentInChildren<ParticleSystem>();
             }
         }
 
@@ -57,11 +55,6 @@ namespace PaladinMod.States
                     this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.PointDown))), InterruptPriority.Any);
                     return;
                 }
-                /*else if (Input.GetKeyDown("3"))
-                {
-                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.TestPose))), InterruptPriority.Any);
-                    return;
-                }*/
             }
         }
 
@@ -95,24 +88,22 @@ namespace PaladinMod.States
                 this.swordMat.SetFloat("_EmPower", this.swordTransition);
             }
 
-            /*if (base.characterBody)
+            if (base.characterBody && this.swordController)
             {
-                if (base.characterBody.isSprinting)
+                if (base.characterBody.isSprinting && !this.swordController.attacking && base.characterMotor.isGrounded)
                 {
-                    if (this.swordTrailEffect) this.swordTrailEffect.SetActive(true);
-                    //if (this.swordEmpoweredTrailEffect) this.swordEmpoweredTrailEffect.SetActive(true);
+                    //if (this.swordTrailEffect) this.swordTrailEffect.Play();
                 }
                 else
                 {
-                    if (this.swordTrailEffect) this.swordTrailEffect.SetActive(false);
-                    //if (this.swordEmpoweredTrailEffect) this.swordEmpoweredTrailEffect.SetActive(false);
+                    //if (this.swordTrailEffect) this.swordTrailEffect.Stop();
                 }
-            }*/
+            }
         }
 
         public override void OnExit()
         {
-            //if (this.swordTrailEffect) this.swordTrailEffect.SetActive(false);
+            if (this.swordTrailEffect) this.swordTrailEffect.Stop();
             base.OnExit();
         }
     }

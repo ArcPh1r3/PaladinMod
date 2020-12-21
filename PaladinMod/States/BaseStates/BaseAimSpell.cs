@@ -80,7 +80,7 @@ namespace PaladinMod.States
 
                 Ray aimRay = base.GetAimRay();
                 RaycastHit raycastHit;
-                if (Physics.Raycast(aimRay, out raycastHit, maxDistance, LayerIndex.world.mask))
+                if (Physics.Raycast(aimRay, out raycastHit, maxDistance, LayerIndex.CommonMasks.bullet))
                 {
                     this.areaIndicatorInstance.transform.position = raycastHit.point;
                     this.areaIndicatorInstance.transform.up = raycastHit.normal;

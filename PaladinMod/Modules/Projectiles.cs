@@ -9,6 +9,7 @@ namespace PaladinMod.Modules
     {
         public static GameObject lightningSpear;
         public static GameObject swordBeam;
+        public static GameObject lunarShard;
 
         public static GameObject heal;
         public static GameObject healZone;
@@ -16,6 +17,10 @@ namespace PaladinMod.Modules
 
         public static void RegisterProjectiles()
         {
+            lunarShard = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/LunarShardProjectile"), "PaladinLunarShard", true);
+            PaladinPlugin.Destroy(lunarShard.GetComponent<ProjectileSteerTowardTarget>());
+            lunarShard.GetComponent<ProjectileImpactExplosion>().blastDamageCoefficient = 1f;
+
             lightningSpear = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIceBombProjectile"), "LightningSpear", true);
             GameObject spearGhost = Assets.lightningSpear.InstantiateClone("LightningSpearGhost", false);
             spearGhost.AddComponent<ProjectileGhostController>();
@@ -28,13 +33,16 @@ namespace PaladinMod.Modules
             lightningSpear.GetComponent<ProjectileSingleTargetImpact>().impactEffect = Assets.lightningImpactFX;
 
             swordBeam = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/FMJ"), "PaladinSwordBeam", true);
+            swordBeam.transform.localScale *= 2f;
             GameObject beamGhost = Assets.swordBeam.InstantiateClone("SwordBeamGhost", false);
             beamGhost.AddComponent<ProjectileGhostController>();
 
-            swordBeam.GetComponent<ProjectileController>().ghostPrefab = beamGhost;
+            swordBeam.GetComponent<ProjectileController>().ghostPrefab = Resources.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab;
             swordBeam.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
 
-            swordBeam.AddComponent<DestroyOnTimer>().duration = 0.25f;
+            if (swordBeam.GetComponent<ProjectileProximityBeamController>()) PaladinPlugin.Destroy(swordBeam.GetComponent<ProjectileProximityBeamController>());
+
+            swordBeam.AddComponent<DestroyOnTimer>().duration = 0.3f;
 
             heal = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinHeal", true);
             heal.transform.localScale = Vector3.one;
@@ -75,6 +83,7 @@ namespace PaladinMod.Modules
             healZoneController.expireDuration = StaticValues.healZoneDuration;
             healZoneController.animateRadius = false;
             healZoneController.healAmount = StaticValues.healZoneAmount;
+            healZoneController.barrierAmount = StaticValues.healZoneBarrier;
             healZoneController.freezeProjectiles = false;
 
             PaladinMod.PaladinPlugin.Destroy(healZone.transform.GetChild(0).gameObject);
@@ -94,17 +103,18 @@ namespace PaladinMod.Modules
             Misc.PaladinHealZoneController torporController = torpor.AddComponent<Misc.PaladinHealZoneController>();
 
             torporController.radius = StaticValues.torporRadius;
-            torporController.interval = 0.5f;
+            torporController.interval = 1f;
             torporController.rangeIndicator = null;
             torporController.buffType = Buffs.torporDebuff;
-            torporController.buffDuration = 1.5f;
+            torporController.buffDuration = 1f;
             torporController.floorWard = false;
             torporController.expires = true;
             torporController.invertTeamFilter = true;
             torporController.expireDuration = StaticValues.torporDuration;
             torporController.animateRadius = false;
             torporController.healAmount = 0f;
-            torporController.freezeProjectiles = true;
+            torporController.freezeProjectiles = false;
+            torporController.grounding = true;
 
             PaladinMod.PaladinPlugin.Destroy(torpor.transform.GetChild(0).gameObject);
             GameObject torporFX = Assets.torporEffectPrefab.InstantiateClone("TorporEffect", false);
@@ -117,6 +127,7 @@ namespace PaladinMod.Modules
             {
                 list.Add(lightningSpear);
                 list.Add(swordBeam);
+                list.Add(lunarShard);
                 list.Add(heal);
                 list.Add(healZone);
                 list.Add(torpor);

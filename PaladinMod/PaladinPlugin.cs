@@ -9,13 +9,12 @@ using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.Networking;
 using KinematicCharacterController;
-using BepInEx.Configuration;
 
 namespace PaladinMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "0.0.1")]
+    [BepInPlugin(MODUID, "Paladin", "0.0.8")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -40,6 +39,8 @@ namespace PaladinMod
 
         public GameObject doppelganger;
 
+        public static Material commandoMat;
+
         public static event Action awake;
         public static event Action start;
 
@@ -60,8 +61,8 @@ namespace PaladinMod
             Modules.Assets.PopulateAssets();
             Modules.Config.ReadConfig();
 
-            CreateDisplayPrefab();
             CreatePrefab();
+            CreateDisplayPrefab();
             RegisterCharacter();
             Modules.Skins.RegisterSkins();
             Modules.Buffs.RegisterBuffs();
@@ -225,47 +226,30 @@ namespace PaladinMod
                     renderer = childLocator.FindChild("Sword").GetComponent<MeshRenderer>(),
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     ignoreOverlays = false
-                }
+                },
+                new CharacterModel.RendererInfo
+                {
+                    defaultMaterial = childLocator.FindChild("CleanCloth").GetComponent<SkinnedMeshRenderer>().material,
+                    renderer = childLocator.FindChild("CleanCloth").GetComponent<SkinnedMeshRenderer>(),
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    ignoreOverlays = false
+                },
             };
             characterModel.autoPopulateLightInfos = true;
             characterModel.invisibilityCount = 0;
             characterModel.temporaryOverlays = new List<TemporaryOverlay>();
 
             //replace shader
-            Material material = null;
-
-            material = UnityEngine.Object.Instantiate<Material>(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
-            material.SetColor("_Color", Color.white);
-            material.SetTexture("_MainTex", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinBody").GetTexture("_MainTex"));
-            material.SetColor("_EmColor", Color.white);
-            material.SetFloat("_EmPower", 10);
-            material.SetTexture("_EmTex", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinBody").GetTexture("_EmissionMap"));
-            material.SetFloat("_NormalStrength", 0f);
-
-            characterModel.baseRendererInfos[0].defaultMaterial = material;
+            characterModel.baseRendererInfos[0].defaultMaterial = Modules.Skins.CreateMaterial("matPaladinBody", 10, Color.white, 0);
 
             for (int i = 1; i < 6; i++)
             {
-                material = UnityEngine.Object.Instantiate<Material>(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
-                material.SetColor("_Color", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinCloth").GetColor("_Color"));
-                material.SetTexture("_MainTex", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinCloth").GetTexture("_MainTex"));
-                material.SetColor("_EmColor", Color.white);
-                material.SetFloat("_EmPower", 0);
-                material.SetTexture("_EmTex", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinCloth").GetTexture("_EmissionMap"));
-                material.SetFloat("_NormalStrength", 0f);
+                characterModel.baseRendererInfos[i].defaultMaterial = Modules.Skins.CreateMaterial("matPaladinCloth", 0, Color.black, 0);
 
-                characterModel.baseRendererInfos[i].defaultMaterial = material;
             }
 
-            material = UnityEngine.Object.Instantiate<Material>(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
-            material.SetColor("_Color", Color.white);
-            material.SetTexture("_MainTex", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinSword").GetTexture("_MainTex"));
-            material.SetColor("_EmColor", Color.white);
-            material.SetFloat("_EmPower", 1f);
-            material.SetTexture("_EmTex", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinSword").GetTexture("_EmissionMap"));
-            material.SetFloat("_NormalStrength", 0f);
-
-            characterModel.baseRendererInfos[6].defaultMaterial = material;
+            characterModel.baseRendererInfos[6].defaultMaterial = Modules.Skins.CreateMaterial("matPaladinSword", 0, Color.white, 0);
+            characterModel.baseRendererInfos[7].defaultMaterial = Modules.Skins.CreateMaterial("matPaladinCloth", 0, Color.black, 0);
 
             characterModel.SetFieldValue("mainSkinnedMeshRenderer", characterModel.baseRendererInfos[0].renderer.gameObject.GetComponent<SkinnedMeshRenderer>());
 
@@ -333,14 +317,14 @@ namespace PaladinMod
             bodyComponent.baseAcceleration = 80;
             bodyComponent.baseJumpPower = 15;
             bodyComponent.levelJumpPower = 0;
-            bodyComponent.baseDamage = 12;
-            bodyComponent.levelDamage = 2.4f;
+            bodyComponent.baseDamage = StaticValues.baseDamage;
+            bodyComponent.levelDamage = StaticValues.baseDamagePerLevel;
             bodyComponent.baseAttackSpeed = 1;
             bodyComponent.levelAttackSpeed = 0;
             bodyComponent.baseCrit = 1;
             bodyComponent.levelCrit = 0;
-            bodyComponent.baseArmor = 10;
-            bodyComponent.levelArmor = 1f;
+            bodyComponent.baseArmor = 15;
+            bodyComponent.levelArmor = StaticValues.armorPerLevel;
             bodyComponent.baseJumpCount = 1;
             bodyComponent.sprintingSpeedMultiplier = 1.45f;
             bodyComponent.wasLucky = false;
@@ -436,47 +420,30 @@ namespace PaladinMod
                     renderer = childLocator.FindChild("Sword").GetComponent<MeshRenderer>(),
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     ignoreOverlays = false
-                }
+                },
+                new CharacterModel.RendererInfo
+                {
+                    defaultMaterial = childLocator.FindChild("CleanCloth").GetComponent<SkinnedMeshRenderer>().material,
+                    renderer = childLocator.FindChild("CleanCloth").GetComponent<SkinnedMeshRenderer>(),
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                    ignoreOverlays = false
+                },
             };
             characterModel.autoPopulateLightInfos = true;
             characterModel.invisibilityCount = 0;
             characterModel.temporaryOverlays = new List<TemporaryOverlay>();
 
             //replace shader
-            Material material = null;
-
-            material = UnityEngine.Object.Instantiate<Material>(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
-            material.SetColor("_Color", Color.white);
-            material.SetTexture("_MainTex", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinBody").GetTexture("_MainTex"));
-            material.SetColor("_EmColor", Color.white);
-            material.SetFloat("_EmPower", 10);
-            material.SetTexture("_EmTex", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinBody").GetTexture("_EmissionMap"));
-            material.SetFloat("_NormalStrength", 0f);
-
-            characterModel.baseRendererInfos[0].defaultMaterial = material;
+            characterModel.baseRendererInfos[0].defaultMaterial = Modules.Skins.CreateMaterial("matPaladinBody", 10, Color.white, 0);
 
             for (int i = 1; i < 6; i++)
             {
-                material = UnityEngine.Object.Instantiate<Material>(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
-                material.SetColor("_Color", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinCloth").GetColor("_Color"));
-                material.SetTexture("_MainTex", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinCloth").GetTexture("_MainTex"));
-                material.SetColor("_EmColor", Color.white);
-                material.SetFloat("_EmPower", 0);
-                material.SetTexture("_EmTex", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinCloth").GetTexture("_EmissionMap"));
-                material.SetFloat("_NormalStrength", 0f);
+                characterModel.baseRendererInfos[i].defaultMaterial = Modules.Skins.CreateMaterial("matPaladinCloth", 0, Color.black, 0);
 
-                characterModel.baseRendererInfos[i].defaultMaterial = material;
             }
 
-            material = UnityEngine.Object.Instantiate<Material>(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
-            material.SetColor("_Color", Color.white);
-            material.SetTexture("_MainTex", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinSword").GetTexture("_MainTex"));
-            material.SetColor("_EmColor", Color.white);
-            material.SetFloat("_EmPower", StaticValues.maxSwordGlow);
-            material.SetTexture("_EmTex", Modules.Assets.mainAssetBundle.LoadAsset<Material>("matPaladinSword").GetTexture("_EmissionMap"));
-            material.SetFloat("_NormalStrength", 0f);
-
-            characterModel.baseRendererInfos[6].defaultMaterial = material;
+            characterModel.baseRendererInfos[6].defaultMaterial = Modules.Skins.CreateMaterial("matPaladinSword", 0, Color.white, 0);
+            characterModel.baseRendererInfos[7].defaultMaterial = Modules.Skins.CreateMaterial("matPaladinCloth", 0, Color.black, 0);
 
             characterModel.SetFieldValue("mainSkinnedMeshRenderer", characterModel.baseRendererInfos[0].renderer.gameObject.GetComponent<SkinnedMeshRenderer>());
 
@@ -568,29 +535,14 @@ namespace PaladinMod
             hurtBoxGroup.mainHurtBox = mainHurtbox;
             hurtBoxGroup.bullseyeCount = 1;
 
-            HitBoxGroup hitBoxGroup = model.AddComponent<HitBoxGroup>();
-
-            GameObject slashHitbox = new GameObject("SwordHitbox");
-            slashHitbox.transform.parent = childLocator.FindChild("Sword").Find("SlashHitbox");
-            slashHitbox.transform.localPosition = new Vector3(0f, 0f, 0f);
-            slashHitbox.transform.localRotation = Quaternion.identity;
-            slashHitbox.transform.localScale = new Vector3(16f, 16f, 16f);
-
-            HitBox hitBox = slashHitbox.AddComponent<HitBox>();
-            slashHitbox.layer = LayerIndex.projectile.intVal;
-
-            hitBoxGroup.hitBoxes = new HitBox[]
-            {
-                hitBox
-            };
-
-            hitBoxGroup.groupName = "Sword";
+            Modules.Helpers.CreateHitbox(model, childLocator.FindChild("SwordHitbox"), "Sword");
+            Modules.Helpers.CreateHitbox(model, childLocator.FindChild("LeapHitbox"), "LeapStrike");
 
             GameObject spinHitbox = new GameObject("SpinSlashHitbox");
             spinHitbox.transform.parent = childLocator.FindChild("Base");
             spinHitbox.transform.localPosition = new Vector3(0f, 1f, 0f);
             spinHitbox.transform.localRotation = Quaternion.identity;
-            spinHitbox.transform.localScale = new Vector3(20f, 20f, 20f);
+            spinHitbox.transform.localScale = new Vector3(18f, 10f, 18f);
 
             HitBox spinHitBox = spinHitbox.AddComponent<HitBox>();
             spinHitbox.layer = LayerIndex.projectile.intVal;
@@ -603,6 +555,24 @@ namespace PaladinMod
             };
 
             spinHitBoxGroup.groupName = "SpinSlash";
+
+            GameObject spinLargeHitbox = new GameObject("SpinSlashLargeHitbox");
+            spinLargeHitbox.transform.parent = childLocator.FindChild("Base");
+            spinLargeHitbox.transform.localPosition = new Vector3(0f, 1f, 0f);
+            spinLargeHitbox.transform.localRotation = Quaternion.identity;
+            spinLargeHitbox.transform.localScale = new Vector3(28f, 20f, 28f);
+
+            HitBox spinLargeHitBox = spinLargeHitbox.AddComponent<HitBox>();
+            spinLargeHitbox.layer = LayerIndex.projectile.intVal;
+
+            HitBoxGroup spinLargeHitBoxGroup = model.AddComponent<HitBoxGroup>();
+
+            spinLargeHitBoxGroup.hitBoxes = new HitBox[]
+            {
+                spinLargeHitBox
+            };
+
+            spinLargeHitBoxGroup.groupName = "SpinSlashLarge";
 
             FootstepHandler footstepHandler = model.AddComponent<FootstepHandler>();
             footstepHandler.baseFootstepString = "Play_player_footstep";
@@ -736,6 +706,9 @@ namespace PaladinMod
             mySkillDef.skillDescriptionToken = "PALADIN_PRIMARY_SLASH_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_PRIMARY_SLASH_NAME";
             mySkillDef.skillNameToken = "PALADIN_PRIMARY_SLASH_NAME";
+            mySkillDef.keywordTokens = new string[] {
+                "KEYWORD_SWORDBEAM"
+            };
 
             LoadoutAPI.AddSkillDef(mySkillDef);
 
@@ -756,18 +729,19 @@ namespace PaladinMod
 
         private void SecondarySetup()
         {
-            LoadoutAPI.AddSkill(typeof(States.DashForward));
-            LoadoutAPI.AddSkill(typeof(States.SpinningSlash));
+            LoadoutAPI.AddSkill(typeof(States.SpinSlashEntry));
+            LoadoutAPI.AddSkill(typeof(States.GroundSweep));
+            LoadoutAPI.AddSkill(typeof(States.AirSlam));
 
             SkillDef mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
-            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.DashForward));
-            mySkillDef.activationStateMachineName = "Body";
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.SpinSlashEntry));
+            mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
-            mySkillDef.baseRechargeInterval = 5f;
+            mySkillDef.baseRechargeInterval = 6f;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
-            mySkillDef.interruptPriority = InterruptPriority.PrioritySkill;
+            mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.isBullets = false;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
@@ -781,7 +755,7 @@ namespace PaladinMod
             mySkillDef.skillName = "PALADIN_SECONDARY_SPINSLASH_NAME";
             mySkillDef.skillNameToken = "PALADIN_SECONDARY_SPINSLASH_NAME";
             mySkillDef.keywordTokens = new string[] {
-                "KEYWORD_STUNNING"
+                "KEYWORD_STUNNING",
             };
 
             LoadoutAPI.AddSkillDef(mySkillDef);
@@ -799,20 +773,15 @@ namespace PaladinMod
                 unlockableName = "",
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
-        }
 
-        private void UtilitySetup()
-        {
-            //LoadoutAPI.AddSkill(typeof(States.BaseChargeSpellState));
-            //LoadoutAPI.AddSkill(typeof(States.BaseThrowSpellState));
             LoadoutAPI.AddSkill(typeof(States.ChargeLightningSpear));
             LoadoutAPI.AddSkill(typeof(States.ThrowLightningSpear));
 
-            SkillDef mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+            mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
             mySkillDef.activationState = new SerializableEntityStateType(typeof(States.ChargeLightningSpear));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
-            mySkillDef.baseRechargeInterval = 16f;
+            mySkillDef.baseRechargeInterval = 6f;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
@@ -820,18 +789,107 @@ namespace PaladinMod
             mySkillDef.isBullets = false;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
-            mySkillDef.noSprint = true;
+            mySkillDef.noSprint = false;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.shootDelay = 0.5f;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Modules.Assets.icon3;
-            mySkillDef.skillDescriptionToken = "PALADIN_UTILITY_LIGHTNINGSPEAR_DESCRIPTION";
-            mySkillDef.skillName = "PALADIN_UTILITY_LIGHTNINGSPEAR_NAME";
-            mySkillDef.skillNameToken = "PALADIN_UTILITY_LIGHTNINGSPEAR_NAME";
+            mySkillDef.skillDescriptionToken = "PALADIN_SECONDARY_LIGHTNING_DESCRIPTION";
+            mySkillDef.skillName = "PALADIN_SECONDARY_LIGHTNING_NAME";
+            mySkillDef.skillNameToken = "PALADIN_SECONDARY_LIGHTNING_NAME";
             mySkillDef.keywordTokens = new string[] {
-                "KEYWORD_SHOCKING"
+                "KEYWORD_SHOCKING",
+                "KEYWORD_AGILE"
             };
+
+            LoadoutAPI.AddSkillDef(mySkillDef);
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = mySkillDef,
+                unlockableName = "",
+                viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+            };
+
+            LoadoutAPI.AddSkill(typeof(States.LunarShards));
+            LoadoutAPI.AddSkill(typeof(States.ThrowLightningSpear));
+
+            mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.LunarShards));
+            mySkillDef.activationStateMachineName = "Weapon";
+            mySkillDef.baseMaxStock = StaticValues.lunarShardMaxStock;
+            mySkillDef.baseRechargeInterval = 0.75f;
+            mySkillDef.beginSkillCooldownOnSkillEnd = true;
+            mySkillDef.canceledFromSprinting = false;
+            mySkillDef.fullRestockOnAssign = true;
+            mySkillDef.interruptPriority = InterruptPriority.Any;
+            mySkillDef.isBullets = false;
+            mySkillDef.isCombatSkill = true;
+            mySkillDef.mustKeyPress = false;
+            mySkillDef.noSprint = false;
+            mySkillDef.rechargeStock = 1;
+            mySkillDef.requiredStock = 1;
+            mySkillDef.shootDelay = 0.5f;
+            mySkillDef.stockToConsume = 1;
+            mySkillDef.icon = Modules.Assets.icon3;
+            mySkillDef.skillDescriptionToken = "PALADIN_SECONDARY_LUNARSHARD_DESCRIPTION";
+            mySkillDef.skillName = "PALADIN_SECONDARY_LUNARSHARD_NAME";
+            mySkillDef.skillNameToken = "PALADIN_SECONDARY_LUNARSHARD_NAME";
+            mySkillDef.keywordTokens = new string[] {
+                "KEYWORD_AGILE"
+            };
+
+            LoadoutAPI.AddSkillDef(mySkillDef);
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = mySkillDef,
+                unlockableName = "",
+                viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+            };
+        }
+
+        private void UtilitySetup()
+        {
+            //LoadoutAPI.AddSkill(typeof(States.Dash.DashState));
+            //LoadoutAPI.AddSkill(typeof(States.Dash.AirDash));
+            //LoadoutAPI.AddSkill(typeof(States.Dash.GroundDash));
+
+            LoadoutAPI.AddSkill(typeof(States.Quickstep.BaseQuickstepState));
+            LoadoutAPI.AddSkill(typeof(States.Quickstep.QuickstepEntry));
+            LoadoutAPI.AddSkill(typeof(States.Quickstep.QuickstepForward));
+            LoadoutAPI.AddSkill(typeof(States.Quickstep.QuickstepBack));
+            LoadoutAPI.AddSkill(typeof(States.Quickstep.QuickstepLeft));
+            LoadoutAPI.AddSkill(typeof(States.Quickstep.QuickstepRight));
+
+            SkillDef mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.Quickstep.QuickstepEntry));
+            mySkillDef.activationStateMachineName = "Weapon";
+            mySkillDef.baseMaxStock = 2;
+            mySkillDef.baseRechargeInterval = 10f;
+            mySkillDef.beginSkillCooldownOnSkillEnd = true;
+            mySkillDef.canceledFromSprinting = false;
+            mySkillDef.fullRestockOnAssign = true;
+            mySkillDef.interruptPriority = InterruptPriority.PrioritySkill;
+            mySkillDef.isBullets = false;
+            mySkillDef.isCombatSkill = true;
+            mySkillDef.mustKeyPress = false;
+            mySkillDef.noSprint = false;
+            mySkillDef.forceSprintDuringState = true;
+            mySkillDef.rechargeStock = 1;
+            mySkillDef.requiredStock = 1;
+            mySkillDef.shootDelay = 0.5f;
+            mySkillDef.stockToConsume = 1;
+            mySkillDef.icon = Modules.Assets.icon2;
+            mySkillDef.skillDescriptionToken = "PALADIN_UTILITY_DASH_DESCRIPTION";
+            mySkillDef.skillName = "PALADIN_UTILITY_DASH_NAME";
+            mySkillDef.skillNameToken = "PALADIN_UTILITY_DASH_NAME";
+            //mySkillDef.keywordTokens = new string[] {
+            //    "KEYWORD_SHOCKING"
+            //};
 
             LoadoutAPI.AddSkillDef(mySkillDef);
 
@@ -849,7 +907,7 @@ namespace PaladinMod
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
 
-            LoadoutAPI.AddSkill(typeof(States.ChargeBolt));
+            /*LoadoutAPI.AddSkill(typeof(States.ChargeBolt));
             LoadoutAPI.AddSkill(typeof(States.ThrowBolt));
 
             mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
@@ -885,7 +943,7 @@ namespace PaladinMod
                 skillDef = mySkillDef,
                 unlockableName = "",
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
-            };
+            };*/
 
             LoadoutAPI.AddSkill(typeof(States.AimHeal));
             LoadoutAPI.AddSkill(typeof(States.CastHeal));
