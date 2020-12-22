@@ -39,11 +39,11 @@ namespace PaladinMod.Modules
 
         public static GameObject torporVoidFX;
 
-        public static Mesh defaultMesh;
-        public static Mesh defaultSwordMesh;
-        public static Mesh lunarMesh;
-        public static Mesh lunarSwordMesh;
-        public static Mesh hunterMesh;
+        //public static Mesh defaultMesh;
+        //public static Mesh defaultSwordMesh;
+        //public static Mesh lunarMesh;
+        //public static Mesh lunarSwordMesh;
+        //public static Mesh hunterMesh;
 
         public static void PopulateAssets()
         {
@@ -103,11 +103,11 @@ namespace PaladinMod.Modules
             lightningImpactFX = Assets.LoadEffect("LightningImpact", "Play_mage_R_lightningBlast");
             torporVoidFX = Assets.LoadEffect("TorporVoidFX", "RoR2_nullifier_attack1_explode_02");
 
-            defaultMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladin");
-            defaultSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSword");
-            lunarMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinLunar");
-            lunarSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordLunar");
-            hunterMesh = mainAssetBundle.LoadAsset<Mesh>("HunterMesh");
+            //defaultMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladin");
+            //defaultSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSword");
+            //lunarMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinLunar");
+            //lunarSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordLunar");
+            //hunterMesh = mainAssetBundle.LoadAsset<Mesh>("HunterMesh");
         }
 
         private static GameObject LoadEffect(string resourceName, string soundName)

@@ -17,29 +17,29 @@ namespace PaladinMod.States
 
             base.OnEnter();
 
-            ChildLocator childLocator = base.GetModelChildLocator();
+            /*ChildLocator childLocator = base.GetModelChildLocator();
             if (childLocator)
             {
                 this.chargeEffect = childLocator.FindChild("SpearChargeEffect").gameObject;
                 this.chargeEffect.SetActive(true);
-            }
+            }*/
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
 
-            this.chargeEffect.transform.localScale = Vector3.one * 3 * this.CalcCharge();
+            //this.chargeEffect.transform.localScale = Vector3.one * 3 * this.CalcCharge();
         }
 
         public override void OnExit()
         {
             base.OnExit();
 
-            if (this.chargeEffect)
+            /*if (this.chargeEffect)
             {
                 this.chargeEffect.SetActive(false);
-            }
+            }*/
         }
 
         protected override BaseThrowSpellState GetNextState()

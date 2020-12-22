@@ -99,36 +99,10 @@ namespace PaladinMod.Modules
 
             #region DefaultSkin
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
-            SkinDef defaultSkin = CreateSkinDef("PALADINBODY_DEFAULT_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"), defaultRenderers, mainRenderer, model, "", Assets.defaultMesh);
-            defaultSkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
-            {
-                new SkinDef.GameObjectActivation
-                {
-                    gameObject = defaultRenderers[5].renderer.gameObject,
-                    shouldActivate = true
-                },
-                new SkinDef.GameObjectActivation
-                {
-                    gameObject = defaultRenderers[7].renderer.gameObject,
-                    shouldActivate = false
-                }
-            };
-            defaultSkin.meshReplacements = new SkinDef.MeshReplacement[]
-            {
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Assets.defaultMesh,
-                    renderer = defaultRenderers[0].renderer
-                },
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Assets.defaultSwordMesh,
-                    renderer = defaultRenderers[6].renderer
-                }
-            };
+            SkinDef defaultSkin = CreateSkinDef("PALADINBODY_DEFAULT_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"), defaultRenderers, mainRenderer, model, "");
             skinDefs.Add(defaultSkin);
             #endregion
-
+            /*
             #region MasterySkin
             CharacterModel.RendererInfo[] masteryRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(masteryRendererInfos, 0);
@@ -270,6 +244,7 @@ namespace PaladinMod.Modules
 
             skinDefs.Add(hunterSkin);
             #endregion
+    */
 
             skinController.skins = skinDefs.ToArray();
         }

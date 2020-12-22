@@ -14,11 +14,11 @@
 
             base.OnEnter();
 
-            ChildLocator childLocator = base.GetModelChildLocator();
+            /*ChildLocator childLocator = base.GetModelChildLocator();
             if (childLocator)
             {
                 childLocator.FindChild("SpearThrowEffect").gameObject.SetActive(true);
-            }
+            }*/
         }
     }
 }

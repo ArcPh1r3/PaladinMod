@@ -14,7 +14,7 @@ namespace PaladinMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "0.0.8")]
+    [BepInPlugin(MODUID, "Paladin", "1.0.0")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -67,7 +67,7 @@ namespace PaladinMod
             Modules.Skins.RegisterSkins();
             Modules.Buffs.RegisterBuffs();
             Modules.Projectiles.RegisterProjectiles();
-            Modules.ItemDisplays.RegisterDisplays();
+            //Modules.ItemDisplays.RegisterDisplays();
             Modules.Unlockables.RegisterUnlockables();
             Modules.Tokens.AddTokens();
 
@@ -187,69 +187,19 @@ namespace PaladinMod
                 },
                 new CharacterModel.RendererInfo
                 {
-                    defaultMaterial = childLocator.FindChild("Cloth1").GetComponent<SkinnedMeshRenderer>().material,
-                    renderer = childLocator.FindChild("Cloth1").GetComponent<SkinnedMeshRenderer>(),
+                    defaultMaterial = childLocator.FindChild("SwordModel").GetComponent<SkinnedMeshRenderer>().material,
+                    renderer = childLocator.FindChild("SwordModel").GetComponent<SkinnedMeshRenderer>(),
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     ignoreOverlays = false
-                },
-                new CharacterModel.RendererInfo
-                {
-                    defaultMaterial = childLocator.FindChild("Cloth2").GetComponent<SkinnedMeshRenderer>().material,
-                    renderer = childLocator.FindChild("Cloth2").GetComponent<SkinnedMeshRenderer>(),
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                    ignoreOverlays = false
-                },
-                new CharacterModel.RendererInfo
-                {
-                    defaultMaterial = childLocator.FindChild("Cloth3").GetComponent<SkinnedMeshRenderer>().material,
-                    renderer = childLocator.FindChild("Cloth3").GetComponent<SkinnedMeshRenderer>(),
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                    ignoreOverlays = false
-                },
-                new CharacterModel.RendererInfo
-                {
-                    defaultMaterial = childLocator.FindChild("Cloth4").GetComponent<SkinnedMeshRenderer>().material,
-                    renderer = childLocator.FindChild("Cloth4").GetComponent<SkinnedMeshRenderer>(),
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                    ignoreOverlays = false
-                },
-                new CharacterModel.RendererInfo
-                {
-                    defaultMaterial = childLocator.FindChild("Cloth5").GetComponent<SkinnedMeshRenderer>().material,
-                    renderer = childLocator.FindChild("Cloth5").GetComponent<SkinnedMeshRenderer>(),
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                    ignoreOverlays = false
-                },
-                new CharacterModel.RendererInfo
-                {
-                    defaultMaterial = childLocator.FindChild("Sword").GetComponent<MeshRenderer>().material,
-                    renderer = childLocator.FindChild("Sword").GetComponent<MeshRenderer>(),
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                    ignoreOverlays = false
-                },
-                new CharacterModel.RendererInfo
-                {
-                    defaultMaterial = childLocator.FindChild("CleanCloth").GetComponent<SkinnedMeshRenderer>().material,
-                    renderer = childLocator.FindChild("CleanCloth").GetComponent<SkinnedMeshRenderer>(),
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                    ignoreOverlays = false
-                },
+                }
             };
             characterModel.autoPopulateLightInfos = true;
             characterModel.invisibilityCount = 0;
             characterModel.temporaryOverlays = new List<TemporaryOverlay>();
 
             //replace shader
-            characterModel.baseRendererInfos[0].defaultMaterial = Modules.Skins.CreateMaterial("matPaladinBody", 10, Color.white, 0);
-
-            for (int i = 1; i < 6; i++)
-            {
-                characterModel.baseRendererInfos[i].defaultMaterial = Modules.Skins.CreateMaterial("matPaladinCloth", 0, Color.black, 0);
-
-            }
-
-            characterModel.baseRendererInfos[6].defaultMaterial = Modules.Skins.CreateMaterial("matPaladinSword", 0, Color.white, 0);
-            characterModel.baseRendererInfos[7].defaultMaterial = Modules.Skins.CreateMaterial("matPaladinCloth", 0, Color.black, 0);
+            characterModel.baseRendererInfos[0].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 10, Color.white, 0);
+            characterModel.baseRendererInfos[1].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 0, Color.white, 0);
 
             characterModel.SetFieldValue("mainSkinnedMeshRenderer", characterModel.baseRendererInfos[0].renderer.gameObject.GetComponent<SkinnedMeshRenderer>());
 
@@ -381,69 +331,19 @@ namespace PaladinMod
                 },
                 new CharacterModel.RendererInfo
                 {
-                    defaultMaterial = childLocator.FindChild("Cloth1").GetComponent<SkinnedMeshRenderer>().material,
-                    renderer = childLocator.FindChild("Cloth1").GetComponent<SkinnedMeshRenderer>(),
+                    defaultMaterial = childLocator.FindChild("SwordModel").GetComponent<SkinnedMeshRenderer>().material,
+                    renderer = childLocator.FindChild("SwordModel").GetComponent<SkinnedMeshRenderer>(),
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     ignoreOverlays = false
-                },
-                new CharacterModel.RendererInfo
-                {
-                    defaultMaterial = childLocator.FindChild("Cloth2").GetComponent<SkinnedMeshRenderer>().material,
-                    renderer = childLocator.FindChild("Cloth2").GetComponent<SkinnedMeshRenderer>(),
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                    ignoreOverlays = false
-                },
-                new CharacterModel.RendererInfo
-                {
-                    defaultMaterial = childLocator.FindChild("Cloth3").GetComponent<SkinnedMeshRenderer>().material,
-                    renderer = childLocator.FindChild("Cloth3").GetComponent<SkinnedMeshRenderer>(),
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                    ignoreOverlays = false
-                },
-                new CharacterModel.RendererInfo
-                {
-                    defaultMaterial = childLocator.FindChild("Cloth4").GetComponent<SkinnedMeshRenderer>().material,
-                    renderer = childLocator.FindChild("Cloth4").GetComponent<SkinnedMeshRenderer>(),
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                    ignoreOverlays = false
-                },
-                new CharacterModel.RendererInfo
-                {
-                    defaultMaterial = childLocator.FindChild("Cloth5").GetComponent<SkinnedMeshRenderer>().material,
-                    renderer = childLocator.FindChild("Cloth5").GetComponent<SkinnedMeshRenderer>(),
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                    ignoreOverlays = false
-                },
-                new CharacterModel.RendererInfo
-                {
-                    defaultMaterial = childLocator.FindChild("Sword").GetComponent<MeshRenderer>().material,
-                    renderer = childLocator.FindChild("Sword").GetComponent<MeshRenderer>(),
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                    ignoreOverlays = false
-                },
-                new CharacterModel.RendererInfo
-                {
-                    defaultMaterial = childLocator.FindChild("CleanCloth").GetComponent<SkinnedMeshRenderer>().material,
-                    renderer = childLocator.FindChild("CleanCloth").GetComponent<SkinnedMeshRenderer>(),
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                    ignoreOverlays = false
-                },
+                }
             };
             characterModel.autoPopulateLightInfos = true;
             characterModel.invisibilityCount = 0;
             characterModel.temporaryOverlays = new List<TemporaryOverlay>();
 
             //replace shader
-            characterModel.baseRendererInfos[0].defaultMaterial = Modules.Skins.CreateMaterial("matPaladinBody", 10, Color.white, 0);
-
-            for (int i = 1; i < 6; i++)
-            {
-                characterModel.baseRendererInfos[i].defaultMaterial = Modules.Skins.CreateMaterial("matPaladinCloth", 0, Color.black, 0);
-
-            }
-
-            characterModel.baseRendererInfos[6].defaultMaterial = Modules.Skins.CreateMaterial("matPaladinSword", 0, Color.white, 0);
-            characterModel.baseRendererInfos[7].defaultMaterial = Modules.Skins.CreateMaterial("matPaladinCloth", 0, Color.black, 0);
+            characterModel.baseRendererInfos[0].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 10, Color.white, 0);
+            characterModel.baseRendererInfos[1].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 0, Color.white, 0);
 
             characterModel.SetFieldValue("mainSkinnedMeshRenderer", characterModel.baseRendererInfos[0].renderer.gameObject.GetComponent<SkinnedMeshRenderer>());
 

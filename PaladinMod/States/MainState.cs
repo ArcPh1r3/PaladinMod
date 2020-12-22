@@ -11,7 +11,6 @@ namespace PaladinMod.States
         private Material swordMat;
         private float swordTransition;
         private GameObject swordActiveEffect;
-        private ParticleSystem swordTrailEffect;
         private PaladinSwordController swordController;
         private ChildLocator childLocator;
 
@@ -28,15 +27,14 @@ namespace PaladinMod.States
                 Transform modelTransform = base.GetModelTransform();
                 if (modelTransform)
                 {
-                    this.swordMat = modelTransform.GetComponent<CharacterModel>().baseRendererInfos[6].defaultMaterial;
+                    this.swordMat = modelTransform.GetComponent<CharacterModel>().baseRendererInfos[1].defaultMaterial;
                 }
             }
 
-            if (this.childLocator)
+            /*if (this.childLocator)
             {
                 this.swordActiveEffect = this.childLocator.FindChild("SwordActiveEffect").gameObject;
-                this.swordTrailEffect = this.childLocator.FindChild("SwordTrailEffect").gameObject.GetComponentInChildren<ParticleSystem>();
-            }
+            }*/
         }
 
         public override void Update()
@@ -52,7 +50,7 @@ namespace PaladinMod.States
                 }
                 else if (Input.GetKeyDown(Modules.Config.pointKeybind.Value))
                 {
-                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.PointDown))), InterruptPriority.Any);
+                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.TestPose))), InterruptPriority.Any);
                     return;
                 }
             }
@@ -87,23 +85,10 @@ namespace PaladinMod.States
 
                 this.swordMat.SetFloat("_EmPower", this.swordTransition);
             }
-
-            if (base.characterBody && this.swordController)
-            {
-                if (base.characterBody.isSprinting && !this.swordController.attacking && base.characterMotor.isGrounded)
-                {
-                    //if (this.swordTrailEffect) this.swordTrailEffect.Play();
-                }
-                else
-                {
-                    //if (this.swordTrailEffect) this.swordTrailEffect.Stop();
-                }
-            }
         }
 
         public override void OnExit()
         {
-            if (this.swordTrailEffect) this.swordTrailEffect.Stop();
             base.OnExit();
         }
     }

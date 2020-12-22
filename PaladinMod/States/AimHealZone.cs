@@ -14,12 +14,12 @@ namespace PaladinMod.States
 
             base.OnEnter();
 
-            ChildLocator childLocator = base.GetModelChildLocator();
+            /*ChildLocator childLocator = base.GetModelChildLocator();
             if (childLocator)
             {
                 this.chargeEffect = childLocator.FindChild("HealAimEffect").gameObject;
                 this.chargeEffect.SetActive(true);
-            }
+            }*/
         }
 
         public override void FixedUpdate()
@@ -31,10 +31,10 @@ namespace PaladinMod.States
         {
             base.OnExit();
 
-            if (this.chargeEffect)
+            /*if (this.chargeEffect)
             {
                 this.chargeEffect.SetActive(false);
-            }
+            }*/
         }
 
         protected override BaseCastSpellState GetNextState()
