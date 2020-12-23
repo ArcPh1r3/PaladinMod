@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4169477628
+CRC: 3862444963
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 41c60ab8aea236e07f772d9fcca4a437
+    Hash: 1268fd9901be4dea8d43c8e425877560
   TypeTreeHash:
     serializedVersion: 2
-    Hash: dec9c1da3062a68c46a511a21524e013
+    Hash: 34020fff2db917e6a5f2efdcd6a9e854
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -15,11 +15,7 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 21
   Script: {instanceID: 0}
-- Class: 23
-  Script: {instanceID: 0}
 - Class: 28
-  Script: {instanceID: 0}
-- Class: 33
   Script: {instanceID: 0}
 - Class: 43
   Script: {instanceID: 0}
@@ -40,16 +36,14 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 67079b849227b734694872d8810229b8, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 2334069450a65d042a95a873e5229b20, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 2aa2462a23d05b54e9a2ecb2fb686dde, type: 3}
 - Class: 115
-  Script: {instanceID: 0}
-- Class: 135
   Script: {instanceID: 0}
 - Class: 136
   Script: {instanceID: 0}
 - Class: 137
-  Script: {instanceID: 0}
-- Class: 183
   Script: {instanceID: 0}
 - Class: 198
   Script: {instanceID: 0}
@@ -60,167 +54,78 @@ ClassTypes:
 - Class: 319
   Script: {instanceID: 0}
 Assets:
-- Assets/Paladin/Anim/WalkF.anim
 - Assets/Paladin/VFX/texPaladinImpact.png
-- Assets/Paladin/Textures/texPaladinBodyEmission.png
 - Assets/Paladin/PaladinSwing.prefab
 - Assets/Paladin/Icons/texMasteryAchievement.png
-- Assets/Paladin/Materials/matPaladinLunarBody.mat
-- Assets/Paladin/Anim/trash/PraiseTheSunOld.anim
-- Assets/Paladin/Textures/texPaladinNkuhanaBodyEmission.png
-- Assets/Paladin/Anim/AimPitch.anim
+- Assets/Paladin/Animations/AimYaw.anim
 - Assets/Paladin/VFX/texLunarEmber.dds
-- Assets/Paladin/Anim/trash/SlashCombo2.anim
-- Assets/Paladin/Anim/Death.anim
-- Assets/Paladin/Textures/texPaladinNkuhanaSwordDull.png
 - Assets/Paladin/VFX/matTorporKill.mat
-- Assets/Paladin/Anim/AirSlamStart.anim
-- Assets/Paladin/Materials/matPaladinPoisonCloth.mat
-- Assets/Paladin/Anim/trash/Whirlwind.anim
-- Assets/Paladin/Materials/matPaladinBody.mat
+- Assets/Paladin/Textures/texPaladinEmission.png
+- Assets/Paladin/Animations/Idle.anim
 - Assets/Paladin/SpinSlashEffect.prefab
-- Assets/Paladin/Anim/ChargeSpell.anim
-- Assets/Paladin/Anim/Slash2.anim
+- Assets/Paladin/Animations/animPaladin.controller
+- Assets/Paladin/PaladinDisplay.prefab
 - Assets/Paladin/VFX/matEmber.mat
-- Assets/Paladin/Anim/AoESpellAlt.anim
-- Assets/Paladin/Anim/trash/Slash.anim
 - Assets/Paladin/VFX/matPaladinSwing.mat
+- Assets/Paladin/Animations/FireLunarShard.anim
 - Assets/Paladin/Icons/texPaladinAchievement.png
-- Assets/Paladin/Anim/trash/Sprint.anim
-- Assets/Paladin/Anim/CastSpell.anim
-- Assets/Paladin/Materials/matPaladinSword.mat
-- Assets/Paladin/Anim/Slash3.anim
-- Assets/Paladin/Textures/texHunterBody.png
-- Assets/Paladin/Anim/CombatWalkL.anim
-- Assets/Paladin/Anim/WalkB.anim
-- Assets/Paladin/Anim/YawMask.mask
-- Assets/Paladin/Anim/CombatWalkB.anim
-- Assets/Paladin/Textures/texPaladinSwordDull.png
-- Assets/Paladin/Anim/GestureMask.mask
-- Assets/Paladin/Anim/trash/Run.anim
-- Assets/Paladin/Anim/testSweep.anim
+- Assets/Paladin/Animations/Jump.anim
 - Assets/Paladin/VFX/texTorpor.png
-- Assets/Paladin/Anim/CombatIdle.anim
-- Assets/Paladin/Anim/LightningSpear.anim
 - Assets/Paladin/VFX/matDeath.mat
-- Assets/Paladin/Materials/matPaladinCloth.mat
-- Assets/Paladin/Anim/ThrowSpell.anim
 - Assets/Paladin/VFX/matTorpor.mat
 - Assets/Paladin/VFX/matPaladinImpact.mat
-- Assets/Paladin/Anim/ChargeSpellLoop.anim
 - Assets/Paladin/VFX/matChargeHeal.mat
 - Assets/Paladin/VFX/matChargeTorpor.mat
 - Assets/Paladin/LightningImpact.prefab
 - Assets/Paladin/Icons/texPoisonAchievement.png
 - Assets/Paladin/HealEffect.prefab
-- Assets/Paladin/Anim/trash/SlashComboOld.anim
 - Assets/Paladin/VFX/matChargeSphere.mat
-- Assets/Paladin/Anim/AirSlamEnd.anim
 - Assets/Paladin/TorporVoidFX.prefab
-- Assets/Paladin/Anim/Jump.anim
 - Assets/Paladin/ImpactPaladinSwing.prefab
-- Assets/Paladin/Anim/LightningSpearChargeLoop.anim
-- Assets/Paladin/Anim/trash/Ascend.anim
 - Assets/Paladin/VFX/texPaladinSwing2.png
 - Assets/Paladin/VFX/texLightning.tif
-- Assets/Paladin/Anim/NewSlash1.anim
-- Assets/Paladin/Anim/DashForward.anim
 - Assets/Paladin/Icons/SpinSlashIcon.png
 - Assets/Paladin/VFX/texEmber.tif
-- Assets/Paladin/Anim/trash/Descend.anim
-- Assets/Paladin/Anim/LightningSpearCharge.anim
 - Assets/Paladin/Icons/PassiveIcon.png
-- Assets/Paladin/Anim/AimYaw.anim
 - Assets/Paladin/VFX/matTorporCast.mat
-- Assets/Paladin/Materials/matPaladinLunarCloth.mat
 - Assets/Paladin/VFX/matEmber 1.mat
-- Assets/Paladin/Textures/texHunterSwordEmission.png
-- Assets/Paladin/Anim/Slash1.anim
-- Assets/Paladin/Materials/matHunterSword.mat
-- Assets/Paladin/Mesh/meshPaladin.mesh
-- Assets/Paladin/Anim/trash/Slash1.anim
 - Assets/Paladin/LightningHitFX.prefab
 - Assets/Paladin/Icons/LightningBoltIcon.png
-- Assets/Paladin/Textures/texPaladinLunarCloth.png
 - Assets/Paladin/mdlPaladin.prefab
 - Assets/Paladin/Icons/texMainSkin.png
-- Assets/Paladin/PaladinDisplay.prefab
-- Assets/Paladin/Textures/texPaladinSwordEmission.png
-- Assets/Paladin/Anim/trash/Slash1ToSprint.anim
+- Assets/Paladin/Animations/LightImpact.anim
 - Assets/Paladin/VFX/matHeal.mat
 - Assets/Paladin/VFX/texSmoke.png
-- Assets/Paladin/Anim/CombatWalkF.anim
-- Assets/Paladin/Anim/trash/SprintOld.anim
-- Assets/Paladin/Anim/GroundSweep.anim
 - Assets/Paladin/VFX/matHealZone.mat
-- Assets/Paladin/Anim/Ascend.anim
 - Assets/Paladin/VFX/matSmoke.mat
-- Assets/Paladin/Anim/trash/CombatIdle.anim
-- Assets/Paladin/Textures/texPaladinCloth.png
 - Assets/Paladin/Icons/texPaladinIcon.png
-- Assets/Paladin/Anim/trash/Jump.anim
+- Assets/Paladin/Animations/WalkF.anim
+- Assets/Paladin/Animations/Slash1.anim
 - Assets/Paladin/Icons/HealIcon.png
-- Assets/Paladin/Anim/trash/Slash2ToSprint.anim
-- Assets/Paladin/Anim/animPaladin.controller
 - Assets/Paladin/HealZoneEffect.prefab
 - Assets/Paladin/Icons/LightningSpearIcon.png
-- Assets/Paladin/Anim/MenuIdleIn.anim
-- Assets/Paladin/Mesh/HunterMesh.mesh
-- Assets/Paladin/Anim/trash/SpinSlashOld.anim
-- Assets/Paladin/Anim/trash/m2.anim
+- Assets/Paladin/Animations/Ascend.anim
 - Assets/Paladin/VFX/texPaladinSwing.png
-- Assets/Paladin/Anim/trash/SlashCombo1.anim
 - Assets/Paladin/Icons/TorporIcon.png
-- Assets/Paladin/Textures/texPaladinSword.png
-- Assets/Paladin/Anim/PointDown.anim
-- Assets/Paladin/Mesh/meshPaladinLunar.mesh
-- Assets/Paladin/Anim/FireProjectile.anim
-- Assets/Paladin/Materials/matPaladinPoisonBody.mat
-- Assets/Paladin/Anim/FireLunarShard.anim
-- Assets/Paladin/Materials/matHunterBody.mat
-- Assets/Paladin/Anim/AoESpell.anim
+- Assets/Paladin/Animations/Descend.anim
 - Assets/Paladin/Icons/SlashIcon.png
-- Assets/Paladin/Anim/Idle.anim
-- Assets/Paladin/Textures/texPaladinNkuhanaCloth.png
-- Assets/Paladin/Textures/texPaladinLunarSwordDull.png
+- Assets/Paladin/Materials/matPaladin.mat
 - Assets/Paladin/VFX/PaladinSwingMesh.asset
-- Assets/Paladin/Textures/texPaladinNkuhanaBody.png
 - Assets/Paladin/SwordBeam.prefab
 - Assets/Paladin/EmpSpinSlashEffect.prefab
 - Assets/Paladin/Icons/HealZoneIcon.png
-- Assets/Paladin/Anim/WalkL.anim
 - Assets/Paladin/LightningSpear.prefab
-- Assets/Paladin/Anim/WalkR.anim
-- Assets/Paladin/Anim/PraiseTheSun.anim
-- Assets/Paladin/Textures/texPaladinLunarBody.png
-- Assets/Paladin/Anim/IdleIn.anim
-- Assets/Paladin/Anim/animPaladinMenu.controller
-- Assets/Paladin/Anim/CombatIdleIn.anim
-- Assets/Paladin/Anim/trash/WhirlwindFull.anim
-- Assets/Paladin/Anim/IdleIn2.anim
-- Assets/Paladin/Textures/texPaladinBody.png
+- Assets/Paladin/Textures/texPaladin.png
+- Assets/Paladin/Animations/aimMask.mask
+- Assets/Paladin/Animations/impactMask.mask
 - Assets/Paladin/VFX/matTorpor2.mat
-- Assets/Paladin/Anim/AirSlam.anim
-- Assets/Paladin/Materials/matPaladinPoisonSword.mat
-- Assets/Paladin/Anim/trash/Slash2.anim
-- Assets/Paladin/Anim/SpinSlash.anim
 - Assets/Paladin/VFX/texSwordBeam.png
-- Assets/Paladin/Textures/texPaladinLunarBodyEmission.png
-- Assets/Paladin/Anim/CombatWalkR.anim
-- Assets/Paladin/Textures/texPaladinNkuhanaSwordEmission.png
-- Assets/Paladin/Mesh/meshSword.mesh
+- Assets/Paladin/Animations/animPaladinMenu.controller
+- Assets/Paladin/Animations/gestureMask.mask
 - Assets/Paladin/VFX/matLunarEmber.mat
-- Assets/Paladin/Anim/Sprint.anim
 - Assets/Paladin/TorporEffect.prefab
-- Assets/Paladin/Anim/MenuIdle.anim
-- Assets/Paladin/Textures/texPaladinLunarSwordEmission.png
-- Assets/Paladin/Mesh/meshSwordLunar.mesh
 - Assets/Paladin/VFX/matPaladinSwing2.mat
 - Assets/Paladin/VFX/texHealZone.png
-- Assets/Paladin/Anim/AimSpell.anim
-- Assets/Paladin/Anim/trash/Sprint2.anim
 - Assets/Paladin/VFX/matLightning.mat
-- Assets/Paladin/Textures/texHunterSword.png
-- Assets/Paladin/Anim/Descend.anim
-- Assets/Paladin/Materials/matPaladinLunarSword.mat
+- Assets/Paladin/Animations/IdleIn.anim
 Dependencies: []

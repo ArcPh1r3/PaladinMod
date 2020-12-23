@@ -14,7 +14,7 @@
         public const float baseDamagePerLevel = 2.8f;
         public const float armorPerLevel = 1f;
 
-        public const float slashDamageCoefficient = 4f;
+        public const float slashDamageCoefficient = 5f;
         public const float slashBuffDamageCoefficient = 6f;
 
         public const float beamDamageCoefficient = 3f;

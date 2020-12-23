@@ -19,7 +19,7 @@ namespace PaladinMod.States
             base.OnEnter();
             this.childLocator = base.GetModelChildLocator();
             this.swordActive = true;
-            this.swordTransition = StaticValues.maxSwordGlow;
+            this.swordTransition = 0;
             this.swordController = base.characterBody.GetComponent<PaladinSwordController>();
 
             if (base.characterBody)
@@ -27,14 +27,14 @@ namespace PaladinMod.States
                 Transform modelTransform = base.GetModelTransform();
                 if (modelTransform)
                 {
-                    this.swordMat = modelTransform.GetComponent<CharacterModel>().baseRendererInfos[1].defaultMaterial;
+                    this.swordMat = modelTransform.GetComponent<CharacterModel>().baseRendererInfos[0].defaultMaterial;
                 }
             }
 
-            /*if (this.childLocator)
+            if (this.childLocator)
             {
                 this.swordActiveEffect = this.childLocator.FindChild("SwordActiveEffect").gameObject;
-            }*/
+            }
         }
 
         public override void Update()

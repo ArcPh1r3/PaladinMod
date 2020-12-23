@@ -12,10 +12,10 @@ namespace PaladinMod.States
     {
         public static float damageCoefficient = StaticValues.slashDamageCoefficient;
         public static float buffDamageCoefficient = StaticValues.slashBuffDamageCoefficient;
-        public float baseDuration = 1f;
+        public float baseDuration = 1.25f;
         public static float attackRecoil = 1.5f;
         public static float hitHopVelocity = 5.5f;
-        public static float baseEarlyExit = 0.25f;
+        public static float earlyExitTime = 0.6f;
         public int swingIndex;
 
         private float earlyExitDuration;
@@ -35,7 +35,7 @@ namespace PaladinMod.States
         {
             base.OnEnter();
             this.duration = this.baseDuration / this.attackSpeedStat;
-            this.earlyExitDuration = Slash.baseEarlyExit / this.attackSpeedStat;
+            this.earlyExitDuration = this.duration * Slash.earlyExitTime;
             this.hasFired = false;
             this.cancelling = false;
             this.animator = base.GetModelAnimator();
@@ -53,11 +53,12 @@ namespace PaladinMod.States
                 hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "Sword");
             }
 
-            if (this.swingIndex == 0) base.PlayCrossfade("Gesture, Override", "Slash1", "Slash.playbackRate", this.duration, 0.05f);
-            else base.PlayCrossfade("Gesture, Override", "Slash2", "Slash.playbackRate", this.duration, 0.05f);
+            string animString = "Slash" + (1 + swingIndex).ToString();
+
+            if (!this.animator.GetBool("isMoving") && this.animator.GetBool("isGrounded")) base.PlayCrossfade("FullBody, Override", animString, "Slash.playbackRate", this.duration, 0.05f);
+            base.PlayCrossfade("Gesture, Override", animString, "Slash.playbackRate", this.duration, 0.05f);
 
             float dmg = Slash.damageCoefficient;
-            if (this.swordController && this.swordController.swordActive) dmg = Slash.buffDamageCoefficient;
 
             this.attack = new OverlapAttack();
             this.attack.damageType = DamageType.Generic;
@@ -77,6 +78,16 @@ namespace PaladinMod.States
         {
             base.OnExit();
 
+            if (!this.hasFired) this.FireAttack();
+
+            if (this.inHitPause)
+            {
+                base.ConsumeHitStopCachedState(this.hitStopCachedState, base.characterMotor, this.animator);
+                this.inHitPause = false;
+            }
+
+            base.PlayAnimation("FullBody, Override", "BufferEmpty");
+
             if (this.swordController) this.swordController.attacking = false;
         }
 
@@ -90,8 +101,8 @@ namespace PaladinMod.States
                 if (base.isAuthority)
                 {
                     string muzzleString = null;
-                    if (this.swingIndex == 0) muzzleString = "SwingLeft";
-                    else muzzleString = "SwingRight";
+                    if (this.swingIndex == 0) muzzleString = "SwingRight";
+                    else muzzleString = "SwingLeft";
 
                     base.AddRecoil(-1f * Slash.attackRecoil, -2f * Slash.attackRecoil, -0.5f * Slash.attackRecoil, 0.5f * Slash.attackRecoil);
                     EffectManager.SimpleMuzzleFlash(Modules.Assets.swordSwing, base.gameObject, muzzleString, true);
@@ -153,7 +164,7 @@ namespace PaladinMod.States
                 if (this.animator) this.animator.SetFloat("Slash.playbackRate", 0f);
             }
 
-            if (this.stopwatch >= this.duration * 0.2f)
+            if (this.stopwatch >= this.duration * 0.2f && this.stopwatch <= this.duration * 0.5f)
             {
                 this.FireAttack();
             }
@@ -165,29 +176,21 @@ namespace PaladinMod.States
                 return;
             }
 
-            if (this.stopwatch >= (this.duration - this.earlyExitDuration) && base.isAuthority)
+            if (base.isAuthority)
             {
-                if (base.IsKeyDownAuthority())
+                if (base.fixedAge >= this.earlyExitDuration && base.inputBank.skill1.down)
                 {
-                    int index = this.swingIndex;
-                    if (index == 0) index = 1;
-                    else index = 0;
-
-                    this.outer.SetNextState(new Slash
-                    {
-                        swingIndex = index
-                    });
-
-                    if (!this.hasFired) this.FireAttack();
-
+                    var nextSwing = new Slash();
+                    nextSwing.swingIndex = 0;//this.swingIndex + 1;
+                    this.outer.SetNextState(nextSwing);
                     return;
                 }
-            }
 
-            if (this.stopwatch >= this.duration && base.isAuthority)
-            {
-                this.outer.SetNextStateToMain();
-                return;
+                if (base.fixedAge >= this.duration)
+                {
+                    this.outer.SetNextStateToMain();
+                    return;
+                }
             }
         }
 

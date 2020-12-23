@@ -60,7 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Assetbundle\AssetBundleMaker.cs" />
     <Compile Include="Assets\Scripts\ChildLocator.cs" />
     <Compile Include="Assets\Scripts\DestroyOnTimer.cs" />
     <Compile Include="Assets\Scripts\DynamicBone.cs" />
@@ -69,6 +68,18 @@
     <Compile Include="Assets\Scripts\RagdollController.cs" />
     <Compile Include="Assets\Scripts\ResetFootsteps.cs" />
     <Compile Include="Assets\Scripts\SetRandomIntOnEnter.cs" />
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>C:/Users/rseid/Documents/GitHub/PaladinMod/PaladinUnityProject/Paladin/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PackageManagerUI.Editor">
+      <HintPath>C:/Users/rseid/Documents/GitHub/PaladinMod/PaladinUnityProject/Paladin/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.CollabProxy.Editor">
+      <HintPath>C:/Users/rseid/Documents/GitHub/PaladinMod/PaladinUnityProject/Paladin/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AssetBundleBrowser.Editor">
+      <HintPath>C:/Users/rseid/Documents/GitHub/PaladinMod/PaladinUnityProject/Paladin/Library/ScriptAssemblies/Unity.AssetBundleBrowser.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/rseid/Documents/GitHub/PaladinMod/PaladinUnityProject/Paladin/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>

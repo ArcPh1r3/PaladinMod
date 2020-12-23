@@ -147,7 +147,7 @@ namespace PaladinMod
 
             GameObject gameObject = new GameObject("ModelBase");
             gameObject.transform.parent = tempDisplay.transform;
-            gameObject.transform.localPosition = new Vector3(0f, -0.81f, 0f);
+            gameObject.transform.localPosition = new Vector3(0f, -0.92f, 0f);
             gameObject.transform.localRotation = Quaternion.identity;
             gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
 
@@ -180,15 +180,15 @@ namespace PaladinMod
             {
                 new CharacterModel.RendererInfo
                 {
-                    defaultMaterial = childLocator.FindChild("Model").GetComponent<SkinnedMeshRenderer>().material,
-                    renderer = childLocator.FindChild("Model").GetComponent<SkinnedMeshRenderer>(),
+                    defaultMaterial = childLocator.FindChild("SwordModel").GetComponent<SkinnedMeshRenderer>().material,
+                    renderer = childLocator.FindChild("SwordModel").GetComponent<SkinnedMeshRenderer>(),
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     ignoreOverlays = false
                 },
                 new CharacterModel.RendererInfo
                 {
-                    defaultMaterial = childLocator.FindChild("SwordModel").GetComponent<SkinnedMeshRenderer>().material,
-                    renderer = childLocator.FindChild("SwordModel").GetComponent<SkinnedMeshRenderer>(),
+                    defaultMaterial = childLocator.FindChild("Model").GetComponent<SkinnedMeshRenderer>().material,
+                    renderer = childLocator.FindChild("Model").GetComponent<SkinnedMeshRenderer>(),
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     ignoreOverlays = false
                 }
@@ -198,8 +198,8 @@ namespace PaladinMod
             characterModel.temporaryOverlays = new List<TemporaryOverlay>();
 
             //replace shader
-            characterModel.baseRendererInfos[0].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 10, Color.white, 0);
-            characterModel.baseRendererInfos[1].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 0, Color.white, 0);
+            characterModel.baseRendererInfos[0].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 0, Color.white, 0);
+            characterModel.baseRendererInfos[1].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 10, Color.white, 0);
 
             characterModel.SetFieldValue("mainSkinnedMeshRenderer", characterModel.baseRendererInfos[0].renderer.gameObject.GetComponent<SkinnedMeshRenderer>());
 
@@ -218,7 +218,7 @@ namespace PaladinMod
 
             GameObject gameObject = new GameObject("ModelBase");
             gameObject.transform.parent = characterPrefab.transform;
-            gameObject.transform.localPosition = new Vector3(0f, -0.81f, 0f);
+            gameObject.transform.localPosition = new Vector3(0f, -0.92f, 0f);
             gameObject.transform.localRotation = Quaternion.identity;
             gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
 
@@ -230,7 +230,7 @@ namespace PaladinMod
 
             GameObject gameObject3 = new GameObject("AimOrigin");
             gameObject3.transform.parent = gameObject.transform;
-            gameObject3.transform.localPosition = new Vector3(0f, 1.5f, 0f);
+            gameObject3.transform.localPosition = new Vector3(0f, 2.2f, 0f);
             gameObject3.transform.localRotation = Quaternion.identity;
             gameObject3.transform.localScale = Vector3.one;
 
@@ -324,15 +324,15 @@ namespace PaladinMod
             {
                 new CharacterModel.RendererInfo
                 {
-                    defaultMaterial = childLocator.FindChild("Model").GetComponent<SkinnedMeshRenderer>().material,
-                    renderer = childLocator.FindChild("Model").GetComponent<SkinnedMeshRenderer>(),
+                    defaultMaterial = childLocator.FindChild("SwordModel").GetComponent<SkinnedMeshRenderer>().material,
+                    renderer = childLocator.FindChild("SwordModel").GetComponent<SkinnedMeshRenderer>(),
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     ignoreOverlays = false
                 },
                 new CharacterModel.RendererInfo
                 {
-                    defaultMaterial = childLocator.FindChild("SwordModel").GetComponent<SkinnedMeshRenderer>().material,
-                    renderer = childLocator.FindChild("SwordModel").GetComponent<SkinnedMeshRenderer>(),
+                    defaultMaterial = childLocator.FindChild("Model").GetComponent<SkinnedMeshRenderer>().material,
+                    renderer = childLocator.FindChild("Model").GetComponent<SkinnedMeshRenderer>(),
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                     ignoreOverlays = false
                 }
@@ -342,8 +342,8 @@ namespace PaladinMod
             characterModel.temporaryOverlays = new List<TemporaryOverlay>();
 
             //replace shader
-            characterModel.baseRendererInfos[0].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 10, Color.white, 0);
-            characterModel.baseRendererInfos[1].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 0, Color.white, 0);
+            characterModel.baseRendererInfos[0].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 0, Color.white, 0);
+            characterModel.baseRendererInfos[1].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 10, Color.white, 0);
 
             characterModel.SetFieldValue("mainSkinnedMeshRenderer", characterModel.baseRendererInfos[0].renderer.gameObject.GetComponent<SkinnedMeshRenderer>());
 
@@ -437,42 +437,8 @@ namespace PaladinMod
 
             Modules.Helpers.CreateHitbox(model, childLocator.FindChild("SwordHitbox"), "Sword");
             Modules.Helpers.CreateHitbox(model, childLocator.FindChild("LeapHitbox"), "LeapStrike");
-
-            GameObject spinHitbox = new GameObject("SpinSlashHitbox");
-            spinHitbox.transform.parent = childLocator.FindChild("Base");
-            spinHitbox.transform.localPosition = new Vector3(0f, 1f, 0f);
-            spinHitbox.transform.localRotation = Quaternion.identity;
-            spinHitbox.transform.localScale = new Vector3(18f, 10f, 18f);
-
-            HitBox spinHitBox = spinHitbox.AddComponent<HitBox>();
-            spinHitbox.layer = LayerIndex.projectile.intVal;
-
-            HitBoxGroup spinHitBoxGroup = model.AddComponent<HitBoxGroup>();
-
-            spinHitBoxGroup.hitBoxes = new HitBox[]
-            {
-                spinHitBox
-            };
-
-            spinHitBoxGroup.groupName = "SpinSlash";
-
-            GameObject spinLargeHitbox = new GameObject("SpinSlashLargeHitbox");
-            spinLargeHitbox.transform.parent = childLocator.FindChild("Base");
-            spinLargeHitbox.transform.localPosition = new Vector3(0f, 1f, 0f);
-            spinLargeHitbox.transform.localRotation = Quaternion.identity;
-            spinLargeHitbox.transform.localScale = new Vector3(28f, 20f, 28f);
-
-            HitBox spinLargeHitBox = spinLargeHitbox.AddComponent<HitBox>();
-            spinLargeHitbox.layer = LayerIndex.projectile.intVal;
-
-            HitBoxGroup spinLargeHitBoxGroup = model.AddComponent<HitBoxGroup>();
-
-            spinLargeHitBoxGroup.hitBoxes = new HitBox[]
-            {
-                spinLargeHitBox
-            };
-
-            spinLargeHitBoxGroup.groupName = "SpinSlashLarge";
+            Modules.Helpers.CreateHitbox(model, childLocator.FindChild("SpinSlashHitbox"), "SpinSlash");
+            Modules.Helpers.CreateHitbox(model, childLocator.FindChild("SpinSlashLargeHitbox"), "SpinSlashLarge");
 
             FootstepHandler footstepHandler = model.AddComponent<FootstepHandler>();
             footstepHandler.baseFootstepString = "Play_player_footstep";

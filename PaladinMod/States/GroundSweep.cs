@@ -52,15 +52,15 @@ namespace PaladinMod.States
             base.PlayAnimation("FullBody, Override", "GroundSweep", "Whirlwind.playbackRate", this.duration);
 
             this.attack = new OverlapAttack();
-            this.attack.damageType = DamageType.Generic;
+            this.attack.damageType = DamageType.Stun1s;
             this.attack.attacker = base.gameObject;
             this.attack.inflictor = base.gameObject;
             this.attack.teamIndex = base.GetTeam();
             this.attack.damage = GroundSweep.damageCoefficient * this.damageStat;
             this.attack.procCoefficient = 1;
             this.attack.hitEffectPrefab = Modules.Assets.hitFX;
-            this.attack.forceVector = Vector3.up * 1200f;
-            this.attack.pushAwayForce = -800f;
+            this.attack.forceVector = Vector3.up * 2400f;
+            this.attack.pushAwayForce = -1200f;
             this.attack.hitBoxGroup = hitBoxGroup;
             this.attack.isCrit = base.RollCrit();
         }
@@ -141,7 +141,7 @@ namespace PaladinMod.States
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            if (this.stopwatch >= this.duration * 0.6f) return InterruptPriority.PrioritySkill;
+            if (this.stopwatch >= this.duration * 0.41f) return InterruptPriority.PrioritySkill;
             else return InterruptPriority.Frozen;
         }
     }

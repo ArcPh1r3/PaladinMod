@@ -33,7 +33,7 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_PASSIVE_NAME", "Bulwark's Blessing");
             LanguageAPI.Add("PALADIN_PASSIVE_DESCRIPTION", "Gain <style=cIsHealth>" + StaticValues.armorPerLevel + " armor</style> per level. While above <style=cIsHealth>80% health</style> or while having active <style=cIsHealth>barrier</style>, the Paladin is <style=cIsHealing>blessed</style>, empowering all sword skills.");
 
-            desc = "Slash forward for <style=cIsDamage>" + 100f * StaticValues.slashDamageCoefficient + "% damage</style>. Deals <style=cIsDamage>" + 100f * StaticValues.slashBuffDamageCoefficient + "% damage</style> if the Paladin is <style=cIsHealing>blessed</style>.";
+            desc = "Slash forward for <style=cIsDamage>" + 100f * StaticValues.slashDamageCoefficient + "% damage</style>. Fires a <style=cIsUtility>beam of light</style> for <style=cIsDamage>" + 100f * StaticValues.beamDamageCoefficient + "% damage</style> if the Paladin is <style=cIsHealing>blessed</style>.";
 
             LanguageAPI.Add("PALADIN_PRIMARY_SLASH_NAME", "Divine Blade");
             LanguageAPI.Add("PALADIN_PRIMARY_SLASH_DESCRIPTION", desc);
