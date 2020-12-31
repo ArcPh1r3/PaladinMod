@@ -6,10 +6,12 @@
 
   <ItemGroup>
     <None Remove="paladin" />
+    <None Remove="PaladinBank.bnk" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="paladin" />
+    <EmbeddedResource Include="PaladinBank.bnk" />
   </ItemGroup>
 
   <ItemGroup>

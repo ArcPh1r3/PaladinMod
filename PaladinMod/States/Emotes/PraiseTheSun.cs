@@ -5,8 +5,7 @@
         public override void OnEnter()
         {
             this.animString = "PraiseTheSun";
-            this.duration = 4;
-            //this.soundString = EnforcerPlugin.Sounds.DefaultDance;
+            this.duration = 3;
             base.OnEnter();
         }
     }

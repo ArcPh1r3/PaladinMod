@@ -28,9 +28,12 @@ namespace PaladinMod.Achievements
             {
                 if (self.inventory)
                 {
-                    if (self.inventory.GetItemCount(ItemIndex.NovaOnHeal) > 0  || self.inventory.GetEquipmentIndex() == EquipmentIndex.AffixPoison)
+                    if (self.bodyPrefab == BodyCatalog.GetBodyPrefab(LookUpRequiredBodyIndex()))
                     {
-                        if (base.meetsBodyRequirement) base.Grant();
+                        if (self.inventory.GetItemCount(ItemIndex.NovaOnHeal) > 0 || self.inventory.GetEquipmentIndex() == EquipmentIndex.AffixPoison)
+                        {
+                            if (base.meetsBodyRequirement) base.Grant();
+                        }
                     }
                 }
             }

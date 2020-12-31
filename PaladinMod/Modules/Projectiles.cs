@@ -7,8 +7,9 @@ namespace PaladinMod.Modules
 {
     public static class Projectiles
     {
-        public static GameObject lightningSpear;
         public static GameObject swordBeam;
+        public static GameObject shockwave;
+        public static GameObject lightningSpear;
         public static GameObject lunarShard;
 
         public static GameObject heal;
@@ -17,20 +18,40 @@ namespace PaladinMod.Modules
 
         public static void RegisterProjectiles()
         {
+            shockwave = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/BrotherSunderWave"), "PaladinShockwave", true);
+            shockwave.transform.GetChild(0).transform.localScale = new Vector3(10, 1.5f, 1);
+            shockwave.GetComponent<ProjectileCharacterController>().lifetime = 0.5f;
+            shockwave.GetComponent<ProjectileDamage>().damageType = DamageType.Stun1s;
+
+            GameObject shockwaveGhost = PrefabAPI.InstantiateClone(shockwave.GetComponent<ProjectileController>().ghostPrefab, "PaladinShockwaveGhost", false);
+            shockwaveGhost.transform.GetChild(0).transform.localScale = new Vector3(10, 1, 1);
+            shockwaveGhost.transform.GetChild(1).transform.localScale = new Vector3(10, 1.5f, 1);
+            PaladinPlugin.Destroy(shockwaveGhost.transform.GetChild(0).Find("Infection, World").gameObject);
+            PaladinPlugin.Destroy(shockwaveGhost.transform.GetChild(0).Find("Water").gameObject);
+
+            Material shockwaveMat = Resources.Load<GameObject>("Prefabs/Projectiles/LunarWispTrackingBomb").GetComponent<ProjectileController>().ghostPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material;
+            shockwaveGhost.transform.GetChild(1).GetComponent<MeshRenderer>().material = shockwaveMat;
+
+            shockwave.GetComponent<ProjectileController>().ghostPrefab = shockwaveGhost;
+
             lunarShard = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/LunarShardProjectile"), "PaladinLunarShard", true);
             PaladinPlugin.Destroy(lunarShard.GetComponent<ProjectileSteerTowardTarget>());
             lunarShard.GetComponent<ProjectileImpactExplosion>().blastDamageCoefficient = 1f;
 
-            lightningSpear = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageIceBombProjectile"), "LightningSpear", true);
+            lightningSpear = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageLightningBombProjectile"), "LightningSpear", true);
             GameObject spearGhost = Assets.lightningSpear.InstantiateClone("LightningSpearGhost", false);
             spearGhost.AddComponent<ProjectileGhostController>();
 
             lightningSpear.transform.localScale *= 2f;
 
             lightningSpear.GetComponent<ProjectileController>().ghostPrefab = spearGhost;
-            lightningSpear.GetComponent<ProjectileOverlapAttack>().impactEffect = Assets.lightningHitFX;
+            //lightningSpear.GetComponent<ProjectileOverlapAttack>().impactEffect = Assets.lightningImpactFX;
             lightningSpear.GetComponent<ProjectileDamage>().damageType = DamageType.Shock5s;
-            lightningSpear.GetComponent<ProjectileSingleTargetImpact>().impactEffect = Assets.lightningImpactFX;
+            lightningSpear.GetComponent<ProjectileImpactExplosion>().impactEffect = Assets.altLightningImpactFX;
+            lightningSpear.GetComponent<Rigidbody>().useGravity = false;
+
+            PaladinPlugin.Destroy(lightningSpear.GetComponent<AntiGravityForce>());
+            PaladinPlugin.Destroy(lightningSpear.GetComponent<ProjectileProximityBeamController>());
 
             swordBeam = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/FMJ"), "PaladinSwordBeam", true);
             swordBeam.transform.localScale *= 2f;
@@ -125,8 +146,9 @@ namespace PaladinMod.Modules
 
             ProjectileCatalog.getAdditionalEntries += list =>
             {
-                list.Add(lightningSpear);
                 list.Add(swordBeam);
+                list.Add(shockwave);
+                list.Add(lightningSpear);
                 list.Add(lunarShard);
                 list.Add(heal);
                 list.Add(healZone);

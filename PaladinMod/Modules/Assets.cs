@@ -36,13 +36,16 @@ namespace PaladinMod.Modules
         public static GameObject hitFX;
         public static GameObject lightningHitFX;
         public static GameObject lightningImpactFX;
+        public static GameObject altLightningImpactFX;
 
         public static GameObject torporVoidFX;
 
-        //public static Mesh defaultMesh;
-        //public static Mesh defaultSwordMesh;
-        //public static Mesh lunarMesh;
-        //public static Mesh lunarSwordMesh;
+        public static Mesh defaultMesh;
+        public static Mesh defaultSwordMesh;
+        public static Mesh lunarMesh;
+        public static Mesh lunarSwordMesh;
+        public static Mesh poisonMesh;
+        public static Mesh poisonSwordMesh;
         //public static Mesh hunterMesh;
 
         public static void PopulateAssets()
@@ -57,12 +60,12 @@ namespace PaladinMod.Modules
                 }
             }
 
-            /*using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("MinerV2.MinerBank.bnk"))
+            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("PaladinMod.PaladinBank.bnk"))
             {
                 byte[] array = new byte[manifestResourceStream2.Length];
                 manifestResourceStream2.Read(array, 0, array.Length);
                 SoundAPI.SoundBanks.Add(array);
-            }*/
+            }
 
             charPortrait = mainAssetBundle.LoadAsset<Sprite>("texPaladinIcon").texture;
 
@@ -103,11 +106,29 @@ namespace PaladinMod.Modules
             lightningImpactFX = Assets.LoadEffect("LightningImpact", "Play_mage_R_lightningBlast");
             torporVoidFX = Assets.LoadEffect("TorporVoidFX", "RoR2_nullifier_attack1_explode_02");
 
-            //defaultMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladin");
-            //defaultSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSword");
-            //lunarMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinLunar");
-            //lunarSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordLunar");
+            defaultMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladin");
+            defaultSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSword");
+            lunarMesh = mainAssetBundle.LoadAsset<Mesh>("meshLunarPaladin");
+            lunarSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshLunarSword");
+            poisonMesh = mainAssetBundle.LoadAsset<Mesh>("meshNkuhanaPaladin");
+            poisonSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshNkuhanaSword");
             //hunterMesh = mainAssetBundle.LoadAsset<Mesh>("HunterMesh");
+
+            altLightningImpactFX = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact"), "PaladinLightningStrikeImpact", true);
+
+            PaladinPlugin.Destroy(altLightningImpactFX.transform.Find("LightningRibbon").gameObject);
+
+            foreach (ParticleSystemRenderer i in altLightningImpactFX.GetComponentsInChildren<ParticleSystemRenderer>())
+            {
+                if (i)
+                {
+                    i.material.SetColor("_TintColor", Color.yellow);
+                }
+            }
+
+            altLightningImpactFX.AddComponent<NetworkIdentity>();
+
+            EffectAPI.AddEffect(altLightningImpactFX);
         }
 
         private static GameObject LoadEffect(string resourceName, string soundName)

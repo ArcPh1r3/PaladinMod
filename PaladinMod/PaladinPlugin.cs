@@ -366,7 +366,7 @@ namespace PaladinMod
 
             CharacterDeathBehavior characterDeathBehavior = characterPrefab.GetComponent<CharacterDeathBehavior>();
             characterDeathBehavior.deathStateMachine = characterPrefab.GetComponent<EntityStateMachine>();
-            characterDeathBehavior.deathState = new SerializableEntityStateType(typeof(GenericCharacterDeath));
+            //characterDeathBehavior.deathState = new SerializableEntityStateType(typeof(GenericCharacterDeath));
 
             SfxLocator sfxLocator = characterPrefab.GetComponent<SfxLocator>();
             //sfxLocator.deathSound = Sounds.DeathSound;
@@ -446,7 +446,7 @@ namespace PaladinMod
             footstepHandler.enableFootstepDust = true;
             footstepHandler.footstepDustPrefab = Resources.Load<GameObject>("Prefabs/GenericFootstepDust");
 
-            /*RagdollController ragdollController = model.GetComponent<RagdollController>();
+            RagdollController ragdollController = model.GetComponent<RagdollController>();
 
             PhysicMaterial physicMat = Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<RagdollController>().bones[1].GetComponent<Collider>().material;
 
@@ -461,10 +461,8 @@ namespace PaladinMod
                         j.material = physicMat;
                         j.sharedMaterial = physicMat;
                     }
-                    Rigidbody k = i.GetComponent<Rigidbody>();
-                    if (k) k.drag = 0.1f;
                 }
-            }*/
+            }
 
             AimAnimator aimAnimator = model.AddComponent<AimAnimator>();
             aimAnimator.directionComponent = characterDirection;
@@ -598,6 +596,7 @@ namespace PaladinMod
             LoadoutAPI.AddSkill(typeof(States.SpinSlashEntry));
             LoadoutAPI.AddSkill(typeof(States.GroundSweep));
             LoadoutAPI.AddSkill(typeof(States.AirSlam));
+            LoadoutAPI.AddSkill(typeof(States.AirSlamAlt));
 
             SkillDef mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
             mySkillDef.activationState = new SerializableEntityStateType(typeof(States.SpinSlashEntry));
@@ -818,7 +817,7 @@ namespace PaladinMod
             mySkillDef.activationState = new SerializableEntityStateType(typeof(States.AimHeal));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
-            mySkillDef.baseRechargeInterval = 12;
+            mySkillDef.baseRechargeInterval = 8;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;

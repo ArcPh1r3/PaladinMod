@@ -4,18 +4,19 @@ using UnityEngine;
 using System;
 using PaladinMod.Misc;
 using UnityEngine.Networking;
+using RoR2.Projectile;
 
 namespace PaladinMod.States
 {
     public class AirSlam : BaseSkillState
     {
         public static float damageCoefficient = StaticValues.spinSlashDamageCoefficient;
-        public static float boostedDamageCoefficient = 12f;
-        public static float leapDuration = 0.5f;
+        public static float leapDuration = 0.6f;
         public static float dropVelocity = 18f;
 
         private float duration;
         private bool hasFired;
+        private bool hasLanded;
         private float hitPauseTimer;
         private OverlapAttack attack;
         private bool inHitPause;
@@ -30,6 +31,7 @@ namespace PaladinMod.States
             base.OnEnter();
             this.duration = AirSlam.leapDuration / this.attackSpeedStat;
             this.hasFired = false;
+            this.hasLanded = false;
             this.animator = base.GetModelAnimator();
             this.swordController = base.GetComponent<PaladinSwordController>();
 
@@ -45,7 +47,7 @@ namespace PaladinMod.States
                 direction.y = Mathf.Max(direction.y, 1.25f * EntityStates.Croco.Leap.minimumY);
                 Vector3 a = direction.normalized * (0.75f * EntityStates.Croco.Leap.aimVelocity) * this.moveSpeedStat;
                 Vector3 b = Vector3.up * 0.95f * EntityStates.Croco.Leap.upwardVelocity;
-                Vector3 b2 = new Vector3(direction.x, 0f, direction.z).normalized * (1.25f * EntityStates.Croco.Leap.forwardVelocity);
+                Vector3 b2 = new Vector3(direction.x, 0f, direction.z).normalized * (1.5f * EntityStates.Croco.Leap.forwardVelocity);
 
                 base.characterMotor.Motor.ForceUnground();
                 base.characterMotor.velocity = a + b + b2;
@@ -58,17 +60,18 @@ namespace PaladinMod.States
             HitBoxGroup hitBoxGroup = null;
             Transform modelTransform = base.GetModelTransform();
 
-            string hitboxString = "Sword";
+            string hitboxString = "LeapStrike";
 
             if (modelTransform)
             {
                 hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == hitboxString);
             }
 
-            base.PlayAnimation("FullBody, Override", "AirSlamStart", "Whirlwind.playbackRate", this.duration);
+            base.PlayAnimation("FullBody, Override", "LeapSlam", "Whirlwind.playbackRate", this.duration * 1.5f);
+            Util.PlaySound(Modules.Sounds.LeapSlam, base.gameObject);
+            Util.PlaySound(Modules.Sounds.Cloth2, base.gameObject);
 
             float dmg = AirSlam.damageCoefficient;
-            if (this.swordController && this.swordController.swordActive) dmg = AirSlam.boostedDamageCoefficient;
 
             this.attack = new OverlapAttack();
             this.attack.damageType = DamageType.Generic;
@@ -88,17 +91,6 @@ namespace PaladinMod.States
         {
             base.OnExit();
 
-            /*if (base.isAuthority)
-            {
-                Vector3 footPosition = base.characterBody.footPosition;
-                EffectManager.SpawnEffect(EntityStates.ParentMonster.GroundSlam.slamImpactEffect, new EffectData
-                {
-                    origin = footPosition,
-                    scale = 8f
-                }, true);
-            }
-
-            Util.PlaySound(EntityStates.ParentMonster.GroundSlam.attackSoundString, base.gameObject);*/
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
 
             base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
@@ -110,12 +102,13 @@ namespace PaladinMod.States
             if (!this.hasFired)
             {
                 this.hasFired = true;
-                Util.PlayScaledSound(EntityStates.Merc.GroundLight.comboAttackSoundString, base.gameObject, 0.5f);
+                Util.PlaySound(Modules.Sounds.Swing, base.gameObject);
                 if (base.isAuthority)
                 {
                     base.AddRecoil(-1f * GroundSweep.attackRecoil, -2f * GroundSweep.attackRecoil, -0.5f * GroundSweep.attackRecoil, 0.5f * GroundSweep.attackRecoil);
                     EffectManager.SimpleMuzzleFlash(Modules.Assets.swordSwing, base.gameObject, "SwingDown", true);
 
+                    base.characterMotor.velocity *= 0.25f;
                     base.characterMotor.velocity += Vector3.up * -AirSlam.dropVelocity;
                 }
             }
@@ -126,8 +119,7 @@ namespace PaladinMod.States
 
                 if (this.attack.Fire())
                 {
-                    Util.PlaySound(EntityStates.Merc.GroundLight.hitSoundString, base.gameObject);
-                    //Util.PlaySound(MinerPlugin.Sounds.Hit, base.gameObject);
+                    Util.PlaySound(Modules.Sounds.HitL, base.gameObject);
 
                     if (!this.inHitPause)
                     {
@@ -148,12 +140,53 @@ namespace PaladinMod.States
             if (this.stopwatch >= this.duration)
             {
                 this.FireAttack();
+
+                if (base.isAuthority && base.inputBank.skill2.down)
+                {
+                    if (base.skillLocator.secondary.stock > 0)
+                    {
+                        EntityState nextState = new AirSlamAlt();
+                        this.outer.SetNextState(nextState);
+                        return;
+                    }
+                }
             }
 
             if (this.stopwatch >= this.duration && base.isAuthority && base.characterMotor.isGrounded)
             {
+                this.GroundImpact();
                 this.outer.SetNextStateToMain();
                 return;
+            }
+        }
+
+        private void FireShockwave()
+        {
+            Transform shockwaveTransform = base.FindModelChild("SwingCenter");
+            Vector3 shockwavePosition = base.characterBody.footPosition;
+            Vector3 forward = base.characterDirection.forward;
+
+            ProjectileManager.instance.FireProjectile(Modules.Projectiles.shockwave, shockwavePosition, Util.QuaternionSafeLookRotation(forward), base.gameObject, base.characterBody.damage * StaticValues.beamDamageCoefficient, EntityStates.BrotherMonster.WeaponSlam.waveProjectileForce, base.RollCrit(), DamageColorIndex.Default, null, -1f);
+        }
+
+        private void GroundImpact()
+        {
+            if (!this.hasLanded)
+            {
+                this.hasLanded = true;
+
+                if (this.swordController && this.swordController.swordActive)
+                {
+                    this.FireShockwave();
+                }
+
+                Util.PlaySound(Modules.Sounds.GroundImpact, base.gameObject);
+
+                EffectData effectData = new EffectData();
+                effectData.origin = base.characterBody.footPosition;
+                effectData.scale = 2f;
+
+                EffectManager.SpawnEffect(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/ParentSlamEffect"), effectData, true);
             }
         }
 

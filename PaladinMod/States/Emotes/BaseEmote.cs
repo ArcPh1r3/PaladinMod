@@ -10,6 +10,7 @@ namespace PaladinMod.States.Emotes
         public string animString;
         public float duration;
         public float animDuration;
+        public bool normalizeModel;
 
         private uint activePlayID;
         private float initialTime;
@@ -25,6 +26,8 @@ namespace PaladinMod.States.Emotes
             base.characterBody.hideCrosshair = true;
 
             if (base.GetAimAnimator()) base.GetAimAnimator().enabled = false;
+            this.animator.SetLayerWeight(animator.GetLayerIndex("AimPitch"), 0);
+            this.animator.SetLayerWeight(animator.GetLayerIndex("AimYaw"), 0);
 
             if (this.animDuration == 0 && this.duration != 0) this.animDuration = this.duration;
 
@@ -32,6 +35,14 @@ namespace PaladinMod.States.Emotes
             else base.PlayAnimation("FullBody, Override", this.animString, "Emote.playbackRate", this.animDuration);
 
             this.activePlayID = Util.PlaySound(soundString, base.gameObject);
+
+            if (this.normalizeModel)
+            {
+                if (base.modelLocator)
+                {
+                    base.modelLocator.normalizeToFloor = true;
+                }
+            }
 
             this.initialTime = Time.fixedTime;
         }
@@ -43,6 +54,16 @@ namespace PaladinMod.States.Emotes
             base.characterBody.hideCrosshair = false;
 
             if (base.GetAimAnimator()) base.GetAimAnimator().enabled = true;
+            this.animator.SetLayerWeight(animator.GetLayerIndex("AimPitch"), 1);
+            this.animator.SetLayerWeight(animator.GetLayerIndex("AimYaw"), 1);
+
+            if (this.normalizeModel)
+            {
+                if (base.modelLocator)
+                {
+                    base.modelLocator.normalizeToFloor = false;
+                }
+            }
 
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
             if (this.activePlayID != 0) AkSoundEngine.StopPlayingID(this.activePlayID);
@@ -74,16 +95,14 @@ namespace PaladinMod.States.Emotes
             //emote cancels
             if (base.isAuthority && base.characterMotor.isGrounded)
             {
-                if (Input.GetKeyDown("1"))
+                if (Input.GetKeyDown(Modules.Config.praiseKeybind.Value))
                 {
-                    flag = false;
-                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(PraiseTheSun))), InterruptPriority.Any);
+                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.PraiseTheSun))), InterruptPriority.Any);
                     return;
                 }
-                else if (Input.GetKeyDown("2"))
+                else if (Input.GetKeyDown(Modules.Config.restKeybind.Value))
                 {
-                    flag = false;
-                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(PointDown))), InterruptPriority.Any);
+                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.Rest))), InterruptPriority.Any);
                     return;
                 }
             }

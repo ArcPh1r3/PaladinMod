@@ -27,11 +27,11 @@ namespace PaladinMod.States
 
             if (this.swordController) this.swordController.attacking = true;
 
-            base.PlayAnimation("Gesture, Override", "LightningSpear", "LightningSpear.playbackRate", this.duration);
+            base.PlayAnimation("Gesture, Override", "ThrowSpell", "ChargeSpell.playbackRate", this.duration);
 
             if (this.muzzleflashEffectPrefab)
             {
-                EffectManager.SimpleMuzzleFlash(this.muzzleflashEffectPrefab, base.gameObject, "HandR", false);
+                EffectManager.SimpleMuzzleFlash(this.muzzleflashEffectPrefab, base.gameObject, "HandL", false);
             }
 
             this.Fire();
@@ -72,7 +72,8 @@ namespace PaladinMod.States
                         owner = base.gameObject,
                         damage = this.damageStat * num,
                         force = num2,
-                        crit = base.RollCrit()
+                        crit = base.RollCrit(),
+                        speedOverride = 120f
                     };
 
                     ProjectileManager.instance.FireProjectile(fireProjectileInfo);

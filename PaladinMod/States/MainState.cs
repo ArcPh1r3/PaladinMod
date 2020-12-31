@@ -13,6 +13,7 @@ namespace PaladinMod.States
         private GameObject swordActiveEffect;
         private PaladinSwordController swordController;
         private ChildLocator childLocator;
+        private bool wasActive;
 
         public override void OnEnter()
         {
@@ -48,9 +49,9 @@ namespace PaladinMod.States
                     this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.PraiseTheSun))), InterruptPriority.Any);
                     return;
                 }
-                else if (Input.GetKeyDown(Modules.Config.pointKeybind.Value))
+                else if (Input.GetKeyDown(Modules.Config.restKeybind.Value))
                 {
-                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.TestPose))), InterruptPriority.Any);
+                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.Rest))), InterruptPriority.Any);
                     return;
                 }
             }
@@ -84,6 +85,9 @@ namespace PaladinMod.States
                 this.swordTransition = Mathf.Clamp(this.swordTransition, 0, StaticValues.maxSwordGlow);
 
                 this.swordMat.SetFloat("_EmPower", this.swordTransition);
+
+                if (this.swordActive && !this.wasActive) Util.PlaySound(Modules.Sounds.SwordActive, base.gameObject);
+                this.wasActive = this.swordActive;
             }
         }
 

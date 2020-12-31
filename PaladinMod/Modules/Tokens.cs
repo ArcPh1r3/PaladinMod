@@ -7,13 +7,13 @@ namespace PaladinMod.Modules
     {
         public static void AddTokens()
         {
-            /*string desc = "The Miner is a fast paced and highly mobile melee survivor who prioritizes getting long kill combos to build stacks of his passive.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Once you get a good number of stacks of Adrenaline, Crush will be your best source of damage." + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Note that charging Drill Charge only affects damage dealt. Aim at the ground or into enemies to deal concentrated damage." + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > You can tap Backblast to travel a short distance. Hold it to go further." + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > To The Stars when used low to the ground is great at dealing high amounts of damage to enemies with large hitboxes." + Environment.NewLine + Environment.NewLine;*/
+            string desc = "The Paladin is a heavy hitting tank that can opt for otherworldly magic or devastating swordsmanship to aid allies and decimate foes.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > Your passive makes up a good portion of your damage, try to keep it up as much as possible." + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > Spinning Slash can serve as either a powerful crowd control tool or a form of limited mobility." + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > Quickstep's cooldown is lowered with each hit, rewarding you for staying in the thick of it." + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > Vow of Silence is a great way to deal with flying enemies, as it drags all affected down to the ground." + Environment.NewLine + Environment.NewLine;
 
-            string desc = "Paladin" + Environment.NewLine + Environment.NewLine;
+            //string desc = "Paladin" + Environment.NewLine + Environment.NewLine;
 
             string outro = StaticValues.characterOutro;
 
@@ -38,7 +38,7 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_PRIMARY_SLASH_NAME", "Divine Blade");
             LanguageAPI.Add("PALADIN_PRIMARY_SLASH_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Stunning.</style> Perform a wide sweeping slash, knocking up enemies for <style=cIsDamage>" + 100f * StaticValues.spinSlashDamageCoefficient + "% damage</style> and gaining bonus range if <style=cIsHealing>blessed</style>. Use while airborne to perform a leaping downward slash for 800%, increased to 1500% while <style=cIsHealing>blessed</style>.";
+            desc = "<style=cIsUtility>Stunning.</style> Perform a wide sweeping slash for <style=cIsDamage>" + 100f * StaticValues.spinSlashDamageCoefficient + "% damage</style>, gaining range if <style=cIsHealing>blessed</style>. Use while airborne to perform a leap strike for <style=cIsDamage>" + StaticValues.spinSlashDamageCoefficient * 100f + "% damage</style>, firing a <style=cIsUtility>shockwave</style> if <style=cIsHealing>blessed</style>.";
 
             LanguageAPI.Add("PALADIN_SECONDARY_SPINSLASH_NAME", "Spinning Slash");
             LanguageAPI.Add("PALADIN_SECONDARY_SPINSLASH_DESCRIPTION", desc);

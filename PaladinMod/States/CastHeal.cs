@@ -4,7 +4,7 @@
     {
         public override void OnEnter()
         {
-            this.baseDuration = 0.6f;
+            this.baseDuration = 0.3f;
             this.muzzleflashEffectPrefab = EntityStates.Commando.CommandoWeapon.FirePistol.effectPrefab;
             this.projectilePrefab = Modules.Projectiles.heal;
 

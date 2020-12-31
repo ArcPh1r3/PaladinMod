@@ -50,6 +50,7 @@ namespace PaladinMod.States
             }
 
             base.PlayAnimation("FullBody, Override", "GroundSweep", "Whirlwind.playbackRate", this.duration);
+            Util.PlaySound(Modules.Sounds.Cloth3, base.gameObject);
 
             this.attack = new OverlapAttack();
             this.attack.damageType = DamageType.Stun1s;
@@ -59,7 +60,7 @@ namespace PaladinMod.States
             this.attack.damage = GroundSweep.damageCoefficient * this.damageStat;
             this.attack.procCoefficient = 1;
             this.attack.hitEffectPrefab = Modules.Assets.hitFX;
-            this.attack.forceVector = Vector3.up * 2400f;
+            this.attack.forceVector = Vector3.up * 1800f;
             this.attack.pushAwayForce = -1200f;
             this.attack.hitBoxGroup = hitBoxGroup;
             this.attack.isCrit = base.RollCrit();
@@ -79,7 +80,7 @@ namespace PaladinMod.States
             if (!this.hasFired)
             {
                 this.hasFired = true;
-                Util.PlayScaledSound(EntityStates.Merc.GroundLight.comboAttackSoundString, base.gameObject, 0.5f);
+                Util.PlayScaledSound(Modules.Sounds.Swing, base.gameObject, 0.5f);
 
                 if (base.isAuthority)
                 {
@@ -91,7 +92,7 @@ namespace PaladinMod.States
 
                     if (this.attack.Fire())
                     {
-                        Util.PlaySound(EntityStates.Merc.GroundLight.hitSoundString, base.gameObject);
+                        Util.PlaySound(Modules.Sounds.HitM, base.gameObject);
                         //Util.PlaySound(MinerPlugin.Sounds.Hit, base.gameObject);
 
                         if (!this.inHitPause)
@@ -127,7 +128,7 @@ namespace PaladinMod.States
                 if (this.animator) this.animator.SetFloat("Whirlwind.playbackRate", 0f);
             }
 
-            if (this.stopwatch >= this.duration * 0.4f)
+            if (this.stopwatch >= this.duration * 0.3f)
             {
                 this.FireAttack();
             }
