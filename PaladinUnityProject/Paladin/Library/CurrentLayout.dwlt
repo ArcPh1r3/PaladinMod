@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 508, y: 498}
   m_MaxSize: {x: 14004, y: 14048}
   vertical: 0
-  controlID: 176
+  controlID: 128
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 133
+  controlID: 68
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -526,9 +526,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 7c130000
-      m_LastClickedID: 4988
-      m_ExpandedIDs: c4fbffff10170000
+      m_SelectedIDs: b2380000
+      m_LastClickedID: 0
+      m_ExpandedIDs: c4fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -583,9 +583,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 2.6572733, y: -1.7522864, z: -13.346931}
+    m_Target: {x: 10.554463, y: 18.886879, z: -21.082247}
     speed: 2
-    m_Value: {x: 2.6572733, y: -1.7522864, z: -13.346931}
+    m_Value: {x: 10.554463, y: 18.886879, z: -21.082247}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -613,13 +613,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.0023872347, y: 0.9911274, z: -0.1315995, w: -0.01850385}
+    m_Target: {x: 0.30936795, y: -0.44747588, z: 0.16849822, w: 0.8219886}
     speed: 2
-    m_Value: {x: -0.0023872347, y: 0.9911274, z: -0.1315995, w: -0.01850385}
+    m_Value: {x: 0.30936795, y: -0.44747588, z: 0.16849822, w: 0.8219886}
   m_Size:
-    m_Target: 18.664932
+    m_Target: 5.967853
     speed: 2
-    m_Value: 18.664932
+    m_Value: 5.967853
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -903,20 +903,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Paladin/Animations
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Paladin/Animations
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinUnityProject\Paladin
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 95}
-    m_SelectedIDs: c20c0000
-    m_LastClickedID: 3266
-    m_ExpandedIDs: 00000000e2090000780a0000280c0000a00f00009212000000ca9a3b
+    m_SelectedIDs: f2090000
+    m_LastClickedID: 2546
+    m_ExpandedIDs: 00000000f2090000880a00003c0c0000c20f0000ba12000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -944,7 +944,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e2090000780a0000280c0000a00f000092120000
+    m_ExpandedIDs: 00000000f2090000880a00003c0c0000c20f0000ba120000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -971,7 +971,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300008c2b0000d42b00000c2d0000a42c0000b8820100b08a0100402900002a8d0100c47000009e4101008642010074700000105f0300f8d6030022d70300242c0000482a0000902d00002c3700000638000010370000623600000a3a00003e770000d61c000034150000e01400001259000006960000ba150000ae1b0000341e0000b00c0000d2130000ae20000006140000400d0000f0240000fa0d0000522000007e0e000004130400ea12040024100400401004002c100400341004003a1004001e10040002100400ea0f0400181004008e3b04004a3b04000a390000f417000032270000f8260000e610ffffc4130000043f0000d46a0000a2470000da3f000048460000f01d0000261600002a4c00006a5700000c2200004023000026470000b81c000034080600803505006a1a0000d4770000527f000052fd00009c760600806a000014850000be77000078280000dc120000083e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -996,7 +996,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 55}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
   m_DirectoriesAreaWidth: 240
 --- !u!114 &18

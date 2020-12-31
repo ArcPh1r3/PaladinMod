@@ -23,6 +23,8 @@ namespace PaladinMod.States.Quickstep
                 base.healthComponent.AddBarrierAuthority(StaticValues.dashBarrierAmount * base.healthComponent.fullBarrier);
 
                 base.characterMotor.velocity *= 0.1f;
+
+                this.slideVector = base.inputBank.moveVector;
             }
 
             if (EntityStates.BrotherMonster.BaseSlideState.slideEffectPrefab && base.characterBody)
@@ -52,16 +54,10 @@ namespace PaladinMod.States.Quickstep
 
             if (base.isAuthority)
             {
-                Vector3 a = Vector3.zero;
-                if (base.inputBank && base.characterDirection)
-                {
-                    a = base.characterDirection.forward;
-                }
-
                 if (base.characterMotor)
                 {
                     float num = EntityStates.BrotherMonster.BaseSlideState.speedCoefficientCurve.Evaluate(base.fixedAge / BaseQuickstepState.baseDuration);
-                    base.characterMotor.rootMotion += 0.6f * (this.slideRotation * (num * this.moveSpeedStat * a * Time.fixedDeltaTime));
+                    base.characterMotor.rootMotion += 0.6f * (this.slideRotation * (num * this.moveSpeedStat * this.slideVector * Time.fixedDeltaTime));
 
                     base.characterMotor.velocity.y = 0f;
                 }

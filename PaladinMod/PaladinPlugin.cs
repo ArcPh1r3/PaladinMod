@@ -14,7 +14,7 @@ namespace PaladinMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "1.0.0")]
+    [BepInPlugin(MODUID, "Paladin", "1.0.1")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -68,6 +68,7 @@ namespace PaladinMod
             Modules.Buffs.RegisterBuffs();
             Modules.Projectiles.RegisterProjectiles();
             //Modules.ItemDisplays.RegisterDisplays();
+            Modules.Effects.RegisterEffects();
             Modules.Unlockables.RegisterUnlockables();
             Modules.Tokens.AddTokens();
 
@@ -198,7 +199,7 @@ namespace PaladinMod
             characterModel.temporaryOverlays = new List<TemporaryOverlay>();
 
             //replace shader
-            characterModel.baseRendererInfos[0].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 0, Color.white, 0);
+            characterModel.baseRendererInfos[0].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", StaticValues.maxSwordGlow, Color.white, 0);
             characterModel.baseRendererInfos[1].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 10, Color.white, 0);
 
             characterModel.SetFieldValue("mainSkinnedMeshRenderer", characterModel.baseRendererInfos[0].renderer.gameObject.GetComponent<SkinnedMeshRenderer>());
@@ -291,6 +292,7 @@ namespace PaladinMod
             LoadoutAPI.AddSkill(typeof(States.Emotes.BaseEmote));
             LoadoutAPI.AddSkill(typeof(States.Emotes.PraiseTheSun));
             LoadoutAPI.AddSkill(typeof(States.Emotes.PointDown));
+            LoadoutAPI.AddSkill(typeof(States.Emotes.Rest));
 
             var stateMachine = bodyComponent.GetComponent<EntityStateMachine>();
             stateMachine.mainStateType = new SerializableEntityStateType(typeof(States.PaladinMain));
@@ -342,7 +344,7 @@ namespace PaladinMod
             characterModel.temporaryOverlays = new List<TemporaryOverlay>();
 
             //replace shader
-            characterModel.baseRendererInfos[0].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 0, Color.white, 0);
+            characterModel.baseRendererInfos[0].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", StaticValues.maxSwordGlow, Color.white, 0);
             characterModel.baseRendererInfos[1].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 10, Color.white, 0);
 
             characterModel.SetFieldValue("mainSkinnedMeshRenderer", characterModel.baseRendererInfos[0].renderer.gameObject.GetComponent<SkinnedMeshRenderer>());
@@ -659,7 +661,7 @@ namespace PaladinMod
             mySkillDef.requiredStock = 1;
             mySkillDef.shootDelay = 0.5f;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Modules.Assets.icon3;
+            mySkillDef.icon = Modules.Assets.icon2b;
             mySkillDef.skillDescriptionToken = "PALADIN_SECONDARY_LIGHTNING_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SECONDARY_LIGHTNING_NAME";
             mySkillDef.skillNameToken = "PALADIN_SECONDARY_LIGHTNING_NAME";
@@ -698,7 +700,7 @@ namespace PaladinMod
             mySkillDef.requiredStock = 1;
             mySkillDef.shootDelay = 0.5f;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Modules.Assets.icon3;
+            mySkillDef.icon = Modules.Assets.icon2c;
             mySkillDef.skillDescriptionToken = "PALADIN_SECONDARY_LUNARSHARD_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SECONDARY_LUNARSHARD_NAME";
             mySkillDef.skillNameToken = "PALADIN_SECONDARY_LUNARSHARD_NAME";
@@ -748,7 +750,7 @@ namespace PaladinMod
             mySkillDef.requiredStock = 1;
             mySkillDef.shootDelay = 0.5f;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Modules.Assets.icon2;
+            mySkillDef.icon = Modules.Assets.icon3;
             mySkillDef.skillDescriptionToken = "PALADIN_UTILITY_DASH_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_UTILITY_DASH_NAME";
             mySkillDef.skillNameToken = "PALADIN_UTILITY_DASH_NAME";
@@ -830,7 +832,7 @@ namespace PaladinMod
             mySkillDef.requiredStock = 1;
             mySkillDef.shootDelay = 0.5f;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Modules.Assets.icon3c;
+            mySkillDef.icon = Modules.Assets.icon3b;
             mySkillDef.skillDescriptionToken = "PALADIN_UTILITY_HEAL_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_UTILITY_HEAL_NAME";
             mySkillDef.skillNameToken = "PALADIN_UTILITY_HEAL_NAME";

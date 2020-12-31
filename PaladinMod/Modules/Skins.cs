@@ -146,7 +146,7 @@ namespace PaladinMod.Modules
             CharacterModel.RendererInfo[] poisonRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(poisonRendererInfos, 0);
 
-            poisonRendererInfos[0].defaultMaterial = CreateMaterial("matPaladinNkuhana", 0, Color.white, 0);
+            poisonRendererInfos[0].defaultMaterial = CreateMaterial("matPaladinNkuhana", StaticValues.maxSwordGlow, Color.white, 0);
             poisonRendererInfos[1].defaultMaterial = CreateMaterial("matPaladinNkuhana", 3, Color.white, 0);
 
             SkinDef poisonSkin = CreateSkinDef("PALADINBODY_POISON_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texPoisonAchievement"), poisonRendererInfos, mainRenderer, model, "PALADIN_POISONUNLOCKABLE_REWARD_ID");

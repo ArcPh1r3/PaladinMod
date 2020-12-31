@@ -16,9 +16,10 @@ namespace PaladinMod.Modules
         public static Sprite iconP;
         public static Sprite icon1;
         public static Sprite icon2;
+        public static Sprite icon2b;
+        public static Sprite icon2c;
         public static Sprite icon3;
         public static Sprite icon3b;
-        public static Sprite icon3c;
         public static Sprite icon4;
         public static Sprite icon4b;
 
@@ -33,7 +34,18 @@ namespace PaladinMod.Modules
         public static GameObject spinningSlashFX;
         public static GameObject spinningSlashEmpoweredFX;
 
+        public static GameObject swordSwingGreen;
+        public static GameObject spinningSlashFXGreen;
+        public static GameObject spinningSlashEmpoweredFXGreen;
+
+        public static GameObject swordSwingYellow;
+        public static GameObject spinningSlashFXYellow;
+        public static GameObject spinningSlashEmpoweredFXYellow;
+
         public static GameObject hitFX;
+        public static GameObject hitFXGreen;
+        public static GameObject hitFXYellow;
+
         public static GameObject lightningHitFX;
         public static GameObject lightningImpactFX;
         public static GameObject altLightningImpactFX;
@@ -72,9 +84,10 @@ namespace PaladinMod.Modules
             iconP = mainAssetBundle.LoadAsset<Sprite>("PassiveIcon");
             icon1 = mainAssetBundle.LoadAsset<Sprite>("SlashIcon");
             icon2 = mainAssetBundle.LoadAsset<Sprite>("SpinSlashIcon");
-            icon3 = mainAssetBundle.LoadAsset<Sprite>("LightningSpearIcon");
-            icon3b = mainAssetBundle.LoadAsset<Sprite>("LightningBoltIcon");
-            icon3c = mainAssetBundle.LoadAsset<Sprite>("HealIcon");
+            icon2b = mainAssetBundle.LoadAsset<Sprite>("LightningSpearIcon");
+            icon2c = mainAssetBundle.LoadAsset<Sprite>("LightningBoltIcon");
+            icon3 = mainAssetBundle.LoadAsset<Sprite>("DashIcon");
+            icon3b = mainAssetBundle.LoadAsset<Sprite>("HealIcon");
             icon4 = mainAssetBundle.LoadAsset<Sprite>("HealZoneIcon");
             icon4b = mainAssetBundle.LoadAsset<Sprite>("TorporIcon");
 
@@ -102,6 +115,14 @@ namespace PaladinMod.Modules
             spinningSlashFX = Assets.LoadEffect("SpinSlashEffect", "");
             spinningSlashEmpoweredFX = Assets.LoadEffect("EmpSpinSlashEffect", "");
             hitFX = Assets.LoadEffect("ImpactPaladinSwing", "");
+            swordSwingGreen = Assets.LoadEffect("PaladinSwingGreen", "");
+            spinningSlashFXGreen = Assets.LoadEffect("SpinSlashEffectGreen", "");
+            spinningSlashEmpoweredFXGreen = Assets.LoadEffect("EmpSpinSlashEffectGreen", "");
+            hitFXGreen = Assets.LoadEffect("ImpactPaladinSwingGreen", "");
+            swordSwingYellow = Assets.LoadEffect("PaladinSwingYellow", "");
+            spinningSlashFXYellow = Assets.LoadEffect("SpinSlashEffectYellow", "");
+            spinningSlashEmpoweredFXYellow = Assets.LoadEffect("EmpSpinSlashEffectYellow", "");
+            hitFXYellow = Assets.LoadEffect("ImpactPaladinSwingYellow", "");
             lightningHitFX = Assets.LoadEffect("LightningHitFX", "");
             lightningImpactFX = Assets.LoadEffect("LightningImpact", "Play_mage_R_lightningBlast");
             torporVoidFX = Assets.LoadEffect("TorporVoidFX", "RoR2_nullifier_attack1_explode_02");

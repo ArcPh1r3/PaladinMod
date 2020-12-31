@@ -28,7 +28,7 @@ namespace PaladinMod.Achievements
             {
                 if (self.inventory)
                 {
-                    if (self.bodyPrefab == BodyCatalog.GetBodyPrefab(LookUpRequiredBodyIndex()))
+                    if (self.GetBody() && self.GetBody().baseNameToken == "PALADIN_NAME")
                     {
                         if (self.inventory.GetItemCount(ItemIndex.NovaOnHeal) > 0 || self.inventory.GetEquipmentIndex() == EquipmentIndex.AffixPoison)
                         {

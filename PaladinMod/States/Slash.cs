@@ -14,7 +14,7 @@ namespace PaladinMod.States
         public float baseDuration = 1.6f;
         public static float attackRecoil = 1.5f;
         public static float hitHopVelocity = 5.5f;
-        public static float earlyExitTime = 0.6f;
+        public static float earlyExitTime = 0.575f;
         public int swingIndex;
 
         private bool inCombo;
@@ -84,7 +84,7 @@ namespace PaladinMod.States
             this.attack.teamIndex = base.GetTeam();
             this.attack.damage = dmg * this.damageStat;
             this.attack.procCoefficient = 1;
-            this.attack.hitEffectPrefab = Modules.Assets.hitFX;
+            this.attack.hitEffectPrefab = Modules.Effects.HitEffect(base.characterBody);
             this.attack.forceVector = Vector3.zero;
             this.attack.pushAwayForce = 500f;
             this.attack.hitBoxGroup = hitBoxGroup;
@@ -123,7 +123,7 @@ namespace PaladinMod.States
                     else muzzleString = "SwingLeft";
 
                     base.AddRecoil(-1f * Slash.attackRecoil, -2f * Slash.attackRecoil, -0.5f * Slash.attackRecoil, 0.5f * Slash.attackRecoil);
-                    EffectManager.SimpleMuzzleFlash(Modules.Assets.swordSwing, base.gameObject, muzzleString, true);
+                    EffectManager.SimpleMuzzleFlash(Modules.Effects.SwingEffect(base.characterBody), base.gameObject, muzzleString, true);
 
                     Ray aimRay = base.GetAimRay();
 

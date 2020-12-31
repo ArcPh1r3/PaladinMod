@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3923840314
+CRC: 1451678668
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: bf301875134a03e7ca1ffb88c10511cd
+    Hash: 448d8b5c9bd5cb5b80327fd5621c5bff
   TypeTreeHash:
     serializedVersion: 2
     Hash: a3e0124d01811e2bda42ddaf33b4d0e7
@@ -79,22 +79,29 @@ Assets:
 - Assets/Paladin/Animations/Idle.anim
 - Assets/Paladin/Animations/GroundSweep.anim
 - Assets/Paladin/Effects/SwingEffects/SpinSlashEffect.prefab
+- Assets/Paladin/VFX/matPaladinHitSparkYellow.mat
 - Assets/Paladin/Animations/MenuIdleIn.anim
 - Assets/Paladin/Animations/animPaladin.controller
 - Assets/Paladin/Mesh/meshSword.mesh
 - Assets/Paladin/VFX/matEmber.mat
 - Assets/Paladin/Animations/Ascend.anim
+- Assets/Paladin/Icons/DashIcon.png
 - Assets/Paladin/VFX/matPaladinSwing.mat
 - Assets/Paladin/Animations/FireLunarShard.anim
 - Assets/Paladin/Icons/texPaladinAchievement.png
 - Assets/Paladin/Animations/IdleIn.anim
+- Assets/Paladin/VFX/matPaladinHitSparkGreen.mat
 - Assets/Paladin/Textures/texPaladinNkuhanaEmission.png
 - Assets/Paladin/Animations/Slash1.anim
 - Assets/Paladin/Mesh/meshNkuhanaSword.mesh
 - Assets/Paladin/PaladinDisplay.prefab
+- Assets/Paladin/Effects/SwingEffects/EmpSpinSlashEffectGreen.prefab
+- Assets/Paladin/Effects/SwingEffects/PaladinSwingYellow.prefab
 - Assets/Paladin/VFX/texTorpor.png
 - Assets/Paladin/VFX/matDeath.mat
+- Assets/Paladin/Effects/SwingEffects/EmpSpinSlashEffectYellow.prefab
 - Assets/Paladin/VFX/matTorpor.mat
+- Assets/Paladin/VFX/texPaladinHitSparkYellow.png
 - Assets/Paladin/VFX/matPaladinImpact.mat
 - Assets/Paladin/VFX/matChargeHeal.mat
 - Assets/Paladin/Animations/WalkF.anim
@@ -105,9 +112,11 @@ Assets:
 - Assets/Paladin/Animations/Descend.anim
 - Assets/Paladin/Effects/HealEffect.prefab
 - Assets/Paladin/VFX/texPaladinHitSpark.png
+- Assets/Paladin/Effects/HitEffects/ImpactPaladinSwingYellow.prefab
 - Assets/Paladin/VFX/matChargeSphere.mat
 - Assets/Paladin/Effects/TorporVoidFX.prefab
 - Assets/Paladin/Animations/ThrowSpell.anim
+- Assets/Paladin/Effects/SwingEffects/SpinSlashEffectGreen.prefab
 - Assets/Paladin/Effects/HitEffects/ImpactPaladinSwing.prefab
 - Assets/Paladin/VFX/texPaladinSwing2.png
 - Assets/Paladin/VFX/texLightning.tif
@@ -115,6 +124,7 @@ Assets:
 - Assets/Paladin/VFX/texEmber.tif
 - Assets/Paladin/Animations/WalkL.anim
 - Assets/Paladin/Icons/PassiveIcon.png
+- Assets/Paladin/VFX/texPaladinHitSparkGreen.png
 - Assets/Paladin/VFX/matTorporCast.mat
 - Assets/Paladin/VFX/matEmber 1.mat
 - Assets/Paladin/VFX/matPaladinHitFlash.mat
@@ -137,6 +147,7 @@ Assets:
 - Assets/Paladin/Icons/LightningSpearIcon.png
 - Assets/Paladin/VFX/texPaladinSwing.png
 - Assets/Paladin/Icons/TorporIcon.png
+- Assets/Paladin/Effects/HitEffects/ImpactPaladinSwingGreen.prefab
 - Assets/Paladin/Icons/SlashIcon.png
 - Assets/Paladin/Animations/LeapSlam.anim
 - Assets/Paladin/Materials/matPaladin.mat
@@ -154,6 +165,7 @@ Assets:
 - Assets/Paladin/Animations/Sprint.anim
 - Assets/Paladin/Animations/Slash2.anim
 - Assets/Paladin/Animations/LeapSlamTwo.anim
+- Assets/Paladin/Effects/SwingEffects/SpinSlashEffectYellow.prefab
 - Assets/Paladin/VFX/texSwordBeam.png
 - Assets/Paladin/Animations/DashF.anim
 - Assets/Paladin/Animations/Jump.anim
@@ -162,10 +174,12 @@ Assets:
 - Assets/Paladin/VFX/matLunarEmber.mat
 - Assets/Paladin/Textures/texPaladinLunar.png
 - Assets/Paladin/Effects/TorporEffect.prefab
+- Assets/Paladin/VFX/matPaladinSwingAB.mat
 - Assets/Paladin/VFX/matPaladinSwing2.mat
 - Assets/Paladin/VFX/texHealZone.png
 - Assets/Paladin/Materials/matPaladinLunar.mat
 - Assets/Paladin/VFX/matLightning.mat
 - Assets/Paladin/Textures/texPaladinLunarEmission.png
+- Assets/Paladin/Effects/SwingEffects/PaladinSwingGreen.prefab
 - Assets/Paladin/Animations/MenuIdle.anim
 Dependencies: []

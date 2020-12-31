@@ -7,8 +7,8 @@
         public const string characterOutro = "..and so he left, faith in his doctrine shaken.";
         public const string characterLore = "\nsample text";
 
-        public const float maxSwordGlow = 2f;
-        public const float swordGlowSpeed = 1f;
+        public const float maxSwordGlow = 3f;
+        public const float swordGlowSpeed = 1.5f;
 
         public const float baseDamage = 13f;
         public const float baseDamagePerLevel = baseDamage * 0.2f;

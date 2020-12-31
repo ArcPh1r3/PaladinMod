@@ -59,7 +59,7 @@ namespace PaladinMod.States
             this.attack.teamIndex = base.GetTeam();
             this.attack.damage = GroundSweep.damageCoefficient * this.damageStat;
             this.attack.procCoefficient = 1;
-            this.attack.hitEffectPrefab = Modules.Assets.hitFX;
+            this.attack.hitEffectPrefab = Modules.Effects.HitEffect(base.characterBody);
             this.attack.forceVector = Vector3.up * 1800f;
             this.attack.pushAwayForce = -1200f;
             this.attack.hitBoxGroup = hitBoxGroup;
@@ -85,8 +85,8 @@ namespace PaladinMod.States
                 if (base.isAuthority)
                 {
                     base.AddRecoil(-1f * GroundSweep.attackRecoil, -2f * GroundSweep.attackRecoil, -0.5f * GroundSweep.attackRecoil, 0.5f * GroundSweep.attackRecoil);
-                    if (this.swordController.swordActive) EffectManager.SimpleMuzzleFlash(Modules.Assets.spinningSlashEmpoweredFX, base.gameObject, "SwingCenter", true);
-                    else EffectManager.SimpleMuzzleFlash(Modules.Assets.spinningSlashFX, base.gameObject, "SwingCenter", true);
+                    if (this.swordController.swordActive) EffectManager.SimpleMuzzleFlash(Modules.Effects.EmpoweredSpinEffect(base.characterBody), base.gameObject, "SwingCenter", true);
+                    else EffectManager.SimpleMuzzleFlash(Modules.Effects.SpinEffect(base.characterBody), base.gameObject, "SwingCenter", true);
 
                     Ray aimRay = base.GetAimRay();
 
