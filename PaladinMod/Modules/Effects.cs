@@ -25,7 +25,8 @@ namespace PaladinMod.Modules
                 0,
                 0,
                 2,
-                2
+                0,
+                0
             };
             //ugh
 
@@ -61,6 +62,7 @@ namespace PaladinMod.Modules
         public static int GetEffectIndex(CharacterBody body)
         {
             //there has to be a better way to do this
+            if (body.skinIndex >= skinEffectIndex.Length) return 0;
             return skinEffectIndex[body.skinIndex];
         }// i hate it
 

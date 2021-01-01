@@ -13,6 +13,8 @@ namespace PaladinMod.Misc
         public float radius;
         [Tooltip("Heal amount (based on percentage)")]
         public float healAmount;
+        [Tooltip("Heal amount (based on percentage)")]
+        public float barrierAmount;
         private TeamFilter teamFilter;
 
         private void Awake()
@@ -43,6 +45,7 @@ namespace PaladinMod.Misc
                         if (healAmount != 0 && charBody.healthComponent)
                         {
                             charBody.healthComponent.HealFraction(this.healAmount, default(ProcChainMask));
+                            charBody.healthComponent.AddBarrier(this.barrierAmount * charBody.healthComponent.fullBarrier);
                         }
                     }
                 }

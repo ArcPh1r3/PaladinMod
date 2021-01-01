@@ -76,6 +76,7 @@ namespace PaladinMod.Modules
 
             healController.radius = StaticValues.healRadius;
             healController.healAmount = StaticValues.healAmount;
+            healController.barrierAmount = StaticValues.healBarrier;
 
             PaladinMod.PaladinPlugin.Destroy(heal.transform.GetChild(0).gameObject);
             GameObject healFX = Assets.healEffectPrefab.InstantiateClone("HealEffect", false);

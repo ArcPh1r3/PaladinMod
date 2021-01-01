@@ -32,42 +32,42 @@ namespace PaladinMod.Modules
             #region Display Rules
 
             itemRules.Add(ItemDisplays.CreateGenericDisplayRule("CritGlasses", "DisplayGlasses", "Head", new Vector3(0, 0.0012f, 0.0015f), new Vector3(0, 0, 90), new Vector3(0.0025f, 0.002f, 0.0025f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Syringe", "DisplaySyringeCluster", "Chest", new Vector3(0, 0.012f, 0.006f), new Vector3(25, 315, 0), new Vector3(0.005f, 0.005f, 0.005f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("NearbyDamageBonus", "DisplayDiamond", "Sword", new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0.005f, 0.005f, 0.005f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Syringe", "DisplaySyringeCluster", "Chest", new Vector3(-0.001f, 0.003f, 0), new Vector3(25, 315, 0), new Vector3(0.002f, 0.002f, 0.002f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("NearbyDamageBonus", "DisplayDiamond", "Sword", new Vector3(0, -0.001f, 0), new Vector3(0, 0, 0), new Vector3(0.001f, 0.001f, 0.001f)));
             //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ArmorReductionOnHit", "DisplayWarhammer", "Hammer", new Vector3(0, 0.005f, 0), new Vector3(270, 90, 0), new Vector3(0.0175f, 0.0175f, 0.0175f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("SecondarySkillMagazine", "DisplayDoubleMag", "Sword", new Vector3(0, 0.016f, -0.001f), new Vector3(70, 0, 180), new Vector3(0.005f, 0.005f, 0.005f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("SecondarySkillMagazine", "DisplayDoubleMag", "Sword", new Vector3(0.0008f, 0.001f, -0.0008f), new Vector3(15, 325, 0), new Vector3(0.001f, 0.001f, 0.001f)));
             //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Bear", "DisplayBear", "Hammer", new Vector3(0, 0.012f, 0.012f), new Vector3(0, 0, 0), new Vector3(0.0175f, 0.0175f, 0.0175f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("SprintOutOfCombat", "DisplayWhip", "Pelvis", new Vector3(0, 0.004f, 0.009f), new Vector3(0, 90, 200), new Vector3(0.0175f, 0.0175f, 0.0175f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("PersonalShield", "DisplayShieldGenerator", "Chest", new Vector3(-0.006f, 0.005f, 0.005f), new Vector3(90, 100, 0), new Vector3(0.005f, 0.005f, 0.005f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("SprintOutOfCombat", "DisplayWhip", "Pelvis", new Vector3(0.003f, -0.0015f, 0), new Vector3(0, 180, 335), new Vector3(0.005f, 0.005f, 0.005f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("PersonalShield", "DisplayShieldGenerator", "Chest", new Vector3(-0.0015f, 0, 0.0015f), new Vector3(45, 270, 90), new Vector3(0.002f, 0.002f, 0.002f)));
             //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("RegenOnKill", "DisplaySteakCurved", "Hammer", new Vector3(0, 0.015f, 0.015f), new Vector3(335, 0, 180), new Vector3(0.0075f, 0.0075f, 0.0075f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("FireballsOnHit", "DisplayFireballsOnHit", "Sword", new Vector3(0, 0.02f, 0.01f), new Vector3(0, 0, 0), new Vector3(0.005f, 0.005f, 0.005f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Hoof", "DisplayHoof", "KneeR", new Vector3(-0.003f, 0.009f, 0), new Vector3(75, 90, 0), new Vector3(0.004f, 0.004f, 0.003f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("WardOnLevel", "DisplayWarbanner", "Pelvis", new Vector3(-0.01f, 0, 0), new Vector3(0, 90, 90), new Vector3(0.0175f, 0.0175f, 0.0175f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("BarrierOnOverHeal", "DisplayAegis", "ElbowL", new Vector3(-0.002f, -0.005f, 0), new Vector3(90, 90, 0), new Vector3(0.01f, 0.01f, 0.01f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("WarCryOnMultiKill", "DisplayPauldron", "ShoulderL", new Vector3(0, 0.008f, -0.008f), new Vector3(60, 180, 0), new Vector3(0.03f, 0.03f, 0.03f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("SprintArmor", "DisplayBuckler", "ElbowR", new Vector3(0.002f, 0.005f, 0), new Vector3(0, 90, 0), new Vector3(0.01f, 0.01f, 0.01f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("IceRing", "DisplayIceRing", "Sword", new Vector3(0, 0.002f, 0), new Vector3(270, 90, 0), new Vector3(0.02f, 0.0175f, 0.0175f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("FireRing", "DisplayFireRing", "Sword", new Vector3(0, 0.002f, 0), new Vector3(270, 90, 0), new Vector3(0.02f, 0.0175f, 0.0175f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Behemoth", "DisplayBehemoth", "Sword", new Vector3(-0.016f, 0.008f, -0.005f), new Vector3(0, 270, 90), new Vector3(0.005f, 0.005f, 0.005f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Missile", "DisplayMissileLauncher", "Chest", new Vector3(0, 0.03f, 0), new Vector3(0, 270, 0), new Vector3(0.005f, 0.005f, 0.005f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Dagger", "DisplayDagger", "Chest", new Vector3(0, 0, 0), new Vector3(0, 270, 0), new Vector3(0.02f, 0.02f, 0.02f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ChainLightning", "DisplayUkulele", "Sword", new Vector3(0, 0.01f, 0.004f), new Vector3(0, 0, 0), new Vector3(0.03f, 0.03f, 0.03f)));
-            //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("GhostOnKill", "DisplayMask", "Head", new Vector3(-0.0025f, 0.003f, 0), new Vector3(0, 270, 0), new Vector3(0.02f, 0.02f, 0.02f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("FireballsOnHit", "DisplayFireballsOnHit", "Sword", new Vector3(0.003f, 0.016f, 0), new Vector3(0, 90, 0), new Vector3(0.002f, 0.002f, 0.002f)));
+            //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Hoof", "DisplayHoof", "KneeR", new Vector3(-0.003f, 0.009f, 0), new Vector3(75, 90, 0), new Vector3(0.004f, 0.004f, 0.003f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("WardOnLevel", "DisplayWarbanner", "Pelvis", new Vector3(0, 0, -0.002f), new Vector3(0, 0, 90), new Vector3(0.005f, 0.005f, 0.005f)));
+            //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("BarrierOnOverHeal", "DisplayAegis", "ElbowL", new Vector3(-0.002f, -0.005f, 0), new Vector3(90, 90, 0), new Vector3(0.01f, 0.01f, 0.01f)));
+            //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("WarCryOnMultiKill", "DisplayPauldron", "ShoulderL", new Vector3(0, 0.008f, -0.008f), new Vector3(60, 180, 0), new Vector3(0.03f, 0.03f, 0.03f)));
+            //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("SprintArmor", "DisplayBuckler", "ElbowR", new Vector3(0.002f, 0.005f, 0), new Vector3(0, 90, 0), new Vector3(0.01f, 0.01f, 0.01f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("IceRing", "DisplayIceRing", "Sword", new Vector3(0, 0.0018f, 0), new Vector3(270, 90, 0), new Vector3(0.005f, 0.005f, 0.005f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("FireRing", "DisplayFireRing", "Sword", new Vector3(0, 0.002f, 0), new Vector3(270, 90, 0), new Vector3(0.005f, 0.005f, 0.005f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Behemoth", "DisplayBehemoth", "Sword", new Vector3(-0.002f, 0.008f, 0), new Vector3(0, 280, 0), new Vector3(0.001f, 0.001f, 0.001f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Missile", "DisplayMissileLauncher", "Chest", new Vector3(0.0025f, 0.0055f, 0), new Vector3(0, 0, 335), new Vector3(0.001f, 0.001f, 0.001f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Dagger", "DisplayDagger", "Chest", new Vector3(0, 0.002f, 0), new Vector3(270, 45, 0), new Vector3(0.01f, 0.01f, 0.01f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ChainLightning", "DisplayUkulele", "Sword", new Vector3(0.00035f, 0.014f, 0.00035f), new Vector3(0, 40, 180), new Vector3(0.01f, 0.01f, 0.01f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("GhostOnKill", "DisplayMask", "Head", new Vector3(0, 0.001f, 0.0012f), new Vector3(0, 0, 0), new Vector3(0.005f, 0.005f, 0.005f)));
             //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Mushroom", "DisplayMushroom", "ClavicleR", new Vector3(0, 0.01f, 0), new Vector3(45, 90, 0), new Vector3(0.0035f, 0.0035f, 0.0035f)));
             //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("AttackSpeedOnCrit", "DisplayWolfPelt", "Head", new Vector3(0, 0.008f, 0), new Vector3(0, 270, 0), new Vector3(0.015f, 0.015f, 0.015f)));
             //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("BleedOnHit", "DisplayTriTip", "MinigunBarrel", new Vector3(0, 0.03f, 0), new Vector3(270, 90, 0), new Vector3(0.015f, 0.015f, 0.015f)));
             //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("HealOnCrit", "DisplayScythe", "Chest", new Vector3(0.012f, 0.01f, 0), new Vector3(270, 90, 0), new Vector3(0.01f, 0.01f, 0.01f)));
             //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("HealWhileSafe", "DisplaySnail", "Chest", new Vector3(-0.005f, 0.002f, 0), new Vector3(270, 90, 0), new Vector3(0.0035f, 0.0035f, 0.0035f)));
-            //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Clover", "DisplayClover", "Head", new Vector3(0, 0.008f, -0.003f), new Vector3(270, 0, 0), new Vector3(0.02f, 0.02f, 0.02f)));
-            //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("GoldOnHit", "DisplayBoneCrown", "Head", new Vector3(0.001f, 0.005f, 0), new Vector3(0, 270, 0), new Vector3(0.035f, 0.035f, 0.035f)));
-            //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("JumpBoost", "DisplayWaxBird", "Head", new Vector3(0, -0.008f, 0), new Vector3(0, 270, 0), new Vector3(0.025f, 0.025f, 0.025f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ArmorPlate", "DisplayRepulsionArmorPlate", "LegL", new Vector3(-0.003f, 0.0075f, 0.001f), new Vector3(90, 90, 0), new Vector3(0.01f, 0.01f, 0.01f)));
-            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Feather", "DisplayFeather", "ElbowL", new Vector3(0, 0.008f, 0), new Vector3(0, 0, 270), new Vector3(0.0015f, 0.0015f, 0.0015f)));
-            //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Crowbar", "DisplayCrowbar", "Chest", new Vector3(0, 0.002f, 0), new Vector3(270, 90, 0), new Vector3(0.02f, 0.0175f, 0.0175f)));
-            //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ExecuteLowHealthElite", "DisplayGuillotine", "Hammer", new Vector3(0.0068f, 0.007f, 0.01f), new Vector3(0, 180, 90), new Vector3(0.02f, 0.02f, 0.0175f)));
-            //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("EquipmentMagazine", "DisplayBattery", "Chest", new Vector3(0.01f, 0.001f, 0), new Vector3(0, 0, 0), new Vector3(0.01f, 0.01f, 0.01f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Clover", "DisplayClover", "Head", new Vector3(-0.0008f, 0.003f, -0.0006f), new Vector3(270, 90, 0), new Vector3(0.005f, 0.005f, 0.005f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("GoldOnHit", "DisplayBoneCrown", "Head", new Vector3(0, 0.002f, 0.0002f), new Vector3(10, 0, 0), new Vector3(0.01f, 0.01f, 0.01f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("JumpBoost", "DisplayWaxBird", "Head", new Vector3(0, -0.0036f, 0), new Vector3(0, 0, 0), new Vector3(0.01f, 0.01f, 0.01f)));
+            //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ArmorPlate", "DisplayRepulsionArmorPlate", "LegL", new Vector3(-0.003f, 0.0075f, 0.001f), new Vector3(90, 90, 0), new Vector3(0.01f, 0.01f, 0.01f)));
+            //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Feather", "DisplayFeather", "ElbowL", new Vector3(0, 0.008f, 0), new Vector3(0, 0, 270), new Vector3(0.0015f, 0.0015f, 0.0015f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Crowbar", "DisplayCrowbar", "Sword", new Vector3(0.00035f, 0.012f, 0.00035f), new Vector3(0, 110, 0), new Vector3(0.005f, 0.005f, 0.005f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ExecuteLowHealthElite", "DisplayGuillotine", "Sword", new Vector3(0.00035f, 0.0095f, 0.00035f), new Vector3(90, 45, 0), new Vector3(0.005f, 0.005f, 0.005f)));
+            itemRules.Add(ItemDisplays.CreateGenericDisplayRule("EquipmentMagazine", "DisplayBattery", "Chest", new Vector3(0.001f, 0, 0.0025f), new Vector3(0, 270, 45), new Vector3(0.003f, 0.003f, 0.003f)));
             //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Infusion", "DisplayInfusion", "Pelvis", new Vector3(0, 0.002f, 0.008f), new Vector3(0, 0, 0), new Vector3(0.02f, 0.02f, 0.02f)));
-            //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Medkit", "DisplayMedkit", "Chest", new Vector3(0.01f, 0.0035f, 0), new Vector3(300, 90, 0), new Vector3(0.02f, 0.02f, 0.02f)));
+            //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Medkit", "DisplayMedkit", "Pelvis", new Vector3(0.01f, 0.0035f, 0), new Vector3(300, 90, 0), new Vector3(0.02f, 0.02f, 0.02f)));
             //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Bandolier", "DisplayBandolier", "Chest", new Vector3(0, 0.005f, 0), new Vector3(315, 0, 180), new Vector3(0.02f, 0.03f, 0.03f)));
             //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("BounceNearby", "DisplayHook", "Chest", new Vector3(0, 0.002f, 0), new Vector3(270, 90, 0), new Vector3(0.02f, 0.02f, 0.02f)));
             //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("StunChanceOnHit", "DisplayStunGrenade", "LegR", new Vector3(-0.005f, 0.01f, 0), new Vector3(90, 270, 0), new Vector3(0.03f, 0.03f, 0.03f)));
@@ -116,18 +116,18 @@ namespace PaladinMod.Modules
             //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("MonstersOnShrineUse", "DisplayMonstersOnShrineUse", "LegL", new Vector3(-0.005f, 0.005f, 0.002f), new Vector3(90, 0, 0), new Vector3(0.002f, 0.002f, 0.002f)));
             //itemRules.Add(ItemDisplays.CreateGenericDisplayRule("RandomDamageZone", "DisplayRandomDamageZone", "HandL", new Vector3(0.002f, 0.005f, 0.001f), new Vector3(0, 270, 270), new Vector3(0.002f, 0.002f, 0.002f)));
 
-            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("Jetpack", "DisplayBugWings", "Chest", new Vector3(0.008f, 0.008f, 0), new Vector3(0, 270, 0), new Vector3(0.005f, 0.005f, 0.005f)));
-            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("GoldGat", "DisplayGoldGat", "Chest", new Vector3(0.003f, 0.007f, 0), new Vector3(0, 0, 0), new Vector3(0.002f, 0.002f, 0.002f)));
-            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("BFG", "DisplayBFG", "Chest", new Vector3(0, 0.012f, -0.006f), new Vector3(15, 270, 25), new Vector3(0.01f, 0.01f, 0.01f)));
-            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("QuestVolatileBattery", "DisplayBatteryArray", "Chest", new Vector3(0.012f, 0.012f, 0), new Vector3(315, 90, 0), new Vector3(0.01f, 0.01f, 0.01f)));
-            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("CommandMissile", "DisplayMissileRack", "Chest", new Vector3(0.01f, 0.01f, 0), new Vector3(90, 90, 0), new Vector3(0.02f, 0.02f, 0.02f)));
+            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("Jetpack", "DisplayBugWings", "Chest", new Vector3(0, 0.001f, 0), new Vector3(0, 0, 0), new Vector3(0.002f, 0.002f, 0.002f)));
+            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("GoldGat", "DisplayGoldGat", "Chest", new Vector3(0.002f, 0.005f, -0.002f), new Vector3(0, 90, 290), new Vector3(0.002f, 0.002f, 0.002f)));
+            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("BFG", "DisplayBFG", "Chest", new Vector3(-0.001f, 0.002f, 0), new Vector3(330, 0, 45), new Vector3(0.004f, 0.004f, 0.004f)));
+            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("QuestVolatileBattery", "DisplayBatteryArray", "Chest", new Vector3(0, 0, -0.0028f), new Vector3(0, 0, 0), new Vector3(0.003f, 0.003f, 0.003f)));
+            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("CommandMissile", "DisplayMissileRack", "Chest", new Vector3(0, 0.002f, 0), new Vector3(90, 180, 0), new Vector3(0.006f, 0.006f, 0.006f)));
             //equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("Fruit", "DisplayFruit", "Chest", new Vector3(0, 0, 0), new Vector3(0, 150, 0), new Vector3(0.01f, 0.01f, 0.01f)));
-            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("AffixWhite", "DisplayEliteIceCrown", "Head", new Vector3(0, 0.012f, 0), new Vector3(270, 270, 0), new Vector3(0.001f, 0.001f, 0.001f)));
-            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("AffixPoison", "DisplayEliteUrchinCrown", "Head", new Vector3(0, 0.008f, 0), new Vector3(270, 0, 0), new Vector3(0.002f, 0.002f, 0.002f)));
-            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("AffixHaunted", "DisplayEliteStealthCrown", "Head", new Vector3(0, 0.008f, 0), new Vector3(270, 0, 0), new Vector3(0.002f, 0.002f, 0.002f)));
+            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("AffixWhite", "DisplayEliteIceCrown", "Head", new Vector3(0, 0.003f, 0), new Vector3(270, 0, 0), new Vector3(0.0003f, 0.0003f, 0.0003f)));
+            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("AffixPoison", "DisplayEliteUrchinCrown", "Head", new Vector3(0, 0.003f, 0), new Vector3(270, 0, 0), new Vector3(0.002f, 0.002f, 0.002f)));
+            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("AffixHaunted", "DisplayEliteStealthCrown", "Head", new Vector3(0, 0.002f, 0), new Vector3(270, 0, 0), new Vector3(0.0008f, 0.0008f, 0.0008f)));
             //equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("CritOnUse", "DisplayNeuralImplant", "Head", new Vector3(-0.008f, 0.006f, 0), new Vector3(0, 90, 0), new Vector3(0.01f, 0.01f, 0.01f)));
             //equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("DroneBackup", "DisplayRadio", "Pelvis", new Vector3(0, 0, 0.008f), new Vector3(0, 0, 180), new Vector3(0.01f, 0.01f, 0.01f)));
-            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("Lightning", capacitorPrefab, "ShoulderL", new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0.04f, 0.04f, 0.04f)));
+            //equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("Lightning", capacitorPrefab, "ShoulderL", new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0.04f, 0.04f, 0.04f)));
             //equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("BurnNearby", "DisplayPotion", "Pelvis", new Vector3(0, 0, 0.008f), new Vector3(0, 0, 180), new Vector3(0.002f, 0.002f, 0.002f)));
             //equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("CrippleWard", "DisplayEffigy", "Pelvis", new Vector3(0, 0.008f, 0.009f), new Vector3(0, 180, 180), new Vector3(0.02f, 0.02f, 0.02f)));
             //equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("GainArmor", "DisplayElephantFigure", "KneeR", new Vector3(0.004f, 0.012f, 0), new Vector3(90, 90, 0), new Vector3(0.02f, 0.02f, 0.02f)));
@@ -139,15 +139,15 @@ namespace PaladinMod.Modules
             //equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("Scanner", "DisplayScanner", "Pelvis", new Vector3(0, 0.005f, 0.008f), new Vector3(90, 270, 0), new Vector3(0.005f, 0.005f, 0.005f)));
             //equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("DeathProjectile", "DisplayDeathProjectile", "Pelvis", new Vector3(-0.0012f, 0.005f, 0), new Vector3(0, 270, 180), new Vector3(0.005f, 0.005f, 0.005f)));
             //equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("LifestealOnHit", "DisplayLifestealOnHit", "Head", new Vector3(0.002f, 0.015f, 0.0075f), new Vector3(45, 180, 0), new Vector3(0.005f, 0.005f, 0.005f)));
-            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("TeamWarCry", "DisplayTeamWarCry", "Pelvis", new Vector3(0.01f, 0.003f, 0), new Vector3(10, 90, 0), new Vector3(0.0035f, 0.0035f, 0.0035f)));
+            equipmentRules.Add(ItemDisplays.CreateGenericDisplayRule("TeamWarCry", "DisplayTeamWarCry", "Pelvis", new Vector3(0, 0, 0.003f), new Vector3(0, 0, 0), new Vector3(0.0015f, 0.0015f, 0.0015f)));
 
-            itemRules.Add(ItemDisplays.CreateFollowerDisplayRule("Icicle", "DisplayFrostRelic", new Vector3(0.035f, 0.03f, 0.04f), new Vector3(0, 0, 90), new Vector3(2, 2, 2)));
-            itemRules.Add(ItemDisplays.CreateFollowerDisplayRule("Talisman", "DisplayTalisman", new Vector3(-0.015f, 0.03f, 0.05f), new Vector3(0, 270, 0), new Vector3(1, 1, 1)));
-            itemRules.Add(ItemDisplays.CreateFollowerDisplayRule("FocusConvergence", "DisplayFocusedConvergence", new Vector3(0.035f, 0.01f, 0.03f), new Vector3(0, 0, 0), new Vector3(0.2f, 0.2f, 0.2f)));
+            itemRules.Add(ItemDisplays.CreateFollowerDisplayRule("Icicle", "DisplayFrostRelic", new Vector3(0.013f, 0.01f, -0.006f), new Vector3(90, 0, 0), new Vector3(2, 2, 2)));
+            itemRules.Add(ItemDisplays.CreateFollowerDisplayRule("Talisman", "DisplayTalisman", new Vector3(-0.013f, 0.01f, -0.006f), new Vector3(0, 0, 0), new Vector3(1, 1, 1)));
+            itemRules.Add(ItemDisplays.CreateFollowerDisplayRule("FocusConvergence", "DisplayFocusedConvergence", new Vector3(-0.01f, 0.005f, -0.01f), new Vector3(0, 0, 0), new Vector3(0.2f, 0.2f, 0.2f)));
 
-            equipmentRules.Add(ItemDisplays.CreateFollowerDisplayRule("Saw", "DisplaySawmerang", new Vector3(0.06f, 0.02f, 0), new Vector3(90, 0, 0), new Vector3(0.25f, 0.25f, 0.25f)));
-            equipmentRules.Add(ItemDisplays.CreateFollowerDisplayRule("Meteor", "DisplayMeteor", new Vector3(0.05f, 0.02f, 0), new Vector3(90, 0, 0), new Vector3(1, 1, 1)));
-            equipmentRules.Add(ItemDisplays.CreateFollowerDisplayRule("Blackhole", "DisplayGravCube", new Vector3(0.05f, 0.02f, 0), new Vector3(90, 0, 0), new Vector3(1, 1, 1)));
+            equipmentRules.Add(ItemDisplays.CreateFollowerDisplayRule("Saw", "DisplaySawmerang", new Vector3(0, 0.01f, -0.015f), new Vector3(90, 0, 0), new Vector3(0.25f, 0.25f, 0.25f)));
+            equipmentRules.Add(ItemDisplays.CreateFollowerDisplayRule("Meteor", "DisplayMeteor", new Vector3(0, 0.01f, -0.015f), new Vector3(90, 0, 0), new Vector3(1, 1, 1)));
+            equipmentRules.Add(ItemDisplays.CreateFollowerDisplayRule("Blackhole", "DisplayGravCube", new Vector3(0, 0.01f, -0.015f), new Vector3(90, 0, 0), new Vector3(1, 1, 1)));
 
             //weird rules here
             #region weirdshit
@@ -163,9 +163,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayAntler"),
                             childName = "Head",
-                            localPos = new Vector3(0, 0.005f, 0.002f),
-                            localAngles = new Vector3(0, 0, 0),
-                            localScale = new Vector3(0.015f, 0.015f, 0.015f),
+                            localPos = new Vector3(0, 0.002f, 0.0005f),
+                            localAngles = new Vector3(0, 90, 0),
+                            localScale = new Vector3(0.005f, 0.005f, 0.005f),
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -173,9 +173,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayAntler"),
                             childName = "Head",
-                            localPos = new Vector3(0, 0.005f, -0.002f),
-                            localAngles = new Vector3(0, 0, 0),
-                            localScale = new Vector3(0.015f, 0.015f, -0.015f),
+                            localPos = new Vector3(0, 0.002f, 0.0005f),
+                            localAngles = new Vector3(0, 90, 0),
+                            localScale = new Vector3(0.005f, 0.005f, -0.005f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -194,9 +194,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteHorn"),
                             childName = "Head",
-                            localPos = new Vector3(0, 0.0065f, 0.003f),
-                            localAngles = new Vector3(0, 270, 0),
-                            localScale = new Vector3(0.005f, 0.005f, 0.005f),
+                            localPos = new Vector3(0, 0.002f, 0),
+                            localAngles = new Vector3(0, 0, 0),
+                            localScale = new Vector3(0.001f, 0.001f, 0.001f),
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -204,9 +204,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteHorn"),
                             childName = "Head",
-                            localPos = new Vector3(0, 0.0065f, -0.003f),
-                            localAngles = new Vector3(0, 90, 0),
-                            localScale = new Vector3(0.005f, 0.005f, -0.005f),
+                            localPos = new Vector3(0, 0.002f, 0),
+                            localAngles = new Vector3(0, 0, 0),
+                            localScale = new Vector3(0.001f, 0.001f, -0.001f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -225,9 +225,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteRhinoHorn"),
                             childName = "Head",
-                            localPos = new Vector3(-0.003f, 0.006f, 0),
-                            localAngles = new Vector3(315, 270, 0),
-                            localScale = new Vector3(0.01f, 0.01f, 0.01f),
+                            localPos = new Vector3(0, 0.002f, 0.002f),
+                            localAngles = new Vector3(315, 0, 0),
+                            localScale = new Vector3(0.005f, 0.005f, 0.005f),
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -235,9 +235,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteRhinoHorn"),
                             childName = "Head",
-                            localPos = new Vector3(-0.002f, 0.008f, 0),
-                            localAngles = new Vector3(290, 270, 0),
-                            localScale = new Vector3(0.005f, 0.005f, 0.005f),
+                            localPos = new Vector3(0, 0.002f, 0),
+                            localAngles = new Vector3(290, 0, 0),
+                            localScale = new Vector3(0.0025f, 0.0025f, 0.0025f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -256,9 +256,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayShieldBug"),
                             childName = "Head",
-                            localPos = new Vector3(0, 0.002f, 0),
-                            localAngles = new Vector3(0, 90, 0),
-                            localScale = new Vector3(0.01f, 0.01f, 0.01f),
+                            localPos = new Vector3(0, 0.002f, 0.001f),
+                            localAngles = new Vector3(0, 0, 0),
+                            localScale = new Vector3(0.004f, 0.004f, 0.004f),
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -266,9 +266,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayShieldBug"),
                             childName = "Head",
-                            localPos = new Vector3(0, 0.002f, 0),
-                            localAngles = new Vector3(0, 270, 0),
-                            localScale = new Vector3(0.01f, 0.01f, -0.01f),
+                            localPos = new Vector3(0, 0.002f, 0.001f),
+                            localAngles = new Vector3(0, 0, 0),
+                            localScale = new Vector3(-0.004f, 0.004f, 0.004f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -288,9 +288,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayGravBoots"),
                             childName = "FootR",
-                            localPos = new Vector3(0, 0, 0),
-                            localAngles = new Vector3(90, 270, 0),
-                            localScale = new Vector3(0.0075f, 0.0075f, 0.0075f),
+                            localPos = new Vector3(0, 0, -0.0006f),
+                            localAngles = new Vector3(90, 0, 0),
+                            localScale = new Vector3(0.0025f, 0.0025f, 0.0025f),
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -298,9 +298,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayGravBoots"),
                             childName = "FootL",
-                            localPos = new Vector3(0, 0, 0),
-                            localAngles = new Vector3(90, 270, 0),
-                            localScale = new Vector3(0.0075f, 0.0075f, 0.0075f),
+                            localPos = new Vector3(0, 0, -0.0006f),
+                            localAngles = new Vector3(90, 0, 0),
+                            localScale = new Vector3(0.0025f, 0.0025f, 0.0025f),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -319,9 +319,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayDevilHorns"),
                             childName = "Head",
-                            localPos = new Vector3(0, 0.003f, 0),
-                            localAngles = new Vector3(0, 270, 20),
-                            localScale = new Vector3(0.025f, 0.025f, 0.025f),
+                            localPos = new Vector3(0, 0, 0),
+                            localAngles = new Vector3(0, 0, 20),
+                            localScale = new Vector3(0.01f, 0.01f, 0.01f),
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -329,9 +329,9 @@ namespace PaladinMod.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayDevilHorns"),
                             childName = "Head",
-                            localPos = new Vector3(0, 0.003f, 0),
-                            localAngles = new Vector3(0, 90, 20),
-                            localScale = new Vector3(0.025f, 0.025f, -0.025f),
+                            localPos = new Vector3(0, 0, 0),
+                            localAngles = new Vector3(0, 0, 340),
+                            localScale = new Vector3(-0.01f, 0.01f, 0.01f),
                             limbMask = LimbFlags.None
                         }
                     }

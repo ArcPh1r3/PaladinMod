@@ -14,7 +14,7 @@ namespace PaladinMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "1.0.1")]
+    [BepInPlugin(MODUID, "Paladin", "1.0.3")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -67,7 +67,7 @@ namespace PaladinMod
             Modules.Skins.RegisterSkins();
             Modules.Buffs.RegisterBuffs();
             Modules.Projectiles.RegisterProjectiles();
-            //Modules.ItemDisplays.RegisterDisplays();
+            Modules.ItemDisplays.RegisterDisplays();
             Modules.Effects.RegisterEffects();
             Modules.Unlockables.RegisterUnlockables();
             Modules.Tokens.AddTokens();
@@ -259,7 +259,7 @@ namespace PaladinMod
             bodyComponent.mainRootSpeed = 0;
             bodyComponent.baseMaxHealth = 160;
             bodyComponent.levelMaxHealth = 64;
-            bodyComponent.baseRegen = 2.5f;
+            bodyComponent.baseRegen = 1.5f;
             bodyComponent.levelRegen = 0.5f;
             bodyComponent.baseMaxShield = 0;
             bodyComponent.levelMaxShield = 0;
@@ -274,7 +274,7 @@ namespace PaladinMod
             bodyComponent.levelAttackSpeed = 0;
             bodyComponent.baseCrit = 1;
             bodyComponent.levelCrit = 0;
-            bodyComponent.baseArmor = 15;
+            bodyComponent.baseArmor = 10;
             bodyComponent.levelArmor = StaticValues.armorPerLevel;
             bodyComponent.baseJumpCount = 1;
             bodyComponent.sprintingSpeedMultiplier = 1.45f;
@@ -347,7 +347,7 @@ namespace PaladinMod
             characterModel.baseRendererInfos[0].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", StaticValues.maxSwordGlow, Color.white, 0);
             characterModel.baseRendererInfos[1].defaultMaterial = Modules.Skins.CreateMaterial("matPaladin", 10, Color.white, 0);
 
-            characterModel.SetFieldValue("mainSkinnedMeshRenderer", characterModel.baseRendererInfos[0].renderer.gameObject.GetComponent<SkinnedMeshRenderer>());
+            characterModel.SetFieldValue("mainSkinnedMeshRenderer", characterModel.baseRendererInfos[1].renderer.gameObject.GetComponent<SkinnedMeshRenderer>());
 
             TeamComponent teamComponent = null;
             if (characterPrefab.GetComponent<TeamComponent>() != null) teamComponent = characterPrefab.GetComponent<TeamComponent>();

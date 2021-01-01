@@ -31,7 +31,7 @@ namespace PaladinMod.Modules
 
 
             LanguageAPI.Add("PALADIN_PASSIVE_NAME", "Bulwark's Blessing");
-            LanguageAPI.Add("PALADIN_PASSIVE_DESCRIPTION", "Gain <style=cIsHealth>" + StaticValues.armorPerLevel + " armor</style> per level. While above <style=cIsHealth>80% health</style> or while having active <style=cIsHealth>barrier</style>, the Paladin is <style=cIsHealing>blessed</style>, empowering all sword skills.");
+            LanguageAPI.Add("PALADIN_PASSIVE_DESCRIPTION", "Gain <style=cIsHealing>" + StaticValues.armorPerLevel + " armor</style> per level. While above <style=cIsHealth>90% health</style> or while having active <style=cIsHealth>barrier</style>, the Paladin is <style=cIsHealing>blessed</style>, empowering all sword skills.");
 
             desc = "Slash forward for <style=cIsDamage>" + 100f * StaticValues.slashDamageCoefficient + "% damage</style>. Fires a <style=cIsUtility>beam of light</style> for <style=cIsDamage>" + 100f * StaticValues.beamDamageCoefficient + "% damage</style> if the Paladin is <style=cIsHealing>blessed</style>.";
 
@@ -58,7 +58,7 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_UTILITY_DASH_NAME", "Quickstep");
             LanguageAPI.Add("PALADIN_UTILITY_DASH_DESCRIPTION", desc);
 
-            desc = "Restore <style=cIsHealing>" + StaticValues.healAmount * 100f + "% max health</style> to all allies in an area.";
+            desc = "Restore <style=cIsHealing>" + StaticValues.healAmount * 100f + "% max health</style> and grant <style=cIsHealing>" + StaticValues.healBarrier * 100f + "% barrier</style>to all allies in an area.";
 
             LanguageAPI.Add("PALADIN_UTILITY_HEAL_NAME", "Heal");
             LanguageAPI.Add("PALADIN_UTILITY_HEAL_DESCRIPTION", desc);
@@ -74,7 +74,7 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_SPECIAL_TORPOR_DESCRIPTION", desc);
 
             LanguageAPI.Add("KEYWORD_SWORDBEAM", "<style=cKeywordName>Sword Beam</style><style=cSub>A piercing, short range beam of light that deals <style=cIsDamage>" + StaticValues.beamDamageCoefficient + "% damage</style>.");
-            LanguageAPI.Add("KEYWORD_TORPOR", "<style=cKeywordName>Torpor</style><style=cSub>Applies a <style=cIsHealth>" + StaticValues.torporSlowAmount + "%</style> attack and movement speed <style=cIsDamage>slow</style>. Drags enemies to the ground.");
+            LanguageAPI.Add("KEYWORD_TORPOR", "<style=cKeywordName>Torpor</style><style=cSub>Applies a <style=cIsHealth>" + 100 * StaticValues.torporSlowAmount + "%</style> attack and movement speed <style=cIsDamage>slow</style>. Drags enemies to the ground.");
 
 
             LanguageAPI.Add("PALADIN_UNLOCKABLE_ACHIEVEMENT_NAME", "A Paladin's Vow");

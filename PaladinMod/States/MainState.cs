@@ -63,7 +63,7 @@ namespace PaladinMod.States
 
             if (base.healthComponent && this.swordMat)
             {
-                if (base.healthComponent.health >= (0.9f * base.healthComponent.fullHealth) || base.healthComponent.barrier > 0)
+                if (base.healthComponent.combinedHealth >= (0.9f * base.healthComponent.fullCombinedHealth) || base.healthComponent.barrier > 0)
                 {
                     this.swordActive = true;
                 }

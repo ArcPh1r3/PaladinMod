@@ -26,13 +26,16 @@ namespace PaladinMod.Achievements
         {
             if (self)
             {
-                if (self.inventory)
+                if (self.teamIndex == TeamIndex.Player)
                 {
-                    if (self.GetBody() && self.GetBody().baseNameToken == "PALADIN_NAME")
+                    if (self.inventory)
                     {
-                        if (self.inventory.GetItemCount(ItemIndex.NovaOnHeal) > 0 || self.inventory.GetEquipmentIndex() == EquipmentIndex.AffixPoison)
+                        if (self.GetBody() && self.GetBody().baseNameToken == "PALADIN_NAME")
                         {
-                            if (base.meetsBodyRequirement) base.Grant();
+                            if (self.inventory.GetItemCount(ItemIndex.NovaOnHeal) > 0 || self.inventory.GetEquipmentIndex() == EquipmentIndex.AffixPoison)
+                            {
+                                if (base.meetsBodyRequirement) base.Grant();
+                            }
                         }
                     }
                 }
