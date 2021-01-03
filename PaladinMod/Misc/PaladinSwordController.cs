@@ -6,5 +6,7 @@ namespace PaladinMod.Misc
     {
         public bool swordActive;
         public bool attacking;
+
+        public int airSlamStacks;
     }
 }

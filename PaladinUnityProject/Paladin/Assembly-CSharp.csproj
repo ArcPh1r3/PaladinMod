@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\RagdollController.cs" />
     <Compile Include="Assets\Scripts\ResetFootsteps.cs" />
     <Compile Include="Assets\Scripts\SetRandomIntOnEnter.cs" />
+    <None Include="Assets\ErbGameArt\Random effects pack\Prefabs\ReadMe.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/rseid/Documents/GitHub/PaladinMod/PaladinUnityProject/Paladin/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

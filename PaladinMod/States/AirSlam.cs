@@ -67,6 +67,8 @@ namespace PaladinMod.States
                 hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == hitboxString);
             }
 
+            this.swordController.airSlamStacks = 1;
+
             base.PlayAnimation("FullBody, Override", "LeapSlam", "Whirlwind.playbackRate", this.duration * 1.5f);
             Util.PlaySound(Modules.Sounds.LeapSlam, base.gameObject);
             Util.PlaySound(Modules.Sounds.Cloth2, base.gameObject);

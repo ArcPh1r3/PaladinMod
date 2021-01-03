@@ -28,7 +28,7 @@ namespace PaladinMod.States
 
             if (this.childLocator)
             {
-                Transform transform = this.childLocator.FindChild("HandR");
+                Transform transform = this.childLocator.FindChild("HandL");
 
                 if (transform && this.chargeEffectPrefab)
                 {
@@ -47,7 +47,7 @@ namespace PaladinMod.States
                 }
             }
 
-            base.PlayAnimation("Gesture, Override", "AimSpell", "Spell.playbackRate", 0.4f);
+            base.PlayAnimation("Gesture, Override", "ChargeSpell", "Spell.playbackRate", 0.4f);
             this.loopSoundInstanceId = Util.PlayScaledSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
             this.defaultCrosshairPrefab = base.characterBody.crosshairPrefab;
 
@@ -59,10 +59,6 @@ namespace PaladinMod.States
             if (this.crosshairOverridePrefab)
             {
                 base.characterBody.crosshairPrefab = this.crosshairOverridePrefab;
-            }
-            else
-            {
-                base.characterBody.hideCrosshair = true;
             }
 
             if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)

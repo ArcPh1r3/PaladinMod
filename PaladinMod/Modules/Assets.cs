@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.Networking;
 using RoR2;
+using RoR2.Projectile;
 
 namespace PaladinMod.Modules
 {
@@ -25,6 +26,8 @@ namespace PaladinMod.Modules
 
         public static GameObject lightningSpear;
         public static GameObject swordBeam;
+        public static GameObject swordBeamGhost;
+        public static GameObject tornadoEffect;
 
         public static GameObject healEffectPrefab;
         public static GameObject healZoneEffectPrefab;
@@ -85,7 +88,7 @@ namespace PaladinMod.Modules
             icon1 = mainAssetBundle.LoadAsset<Sprite>("SlashIcon");
             icon2 = mainAssetBundle.LoadAsset<Sprite>("SpinSlashIcon");
             icon2b = mainAssetBundle.LoadAsset<Sprite>("LightningSpearIcon");
-            icon2c = mainAssetBundle.LoadAsset<Sprite>("LightningBoltIcon");
+            icon2c = mainAssetBundle.LoadAsset<Sprite>("LunarShardIcon");
             icon3 = mainAssetBundle.LoadAsset<Sprite>("DashIcon");
             icon3b = mainAssetBundle.LoadAsset<Sprite>("HealIcon");
             icon4 = mainAssetBundle.LoadAsset<Sprite>("HealZoneIcon");
@@ -93,6 +96,10 @@ namespace PaladinMod.Modules
 
             lightningSpear = mainAssetBundle.LoadAsset<GameObject>("LightningSpear");
             swordBeam = mainAssetBundle.LoadAsset<GameObject>("SwordBeam");
+            swordBeamGhost = mainAssetBundle.LoadAsset<GameObject>("SwordBeamGhost");
+            swordBeamGhost.AddComponent<ProjectileGhostController>();
+            tornadoEffect = mainAssetBundle.LoadAsset<GameObject>("PaladinTornadoEffect");
+            tornadoEffect.AddComponent<ProjectileGhostController>();
 
             healEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("HealEffect");
             healZoneEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("HealZoneEffect");

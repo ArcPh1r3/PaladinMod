@@ -55,9 +55,10 @@ namespace PaladinMod.Modules
 
             swordBeam = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/FMJ"), "PaladinSwordBeam", true);
             swordBeam.transform.localScale *= 2f;
-            GameObject beamGhost = Assets.swordBeam.InstantiateClone("SwordBeamGhost", false);
-            beamGhost.AddComponent<ProjectileGhostController>();
+            //GameObject beamGhost = Assets.swordBeam.InstantiateClone("SwordBeamGhost", false);
+            //beamGhost.AddComponent<ProjectileGhostController>();
 
+            //swordBeam.GetComponent<ProjectileController>().ghostPrefab = Assets.swordBeamGhost;
             swordBeam.GetComponent<ProjectileController>().ghostPrefab = Resources.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab;
             swordBeam.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
 

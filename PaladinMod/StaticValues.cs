@@ -34,14 +34,16 @@
         public const float healAmount = 0.1f;
         public const float healBarrier = 0.2f;
 
+        public const float healZoneChannelDuration = 1.5f;
         public const float healZoneRadius = 16f;
         public const float healZoneAmount = 0.01f;
         public const float healZoneArmor = 5f;
-        public const float healZoneBarrier = 0.01f;
-        public const float healZoneDuration = 10f;
+        public const float healZoneBarrier = 0.015f;
+        public const float healZoneDuration = 12f;
 
+        public const float torporChannelDuration = 2f;
         public const float torporRadius = 24f;
         public const float torporSlowAmount = 0.6f;
-        public const float torporDuration = 8f;
+        public const float torporDuration = 10;
     }
 }

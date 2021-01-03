@@ -63,6 +63,8 @@ namespace PaladinMod.States
             Util.PlaySound(Modules.Sounds.Lunge, base.gameObject);
             Util.PlaySound(Modules.Sounds.Cloth2, base.gameObject);
 
+            this.swordController.airSlamStacks++;
+
             float dmg = AirSlam.damageCoefficient;
 
             this.attack = new OverlapAttack();
@@ -70,7 +72,7 @@ namespace PaladinMod.States
             this.attack.attacker = base.gameObject;
             this.attack.inflictor = base.gameObject;
             this.attack.teamIndex = base.GetTeam();
-            this.attack.damage = dmg * this.damageStat;
+            this.attack.damage = ((0.5f + (0.5f * this.swordController.airSlamStacks)) * dmg) * this.damageStat;
             this.attack.procCoefficient = 1;
             this.attack.hitEffectPrefab = Modules.Effects.HitEffect(base.characterBody);
             this.attack.forceVector = -Vector3.up * 6000f;
@@ -83,8 +85,9 @@ namespace PaladinMod.States
         {
             base.OnExit();
 
-            base.PlayAnimation("FullBody, Override", "BufferEmpty");
+            this.swordController.airSlamStacks = 0;
 
+            base.PlayAnimation("FullBody, Override", "BufferEmpty");
             base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
         }
 
@@ -112,6 +115,8 @@ namespace PaladinMod.States
                 if (this.attack.Fire())
                 {
                     Util.PlaySound(Modules.Sounds.HitL, base.gameObject);
+
+                    this.swordController.airSlamStacks = 1;
 
                     if (!this.inHitPause)
                     {
@@ -171,6 +176,8 @@ namespace PaladinMod.States
                 {
                     this.FireShockwave();
                 }
+
+                this.swordController.airSlamStacks = 1;
 
                 Util.PlaySound(Modules.Sounds.GroundImpact, base.gameObject);
 

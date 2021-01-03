@@ -2,6 +2,8 @@
 {
     public static class Sounds
     {
+        public const string MenuSound = "PaladinMenuSound";
+
         public const string Swing = "PaladinSwing";
         public const string HitS = "PaladinHitS";
         public const string HitM = "PaladinHitM";
@@ -18,5 +20,15 @@
 
         public const string GroundImpact = "PaladinGroundImpact";
         public const string Explosion = "PaladinExplosion";
+
+        public const string ChannelHeal = "PaladinChannelHeal";
+        public const string CastHeal = "PaladinCastHeal";
+
+        public const string ChannelTorpor = "PaladinChannelTorpor";
+        public const string CastTorpor = "PaladinCastTorpor";
+
+        public const string ChannelMax = "PaladinChannelMax";
+
+        public const string ThrowLightningSpear = "PaladinSpearThrow";
     }
 }

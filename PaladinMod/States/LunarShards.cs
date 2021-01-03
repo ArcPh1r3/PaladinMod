@@ -10,7 +10,7 @@ namespace PaladinMod.States
         public static float baseDuration = 0.1f;
         public static float recoilAmplitude = 0.8f;
         public static float spreadBloomValue = 1f;
-        public static string muzzleString = "SwingCenter";
+        public static string muzzleString = "HandL";
         public static float maxSpread = 0f;
 
         private float duration;

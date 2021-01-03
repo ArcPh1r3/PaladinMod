@@ -13,12 +13,14 @@ namespace PaladinMod.States
         private GameObject swordActiveEffect;
         private PaladinSwordController swordController;
         private ChildLocator childLocator;
+        private Animator animator;
         private bool wasActive;
 
         public override void OnEnter()
         {
             base.OnEnter();
             this.childLocator = base.GetModelChildLocator();
+            this.animator = base.GetModelAnimator();
             this.swordActive = true;
             this.swordTransition = 0;
             this.swordController = base.characterBody.GetComponent<PaladinSwordController>();
@@ -89,6 +91,8 @@ namespace PaladinMod.States
                 if (this.swordActive && !this.wasActive) Util.PlaySound(Modules.Sounds.SwordActive, base.gameObject);
                 this.wasActive = this.swordActive;
             }
+
+            if (this.animator) this.animator.SetFloat("sprintValue", base.characterBody.isSprinting ? -1 : 0, 0.2f, Time.fixedDeltaTime);
         }
 
         public override void OnExit()

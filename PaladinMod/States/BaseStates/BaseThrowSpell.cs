@@ -34,6 +34,9 @@ namespace PaladinMod.States
                 EffectManager.SimpleMuzzleFlash(this.muzzleflashEffectPrefab, base.gameObject, "HandL", false);
             }
 
+            //too loud, fix that first
+            //Util.PlaySound(Modules.Sounds.ThrowLightningSpear, base.gameObject);
+
             this.Fire();
         }
 

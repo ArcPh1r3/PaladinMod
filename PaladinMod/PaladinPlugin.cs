@@ -14,7 +14,7 @@ namespace PaladinMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "1.0.3")]
+    [BepInPlugin(MODUID, "Paladin", "1.0.4")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -104,6 +104,7 @@ namespace PaladinMod
         private void Hook()
         {
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+            On.RoR2.CharacterModel.UpdateOverlays += CharacterModel_UpdateOverlays;
         }
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
@@ -121,6 +122,31 @@ namespace PaladinMod
                 {
                     Reflection.SetPropertyValue<float>(self, "moveSpeed", self.moveSpeed * (1 - StaticValues.torporSlowAmount));
                     Reflection.SetPropertyValue<float>(self, "attackSpeed", self.attackSpeed * (1 - StaticValues.torporSlowAmount));
+                }
+            }
+        }
+
+        private void CharacterModel_UpdateOverlays(On.RoR2.CharacterModel.orig_UpdateOverlays orig, CharacterModel self)
+        {
+            orig(self);
+
+            if (self)
+            {
+                if (self.body && self.body.HasBuff(Modules.Buffs.torporDebuff))
+                {
+                    var torporController = self.body.GetComponent<Misc.PaladinTorporTracker>();
+                    if (!torporController) torporController = self.body.gameObject.AddComponent<Misc.PaladinTorporTracker>();
+                    else return;
+
+                    torporController.Body = self.body;
+                    TemporaryOverlay overlay = self.gameObject.AddComponent<RoR2.TemporaryOverlay>();
+                    overlay.duration = float.PositiveInfinity;
+                    overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                    overlay.animateShaderAlpha = true;
+                    overlay.destroyComponentOnEnd = true;
+                    overlay.originalMaterial = Resources.Load<Material>("Materials/matDoppelganger");
+                    overlay.AddToCharacerModel(self);
+                    torporController.Overlay = overlay;
                 }
             }
         }
@@ -206,7 +232,7 @@ namespace PaladinMod
 
             characterDisplay = PrefabAPI.InstantiateClone(tempDisplay.GetComponent<ModelLocator>().modelBaseTransform.gameObject, "PaladinDisplay", true);
 
-            //characterDisplay.AddComponent<MenuSound>();
+            characterDisplay.AddComponent<Misc.MenuSound>();
         }
 
         private static void CreatePrefab()
@@ -850,16 +876,18 @@ namespace PaladinMod
 
         private void SpecialSetup()
         {
-            LoadoutAPI.AddSkill(typeof(States.AimHealZone));
-            LoadoutAPI.AddSkill(typeof(States.CastHealZone));
+            //LoadoutAPI.AddSkill(typeof(States.AimHealZone));
+            //LoadoutAPI.AddSkill(typeof(States.CastHealZone));
+            LoadoutAPI.AddSkill(typeof(States.Spell.ChannelHealZone));
+            LoadoutAPI.AddSkill(typeof(States.Spell.CastChanneledHealZone));
 
             SkillDef mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
-            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.AimHealZone));
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ChannelHealZone));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
-            mySkillDef.baseRechargeInterval = 24f;
+            mySkillDef.baseRechargeInterval = 18f;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
-            mySkillDef.canceledFromSprinting = false;
+            mySkillDef.canceledFromSprinting = true;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.isBullets = false;
@@ -891,16 +919,18 @@ namespace PaladinMod
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
 
-            LoadoutAPI.AddSkill(typeof(States.AimTorpor));
-            LoadoutAPI.AddSkill(typeof(States.CastTorpor));
+            //LoadoutAPI.AddSkill(typeof(States.AimTorpor));
+            //LoadoutAPI.AddSkill(typeof(States.CastTorpor));
+            LoadoutAPI.AddSkill(typeof(States.Spell.ChannelTorpor));
+            LoadoutAPI.AddSkill(typeof(States.Spell.CastChanneledTorpor));
 
             mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
-            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.AimTorpor));
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ChannelTorpor));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
-            mySkillDef.baseRechargeInterval = 24f;
+            mySkillDef.baseRechargeInterval = 18f;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
-            mySkillDef.canceledFromSprinting = false;
+            mySkillDef.canceledFromSprinting = true;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.isBullets = false;

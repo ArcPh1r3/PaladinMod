@@ -53,7 +53,7 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_SECONDARY_LUNARSHARD_NAME", "Lunar Shards");
             LanguageAPI.Add("PALADIN_SECONDARY_LUNARSHARD_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Dash</style> a short distance and gain <style=cIsHealing>" + StaticValues.dashBarrierAmount * 100f + "% barrier</style>. Successful hits from <style=cIsDamage>Divine Blade</style> reduce cooldown by 1s. Store up to 2 dashes.";
+            desc = "<style=cIsUtility>Dash</style> a short distance and gain <style=cIsHealing>" + StaticValues.dashBarrierAmount * 100f + "% barrier</style>. Successful hits from <style=cIsDamage>Divine Blade</style> <style=cIsUtility>lower cooldown</style> by <style=cIsDamage>1 second</style>. <style=cIsUtility>Store up to 2 dashes.<style=cIsHealing>";
 
             LanguageAPI.Add("PALADIN_UTILITY_DASH_NAME", "Quickstep");
             LanguageAPI.Add("PALADIN_UTILITY_DASH_DESCRIPTION", desc);
@@ -63,18 +63,18 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_UTILITY_HEAL_NAME", "Heal");
             LanguageAPI.Add("PALADIN_UTILITY_HEAL_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Bless</style> an area for " + StaticValues.healZoneDuration + " seconds, gradually <style=cIsHealing>restoring health</style> and granting <style=cIsHealing>barrier</style> to all allies inside.";
+            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.healZoneChannelDuration + "</style> seconds, then release to <style=cIsUtility>Bless</style> an area for <style=cIsDamage>" + StaticValues.healZoneDuration + " seconds</style>, gradually <style=cIsHealing>restoring health</style> and granting <style=cIsHealing>barrier</style> to all allies inside.";
 
             LanguageAPI.Add("PALADIN_SPECIAL_HEALZONE_NAME", "Sacred Sunlight");
             LanguageAPI.Add("PALADIN_SPECIAL_HEALZONE_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Silence</style> an area for 8 seconds, inflicting <style=cIsHealth>torpor</style> on all enemies in the vicinity.";
+            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.torporChannelDuration + "</style> seconds, then release to <style=cIsUtility>Silence</style> an area for <style=cIsDamage>8 seconds</style>, inflicting <style=cIsHealth>torpor</style> on all enemies in the vicinity.";
 
             LanguageAPI.Add("PALADIN_SPECIAL_TORPOR_NAME", "Vow of Silence");
             LanguageAPI.Add("PALADIN_SPECIAL_TORPOR_DESCRIPTION", desc);
 
             LanguageAPI.Add("KEYWORD_SWORDBEAM", "<style=cKeywordName>Sword Beam</style><style=cSub>A piercing, short range beam of light that deals <style=cIsDamage>" + StaticValues.beamDamageCoefficient + "% damage</style>.");
-            LanguageAPI.Add("KEYWORD_TORPOR", "<style=cKeywordName>Torpor</style><style=cSub>Applies a <style=cIsHealth>" + 100 * StaticValues.torporSlowAmount + "%</style> attack and movement speed <style=cIsDamage>slow</style>. Drags enemies to the ground.");
+            LanguageAPI.Add("KEYWORD_TORPOR", "<style=cKeywordName>Torpor</style><style=cSub>Applies a <style=cIsHealth>" + 100 * StaticValues.torporSlowAmount + "%</style> attack and movement speed <style=cIsDamage>slow</style>. <style=cIsHealth>Drags enemies to the ground.</style>");
 
 
             LanguageAPI.Add("PALADIN_UNLOCKABLE_ACHIEVEMENT_NAME", "A Paladin's Vow");
