@@ -11,7 +11,6 @@ namespace PaladinMod.States
         public static float recoilAmplitude = 0.8f;
         public static float spreadBloomValue = 1f;
         public static string muzzleString = "HandL";
-        public static float maxSpread = 0f;
 
         private float duration;
 
@@ -23,14 +22,6 @@ namespace PaladinMod.States
             if (base.isAuthority)
             {
                 Ray aimRay = base.GetAimRay();
-                Transform transform = base.FindModelChild(LunarShards.muzzleString);
-
-                if (transform)
-                {
-                    aimRay.origin = transform.position;
-                }
-
-                aimRay.direction = Util.ApplySpread(aimRay.direction, 0f, LunarShards.maxSpread, 0.5f, 0.5f, 0f, 0f);
 
                 FireProjectileInfo fireProjectileInfo = default(FireProjectileInfo);
                 fireProjectileInfo.position = aimRay.origin;

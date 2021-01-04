@@ -85,8 +85,6 @@ namespace PaladinMod.States
         {
             base.OnExit();
 
-            this.swordController.airSlamStacks = 0;
-
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
             base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
         }
@@ -96,7 +94,7 @@ namespace PaladinMod.States
             if (!this.hasFired)
             {
                 this.hasFired = true;
-                Util.PlayScaledSound(Modules.Sounds.Swing, base.gameObject, 0.5f);
+                this.swordController.PlaySwingSound();
 
                 if (base.isAuthority)
                 {
@@ -114,7 +112,7 @@ namespace PaladinMod.States
 
                 if (this.attack.Fire())
                 {
-                    Util.PlaySound(Modules.Sounds.HitL, base.gameObject);
+                    this.swordController.PlayHitSound(2);
 
                     this.swordController.airSlamStacks = 1;
 

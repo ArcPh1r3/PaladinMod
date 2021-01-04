@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 508, y: 498}
   m_MaxSize: {x: 14004, y: 14048}
   vertical: 0
-  controlID: 73
+  controlID: 137
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 74
+  controlID: 75
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 75
+  controlID: 76
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -247,7 +247,7 @@ MonoBehaviour:
   - {fileID: 18}
   - {fileID: 19}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 1
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -528,7 +528,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: c4fbffff
+      m_ExpandedIDs: c4fbffff70170000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -583,9 +583,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.6872659, y: 1.5500469, z: -0.3483405}
+    m_Target: {x: 1.8398993, y: 1.5745265, z: 0.6653271}
     speed: 2
-    m_Value: {x: 0.6872659, y: 1.5500469, z: -0.3483405}
+    m_Value: {x: 1.8398993, y: 1.5745265, z: 0.6653271}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -613,13 +613,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.22542371, y: -0.72795975, z: 0.2815666, w: 0.58307713}
+    m_Target: {x: -0.059040282, y: -0.8737026, z: 0.10956251, w: -0.47027022}
     speed: 2
-    m_Value: {x: 0.22542372, y: -0.7279598, z: 0.28156662, w: 0.5830772}
+    m_Value: {x: -0.059040282, y: -0.8737026, z: 0.10956251, w: -0.47027022}
   m_Size:
-    m_Target: 9.957198
+    m_Target: 3.7923992
     speed: 2
-    m_Value: 9.957198
+    m_Value: 3.7923992
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -707,14 +707,14 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 0.6817163
+    - e00: 0.7490918
       e01: 0
       e02: 0
-      e03: -79.72509
+      e03: -205.11172
       e10: 0
-      e11: 0.6817163
+      e11: 0.7490918
       e12: 0
-      e13: 37.80517
+      e13: 56.305428
       e20: 0
       e21: 0
       e22: 1
@@ -723,14 +723,14 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 0.6817163
+    - e00: 0.7490918
       e01: 0
       e02: 0
-      e03: -79.72509
+      e03: -152.11176
       e10: 0
-      e11: 0.6817163
+      e11: 0.7490918
       e12: 0
-      e13: 37.80517
+      e13: 11.3054285
       e20: 0
       e21: 0
       e22: 1
@@ -755,14 +755,14 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 0.6817163
+    - e00: 0.7490918
       e01: 0
       e02: 0
-      e03: 27.27494
+      e03: -322.11176
       e10: 0
-      e11: 0.6817163
+      e11: 0.7490918
       e12: 0
-      e13: 55.805138
+      e13: 85.30543
       e20: 0
       e21: 0
       e22: 1
@@ -919,7 +919,7 @@ MonoBehaviour:
   m_AnimatorController: {fileID: 9100000, guid: d3946a238648ed247a82be8473097386,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 1107117215636118238, guid: d3946a238648ed247a82be8473097386,
+  - m_Target: {fileID: 1107521216147125188, guid: d3946a238648ed247a82be8473097386,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -930,9 +930,9 @@ MonoBehaviour:
   m_MiniTool: 0
   m_LockTracker:
     m_IsLocked: 0
-  m_CurrentEditor: 0
+  m_CurrentEditor: 1
   m_LayerEditor:
-    m_SelectedLayerIndex: 1
+    m_SelectedLayerIndex: 0
 --- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -971,20 +971,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Paladin
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Paladin
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinUnityProject\Paladin
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 95}
-    m_SelectedIDs: b80a0000
-    m_LastClickedID: 2744
-    m_ExpandedIDs: 00000000160a0000b80a0000720b00009a0c0000fc0f000044100000e813000000ca9a3b
+    m_SelectedIDs: 2e0a0000
+    m_LastClickedID: 2606
+    m_ExpandedIDs: 000000002e0a0000ac0a0000d60a0000cc0c00006a100000b6100000ba14000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1012,7 +1012,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000160a0000b80a0000720b00009a0c0000fc0f000044100000e8130000
+    m_ExpandedIDs: 000000002e0a0000ac0a0000d60a0000cc0c00006a100000b6100000ba140000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1040,7 +1040,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300008c2b0000d42b00000c2d0000a42c0000b8820100b08a0100402900002a8d0100c47000009e4101008642010074700000105f0300f8d6030022d70300242c0000482a0000902d00002c3700000638000010370000623600000a3a00003e770000d61c000034150000e01400001259000006960000ba150000ae1b0000341e0000b00c0000d2130000ae20000006140000400d0000f0240000fa0d0000522000007e0e000004130400ea12040024100400401004002c100400341004003a1004001e10040002100400ea0f0400181004008e3b04004a3b04000a390000f417000032270000f8260000e610ffffc4130000043f0000d46a0000a2470000da3f000048460000f01d0000261600002a4c00006a5700000c2200004023000026470000b81c000034080600803505006a1a0000d4770000527f000052fd00009c760600806a000014850000be77000078280000dc120000083e00001a3e0000f4120000
+    m_ExpandedInstanceIDs: c62300008c2b0000d42b00000c2d0000a42c0000b8820100b08a0100402900002a8d0100c47000009e4101008642010074700000105f0300f8d6030022d70300242c0000482a0000902d00002c3700000638000010370000623600000a3a00003e770000d61c000034150000e01400001259000006960000ba150000ae1b0000341e0000b00c0000d2130000ae20000006140000400d0000f0240000fa0d0000522000007e0e000004130400ea12040024100400401004002c100400341004003a1004001e10040002100400ea0f0400181004008e3b04004a3b04000a390000f417000032270000f8260000e610ffffc4130000043f0000d46a0000a2470000da3f000048460000f01d0000261600002a4c00006a5700000c2200004023000026470000b81c000034080600803505006a1a0000d4770000527f000052fd00009c760600806a000014850000be77000078280000dc120000083e00001a3e0000f4120000cc2b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1121,7 +1121,7 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -1098
+  m_LastSelectedObjectID: 13086
 --- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52

@@ -166,6 +166,31 @@ namespace PaladinMod.Modules
 
             skinDefs.Add(poisonSkin);
             #endregion
+
+            #region DripSkin
+            CharacterModel.RendererInfo[] dripRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
+            defaultRenderers.CopyTo(dripRendererInfos, 0);
+
+            dripRendererInfos[0].defaultMaterial = CreateMaterial("matPaladinDrip", StaticValues.maxSwordGlow, Color.white, 0);
+            dripRendererInfos[1].defaultMaterial = CreateMaterial("matPaladinDrip", 3, Color.white, 0);
+
+            SkinDef dripSkin = CreateSkinDef("PALADINBODY_DRIP_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"), dripRendererInfos, mainRenderer, model, "PALADIN_dripUNLOCKABLE_REWARD_ID");
+            dripSkin.meshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.dripMesh,
+                    renderer = defaultRenderers[1].renderer
+                },
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.batMesh,
+                    renderer = defaultRenderers[0].renderer
+                }
+            };
+
+            skinDefs.Add(dripSkin);
+            #endregion
             /*
             #region HunterSkin
             CharacterModel.RendererInfo[] hunterRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];

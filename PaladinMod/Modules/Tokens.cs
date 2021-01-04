@@ -28,6 +28,7 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADINBODY_LUNAR_SKIN_NAME", "Lunar");
             LanguageAPI.Add("PALADINBODY_POISON_SKIN_NAME", "Corruption");
             LanguageAPI.Add("PALADINBODY_HUNTER_SKIN_NAME", "Hunter");
+            LanguageAPI.Add("PALADINBODY_DRIP_SKIN_NAME", "Drip");
 
 
             LanguageAPI.Add("PALADIN_PASSIVE_NAME", "Bulwark's Blessing");
@@ -88,6 +89,22 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_ACHIEVEMENT_NAME", "Her Disciple");
             LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, form a covenant with a goddess of corruption.");
             LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_UNLOCKABLE_NAME", "Her Discple");
+
+            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_NAME", "Her Disciple");
+            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, form a covenant with a goddess of corruption.");
+            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_UNLOCKABLE_NAME", "Her Discple");
+
+            LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_ACHIEVEMENT_NAME", "Her Disciple");
+            LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, hold 12 Lunar items at once.");
+            LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_UNLOCKABLE_NAME", "Her Discple");
+
+            LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_ACHIEVEMENT_NAME", "Her Disciple");
+            LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, form a covenant with a goddess of corruption.");
+            LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_UNLOCKABLE_NAME", "Her Discple");
+
+            LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_NAME", "Her Disciple");
+            LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, form a covenant with a goddess of corruption.");
+            LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_UNLOCKABLE_NAME", "Her Discple");
         }
     }
 }

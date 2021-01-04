@@ -104,7 +104,8 @@ namespace PaladinMod.States
             if (!this.hasFired)
             {
                 this.hasFired = true;
-                Util.PlaySound(Modules.Sounds.Swing, base.gameObject);
+                this.swordController.PlaySwingSound();
+
                 if (base.isAuthority)
                 {
                     base.AddRecoil(-1f * GroundSweep.attackRecoil, -2f * GroundSweep.attackRecoil, -0.5f * GroundSweep.attackRecoil, 0.5f * GroundSweep.attackRecoil);
@@ -121,7 +122,7 @@ namespace PaladinMod.States
 
                 if (this.attack.Fire())
                 {
-                    Util.PlaySound(Modules.Sounds.HitL, base.gameObject);
+                    this.swordController.PlayHitSound(2);
 
                     if (!this.inHitPause)
                     {

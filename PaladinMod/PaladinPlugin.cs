@@ -14,7 +14,7 @@ namespace PaladinMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "1.0.4")]
+    [BepInPlugin(MODUID, "Paladin", "1.0.6")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -313,8 +313,10 @@ namespace PaladinMod
             bodyComponent.isChampion = false;
             bodyComponent.currentVehicle = null;
             bodyComponent.skinIndex = 0U;
+            bodyComponent.preferredPodPrefab = null;
 
             LoadoutAPI.AddSkill(typeof(States.PaladinMain));
+            LoadoutAPI.AddSkill(typeof(States.SpawnState));
             LoadoutAPI.AddSkill(typeof(States.Emotes.BaseEmote));
             LoadoutAPI.AddSkill(typeof(States.Emotes.PraiseTheSun));
             LoadoutAPI.AddSkill(typeof(States.Emotes.PointDown));
@@ -322,6 +324,7 @@ namespace PaladinMod
 
             var stateMachine = bodyComponent.GetComponent<EntityStateMachine>();
             stateMachine.mainStateType = new SerializableEntityStateType(typeof(States.PaladinMain));
+            stateMachine.initialStateType = new SerializableEntityStateType(typeof(States.SpawnState));
 
             CharacterMotor characterMotor = characterPrefab.GetComponent<CharacterMotor>();
             characterMotor.walkSpeedPenaltyCoefficient = 1f;
@@ -751,15 +754,17 @@ namespace PaladinMod
             //LoadoutAPI.AddSkill(typeof(States.Dash.AirDash));
             //LoadoutAPI.AddSkill(typeof(States.Dash.GroundDash));
 
-            LoadoutAPI.AddSkill(typeof(States.Quickstep.BaseQuickstepState));
-            LoadoutAPI.AddSkill(typeof(States.Quickstep.QuickstepEntry));
-            LoadoutAPI.AddSkill(typeof(States.Quickstep.QuickstepForward));
-            LoadoutAPI.AddSkill(typeof(States.Quickstep.QuickstepBack));
-            LoadoutAPI.AddSkill(typeof(States.Quickstep.QuickstepLeft));
-            LoadoutAPI.AddSkill(typeof(States.Quickstep.QuickstepRight));
+            //LoadoutAPI.AddSkill(typeof(States.Quickstep.BaseQuickstepState));
+            //LoadoutAPI.AddSkill(typeof(States.Quickstep.QuickstepEntry));
+            //LoadoutAPI.AddSkill(typeof(States.Quickstep.QuickstepForward));
+            //LoadoutAPI.AddSkill(typeof(States.Quickstep.QuickstepBack));
+            //LoadoutAPI.AddSkill(typeof(States.Quickstep.QuickstepLeft));
+            //LoadoutAPI.AddSkill(typeof(States.Quickstep.QuickstepRight));
+
+            LoadoutAPI.AddSkill(typeof(States.Quickstep.QuickstepSimple));
 
             SkillDef mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
-            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.Quickstep.QuickstepEntry));
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.Quickstep.QuickstepSimple));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 2;
             mySkillDef.baseRechargeInterval = 10f;
@@ -768,7 +773,7 @@ namespace PaladinMod
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.PrioritySkill;
             mySkillDef.isBullets = false;
-            mySkillDef.isCombatSkill = true;
+            mySkillDef.isCombatSkill = false;
             mySkillDef.mustKeyPress = false;
             mySkillDef.noSprint = false;
             mySkillDef.forceSprintDuringState = true;

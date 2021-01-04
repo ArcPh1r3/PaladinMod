@@ -9,6 +9,11 @@
         public const string HitM = "PaladinHitM";
         public const string HitL = "PaladinHitL";
 
+        public const string SwingBlunt = "PaladinSwing";
+        public const string HitBluntS = "PaladinHitBluntS";
+        public const string HitBluntM = "PaladinHitBluntM";
+        public const string HitBluntL = "PaladinHitBluntL";
+
         public const string Cloth1 = "PaladinCloth1";
         public const string Cloth2 = "PaladinCloth2";
         public const string Cloth3 = "PaladinCloth3";

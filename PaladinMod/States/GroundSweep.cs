@@ -80,7 +80,7 @@ namespace PaladinMod.States
             if (!this.hasFired)
             {
                 this.hasFired = true;
-                Util.PlayScaledSound(Modules.Sounds.Swing, base.gameObject, 0.5f);
+                this.swordController.PlaySwingSound();
 
                 if (base.isAuthority)
                 {
@@ -92,8 +92,7 @@ namespace PaladinMod.States
 
                     if (this.attack.Fire())
                     {
-                        Util.PlaySound(Modules.Sounds.HitM, base.gameObject);
-                        //Util.PlaySound(MinerPlugin.Sounds.Hit, base.gameObject);
+                        this.swordController.PlayHitSound(1);
 
                         if (!this.inHitPause)
                         {

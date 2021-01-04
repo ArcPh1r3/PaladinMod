@@ -114,7 +114,7 @@ namespace PaladinMod.States
             if (!this.hasFired)
             {
                 this.hasFired = true;
-                Util.PlaySound(Modules.Sounds.Swing, base.gameObject);
+                this.swordController.PlaySwingSound();
 
                 if (base.isAuthority)
                 {
@@ -134,7 +134,7 @@ namespace PaladinMod.States
 
                     if (this.attack.Fire())
                     {
-                        Util.PlaySound(Modules.Sounds.HitS, base.gameObject);
+                        this.swordController.PlayHitSound(0);
 
                         if (!this.hasHopped)
                         {

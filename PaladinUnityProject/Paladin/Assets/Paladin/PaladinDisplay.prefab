@@ -19368,6 +19368,12 @@ MonoBehaviour:
     transform: {fileID: 2920654431304219199}
   - name: MenuEffect
     transform: {fileID: 659488418}
+  - name: SpawnEffect
+    transform: {fileID: 659488418}
+  - name: HealChannelEffect
+    transform: {fileID: 659488418}
+  - name: TorporChannelEffect
+    transform: {fileID: 659488418}
 --- !u!114 &8585128862906916716
 MonoBehaviour:
   m_ObjectHideFlags: 0

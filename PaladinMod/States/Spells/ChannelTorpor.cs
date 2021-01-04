@@ -15,12 +15,12 @@ namespace PaladinMod.States.Spell
 
             base.OnEnter();
 
-            /*ChildLocator childLocator = base.GetModelChildLocator();
+            ChildLocator childLocator = base.GetModelChildLocator();
             if (childLocator)
             {
-                this.chargeEffect = childLocator.FindChild("HealAimEffect").gameObject;
+                this.chargeEffect = childLocator.FindChild("TorporChannelEffect").gameObject;
                 this.chargeEffect.SetActive(true);
-            }*/
+            }
         }
 
         public override void FixedUpdate()
@@ -32,10 +32,10 @@ namespace PaladinMod.States.Spell
         {
             base.OnExit();
 
-            /*if (this.chargeEffect)
+            if (this.chargeEffect)
             {
                 this.chargeEffect.SetActive(false);
-            }*/
+            }
         }
 
         protected override BaseCastChanneledSpellState GetNextState()

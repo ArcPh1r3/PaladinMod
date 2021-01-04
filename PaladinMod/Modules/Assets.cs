@@ -45,13 +45,23 @@ namespace PaladinMod.Modules
         public static GameObject spinningSlashFXYellow;
         public static GameObject spinningSlashEmpoweredFXYellow;
 
+        public static GameObject swordSwingWhite;
+
+        public static GameObject swordSwingRed;
+        public static GameObject spinningSlashFXRed;
+        public static GameObject spinningSlashEmpoweredFXRed;
+
         public static GameObject hitFX;
         public static GameObject hitFXGreen;
         public static GameObject hitFXYellow;
+        public static GameObject hitFXBlunt;
+        public static GameObject hitFXRed;
 
         public static GameObject lightningHitFX;
         public static GameObject lightningImpactFX;
         public static GameObject altLightningImpactFX;
+
+        public static GameObject dashFX;
 
         public static GameObject torporVoidFX;
 
@@ -62,6 +72,16 @@ namespace PaladinMod.Modules
         public static Mesh poisonMesh;
         public static Mesh poisonSwordMesh;
         //public static Mesh hunterMesh;
+        public static Mesh dripMesh;
+        public static Mesh batMesh;
+
+        public static GameObject artoriasShield;
+        public static GameObject blackKnightShield;
+        public static GameObject giantShield;
+        public static GameObject goldenShield;
+        public static GameObject havelShield;
+        public static GameObject pursuerShield;
+        public static GameObject sunlightShield;
 
         public static void PopulateAssets()
         {
@@ -122,14 +142,25 @@ namespace PaladinMod.Modules
             spinningSlashFX = Assets.LoadEffect("SpinSlashEffect", "");
             spinningSlashEmpoweredFX = Assets.LoadEffect("EmpSpinSlashEffect", "");
             hitFX = Assets.LoadEffect("ImpactPaladinSwing", "");
+
             swordSwingGreen = Assets.LoadEffect("PaladinSwingGreen", "");
             spinningSlashFXGreen = Assets.LoadEffect("SpinSlashEffectGreen", "");
             spinningSlashEmpoweredFXGreen = Assets.LoadEffect("EmpSpinSlashEffectGreen", "");
             hitFXGreen = Assets.LoadEffect("ImpactPaladinSwingGreen", "");
+
             swordSwingYellow = Assets.LoadEffect("PaladinSwingYellow", "");
             spinningSlashFXYellow = Assets.LoadEffect("SpinSlashEffectYellow", "");
             spinningSlashEmpoweredFXYellow = Assets.LoadEffect("EmpSpinSlashEffectYellow", "");
             hitFXYellow = Assets.LoadEffect("ImpactPaladinSwingYellow", "");
+
+            swordSwingWhite = Assets.LoadEffect("PaladinSwingWhite", "");
+            hitFXBlunt = Assets.LoadEffect("ImpactPaladinSwingBlunt", "");
+
+            swordSwingRed = Assets.LoadEffect("PaladinSwingRed", "");
+            spinningSlashFXRed = Assets.LoadEffect("SpinSlashEffectRed", "");
+            spinningSlashEmpoweredFXRed = Assets.LoadEffect("EmpSpinSlashEffectRed", "");
+            hitFXRed = Assets.LoadEffect("ImpactPaladinSwingRed", "");
+
             lightningHitFX = Assets.LoadEffect("LightningHitFX", "");
             lightningImpactFX = Assets.LoadEffect("LightningImpact", "Play_mage_R_lightningBlast");
             torporVoidFX = Assets.LoadEffect("TorporVoidFX", "RoR2_nullifier_attack1_explode_02");
@@ -141,6 +172,8 @@ namespace PaladinMod.Modules
             poisonMesh = mainAssetBundle.LoadAsset<Mesh>("meshNkuhanaPaladin");
             poisonSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshNkuhanaSword");
             //hunterMesh = mainAssetBundle.LoadAsset<Mesh>("HunterMesh");
+            dripMesh = mainAssetBundle.LoadAsset<Mesh>("meshDripPaladin");
+            batMesh = mainAssetBundle.LoadAsset<Mesh>("meshBat");
 
             altLightningImpactFX = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact"), "PaladinLightningStrikeImpact", true);
 
@@ -157,6 +190,45 @@ namespace PaladinMod.Modules
             altLightningImpactFX.AddComponent<NetworkIdentity>();
 
             EffectAPI.AddEffect(altLightningImpactFX);
+
+            /*dashFX = PrefabAPI.InstantiateClone(EntityStates.BrotherMonster.BaseSlideState.slideEffectPrefab, "PaladinDashEffect", true);
+            dashFX.AddComponent<NetworkIdentity>();
+
+            EffectAPI.AddEffect(dashFX);*/
+
+            InitCustomItems();
+        }
+
+        private static void InitCustomItems()
+        {
+            artoriasShield = CreateItemDisplay("DisplayArtoriasShield", "matArtyShield");
+            blackKnightShield = CreateItemDisplay("DisplayBKShield", "matBlackKnightShield");
+            giantShield = CreateItemDisplay("DisplayGiantShield", "matGiantShield");
+            goldenShield = CreateItemDisplay("DisplayGoldenShield", "matGoldenShield");
+            havelShield = CreateItemDisplay("DisplayHavelShield", "matHavelShield");
+            pursuerShield = CreateItemDisplay("DisplayPursuerShield", "matPursuerShield");
+            sunlightShield = CreateItemDisplay("DisplaySunlightShield", "matSunlightShield");
+        }
+
+        private static GameObject CreateItemDisplay(string prefabName, string matName)
+        {
+            GameObject displayPrefab = mainAssetBundle.LoadAsset<GameObject>(prefabName);
+            Material itemMat = Skins.CreateMaterial(matName, 0, Color.black, 0);
+            MeshRenderer renderer = displayPrefab.GetComponent<MeshRenderer>();
+
+            renderer.material = itemMat;
+            displayPrefab.AddComponent<ItemDisplay>().rendererInfos = new CharacterModel.RendererInfo[]
+            {
+                new CharacterModel.RendererInfo
+                {
+                    defaultMaterial = itemMat,
+                    renderer = renderer,
+                    ignoreOverlays = false,
+                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On
+                }
+            };
+
+            return displayPrefab;
         }
 
         private static GameObject LoadEffect(string resourceName, string soundName)

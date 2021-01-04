@@ -21,8 +21,16 @@ namespace PaladinMod.States
             base.OnEnter();
             this.childLocator = base.GetModelChildLocator();
             this.animator = base.GetModelAnimator();
-            this.swordActive = true;
-            this.swordTransition = 0;
+            if (base.healthComponent.combinedHealth >= (0.9f * base.healthComponent.fullCombinedHealth) || base.healthComponent.barrier > 0)
+            {
+                this.swordActive = true;
+                this.swordTransition = StaticValues.maxSwordGlow;
+            }
+            else
+            {
+                this.swordActive = false;
+                this.swordTransition = 0;
+            }
             this.swordController = base.characterBody.GetComponent<PaladinSwordController>();
 
             if (base.characterBody)
@@ -92,7 +100,11 @@ namespace PaladinMod.States
                 this.wasActive = this.swordActive;
             }
 
-            if (this.animator) this.animator.SetFloat("sprintValue", base.characterBody.isSprinting ? -1 : 0, 0.2f, Time.fixedDeltaTime);
+            if (this.animator)
+            {
+                this.animator.SetFloat("sprintValue", base.characterBody.isSprinting ? -1 : 0, 0.2f, Time.fixedDeltaTime);
+                this.animator.SetBool("inCombat", (!base.characterBody.outOfCombat || !base.characterBody.outOfDanger));
+            }
         }
 
         public override void OnExit()

@@ -115,6 +115,8 @@ namespace PaladinMod.States.Emotes
             Vector3 smoothVector = new Vector3(-3 / 20, 1 / 16, -1);
             ctp.idealLocalCameraPos = new Vector3(0f, -1.4f, -6f) + smoothFactor * smoothVector;
 
+            this.animator.SetBool("inCombat", true);
+
             if (flag)
             {
                 this.outer.SetNextStateToMain();

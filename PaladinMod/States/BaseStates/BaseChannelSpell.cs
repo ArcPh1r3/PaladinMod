@@ -163,6 +163,7 @@ namespace PaladinMod.States
             {
                 if (base.inputBank.sprint.wasDown)
                 {
+                    this.RefundCooldown();
                     this.outer.SetNextStateToMain();
                     return;
                 }
@@ -183,6 +184,11 @@ namespace PaladinMod.States
                 }
                 this.outer.SetNextState(nextState);
             }
+        }
+
+        private void RefundCooldown()
+        {
+            base.skillLocator.special.RunRecharge(0.9f * 18f);
         }
 
         public override void Update()
