@@ -9,7 +9,7 @@ namespace PaladinMod.Misc
 
         public void FixedUpdate()
         {
-            if (!Body.HasBuff(Modules.Buffs.torporDebuff))
+            if (!Body.HasBuff(Modules.Buffs.torporDebuff) && !Body.HasBuff(Modules.Buffs.scepterTorporDebuff))
             {
                 UnityEngine.Object.Destroy(Overlay);
                 UnityEngine.Object.Destroy(this);

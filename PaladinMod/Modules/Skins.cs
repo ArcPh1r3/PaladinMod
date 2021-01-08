@@ -174,7 +174,7 @@ namespace PaladinMod.Modules
             dripRendererInfos[0].defaultMaterial = CreateMaterial("matPaladinDrip", StaticValues.maxSwordGlow, Color.white, 0);
             dripRendererInfos[1].defaultMaterial = CreateMaterial("matPaladinDrip", 3, Color.white, 0);
 
-            SkinDef dripSkin = CreateSkinDef("PALADINBODY_DRIP_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"), dripRendererInfos, mainRenderer, model, "PALADIN_dripUNLOCKABLE_REWARD_ID");
+            SkinDef dripSkin = CreateSkinDef("PALADINBODY_DRIP_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texDripAchievement"), dripRendererInfos, mainRenderer, model, "PALADIN_dripUNLOCKABLE_REWARD_ID");
             dripSkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
                 new SkinDef.MeshReplacement
@@ -191,54 +191,6 @@ namespace PaladinMod.Modules
 
             skinDefs.Add(dripSkin);
             #endregion
-            /*
-            #region HunterSkin
-            CharacterModel.RendererInfo[] hunterRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
-            defaultRenderers.CopyTo(hunterRendererInfos, 0);
-
-            bodyMat = CreateMaterial("matHunterBody", 10, Color.white, 0);
-            clothMat = CreateMaterial("matPaladinPoisonCloth", 0, Color.white, 0);
-            swordMat = CreateMaterial("matHunterSword", StaticValues.maxSwordGlow, Color.white, 0);
-
-            hunterRendererInfos[0].defaultMaterial = bodyMat;
-            for (int i = 1; i < 6; i++)
-            {
-                hunterRendererInfos[i].defaultMaterial = clothMat;
-            }
-            hunterRendererInfos[6].defaultMaterial = swordMat;
-            hunterRendererInfos[7].defaultMaterial = clothMat;
-
-            SkinDef hunterSkin = CreateSkinDef("PALADINBODY_HUNTER_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texPoisonAchievement"), hunterRendererInfos, mainRenderer, model, "");
-            hunterSkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
-            {
-                new SkinDef.GameObjectActivation
-                {
-                    gameObject = defaultRenderers[5].renderer.gameObject,
-                    shouldActivate = true
-                },
-                new SkinDef.GameObjectActivation
-                {
-                    gameObject = defaultRenderers[7].renderer.gameObject,
-                    shouldActivate = false
-                }
-            };
-            hunterSkin.meshReplacements = new SkinDef.MeshReplacement[]
-            {
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Assets.hunterMesh,
-                    renderer = defaultRenderers[0].renderer
-                },
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Assets.defaultSwordMesh,
-                    renderer = defaultRenderers[6].renderer
-                }
-            };
-
-            skinDefs.Add(hunterSkin);
-            #endregion
-    */
 
             skinController.skins = skinDefs.ToArray();
         }

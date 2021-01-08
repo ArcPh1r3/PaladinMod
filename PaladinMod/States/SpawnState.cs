@@ -1,20 +1,28 @@
 ﻿using RoR2;
 using UnityEngine.Networking;
 using EntityStates;
+using UnityEngine;
 
 namespace PaladinMod.States
 {
     public class SpawnState : BaseState
     {
-        public static float duration = 2.5f;
+        public static float duration = 3f;
+        private Animator animator;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            base.PlayAnimation("Body", "Spawn");
+            this.animator = base.GetModelAnimator();
+            base.PlayAnimation("Body", "Spawn", "Spawn.playbackRate", SpawnState.duration);
             Util.PlaySound(EntityStates.ParentMonster.SpawnState.spawnSoundString, base.gameObject);
 
             if (NetworkServer.active) base.characterBody.AddBuff(BuffIndex.HiddenInvincibility);
+
+            if (this.animator)
+            {
+                this.animator.SetFloat(AnimationParameters.aimWeight, 0f);
+            }
 
             base.GetModelChildLocator().FindChild("SpawnEffect").gameObject.SetActive(true);
         }
@@ -22,6 +30,7 @@ namespace PaladinMod.States
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            if (this.animator) this.animator.SetBool("inCombat", true);
 
             if (base.fixedAge >= SpawnState.duration && base.isAuthority)
             {
@@ -32,6 +41,11 @@ namespace PaladinMod.States
         public override void OnExit()
         {
             base.OnExit();
+
+            if (this.animator)
+            {
+                this.animator.SetFloat(AnimationParameters.aimWeight, 1f);
+            }
 
             if (NetworkServer.active) base.characterBody.RemoveBuff(BuffIndex.HiddenInvincibility);
         }

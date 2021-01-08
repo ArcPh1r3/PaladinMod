@@ -162,7 +162,7 @@ namespace PaladinMod.States
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
+            if (this.animator) this.animator.SetBool("inCombat", true);
             this.hitPauseTimer -= Time.fixedDeltaTime;
 
             if (this.hitPauseTimer <= 0f && this.inHitPause)

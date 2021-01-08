@@ -17,35 +17,35 @@ namespace PaladinMod.Misc
 
         private void Start()
         {
-            if (body)
+            if (this.body)
             {
-                if (body.characterMotor)
+                if (this.body.characterMotor)
                 {
-                    motor = body.characterMotor;
-                    mass = motor.mass;
+                    this.motor = this.body.characterMotor;
+                    this.mass = this.motor.mass;
                 }
-                else if (body.rigidbody)
+                else if (this.body.rigidbody)
                 {
-                    rb = body.rigidbody;
-                    mass = rb.mass;
+                    this.rb = this.body.rigidbody;
+                    this.mass = this.rb.mass;
                 }
 
-                stopwatch = 0;
-                lifetime = 5f;
+                this.stopwatch = 0;
+                this.lifetime = 5f;
 
-                if (mass < 50f) mass = 50f;
-                pushForce =  50f * mass;
+                if (this.mass < 50f) this.mass = 50f;
+                this.pushForce =  50f * this.mass;
 
-                info = new DamageInfo
+                this.info = new DamageInfo
                 {
                     attacker = null,
                     inflictor = null,
-                    damage = 0,
+                    damage = 1,
                     damageColorIndex = DamageColorIndex.Default,
                     damageType = DamageType.Generic,
                     crit = false,
                     dotIndex = DotController.DotIndex.None,
-                    force = Vector3.down * pushForce * Time.fixedDeltaTime,
+                    force = Vector3.down * this.pushForce * Time.fixedDeltaTime,
                     position = base.transform.position,
                     procChainMask = default(ProcChainMask),
                     procCoefficient = 0
@@ -57,7 +57,7 @@ namespace PaladinMod.Misc
         {
             if (NetworkServer.active)
             {
-                info = new DamageInfo
+                this.info = new DamageInfo
                 {
                     attacker = null,
                     inflictor = null,
@@ -66,19 +66,19 @@ namespace PaladinMod.Misc
                     damageType = DamageType.Generic,
                     crit = false,
                     dotIndex = DotController.DotIndex.None,
-                    force = Vector3.down * pushForce * Time.fixedDeltaTime,
+                    force = Vector3.down * this.pushForce * Time.fixedDeltaTime,
                     position = base.transform.position,
                     procChainMask = default(ProcChainMask),
                     procCoefficient = 0
                 };
 
-                if (motor)
+                if (this.motor)
                 {
-                    body.healthComponent.TakeDamageForce(info);
+                    this.body.healthComponent.TakeDamageForce(this.info);
                 }
-                else if (rb)
+                else if (this.rb)
                 {
-                    body.healthComponent.TakeDamageForce(info);
+                    this.body.healthComponent.TakeDamageForce(this.info);
                 }
             }
         }

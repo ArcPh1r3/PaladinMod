@@ -22,7 +22,7 @@ namespace PaladinMod.Misc
             this.isBlunt = false;
             if (body)
             {
-                if (body.skinIndex == 3) this.isBlunt = true;
+                if (body.skinIndex == 3 || body.skinIndex == 12) this.isBlunt = true;
             }
 
             this.InitItemDisplays();
@@ -52,8 +52,11 @@ namespace PaladinMod.Misc
                     case 9:
                         this.SetAegisDisplay(Modules.Assets.pursuerShield, "ElbowL", new Vector3(0, 0.0025f, 0), new Vector3(0, 0, 90), new Vector3(0.75f, 0.75f, 0.75f));
                         break;
-                    case 10:
+                    case 11:
                         this.SetAegisDisplay(Modules.Assets.giantShield, "ElbowL", new Vector3(-0.0005f, 0.003f, 0), new Vector3(30, 270, 270), new Vector3(0.0001f, 0.0001f, 0.0001f));
+                        break;
+                    case 12:
+                        this.SetAegisDisplay(Modules.Assets.havelShield, "ElbowL", new Vector3(-0.0005f, 0.003f, 0), new Vector3(30, 270, 270), new Vector3(0.0001f, 0.0001f, 0.0001f));
                         break;
                 }
             }

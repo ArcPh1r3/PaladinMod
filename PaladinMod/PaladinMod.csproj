@@ -22,7 +22,7 @@
       <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Aetherium.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\risky\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx">
       <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\BepInEx.dll</HintPath>

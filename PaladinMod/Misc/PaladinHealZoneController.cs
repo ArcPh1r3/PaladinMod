@@ -91,6 +91,25 @@ namespace PaladinMod.Misc
                     component.newDuration = this.expireDuration;
                 }
             }
+
+            if (NetworkServer.active)
+            {
+                float radiusSqr = this.calculatedRadius * this.calculatedRadius;
+
+                Vector3 position = base.transform.position;
+                if (this.invertTeamFilter)
+                {
+                    for (TeamIndex teamIndex = TeamIndex.Neutral; teamIndex < TeamIndex.Count; teamIndex += 1)
+                    {
+                        if (teamIndex != this.teamFilter.teamIndex)
+                        {
+                            this.BuffTeam(TeamComponent.GetTeamMembers(teamIndex), radiusSqr, position);
+                        }
+                    }
+                    return;
+                }
+                this.BuffTeam(TeamComponent.GetTeamMembers(this.teamFilter.teamIndex), radiusSqr, position);
+            }
         }
 
         private void Update()
@@ -168,7 +187,7 @@ namespace PaladinMod.Misc
                     CharacterBody charBody = teamComponent.body;
                     if (charBody)
                     {
-                        charBody.AddTimedBuff(this.buffType, this.buffDuration);
+                        if (this.buffType != BuffIndex.None) charBody.AddTimedBuff(this.buffType, this.buffDuration);
 
                         if (healAmount != 0 && charBody.healthComponent)
                         {

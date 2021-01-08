@@ -54,8 +54,11 @@ namespace PaladinMod.States.Emotes
             base.characterBody.hideCrosshair = false;
 
             if (base.GetAimAnimator()) base.GetAimAnimator().enabled = true;
-            this.animator.SetLayerWeight(animator.GetLayerIndex("AimPitch"), 1);
-            this.animator.SetLayerWeight(animator.GetLayerIndex("AimYaw"), 1);
+            if (this.animator)
+            {
+                this.animator.SetLayerWeight(animator.GetLayerIndex("AimPitch"), 1);
+                this.animator.SetLayerWeight(animator.GetLayerIndex("AimYaw"), 1);
+            }
 
             if (this.normalizeModel)
             {
@@ -115,7 +118,7 @@ namespace PaladinMod.States.Emotes
             Vector3 smoothVector = new Vector3(-3 / 20, 1 / 16, -1);
             ctp.idealLocalCameraPos = new Vector3(0f, -1.4f, -6f) + smoothFactor * smoothVector;
 
-            this.animator.SetBool("inCombat", true);
+            if (this.animator) this.animator.SetBool("inCombat", true);
 
             if (flag)
             {

@@ -2,6 +2,8 @@
 {
     public static class Sounds
     {
+        public const string Drip = "PaladinDrip";
+
         public const string MenuSound = "PaladinMenuSound";
 
         public const string Swing = "PaladinSwing";
@@ -9,7 +11,7 @@
         public const string HitM = "PaladinHitM";
         public const string HitL = "PaladinHitL";
 
-        public const string SwingBlunt = "PaladinSwing";
+        public const string SwingBlunt = "PaladinSwingBlunt";
         public const string HitBluntS = "PaladinHitBluntS";
         public const string HitBluntM = "PaladinHitBluntM";
         public const string HitBluntL = "PaladinHitBluntL";

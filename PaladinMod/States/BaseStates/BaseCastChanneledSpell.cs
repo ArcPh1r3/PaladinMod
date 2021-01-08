@@ -28,7 +28,7 @@ namespace PaladinMod.States
 
             if (this.muzzleflashEffectPrefab)
             {
-                EffectManager.SimpleMuzzleFlash(this.muzzleflashEffectPrefab, base.gameObject, "HandL", false);
+                EffectManager.SimpleMuzzleFlash(this.muzzleflashEffectPrefab, base.gameObject, "Sword", false);
             }
 
             if (NetworkServer.active) base.characterBody.AddBuff(BuffIndex.Slow50);
@@ -36,6 +36,14 @@ namespace PaladinMod.States
             if (base.cameraTargetParams)
             {
                 base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Aura;
+            }
+
+            ChildLocator childLocator = base.GetModelChildLocator();
+            if (childLocator)
+            {
+                GameObject castEffect = childLocator.FindChild("SpellCastEffect").gameObject;
+                castEffect.SetActive(false);
+                castEffect.SetActive(true);
             }
 
             Util.PlaySound(this.castSoundString, base.gameObject);

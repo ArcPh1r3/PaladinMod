@@ -59,9 +59,9 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_UTILITY_DASH_NAME", "Quickstep");
             LanguageAPI.Add("PALADIN_UTILITY_DASH_DESCRIPTION", desc);
 
-            desc = "Restore <style=cIsHealing>" + StaticValues.healAmount * 100f + "% max health</style> and grant <style=cIsHealing>" + StaticValues.healBarrier * 100f + "% barrier</style>to all allies in an area.";
+            desc = "Restore <style=cIsHealing>" + StaticValues.healAmount * 100f + "% max health</style> and grant <style=cIsHealing>" + StaticValues.healBarrier * 100f + "% barrier</style> to all allies in an area.";
 
-            LanguageAPI.Add("PALADIN_UTILITY_HEAL_NAME", "Heal");
+            LanguageAPI.Add("PALADIN_UTILITY_HEAL_NAME", "Replenish");
             LanguageAPI.Add("PALADIN_UTILITY_HEAL_DESCRIPTION", desc);
 
             desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.healZoneChannelDuration + "</style> seconds, then release to <style=cIsUtility>Bless</style> an area for <style=cIsDamage>" + StaticValues.healZoneDuration + " seconds</style>, gradually <style=cIsHealing>restoring health</style> and granting <style=cIsHealing>barrier</style> to all allies inside.";
@@ -69,12 +69,32 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_SPECIAL_HEALZONE_NAME", "Sacred Sunlight");
             LanguageAPI.Add("PALADIN_SPECIAL_HEALZONE_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.torporChannelDuration + "</style> seconds, then release to <style=cIsUtility>Silence</style> an area for <style=cIsDamage>8 seconds</style>, inflicting <style=cIsHealth>torpor</style> on all enemies in the vicinity.";
+            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.scepterHealZoneChannelDuration + "</style> seconds, then release to <style=cIsUtility>Bless</style> an area for <style=cIsDamage>" + StaticValues.scepterHealZoneDuration + " seconds</style>, gradually <style=cIsHealing>restoring health</style> and granting <style=cIsHealing>barrier</style> to all allies inside.";
+
+            LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERHEALZONE_NAME", "Hallowed Sunlight");
+            LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERHEALZONE_DESCRIPTION", desc);
+
+            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.torporChannelDuration + "</style> seconds, then release to <style=cIsUtility>Silence</style> an area for <style=cIsDamage>" + StaticValues.torporDuration + " seconds</style>, inflicting <style=cIsHealth>torpor</style> on all enemies in the vicinity.";
 
             LanguageAPI.Add("PALADIN_SPECIAL_TORPOR_NAME", "Vow of Silence");
             LanguageAPI.Add("PALADIN_SPECIAL_TORPOR_DESCRIPTION", desc);
 
-            LanguageAPI.Add("KEYWORD_SWORDBEAM", "<style=cKeywordName>Sword Beam</style><style=cSub>A piercing, short range beam of light that deals <style=cIsDamage>" + StaticValues.beamDamageCoefficient + "% damage</style>.");
+            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.scepterTorporChannelDuration + "</style> seconds, then release to <style=cIsUtility>Silence</style> an area for <style=cIsDamage>" + StaticValues.scepterTorporDuration + " seconds</style>, inflicting <style=cIsHealth>torpor</style> on all enemies in the vicinity and <style=cIsUtility>destroying projectiles</style>.";
+
+            LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERTORPOR_NAME", "Oath of Silence");
+            LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERTORPOR_DESCRIPTION", desc);
+
+            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.warcryChannelDuration + "</style> seconds, then release to <style=cIsUtility>Empower</style> an area for <style=cIsDamage>" + StaticValues.warcryDuration + " seconds</style>, increasing <style=cIsDamage>damage</style> and <style=cIsHealth>armor</style> for all allies inside.";
+
+            LanguageAPI.Add("PALADIN_SPECIAL_WARCRY_NAME", "Sacred Oath");
+            LanguageAPI.Add("PALADIN_SPECIAL_WARCRY_DESCRIPTION", desc);
+
+            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.scepterWarcryChannelDuration + "</style> seconds, then release to <style=cIsUtility>Empower</style> an area for <style=cIsDamage>" + StaticValues.scepterWarcryDuration + " seconds</style>, increasing <style=cIsDamage>damage</style> and <style=cIsHealth>armor</style> for all allies inside.";
+
+            LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERWARCRY_NAME", "Sacred Oath (Scepter)");
+            LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERWARCRY_DESCRIPTION", desc);
+
+            LanguageAPI.Add("KEYWORD_SWORDBEAM", "<style=cKeywordName>Sword Beam</style><style=cSub>A piercing, short range beam of light that deals <style=cIsDamage>" + 100f * StaticValues.beamDamageCoefficient + "% damage</style>.");
             LanguageAPI.Add("KEYWORD_TORPOR", "<style=cKeywordName>Torpor</style><style=cSub>Applies a <style=cIsHealth>" + 100 * StaticValues.torporSlowAmount + "%</style> attack and movement speed <style=cIsDamage>slow</style>. <style=cIsHealth>Drags enemies to the ground.</style>");
 
 
@@ -90,21 +110,21 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, form a covenant with a goddess of corruption.");
             LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_UNLOCKABLE_NAME", "Her Discple");
 
-            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_NAME", "Her Disciple");
-            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, form a covenant with a goddess of corruption.");
-            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_UNLOCKABLE_NAME", "Her Discple");
+            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_NAME", "Jolly Cooperation");
+            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, strike an enemy with a Royal Capacitor.");
+            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_UNLOCKABLE_NAME", "Jolly Cooperation");
 
-            LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_ACHIEVEMENT_NAME", "Her Disciple");
-            LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, hold 12 Lunar items at once.");
-            LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_UNLOCKABLE_NAME", "Her Discple");
+            LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_ACHIEVEMENT_NAME", "Herald of the Lost King");
+            LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, hold 8 Lunar items at once.");
+            LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_UNLOCKABLE_NAME", "Herald of the Lost King");
 
-            LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_ACHIEVEMENT_NAME", "Her Disciple");
-            LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, form a covenant with a goddess of corruption.");
-            LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_UNLOCKABLE_NAME", "Her Discple");
+            LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_ACHIEVEMENT_NAME", "Warm Embrace");
+            LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, heal an ally with a Gnarled Woodsprite.");
+            LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_UNLOCKABLE_NAME", "Warm Embrace");
 
-            LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_NAME", "Her Disciple");
-            LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, form a covenant with a goddess of corruption.");
-            LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_UNLOCKABLE_NAME", "Her Discple");
+            LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_NAME", "Suppression");
+            LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, stack 4 debuffs on one enemy.");
+            LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_UNLOCKABLE_NAME", "Suppression");
         }
     }
 }

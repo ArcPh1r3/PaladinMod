@@ -7,13 +7,12 @@ namespace PaladinMod.States.Quickstep
     public class QuickstepSimple : BaseState
     {
         private Vector3 slipVector = Vector3.zero;
-        public float duration = 0.3f;
-        public float speedCoefficient = 6f;
+        public float duration = 0.25f;
+        public float speedCoefficient = 5.5f;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            base.characterBody.isSprinting = true;
             this.slipVector = ((base.inputBank.moveVector == Vector3.zero) ? base.characterDirection.forward : base.inputBank.moveVector).normalized;
 
             base.PlayCrossfade("FullBody, Override", "DashForward", 0.05f);

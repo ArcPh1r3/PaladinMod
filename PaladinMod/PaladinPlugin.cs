@@ -9,12 +9,13 @@ using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.Networking;
 using KinematicCharacterController;
+using System.Runtime.CompilerServices;
 
 namespace PaladinMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "1.0.6")]
+    [BepInPlugin(MODUID, "Paladin", "1.0.10")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -48,6 +49,10 @@ namespace PaladinMod
 
         public SkillLocator skillLocator;
 
+        public static SkillDef scepterHealDef;
+        public static SkillDef scepterTorporDef;
+        public static SkillDef scepterWarcryDef;
+
         public PaladinPlugin()
         {
             awake += PaladinPlugin_Load;
@@ -73,6 +78,13 @@ namespace PaladinMod
             Modules.Tokens.AddTokens();
 
             CreateDoppelganger();
+
+            //scepter stuff
+            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.ThinkInvisible.ClassicItems"))
+            {
+                ScepterSkillSetup();
+                ScepterSetup();
+            }
 
             Hook();
         }
@@ -101,6 +113,14 @@ namespace PaladinMod
             start();
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void ScepterSetup()
+        {
+            ThinkInvisible.ClassicItems.Scepter_V2.instance.RegisterScepterSkill(scepterHealDef, "RobPaladinBody", SkillSlot.Special, 0);
+            ThinkInvisible.ClassicItems.Scepter_V2.instance.RegisterScepterSkill(scepterTorporDef, "RobPaladinBody", SkillSlot.Special, 1);
+            ThinkInvisible.ClassicItems.Scepter_V2.instance.RegisterScepterSkill(scepterWarcryDef, "RobPaladinBody", SkillSlot.Special, 2);
+        }
+
         private void Hook()
         {
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
@@ -113,15 +133,30 @@ namespace PaladinMod
 
             if (self)
             {
-                if (self.HasBuff(Modules.Buffs.healZoneArmorBuff))
+                if (self.HasBuff(Modules.Buffs.warcryBuff))
                 {
-                    Reflection.SetPropertyValue<float>(self, "armor", self.armor + StaticValues.healZoneArmor);
+                    float damageBuff = StaticValues.warcryDamageMultiplier * self.damage;
+                    self.damage += damageBuff;
+                    self.armor += StaticValues.warcryArmorBuff;
+                }
+
+                if (self.HasBuff(Modules.Buffs.scepterWarcryBuff))
+                {
+                    float damageBuff = StaticValues.scepterWarcryDamageMultiplier * self.damage;
+                    self.damage += damageBuff;
+                    self.armor += StaticValues.scepterWarcryArmorBuff;
                 }
 
                 if (self.HasBuff(Modules.Buffs.torporDebuff))
                 {
-                    Reflection.SetPropertyValue<float>(self, "moveSpeed", self.moveSpeed * (1 - StaticValues.torporSlowAmount));
-                    Reflection.SetPropertyValue<float>(self, "attackSpeed", self.attackSpeed * (1 - StaticValues.torporSlowAmount));
+                    self.moveSpeed *= (1 - StaticValues.torporSlowAmount);
+                    self.attackSpeed *= (1 - StaticValues.torporSlowAmount);
+                }
+
+                if (self.HasBuff(Modules.Buffs.scepterTorporDebuff))
+                {
+                    self.moveSpeed *= (1 - StaticValues.scepterTorporSlowAmount);
+                    self.attackSpeed *= (1 - StaticValues.scepterTorporSlowAmount);
                 }
             }
         }
@@ -321,6 +356,7 @@ namespace PaladinMod
             LoadoutAPI.AddSkill(typeof(States.Emotes.PraiseTheSun));
             LoadoutAPI.AddSkill(typeof(States.Emotes.PointDown));
             LoadoutAPI.AddSkill(typeof(States.Emotes.Rest));
+            LoadoutAPI.AddSkill(typeof(States.Emotes.Drip));
 
             var stateMachine = bodyComponent.GetComponent<EntityStateMachine>();
             stateMachine.mainStateType = new SerializableEntityStateType(typeof(States.PaladinMain));
@@ -705,12 +741,11 @@ namespace PaladinMod
             skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
             {
                 skillDef = mySkillDef,
-                unlockableName = "",
+                unlockableName = "",//PALADIN_LIGHTNINGSPEARUNLOCKABLE_REWARD_ID
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
 
             LoadoutAPI.AddSkill(typeof(States.LunarShards));
-            LoadoutAPI.AddSkill(typeof(States.ThrowLightningSpear));
 
             mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
             mySkillDef.activationState = new SerializableEntityStateType(typeof(States.LunarShards));
@@ -743,7 +778,7 @@ namespace PaladinMod
             skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
             {
                 skillDef = mySkillDef,
-                unlockableName = "",
+                unlockableName = "PALADIN_LUNARSHARDUNLOCKABLE_REWARD_ID",
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
         }
@@ -874,7 +909,7 @@ namespace PaladinMod
             skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
             {
                 skillDef = mySkillDef,
-                unlockableName = "",
+                unlockableName = "PALADIN_HEALUNLOCKABLE_REWARD_ID",
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
         }
@@ -960,9 +995,131 @@ namespace PaladinMod
             skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
             {
                 skillDef = mySkillDef,
+                unlockableName = "PALADIN_TORPORUNLOCKABLE_REWARD_ID",
+                viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+            };
+
+            LoadoutAPI.AddSkill(typeof(States.Spell.ChannelWarcry));
+            LoadoutAPI.AddSkill(typeof(States.Spell.CastChanneledWarcry));
+
+            mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ChannelWarcry));
+            mySkillDef.activationStateMachineName = "Weapon";
+            mySkillDef.baseMaxStock = 1;
+            mySkillDef.baseRechargeInterval = 18f;
+            mySkillDef.beginSkillCooldownOnSkillEnd = true;
+            mySkillDef.canceledFromSprinting = true;
+            mySkillDef.fullRestockOnAssign = true;
+            mySkillDef.interruptPriority = InterruptPriority.Skill;
+            mySkillDef.isBullets = false;
+            mySkillDef.isCombatSkill = true;
+            mySkillDef.mustKeyPress = false;
+            mySkillDef.noSprint = true;
+            mySkillDef.rechargeStock = 1;
+            mySkillDef.requiredStock = 1;
+            mySkillDef.shootDelay = 0.5f;
+            mySkillDef.stockToConsume = 1;
+            mySkillDef.icon = Modules.Assets.icon4c;
+            mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_WARCRY_DESCRIPTION";
+            mySkillDef.skillName = "PALADIN_SPECIAL_WARCRY_NAME";
+            mySkillDef.skillNameToken = "PALADIN_SPECIAL_WARCRY_NAME";
+
+            LoadoutAPI.AddSkillDef(mySkillDef);
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = mySkillDef,
                 unlockableName = "",
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
+        }
+
+        private void ScepterSkillSetup()
+        {
+            LoadoutAPI.AddSkill(typeof(States.Spell.ScepterChannelHealZone));
+            LoadoutAPI.AddSkill(typeof(States.Spell.ScepterCastHealZone));
+
+            scepterHealDef = ScriptableObject.CreateInstance<SkillDef>();
+            scepterHealDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ScepterChannelHealZone));
+            scepterHealDef.activationStateMachineName = "Weapon";
+            scepterHealDef.baseMaxStock = 1;
+            scepterHealDef.baseRechargeInterval = 18f;
+            scepterHealDef.beginSkillCooldownOnSkillEnd = true;
+            scepterHealDef.canceledFromSprinting = true;
+            scepterHealDef.fullRestockOnAssign = true;
+            scepterHealDef.interruptPriority = InterruptPriority.Skill;
+            scepterHealDef.isBullets = false;
+            scepterHealDef.isCombatSkill = true;
+            scepterHealDef.mustKeyPress = false;
+            scepterHealDef.noSprint = true;
+            scepterHealDef.rechargeStock = 1;
+            scepterHealDef.requiredStock = 1;
+            scepterHealDef.shootDelay = 0.5f;
+            scepterHealDef.stockToConsume = 1;
+            scepterHealDef.icon = Modules.Assets.icon4S;
+            scepterHealDef.skillDescriptionToken = "PALADIN_SPECIAL_SCEPTERHEALZONE_DESCRIPTION";
+            scepterHealDef.skillName = "PALADIN_SPECIAL_SCEPTERHEALZONE_NAME";
+            scepterHealDef.skillNameToken = "PALADIN_SPECIAL_SCEPTERHEALZONE_NAME";
+
+            LoadoutAPI.AddSkillDef(scepterHealDef);
+
+            LoadoutAPI.AddSkill(typeof(States.Spell.ScepterChannelTorpor));
+            LoadoutAPI.AddSkill(typeof(States.Spell.ScepterCastTorpor));
+
+            scepterTorporDef = ScriptableObject.CreateInstance<SkillDef>();
+            scepterTorporDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ScepterChannelTorpor));
+            scepterTorporDef.activationStateMachineName = "Weapon";
+            scepterTorporDef.baseMaxStock = 1;
+            scepterTorporDef.baseRechargeInterval = 18f;
+            scepterTorporDef.beginSkillCooldownOnSkillEnd = true;
+            scepterTorporDef.canceledFromSprinting = true;
+            scepterTorporDef.fullRestockOnAssign = true;
+            scepterTorporDef.interruptPriority = InterruptPriority.Skill;
+            scepterTorporDef.isBullets = false;
+            scepterTorporDef.isCombatSkill = true;
+            scepterTorporDef.mustKeyPress = false;
+            scepterTorporDef.noSprint = true;
+            scepterTorporDef.rechargeStock = 1;
+            scepterTorporDef.requiredStock = 1;
+            scepterTorporDef.shootDelay = 0.5f;
+            scepterTorporDef.stockToConsume = 1;
+            scepterTorporDef.icon = Modules.Assets.icon4bS;
+            scepterTorporDef.skillDescriptionToken = "PALADIN_SPECIAL_SCEPTERTORPOR_DESCRIPTION";
+            scepterTorporDef.skillName = "PALADIN_SPECIAL_SCEPTERTORPOR_NAME";
+            scepterTorporDef.skillNameToken = "PALADIN_SPECIAL_SCEPTERTORPOR_NAME";
+            scepterTorporDef.keywordTokens = new string[] {
+                "KEYWORD_TORPOR"
+            };
+
+            LoadoutAPI.AddSkillDef(scepterTorporDef);
+
+            LoadoutAPI.AddSkill(typeof(States.Spell.ScepterChannelWarcry));
+            LoadoutAPI.AddSkill(typeof(States.Spell.ScepterCastWarcry));
+
+            scepterWarcryDef = ScriptableObject.CreateInstance<SkillDef>();
+            scepterWarcryDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ScepterChannelWarcry));
+            scepterWarcryDef.activationStateMachineName = "Weapon";
+            scepterWarcryDef.baseMaxStock = 1;
+            scepterWarcryDef.baseRechargeInterval = 18f;
+            scepterWarcryDef.beginSkillCooldownOnSkillEnd = true;
+            scepterWarcryDef.canceledFromSprinting = true;
+            scepterWarcryDef.fullRestockOnAssign = true;
+            scepterWarcryDef.interruptPriority = InterruptPriority.Skill;
+            scepterWarcryDef.isBullets = false;
+            scepterWarcryDef.isCombatSkill = true;
+            scepterWarcryDef.mustKeyPress = false;
+            scepterWarcryDef.noSprint = true;
+            scepterWarcryDef.rechargeStock = 1;
+            scepterWarcryDef.requiredStock = 1;
+            scepterWarcryDef.shootDelay = 0.5f;
+            scepterWarcryDef.stockToConsume = 1;
+            scepterWarcryDef.icon = Modules.Assets.icon4cS;
+            scepterWarcryDef.skillDescriptionToken = "PALADIN_SPECIAL_SCEPTERWARCRY_DESCRIPTION";
+            scepterWarcryDef.skillName = "PALADIN_SPECIAL_SCEPTERWARCRY_NAME";
+            scepterWarcryDef.skillNameToken = "PALADIN_SPECIAL_SCEPTERWARCRY_NAME";
+
+            LoadoutAPI.AddSkillDef(scepterWarcryDef);
         }
     }
 }

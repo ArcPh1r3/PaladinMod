@@ -25,6 +25,7 @@ namespace PaladinMod.Modules
             //3- blunt
             //4- white
             //5- red
+            //6- bat
 
             //skin order:
             //default
@@ -37,20 +38,24 @@ namespace PaladinMod.Modules
             //ornstein
             //black knight
             //pursuer
+            //darkwraith
             //giant dad
+            //havel
             skinEffectIndex = new int[]
             {
                 0,
                 0,
                 1,
-                3,
+                6,
                 2,
                 0,
                 0,
                 2,
                 4,
                 5,
-                2
+                4,
+                2,
+                3
             };
             //ugh
 
@@ -61,7 +66,8 @@ namespace PaladinMod.Modules
                 Assets.hitFXYellow,
                 Assets.hitFXBlunt,
                 Assets.hitFX,
-                Assets.hitFXRed
+                Assets.hitFXRed,
+                Assets.hitFXBlunt
             };
 
             swingEffect = new GameObject[]
@@ -71,7 +77,8 @@ namespace PaladinMod.Modules
                 Assets.swordSwingYellow,
                 Assets.swordSwingWhite,
                 Assets.swordSwingWhite,
-                Assets.swordSwingRed
+                Assets.swordSwingRed,
+                Assets.swordSwingBat
             };
 
             spinEffect = new GameObject[]
@@ -81,7 +88,8 @@ namespace PaladinMod.Modules
                 Assets.spinningSlashFXYellow,
                 Assets.spinningSlashFX,
                 Assets.spinningSlashFX,
-                Assets.spinningSlashFXRed
+                Assets.spinningSlashFXRed,
+                Assets.spinningSlashFX
             };
 
             empoweredSpinEffect = new GameObject[]
@@ -91,7 +99,8 @@ namespace PaladinMod.Modules
                 Assets.spinningSlashEmpoweredFXYellow,
                 Assets.spinningSlashEmpoweredFX,
                 Assets.spinningSlashEmpoweredFX,
-                Assets.spinningSlashEmpoweredFXRed
+                Assets.spinningSlashEmpoweredFXRed,
+                Assets.spinningSlashEmpoweredFX
             };
         }
 

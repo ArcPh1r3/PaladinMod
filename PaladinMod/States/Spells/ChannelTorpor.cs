@@ -19,6 +19,7 @@ namespace PaladinMod.States.Spell
             if (childLocator)
             {
                 this.chargeEffect = childLocator.FindChild("TorporChannelEffect").gameObject;
+                this.chargeEffect.SetActive(false);
                 this.chargeEffect.SetActive(true);
             }
         }
@@ -34,7 +35,7 @@ namespace PaladinMod.States.Spell
 
             if (this.chargeEffect)
             {
-                this.chargeEffect.SetActive(false);
+                this.chargeEffect.GetComponentInChildren<ParticleSystem>().Stop();
             }
         }
 

@@ -10,10 +10,13 @@ namespace PaladinMod.Modules
 {
     public static class Assets
     {
+        //the bundle to load assets from
         public static AssetBundle mainAssetBundle;
 
+        //character portrait
         public static Texture charPortrait;
 
+        //skill icons
         public static Sprite iconP;
         public static Sprite icon1;
         public static Sprite icon2;
@@ -23,16 +26,24 @@ namespace PaladinMod.Modules
         public static Sprite icon3b;
         public static Sprite icon4;
         public static Sprite icon4b;
+        public static Sprite icon4c;
+        public static Sprite icon4S;
+        public static Sprite icon4bS;
+        public static Sprite icon4cS;
 
+        //projectile ghosts
         public static GameObject lightningSpear;
         public static GameObject swordBeam;
         public static GameObject swordBeamGhost;
         public static GameObject tornadoEffect;
 
+        //spell effects
         public static GameObject healEffectPrefab;
         public static GameObject healZoneEffectPrefab;
         public static GameObject torporEffectPrefab;
+        public static GameObject warcryEffectPrefab;
 
+        //particle effects
         public static GameObject swordSwing;
         public static GameObject spinningSlashFX;
         public static GameObject spinningSlashEmpoweredFX;
@@ -46,6 +57,8 @@ namespace PaladinMod.Modules
         public static GameObject spinningSlashEmpoweredFXYellow;
 
         public static GameObject swordSwingWhite;
+
+        public static GameObject swordSwingBat;
 
         public static GameObject swordSwingRed;
         public static GameObject spinningSlashFXRed;
@@ -65,6 +78,7 @@ namespace PaladinMod.Modules
 
         public static GameObject torporVoidFX;
 
+        //skin meshes
         public static Mesh defaultMesh;
         public static Mesh defaultSwordMesh;
         public static Mesh lunarMesh;
@@ -75,6 +89,7 @@ namespace PaladinMod.Modules
         public static Mesh dripMesh;
         public static Mesh batMesh;
 
+        //dark souls shields
         public static GameObject artoriasShield;
         public static GameObject blackKnightShield;
         public static GameObject giantShield;
@@ -82,6 +97,8 @@ namespace PaladinMod.Modules
         public static GameObject havelShield;
         public static GameObject pursuerShield;
         public static GameObject sunlightShield;
+        public static GameObject hawkwoodShield;
+        public static GameObject dragonHeadShield;
 
         public static void PopulateAssets()
         {
@@ -102,6 +119,7 @@ namespace PaladinMod.Modules
                 SoundAPI.SoundBanks.Add(array);
             }
 
+            #region Icons
             charPortrait = mainAssetBundle.LoadAsset<Sprite>("texPaladinIcon").texture;
 
             iconP = mainAssetBundle.LoadAsset<Sprite>("PassiveIcon");
@@ -113,31 +131,46 @@ namespace PaladinMod.Modules
             icon3b = mainAssetBundle.LoadAsset<Sprite>("HealIcon");
             icon4 = mainAssetBundle.LoadAsset<Sprite>("HealZoneIcon");
             icon4b = mainAssetBundle.LoadAsset<Sprite>("TorporIcon");
+            icon4c = mainAssetBundle.LoadAsset<Sprite>("WarcryIcon");
+            icon4S = mainAssetBundle.LoadAsset<Sprite>("ScepterHealZoneIcon");
+            icon4bS = mainAssetBundle.LoadAsset<Sprite>("ScepterTorporIcon");
+            icon4cS = mainAssetBundle.LoadAsset<Sprite>("ScepterWarcryIcon");
+            #endregion
 
+            #region ProjectileGhosts
             lightningSpear = mainAssetBundle.LoadAsset<GameObject>("LightningSpear");
             swordBeam = mainAssetBundle.LoadAsset<GameObject>("SwordBeam");
             swordBeamGhost = mainAssetBundle.LoadAsset<GameObject>("SwordBeamGhost");
             swordBeamGhost.AddComponent<ProjectileGhostController>();
             tornadoEffect = mainAssetBundle.LoadAsset<GameObject>("PaladinTornadoEffect");
             tornadoEffect.AddComponent<ProjectileGhostController>();
+            #endregion
 
+            #region SpellEffects
             healEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("HealEffect");
             healZoneEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("HealZoneEffect");
             torporEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("TorporEffect");
+            warcryEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("HealZoneEffect").InstantiateClone("WarcryEffect", false);
 
             GameObject engiShieldObj = Resources.Load<GameObject>("Prefabs/Projectiles/EngiBubbleShield");
 
             Material shieldFillMat = UnityEngine.Object.Instantiate<Material>(engiShieldObj.transform.Find("Collision").Find("ActiveVisual").GetComponent<MeshRenderer>().material);
             Material shieldOuterMat = UnityEngine.Object.Instantiate<Material>(engiShieldObj.transform.Find("Collision").Find("ActiveVisual").Find("Edge").GetComponent<MeshRenderer>().material);
 
-            shieldOuterMat.SetTexture("_EmTex", mainAssetBundle.LoadAsset<Texture>("texHealZone"));
-            Material torporMat = UnityEngine.Object.Instantiate<Material>(shieldOuterMat);
-            torporMat.SetTexture("_EmTex", mainAssetBundle.LoadAsset<Texture>("texTorpor"));
+            healZoneEffectPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material = shieldOuterMat;
+            healZoneEffectPrefab.transform.GetChild(0).GetChild(0).GetComponent<ParticleSystemRenderer>().material = shieldFillMat;
 
-            healZoneEffectPrefab.GetComponentInChildren<ParticleSystemRenderer>().material = shieldOuterMat;
-            torporEffectPrefab.GetComponentInChildren<ParticleSystemRenderer>().material = UnityEngine.Object.Instantiate<Material>(shieldOuterMat);
-            torporEffectPrefab.GetComponentInChildren<ParticleSystemRenderer>().material.SetColor("_TintColor", Color.red);
+            torporEffectPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material = UnityEngine.Object.Instantiate<Material>(shieldOuterMat);
+            torporEffectPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material.SetColor("_TintColor", Color.blue);
 
+            warcryEffectPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material = shieldOuterMat;
+            warcryEffectPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material.SetColor("_TintColor", Color.red);
+            warcryEffectPrefab.transform.GetChild(0).GetChild(0).GetComponent<ParticleSystemRenderer>().material = Resources.Load<Material>("materials/matWolfhatOverlay");
+            //
+            GameObject warbannerEffect = Resources.Load<GameObject>("Prefabs/NetworkedObjects/WarbannerWard").InstantiateClone("GreaterWarbannerWard", true);
+            #endregion
+
+            #region SwordEffects
             swordSwing = Assets.LoadEffect("PaladinSwing", "");
             spinningSlashFX = Assets.LoadEffect("SpinSlashEffect", "");
             spinningSlashEmpoweredFX = Assets.LoadEffect("EmpSpinSlashEffect", "");
@@ -156,15 +189,21 @@ namespace PaladinMod.Modules
             swordSwingWhite = Assets.LoadEffect("PaladinSwingWhite", "");
             hitFXBlunt = Assets.LoadEffect("ImpactPaladinSwingBlunt", "");
 
+            swordSwingBat = Assets.LoadEffect("PaladinSwingBat", "");
+
             swordSwingRed = Assets.LoadEffect("PaladinSwingRed", "");
             spinningSlashFXRed = Assets.LoadEffect("SpinSlashEffectRed", "");
             spinningSlashEmpoweredFXRed = Assets.LoadEffect("EmpSpinSlashEffectRed", "");
             hitFXRed = Assets.LoadEffect("ImpactPaladinSwingRed", "");
+            #endregion
 
+            #region MiscEffects
             lightningHitFX = Assets.LoadEffect("LightningHitFX", "");
             lightningImpactFX = Assets.LoadEffect("LightningImpact", "Play_mage_R_lightningBlast");
             torporVoidFX = Assets.LoadEffect("TorporVoidFX", "RoR2_nullifier_attack1_explode_02");
+            #endregion
 
+            #region Meshes
             defaultMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladin");
             defaultSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSword");
             lunarMesh = mainAssetBundle.LoadAsset<Mesh>("meshLunarPaladin");
@@ -174,7 +213,9 @@ namespace PaladinMod.Modules
             //hunterMesh = mainAssetBundle.LoadAsset<Mesh>("HunterMesh");
             dripMesh = mainAssetBundle.LoadAsset<Mesh>("meshDripPaladin");
             batMesh = mainAssetBundle.LoadAsset<Mesh>("meshBat");
+            #endregion
 
+            //weird shit to get the lightning effect looking how i want it
             altLightningImpactFX = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact"), "PaladinLightningStrikeImpact", true);
 
             PaladinPlugin.Destroy(altLightningImpactFX.transform.Find("LightningRibbon").gameObject);
@@ -191,6 +232,8 @@ namespace PaladinMod.Modules
 
             EffectAPI.AddEffect(altLightningImpactFX);
 
+            //this doesn't work
+            // im too lazy to look up the resource path for this prefab
             /*dashFX = PrefabAPI.InstantiateClone(EntityStates.BrotherMonster.BaseSlideState.slideEffectPrefab, "PaladinDashEffect", true);
             dashFX.AddComponent<NetworkIdentity>();
 
@@ -201,6 +244,7 @@ namespace PaladinMod.Modules
 
         private static void InitCustomItems()
         {
+            //create item display prefabs for all of the shields
             artoriasShield = CreateItemDisplay("DisplayArtoriasShield", "matArtyShield");
             blackKnightShield = CreateItemDisplay("DisplayBKShield", "matBlackKnightShield");
             giantShield = CreateItemDisplay("DisplayGiantShield", "matGiantShield");
