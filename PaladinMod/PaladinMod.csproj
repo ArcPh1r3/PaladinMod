@@ -84,6 +84,9 @@
     <Reference Include="SivsItemsRoR2">
       <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\SivsItemsRoR2.dll</HintPath>
     </Reference>
+    <Reference Include="SupplyDrop">
+      <HintPath>..\..\..\..\Downloads\risky\SupplyDrop\SupplyDrop.dll</HintPath>
+    </Reference>
     <Reference Include="System.Configuration">
       <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\System.Configuration.dll</HintPath>
     </Reference>

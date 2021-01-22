@@ -1,12 +1,10 @@
-﻿using EntityStates;
-
-namespace PaladinMod.States.Emotes
+﻿namespace PaladinMod.States.Emotes
 {
     public class PraiseTheSun : BaseEmote
     {
         public override void OnEnter()
         {
-            if (base.characterBody.skinIndex == 3)
+            if (base.characterBody.skinIndex == 4)
             {
                 this.outer.SetNextState(new Drip());
                 return;

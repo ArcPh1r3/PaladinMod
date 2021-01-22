@@ -29,7 +29,7 @@ namespace PaladinMod.States
         public override void OnEnter()
         {
             base.OnEnter();
-            this.duration = AirSlam.leapDuration / this.attackSpeedStat;
+            this.duration = AirSlam.leapDuration / (0.75f + (0.25f * this.attackSpeedStat));
             this.hasFired = false;
             this.hasLanded = false;
             this.animator = base.GetModelAnimator();
@@ -76,13 +76,13 @@ namespace PaladinMod.States
             float dmg = AirSlam.damageCoefficient;
 
             this.attack = new OverlapAttack();
-            this.attack.damageType = DamageType.Generic;
+            this.attack.damageType = DamageType.Stun1s;
             this.attack.attacker = base.gameObject;
             this.attack.inflictor = base.gameObject;
             this.attack.teamIndex = base.GetTeam();
             this.attack.damage = dmg * this.damageStat;
             this.attack.procCoefficient = 1;
-            this.attack.hitEffectPrefab = Modules.Effects.HitEffect(base.characterBody);
+            this.attack.hitEffectPrefab = this.swordController.hitEffect;
             this.attack.forceVector = -Vector3.up * 6000f;
             this.attack.pushAwayForce = 500f;
             this.attack.hitBoxGroup = hitBoxGroup;
@@ -109,7 +109,7 @@ namespace PaladinMod.States
                 if (base.isAuthority)
                 {
                     base.AddRecoil(-1f * GroundSweep.attackRecoil, -2f * GroundSweep.attackRecoil, -0.5f * GroundSweep.attackRecoil, 0.5f * GroundSweep.attackRecoil);
-                    EffectManager.SimpleMuzzleFlash(Modules.Effects.SwingEffect(base.characterBody), base.gameObject, "SwingDown", true);
+                    EffectManager.SimpleMuzzleFlash(this.swordController.swingEffect, base.gameObject, "SwingDown", true);
 
                     base.characterMotor.velocity *= 0.25f;
                     base.characterMotor.velocity += Vector3.up * -AirSlam.dropVelocity;

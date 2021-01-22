@@ -44,7 +44,8 @@ namespace PaladinMod.States
 
             if (this.childLocator)
             {
-                this.swordActiveEffect = this.childLocator.FindChild("SwordActiveEffect").gameObject;
+                string effectString = Modules.Effects.GetSkinInfo(this.swordController.skinName).passiveEffectName;
+                if (effectString != "") this.swordActiveEffect = this.childLocator.FindChild(effectString).gameObject;
             }
         }
 
@@ -62,6 +63,11 @@ namespace PaladinMod.States
                 else if (Input.GetKeyDown(Modules.Config.restKeybind.Value))
                 {
                     this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.Rest))), InterruptPriority.Any);
+                    return;
+                }
+                else if (Input.GetKeyDown(Modules.Config.pointKeybind.Value))
+                {
+                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.PointDown))), InterruptPriority.Any);
                     return;
                 }
             }

@@ -15,7 +15,7 @@ namespace PaladinMod.States.Quickstep
             base.OnEnter();
             this.slipVector = ((base.inputBank.moveVector == Vector3.zero) ? base.characterDirection.forward : base.inputBank.moveVector).normalized;
 
-            base.PlayCrossfade("FullBody, Override", "DashForward", 0.05f);
+            base.PlayCrossfade("FullBody, Override", "DashForward", "Whirlwind.playbackRate", this.duration,  0.05f);
             base.PlayAnimation("Gesture, Override", "BufferEmpty");
 
             Util.PlaySound(EntityStates.BrotherMonster.BaseSlideState.soundString, base.gameObject);
@@ -24,11 +24,11 @@ namespace PaladinMod.States.Quickstep
             {
                 base.healthComponent.AddBarrierAuthority(StaticValues.dashBarrierAmount * base.healthComponent.fullBarrier);
 
-                //EffectData effectData = new EffectData();
-                //effectData.rotation = Util.QuaternionSafeLookRotation(this.slipVector);
-                //effectData.origin = base.gameObject.GetComponent<CharacterBody>().corePosition;
+                EffectData effectData = new EffectData();
+                effectData.rotation = Util.QuaternionSafeLookRotation(this.slipVector);
+                effectData.origin = base.gameObject.GetComponent<CharacterBody>().corePosition;
 
-                //EffectManager.SpawnEffect(Modules.Assets.dashFX, effectData, false);
+                EffectManager.SpawnEffect(Modules.Assets.dashFX, effectData, false);
             }
         }
 
@@ -55,7 +55,7 @@ namespace PaladinMod.States.Quickstep
         public override void OnExit()
         {
             base.characterMotor.velocity *= 0.1f;
-            base.PlayAnimation("FullBody, Override", "BufferEmpty");
+            //base.PlayAnimation("FullBody, Override", "BufferEmpty");
 
             base.OnExit();
         }

@@ -10,7 +10,7 @@ namespace PaladinMod.States.Spell
         public override void OnEnter()
         {
             this.baseDuration = 1.2f;
-            this.muzzleflashEffectPrefab = EntityStates.Commando.CommandoWeapon.FirePistol.effectPrefab;
+            this.muzzleflashEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniExplosionVFXArchWispCannonImpact");
             this.projectilePrefab = Modules.Projectiles.scepterTorpor;
             this.castSoundString = Modules.Sounds.CastTorpor;
 

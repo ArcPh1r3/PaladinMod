@@ -210,9 +210,12 @@ namespace PaladinMod.Misc
 
         private void FreezeProjectiles(float radiusSqr, Vector3 currentPosition)
         {
-            foreach (ProjectileController projectile in FindObjectsOfType<ProjectileController>())
+            Collider[] projectiles = Physics.OverlapSphere(currentPosition, radiusSqr * radiusSqr, LayerIndex.projectile.mask);
+
+            for (int i = 0; i < projectiles.Length; i++)
             {
-                if ((projectile.transform.position - currentPosition).sqrMagnitude <= radiusSqr)
+                ProjectileController projectile = projectiles[i].GetComponent<ProjectileController>();
+                if (projectile)
                 {
                     TeamComponent projectileTeam = projectile.owner.GetComponent<TeamComponent>();
                     if (projectileTeam)

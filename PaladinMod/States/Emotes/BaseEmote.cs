@@ -108,6 +108,11 @@ namespace PaladinMod.States.Emotes
                     this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.Rest))), InterruptPriority.Any);
                     return;
                 }
+                else if (Input.GetKeyDown(Modules.Config.pointKeybind.Value))
+                {
+                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.PointDown))), InterruptPriority.Any);
+                    return;
+                }
             }
 
             if (this.duration > 0 && base.fixedAge >= this.duration) flag = true;

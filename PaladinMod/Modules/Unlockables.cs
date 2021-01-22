@@ -15,6 +15,7 @@ namespace PaladinMod.Modules
 
             UnlockablesAPI.AddUnlockable<Achievements.MasteryAchievement>(true);
             UnlockablesAPI.AddUnlockable<Achievements.PoisonAchievement>(true);
+            UnlockablesAPI.AddUnlockable<Achievements.ClayAchievement>(true);
         }
     }
 }

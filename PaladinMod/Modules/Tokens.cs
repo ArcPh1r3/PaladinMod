@@ -27,8 +27,16 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADINBODY_DEFAULT_SKIN_NAME", "Default");
             LanguageAPI.Add("PALADINBODY_LUNAR_SKIN_NAME", "Lunar");
             LanguageAPI.Add("PALADINBODY_POISON_SKIN_NAME", "Corruption");
-            LanguageAPI.Add("PALADINBODY_HUNTER_SKIN_NAME", "Hunter");
+            LanguageAPI.Add("PALADINBODY_CLAY_SKIN_NAME", "Aphelian");
             LanguageAPI.Add("PALADINBODY_DRIP_SKIN_NAME", "Drip");
+            LanguageAPI.Add("PALADINBODY_MINECRAFT_SKIN_NAME", "Minecraft");
+
+
+            LanguageAPI.Add("LUNAR_KNIGHT_BODY_NAME", "Lunar Knight");
+            LanguageAPI.Add("LUNAR_KNIGHT_BODY_DESCRIPTION", desc);
+            LanguageAPI.Add("LUNAR_KNIGHT_BODY_SUBTITLE", "Acolyte of Mithrix");
+            LanguageAPI.Add("LUNAR_KNIGHT_BODY_LORE", StaticValues.characterLore);
+            LanguageAPI.Add("LUNAR_KNIGHT_BODY_OUTRO_FLAVOR", outro);
 
 
             LanguageAPI.Add("PALADIN_PASSIVE_NAME", "Bulwark's Blessing");
@@ -84,12 +92,12 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERTORPOR_NAME", "Oath of Silence");
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERTORPOR_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.warcryChannelDuration + "</style> seconds, then release to <style=cIsUtility>Empower</style> an area for <style=cIsDamage>" + StaticValues.warcryDuration + " seconds</style>, increasing <style=cIsDamage>damage</style> and <style=cIsHealth>armor</style> for all allies inside.";
+            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.warcryChannelDuration + "</style> seconds, then release to <style=cIsUtility>Empower</style> an area for <style=cIsDamage>" + StaticValues.warcryDuration + " seconds</style>, increasing <style=cIsDamage>damage</style> and <style=cIsDamage>attack speed</style> for all allies inside.";
 
             LanguageAPI.Add("PALADIN_SPECIAL_WARCRY_NAME", "Sacred Oath");
             LanguageAPI.Add("PALADIN_SPECIAL_WARCRY_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.scepterWarcryChannelDuration + "</style> seconds, then release to <style=cIsUtility>Empower</style> an area for <style=cIsDamage>" + StaticValues.scepterWarcryDuration + " seconds</style>, increasing <style=cIsDamage>damage</style> and <style=cIsHealth>armor</style> for all allies inside.";
+            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.scepterWarcryChannelDuration + "</style> seconds, then release to <style=cIsUtility>Empower</style> an area for <style=cIsDamage>" + StaticValues.scepterWarcryDuration + " seconds</style>, increasing <style=cIsDamage>damage</style> and <style=cIsDamage>attack speed</style> for all allies inside.";
 
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERWARCRY_NAME", "Sacred Oath (Scepter)");
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERWARCRY_DESCRIPTION", desc);
@@ -111,7 +119,7 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_UNLOCKABLE_NAME", "Her Discple");
 
             LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_NAME", "Jolly Cooperation");
-            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, strike an enemy with a Royal Capacitor.");
+            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, strike an enemy with a Royal Capacitor. <color=#c11>Host only</color>");
             LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_UNLOCKABLE_NAME", "Jolly Cooperation");
 
             LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_ACHIEVEMENT_NAME", "Herald of the Lost King");
@@ -119,12 +127,16 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_UNLOCKABLE_NAME", "Herald of the Lost King");
 
             LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_ACHIEVEMENT_NAME", "Warm Embrace");
-            LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, heal an ally with a Gnarled Woodsprite.");
+            LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, heal an ally with a Gnarled Woodsprite. <color=#c11>Host only</color>");
             LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_UNLOCKABLE_NAME", "Warm Embrace");
 
             LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_NAME", "Suppression");
             LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, stack 4 debuffs on one enemy.");
             LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_UNLOCKABLE_NAME", "Suppression");
+
+            LanguageAPI.Add("PALADIN_CLAYUNLOCKABLE_ACHIEVEMENT_NAME", "Ancient Relic");
+            LanguageAPI.Add("PALADIN_CLAYUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, acquire a certain parasitic urn.");
+            LanguageAPI.Add("PALADIN_CLAYUNLOCKABLE_UNLOCKABLE_NAME", "Ancient Relic");
         }
     }
 }

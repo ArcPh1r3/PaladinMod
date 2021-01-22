@@ -28,7 +28,7 @@ namespace PaladinMod.States
 
             if (this.muzzleflashEffectPrefab)
             {
-                EffectManager.SimpleMuzzleFlash(this.muzzleflashEffectPrefab, base.gameObject, "Sword", false);
+                EffectManager.SimpleMuzzleFlash(this.muzzleflashEffectPrefab, base.gameObject, "SpellCastEffect", false);
             }
 
             if (NetworkServer.active) base.characterBody.AddBuff(BuffIndex.Slow50);

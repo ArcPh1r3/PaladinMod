@@ -10,7 +10,7 @@
 
         //Misc
         public const float maxSwordGlow = 3f;
-        public const float swordGlowSpeed = 1.5f;
+        public const float swordGlowSpeed = 8f;
 
         //Base stats
         public const float baseDamage = 13f;
@@ -71,16 +71,16 @@
 
         //Sacred Oath
         public const float warcryChannelDuration = 2.5f;
-        public const float warcryRadius = 12f;
-        public const float warcryDamageMultiplier = 0.3f;
-        public const float warcryArmorBuff = 50f;
+        public const float warcryRadius = 20f;
+        public const float warcryDamageMultiplier = 0.5f;
+        public const float warcryAttackSpeedBuff = 1;
         public const float warcryDuration = 8;
 
         //Sacred Oath(Scepter)
         public const float scepterWarcryChannelDuration = 2f;
-        public const float scepterWarcryRadius = 18f;
-        public const float scepterWarcryDamageMultiplier = 0.6f;
-        public const float scepterWarcryArmorBuff = 100f;
+        public const float scepterWarcryRadius = 24f;
+        public const float scepterWarcryDamageMultiplier = 1f;
+        public const float scepterWarcryAttackSpeedBuff = 2f;
         public const float scepterWarcryDuration = 12;
     }
 }

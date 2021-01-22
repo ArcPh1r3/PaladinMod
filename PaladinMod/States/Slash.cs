@@ -84,9 +84,9 @@ namespace PaladinMod.States
             this.attack.teamIndex = base.GetTeam();
             this.attack.damage = dmg * this.damageStat;
             this.attack.procCoefficient = 1;
-            this.attack.hitEffectPrefab = Modules.Effects.HitEffect(base.characterBody);
+            this.attack.hitEffectPrefab = this.swordController.hitEffect;
             this.attack.forceVector = Vector3.zero;
-            this.attack.pushAwayForce = 500f;
+            this.attack.pushAwayForce = 750f;
             this.attack.hitBoxGroup = hitBoxGroup;
             this.attack.isCrit = base.RollCrit();
         }
@@ -123,7 +123,7 @@ namespace PaladinMod.States
                     else muzzleString = "SwingLeft";
 
                     base.AddRecoil(-1f * Slash.attackRecoil, -2f * Slash.attackRecoil, -0.5f * Slash.attackRecoil, 0.5f * Slash.attackRecoil);
-                    EffectManager.SimpleMuzzleFlash(Modules.Effects.SwingEffect(base.characterBody), base.gameObject, muzzleString, true);
+                    EffectManager.SimpleMuzzleFlash(this.swordController.swingEffect, base.gameObject, muzzleString, true);
 
                     Ray aimRay = base.GetAimRay();
 

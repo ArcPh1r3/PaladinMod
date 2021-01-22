@@ -5,7 +5,7 @@
         public override void OnEnter()
         {
             this.animString = "PointDown";
-            this.animDuration = 2f;
+            this.duration = 2.5f;
             base.OnEnter();
         }
     }

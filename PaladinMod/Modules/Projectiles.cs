@@ -21,6 +21,13 @@ namespace PaladinMod.Modules
         public static GameObject scepterTorpor;
         public static GameObject scepterWarcry;
 
+        public static void LateSetup()
+        {
+            //fuck man
+            var overlapAttack = swordBeam.GetComponent<ProjectileOverlapAttack>();
+            if (overlapAttack) overlapAttack.damageCoefficient = 1f;
+        }
+
         public static void RegisterProjectiles()
         {
             //would like to simplify this all eventually....

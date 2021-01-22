@@ -1,134 +1,255 @@
-﻿using RoR2;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace PaladinMod.Modules
 {
     public static class Effects
     {
-        public static int[] skinEffectIndex;
+        private static List<PaladinSkinInfo> skinList;
 
-        public static GameObject[] hitEffect;
-        public static GameObject[] swingEffect;
-        public static GameObject[] spinEffect;
-        public static GameObject[] empoweredSpinEffect;
+        public static PaladinSkinInfo[] skinInfos;
+
+        public struct PaladinSkinInfo
+        {
+            public string skinName;
+
+            public string passiveEffectName;
+
+            public string swingSoundString;
+            public bool isWeaponBlunt;
+
+            public GameObject hitEffect;
+            public GameObject swingEffect;
+            public GameObject spinSlashEffect;
+            public GameObject empoweredSpinSlashEffect;
+        }
 
         public static void RegisterEffects()
         {
-            //not sure how to really approach this all.... just gonna resort to hardcoding for now
-            // all this code is complete shit
-            //  gotta use brain and rewrite it all.......... one day
-            // it all breaks the moment someone else makes a skin mod for paladin :D
+            skinList = new List<PaladinSkinInfo>();
 
-            //0- default
-            //1- green
-            //2- yellow
-            //3- blunt
-            //4- white
-            //5- red
-            //6- bat
-
-            //skin order:
-            //default
-            //lunar
-            //nkuhana
-            //drip
-            //solaire
-            //artorias
-            //faraam
-            //ornstein
-            //black knight
-            //pursuer
-            //darkwraith
-            //giant dad
-            //havel
-            skinEffectIndex = new int[]
+            #region Skins
+            skinList.Add(new PaladinSkinInfo
             {
-                0,
-                0,
-                1,
-                6,
-                2,
-                0,
-                0,
-                2,
-                4,
-                5,
-                4,
-                2,
-                3
-            };
-            //ugh
+                skinName = "PALADINBODY_DEFAULT_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffect",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFX,
+                swingEffect = Assets.swordSwing,
+                spinSlashEffect = Assets.spinningSlashFX,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX
+            });
 
-            hitEffect = new GameObject[]
+            skinList.Add(new PaladinSkinInfo
             {
-                Assets.hitFX,
-                Assets.hitFXGreen,
-                Assets.hitFXYellow,
-                Assets.hitFXBlunt,
-                Assets.hitFX,
-                Assets.hitFXRed,
-                Assets.hitFXBlunt
-            };
+                skinName = "PALADINBODY_LUNAR_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffect",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFX,
+                swingEffect = Assets.swordSwing,
+                spinSlashEffect = Assets.spinningSlashFX,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX
+            });
 
-            swingEffect = new GameObject[]
+            skinList.Add(new PaladinSkinInfo
             {
-                Assets.swordSwing,
-                Assets.swordSwingGreen,
-                Assets.swordSwingYellow,
-                Assets.swordSwingWhite,
-                Assets.swordSwingWhite,
-                Assets.swordSwingRed,
-                Assets.swordSwingBat
-            };
+                skinName = "PALADINBODY_POISON_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffectGreen",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFXGreen,
+                swingEffect = Assets.swordSwingGreen,
+                spinSlashEffect = Assets.spinningSlashFXGreen,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXGreen
+            });
 
-            spinEffect = new GameObject[]
+            skinList.Add(new PaladinSkinInfo
             {
-                Assets.spinningSlashFX,
-                Assets.spinningSlashFXGreen,
-                Assets.spinningSlashFXYellow,
-                Assets.spinningSlashFX,
-                Assets.spinningSlashFX,
-                Assets.spinningSlashFXRed,
-                Assets.spinningSlashFX
-            };
+                skinName = "PALADINBODY_CLAY_SKIN_NAME",
+                passiveEffectName = "",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFXClay,
+                swingEffect = Assets.swordSwingClay,
+                spinSlashEffect = Assets.spinningSlashFXClay,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXClay
+            });
 
-            empoweredSpinEffect = new GameObject[]
+            skinList.Add(new PaladinSkinInfo
             {
-                Assets.spinningSlashEmpoweredFX,
-                Assets.spinningSlashEmpoweredFXGreen,
-                Assets.spinningSlashEmpoweredFXYellow,
-                Assets.spinningSlashEmpoweredFX,
-                Assets.spinningSlashEmpoweredFX,
-                Assets.spinningSlashEmpoweredFXRed,
-                Assets.spinningSlashEmpoweredFX
-            };
+                skinName = "PALADINBODY_DRIP_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffect",
+                swingSoundString = Sounds.SwingBlunt,
+                isWeaponBlunt = true,
+                hitEffect = Assets.hitFXBlunt,
+                swingEffect = Assets.swordSwingBat,
+                spinSlashEffect = Assets.spinningSlashFX,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX
+            });
+
+            skinList.Add(new PaladinSkinInfo
+            {
+                skinName = "PALADINBODY_MINECRAFT_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffect",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFX,
+                swingEffect = Assets.swordSwing,
+                spinSlashEffect = Assets.spinningSlashFX,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX
+            });
+            #endregion
+
+            #region DarkSoulsSkins
+            skinList.Add(new PaladinSkinInfo
+            {
+                skinName = "PALADINBODY_ABYSSWATCHER_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffectFlame",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFXRed,
+                swingEffect = Assets.swordSwingFlame,
+                spinSlashEffect = Assets.spinningSlashFXFlame,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXFlame
+            });
+            skinList.Add(new PaladinSkinInfo
+            {
+                skinName = "PALADINBODY_ARTORIAS_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffectPurple",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFXPurple,
+                swingEffect = Assets.swordSwingPurple,
+                spinSlashEffect = Assets.spinningSlashFXPurple,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXPurple
+            });
+            skinList.Add(new PaladinSkinInfo
+            {
+                skinName = "PALADINBODY_BLACKKNIGHT_SKIN_NAME",
+                passiveEffectName = "",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFX,
+                swingEffect = Assets.swordSwingWhite,
+                spinSlashEffect = Assets.spinningSlashFX,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX
+            });
+            skinList.Add(new PaladinSkinInfo
+            {
+                skinName = "PALADINBODY_FARAAM_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffect",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFX,
+                swingEffect = Assets.swordSwing,
+                spinSlashEffect = Assets.spinningSlashFX,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX
+            });
+            skinList.Add(new PaladinSkinInfo
+            {
+                skinName = "PALADINBODY_GIANTDAD_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffectSun",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFXYellow,
+                swingEffect = Assets.swordSwingYellow,
+                spinSlashEffect = Assets.spinningSlashFXYellow,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXYellow
+            });
+            skinList.Add(new PaladinSkinInfo
+            {
+                skinName = "PALADINBODY_GWYN_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffectFlame",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFXRed,
+                swingEffect = Assets.swordSwingFlame,
+                spinSlashEffect = Assets.spinningSlashFXFlame,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXFlame
+            });
+            skinList.Add(new PaladinSkinInfo
+            {
+                skinName = "PALADINBODY_HAVEL_SKIN_NAME",
+                passiveEffectName = "",
+                swingSoundString = Sounds.SwingBlunt,
+                isWeaponBlunt = true,
+                hitEffect = Assets.hitFXBlunt,
+                swingEffect = Assets.swordSwingWhite,
+                spinSlashEffect = Assets.spinningSlashFX,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX
+            });
+            skinList.Add(new PaladinSkinInfo
+            {
+                skinName = "PALADINBODY_ORNSTEIN_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffectSun",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFXYellow,
+                swingEffect = Assets.swordSwingYellow,
+                spinSlashEffect = Assets.spinningSlashFXYellow,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXYellow
+            });
+            skinList.Add(new PaladinSkinInfo
+            {
+                skinName = "PALADINBODY_PURSUER_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffectRed",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFXRed,
+                swingEffect = Assets.swordSwingRed,
+                spinSlashEffect = Assets.spinningSlashFXRed,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXRed
+            });
+            skinList.Add(new PaladinSkinInfo
+            {
+                skinName = "PALADINBODY_RINGEDKNIGHT_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffectFlame",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFXRed,
+                swingEffect = Assets.swordSwingFlame,
+                spinSlashEffect = Assets.spinningSlashFXFlame,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXFlame
+            });
+            skinList.Add(new PaladinSkinInfo
+            {
+                skinName = "PALADINBODY_SOLAIRE_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffectSun",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFXYellow,
+                swingEffect = Assets.swordSwingYellow,
+                spinSlashEffect = Assets.spinningSlashFXYellow,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXYellow
+            });
+            skinList.Add(new PaladinSkinInfo
+            {
+                skinName = "PALADINBODY_DARKWRAITH_SKIN_NAME",
+                passiveEffectName = "",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFXBlack,
+                swingEffect = Assets.swordSwingBlack,
+                spinSlashEffect = Assets.spinningSlashFXBlack,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXBlack
+            });
+            #endregion
+
+            skinInfos = skinList.ToArray();
         }
 
-        public static int GetEffectIndex(CharacterBody body)
+        public static PaladinSkinInfo GetSkinInfo(string skinName)
         {
-            //there has to be a better way to do this
-            if (body.skinIndex >= skinEffectIndex.Length) return 0;
-            return skinEffectIndex[body.skinIndex];
-        }// i hate it
-
-        public static GameObject HitEffect(CharacterBody body)
-        {
-            return hitEffect[GetEffectIndex(body)];
-        }
-
-        public static GameObject SwingEffect(CharacterBody body)
-        {
-            return swingEffect[GetEffectIndex(body)];
-        }
-
-        public static GameObject SpinEffect(CharacterBody body)
-        {
-            return spinEffect[GetEffectIndex(body)];
-        }
-
-        public static GameObject EmpoweredSpinEffect(CharacterBody body)
-        {
-            return empoweredSpinEffect[GetEffectIndex(body)];
+            for (int i = 0; i < skinInfos.Length; i++)
+            {
+                if (skinInfos[i].skinName == skinName)
+                {
+                    return skinInfos[i];
+                }
+            }
+            return skinInfos[0];
         }
     }
 }

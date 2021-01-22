@@ -11,7 +11,7 @@ namespace PaladinMod.States
     public class AirSlamAlt : BaseSkillState
     {
         public static float damageCoefficient = StaticValues.spinSlashDamageCoefficient;
-        public static float leapDuration = 0.4f;
+        public static float leapDuration = 0.5f;
         public static float dropVelocity = 30f;
         public static float hopVelocity = 15f;
 
@@ -29,7 +29,7 @@ namespace PaladinMod.States
         public override void OnEnter()
         {
             base.OnEnter();
-            this.duration = AirSlam.leapDuration / this.attackSpeedStat;
+            this.duration = AirSlamAlt.leapDuration / (0.5f + (0.5f * this.attackSpeedStat));
             this.hasFired = false;
             this.hasLanded = false;
             this.animator = base.GetModelAnimator();
@@ -68,13 +68,13 @@ namespace PaladinMod.States
             float dmg = AirSlam.damageCoefficient;
 
             this.attack = new OverlapAttack();
-            this.attack.damageType = DamageType.Generic;
+            this.attack.damageType = DamageType.Stun1s;
             this.attack.attacker = base.gameObject;
             this.attack.inflictor = base.gameObject;
             this.attack.teamIndex = base.GetTeam();
             this.attack.damage = ((0.5f + (0.5f * this.swordController.airSlamStacks)) * dmg) * this.damageStat;
             this.attack.procCoefficient = 1;
-            this.attack.hitEffectPrefab = Modules.Effects.HitEffect(base.characterBody);
+            this.attack.hitEffectPrefab = this.swordController.hitEffect;
             this.attack.forceVector = -Vector3.up * 6000f;
             this.attack.pushAwayForce = 500f;
             this.attack.hitBoxGroup = hitBoxGroup;
@@ -99,7 +99,7 @@ namespace PaladinMod.States
                 if (base.isAuthority)
                 {
                     base.AddRecoil(-1f * GroundSweep.attackRecoil, -2f * GroundSweep.attackRecoil, -0.5f * GroundSweep.attackRecoil, 0.5f * GroundSweep.attackRecoil);
-                    EffectManager.SimpleMuzzleFlash(Modules.Effects.SwingEffect(base.characterBody), base.gameObject, "SwingDown", true);
+                    EffectManager.SimpleMuzzleFlash(this.swordController.swingEffect, base.gameObject, "SwingDown", true);
 
                     base.characterMotor.velocity *= 0.1f;
                     base.characterMotor.velocity += Vector3.up * -AirSlamAlt.dropVelocity;
