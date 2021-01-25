@@ -70,14 +70,14 @@
         public const float scepterTorporDuration = 12;
 
         //Sacred Oath
-        public const float warcryChannelDuration = 2.5f;
+        public const float warcryChannelDuration = 2f;
         public const float warcryRadius = 20f;
         public const float warcryDamageMultiplier = 0.5f;
         public const float warcryAttackSpeedBuff = 1;
         public const float warcryDuration = 8;
 
         //Sacred Oath(Scepter)
-        public const float scepterWarcryChannelDuration = 2f;
+        public const float scepterWarcryChannelDuration = 1.5f;
         public const float scepterWarcryRadius = 24f;
         public const float scepterWarcryDamageMultiplier = 1f;
         public const float scepterWarcryAttackSpeedBuff = 2f;

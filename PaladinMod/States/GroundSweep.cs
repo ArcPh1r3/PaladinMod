@@ -11,7 +11,7 @@ namespace PaladinMod.States
     public class GroundSweep : BaseSkillState
     {
         public static float damageCoefficient = StaticValues.spinSlashDamageCoefficient;
-        public float baseDuration = 1.2f;
+        public float baseDuration = 1.5f;
         public static float attackRecoil = 3f;
 
         private float duration;
@@ -49,7 +49,7 @@ namespace PaladinMod.States
                 hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == hitboxString);
             }
 
-            base.PlayAnimation("FullBody, Override", "GroundSweep", "Whirlwind.playbackRate", this.duration);
+            base.PlayAnimation("FullBody, Override", "GroundSweep", "Whirlwind.playbackRate", this.duration * 1.1f);
             Util.PlaySound(Modules.Sounds.Cloth3, base.gameObject);
 
             this.attack = new OverlapAttack();
@@ -60,8 +60,8 @@ namespace PaladinMod.States
             this.attack.damage = GroundSweep.damageCoefficient * this.damageStat;
             this.attack.procCoefficient = 1;
             this.attack.hitEffectPrefab = this.swordController.hitEffect;
-            this.attack.forceVector = Vector3.up * 1200f;
-            this.attack.pushAwayForce = -1400f;
+            this.attack.forceVector = Vector3.up * 1600f;
+            this.attack.pushAwayForce = -1500f;
             this.attack.hitBoxGroup = hitBoxGroup;
             this.attack.isCrit = base.RollCrit();
         }
@@ -101,6 +101,8 @@ namespace PaladinMod.States
                             this.inHitPause = true;
                         }
                     }
+
+                    base.characterMotor.velocity += (base.characterDirection.forward * 25f);
                 }
             }
         }
@@ -127,7 +129,12 @@ namespace PaladinMod.States
                 if (this.animator) this.animator.SetFloat("Whirlwind.playbackRate", 0f);
             }
 
-            if (this.stopwatch >= this.duration * 0.3f)
+            if (base.characterMotor)
+            {
+                base.characterMotor.moveDirection /= 2f;
+            }
+
+            if (this.stopwatch >= this.duration * 0.4f)
             {
                 this.FireAttack();
             }

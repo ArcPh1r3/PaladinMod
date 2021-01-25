@@ -12,8 +12,12 @@ using System.Runtime.CompilerServices;
 namespace PaladinMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.ThinkInvisible.ClassicItems", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.KomradeSpectre.Aetherium", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.Sivelos.SivsItems", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.K1454.SupplyDrop", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "1.2.3")]
+    [BepInPlugin(MODUID, "Paladin", "1.2.6")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -33,7 +37,7 @@ namespace PaladinMod
 
         public static PaladinPlugin instance;
 
-        public GameObject characterPrefab;
+        public static GameObject characterPrefab;
 
         public GameObject doppelganger;
 
@@ -76,6 +80,7 @@ namespace PaladinMod
 
             Modules.Prefabs.CreatePrefabs(); // create body and display prefabs
             characterPrefab = Modules.Prefabs.paladinPrefab; // cache this for other mods to use it
+            Modules.ItemDisplays.RegisterDisplays(); // add item displays(pain)
             Modules.States.RegisterStates(); // register states
             Modules.Skills.SetupSkills(Modules.Prefabs.paladinPrefab);
             Modules.Skills.SetupSkills(Modules.Prefabs.lunarKnightPrefab);
@@ -83,7 +88,6 @@ namespace PaladinMod
             Modules.Skins.RegisterSkins(); // add skins
             Modules.Buffs.RegisterBuffs(); // add and register custom buffs
             Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
-            Modules.ItemDisplays.RegisterDisplays(); // add item displays(pain)
             Modules.Effects.RegisterEffects(); // add and register custom effects
             Modules.Unlockables.RegisterUnlockables(); // add unlockables
             Modules.Tokens.AddTokens(); // register name tokens
@@ -103,6 +107,7 @@ namespace PaladinMod
         private void PaladinPlugin_LoadStart()
         {
             Modules.Projectiles.LateSetup();
+            //Modules.ItemDisplays.RegisterModdedDisplays(); // add item displays(pain x2)
         }
 
         public void Awake()

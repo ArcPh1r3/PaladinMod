@@ -64,6 +64,12 @@ namespace PaladinMod.Modules
                 "KEYWORD_SWORDBEAM"
             };
 
+            if (bodyPrefab.name == "LunarKnightBody")
+            {
+                mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.LunarKnight.MaceSlam));
+                mySkillDef.activationStateMachineName = "Body";
+            }
+
             LoadoutAPI.AddSkillDef(mySkillDef);
 
             skillLocator.primary = bodyPrefab.AddComponent<GenericSkill>();

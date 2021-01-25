@@ -6,6 +6,7 @@ using PaladinMod.States.Dash;
 using PaladinMod.States.Emotes;
 using PaladinMod.States.Quickstep;
 using PaladinMod.States.Spell;
+using PaladinMod.States.LunarKnight;
 
 namespace PaladinMod.Modules
 {
@@ -47,11 +48,17 @@ namespace PaladinMod.Modules
             LoadoutAPI.AddSkill(typeof(ChannelWarcry));
             LoadoutAPI.AddSkill(typeof(CastChanneledWarcry));
 
+            LoadoutAPI.AddSkill(typeof(MaceSlam));
+
             // and now apply custom states to our prefabs- probably shouldn't go here but meh
 
             EntityStateMachine paladinStateMachine = Prefabs.paladinPrefab.GetComponent<EntityStateMachine>();
             paladinStateMachine.mainStateType = new SerializableEntityStateType(typeof(PaladinMain));
             paladinStateMachine.initialStateType = new SerializableEntityStateType(typeof(SpawnState));
+
+            EntityStateMachine lunarKnightStateMachine = Prefabs.lunarKnightPrefab.GetComponent<EntityStateMachine>();
+            lunarKnightStateMachine.mainStateType = new SerializableEntityStateType(typeof(PaladinMain));
+            lunarKnightStateMachine.initialStateType = new SerializableEntityStateType(typeof(SpawnState));
         }
     }
 }

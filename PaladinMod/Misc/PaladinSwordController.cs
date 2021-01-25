@@ -19,19 +19,22 @@ namespace PaladinMod.Misc
         private CharacterModel model;
         private bool isBlunt;
 
-        private void Start()
+        private void Awake()
         {
             this.body = base.GetComponent<CharacterBody>();
             this.model = base.GetComponentInChildren<CharacterModel>();
 
+            this.InitItemDisplays();
+        }
+
+        private void Start()
+        {
             if (this.body)
             {
                 this.skinInfo = Modules.Effects.GetSkinInfo(this.model.GetComponent<ModelSkinController>().skins[this.body.skinIndex].nameToken);
                 this.skinName = this.skinInfo.skinName;
                 this.isBlunt = this.skinInfo.isWeaponBlunt;
             }
-
-            this.InitItemDisplays();
 
             Invoke("CheckInventory", 0.2f);
         }
@@ -73,6 +76,10 @@ namespace PaladinMod.Misc
 
         private void InitItemDisplays()
         {
+            // i really don't know why i have to do this
+            //  zzzzz
+            Modules.ItemDisplays.RegisterModdedDisplays();
+
             if (this.model)
             {
                 ItemDisplayRuleSet newRuleset = Instantiate(this.model.itemDisplayRuleSet);
