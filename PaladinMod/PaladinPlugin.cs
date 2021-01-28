@@ -17,7 +17,7 @@ namespace PaladinMod
     [BepInDependency("com.Sivelos.SivsItems", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.K1454.SupplyDrop", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "1.2.6")]
+    [BepInPlugin(MODUID, "Paladin", "1.2.7")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",

@@ -264,9 +264,9 @@ namespace PaladinMod.Modules
 
         private static GameObject CreateModel(GameObject main, string modelName)
         {
-            PaladinPlugin.Destroy(main.transform.Find("ModelBase").gameObject);
-            PaladinPlugin.Destroy(main.transform.Find("CameraPivot").gameObject);
-            PaladinPlugin.Destroy(main.transform.Find("AimOrigin").gameObject);
+            PaladinPlugin.DestroyImmediate(main.transform.Find("ModelBase").gameObject);
+            PaladinPlugin.DestroyImmediate(main.transform.Find("CameraPivot").gameObject);
+            PaladinPlugin.DestroyImmediate(main.transform.Find("AimOrigin").gameObject);
 
             return Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(modelName);
         }
