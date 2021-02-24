@@ -102,7 +102,7 @@ namespace PaladinMod.Modules
                 itemRules.Add(ItemDisplays.CreateGenericDisplayRule("LunarPrimaryReplacement", "DisplayBirdEye", "Head", new Vector3(0, 0.001f, 0.0012f), new Vector3(270, 0, 0), new Vector3(0.003f, 0.003f, 0.003f)));
                 itemRules.Add(ItemDisplays.CreateGenericDisplayRule("NovaOnLowHealth", "DisplayJellyGuts", "Chest", new Vector3(0, 0.003f, -0.001f), new Vector3(310, 0, 0), new Vector3(0.001f, 0.001f, 0.001f)));
                 itemRules.Add(ItemDisplays.CreateGenericDisplayRule("LunarTrinket", "DisplayBeads", "ElbowL", new Vector3(0, 0.0008f, 0), new Vector3(0, 90, 90), new Vector3(0.01f, 0.01f, 0.01f)));
-                itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Plant", "DisplayInterstellarDeskPlant", "Chest", new Vector3(0, 0.002f, 0), new Vector3(270, 90, 0), new Vector3(0.02f, 0.0175f, 0.0175f)));
+                itemRules.Add(ItemDisplays.CreateGenericDisplayRule("Plant", "DisplayInterstellarDeskPlant", "Chest", new Vector3(-0.001388083f, 0.003360658f, 0.0002904454f), new Vector3(285, 278, 170), new Vector3(0.001f, 0.001f, 0.001f)));
                 itemRules.Add(ItemDisplays.CreateGenericDisplayRule("DeathMark", "DisplayDeathMark", "HandL", new Vector3(0, 0, 0), new Vector3(90, 270, 0), new Vector3(0.0004f, 0.0004f, 0.0004f)));
                 itemRules.Add(ItemDisplays.CreateGenericDisplayRule("CooldownOnCrit", "DisplaySkull", "Chest", new Vector3(0, 0.0012f, 0.0024f), new Vector3(270, 0, 0), new Vector3(0.0025f, 0.0025f, 0.0025f)));
                 itemRules.Add(ItemDisplays.CreateGenericDisplayRule("UtilitySkillMagazine", "DisplayAfterburnerShoulderRing", "ShoulderL", new Vector3(-0.0014f, 0, 0), new Vector3(0, 0, 90), new Vector3(0.01f, 0.01f, 0.01f)));
@@ -370,7 +370,7 @@ namespace PaladinMod.Modules
                 itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_SHARK_TEETH", ItemDisplays.LoadAetheriumDisplay("SharkTeeth"), "CalfL", new Vector3(0, 0.0012f, 0), new Vector3(0, 0, 310), new Vector3(0.005f, 0.005f, 0.003f)));
                 itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_BLOOD_SOAKED_SHIELD", ItemDisplays.LoadAetheriumDisplay("BloodSoakedShield"), "ElbowL", new Vector3(0.0012f, 0.002f, 0), new Vector3(0, 90, 0), new Vector3(0.003f, 0.003f, 0.003f)));
                 itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_FEATHERED_PLUME", ItemDisplays.LoadAetheriumDisplay("FeatheredPlume"), "Head", new Vector3(0, 0.0025f, 0), new Vector3(0, 270, 0), new Vector3(0.005f, 0.005f, 0.005f)));
-                itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_SHIELDING_CORE", ItemDisplays.LoadAetheriumDisplay("ShieldingCore"), "Chest", new Vector3(0, 0.001f, -0.002f), new Vector3(0, 270, 0), new Vector3(0.002f, 0.002f, 0.002f)));
+                itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_SHIELDING_CORE", ItemDisplays.LoadAetheriumDisplay("ShieldingCore"), "Chest", new Vector3(0, 0.001f, -0.002f), new Vector3(0, 180, 0), new Vector3(0.002f, 0.002f, 0.002f)));
                 itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_UNSTABLE_DESIGN", ItemDisplays.LoadAetheriumDisplay("UnstableDesign"), "Chest", new Vector3(0, -0.0012f, -0.0012f), new Vector3(0, 45, 0), new Vector3(0.01f, 0.01f, 0.01f)));
                 itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_WEIGHTED_ANKLET", ItemDisplays.LoadAetheriumDisplay("WeightedAnklet"), "CalfR", new Vector3(0, 0.001f, 0), new Vector3(0, 0, 0), new Vector3(0.003f, 0.003f, 0.003f)));
                 itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_BLASTER_SWORD", ItemDisplays.LoadAetheriumDisplay("BlasterSword"), "HandL", new Vector3(-0.0004f, 0.001f, 0.0055f), new Vector3(0, 90, 270), new Vector3(0.001f, 0.001f, 0.001f)));
@@ -404,8 +404,25 @@ namespace PaladinMod.Modules
                 itemRules.Add(ItemDisplays.CreateGenericDisplayRule("SUPPDRPQSGen", ItemDisplays.LoadSupplyDropDisplay("QSGen"), "ElbowL", new Vector3(0, 0.002f, 0), new Vector3(0, 0, 270), new Vector3(0.001f, 0.001f, 0.001f)));
                 itemRules.Add(ItemDisplays.CreateGenericDisplayRule("SUPPDRPSalvagedWires", ItemDisplays.LoadSupplyDropDisplay("SalvagedWires"), "Pelvis", new Vector3(0, 0, -0.002f), new Vector3(50, 300, 0), new Vector3(0.005f, 0.005f, 0.005f)));
                 itemRules.Add(ItemDisplays.CreateGenericDisplayRule("SUPPDRPShellPlating", ItemDisplays.LoadSupplyDropDisplay("ShellPlating"), "Pelvis", new Vector3(0, 0.002f, 0.003f), new Vector3(30, 0, 0), new Vector3(0.0015f, 0.0015f, 0.0015f)));
+                itemRules.Add(ItemDisplays.CreateGenericDisplayRule("SUPPDRPPlagueHat", ItemDisplays.LoadSupplyDropDisplay("PlagueHat"), "Head", new Vector3(-7.683411E-09f, 0.002843072f, 0.0008528258f), new Vector3(333.9211f, 180, -2.266285E-13f), new Vector3(0.001f, 0.001f, 0.001f)));
+                itemRules.Add(ItemDisplays.CreateGenericDisplayRule("SUPPDRPPlagueMask", ItemDisplays.LoadSupplyDropDisplay("PlagueMask"), "Head", new Vector3(-2.677552E-09f, 0.001063528f, 0.002444532f), new Vector3(0, 180, 0), new Vector3(0.0015f, 0.0015f, 0.0015f)));
 
                 itemRules.Add(ItemDisplays.CreateFollowerDisplayRule("SUPPDRPBloodBook", ItemDisplays.LoadSupplyDropDisplay("BloodBook"), new Vector3(-0.008f, 0.005f, -0.008f), new Vector3(0, 0, 0), new Vector3(0.08f, 0.08f, 0.08f)));
+            }
+            #endregion
+            #region Starstorm2
+            if (PaladinPlugin.starstormInstalled)
+            {
+                itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_FORK_NAME", "DisplayMissileRack", "Chest", new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0)));
+                itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_EXPOVERTIME_NAME", "DisplayMissileRack", "Chest", new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0)));
+                itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_TREMATODE_NAME", "DisplayMissileRack", "Chest", new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0)));
+                itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_COIN_NAME", "DisplayMissileRack", "Chest", new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0)));
+                itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_FIREONEQUIPMENTUSE_NAME", "DisplayMissileRack", "Chest", new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0)));
+                itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_DRONEONELITEKILL_NAME", "DisplayMissileRack", "Chest", new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0)));
+                itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_SOULONKILL_NAME", "DisplayMissileRack", "Chest", new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0)));
+                itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_BLOODTESTER_NAME", "DisplayMissileRack", "Chest", new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0)));
+                itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_SPRINTHEAL_NAME", "DisplayMissileRack", "Chest", new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0)));
+                itemRules.Add(ItemDisplays.CreateGenericDisplayRule("ITEM_COFFEE_NAME", "DisplayMissileRack", "Chest", new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0)));
             }
             #endregion
 
@@ -654,6 +671,10 @@ namespace PaladinMod.Modules
                     return SupplyDrop.Items.ElectroPlankton.ItemBodyModelPrefab;
                 case "HardenedBoneFragments":
                     return SupplyDrop.Items.HardenedBoneFragments.ItemBodyModelPrefab;
+                case "PlagueHat":
+                    return SupplyDrop.Items.PlagueHat.ItemBodyModelPrefab;
+                case "PlagueMask":
+                    return SupplyDrop.Items.PlagueMask.ItemBodyModelPrefab;
                 case "QSGen":
                     return SupplyDrop.Items.QSGen.ItemBodyModelPrefab;
                 case "SalvagedWires":
@@ -663,6 +684,18 @@ namespace PaladinMod.Modules
                 case "UnassumingTie":
                     return SupplyDrop.Items.UnassumingTie.ItemBodyModelPrefab;
             }
+            return null;
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        public static GameObject LoadStarstormDisplay(string name)
+        {
+            // make your fucking items public reeee
+            /*switch (name)
+            {
+                case "Fork":
+                    return Starstorm2.Cores.Items.
+            }*/
             return null;
         }
     }

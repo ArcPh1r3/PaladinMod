@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3796677065
+CRC: 258020104
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2720b443b9e49947cfcffea68e076560
+    Hash: ec65a3f75c87a0a5c580a1daccde0f4a
   TypeTreeHash:
     serializedVersion: 2
-    Hash: fda953f91851074f695274f995047b7d
+    Hash: 13e28ffd075b919a86b36ab5a652804f
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -49,6 +49,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: db294d07add6b364f99a346939dd2a8a, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 2aa2462a23d05b54e9a2ecb2fb686dde, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fef0780b96a0f12448b6dd86f9c8139b, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 136
@@ -82,8 +84,10 @@ Assets:
 - Assets/Paladin/Effects/SwingEffects/PaladinSwingClay.prefab
 - Assets/Paladin/Textures/texPaladinNkuhana.png
 - Assets/Paladin/VFX/texChargeSpark.png
+- Assets/Paladin/VFX/texHitRingAlt.png
 - Assets/Paladin/Icons/texMasteryAchievement.png
 - Assets/Paladin/Animations/AimYaw.anim
+- Assets/Paladin/Materials/matPaladinGM.mat
 - Assets/Paladin/Effects/HitEffects/ImpactPaladinSwingPurple.prefab
 - Assets/Paladin/Textures/Shields/texHavelShieldNormal.dds
 - Assets/Paladin/Animations/RestIdle.anim
@@ -115,7 +119,6 @@ Assets:
 - Assets/Paladin/Mesh/meshNkuhanaPaladin.mesh
 - Assets/Paladin/Materials/Shields/matBlackKnightShield.mat
 - Assets/Paladin/Effects/SwingEffects/EmpSpinSlashEffectFlame.prefab
-- Assets/Paladin/Mesh/meshClayPaladin.mesh
 - Assets/Paladin/Effects/SwordBeamGhost.prefab
 - Assets/Paladin/Effects/HitEffects/ImpactPaladinSwingRed.prefab
 - Assets/Paladin/VFX/matPaladinHitSparkYellow.mat
@@ -124,6 +127,7 @@ Assets:
 - Assets/Paladin/VFX/texEmber2.png
 - Assets/Paladin/Textures/texPaladinDrip.png
 - Assets/Paladin/Mesh/meshSword.mesh
+- Assets/Paladin/Icons/texLunarKnightIcon.png
 - Assets/Paladin/VFX/matEmber.mat
 - Assets/Paladin/Icons/DashIcon.png
 - Assets/Paladin/Icons/ScepterHealZoneIcon.png
@@ -152,6 +156,7 @@ Assets:
 - Assets/Paladin/Effects/SwingEffects/EmpSpinSlashEffectPurple.prefab
 - Assets/Paladin/Icons/texMinecraftSkin.png
 - Assets/Paladin/VFX/matDeath.mat
+- Assets/Paladin/Mesh/meshPaladinGM.mesh
 - Assets/Paladin/Effects/SwingEffects/EmpSpinSlashEffectYellow.prefab
 - Assets/Paladin/VFX/matTorpor.mat
 - Assets/Paladin/Effects/HitEffects/ImpactPaladinSwingBlack.prefab
@@ -189,10 +194,11 @@ Assets:
 - Assets/Paladin/Mesh/meshBat.mesh
 - Assets/Paladin/Icons/SpinSlashIcon.png
 - Assets/Paladin/VFX/texEmber.tif
+- Assets/Paladin/Textures/texPaladinGMEmission.png
+- Assets/Paladin/Textures/texPaladinGM.png
 - Assets/Paladin/Animations/WalkL.anim
 - Assets/Paladin/Icons/PassiveIcon.png
 - Assets/Paladin/Animations/CloseHand.anim
-- Assets/Paladin/PaladinDisplay.prefab
 - Assets/Paladin/VFX/texPaladinHitSparkGreen.png
 - Assets/Paladin/Animations/IdleIn.anim
 - Assets/Paladin/VFX/matTorporCast.mat
@@ -210,7 +216,9 @@ Assets:
 - Assets/Paladin/Icons/texMainSkin.png
 - Assets/Paladin/Animations/LightImpact.anim
 - Assets/Paladin/VFX/matHitSpark.mat
+- Assets/Paladin/VFX/matHitRingAlt.mat
 - Assets/Paladin/VFX/matHeal.mat
+- Assets/Paladin/VFX/matPaladinSwing3.mat
 - Assets/Paladin/VFX/texSmoke.png
 - Assets/Paladin/Animations/CastSpell.anim
 - Assets/Paladin/VFX/texPaladinHitSpark2.png
@@ -241,6 +249,7 @@ Assets:
 - Assets/Paladin/Effects/SwingEffects/SpinSlashEffectRed.prefab
 - Assets/Paladin/Textures/Shields/texSunlightShield.dds
 - Assets/Paladin/Icons/texClayAchievement.png
+- Assets/Paladin/Mesh/meshSwordGM.mesh
 - Assets/Paladin/Shields/DisplayBKShield.prefab
 - Assets/Paladin/Icons/SlashIcon.png
 - Assets/Paladin/Animations/LeapSlam.anim
@@ -256,6 +265,7 @@ Assets:
 - Assets/Paladin/Icons/HealZoneIcon.png
 - Assets/Paladin/Effects/LightningSpear.prefab
 - Assets/Paladin/Animations/Slash2.anim
+- Assets/Paladin/Textures/texPaladinGMEmissionSword.png
 - Assets/Paladin/Textures/texPaladin.png
 - Assets/Paladin/Textures/Shields/tex_WatcherDaggerNormal.png
 - Assets/Paladin/Mesh/meshNkuhanaSword.mesh
@@ -265,6 +275,8 @@ Assets:
 - Assets/Paladin/Effects/SwingEffects/PaladinSwingRed.prefab
 - Assets/Paladin/Materials/Shields/matHavelShield.mat
 - Assets/Paladin/Animations/impactMask.mask
+- Assets/Paladin/PaladinDisplay.prefab
+- Assets/Paladin/VFX/matPaladinSwing4.mat
 - Assets/LunarKnight/Textures/texLunarKnight.png
 - Assets/Paladin/Mesh/meshDripPaladin.mesh
 - Assets/Paladin/VFX/matTorpor2.mat
@@ -294,8 +306,10 @@ Assets:
 - Assets/Paladin/Icons/texLunarShardAchievement.png
 - Assets/Paladin/Icons/ScepterWarcryIcon.png
 - Assets/Paladin/Effects/SwingEffects/EmpSpinSlashEffectRed.prefab
+- Assets/Paladin/VFX/texPaladinSwing3.png
 - Assets/Paladin/Effects/TorporEffect.prefab
 - Assets/Paladin/Effects/SwingEffects/PaladinSwingBlack.prefab
+- Assets/Paladin/Mesh/meshClayPaladin.mesh
 - Assets/Paladin/Animations/Slash2Sprint.anim
 - Assets/Paladin/Icons/WarcryIcon.png
 - Assets/Paladin/VFX/matEmber2.mat
@@ -306,6 +320,7 @@ Assets:
 - Assets/Paladin/VFX/matPaladinSwing2.mat
 - Assets/Paladin/VFX/texHealZone.png
 - Assets/Paladin/Materials/matPaladinLunar.mat
+- Assets/Paladin/Materials/matPaladinGMSword.mat
 - Assets/Paladin/Animations/Jump.anim
 - Assets/Paladin/VFX/matLightning.mat
 - Assets/Paladin/Materials/Shields/matPursuerShield.mat

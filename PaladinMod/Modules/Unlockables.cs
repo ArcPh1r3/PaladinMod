@@ -16,6 +16,11 @@ namespace PaladinMod.Modules
             UnlockablesAPI.AddUnlockable<Achievements.MasteryAchievement>(true);
             UnlockablesAPI.AddUnlockable<Achievements.PoisonAchievement>(true);
             UnlockablesAPI.AddUnlockable<Achievements.ClayAchievement>(true);
+
+            if (PaladinPlugin.starstormInstalled)
+            {
+                UnlockablesAPI.AddUnlockable<Achievements.GrandMasteryAchievement>(true);
+            }
         }
     }
 }

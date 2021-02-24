@@ -5,6 +5,8 @@ using System.IO;
 using UnityEngine.Networking;
 using RoR2;
 using RoR2.Projectile;
+using RoR2.Audio;
+using System.Collections.Generic;
 
 namespace PaladinMod.Modules
 {
@@ -105,6 +107,8 @@ namespace PaladinMod.Modules
         public static Mesh defaultSwordMesh;
         public static Mesh lunarMesh;
         public static Mesh lunarSwordMesh;
+        public static Mesh gmMesh;
+        public static Mesh gmSwordMesh;
         public static Mesh poisonMesh;
         public static Mesh poisonSwordMesh;
         //public static Mesh hunterMesh;
@@ -126,6 +130,16 @@ namespace PaladinMod.Modules
         public static GameObject hawkwoodShield;
         public static GameObject dragonHeadShield;
         public static GameObject watcherDagger;
+
+        // networked hit sounds
+        internal static NetworkSoundEventDef swordHitSoundEventS;
+        internal static NetworkSoundEventDef swordHitSoundEventM;
+        internal static NetworkSoundEventDef swordHitSoundEventL;
+        internal static NetworkSoundEventDef batHitSoundEventS;
+        internal static NetworkSoundEventDef batHitSoundEventM;
+        internal static NetworkSoundEventDef batHitSoundEventL;
+
+        public static Material capeMat;
 
         public static void PopulateAssets()
         {
@@ -260,6 +274,8 @@ namespace PaladinMod.Modules
             defaultSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSword");
             lunarMesh = mainAssetBundle.LoadAsset<Mesh>("meshLunarPaladin");
             lunarSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshLunarSword");
+            gmMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinGM");
+            gmSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordGM");
             poisonMesh = mainAssetBundle.LoadAsset<Mesh>("meshNkuhanaPaladin");
             poisonSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshNkuhanaSword");
             //hunterMesh = mainAssetBundle.LoadAsset<Mesh>("HunterMesh");
@@ -270,6 +286,8 @@ namespace PaladinMod.Modules
             minecraftMesh = mainAssetBundle.LoadAsset<Mesh>("meshMinecraftPaladin");
             minecraftSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshMinecraftSword");
             #endregion
+
+            capeMat = Skins.CreateMaterial("matPaladinGM", 1, Color.white);
 
             //weird shit to get the lightning effect looking how i want it
             altLightningImpactFX = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact"), "PaladinLightningStrikeImpact", true);
@@ -296,6 +314,28 @@ namespace PaladinMod.Modules
             EffectAPI.AddEffect(dashFX);
 
             InitCustomItems();
+
+            swordHitSoundEventS = CreateNetworkSoundEventDef(Modules.Sounds.HitS);
+            swordHitSoundEventM = CreateNetworkSoundEventDef(Modules.Sounds.HitM);
+            swordHitSoundEventL = CreateNetworkSoundEventDef(Modules.Sounds.HitL);
+
+            batHitSoundEventS = CreateNetworkSoundEventDef(Modules.Sounds.HitBluntS);
+            batHitSoundEventM = CreateNetworkSoundEventDef(Modules.Sounds.HitBluntM);
+            batHitSoundEventL = CreateNetworkSoundEventDef(Modules.Sounds.HitBluntL);
+        }
+
+        internal static NetworkSoundEventDef CreateNetworkSoundEventDef(string eventName)
+        {
+            NetworkSoundEventDef networkSoundEventDef = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
+            networkSoundEventDef.akId = AkSoundEngine.GetIDFromString(eventName);
+            networkSoundEventDef.eventName = eventName;
+
+            NetworkSoundEventCatalog.getSoundEventDefs += delegate (List<NetworkSoundEventDef> list)
+            {
+                list.Add(networkSoundEventDef);
+            };
+
+            return networkSoundEventDef;
         }
 
         private static void InitCustomItems()

@@ -102,6 +102,7 @@ ModelImporter:
     100192: wrap2
     100194: wrap3
     100196: wrap4
+    100198: Roundcube.002
     400000: Armature
     400002: calf.L
     400004: calf.R
@@ -201,9 +202,15 @@ ModelImporter:
     400192: wrap2
     400194: wrap3
     400196: wrap4
+    400198: Roundcube.002
     2100000: Material.001
+    2100002: matPaladin
+    2100004: Material
+    2300000: Roundcube.002
+    3300000: Roundcube.002
     4300000: meshPaladin
     4300002: meshSword
+    4300004: Roundcube.002
     9500000: //RootNode
     10800000: Sun
     13700000: meshPaladin
@@ -260,7 +267,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
+    previousCalculatedGlobalScale: 0.0069999998
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60

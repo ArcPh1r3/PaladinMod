@@ -111,6 +111,17 @@ namespace PaladinMod.Modules
 
             List<SkinDef> skinDefs = new List<SkinDef>();
 
+            GameObject cape = childLocator.FindChild("Cape").gameObject;
+
+            SkinDef.GameObjectActivation[] defaultActivations = new SkinDef.GameObjectActivation[]
+            {
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = cape,
+                    shouldActivate = false
+                }
+            };
+
             #region DefaultSkin
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
             SkinDef defaultSkin = CreateSkinDef("PALADINBODY_DEFAULT_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"), defaultRenderers, mainRenderer, model, "");
@@ -127,6 +138,8 @@ namespace PaladinMod.Modules
                     renderer = defaultRenderers[0].renderer
                 }
             };
+
+            defaultSkin.gameObjectActivations = defaultActivations;
 
             skinDefs.Add(defaultSkin);
             #endregion
@@ -153,9 +166,45 @@ namespace PaladinMod.Modules
                 }
             };
 
+            masterySkin.gameObjectActivations = defaultActivations;
+
             skinDefs.Add(masterySkin);
             #endregion
-            
+
+            #region GrandMasterySkin
+            CharacterModel.RendererInfo[] grandMasteryRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
+            defaultRenderers.CopyTo(grandMasteryRendererInfos, 0);
+
+            grandMasteryRendererInfos[0].defaultMaterial = CreateMaterial("matPaladinGMSword", StaticValues.maxSwordGlow, Color.white);
+            grandMasteryRendererInfos[1].defaultMaterial = CreateMaterial("matPaladinGM", 15, Color.white);
+
+            SkinDef grandMasterySkin = CreateSkinDef("PALADINBODY_TYPHOON_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"), grandMasteryRendererInfos, mainRenderer, model, "PALADIN_TYPHOONUNLOCKABLE_REWARD_ID");
+            grandMasterySkin.meshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.gmMesh,
+                    renderer = defaultRenderers[1].renderer
+                },
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.gmSwordMesh,
+                    renderer = defaultRenderers[0].renderer
+                }
+            };
+
+            grandMasterySkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
+            {
+                new SkinDef.GameObjectActivation
+                {
+                    gameObject = cape,
+                    shouldActivate = true
+                }
+            };
+
+            skinDefs.Add(grandMasterySkin);
+            #endregion
+
             #region PoisonSkin
             CharacterModel.RendererInfo[] poisonRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(poisonRendererInfos, 0);
@@ -177,6 +226,8 @@ namespace PaladinMod.Modules
                     renderer = defaultRenderers[0].renderer
                 }
             };
+
+            poisonSkin.gameObjectActivations = defaultActivations;
 
             skinDefs.Add(poisonSkin);
             #endregion
@@ -203,6 +254,8 @@ namespace PaladinMod.Modules
                 }
             };
 
+            claySkin.gameObjectActivations = defaultActivations;
+
             skinDefs.Add(claySkin);
             #endregion
 
@@ -228,7 +281,9 @@ namespace PaladinMod.Modules
                 }
             };
 
-            skinDefs.Add(dripSkin);
+            dripSkin.gameObjectActivations = defaultActivations;
+
+            if (Modules.Config.cursed.Value) skinDefs.Add(dripSkin);
             #endregion
 
             #region MinecraftSkin
@@ -253,7 +308,9 @@ namespace PaladinMod.Modules
                 }
             };
 
-            skinDefs.Add(minecraftSkin);
+            minecraftSkin.gameObjectActivations = defaultActivations;
+
+            if (Modules.Config.cursed.Value) skinDefs.Add(minecraftSkin);
             #endregion
 
             skinController.skins = skinDefs.ToArray();

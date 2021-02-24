@@ -26,6 +26,7 @@ namespace PaladinMod.Modules
 
             LanguageAPI.Add("PALADINBODY_DEFAULT_SKIN_NAME", "Default");
             LanguageAPI.Add("PALADINBODY_LUNAR_SKIN_NAME", "Lunar");
+            LanguageAPI.Add("PALADINBODY_TYPHOON_SKIN_NAME", "Sovereign");
             LanguageAPI.Add("PALADINBODY_POISON_SKIN_NAME", "Corruption");
             LanguageAPI.Add("PALADINBODY_CLAY_SKIN_NAME", "Aphelian");
             LanguageAPI.Add("PALADINBODY_DRIP_SKIN_NAME", "Drip");
@@ -47,7 +48,7 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_PRIMARY_SLASH_NAME", "Divine Blade");
             LanguageAPI.Add("PALADIN_PRIMARY_SLASH_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Stunning.</style> Perform a wide sweeping slash for <style=cIsDamage>" + 100f * StaticValues.spinSlashDamageCoefficient + "% damage</style>, gaining range if <style=cIsHealing>blessed</style>. Use while airborne to perform a leap strike for <style=cIsDamage>" + StaticValues.spinSlashDamageCoefficient * 100f + "% damage</style>, firing a <style=cIsUtility>shockwave</style> if <style=cIsHealing>blessed</style>.";
+            desc = "<style=cIsUtility>Stunning.</style> Perform a wide sweeping slash for <style=cIsDamage>" + 100f * StaticValues.spinSlashDamageCoefficient + "% damage</style>, gaining range if <style=cIsHealing>blessed</style>. Use while airborne to perform a leap strike, firing a <style=cIsUtility>shockwave</style> if <style=cIsHealing>blessed</style>.";
 
             LanguageAPI.Add("PALADIN_SECONDARY_SPINSLASH_NAME", "Spinning Slash");
             LanguageAPI.Add("PALADIN_SECONDARY_SPINSLASH_DESCRIPTION", desc);
@@ -113,6 +114,10 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Paladin: Mastery");
             LanguageAPI.Add("PALADIN_MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, beat the game or obliterate on Monsoon.");
             LanguageAPI.Add("PALADIN_MASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Paladin: Mastery");
+
+            LanguageAPI.Add("PALADIN_TYPHOONUNLOCKABLE_ACHIEVEMENT_NAME", "Paladin: Grand Mastery");
+            LanguageAPI.Add("PALADIN_TYPHOONUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, beat the game or obliterate on Typhoon.");
+            LanguageAPI.Add("PALADIN_TYPHOONUNLOCKABLE_UNLOCKABLE_NAME", "Paladin: Grand Mastery");
 
             LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_ACHIEVEMENT_NAME", "Her Disciple");
             LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, form a covenant with a goddess of corruption.");

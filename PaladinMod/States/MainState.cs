@@ -16,11 +16,14 @@ namespace PaladinMod.States
         private Animator animator;
         private bool wasActive;
 
+        public LocalUser localUser;
+
         public override void OnEnter()
         {
             base.OnEnter();
             this.childLocator = base.GetModelChildLocator();
             this.animator = base.GetModelAnimator();
+            this.localUser = LocalUserManager.readOnlyLocalUsersList[0];
             if (base.healthComponent.combinedHealth >= (0.9f * base.healthComponent.fullCombinedHealth) || base.healthComponent.barrier > 0)
             {
                 this.swordActive = true;
@@ -53,7 +56,7 @@ namespace PaladinMod.States
         {
             base.Update();
 
-            if (base.isAuthority && base.characterMotor.isGrounded)
+            if (base.isAuthority && base.characterMotor.isGrounded && !this.localUser.isUIFocused)
             {
                 if (Input.GetKeyDown(Modules.Config.praiseKeybind.Value))
                 {

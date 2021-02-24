@@ -84,8 +84,11 @@
     <Reference Include="SivsItemsRoR2">
       <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\SivsItemsRoR2.dll</HintPath>
     </Reference>
+    <Reference Include="Starstorm2">
+      <HintPath>..\..\Moonstorm\Starstorm 2\bin\Debug\Starstorm2.dll</HintPath>
+    </Reference>
     <Reference Include="SupplyDrop">
-      <HintPath>..\..\..\..\Downloads\risky\SupplyDrop\SupplyDrop.dll</HintPath>
+      <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\test\BepInEx\plugins\Keroro1454-Supply_Drop\SupplyDrop.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration">
       <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\System.Configuration.dll</HintPath>

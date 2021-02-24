@@ -4,15 +4,15 @@
     {
         public override void OnEnter()
         {
-            if (base.characterBody.skinIndex == 4)
+            this.animString = "PraiseTheSun";
+            this.duration = 3;
+            base.OnEnter();
+
+            if (base.swordController.skinName == "PALADINBODY_DRIP_SKIN_NAME")
             {
                 this.outer.SetNextState(new Drip());
                 return;
             }
-
-            this.animString = "PraiseTheSun";
-            this.duration = 3;
-            base.OnEnter();
         }
     }
 }

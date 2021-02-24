@@ -16,8 +16,9 @@ namespace PaladinMod
     [BepInDependency("com.KomradeSpectre.Aetherium", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Sivelos.SivsItems", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.K1454.SupplyDrop", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.TeamMoonstorm.Starstorm2", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "1.2.7")]
+    [BepInPlugin(MODUID, "Paladin", "1.3.2")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -59,6 +60,12 @@ namespace PaladinMod
         public static bool sivsItemsInstalled = false;
         public static bool supplyDropInstalled = false;
 
+        // ss2 compat
+        public static bool starstormInstalled = false;
+
+        // eh
+        public static uint claySkinIndex = 3;
+
         public PaladinPlugin()
         {
             awake += PaladinPlugin_Load;
@@ -77,6 +84,13 @@ namespace PaladinMod
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.KomradeSpectre.Aetherium")) aetheriumInstalled = true;
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Sivelos.SivsItems")) sivsItemsInstalled = true;
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.K1454.SupplyDrop")) supplyDropInstalled = true;
+
+            // ss2
+            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamMoonstorm.Starstorm2"))
+            {
+                starstormInstalled = true;
+                claySkinIndex++;
+            }
 
             Modules.Prefabs.CreatePrefabs(); // create body and display prefabs
             characterPrefab = Modules.Prefabs.paladinPrefab; // cache this for other mods to use it

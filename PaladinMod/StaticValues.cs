@@ -24,7 +24,7 @@
         public const float beamSpeed = 160f;
 
         //Spinning Slash
-        public const float spinSlashDamageCoefficient = 8f;
+        public const float spinSlashDamageCoefficient = 10f;
 
         //Sunlight Spear
         public const float lightningSpearMinDamageCoefficient = 2f;

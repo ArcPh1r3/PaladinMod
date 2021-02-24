@@ -17,7 +17,7 @@ namespace PaladinMod.Misc
         private Modules.Effects.PaladinSkinInfo skinInfo;
         private CharacterBody body;
         private CharacterModel model;
-        private bool isBlunt;
+        public bool isBlunt;
 
         private void Awake()
         {
@@ -34,6 +34,8 @@ namespace PaladinMod.Misc
                 this.skinInfo = Modules.Effects.GetSkinInfo(this.model.GetComponent<ModelSkinController>().skins[this.body.skinIndex].nameToken);
                 this.skinName = this.skinInfo.skinName;
                 this.isBlunt = this.skinInfo.isWeaponBlunt;
+
+                if (this.skinInfo.skinName == "PALADINBODY_TYPHOON_SKIN_NAME") this.AddCapeRendererInfo();
             }
 
             Invoke("CheckInventory", 0.2f);
@@ -67,9 +69,40 @@ namespace PaladinMod.Misc
             }
         }
 
+        private void AddCapeRendererInfo()
+        {
+            // do it this way to avoid messing with rendererinfos and possibly breaking every custom paladin skin
+            // TODO: helper method for adding a rendererinfo
+            //nvm didnt work
+
+            return;
+            ModelSkinController skinController = this.model.GetComponent<ModelSkinController>();
+
+            Array.Resize(ref skinController.skins[this.body.skinIndex].rendererInfos, skinController.skins[this.body.skinIndex].rendererInfos.Length + 1);
+
+            skinController.skins[this.body.skinIndex].rendererInfos[skinController.skins[this.body.skinIndex].rendererInfos.Length - 1] = new CharacterModel.RendererInfo
+            {
+                defaultMaterial = Modules.Skins.CreateMaterial("matPaladinGM", 1, Color.white),
+                defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                ignoreOverlays = true,
+                renderer = this.model.gameObject.GetComponent<ChildLocator>().FindChild("CapeModel").GetComponent<SkinnedMeshRenderer>()
+            };
+
+            Array.Resize(ref this.model.baseRendererInfos, this.model.baseRendererInfos.Length + 1);
+
+            this.model.baseRendererInfos[this.model.baseRendererInfos.Length - 1] = new CharacterModel.RendererInfo
+            {
+                defaultMaterial = Modules.Skins.CreateMaterial("matPaladinGM", 1, Color.white),
+                defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
+                ignoreOverlays = true,
+                renderer = this.model.gameObject.GetComponent<ChildLocator>().FindChild("CapeModel").GetComponent<SkinnedMeshRenderer>()
+            };
+        }
+
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private bool CheckForBlasterSword(Inventory inventory)
         {
+            if (Aetherium.Items.BlasterSword.instance == null) return false;// this should work? idk
             if (inventory.GetItemCount(ItemCatalog.FindItemIndex("ITEM_BLASTER_SWORD")) > 0) return true;
             return false;
         }

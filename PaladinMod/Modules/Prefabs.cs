@@ -55,6 +55,11 @@ namespace PaladinMod.Modules
                 {
                     childName = "Model",
                     material = Modules.Skins.CreateMaterial("matPaladin", 10, Color.white)
+                },
+                new CustomRendererInfo
+                {
+                    childName = "CapeModel",
+                    material = Modules.Skins.CreateMaterial("matPaladinGM")
                 }
             }, 1);
 

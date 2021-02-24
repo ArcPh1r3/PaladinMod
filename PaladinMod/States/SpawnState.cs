@@ -2,6 +2,7 @@
 using UnityEngine.Networking;
 using EntityStates;
 using UnityEngine;
+using PaladinMod.Misc;
 
 namespace PaladinMod.States
 {
@@ -12,7 +13,6 @@ namespace PaladinMod.States
         private Transform modelTransform;
         private Animator animator;
         private bool isClay;
-        private Material swordMat;
 
         public override void OnEnter()
         {
@@ -21,10 +21,9 @@ namespace PaladinMod.States
             this.modelTransform = base.GetModelTransform();
             this.isClay = false;
 
-            if (NetworkServer.active) base.characterBody.AddBuff(BuffIndex.HiddenInvincibility);
+            if (NetworkServer.active) base.characterBody.AddTimedBuff(BuffIndex.HiddenInvincibility, SpawnState.duration * 1.5f);
 
-            //this shouldn't be hardcoded in but i really just cba
-            if (base.characterBody.skinIndex == 3) this.isClay = true;
+            if (base.characterBody.skinIndex == PaladinPlugin.claySkinIndex) this.isClay = true;
 
             if (this.isClay)
             {
@@ -115,8 +114,6 @@ namespace PaladinMod.States
             {
                 this.animator.SetFloat(AnimationParameters.aimWeight, 1f);
             }
-
-            if (NetworkServer.active) base.characterBody.RemoveBuff(BuffIndex.HiddenInvincibility);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

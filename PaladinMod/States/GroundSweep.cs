@@ -64,6 +64,8 @@ namespace PaladinMod.States
             this.attack.pushAwayForce = -1500f;
             this.attack.hitBoxGroup = hitBoxGroup;
             this.attack.isCrit = base.RollCrit();
+            this.attack.impactSound = Modules.Assets.swordHitSoundEventM.index;
+            if (this.swordController.isBlunt) this.attack.impactSound = Modules.Assets.batHitSoundEventM.index;
         }
 
         public override void OnExit()
@@ -92,8 +94,6 @@ namespace PaladinMod.States
 
                     if (this.attack.Fire())
                     {
-                        this.swordController.PlayHitSound(1);
-
                         if (!this.inHitPause)
                         {
                             this.hitStopCachedState = base.CreateHitStopCachedState(base.characterMotor, this.animator, "Whirlwind.playbackRate");

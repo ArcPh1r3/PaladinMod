@@ -43,6 +43,7 @@ namespace PaladinMod.States
             base.StartAimMode(0.5f + this.duration, false);
             base.characterBody.isSprinting = false;
             this.inCombo = false;
+            base.characterBody.outOfCombatStopwatch = 0f;
 
             if (this.swordController) this.swordController.attacking = true;
 
@@ -89,6 +90,8 @@ namespace PaladinMod.States
             this.attack.pushAwayForce = 750f;
             this.attack.hitBoxGroup = hitBoxGroup;
             this.attack.isCrit = base.RollCrit();
+            this.attack.impactSound = Modules.Assets.swordHitSoundEventS.index;
+            if (this.swordController.isBlunt) this.attack.impactSound = Modules.Assets.batHitSoundEventS.index;
         }
 
         public override void OnExit()
@@ -134,8 +137,6 @@ namespace PaladinMod.States
 
                     if (this.attack.Fire())
                     {
-                        this.swordController.PlayHitSound(0);
-
                         if (!this.hasHopped)
                         {
                             if (base.characterMotor && !base.characterMotor.isGrounded)

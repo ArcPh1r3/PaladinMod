@@ -55,6 +55,18 @@ namespace PaladinMod.Modules
 
             skinList.Add(new PaladinSkinInfo
             {
+                skinName = "PALADINBODY_TYPHOON_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffect",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFX,
+                swingEffect = Assets.swordSwing,
+                spinSlashEffect = Assets.spinningSlashFX,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX
+            });
+
+            skinList.Add(new PaladinSkinInfo
+            {
                 skinName = "PALADINBODY_POISON_SKIN_NAME",
                 passiveEffectName = "SwordActiveEffectGreen",
                 swingSoundString = Sounds.Swing,

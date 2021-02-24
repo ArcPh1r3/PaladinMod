@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using PaladinMod.Misc;
 using RoR2;
 using UnityEngine;
 
@@ -16,12 +17,16 @@ namespace PaladinMod.States.Emotes
         private float initialTime;
         private Animator animator;
         private ChildLocator childLocator;
+        protected PaladinSwordController swordController;
+        public LocalUser localUser;
 
         public override void OnEnter()
         {
             base.OnEnter();
             this.animator = base.GetModelAnimator();
             this.childLocator = base.GetModelChildLocator();
+            this.swordController = base.GetComponent<PaladinSwordController>();
+            this.localUser = LocalUserManager.readOnlyLocalUsersList[0];
 
             base.characterBody.hideCrosshair = true;
 
@@ -96,7 +101,7 @@ namespace PaladinMod.States.Emotes
             }
 
             //emote cancels
-            if (base.isAuthority && base.characterMotor.isGrounded)
+            if (base.isAuthority && base.characterMotor.isGrounded && !this.localUser.isUIFocused)
             {
                 if (Input.GetKeyDown(Modules.Config.praiseKeybind.Value))
                 {
