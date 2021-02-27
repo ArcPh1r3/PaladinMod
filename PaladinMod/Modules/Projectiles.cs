@@ -74,7 +74,7 @@ namespace PaladinMod.Modules
 
             #region SwordBeam
             swordBeam = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/FMJ"), "PaladinSwordBeam", true);
-            swordBeam.transform.localScale *= 2f;
+            swordBeam.transform.localScale = new Vector3(6, 3, 2);
             //GameObject beamGhost = Assets.swordBeam.InstantiateClone("SwordBeamGhost", false);
             //beamGhost.AddComponent<ProjectileGhostController>();
 

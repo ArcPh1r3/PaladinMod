@@ -77,7 +77,8 @@ namespace PaladinMod.States
             }
 
             float dmg = Slash.damageCoefficient;
-
+            //14.5
+            //20
             this.attack = new OverlapAttack();
             this.attack.damageType = DamageType.Generic;
             this.attack.attacker = base.gameObject;
@@ -114,12 +115,13 @@ namespace PaladinMod.States
 
         public void FireAttack()
         {
+
             if (!this.hasFired)
             {
                 this.hasFired = true;
                 this.swordController.PlaySwingSound();
 
-                if (base.isAuthority)
+                if (base.isAuthority) 
                 {
                     string muzzleString = null;
                     if (this.swingIndex == 0) muzzleString = "SwingRight";
@@ -130,31 +132,35 @@ namespace PaladinMod.States
 
                     Ray aimRay = base.GetAimRay();
 
-                    if (this.swordController && this.swordController.swordActive)
+                    if (this.swordController && this.swordController.swordActive) 
                     {
                         ProjectileManager.instance.FireProjectile(Modules.Projectiles.swordBeam, aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, StaticValues.beamDamageCoefficient * this.damageStat, 0f, Util.CheckRoll(this.critStat, base.characterBody.master), DamageColorIndex.WeakPoint, null, StaticValues.beamSpeed);
                     }
+                }
+            }
 
-                    if (this.attack.Fire())
+            if (base.isAuthority) 
+            {
+                if (this.attack.Fire()) 
+                {
+
+                    if (!this.hasHopped) 
                     {
-                        if (!this.hasHopped)
+                        if (base.characterMotor && !base.characterMotor.isGrounded) 
                         {
-                            if (base.characterMotor && !base.characterMotor.isGrounded)
-                            {
-                                base.SmallHop(base.characterMotor, Slash.hitHopVelocity);
-                            }
-
-                            if (base.skillLocator.utility.skillDef.skillNameToken == "PALADIN_UTILITY_DASH_NAME") base.skillLocator.utility.RunRecharge(1f);
-
-                            this.hasHopped = true;
+                            base.SmallHop(base.characterMotor, Slash.hitHopVelocity);
                         }
 
-                        if (!this.inHitPause)
-                        {
-                            this.hitStopCachedState = base.CreateHitStopCachedState(base.characterMotor, this.animator, "Slash.playbackRate");
-                            this.hitPauseTimer = (2f * EntityStates.Merc.GroundLight.hitPauseDuration) / this.attackSpeedStat;
-                            this.inHitPause = true;
-                        }
+                        if (base.skillLocator.utility.skillDef.skillNameToken == "PALADIN_UTILITY_DASH_NAME") base.skillLocator.utility.RunRecharge(1f);
+
+                        this.hasHopped = true;
+                    }
+
+                    if (!this.inHitPause) 
+                    {
+                        this.hitStopCachedState = base.CreateHitStopCachedState(base.characterMotor, this.animator, "Slash.playbackRate");
+                        this.hitPauseTimer = (2f * EntityStates.Merc.GroundLight.hitPauseDuration) / this.attackSpeedStat;
+                        this.inHitPause = true;
                     }
                 }
             }
@@ -182,7 +188,7 @@ namespace PaladinMod.States
                 if (this.animator) this.animator.SetFloat("Slash.playbackRate", 0f);
             }
 
-            if (this.stopwatch >= this.duration * 0.225f && this.stopwatch <= this.duration * 0.5f)
+            if (this.stopwatch >= this.duration * 0.225f && this.stopwatch <= this.duration * 0.4f)
             {
                 this.FireAttack();
             }
