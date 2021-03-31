@@ -6,13 +6,16 @@
         {
             this.animString = "PraiseTheSun";
             this.duration = 3;
-            base.OnEnter();
 
-            if (base.swordController.skinName == "PALADINBODY_DRIP_SKIN_NAME")
+            /*if (base.swordController.skinName == "PALADINBODY_DRIP_SKIN_NAME")
             {
-                this.outer.SetNextState(new Drip());
-                return;
-            }
+                this.animString = "DripPose";
+                this.duration = 0f;
+                this.animDuration = 0.75f;
+                this.soundString = Modules.Sounds.Drip;
+            }*/
+
+            base.OnEnter();
         }
     }
 }

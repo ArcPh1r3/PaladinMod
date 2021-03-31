@@ -1,66 +1,61 @@
-﻿using R2API;
+﻿using Mono.Cecil.Cil;
+using MonoMod.Cil;
+using R2API;
 using RoR2;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace PaladinMod.Modules
 {
     public static class Buffs
     {
-        public static BuffIndex torporDebuff;
-        public static BuffIndex warcryBuff;
+        public static BuffDef torporDebuff;
+        public static BuffDef warcryBuff;
 
-        public static BuffIndex scepterTorporDebuff;
-        public static BuffIndex scepterWarcryBuff;
+        public static BuffDef scepterTorporDebuff;
+        public static BuffDef scepterWarcryBuff;
+
+        internal static List<BuffDef> buffDefs = new List<BuffDef>();
 
         public static void RegisterBuffs()
         {
-            BuffDef paladinWarcryBuff = new BuffDef
-            {
-                name = "Divine Blessing",
-                iconPath = "Textures/BuffIcons/texBuffGenericShield",
-                buffColor = PaladinPlugin.characterColor,
-                canStack = false,
-                isDebuff = false,
-                eliteIndex = EliteIndex.None
-            };
-            CustomBuff paladinWarcry = new CustomBuff(paladinWarcryBuff);
-            warcryBuff = BuffAPI.Add(paladinWarcry);
+            // fix the buff catalog to actually register our buffs
+            IL.RoR2.BuffCatalog.Init += FixBuffCatalog;
 
-            BuffDef scepterPaladinWarcryBuff = new BuffDef
-            {
-                name = "Divine Blessing (Scepter)",
-                iconPath = "Textures/BuffIcons/texBuffGenericShield",
-                buffColor = PaladinPlugin.characterColor,
-                canStack = false,
-                isDebuff = false,
-                eliteIndex = EliteIndex.None
-            };
-            CustomBuff scepterPaladinWarcry = new CustomBuff(scepterPaladinWarcryBuff);
-            scepterWarcryBuff = BuffAPI.Add(scepterPaladinWarcry);
+            warcryBuff = AddNewBuff("Divine Blessing", Resources.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), PaladinPlugin.characterColor, false, false);
+            scepterWarcryBuff = AddNewBuff("Divine Blessing (Scepter)", Resources.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), PaladinPlugin.characterColor, false, false);
 
-            BuffDef torporDebuffDef = new BuffDef
-            {
-                name = "Torpor",
-                iconPath = "Textures/BuffIcons/texBuffCloakIcon",
-                buffColor = Color.black,
-                canStack = false,
-                isDebuff = true,
-                eliteIndex = EliteIndex.None
-            };
-            CustomBuff torpor = new CustomBuff(torporDebuffDef);
-            torporDebuff = BuffAPI.Add(torpor);
+            torporDebuff = AddNewBuff("Torpor", Resources.Load<Sprite>("Textures/BuffIcons/texBuffCloakIcon"), Color.black, false, true);
+            scepterTorporDebuff = AddNewBuff("Torpor (Scepter)", Resources.Load<Sprite>("Textures/BuffIcons/texBuffCloakIcon"), Color.black, false, true);
+        }
 
-            BuffDef scepterTorporDebuffDef = new BuffDef
+        internal static void FixBuffCatalog(ILContext il)
+        {
+            ILCursor c = new ILCursor(il);
+
+            if (!c.Next.MatchLdsfld(typeof(RoR2Content.Buffs), nameof(RoR2Content.Buffs.buffDefs)))
             {
-                name = "Torpor (Scepter)",
-                iconPath = "Textures/BuffIcons/texBuffCloakIcon",
-                buffColor = Color.black,
-                canStack = false,
-                isDebuff = true,
-                eliteIndex = EliteIndex.None
-            };
-            CustomBuff scepterTorpor = new CustomBuff(scepterTorporDebuffDef);
-            scepterTorporDebuff = BuffAPI.Add(scepterTorpor);
+                return;
+            }
+
+            c.Remove();
+            c.Emit(OpCodes.Ldsfld, typeof(ContentManager).GetField(nameof(ContentManager.buffDefs)));
+        }
+
+        // simple helper method
+        internal static BuffDef AddNewBuff(string buffName, Sprite buffIcon, Color buffColor, bool canStack, bool isDebuff)
+        {
+            BuffDef buffDef = ScriptableObject.CreateInstance<BuffDef>();
+            buffDef.name = buffName;
+            buffDef.buffColor = buffColor;
+            buffDef.canStack = canStack;
+            buffDef.isDebuff = isDebuff;
+            buffDef.eliteDef = null;
+            buffDef.iconSprite = buffIcon;
+
+            buffDefs.Add(buffDef);
+
+            return buffDef;
         }
     }
 }

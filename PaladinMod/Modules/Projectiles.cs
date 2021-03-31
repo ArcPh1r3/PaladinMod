@@ -1,6 +1,7 @@
 ﻿using R2API;
 using RoR2;
 using RoR2.Projectile;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace PaladinMod.Modules
@@ -123,7 +124,6 @@ namespace PaladinMod.Modules
             healZoneController.radius = StaticValues.healZoneRadius;
             healZoneController.interval = 0.25f;
             healZoneController.rangeIndicator = null;
-            healZoneController.buffType = BuffIndex.None;
             healZoneController.buffDuration = 0f;
             healZoneController.floorWard = false;
             healZoneController.expires = true;
@@ -155,7 +155,6 @@ namespace PaladinMod.Modules
             scepterHealZoneController.radius = StaticValues.scepterHealZoneRadius;
             scepterHealZoneController.interval = 0.25f;
             scepterHealZoneController.rangeIndicator = null;
-            scepterHealZoneController.buffType = BuffIndex.None;
             scepterHealZoneController.buffDuration = 0f;
             scepterHealZoneController.floorWard = false;
             scepterHealZoneController.expires = true;
@@ -187,7 +186,7 @@ namespace PaladinMod.Modules
             torporController.radius = StaticValues.torporRadius;
             torporController.interval = 1f;
             torporController.rangeIndicator = null;
-            torporController.buffType = Buffs.torporDebuff;
+            torporController.buffDef = Buffs.torporDebuff;
             torporController.buffDuration = 1f;
             torporController.floorWard = false;
             torporController.expires = true;
@@ -219,7 +218,7 @@ namespace PaladinMod.Modules
             scepterTorporController.radius = StaticValues.scepterTorporRadius;
             scepterTorporController.interval = 1f;
             scepterTorporController.rangeIndicator = null;
-            scepterTorporController.buffType = Buffs.scepterTorporDebuff;
+            scepterTorporController.buffDef = Buffs.scepterTorporDebuff;
             scepterTorporController.buffDuration = 1f;
             scepterTorporController.floorWard = false;
             scepterTorporController.expires = true;
@@ -251,7 +250,7 @@ namespace PaladinMod.Modules
             warcryController.radius = StaticValues.warcryRadius;
             warcryController.interval = 0.25f;
             warcryController.rangeIndicator = null;
-            warcryController.buffType = Buffs.warcryBuff;
+            warcryController.buffDef = Buffs.warcryBuff;
             warcryController.buffDuration = 1f;
             warcryController.floorWard = false;
             warcryController.expires = true;
@@ -280,7 +279,7 @@ namespace PaladinMod.Modules
             scepterWarcryController.radius = StaticValues.scepterWarcryRadius;
             scepterWarcryController.interval = 0.25f;
             scepterWarcryController.rangeIndicator = null;
-            scepterWarcryController.buffType = Buffs.scepterWarcryBuff;
+            scepterWarcryController.buffDef = Buffs.scepterWarcryBuff;
             scepterWarcryController.buffDuration = 1f;
             scepterWarcryController.floorWard = false;
             scepterWarcryController.expires = true;
@@ -296,19 +295,19 @@ namespace PaladinMod.Modules
             InitSpellEffect(scepterWarcryFX, StaticValues.scepterWarcryRadius, StaticValues.scepterWarcryDuration);
             #endregion
 
-            ProjectileCatalog.getAdditionalEntries += list =>
+            Modules.Prefabs.projectilePrefabs = new List<GameObject>
             {
-                list.Add(swordBeam);
-                list.Add(shockwave);
-                list.Add(lightningSpear);
-                list.Add(lunarShard);
-                list.Add(heal);
-                list.Add(healZone);
-                list.Add(scepterHealZone);
-                list.Add(torpor);
-                list.Add(scepterTorpor);
-                list.Add(warcry);
-                list.Add(scepterWarcry);
+                swordBeam,
+                shockwave,
+                lightningSpear,
+                lunarShard,
+                heal,
+                healZone,
+                scepterHealZone,
+                torpor,
+                scepterTorpor,
+                warcry,
+                scepterWarcry
             };
         }
 

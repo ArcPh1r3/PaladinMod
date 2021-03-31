@@ -63,7 +63,7 @@ namespace PaladinMod.States
 
             if (base.fixedAge >= this.duration * 0.2f)
             {
-                Util.PlayScaledSound(WhirlwindBase.attackSoundString, base.gameObject, WhirlwindBase.slashPitch);
+                Util.PlayAttackSpeedSound(WhirlwindBase.attackSoundString, base.gameObject, WhirlwindBase.slashPitch);
                 EffectManager.SimpleMuzzleFlash(WhirlwindBase.swingEffectPrefab, base.gameObject, this.slashChildName, false);
 
                 if (base.isAuthority && !this.hasSwung)

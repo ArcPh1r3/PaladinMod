@@ -22,7 +22,7 @@ namespace PaladinMod.States
             base.characterBody.isSprinting = true;
             this.duration = DashForwardOld.baseDuration;
 
-            Util.PlayScaledSound(EntityStates.Croco.Leap.leapSoundString, base.gameObject, 1.75f);
+            Util.PlayAttackSpeedSound(EntityStates.Croco.Leap.leapSoundString, base.gameObject, 1.75f);
             base.PlayAnimation("FullBody, Override", "DashForward", "Whirlwind.playbackRate", this.duration);
 
             if (base.isAuthority && base.inputBank && base.characterDirection)
@@ -50,7 +50,7 @@ namespace PaladinMod.States
                 temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
             }
 
-            if (NetworkServer.active) base.characterBody.AddBuff(BuffIndex.HiddenInvincibility);
+            if (NetworkServer.active) base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
 
             Vector3 b = base.characterMotor ? base.characterMotor.velocity : Vector3.zero;
             this.previousPosition = base.transform.position - b;
@@ -76,7 +76,7 @@ namespace PaladinMod.States
                 base.cameraTargetParams.fovOverride = -1f;
             }
 
-            if (NetworkServer.active) base.characterBody.RemoveBuff(BuffIndex.HiddenInvincibility);
+            if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
 
             base.OnExit();
         }

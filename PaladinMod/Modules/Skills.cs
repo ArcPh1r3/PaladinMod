@@ -1,5 +1,4 @@
 ﻿using EntityStates;
-using R2API;
 using RoR2;
 using RoR2.Skills;
 using System;
@@ -12,6 +11,9 @@ namespace PaladinMod.Modules
     public static class Skills
     {
         private static SkillLocator skillLocator;
+
+        internal static List<SkillFamily> skillFamilies = new List<SkillFamily>();
+        internal static List<SkillDef> skillDefs = new List<SkillDef>();
 
         public static void SetupSkills(GameObject bodyPrefab)
         {
@@ -48,13 +50,12 @@ namespace PaladinMod.Modules
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Any;
-            mySkillDef.isBullets = false;
+            mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
-            mySkillDef.noSprint = true;
+            mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
-            mySkillDef.shootDelay = 0.5f;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon1;
             mySkillDef.skillDescriptionToken = "PALADIN_PRIMARY_SLASH_DESCRIPTION";
@@ -70,19 +71,18 @@ namespace PaladinMod.Modules
                 mySkillDef.activationStateMachineName = "Body";
             }
 
-            LoadoutAPI.AddSkillDef(mySkillDef);
+            skillDefs.Add(mySkillDef);
 
             skillLocator.primary = bodyPrefab.AddComponent<GenericSkill>();
             SkillFamily newFamily = ScriptableObject.CreateInstance<SkillFamily>();
             newFamily.variants = new SkillFamily.Variant[1];
-            LoadoutAPI.AddSkillFamily(newFamily);
+            skillFamilies.Add(newFamily);
             skillLocator.primary._skillFamily = newFamily;
             SkillFamily skillFamily = skillLocator.primary.skillFamily;
 
             skillFamily.variants[0] = new SkillFamily.Variant
             {
                 skillDef = mySkillDef,
-                unlockableName = "",
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
         }
@@ -98,13 +98,12 @@ namespace PaladinMod.Modules
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
-            mySkillDef.isBullets = false;
+            mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
-            mySkillDef.noSprint = true;
+            mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
-            mySkillDef.shootDelay = 0.5f;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon2;
             mySkillDef.skillDescriptionToken = "PALADIN_SECONDARY_SPINSLASH_DESCRIPTION";
@@ -114,19 +113,18 @@ namespace PaladinMod.Modules
                 "KEYWORD_STUNNING",
             };
 
-            LoadoutAPI.AddSkillDef(mySkillDef);
+            skillDefs.Add(mySkillDef);
 
             skillLocator.secondary = bodyPrefab.AddComponent<GenericSkill>();
             SkillFamily newFamily = ScriptableObject.CreateInstance<SkillFamily>();
             newFamily.variants = new SkillFamily.Variant[1];
-            LoadoutAPI.AddSkillFamily(newFamily);
+            skillFamilies.Add(newFamily);
             skillLocator.secondary._skillFamily = newFamily;
             SkillFamily skillFamily = skillLocator.secondary.skillFamily;
 
             skillFamily.variants[0] = new SkillFamily.Variant
             {
                 skillDef = mySkillDef,
-                unlockableName = "",
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
 
@@ -139,13 +137,12 @@ namespace PaladinMod.Modules
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
-            mySkillDef.isBullets = false;
+            mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
-            mySkillDef.noSprint = false;
+            mySkillDef.cancelSprintingOnActivation = false;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
-            mySkillDef.shootDelay = 0.5f;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon2b;
             mySkillDef.skillDescriptionToken = "PALADIN_SECONDARY_LIGHTNING_DESCRIPTION";
@@ -156,13 +153,12 @@ namespace PaladinMod.Modules
                 "KEYWORD_AGILE"
             };
 
-            LoadoutAPI.AddSkillDef(mySkillDef);
+            skillDefs.Add(mySkillDef);
 
             Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
             skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
             {
                 skillDef = mySkillDef,
-                unlockableName = "",//PALADIN_LIGHTNINGSPEARUNLOCKABLE_REWARD_ID
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
 
@@ -175,13 +171,12 @@ namespace PaladinMod.Modules
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Any;
-            mySkillDef.isBullets = false;
+            mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
-            mySkillDef.noSprint = false;
+            mySkillDef.cancelSprintingOnActivation = false;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
-            mySkillDef.shootDelay = 0.5f;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon2c;
             mySkillDef.skillDescriptionToken = "PALADIN_SECONDARY_LUNARSHARD_DESCRIPTION";
@@ -191,13 +186,13 @@ namespace PaladinMod.Modules
                 "KEYWORD_AGILE"
             };
 
-            LoadoutAPI.AddSkillDef(mySkillDef);
+            skillDefs.Add(mySkillDef);
 
             Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
             skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
             {
                 skillDef = mySkillDef,
-                unlockableName = "PALADIN_LUNARSHARDUNLOCKABLE_REWARD_ID",
+                unlockableDef = Modules.Unlockables.paladinLunarShardSkillDef,
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
         }
@@ -213,33 +208,31 @@ namespace PaladinMod.Modules
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.PrioritySkill;
-            mySkillDef.isBullets = false;
+            mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = false;
             mySkillDef.mustKeyPress = false;
-            mySkillDef.noSprint = false;
+            mySkillDef.cancelSprintingOnActivation = false;
             mySkillDef.forceSprintDuringState = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
-            mySkillDef.shootDelay = 0.5f;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon3;
             mySkillDef.skillDescriptionToken = "PALADIN_UTILITY_DASH_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_UTILITY_DASH_NAME";
             mySkillDef.skillNameToken = "PALADIN_UTILITY_DASH_NAME";
 
-            LoadoutAPI.AddSkillDef(mySkillDef);
+            skillDefs.Add(mySkillDef);
 
             skillLocator.utility = bodyPrefab.AddComponent<GenericSkill>();
             SkillFamily newFamily = ScriptableObject.CreateInstance<SkillFamily>();
             newFamily.variants = new SkillFamily.Variant[1];
-            LoadoutAPI.AddSkillFamily(newFamily);
+            skillFamilies.Add(newFamily);
             skillLocator.utility._skillFamily = newFamily;
             SkillFamily skillFamily = skillLocator.utility.skillFamily;
 
             skillFamily.variants[0] = new SkillFamily.Variant
             {
                 skillDef = mySkillDef,
-                unlockableName = "",
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
 
@@ -252,26 +245,25 @@ namespace PaladinMod.Modules
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
-            mySkillDef.isBullets = false;
+            mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
-            mySkillDef.noSprint = true;
+            mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
-            mySkillDef.shootDelay = 0.5f;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon3b;
             mySkillDef.skillDescriptionToken = "PALADIN_UTILITY_HEAL_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_UTILITY_HEAL_NAME";
             mySkillDef.skillNameToken = "PALADIN_UTILITY_HEAL_NAME";
 
-            LoadoutAPI.AddSkillDef(mySkillDef);
+            skillDefs.Add(mySkillDef);
 
             Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
             skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
             {
                 skillDef = mySkillDef,
-                unlockableName = "PALADIN_HEALUNLOCKABLE_REWARD_ID",
+                unlockableDef = Modules.Unlockables.paladinHealSkillDefDef,
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
         }
@@ -287,32 +279,30 @@ namespace PaladinMod.Modules
             mySkillDef.canceledFromSprinting = true;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
-            mySkillDef.isBullets = false;
+            mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
-            mySkillDef.noSprint = true;
+            mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
-            mySkillDef.shootDelay = 0.5f;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon4;
             mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_HEALZONE_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SPECIAL_HEALZONE_NAME";
             mySkillDef.skillNameToken = "PALADIN_SPECIAL_HEALZONE_NAME";
 
-            LoadoutAPI.AddSkillDef(mySkillDef);
+            skillDefs.Add(mySkillDef);
 
             skillLocator.special = bodyPrefab.AddComponent<GenericSkill>();
             SkillFamily newFamily = ScriptableObject.CreateInstance<SkillFamily>();
             newFamily.variants = new SkillFamily.Variant[1];
-            LoadoutAPI.AddSkillFamily(newFamily);
+            skillFamilies.Add(newFamily);
             skillLocator.special._skillFamily = newFamily;
             SkillFamily skillFamily = skillLocator.special.skillFamily;
 
             skillFamily.variants[0] = new SkillFamily.Variant
             {
                 skillDef = mySkillDef,
-                unlockableName = "",
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
 
@@ -325,13 +315,12 @@ namespace PaladinMod.Modules
             mySkillDef.canceledFromSprinting = true;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
-            mySkillDef.isBullets = false;
+            mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
-            mySkillDef.noSprint = true;
+            mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
-            mySkillDef.shootDelay = 0.5f;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon4b;
             mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_TORPOR_DESCRIPTION";
@@ -341,13 +330,13 @@ namespace PaladinMod.Modules
                 "KEYWORD_TORPOR"
             };
 
-            LoadoutAPI.AddSkillDef(mySkillDef);
+            skillDefs.Add(mySkillDef);
 
             Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
             skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
             {
                 skillDef = mySkillDef,
-                unlockableName = "PALADIN_TORPORUNLOCKABLE_REWARD_ID",
+                unlockableDef = Modules.Unlockables.paladinTorporSkillDefDef,
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
 
@@ -360,26 +349,24 @@ namespace PaladinMod.Modules
             mySkillDef.canceledFromSprinting = true;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
-            mySkillDef.isBullets = false;
+            mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
-            mySkillDef.noSprint = true;
+            mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
-            mySkillDef.shootDelay = 0.5f;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon4c;
             mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_WARCRY_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SPECIAL_WARCRY_NAME";
             mySkillDef.skillNameToken = "PALADIN_SPECIAL_WARCRY_NAME";
 
-            LoadoutAPI.AddSkillDef(mySkillDef);
+            skillDefs.Add(mySkillDef);
 
             Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
             skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
             {
                 skillDef = mySkillDef,
-                unlockableName = "",
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
         }

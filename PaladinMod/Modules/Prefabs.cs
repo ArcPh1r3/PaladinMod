@@ -14,16 +14,15 @@ namespace PaladinMod.Modules
 
         private static PhysicMaterial ragdollMaterial;
 
+        internal static List<SurvivorDef> survivorDefinitions = new List<SurvivorDef>();
+        internal static List<GameObject> bodyPrefabs = new List<GameObject>();
+        internal static List<GameObject> masterPrefabs = new List<GameObject>();
+        internal static List<GameObject> projectilePrefabs = new List<GameObject>();
+
         public static void CreatePrefabs()
         {
             CreatePaladin();
             CreateLunarKnight();
-
-            BodyCatalog.getAdditionalEntries += delegate (List<GameObject> list)
-            {
-                list.Add(paladinPrefab);
-                list.Add(lunarKnightPrefab);
-            };
         }
 
         private static void CreatePaladin()
@@ -41,7 +40,8 @@ namespace PaladinMod.Modules
                 healthRegen = 1.5f,
                 jumpCount = 1,
                 maxHealth = 160f,
-                subtitleNameToken = "PALADIN_SUBTITLE"
+                subtitleNameToken = "PALADIN_SUBTITLE",
+                bodyColor = PaladinPlugin.characterColor
             });
 
             SetupCharacterModel(paladinPrefab, new CustomRendererInfo[]
@@ -55,15 +55,24 @@ namespace PaladinMod.Modules
                 {
                     childName = "Model",
                     material = Modules.Skins.CreateMaterial("matPaladin", 10, Color.white)
-                },
-                new CustomRendererInfo
-                {
-                    childName = "CapeModel",
-                    material = Modules.Skins.CreateMaterial("matPaladinGM")
                 }
             }, 1);
 
             paladinPrefab.AddComponent<Misc.PaladinSwordController>();
+
+            // camera stuff
+            //0, 2, -14
+            CharacterCameraParams paladinCameraParams = ScriptableObject.CreateInstance<CharacterCameraParams>();
+            paladinCameraParams.name = "ccpPaladin";
+            paladinCameraParams.minPitch = -70f;
+            paladinCameraParams.maxPitch = 70f;
+            paladinCameraParams.wallCushion = 0.1f;
+            paladinCameraParams.pivotVerticalOffset = 1.37f;
+            paladinCameraParams.standardLocalCameraPos = new Vector3(0, 0.75f, -10.5f);
+
+            paladinPrefab.GetComponent<CharacterBody>().sprintingSpeedMultiplier = 1.6f;
+
+            paladinPrefab.GetComponent<CameraTargetParams>().cameraParams = paladinCameraParams;
 
             paladinDisplayPrefab = CreateDisplayPrefab("PaladinDisplay", paladinPrefab);
             paladinDisplayPrefab.AddComponent<Misc.MenuSound>();
@@ -174,12 +183,12 @@ namespace PaladinMod.Modules
             #region CharacterBody
             CharacterBody bodyComponent = newPrefab.GetComponent<CharacterBody>();
 
-            bodyComponent.bodyIndex = -1;
             bodyComponent.name = bodyInfo.bodyName;
             bodyComponent.baseNameToken = bodyInfo.bodyNameToken;
             bodyComponent.subtitleNameToken = bodyInfo.subtitleNameToken;
             bodyComponent.portraitIcon = bodyInfo.characterPortrait;
             bodyComponent.crosshairPrefab = bodyInfo.crosshair;
+            bodyComponent.bodyColor = bodyInfo.bodyColor;
 
             bodyComponent.bodyFlags = CharacterBody.BodyFlags.ImmuneToExecutes;
             bodyComponent.rootMotionInMainState = false;
@@ -235,6 +244,8 @@ namespace PaladinMod.Modules
             SetupFootstepController(model);
             SetupRagdoll(model);
             SetupAimAnimator(newPrefab, model);
+
+            bodyPrefabs.Add(newPrefab);
 
             return newPrefab;
         }

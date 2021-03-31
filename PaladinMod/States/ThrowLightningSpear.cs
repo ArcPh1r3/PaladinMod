@@ -8,7 +8,7 @@
             this.force = 5f;
             this.maxDamageCoefficient = StaticValues.lightningSpearMaxDamageCoefficient;
             this.minDamageCoefficient = StaticValues.lightningSpearMinDamageCoefficient;
-            this.muzzleflashEffectPrefab = EntityStates.Commando.CommandoWeapon.FirePistol.effectPrefab;
+            this.muzzleflashEffectPrefab = EntityStates.Commando.CommandoWeapon.FirePistol2.muzzleEffectPrefab;
             this.projectilePrefab = Modules.Projectiles.lightningSpear;
             this.selfForce = 0f;
 

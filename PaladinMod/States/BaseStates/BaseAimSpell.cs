@@ -48,12 +48,12 @@ namespace PaladinMod.States
             }
 
             base.PlayAnimation("Gesture, Override", "ChargeSpell", "Spell.playbackRate", 0.4f);
-            this.loopSoundInstanceId = Util.PlayScaledSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
+            this.loopSoundInstanceId = Util.PlayAttackSpeedSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
             this.defaultCrosshairPrefab = base.characterBody.crosshairPrefab;
 
             if (base.cameraTargetParams)
             {
-                base.cameraTargetParams.aimMode = CameraTargetParams.AimType.AimThrow;
+                base.cameraTargetParams.aimMode = CameraTargetParams.AimType.OverTheShoulder;
             }
 
             if (this.crosshairOverridePrefab)

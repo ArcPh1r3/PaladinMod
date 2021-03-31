@@ -36,7 +36,7 @@ namespace PaladinMod.States.LunarKnight
             this.modelTransform = base.GetModelTransform();
 
             base.PlayCrossfade("FullBody, Override", "MaceSlam", "Whirlwind.playbackRate", this.duration, 0.1f);
-            Util.PlayScaledSound(EntityStates.BrotherMonster.WeaponSlam.attackSoundString, base.gameObject, this.attackSpeedStat);
+            Util.PlayAttackSpeedSound(EntityStates.BrotherMonster.WeaponSlam.attackSoundString, base.gameObject, this.attackSpeedStat);
 
             if (base.characterDirection) base.characterDirection.moveVector = base.GetAimRay().direction;
 

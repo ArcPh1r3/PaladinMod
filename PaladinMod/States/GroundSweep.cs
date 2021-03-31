@@ -39,7 +39,7 @@ namespace PaladinMod.States
             HitBoxGroup hitBoxGroup = null;
             Transform modelTransform = base.GetModelTransform();
 
-            if (NetworkServer.active) base.characterBody.AddBuff(BuffIndex.Slow50);
+            if (NetworkServer.active) base.characterBody.AddBuff(RoR2Content.Buffs.Slow50);
 
             string hitboxString = "SpinSlash";
             if (this.swordController && this.swordController.swordActive) hitboxString = "SpinSlashLarge";
@@ -72,7 +72,7 @@ namespace PaladinMod.States
         {
             base.OnExit();
 
-            if (NetworkServer.active) base.characterBody.RemoveBuff(BuffIndex.Slow50);
+            if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.Slow50);
 
             if (this.swordController) this.swordController.attacking = false;
         }
@@ -134,9 +134,25 @@ namespace PaladinMod.States
                 base.characterMotor.moveDirection /= 2f;
             }
 
+
             if (this.stopwatch >= this.duration * 0.4f)
             {
                 this.FireAttack();
+            }
+
+            if (this.stopwatch >= this.duration * 0.6f)
+            {
+                this.FireAttack();
+
+                if (base.isAuthority && base.inputBank.skill2.down)
+                {
+                    if (base.skillLocator.secondary.stock > 0)
+                    {
+                        EntityState nextState = new GroundSweepAlt();
+                        this.outer.SetNextState(nextState);
+                        return;
+                    }
+                }
             }
 
             if (this.stopwatch >= this.duration && base.isAuthority)

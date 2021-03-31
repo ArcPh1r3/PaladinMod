@@ -22,14 +22,14 @@ namespace PaladinMod.States
         private float hitPauseTimer;
         private OverlapAttack attack;
         private bool inHitPause;
-        private List<HealthComponent> victimsStruck = new List<HealthComponent>();
+        private List<HurtBox> victimsStruck = new List<HurtBox>();
 
         public override void OnEnter()
         {
             base.OnEnter();
             this.duration = SpinSlashOld.baseDuration / this.attackSpeedStat;
 
-            Util.PlayScaledSound(EntityStates.Croco.Leap.leapSoundString, base.gameObject, 1.75f);
+            Util.PlayAttackSpeedSound(EntityStates.Croco.Leap.leapSoundString, base.gameObject, 1.75f);
             base.PlayAnimation("FullBody, Override", "Whirlwind", "Whirlwind.playbackRate", this.duration);
 
             if (base.isAuthority && base.inputBank && base.characterDirection)

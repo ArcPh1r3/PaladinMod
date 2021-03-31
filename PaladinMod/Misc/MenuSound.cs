@@ -19,11 +19,7 @@ namespace PaladinMod.Misc
             ChildLocator childLocator = this.GetComponentInChildren<ChildLocator>();
             if (childLocator)
             {
-                EffectData effectData = new EffectData();
-                effectData.origin = childLocator.FindChild("MenuEffect").position;
-                effectData.scale = 1f;
-
-                EffectManager.SpawnEffect(Resources.Load<GameObject>("Prefabs/BrotherFootstepDust"), effectData, true);
+                UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/GenericHugeFootstepDust"), childLocator.FindChild("MenuEffect").position, childLocator.FindChild("MenuEffect").rotation);
             }
         }
 

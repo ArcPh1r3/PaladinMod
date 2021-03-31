@@ -44,10 +44,16 @@ AvatarMask:
   - m_Path: Armature/spine/pelvis.R
     m_Weight: 0
   - m_Path: Armature/spine/spine.001
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/spine/spine.001/spine.002
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/spine/spine.001/spine.002/spine.003
+    m_Weight: 1
+  - m_Path: Armature/spine/spine.001/spine.002/spine.003/cape.01
+    m_Weight: 0
+  - m_Path: Armature/spine/spine.001/spine.002/spine.003/cape.01/cape.02
+    m_Weight: 0
+  - m_Path: Armature/spine/spine.001/spine.002/spine.003/cape.01/cape.02/cape.03
     m_Weight: 0
   - m_Path: Armature/spine/spine.001/spine.002/spine.003/shoulder.L
     m_Weight: 0
@@ -162,9 +168,9 @@ AvatarMask:
   - m_Path: Armature/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/lower_arm.R/hand.R/swordBase/swordTop.03
     m_Weight: 0
   - m_Path: Armature/spine/spine.001/spine.002/spine.003/spine.004
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/spine/spine.001/spine.002/spine.003/spine.004/neck
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/spine/spine.001/spine.002/spine.003/spine.004/neck/head
     m_Weight: 1
   - m_Path: Armature/spine/spine.001/spine.002/wrap3
@@ -198,4 +204,6 @@ AvatarMask:
   - m_Path: meshPaladin
     m_Weight: 0
   - m_Path: meshSword
+    m_Weight: 0
+  - m_Path: Sun
     m_Weight: 0

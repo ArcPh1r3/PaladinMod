@@ -15,13 +15,12 @@ namespace PaladinMod.Modules
 
             //string desc = "Paladin" + Environment.NewLine + Environment.NewLine;
 
-            string outro = StaticValues.characterOutro;
-
             LanguageAPI.Add("PALADIN_NAME", StaticValues.characterName);
             LanguageAPI.Add("PALADIN_DESCRIPTION", desc);
             LanguageAPI.Add("PALADIN_SUBTITLE", StaticValues.characterSubtitle);
             LanguageAPI.Add("PALADIN_LORE", StaticValues.characterLore);
-            LanguageAPI.Add("PALADIN_OUTRO_FLAVOR", outro);
+            LanguageAPI.Add("PALADIN_OUTRO_FLAVOR", StaticValues.characterOutro);
+            LanguageAPI.Add("PALADIN_OUTRO_FAILURE", StaticValues.characterOutroFailure);
 
 
             LanguageAPI.Add("PALADINBODY_DEFAULT_SKIN_NAME", "Default");
@@ -37,7 +36,7 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("LUNAR_KNIGHT_BODY_DESCRIPTION", desc);
             LanguageAPI.Add("LUNAR_KNIGHT_BODY_SUBTITLE", "Acolyte of Mithrix");
             LanguageAPI.Add("LUNAR_KNIGHT_BODY_LORE", StaticValues.characterLore);
-            LanguageAPI.Add("LUNAR_KNIGHT_BODY_OUTRO_FLAVOR", outro);
+            LanguageAPI.Add("LUNAR_KNIGHT_BODY_OUTRO_FLAVOR", StaticValues.characterOutro);
 
 
             LanguageAPI.Add("PALADIN_PASSIVE_NAME", "Bulwark's Blessing");

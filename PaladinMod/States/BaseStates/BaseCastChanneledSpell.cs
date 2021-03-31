@@ -31,7 +31,7 @@ namespace PaladinMod.States
                 EffectManager.SimpleMuzzleFlash(this.muzzleflashEffectPrefab, base.gameObject, "SpellCastEffect", false);
             }
 
-            if (NetworkServer.active) base.characterBody.AddBuff(BuffIndex.Slow50);
+            if (NetworkServer.active) base.characterBody.AddBuff(RoR2Content.Buffs.Slow50);
 
             if (base.cameraTargetParams)
             {
@@ -70,7 +70,7 @@ namespace PaladinMod.States
         {
             base.OnExit();
 
-            if (NetworkServer.active) base.characterBody.RemoveBuff(BuffIndex.Slow50);
+            if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.Slow50);
 
             if (base.cameraTargetParams)
             {

@@ -105,17 +105,17 @@ namespace PaladinMod.States.Emotes
             {
                 if (Input.GetKeyDown(Modules.Config.praiseKeybind.Value))
                 {
-                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.PraiseTheSun))), InterruptPriority.Any);
+                    this.outer.SetInterruptState(new PraiseTheSun(), InterruptPriority.Any);
                     return;
                 }
                 else if (Input.GetKeyDown(Modules.Config.restKeybind.Value))
                 {
-                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.Rest))), InterruptPriority.Any);
+                    this.outer.SetInterruptState(new Rest(), InterruptPriority.Any);
                     return;
                 }
                 else if (Input.GetKeyDown(Modules.Config.pointKeybind.Value))
                 {
-                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.PointDown))), InterruptPriority.Any);
+                    this.outer.SetInterruptState(new PointDown(), InterruptPriority.Any);
                     return;
                 }
             }

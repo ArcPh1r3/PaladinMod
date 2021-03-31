@@ -16,7 +16,7 @@ namespace PaladinMod.States
         private OverlapAttack attack;
         private bool inHitPause;
         private bool hasFired;
-        private List<HealthComponent> victimsStruck = new List<HealthComponent>();
+        private List<HurtBox> victimsStruck = new List<HurtBox>();
 
         public override void OnEnter()
         {
@@ -24,7 +24,7 @@ namespace PaladinMod.States
             this.duration = SpinningSlashOld.baseDuration / this.attackSpeedStat;
             this.hasFired = false;
 
-            Util.PlayScaledSound(EntityStates.Merc.GroundLight.finisherAttackSoundString, base.gameObject, 0.5f);
+            Util.PlayAttackSpeedSound(EntityStates.Merc.GroundLight.finisherAttackSoundString, base.gameObject, 0.5f);
             base.PlayAnimation("FullBody, Override", "SpinSlash", "Whirlwind.playbackRate", this.duration);
 
             EffectManager.SimpleMuzzleFlash(Modules.Assets.spinningSlashFX, base.gameObject, "SwingCenter", true);
@@ -82,7 +82,7 @@ namespace PaladinMod.States
 
                             if (this.attack.Fire(this.victimsStruck))
                             {
-                                Util.PlayScaledSound(EntityStates.Merc.GroundLight.hitSoundString, base.gameObject, 0.7f);
+                                Util.PlayAttackSpeedSound(EntityStates.Merc.GroundLight.hitSoundString, base.gameObject, 0.7f);
                                 this.inHitPause = true;
                                 this.hitPauseTimer = EntityStates.Toolbot.ToolbotDash.hitPauseDuration;
                                 base.AddRecoil(-0.5f * EntityStates.Toolbot.ToolbotDash.recoilAmplitude, -0.5f * EntityStates.Toolbot.ToolbotDash.recoilAmplitude, -0.5f * EntityStates.Toolbot.ToolbotDash.recoilAmplitude, 0.5f * EntityStates.Toolbot.ToolbotDash.recoilAmplitude);

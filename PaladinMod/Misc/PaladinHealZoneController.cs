@@ -18,7 +18,7 @@ namespace PaladinMod.Misc
         [Tooltip("The child range indicator object. Will be scaled to the radius.")]
         public Transform rangeIndicator;
         [Tooltip("The buff type to grant")]
-        public BuffIndex buffType;
+        public BuffDef buffDef;
         [Tooltip("The buff duration")]
         public float buffDuration;
         [Tooltip("Heal amount (based on percentage)")]
@@ -187,7 +187,7 @@ namespace PaladinMod.Misc
                     CharacterBody charBody = teamComponent.body;
                     if (charBody)
                     {
-                        if (this.buffType != BuffIndex.None) charBody.AddTimedBuff(this.buffType, this.buffDuration);
+                        if (this.buffDef) charBody.AddTimedBuff(this.buffDef, this.buffDuration);
 
                         if (healAmount != 0 && charBody.healthComponent)
                         {

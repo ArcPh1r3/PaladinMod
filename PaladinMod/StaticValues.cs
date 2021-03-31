@@ -6,6 +6,7 @@
         public const string characterName = "Paladin";
         public const string characterSubtitle = "Acolyte of Providence";
         public const string characterOutro = "..and so he left, faith in his doctrine shaken.";
+        public const string characterOutroFailure = "..and so he vanished, his prayers unheard.";
         public const string characterLore = "\nsample text";
 
         //Misc

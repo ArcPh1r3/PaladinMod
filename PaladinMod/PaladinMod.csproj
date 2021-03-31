@@ -4,6 +4,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="paladin" />
     <None Remove="PaladinBank.bnk" />
@@ -32,9 +40,6 @@
     </Reference>
     <Reference Include="BepInEx.Preloader">
       <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\BepInEx.Preloader.dll</HintPath>
-    </Reference>
-    <Reference Include="ClassicItems">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\ClassicItems.dll</HintPath>
     </Reference>
     <Reference Include="Facepunch.Steamworks">
       <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Facepunch.Steamworks.dll</HintPath>
@@ -107,9 +112,6 @@
     </Reference>
     <Reference Include="System.Xml.XPath.XDocument">
       <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\System.Xml.XPath.XDocument.dll</HintPath>
-    </Reference>
-    <Reference Include="TILER2">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\TILER2.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
       <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Unity.Postprocessing.Runtime.dll</HintPath>

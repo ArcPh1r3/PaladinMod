@@ -21,7 +21,7 @@ namespace PaladinMod.States
             this.modelTransform = base.GetModelTransform();
             this.isClay = false;
 
-            if (NetworkServer.active) base.characterBody.AddTimedBuff(BuffIndex.HiddenInvincibility, SpawnState.duration * 1.5f);
+            if (NetworkServer.active) base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, SpawnState.duration * 1.5f);
 
             if (base.characterBody.skinIndex == PaladinPlugin.claySkinIndex) this.isClay = true;
 

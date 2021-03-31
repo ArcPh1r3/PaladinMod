@@ -23,8 +23,6 @@ namespace PaladinMod.Misc
         {
             this.body = base.GetComponent<CharacterBody>();
             this.model = base.GetComponentInChildren<CharacterModel>();
-
-            this.InitItemDisplays();
         }
 
         private void Start()
@@ -34,8 +32,6 @@ namespace PaladinMod.Misc
                 this.skinInfo = Modules.Effects.GetSkinInfo(this.model.GetComponent<ModelSkinController>().skins[this.body.skinIndex].nameToken);
                 this.skinName = this.skinInfo.skinName;
                 this.isBlunt = this.skinInfo.isWeaponBlunt;
-
-                if (this.skinInfo.skinName == "PALADINBODY_TYPHOON_SKIN_NAME") this.AddCapeRendererInfo();
             }
 
             Invoke("CheckInventory", 0.2f);
@@ -48,7 +44,7 @@ namespace PaladinMod.Misc
                 Inventory inventory = this.body.master.inventory;
                 if (inventory)
                 {
-                    bool hasLeftHandWeapon = (inventory.GetItemCount(ItemIndex.BleedOnHit) > 0 || inventory.GetItemCount(ItemIndex.ArmorReductionOnHit) > 0);
+                    bool hasLeftHandWeapon = (inventory.GetItemCount(RoR2Content.Items.BleedOnHit) > 0 || inventory.GetItemCount(RoR2Content.Items.ArmorReductionOnHit) > 0);
 
                     if (PaladinPlugin.aetheriumInstalled)
                     {
@@ -69,36 +65,6 @@ namespace PaladinMod.Misc
             }
         }
 
-        private void AddCapeRendererInfo()
-        {
-            // do it this way to avoid messing with rendererinfos and possibly breaking every custom paladin skin
-            // TODO: helper method for adding a rendererinfo
-            //nvm didnt work
-
-            return;
-            ModelSkinController skinController = this.model.GetComponent<ModelSkinController>();
-
-            Array.Resize(ref skinController.skins[this.body.skinIndex].rendererInfos, skinController.skins[this.body.skinIndex].rendererInfos.Length + 1);
-
-            skinController.skins[this.body.skinIndex].rendererInfos[skinController.skins[this.body.skinIndex].rendererInfos.Length - 1] = new CharacterModel.RendererInfo
-            {
-                defaultMaterial = Modules.Skins.CreateMaterial("matPaladinGM", 1, Color.white),
-                defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                ignoreOverlays = true,
-                renderer = this.model.gameObject.GetComponent<ChildLocator>().FindChild("CapeModel").GetComponent<SkinnedMeshRenderer>()
-            };
-
-            Array.Resize(ref this.model.baseRendererInfos, this.model.baseRendererInfos.Length + 1);
-
-            this.model.baseRendererInfos[this.model.baseRendererInfos.Length - 1] = new CharacterModel.RendererInfo
-            {
-                defaultMaterial = Modules.Skins.CreateMaterial("matPaladinGM", 1, Color.white),
-                defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
-                ignoreOverlays = true,
-                renderer = this.model.gameObject.GetComponent<ChildLocator>().FindChild("CapeModel").GetComponent<SkinnedMeshRenderer>()
-            };
-        }
-
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private bool CheckForBlasterSword(Inventory inventory)
         {
@@ -109,17 +75,13 @@ namespace PaladinMod.Misc
 
         private void InitItemDisplays()
         {
-            // i really don't know why i have to do this
-            //  zzzzz
-            Modules.ItemDisplays.RegisterModdedDisplays();
-
             if (this.model)
             {
                 ItemDisplayRuleSet newRuleset = Instantiate(this.model.itemDisplayRuleSet);
                 this.model.itemDisplayRuleSet = newRuleset;
 
                 //aegis
-                switch (this.skinName)
+                /*switch (this.skinName)
                 {
                     case "PALADINBODY_SOLAIRE_SKIN_NAME":
                         this.SetAegisDisplay(Modules.Assets.sunlightShield, "ElbowL", new Vector3(-0.0002f, 0.001f, 0), new Vector3(20, 270, 310), new Vector3(0.0001f, 0.0001f, 0.0001f));
@@ -150,7 +112,7 @@ namespace PaladinMod.Misc
                     this.SetRazorwireDisplay(new Vector3(-0.0004f, 0.01f, -0.0005f), new Vector3(270, 300, 0), new Vector3(0.004f, 0.004f, 0.008f));
                 }
                 else this.SetRazorwireDisplay(new Vector3(0, 0.006f, -0.001f), new Vector3(270, 300, 0), new Vector3(0.006f, 0.009f, 0.012f));
-
+                */
                 //tri tip
                 // nvm the skin already holds the dagger
                 /*if (this.skinName == "PALADINBODY_ABYSSWATCHER_SKIN_NAME")
@@ -160,7 +122,7 @@ namespace PaladinMod.Misc
             }
         }
 
-        private void SetAegisDisplay(GameObject displayPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale)
+        /*private void SetAegisDisplay(GameObject displayPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale)
         {
             ItemDisplayRuleSet ruleset = this.model.itemDisplayRuleSet;
 
@@ -188,7 +150,7 @@ namespace PaladinMod.Misc
             ruleset.FindItemDisplayRuleGroup("BleedOnHit").rules[0].localPos = position;
             ruleset.FindItemDisplayRuleGroup("BleedOnHit").rules[0].localAngles = rotation;
             ruleset.FindItemDisplayRuleGroup("BleedOnHit").rules[0].localScale = scale;
-        }
+        }*/
 
         public void PlaySwingSound()
         {

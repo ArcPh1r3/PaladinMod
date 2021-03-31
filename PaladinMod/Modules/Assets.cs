@@ -1,12 +1,11 @@
 ﻿using System.Reflection;
-using R2API;
 using UnityEngine;
 using System.IO;
 using UnityEngine.Networking;
 using RoR2;
 using RoR2.Projectile;
-using RoR2.Audio;
 using System.Collections.Generic;
+using R2API;
 
 namespace PaladinMod.Modules
 {
@@ -139,6 +138,9 @@ namespace PaladinMod.Modules
         internal static NetworkSoundEventDef batHitSoundEventM;
         internal static NetworkSoundEventDef batHitSoundEventL;
 
+        internal static List<EffectDef> effectDefs = new List<EffectDef>();
+        internal static List<NetworkSoundEventDef> networkSoundEventDefs = new List<NetworkSoundEventDef>();
+
         public static Material capeMat;
 
         public static void PopulateAssets()
@@ -148,8 +150,6 @@ namespace PaladinMod.Modules
                 using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("PaladinMod.paladin"))
                 {
                     mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
-                    var provider = new AssetBundleResourcesProvider("@Paladin", mainAssetBundle);
-                    ResourcesAPI.AddProvider(provider);
                 }
             }
 
@@ -304,14 +304,14 @@ namespace PaladinMod.Modules
 
             altLightningImpactFX.AddComponent<NetworkIdentity>();
 
-            EffectAPI.AddEffect(altLightningImpactFX);
+            AddEffect(altLightningImpactFX);
 
             //clone mithrix's dash effect and resize it for my dash
             dashFX = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/BrotherDashEffect"), "PaladinDashEffect", true);
             dashFX.AddComponent<NetworkIdentity>();
             dashFX.transform.localScale *= 0.3f;
 
-            EffectAPI.AddEffect(dashFX);
+            AddEffect(dashFX);
 
             InitCustomItems();
 
@@ -330,10 +330,7 @@ namespace PaladinMod.Modules
             networkSoundEventDef.akId = AkSoundEngine.GetIDFromString(eventName);
             networkSoundEventDef.eventName = eventName;
 
-            NetworkSoundEventCatalog.getSoundEventDefs += delegate (List<NetworkSoundEventDef> list)
-            {
-                list.Add(networkSoundEventDef);
-            };
+            networkSoundEventDefs.Add(networkSoundEventDef);
 
             return networkSoundEventDef;
         }
@@ -386,9 +383,26 @@ namespace PaladinMod.Modules
             effect.positionAtReferencedTransform = true;
             effect.soundName = soundName;
 
-            EffectAPI.AddEffect(newEffect);
+            AddEffect(newEffect);
 
             return newEffect;
+        }
+
+        private static void AddEffect(GameObject effectPrefab)
+        {
+            AddEffect(effectPrefab, "");
+        }
+
+        private static void AddEffect(GameObject effectPrefab, string soundName)
+        {
+            EffectDef newEffectDef = new EffectDef();
+            newEffectDef.prefab = effectPrefab;
+            newEffectDef.prefabEffectComponent = effectPrefab.GetComponent<EffectComponent>();
+            newEffectDef.prefabName = effectPrefab.name;
+            newEffectDef.prefabVfxAttributes = effectPrefab.GetComponent<VFXAttributes>();
+            newEffectDef.spawnSoundEventName = soundName;
+
+            effectDefs.Add(newEffectDef);
         }
     }
 }

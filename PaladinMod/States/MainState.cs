@@ -60,17 +60,17 @@ namespace PaladinMod.States
             {
                 if (Input.GetKeyDown(Modules.Config.praiseKeybind.Value))
                 {
-                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.PraiseTheSun))), InterruptPriority.Any);
+                    this.outer.SetInterruptState(new Emotes.PraiseTheSun(), InterruptPriority.Any);
                     return;
                 }
                 else if (Input.GetKeyDown(Modules.Config.restKeybind.Value))
                 {
-                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.Rest))), InterruptPriority.Any);
+                    this.outer.SetInterruptState(new Emotes.Rest(), InterruptPriority.Any);
                     return;
                 }
                 else if (Input.GetKeyDown(Modules.Config.pointKeybind.Value))
                 {
-                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.PointDown))), InterruptPriority.Any);
+                    this.outer.SetInterruptState(new Emotes.PointDown(), InterruptPriority.Any);
                     return;
                 }
             }
@@ -111,7 +111,7 @@ namespace PaladinMod.States
 
             if (this.animator)
             {
-                this.animator.SetFloat("sprintValue", base.characterBody.isSprinting ? -1 : 0, 0.2f, Time.fixedDeltaTime);
+                //this.animator.SetFloat("sprintValue", base.characterBody.isSprinting ? -1 : 0, 0.2f, Time.fixedDeltaTime);
                 this.animator.SetBool("inCombat", (!base.characterBody.outOfCombat || !base.characterBody.outOfDanger));
             }
         }

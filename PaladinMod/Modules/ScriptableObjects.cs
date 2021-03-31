@@ -40,6 +40,8 @@ public class BodyInfo
     public float critGrowth = 0f;
 
     public int jumpCount = 1;
+
+    public Color bodyColor;
 }
 
 // for simplifying rendererinfo creation

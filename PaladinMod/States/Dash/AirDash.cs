@@ -31,10 +31,10 @@ namespace PaladinMod.States.Dash
                 this.characterModel = this.modelTransform.GetComponent<CharacterModel>();
             }
 
-            Util.PlayScaledSound(EntityStates.Croco.Leap.leapSoundString, base.gameObject, 1.75f);
+            Util.PlayAttackSpeedSound(EntityStates.Croco.Leap.leapSoundString, base.gameObject, 1.75f);
             base.PlayAnimation("FullBody, Override", "DashForward", "Whirlwind.playbackRate", AirDash.duration);
 
-            if (NetworkServer.active) base.characterBody.AddBuff(BuffIndex.HiddenInvincibility);
+            if (NetworkServer.active) base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
 
             this.dashVector = this.GetDashVector();
             //this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
@@ -95,7 +95,7 @@ namespace PaladinMod.States.Dash
 
             if (NetworkServer.active)
             {
-                base.characterBody.RemoveBuff(BuffIndex.HiddenInvincibility);
+                base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
             }
 
             if (base.isAuthority)

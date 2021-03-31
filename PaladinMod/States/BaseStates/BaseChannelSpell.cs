@@ -48,12 +48,12 @@ namespace PaladinMod.States
             }
 
             base.PlayAnimation("Gesture, Override", "ChannelSpell", "Spell.playbackRate", 0.85f);
-            this.loopSoundInstanceId = Util.PlayScaledSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
+            this.loopSoundInstanceId = Util.PlayAttackSpeedSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
             this.defaultCrosshairPrefab = base.characterBody.crosshairPrefab;
 
             if (base.cameraTargetParams)
             {
-                base.cameraTargetParams.aimMode = CameraTargetParams.AimType.AimThrow;
+                base.cameraTargetParams.aimMode = CameraTargetParams.AimType.OverTheShoulder;
             }
 
             if (this.crosshairOverridePrefab)
@@ -61,7 +61,7 @@ namespace PaladinMod.States
                 base.characterBody.crosshairPrefab = this.crosshairOverridePrefab;
             }
 
-            if (NetworkServer.active) base.characterBody.AddBuff(BuffIndex.Slow50);
+            if (NetworkServer.active) base.characterBody.AddBuff(RoR2Content.Buffs.Slow50);
 
             if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
             {
@@ -119,7 +119,7 @@ namespace PaladinMod.States
                 base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Standard;
             }
 
-            if (NetworkServer.active) base.characterBody.RemoveBuff(BuffIndex.Slow50);
+            if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.Slow50);
 
             EntityState.Destroy(this.chargeEffectInstance);
             base.OnExit();

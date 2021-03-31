@@ -7,58 +7,92 @@ using PaladinMod.States.Emotes;
 using PaladinMod.States.Quickstep;
 using PaladinMod.States.Spell;
 using PaladinMod.States.LunarKnight;
+using System;
+using System.Reflection;
+using System.Collections.Generic;
+using MonoMod.RuntimeDetour;
 
 namespace PaladinMod.Modules
 {
     public static class States
     {
+        internal static List<Type> entityStates = new List<Type>();
+
+        private static Hook set_stateTypeHook;
+        private static Hook set_typeNameHook;
+        private static readonly BindingFlags allFlags = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.NonPublic;
+        private delegate void set_stateTypeDelegate(ref SerializableEntityStateType self, Type value);
+        private delegate void set_typeNameDelegate(ref SerializableEntityStateType self, String value);
+
+        internal static void AddSkill(Type t)
+        {
+            entityStates.Add(t);
+        }
+
         public static void RegisterStates()
         {
-            LoadoutAPI.AddSkill(typeof(PaladinMain));
-            LoadoutAPI.AddSkill(typeof(SpawnState));
-            LoadoutAPI.AddSkill(typeof(BaseEmote));
-            LoadoutAPI.AddSkill(typeof(PraiseTheSun));
-            LoadoutAPI.AddSkill(typeof(PointDown));
-            LoadoutAPI.AddSkill(typeof(Rest));
-            LoadoutAPI.AddSkill(typeof(Drip));
+            Type type = typeof(SerializableEntityStateType);
+            HookConfig cfg = default;
+            cfg.Priority = Int32.MinValue;
+            set_stateTypeHook = new Hook(type.GetMethod("set_stateType", allFlags), new set_stateTypeDelegate(SetStateTypeHook), cfg);
+            set_typeNameHook = new Hook(type.GetMethod("set_typeName", allFlags), new set_typeNameDelegate(SetTypeName), cfg);
 
-            LoadoutAPI.AddSkill(typeof(Slash));
+            AddSkill(typeof(PaladinMain));
+            AddSkill(typeof(SpawnState));
+            AddSkill(typeof(BaseEmote));
+            AddSkill(typeof(PraiseTheSun));
+            AddSkill(typeof(PointDown));
+            AddSkill(typeof(Rest));
+            AddSkill(typeof(Drip));
 
-            LoadoutAPI.AddSkill(typeof(SpinSlashEntry));
-            LoadoutAPI.AddSkill(typeof(GroundSweep));
-            LoadoutAPI.AddSkill(typeof(AirSlam));
-            LoadoutAPI.AddSkill(typeof(AirSlamAlt));
+            AddSkill(typeof(Slash));
 
-            LoadoutAPI.AddSkill(typeof(ChargeLightningSpear));
-            LoadoutAPI.AddSkill(typeof(ThrowLightningSpear));
+            AddSkill(typeof(SpinSlashEntry));
+            AddSkill(typeof(GroundSweep));
+            AddSkill(typeof(GroundSweepAlt));
+            AddSkill(typeof(AirSlam));
+            AddSkill(typeof(AirSlamAlt));
 
-            LoadoutAPI.AddSkill(typeof(LunarShards));
+            AddSkill(typeof(ChargeLightningSpear));
+            AddSkill(typeof(ThrowLightningSpear));
 
-            LoadoutAPI.AddSkill(typeof(QuickstepSimple));
+            AddSkill(typeof(LunarShards));
 
-            LoadoutAPI.AddSkill(typeof(AimHeal));
-            LoadoutAPI.AddSkill(typeof(CastHeal));
+            AddSkill(typeof(QuickstepSimple));
 
-            LoadoutAPI.AddSkill(typeof(ChannelHealZone));
-            LoadoutAPI.AddSkill(typeof(CastChanneledHealZone));
+            AddSkill(typeof(AimHeal));
+            AddSkill(typeof(CastHeal));
 
-            LoadoutAPI.AddSkill(typeof(ChannelTorpor));
-            LoadoutAPI.AddSkill(typeof(CastChanneledTorpor));
+            AddSkill(typeof(ChannelHealZone));
+            AddSkill(typeof(CastChanneledHealZone));
 
-            LoadoutAPI.AddSkill(typeof(ChannelWarcry));
-            LoadoutAPI.AddSkill(typeof(CastChanneledWarcry));
+            AddSkill(typeof(ChannelTorpor));
+            AddSkill(typeof(CastChanneledTorpor));
 
-            LoadoutAPI.AddSkill(typeof(MaceSlam));
+            AddSkill(typeof(ChannelWarcry));
+            AddSkill(typeof(CastChanneledWarcry));
 
-            // and now apply custom states to our prefabs- probably shouldn't go here but meh
+            AddSkill(typeof(MaceSlam));
+        }
 
-            EntityStateMachine paladinStateMachine = Prefabs.paladinPrefab.GetComponent<EntityStateMachine>();
-            paladinStateMachine.mainStateType = new SerializableEntityStateType(typeof(PaladinMain));
-            paladinStateMachine.initialStateType = new SerializableEntityStateType(typeof(SpawnState));
+        private static void SetStateTypeHook(ref this SerializableEntityStateType self, Type value)
+        {
+            self._typeName = value.AssemblyQualifiedName;
+        }
 
-            EntityStateMachine lunarKnightStateMachine = Prefabs.lunarKnightPrefab.GetComponent<EntityStateMachine>();
-            lunarKnightStateMachine.mainStateType = new SerializableEntityStateType(typeof(PaladinMain));
-            lunarKnightStateMachine.initialStateType = new SerializableEntityStateType(typeof(SpawnState));
+        private static void SetTypeName(ref this SerializableEntityStateType self, String value)
+        {
+            Type t = GetTypeFromName(value);
+            if (t != null)
+            {
+                self.SetStateTypeHook(t);
+            }
+        }
+
+        private static Type GetTypeFromName(String name)
+        {
+            Type[] types = EntityStateCatalog.stateIndexToType;
+            return Type.GetType(name);
         }
     }
 }
