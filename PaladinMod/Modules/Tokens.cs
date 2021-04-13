@@ -39,6 +39,14 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("LUNAR_KNIGHT_BODY_OUTRO_FLAVOR", StaticValues.characterOutro);
 
 
+            LanguageAPI.Add("NEMPALADIN_NAME", "Nemesis Paladin");
+            LanguageAPI.Add("NEMPALADIN_DESCRIPTION", desc);
+            LanguageAPI.Add("NEMPALADIN_SUBTITLE", StaticValues.characterSubtitle);
+            LanguageAPI.Add("NEMPALADIN_LORE", StaticValues.characterLore);
+            LanguageAPI.Add("NEMPALADIN_OUTRO_FLAVOR", StaticValues.characterOutro);
+            LanguageAPI.Add("NEMPALADIN_OUTRO_FAILURE", StaticValues.characterOutroFailure);
+
+
             LanguageAPI.Add("PALADIN_PASSIVE_NAME", "Bulwark's Blessing");
             LanguageAPI.Add("PALADIN_PASSIVE_DESCRIPTION", "Gain <style=cIsHealing>" + StaticValues.armorPerLevel + " armor</style> per level. While above <style=cIsHealth>90% health</style> or while having active <style=cIsHealth>barrier</style>, the Paladin is <style=cIsHealing>blessed</style>, empowering all sword skills.");
 
@@ -46,6 +54,11 @@ namespace PaladinMod.Modules
 
             LanguageAPI.Add("PALADIN_PRIMARY_SLASH_NAME", "Divine Blade");
             LanguageAPI.Add("PALADIN_PRIMARY_SLASH_DESCRIPTION", desc);
+
+            desc = "Slash forward for <style=cIsDamage>" + 100f * StaticValues.cursedBladeDamageCoefficient + "% damage</style>. Fires a <style=cIsUtility>beam of light</style> for <style=cIsDamage>" + 100f * StaticValues.beamDamageCoefficient + "% damage</style> if the Paladin is <style=cIsHealing>blessed</style>.";
+
+            LanguageAPI.Add("PALADIN_PRIMARY_CURSESLASH_NAME", "Accursed Blade");
+            LanguageAPI.Add("PALADIN_PRIMARY_CURSESLASH_DESCRIPTION", desc);
 
             desc = "<style=cIsUtility>Stunning.</style> Perform a wide sweeping slash for <style=cIsDamage>" + 100f * StaticValues.spinSlashDamageCoefficient + "% damage</style>, gaining range if <style=cIsHealing>blessed</style>. Use while airborne to perform a leap strike, firing a <style=cIsUtility>shockwave</style> if <style=cIsHealing>blessed</style>.";
 
@@ -102,6 +115,12 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERWARCRY_NAME", "Sacred Oath (Scepter)");
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERWARCRY_DESCRIPTION", desc);
 
+            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.cruelSunChannelDuration + "</style> seconds, then release to create a <style=cIsUtility>massive star</style> that <style=cIsDamage>drains health</style> from <style=cIsHealth>ALL</style> entities inside.";
+
+            LanguageAPI.Add("PALADIN_SPECIAL_SUN_NAME", "Cruel Sun");
+            LanguageAPI.Add("PALADIN_SPECIAL_SUN_DESCRIPTION", desc);
+
+
             LanguageAPI.Add("KEYWORD_SWORDBEAM", "<style=cKeywordName>Sword Beam</style><style=cSub>A piercing, short range beam of light that deals <style=cIsDamage>" + 100f * StaticValues.beamDamageCoefficient + "% damage</style>.");
             LanguageAPI.Add("KEYWORD_TORPOR", "<style=cKeywordName>Torpor</style><style=cSub>Applies a <style=cIsHealth>" + 100 * StaticValues.torporSlowAmount + "%</style> attack and movement speed <style=cIsDamage>slow</style>. <style=cIsHealth>Drags enemies to the ground.</style>");
 
@@ -138,9 +157,22 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, stack 4 debuffs on one enemy.");
             LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_UNLOCKABLE_NAME", "Suppression");
 
+            LanguageAPI.Add("PALADIN_CRUELSUNUNLOCKABLE_ACHIEVEMENT_NAME", "Sunshine");
+            LanguageAPI.Add("PALADIN_CRUELSUNUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, bear the full brunt of a Sun and survive.");
+            LanguageAPI.Add("PALADIN_CRUELSUNUNLOCKABLE_UNLOCKABLE_NAME", "Sunshine");
+
             LanguageAPI.Add("PALADIN_CLAYUNLOCKABLE_ACHIEVEMENT_NAME", "Ancient Relic");
             LanguageAPI.Add("PALADIN_CLAYUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, acquire a certain parasitic urn.");
             LanguageAPI.Add("PALADIN_CLAYUNLOCKABLE_UNLOCKABLE_NAME", "Ancient Relic");
+
+
+            LanguageAPI.Add("BROTHER_SEE_PALADIN_1", "Brother? No. Cheap imitation.");
+            LanguageAPI.Add("BROTHER_SEE_PALADIN_2", "I will answer to your faith.");
+            LanguageAPI.Add("BROTHER_SEE_PALADIN_3", "Wasted potential.");
+
+            LanguageAPI.Add("BROTHER_KILL_PALADIN_1", "Your crude armor fails you.");
+            LanguageAPI.Add("BROTHER_KILL_PALADIN_2", "Look where your faith has brought you.");
+            LanguageAPI.Add("BROTHER_KILL_PALADIN_3", "Return to nothing, foolish devotee.");
         }
     }
 }

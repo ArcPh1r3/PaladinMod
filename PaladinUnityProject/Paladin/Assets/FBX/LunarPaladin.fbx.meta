@@ -102,6 +102,7 @@ ModelImporter:
     100192: wrap2
     100194: wrap3
     100196: wrap4
+    100198: mdlBrotherSword
     400000: Armature
     400002: calf.L
     400004: calf.R
@@ -201,13 +202,17 @@ ModelImporter:
     400192: wrap2
     400194: wrap3
     400196: wrap4
+    400198: mdlBrotherSword
     2100000: matPaladin
+    2100002: matLunarSword
     4300000: meshPaladin
     4300002: meshSword
+    4300004: mdlBrotherSword
     9500000: //RootNode
     10800000: Sun
     13700000: meshPaladin
     13700002: meshSword
+    13700004: mdlBrotherSword
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -239,14 +244,14 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.7
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -259,7 +264,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
     previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:

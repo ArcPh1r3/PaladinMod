@@ -40,9 +40,7 @@ namespace PaladinMod.States
                 ProjectileManager.instance.FireProjectile(fireProjectileInfo);
             }
 
-            //base.PlayAnimation("Gesture, Additive", "FireLunarShards");
-            //base.PlayAnimation("Gesture, Override", "FireLunarShards");
-            base.PlayAnimation("Gesture, Override", "LunarShard", "LunarShard.playbackRate", this.duration * 5f);
+            base.PlayAnimation("LeftArm, Override", "LunarShard", "LunarShard.playbackRate", this.duration * 5f);
 
             base.AddRecoil(-0.4f * LunarShards.recoilAmplitude, -0.8f * LunarShards.recoilAmplitude, -0.3f * LunarShards.recoilAmplitude, 0.3f * LunarShards.recoilAmplitude);
             base.characterBody.AddSpreadBloom(LunarShards.spreadBloomValue);

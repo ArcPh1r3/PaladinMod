@@ -29,6 +29,7 @@ namespace PaladinMod.Modules
         internal static UnlockableDef paladinLunarShardSkillDef;
         internal static UnlockableDef paladinHealSkillDefDef;
         internal static UnlockableDef paladinTorporSkillDefDef;
+        internal static UnlockableDef paladinCruelSunSkillDefDef;
 
         public static void RegisterUnlockables()
         {
@@ -37,11 +38,13 @@ namespace PaladinMod.Modules
             paladinLunarShardSkillDef = AddUnlockable<Achievements.LunarShardAchievement>(true);
             paladinHealSkillDefDef = AddUnlockable<Achievements.HealAchievement>(true);
             paladinTorporSkillDefDef =  AddUnlockable<Achievements.TorporAchievement>(true);
+            paladinCruelSunSkillDefDef = AddUnlockable<Achievements.CruelSunAchievement>(true);
 
             paladinMasterySkinDef = AddUnlockable<Achievements.MasteryAchievement>(true);
             paladinPoisonSkinDef = AddUnlockable<Achievements.PoisonAchievement>(true);
             paladinClaySkinDef = AddUnlockable<Achievements.ClayAchievement>(true);
 
+            AddUnlockable<Achievements.GrandMasteryAchievement>(true);
             if (PaladinPlugin.starstormInstalled)
             {
                 //AddUnlockable<Achievements.GrandMasteryAchievement>(true);

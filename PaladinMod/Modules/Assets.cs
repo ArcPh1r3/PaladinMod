@@ -34,6 +34,7 @@ namespace PaladinMod.Modules
         public static Sprite icon4S;
         public static Sprite icon4bS;
         public static Sprite icon4cS;
+        public static Sprite icon4d;
 
         //projectile ghosts
         public static GameObject lightningSpear;
@@ -138,6 +139,12 @@ namespace PaladinMod.Modules
         internal static NetworkSoundEventDef batHitSoundEventM;
         internal static NetworkSoundEventDef batHitSoundEventL;
 
+        // vfx materials
+        internal static Material supplyDropMat;
+        internal static Material airStrikeMat;
+        internal static Material crippleSphereMat;
+        internal static Material areaIndicatorMat;
+
         internal static List<EffectDef> effectDefs = new List<EffectDef>();
         internal static List<NetworkSoundEventDef> networkSoundEventDefs = new List<NetworkSoundEventDef>();
 
@@ -176,6 +183,7 @@ namespace PaladinMod.Modules
             icon4S = mainAssetBundle.LoadAsset<Sprite>("ScepterHealZoneIcon");
             icon4bS = mainAssetBundle.LoadAsset<Sprite>("ScepterTorporIcon");
             icon4cS = mainAssetBundle.LoadAsset<Sprite>("ScepterWarcryIcon");
+            icon4d = mainAssetBundle.LoadAsset<Sprite>("CruelSunIcon");
             #endregion
 
             #region ProjectileGhosts
@@ -272,19 +280,26 @@ namespace PaladinMod.Modules
             #region Meshes
             defaultMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladin");
             defaultSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSword");
-            lunarMesh = mainAssetBundle.LoadAsset<Mesh>("meshLunarPaladin");
-            lunarSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshLunarSword");
+            lunarMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinLunarNoCape");
+            lunarSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordLunar");
             gmMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinGM");
             gmSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordGM");
-            poisonMesh = mainAssetBundle.LoadAsset<Mesh>("meshNkuhanaPaladin");
-            poisonSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshNkuhanaSword");
+            poisonMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinNkuhana");
+            poisonSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordNkuhana");
             //hunterMesh = mainAssetBundle.LoadAsset<Mesh>("HunterMesh");
-            dripMesh = mainAssetBundle.LoadAsset<Mesh>("meshDripPaladin");
+            dripMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinDrip");
             batMesh = mainAssetBundle.LoadAsset<Mesh>("meshBat");
-            clayMesh = mainAssetBundle.LoadAsset<Mesh>("meshClayPaladin");
-            claySwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshClaySword");
-            minecraftMesh = mainAssetBundle.LoadAsset<Mesh>("meshMinecraftPaladin");
-            minecraftSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshMinecraftSword");
+            clayMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinClay");
+            claySwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordClay");
+            minecraftMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinMinecraft");
+            minecraftSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordMinecraft");
+            #endregion
+
+            #region Materials
+            supplyDropMat = Resources.Load<GameObject>("Prefabs/NetworkedObjects/CaptainSupplyDrops/CaptainSupplyDrop, Healing").transform.Find("Inactive").Find("Sphere, Outer").GetComponent<MeshRenderer>().material;
+            airStrikeMat = Resources.Load<GameObject>("Prefabs/ProjectileGhosts/CaptainAirstrikeGhost1").transform.Find("Expander").Find("Sphere, Outer").GetComponent<MeshRenderer>().material;
+            crippleSphereMat = Resources.Load<GameObject>("Prefabs/TemporaryVisualEffects/CrippleEffect").transform.Find("Visual").GetChild(1).GetComponent<MeshRenderer>().material;
+            areaIndicatorMat = Resources.Load<GameObject>("Prefabs/Effects/SpiteBombDelayEffect").transform.Find("Nova Sphere").GetComponent<ParticleSystemRenderer>().material;
             #endregion
 
             capeMat = Skins.CreateMaterial("matPaladinGM", 1, Color.white);
@@ -304,16 +319,17 @@ namespace PaladinMod.Modules
 
             altLightningImpactFX.AddComponent<NetworkIdentity>();
 
-            AddEffect(altLightningImpactFX);
+            AddEffect(altLightningImpactFX, altLightningImpactFX.GetComponent<EffectComponent>().soundName);
 
             //clone mithrix's dash effect and resize it for my dash
             dashFX = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/BrotherDashEffect"), "PaladinDashEffect", true);
             dashFX.AddComponent<NetworkIdentity>();
-            dashFX.transform.localScale *= 0.3f;
+            dashFX.GetComponent<EffectComponent>().applyScale = true;
+            dashFX.transform.localScale *= 0.5f;
 
             AddEffect(dashFX);
 
-            InitCustomItems();
+            //InitCustomItems();
 
             swordHitSoundEventS = CreateNetworkSoundEventDef(Modules.Sounds.HitS);
             swordHitSoundEventM = CreateNetworkSoundEventDef(Modules.Sounds.HitM);
@@ -338,6 +354,7 @@ namespace PaladinMod.Modules
         private static void InitCustomItems()
         {
             //create item display prefabs for all of the shields
+            // but it's deprecated, sad
             artoriasShield = CreateItemDisplay("DisplayArtoriasShield", "matArtyShield");
             blackKnightShield = CreateItemDisplay("DisplayBKShield", "matBlackKnightShield");
             giantShield = CreateItemDisplay("DisplayGiantShield", "matGiantShield");

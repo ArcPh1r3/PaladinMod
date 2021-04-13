@@ -12,6 +12,7 @@ namespace PaladinMod.States.Spell
             this.chargeSoundString = Modules.Sounds.ChannelTorpor;
             this.maxSpellRadius = StaticValues.torporRadius;
             this.baseDuration = StaticValues.torporChannelDuration;
+            //this.overrideAreaIndicatorMat = Modules.Assets.crippleSphereMat;
 
             base.OnEnter();
 

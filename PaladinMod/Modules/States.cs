@@ -1,28 +1,16 @@
-﻿using EntityStates;
-using R2API;
-using RoR2;
-using PaladinMod.States;
-using PaladinMod.States.Dash;
+﻿using PaladinMod.States;
 using PaladinMod.States.Emotes;
 using PaladinMod.States.Quickstep;
 using PaladinMod.States.Spell;
 using PaladinMod.States.LunarKnight;
 using System;
-using System.Reflection;
 using System.Collections.Generic;
-using MonoMod.RuntimeDetour;
 
 namespace PaladinMod.Modules
 {
     public static class States
     {
         internal static List<Type> entityStates = new List<Type>();
-
-        private static Hook set_stateTypeHook;
-        private static Hook set_typeNameHook;
-        private static readonly BindingFlags allFlags = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.NonPublic;
-        private delegate void set_stateTypeDelegate(ref SerializableEntityStateType self, Type value);
-        private delegate void set_typeNameDelegate(ref SerializableEntityStateType self, String value);
 
         internal static void AddSkill(Type t)
         {
@@ -31,12 +19,6 @@ namespace PaladinMod.Modules
 
         public static void RegisterStates()
         {
-            Type type = typeof(SerializableEntityStateType);
-            HookConfig cfg = default;
-            cfg.Priority = Int32.MinValue;
-            set_stateTypeHook = new Hook(type.GetMethod("set_stateType", allFlags), new set_stateTypeDelegate(SetStateTypeHook), cfg);
-            set_typeNameHook = new Hook(type.GetMethod("set_typeName", allFlags), new set_typeNameDelegate(SetTypeName), cfg);
-
             AddSkill(typeof(PaladinMain));
             AddSkill(typeof(SpawnState));
             AddSkill(typeof(BaseEmote));
@@ -72,27 +54,10 @@ namespace PaladinMod.Modules
             AddSkill(typeof(ChannelWarcry));
             AddSkill(typeof(CastChanneledWarcry));
 
+            AddSkill(typeof(ChannelCruelSun));
+            AddSkill(typeof(CastCruelSun));
+
             AddSkill(typeof(MaceSlam));
-        }
-
-        private static void SetStateTypeHook(ref this SerializableEntityStateType self, Type value)
-        {
-            self._typeName = value.AssemblyQualifiedName;
-        }
-
-        private static void SetTypeName(ref this SerializableEntityStateType self, String value)
-        {
-            Type t = GetTypeFromName(value);
-            if (t != null)
-            {
-                self.SetStateTypeHook(t);
-            }
-        }
-
-        private static Type GetTypeFromName(String name)
-        {
-            Type[] types = EntityStateCatalog.stateIndexToType;
-            return Type.GetType(name);
         }
     }
 }

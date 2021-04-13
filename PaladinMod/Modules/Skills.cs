@@ -71,6 +71,11 @@ namespace PaladinMod.Modules
                 mySkillDef.activationStateMachineName = "Body";
             }
 
+            if (bodyPrefab.name == "NemesisPaladinBody")
+            {
+                mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Nemesis.PunchCombo));
+            }
+
             skillDefs.Add(mySkillDef);
 
             skillLocator.primary = bodyPrefab.AddComponent<GenericSkill>();
@@ -164,18 +169,18 @@ namespace PaladinMod.Modules
 
             mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
             mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.LunarShards));
-            mySkillDef.activationStateMachineName = "Weapon";
+            mySkillDef.activationStateMachineName = "Slide";
             mySkillDef.baseMaxStock = StaticValues.lunarShardMaxStock;
-            mySkillDef.baseRechargeInterval = 0.75f;
+            mySkillDef.baseRechargeInterval = 1.5f;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Any;
-            mySkillDef.resetCooldownTimerOnUse = false;
+            mySkillDef.resetCooldownTimerOnUse = true;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
             mySkillDef.cancelSprintingOnActivation = false;
-            mySkillDef.rechargeStock = 1;
+            mySkillDef.rechargeStock = 12;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon2c;
@@ -276,7 +281,7 @@ namespace PaladinMod.Modules
             mySkillDef.baseMaxStock = 1;
             mySkillDef.baseRechargeInterval = 18f;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
-            mySkillDef.canceledFromSprinting = true;
+            mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.resetCooldownTimerOnUse = false;
@@ -312,7 +317,7 @@ namespace PaladinMod.Modules
             mySkillDef.baseMaxStock = 1;
             mySkillDef.baseRechargeInterval = 18f;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
-            mySkillDef.canceledFromSprinting = true;
+            mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.resetCooldownTimerOnUse = false;
@@ -346,7 +351,7 @@ namespace PaladinMod.Modules
             mySkillDef.baseMaxStock = 1;
             mySkillDef.baseRechargeInterval = 18f;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
-            mySkillDef.canceledFromSprinting = true;
+            mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.resetCooldownTimerOnUse = false;
@@ -367,6 +372,37 @@ namespace PaladinMod.Modules
             skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
             {
                 skillDef = mySkillDef,
+                viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+            };
+
+            mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelCruelSun));
+            mySkillDef.activationStateMachineName = "Weapon";
+            mySkillDef.baseMaxStock = 1;
+            mySkillDef.baseRechargeInterval = 48f;
+            mySkillDef.beginSkillCooldownOnSkillEnd = true;
+            mySkillDef.canceledFromSprinting = false;
+            mySkillDef.fullRestockOnAssign = true;
+            mySkillDef.interruptPriority = InterruptPriority.Skill;
+            mySkillDef.resetCooldownTimerOnUse = false;
+            mySkillDef.isCombatSkill = true;
+            mySkillDef.mustKeyPress = false;
+            mySkillDef.cancelSprintingOnActivation = true;
+            mySkillDef.rechargeStock = 1;
+            mySkillDef.requiredStock = 1;
+            mySkillDef.stockToConsume = 1;
+            mySkillDef.icon = Assets.icon4d;
+            mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_SUN_DESCRIPTION";
+            mySkillDef.skillName = "PALADIN_SPECIAL_SUN_NAME";
+            mySkillDef.skillNameToken = "PALADIN_SPECIAL_SUN_NAME";
+
+            skillDefs.Add(mySkillDef);
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = mySkillDef,
+                unlockableDef = Modules.Unlockables.paladinCruelSunSkillDefDef,
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
         }

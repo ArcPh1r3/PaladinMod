@@ -12,6 +12,7 @@ namespace PaladinMod.States.Spell
             this.chargeSoundString = Modules.Sounds.ChannelHeal;
             this.maxSpellRadius = StaticValues.warcryRadius;
             this.baseDuration = StaticValues.warcryChannelDuration;
+            this.overrideAreaIndicatorMat = Modules.Assets.airStrikeMat;
 
             base.OnEnter();
 

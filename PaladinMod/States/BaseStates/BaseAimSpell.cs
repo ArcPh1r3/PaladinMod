@@ -53,7 +53,7 @@ namespace PaladinMod.States
 
             if (base.cameraTargetParams)
             {
-                base.cameraTargetParams.aimMode = CameraTargetParams.AimType.OverTheShoulder;
+                //base.cameraTargetParams.aimMode = CameraTargetParams.AimType.OverTheShoulder;
             }
 
             if (this.crosshairOverridePrefab)

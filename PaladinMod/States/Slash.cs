@@ -22,7 +22,7 @@ namespace PaladinMod.States
         private float duration;
         private bool hasFired;
         private float hitPauseTimer;
-        private OverlapAttack attack;
+        protected OverlapAttack attack;
         private bool inHitPause;
         private bool hasHopped;
         private float stopwatch;
@@ -30,6 +30,7 @@ namespace PaladinMod.States
         private Animator animator;
         private BaseState.HitStopCachedState hitStopCachedState;
         private PaladinSwordController swordController;
+        private Vector3 storedVelocity;
 
         public override void OnEnter()
         {
@@ -113,9 +114,41 @@ namespace PaladinMod.States
             if (this.swordController) this.swordController.attacking = false;
         }
 
+        protected virtual void FireSwordBeam()
+        {
+            Ray aimRay = base.GetAimRay();
+
+            if (this.swordController && this.swordController.swordActive)
+            {
+                ProjectileManager.instance.FireProjectile(Modules.Projectiles.swordBeam, aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, StaticValues.beamDamageCoefficient * this.damageStat, 0f, Util.CheckRoll(this.critStat, base.characterBody.master), DamageColorIndex.WeakPoint, null, StaticValues.beamSpeed);
+            }
+        }
+
+        protected virtual void OnHitAuthority()
+        {
+            if (!this.hasHopped)
+            {
+                if (base.characterMotor && !base.characterMotor.isGrounded)
+                {
+                    base.SmallHop(base.characterMotor, Slash.hitHopVelocity);
+                }
+
+                if (base.skillLocator.utility.skillDef.skillNameToken == "PALADIN_UTILITY_DASH_NAME") base.skillLocator.utility.RunRecharge(1f);
+
+                this.hasHopped = true;
+            }
+
+            if (!this.inHitPause)
+            {
+                if (base.characterMotor.velocity != Vector3.zero) this.storedVelocity = base.characterMotor.velocity;
+                this.hitStopCachedState = base.CreateHitStopCachedState(base.characterMotor, this.animator, "Slash.playbackRate");
+                this.hitPauseTimer = (2f * EntityStates.Merc.GroundLight.hitPauseDuration) / this.attackSpeedStat;
+                this.inHitPause = true;
+            }
+        }
+
         public void FireAttack()
         {
-
             if (!this.hasFired)
             {
                 this.hasFired = true;
@@ -130,12 +163,7 @@ namespace PaladinMod.States
                     base.AddRecoil(-1f * Slash.attackRecoil, -2f * Slash.attackRecoil, -0.5f * Slash.attackRecoil, 0.5f * Slash.attackRecoil);
                     EffectManager.SimpleMuzzleFlash(this.swordController.swingEffect, base.gameObject, muzzleString, true);
 
-                    Ray aimRay = base.GetAimRay();
-
-                    if (this.swordController && this.swordController.swordActive) 
-                    {
-                        ProjectileManager.instance.FireProjectile(Modules.Projectiles.swordBeam, aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, StaticValues.beamDamageCoefficient * this.damageStat, 0f, Util.CheckRoll(this.critStat, base.characterBody.master), DamageColorIndex.WeakPoint, null, StaticValues.beamSpeed);
-                    }
+                    this.FireSwordBeam();
                 }
             }
 
@@ -143,25 +171,7 @@ namespace PaladinMod.States
             {
                 if (this.attack.Fire()) 
                 {
-
-                    if (!this.hasHopped) 
-                    {
-                        if (base.characterMotor && !base.characterMotor.isGrounded) 
-                        {
-                            base.SmallHop(base.characterMotor, Slash.hitHopVelocity);
-                        }
-
-                        if (base.skillLocator.utility.skillDef.skillNameToken == "PALADIN_UTILITY_DASH_NAME") base.skillLocator.utility.RunRecharge(1f);
-
-                        this.hasHopped = true;
-                    }
-
-                    if (!this.inHitPause) 
-                    {
-                        this.hitStopCachedState = base.CreateHitStopCachedState(base.characterMotor, this.animator, "Slash.playbackRate");
-                        this.hitPauseTimer = (2f * EntityStates.Merc.GroundLight.hitPauseDuration) / this.attackSpeedStat;
-                        this.inHitPause = true;
-                    }
+                    this.OnHitAuthority();
                 }
             }
         }
@@ -176,6 +186,7 @@ namespace PaladinMod.States
             {
                 base.ConsumeHitStopCachedState(this.hitStopCachedState, base.characterMotor, this.animator);
                 this.inHitPause = false;
+                if (this.storedVelocity != Vector3.zero) base.characterMotor.velocity = this.storedVelocity;
             }
 
             if (!this.inHitPause)
@@ -191,13 +202,6 @@ namespace PaladinMod.States
             if (this.stopwatch >= this.duration * 0.225f && this.stopwatch <= this.duration * 0.4f)
             {
                 this.FireAttack();
-            }
-
-            if (this.stopwatch >= (this.duration * 0.5f) && base.inputBank.skill2.down && base.skillLocator.secondary.skillDef.skillNameToken == "PALADIN_SECONDARY_LUNARSHARD_NAME")
-            {
-                this.cancelling = true;
-                base.skillLocator.secondary.ExecuteIfReady();
-                return;
             }
 
             if (base.isAuthority)

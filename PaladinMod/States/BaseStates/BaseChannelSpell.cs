@@ -13,15 +13,17 @@ namespace PaladinMod.States
         public GameObject crosshairOverridePrefab;
         public float maxSpellRadius;
         public float baseDuration = 3f;
+        public Material overrideAreaIndicatorMat;
 
         private bool hasCharged;
         private GameObject defaultCrosshairPrefab;
+        private CharacterCameraParams defaultCameraParams;
         private uint loopSoundInstanceId;
         private float duration { get; set; }
         private Animator animator { get; set; }
         private ChildLocator childLocator { get; set; }
         private GameObject chargeEffectInstance { get; set; }
-        private GameObject areaIndicatorInstance { get; set; }
+        protected GameObject areaIndicatorInstance { get; set; }
 
         public override void OnEnter()
         {
@@ -51,11 +53,6 @@ namespace PaladinMod.States
             this.loopSoundInstanceId = Util.PlayAttackSpeedSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
             this.defaultCrosshairPrefab = base.characterBody.crosshairPrefab;
 
-            if (base.cameraTargetParams)
-            {
-                base.cameraTargetParams.aimMode = CameraTargetParams.AimType.OverTheShoulder;
-            }
-
             if (this.crosshairOverridePrefab)
             {
                 base.characterBody.crosshairPrefab = this.crosshairOverridePrefab;
@@ -67,7 +64,12 @@ namespace PaladinMod.States
             {
                 this.areaIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab);
                 this.areaIndicatorInstance.transform.localScale = Vector3.zero;
+
+                if (this.overrideAreaIndicatorMat) this.areaIndicatorInstance.GetComponentInChildren<MeshRenderer>().material = this.overrideAreaIndicatorMat;
             }
+
+            this.defaultCameraParams = base.cameraTargetParams.cameraParams;
+            base.cameraTargetParams.cameraParams = Modules.CameraParams.channelCameraParamsPaladin;
         }
 
         private void UpdateAreaIndicator()
@@ -114,10 +116,7 @@ namespace PaladinMod.States
                 base.PlayAnimation("Gesture, Override", "BufferEmpty");
             }
 
-            if (base.cameraTargetParams)
-            {
-                base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Standard;
-            }
+            base.cameraTargetParams.cameraParams = this.defaultCameraParams;
 
             if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.Slow50);
 
@@ -145,17 +144,18 @@ namespace PaladinMod.States
                 this.areaIndicatorInstance.transform.localScale = new Vector3(size, size, size);
             }
 
+            if (charge >= 0.75f)
+            {
+                base.cameraTargetParams.cameraParams = Modules.CameraParams.channelFullCameraParamsPaladin;
+                base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Aura;
+            }
+
             if (charge >= 1f)
             {
                 if (!this.hasCharged)
                 {
                     this.hasCharged = true;
                     Util.PlaySound(Modules.Sounds.ChannelMax, base.gameObject);
-
-                    if (base.cameraTargetParams)
-                    {
-                        base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Aura;
-                    }
                 }
             }
 
@@ -163,6 +163,7 @@ namespace PaladinMod.States
             {
                 if (base.inputBank.sprint.wasDown)
                 {
+                    base.characterBody.isSprinting = true;
                     this.RefundCooldown();
                     this.outer.SetNextStateToMain();
                     return;
@@ -188,7 +189,7 @@ namespace PaladinMod.States
 
         private void RefundCooldown()
         {
-            base.skillLocator.special.RunRecharge(0.9f * 18f);
+            base.skillLocator.special.rechargeStopwatch = (0.9f * base.skillLocator.special.finalRechargeInterval);
         }
 
         public override void Update()

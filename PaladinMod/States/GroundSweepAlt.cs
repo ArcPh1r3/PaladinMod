@@ -11,7 +11,7 @@ namespace PaladinMod.States
     public class GroundSweepAlt : BaseSkillState
     {
         public static float damageCoefficient = StaticValues.spinSlashDamageCoefficient;
-        public float baseDuration = 1f;
+        public float baseDuration = 0.6f;
         public static float attackRecoil = 3f;
 
         private float duration;
@@ -23,6 +23,7 @@ namespace PaladinMod.States
         private Animator animator;
         private BaseState.HitStopCachedState hitStopCachedState;
         private PaladinSwordController swordController;
+        private Vector3 storedVelocity;
 
         public override void OnEnter()
         {
@@ -98,6 +99,7 @@ namespace PaladinMod.States
                     {
                         if (!this.inHitPause)
                         {
+                            if (base.characterMotor.velocity != Vector3.zero) this.storedVelocity = base.characterMotor.velocity;
                             this.hitStopCachedState = base.CreateHitStopCachedState(base.characterMotor, this.animator, "Whirlwind.playbackRate");
                             this.hitPauseTimer = (4f * EntityStates.Merc.GroundLight.hitPauseDuration) / this.attackSpeedStat;
                             this.inHitPause = true;
@@ -119,6 +121,7 @@ namespace PaladinMod.States
             {
                 base.ConsumeHitStopCachedState(this.hitStopCachedState, base.characterMotor, this.animator);
                 this.inHitPause = false;
+                if (this.storedVelocity != Vector3.zero) base.characterMotor.velocity = this.storedVelocity;
             }
 
             if (!this.inHitPause)

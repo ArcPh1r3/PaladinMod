@@ -24,304 +24,109 @@
 
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\0Harmony.dll</HintPath>
+      <HintPath>libs\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Aetherium">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Aetherium.dll</HintPath>
+      <HintPath>libs\Aetherium.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\Downloads\risky\Assembly-CSharp.dll</HintPath>
+      <HintPath>libs\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\BepInEx.dll</HintPath>
+      <HintPath>libs\BepInEx.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx.Harmony">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\BepInEx.Harmony.dll</HintPath>
+      <HintPath>libs\BepInEx.Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.MonoMod.Loader">
+      <HintPath>libs\BepInEx.MonoMod.Loader.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx.Preloader">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\BepInEx.Preloader.dll</HintPath>
+      <HintPath>libs\BepInEx.Preloader.dll</HintPath>
+    </Reference>
+    <Reference Include="EliteSpawningOverhaul">
+      <HintPath>libs\EliteSpawningOverhaul.dll</HintPath>
     </Reference>
     <Reference Include="Facepunch.Steamworks">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Facepunch.Steamworks.dll</HintPath>
+      <HintPath>libs\Facepunch.Steamworks.dll</HintPath>
     </Reference>
     <Reference Include="HGCSharpUtils">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\HGCSharpUtils.dll</HintPath>
+      <HintPath>libs\HGCSharpUtils.dll</HintPath>
     </Reference>
     <Reference Include="HGUnityUtils">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\HGUnityUtils.dll</HintPath>
+      <HintPath>libs\HGUnityUtils.dll</HintPath>
     </Reference>
     <Reference Include="MMHOOK_Assembly-CSharp">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\MMHOOK_Assembly-CSharp.dll</HintPath>
+      <HintPath>libs\MMHOOK_Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Mono.Cecil.dll</HintPath>
+      <HintPath>libs\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Mdb">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Mono.Cecil.Mdb.dll</HintPath>
+      <HintPath>libs\Mono.Cecil.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Pdb">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Mono.Cecil.Pdb.dll</HintPath>
+      <HintPath>libs\Mono.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Rocks">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Mono.Cecil.Rocks.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Security">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Mono.Security.dll</HintPath>
+      <HintPath>libs\Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="MonoMod.RuntimeDetour">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\MonoMod.RuntimeDetour.dll</HintPath>
+      <HintPath>libs\MonoMod.RuntimeDetour.dll</HintPath>
     </Reference>
     <Reference Include="MonoMod.Utils">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\MonoMod.Utils.dll</HintPath>
+      <HintPath>libs\MonoMod.Utils.dll</HintPath>
     </Reference>
     <Reference Include="R2API">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\R2API.dll</HintPath>
+      <HintPath>libs\R2API.dll</HintPath>
     </Reference>
-    <Reference Include="Rewired_Core">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Rewired_Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Rewired_CSharp">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Rewired_CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Rewired_Windows_Lib">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Rewired_Windows_Lib.dll</HintPath>
-    </Reference>
-    <Reference Include="SivsItemsRoR2">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\SivsItemsRoR2.dll</HintPath>
-    </Reference>
-    <Reference Include="Starstorm2">
-      <HintPath>..\..\Moonstorm\Starstorm 2\bin\Debug\Starstorm2.dll</HintPath>
+    <Reference Include="ScrollableLobbyUI">
+      <HintPath>libs\ScrollableLobbyUI.dll</HintPath>
     </Reference>
     <Reference Include="SupplyDrop">
-      <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\test\BepInEx\plugins\Keroro1454-Supply_Drop\SupplyDrop.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Configuration">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\System.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Diagnostics.StackTrace">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\System.Diagnostics.StackTrace.dll</HintPath>
-    </Reference>
-    <Reference Include="System.EnterpriseServices">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\System.EnterpriseServices.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Globalization.Extensions">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\System.Globalization.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ServiceModel.Internals">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\System.ServiceModel.Internals.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml.XPath.XDocument">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\System.Xml.XPath.XDocument.dll</HintPath>
+      <HintPath>libs\SupplyDrop.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Unity.Postprocessing.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+      <HintPath>libs\Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>libs\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AccessibilityModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.AccessibilityModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AIModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.AIModule.dll</HintPath>
+      <HintPath>libs\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.AnimationModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ARModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.ARModule.dll</HintPath>
+      <HintPath>libs\UnityEngine.AnimationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.AssetBundleModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AudioModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.AudioModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.BaselibModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.BaselibModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ClothModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.ClothModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ClusterInputModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.ClusterInputModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ClusterRendererModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.ClusterRendererModule.dll</HintPath>
+      <HintPath>libs\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CrashReportingModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.CrashReportingModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.DirectorModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.DirectorModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.FileSystemHttpModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.FileSystemHttpModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.GameCenterModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.GameCenterModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.GridModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.GridModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.HotReloadModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.HotReloadModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.ImageConversionModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.IMGUIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.InputModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.InputModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.JSONSerializeModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.LocalizationModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.LocalizationModule.dll</HintPath>
+      <HintPath>libs\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.Networking.dll</HintPath>
+      <HintPath>libs\UnityEngine.Networking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.ParticleSystemModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.PerformanceReportingModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.PerformanceReportingModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Physics2DModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.Physics2DModule.dll</HintPath>
+      <HintPath>libs\UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.PhysicsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ProfilerModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.ProfilerModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ScreenCaptureModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.ScreenCaptureModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.SharedInternalsModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.SharedInternalsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.SpatialTracking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.SpriteMaskModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.SpriteMaskModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.SpriteShapeModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.SpriteShapeModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.StreamingModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.StreamingModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.StyleSheetsModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.StyleSheetsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.SubstanceModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.SubstanceModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TerrainModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.TerrainModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TerrainPhysicsModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.TerrainPhysicsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TextCoreModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.TextCoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.TextRenderingModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TilemapModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.TilemapModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Timeline">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TimelineModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.TimelineModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TLSModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.TLSModule.dll</HintPath>
+      <HintPath>libs\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIElementsModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.UIElementsModule.dll</HintPath>
+      <HintPath>libs\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.UIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UmbraModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.UmbraModule.dll</HintPath>
+      <HintPath>libs\UnityEngine.UIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UNETModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.UNETModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityAnalyticsModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.UnityAnalyticsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityConnectModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.UnityConnectModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityTestProtocolModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.UnityTestProtocolModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.UnityWebRequestModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VehiclesModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.VehiclesModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VFXModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.VFXModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VideoModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.VideoModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VRModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.VRModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.WindModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.WindModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.XRModule">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\UnityEngine.XRModule.dll</HintPath>
+      <HintPath>libs\UnityEngine.UNETModule.dll</HintPath>
     </Reference>
     <Reference Include="Wwise">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Wwise.dll</HintPath>
+      <HintPath>libs\Wwise.dll</HintPath>
     </Reference>
     <Reference Include="Zio">
-      <HintPath>..\..\MinerUnearthed\MinerV2\bin\Debug\netstandard2.0\Zio.dll</HintPath>
+      <HintPath>libs\Zio.dll</HintPath>
     </Reference>
   </ItemGroup>
 

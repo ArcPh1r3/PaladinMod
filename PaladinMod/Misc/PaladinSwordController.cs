@@ -14,15 +14,19 @@ namespace PaladinMod.Misc
 
         public string skinName;
 
+        public Vector3 sunPosition;
+
         private Modules.Effects.PaladinSkinInfo skinInfo;
         private CharacterBody body;
         private CharacterModel model;
+        private ChildLocator childLocator;
         public bool isBlunt;
 
         private void Awake()
         {
             this.body = base.GetComponent<CharacterBody>();
             this.model = base.GetComponentInChildren<CharacterModel>();
+            this.childLocator = base.GetComponentInChildren<ChildLocator>();
         }
 
         private void Start()
@@ -32,9 +36,17 @@ namespace PaladinMod.Misc
                 this.skinInfo = Modules.Effects.GetSkinInfo(this.model.GetComponent<ModelSkinController>().skins[this.body.skinIndex].nameToken);
                 this.skinName = this.skinInfo.skinName;
                 this.isBlunt = this.skinInfo.isWeaponBlunt;
+                this.EditEyeTrail();
             }
 
             Invoke("CheckInventory", 0.2f);
+        }
+
+        private void EditEyeTrail()
+        {
+            TrailRenderer eyeTrail = this.childLocator.FindChild("EyeTrail").GetComponentInChildren<TrailRenderer>();
+
+            eyeTrail.startColor = this.skinInfo.eyeTrailColor;
         }
 
         public void CheckInventory()

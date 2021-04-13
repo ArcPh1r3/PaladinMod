@@ -202,6 +202,8 @@ ModelImporter:
     400194: cape.02
     400196: cape.03
     2100000: matPaladin
+    2100002: matSword
+    2100004: matPaladin.002
     4300000: meshPaladin
     4300002: meshSword
     7400000: Armature|Ascend
@@ -271,6 +273,17 @@ ModelImporter:
     7400128: Armature|AimYaw
     7400130: Armature|LightImpact
     7400132: Armature|FireLunarShard
+    7400134: Armature|DescendFast
+    7400136: Armature|SprintCombatF
+    7400138: Armature|SprintCombatToRest
+    7400140: Armature|SprintRestF
+    7400142: Sun|SprintCombatF
+    7400144: Armature|meshPaladinAction
+    7400146: Sun|meshPaladinAction
+    7400148: Armature|CastRuin
+    7400150: Armature|ChargeLunarSecondary
+    7400152: Armature|FireVisions
+    7400154: Armature|ThrowLunarSecondary
     9500000: //RootNode
     10800000: Sun
     13700000: meshPaladin

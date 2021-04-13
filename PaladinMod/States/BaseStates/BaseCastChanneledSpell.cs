@@ -15,6 +15,8 @@ namespace PaladinMod.States
         public Quaternion spellRotation;
         public string castSoundString;
 
+        protected float overrideDuration;
+
         private float duration;
         public float charge;
         private bool hasFired;
@@ -22,7 +24,8 @@ namespace PaladinMod.States
         public override void OnEnter()
         {
             base.OnEnter();
-            this.duration = this.baseDuration / this.attackSpeedStat;
+            if (this.overrideDuration == 0) this.duration = this.baseDuration / this.attackSpeedStat;
+            else this.duration = this.overrideDuration;
 
             base.PlayAnimation("Gesture, Override", "CastSpell", "Spell.playbackRate", this.duration);
 
@@ -82,6 +85,8 @@ namespace PaladinMod.States
         {
             if (this.hasFired) return;
             this.hasFired = true;
+
+            if (!this.projectilePrefab) return;
 
             if (base.isAuthority)
             {

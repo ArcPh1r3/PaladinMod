@@ -14,9 +14,9 @@ namespace PaladinMod.States.Emotes
         public bool normalizeModel;
 
         private uint activePlayID;
-        private float initialTime;
         private Animator animator;
         private ChildLocator childLocator;
+        private CharacterCameraParams originalCameraParams;
         protected PaladinSwordController swordController;
         public LocalUser localUser;
 
@@ -49,7 +49,8 @@ namespace PaladinMod.States.Emotes
                 }
             }
 
-            this.initialTime = Time.fixedTime;
+            this.originalCameraParams = base.cameraTargetParams.cameraParams;
+            base.cameraTargetParams.cameraParams = Modules.CameraParams.emoteCameraParamsPaladin;
         }
 
         public override void OnExit()
@@ -57,6 +58,7 @@ namespace PaladinMod.States.Emotes
             base.OnExit();
 
             base.characterBody.hideCrosshair = false;
+            base.cameraTargetParams.cameraParams = this.originalCameraParams;
 
             if (base.GetAimAnimator()) base.GetAimAnimator().enabled = true;
             if (this.animator)
@@ -121,12 +123,6 @@ namespace PaladinMod.States.Emotes
             }
 
             if (this.duration > 0 && base.fixedAge >= this.duration) flag = true;
-
-            CameraTargetParams ctp = base.cameraTargetParams;
-            float denom = (1 + Time.fixedTime - this.initialTime);
-            float smoothFactor = 8 / Mathf.Pow(denom, 2);
-            Vector3 smoothVector = new Vector3(-3 / 20, 1 / 16, -1);
-            ctp.idealLocalCameraPos = new Vector3(0f, -1.4f, -6f) + smoothFactor * smoothVector;
 
             if (this.animator) this.animator.SetBool("inCombat", true);
 

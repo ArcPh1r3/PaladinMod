@@ -8,6 +8,7 @@ using RoR2;
 using RoR2.Skills;
 using UnityEngine;
 using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
 
 namespace PaladinMod
 {
@@ -18,7 +19,7 @@ namespace PaladinMod
     [BepInDependency("com.K1454.SupplyDrop", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.TeamMoonstorm.Starstorm2", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "1.4.2")]
+    [BepInPlugin(MODUID, "Paladin", "1.4.8")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -39,9 +40,6 @@ namespace PaladinMod
         // clone this material to make our own with proper shader/properties
         public static Material commandoMat;
 
-        public static event Action awake;
-        public static event Action start;
-
         public static readonly Color characterColor = new Color(0.7176f, 0.098039f, 0.098039f);
 
         // for scepter upgrades
@@ -60,13 +58,7 @@ namespace PaladinMod
         // eh
         public static uint claySkinIndex = 3;
 
-        public PaladinPlugin()
-        {
-            awake += PaladinPlugin_Load;
-            start += PaladinPlugin_LoadStart;
-        }
-
-        private void PaladinPlugin_Load()
+        public void Awake()
         {
             instance = this;
 
@@ -83,8 +75,9 @@ namespace PaladinMod
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamMoonstorm.Starstorm2"))
             {
                 starstormInstalled = true;
-                claySkinIndex++;
+                //claySkinIndex++;
             }
+            claySkinIndex++;
 
             Modules.Unlockables.RegisterUnlockables(); // add unlockables
             Modules.States.RegisterStates(); // register states
@@ -94,12 +87,14 @@ namespace PaladinMod
             Modules.ItemDisplays.InitializeItemDisplays(); // add item displays(pain)
             Modules.Skills.SetupSkills(Modules.Prefabs.paladinPrefab);
             Modules.Skills.SetupSkills(Modules.Prefabs.lunarKnightPrefab);
+            //Modules.Skills.SetupSkills(Modules.Prefabs.nemPaladinPrefab);
             Modules.Survivors.RegisterSurvivors(); // register them into the body catalog
             Modules.Skins.RegisterSkins(); // add skins
             Modules.Buffs.RegisterBuffs(); // add and register custom buffs
             Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
             Modules.Effects.RegisterEffects(); // add and register custom effects
             Modules.Tokens.AddTokens(); // register name tokens
+            Modules.CameraParams.InitializeParams(); // create camera params for our character to use
 
             CreateDoppelganger(); // artifact of vengeance
 
@@ -110,35 +105,16 @@ namespace PaladinMod
                 //ScepterSetup();
             }
 
-            new Modules.ContentPacks().CreateContentPack();
+            new Modules.ContentPacks().Initialize();
 
             Hook();
+            RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
         }
 
-        private void PaladinPlugin_LoadStart()
+        private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
             Modules.Projectiles.LateSetup();
             Modules.ItemDisplays.SetItemDisplays();
-        }
-
-        public void Awake()
-        {
-            Action awake = PaladinPlugin.awake;
-            if (awake == null)
-            {
-                return;
-            }
-            awake();
-        }
-
-        public void Start()
-        {
-            Action start = PaladinPlugin.start;
-            if (start == null)
-            {
-                return;
-            }
-            start();
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
@@ -154,7 +130,178 @@ namespace PaladinMod
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.CharacterModel.UpdateOverlays += CharacterModel_UpdateOverlays;
             On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
+            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             //On.RoR2.SceneDirector.Start += SceneDirector_Start;
+            On.EntityStates.GlobalSkills.LunarNeedle.FireLunarNeedle.OnEnter += PlayVisionsAnimation;
+            On.EntityStates.GlobalSkills.LunarNeedle.ChargeLunarSecondary.PlayChargeAnimation += PlayChargeLunarAnimation;
+            On.EntityStates.GlobalSkills.LunarNeedle.ThrowLunarSecondary.PlayThrowAnimation += PlayThrowLunarAnimation;
+            On.EntityStates.GlobalSkills.LunarDetonator.Detonate.OnEnter += PlayRuinAnimation;
+
+            On.RoR2.CharacterSpeech.BrotherSpeechDriver.DoInitialSightResponse += BrotherSpeechDriver_DoInitialSightResponse;
+            On.RoR2.CharacterSpeech.BrotherSpeechDriver.OnBodyKill += BrotherSpeechDriver_OnBodyKill;
+        }
+
+        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        {
+            bool isHealing = false;
+
+            if (self)
+            {
+                if (damageInfo.attacker)
+                {
+                    CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+                    if (attackerBody)
+                    {
+                        if (attackerBody.baseNameToken == "NEMPALADIN_NAME")
+                        {
+                            if (damageInfo.damageType.HasFlag(DamageType.BlightOnHit))
+                            {
+                                damageInfo.damageType = DamageType.Generic;
+                                isHealing = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            orig(self, damageInfo);
+
+            if (isHealing && !damageInfo.rejected)
+            {
+                damageInfo.attacker.GetComponent<HealthComponent>().Heal(damageInfo.damage * 0.2f, default(ProcChainMask));
+            }
+        }
+
+        private void BrotherSpeechDriver_OnBodyKill(On.RoR2.CharacterSpeech.BrotherSpeechDriver.orig_OnBodyKill orig, RoR2.CharacterSpeech.BrotherSpeechDriver self, DamageReport damageReport)
+        {
+            if (damageReport.victimBody)
+            {
+                if (damageReport.victimBodyIndex == BodyCatalog.FindBodyIndex(Modules.Prefabs.paladinPrefab))
+                {
+                    RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo[] responsePool = new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo[]
+                    {
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "BROTHER_KILL_PALADIN_1"
+                    },
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "BROTHER_KILL_PALADIN_2"
+                    },
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "BROTHER_KILL_PALADIN_3"
+                    }
+                    };
+
+                    self.SendReponseFromPool(responsePool);
+                }
+            }
+
+            orig(self, damageReport);
+        }
+
+        private void BrotherSpeechDriver_DoInitialSightResponse(On.RoR2.CharacterSpeech.BrotherSpeechDriver.orig_DoInitialSightResponse orig, RoR2.CharacterSpeech.BrotherSpeechDriver self)
+        {
+            bool isThereAPaladin = false;
+
+            ReadOnlyCollection<CharacterBody> characterBodies = CharacterBody.readOnlyInstancesList;
+            for (int i = 0; i < characterBodies.Count; i++)
+            {
+                BodyIndex bodyIndex = characterBodies[i].bodyIndex;
+                isThereAPaladin |= (bodyIndex == BodyCatalog.FindBodyIndex(Modules.Prefabs.paladinPrefab));
+            }
+
+            if (isThereAPaladin)
+            {
+                RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo[] responsePool = new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo[]
+                {
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "BROTHER_SEE_PALADIN_1"
+                    },
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "BROTHER_SEE_PALADIN_2"
+                    },
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "BROTHER_SEE_PALADIN_3"
+                    }
+                };
+
+                self.SendReponseFromPool(responsePool);
+            }
+
+            orig(self);
+        }
+
+        private void PlayVisionsAnimation(On.EntityStates.GlobalSkills.LunarNeedle.FireLunarNeedle.orig_OnEnter orig, EntityStates.GlobalSkills.LunarNeedle.FireLunarNeedle self)
+        {
+            orig(self);
+
+            if (self.characterBody.baseNameToken == "PALADIN_NAME")
+            {
+                self.PlayAnimation("Gesture, Override", "FireVisions", "Visions.playbackRate", self.duration  * 2.5f);
+            }
+        }
+
+        private void PlayChargeLunarAnimation(On.EntityStates.GlobalSkills.LunarNeedle.ChargeLunarSecondary.orig_PlayChargeAnimation orig, EntityStates.GlobalSkills.LunarNeedle.ChargeLunarSecondary self)
+        {
+            orig(self);
+
+            if (self.characterBody.baseNameToken == "PALADIN_NAME")
+            {
+                self.PlayAnimation("Gesture, Override", "ChargeLunarSecondary", "LunarSecondary.playbackRate", self.duration * 0.5f);
+            }
+        }
+
+        private void PlayThrowLunarAnimation(On.EntityStates.GlobalSkills.LunarNeedle.ThrowLunarSecondary.orig_PlayThrowAnimation orig, EntityStates.GlobalSkills.LunarNeedle.ThrowLunarSecondary self)
+        {
+            orig(self);
+
+            if (self.characterBody.baseNameToken == "PALADIN_NAME")
+            {
+                self.PlayAnimation("Gesture, Override", "ThrowLunarSecondary", "LunarSecondary.playbackRate", self.duration);
+            }
+        }
+
+        private void PlayRuinAnimation(On.EntityStates.GlobalSkills.LunarDetonator.Detonate.orig_OnEnter orig, EntityStates.GlobalSkills.LunarDetonator.Detonate self)
+        {
+            orig(self);
+
+            if (self.characterBody.baseNameToken == "PALADIN_NAME")
+            {
+                self.PlayAnimation("Gesture, Override", "CastRuin", "Ruin.playbackRate", self.duration * 0.5f);
+                Util.PlaySound("PaladinFingerSnap", self.gameObject);
+                self.StartAimMode(self.duration + 0.5f);
+
+                EffectManager.SimpleMuzzleFlash(Resources.Load<GameObject>("Prefabs/Effects/MuzzleFlashes/MuzzleflashLunarNeedle"), self.gameObject, "HandL", false);
+            }
         }
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
@@ -327,13 +474,13 @@ namespace PaladinMod
             scepterHealDef.baseMaxStock = 1;
             scepterHealDef.baseRechargeInterval = 18f;
             scepterHealDef.beginSkillCooldownOnSkillEnd = true;
-            scepterHealDef.canceledFromSprinting = true;
+            scepterHealDef.canceledFromSprinting = false;
             scepterHealDef.fullRestockOnAssign = true;
             scepterHealDef.interruptPriority = InterruptPriority.Skill;
             scepterHealDef.resetCooldownTimerOnUse = false;
             scepterHealDef.isCombatSkill = true;
             scepterHealDef.mustKeyPress = false;
-            scepterHealDef.canceledFromSprinting = true;
+            scepterHealDef.cancelSprintingOnActivation = true;
             scepterHealDef.rechargeStock = 1;
             scepterHealDef.requiredStock = 1;
             scepterHealDef.stockToConsume = 1;

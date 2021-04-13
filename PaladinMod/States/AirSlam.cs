@@ -34,6 +34,7 @@ namespace PaladinMod.States
             this.hasLanded = false;
             this.animator = base.GetModelAnimator();
             this.swordController = base.GetComponent<PaladinSwordController>();
+            base.characterMotor.jumpCount = base.characterBody.maxJumpCount;
 
             this.previousAirControl = base.characterMotor.airControl;
             base.characterMotor.airControl = EntityStates.Croco.Leap.airControl;

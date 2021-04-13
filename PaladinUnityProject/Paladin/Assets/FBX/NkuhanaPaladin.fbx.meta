@@ -104,6 +104,44 @@ ModelImporter:
     100196: wrap4
     100198: meshSword.001
     100200: Sun.001
+    100202: cape.03_end
+    100204: cloak2_end
+    100206: elbowIK.L_end
+    100208: elbowIK.R_end
+    100210: f_index.03.L_end
+    100212: f_index.03.R_end
+    100214: f_middle.03.L_end
+    100216: f_middle.03.R_end
+    100218: f_pinky.03.L_end
+    100220: f_pinky.03.R_end
+    100222: f_ring.03.L_end
+    100224: f_ring.03.R_end
+    100226: footIK.L_end
+    100228: footIK.R_end
+    100230: handIK.L_end
+    100232: handIK.R_end
+    100234: head_end
+    100236: heel.02.L_end
+    100238: heel.02.R_end
+    100240: kneeIK.L_end
+    100242: kneeIK.R_end
+    100244: loin2_end
+    100246: loin4_end
+    100248: pelvis.L_end
+    100250: pelvis.R_end
+    100252: swordBottom.01_end
+    100254: swordBottom.02_end
+    100256: swordBottom.03_end
+    100258: swordTip_end
+    100260: swordTop.01_end
+    100262: swordTop.02_end
+    100264: swordTop.03_end
+    100266: thumb.03.L_end
+    100268: thumb.03.R_end
+    100270: toe.L_end
+    100272: toe.R_end
+    100274: wrap2_end
+    100276: wrap4_end
     400000: Armature
     400002: calf.L
     400004: calf.R
@@ -205,6 +243,44 @@ ModelImporter:
     400196: wrap4
     400198: meshSword.001
     400200: Sun.001
+    400202: cape.03_end
+    400204: cloak2_end
+    400206: elbowIK.L_end
+    400208: elbowIK.R_end
+    400210: f_index.03.L_end
+    400212: f_index.03.R_end
+    400214: f_middle.03.L_end
+    400216: f_middle.03.R_end
+    400218: f_pinky.03.L_end
+    400220: f_pinky.03.R_end
+    400222: f_ring.03.L_end
+    400224: f_ring.03.R_end
+    400226: footIK.L_end
+    400228: footIK.R_end
+    400230: handIK.L_end
+    400232: handIK.R_end
+    400234: head_end
+    400236: heel.02.L_end
+    400238: heel.02.R_end
+    400240: kneeIK.L_end
+    400242: kneeIK.R_end
+    400244: loin2_end
+    400246: loin4_end
+    400248: pelvis.L_end
+    400250: pelvis.R_end
+    400252: swordBottom.01_end
+    400254: swordBottom.02_end
+    400256: swordBottom.03_end
+    400258: swordTip_end
+    400260: swordTop.01_end
+    400262: swordTop.02_end
+    400264: swordTop.03_end
+    400266: thumb.03.L_end
+    400268: thumb.03.R_end
+    400270: toe.L_end
+    400272: toe.R_end
+    400274: wrap2_end
+    400276: wrap4_end
     2100000: matPaladin
     2100002: matPaladin.001
     2300000: meshSword.001
@@ -249,7 +325,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.7
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -269,7 +345,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
     previousCalculatedGlobalScale: 0.0069999998
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:

@@ -10,6 +10,9 @@ namespace PaladinMod.Modules
         public static GameObject paladinPrefab;
         public static GameObject paladinDisplayPrefab;
 
+        public static GameObject nemPaladinPrefab;
+        public static GameObject nemPaladinDisplayPrefab;
+
         public static GameObject lunarKnightPrefab;
 
         private static PhysicMaterial ragdollMaterial;
@@ -23,6 +26,7 @@ namespace PaladinMod.Modules
         {
             CreatePaladin();
             CreateLunarKnight();
+            //CreateNemesisPaladin();
         }
 
         private static void CreatePaladin()
@@ -49,19 +53,25 @@ namespace PaladinMod.Modules
                 new CustomRendererInfo
                 {
                     childName = "SwordModel",
-                    material = Modules.Skins.CreateMaterial("matPaladin", StaticValues.maxSwordGlow, Color.white)
+                    material = Modules.Skins.CreateMaterial("matPaladinSword", StaticValues.maxSwordGlow, Color.white, 1f)
+                },
+                new CustomRendererInfo
+                {
+                    childName = "CapeModel",
+                    material = Modules.Skins.CreateMaterial("matPaladinGM")
                 },
                 new CustomRendererInfo
                 {
                     childName = "Model",
-                    material = Modules.Skins.CreateMaterial("matPaladin", 10, Color.white)
+                    material = Modules.Skins.CreateMaterial("matPaladin", 10, Color.white, 0.25f)
                 }
             }, 1);
 
             paladinPrefab.AddComponent<Misc.PaladinSwordController>();
 
-            // camera stuff
-            //0, 2, -14
+            Material eyeTrailMat = Resources.Load<GameObject>("Prefabs/CharacterBodies/BrotherBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[4].defaultMaterial;
+            paladinPrefab.GetComponentInChildren<ChildLocator>().FindChild("EyeTrail").gameObject.GetComponentInChildren<TrailRenderer>().material = eyeTrailMat;
+
             CharacterCameraParams paladinCameraParams = ScriptableObject.CreateInstance<CharacterCameraParams>();
             paladinCameraParams.name = "ccpPaladin";
             paladinCameraParams.minPitch = -70f;
@@ -86,6 +96,82 @@ namespace PaladinMod.Modules
             Modules.Helpers.CreateHitbox(model, childLocator.FindChild("LeapHitbox"), "LeapStrike");
             Modules.Helpers.CreateHitbox(model, childLocator.FindChild("SpinSlashHitbox"), "SpinSlash");
             Modules.Helpers.CreateHitbox(model, childLocator.FindChild("SpinSlashLargeHitbox"), "SpinSlashLarge");
+        }
+
+        private static void CreateNemesisPaladin()
+        {
+            nemPaladinPrefab = CreatePrefab("NemesisbPaladinBody", "mdlNemPaladin", new BodyInfo
+            {
+                armor = 10f,
+                armorGrowth = StaticValues.armorPerLevel,
+                bodyName = "NemesisPaladinBody",
+                bodyNameToken = "NEMPALADIN_NAME",
+                characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texNemPaladinPlayerIcon"),
+                crosshair = Resources.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"),
+                damage = StaticValues.baseDamage,
+                healthGrowth = 64,
+                healthRegen = 1.5f,
+                jumpCount = 1,
+                maxHealth = 160f,
+                subtitleNameToken = "NEMPALADIN_SUBTITLE",
+                bodyColor = Color.blue
+            });
+
+            Material featherMat = Modules.Skins.CreateMaterial("matNemPaladinFeather");
+            featherMat.EnableKeyword("CUTOUT");
+
+            Material clothMat = Modules.Skins.CreateMaterial("matNemPaladinCloth", 0, Color.black, 1f);
+            clothMat.EnableKeyword("CUTOUT");
+
+            SetupCharacterModel(nemPaladinPrefab, new CustomRendererInfo[]
+            {
+                new CustomRendererInfo
+                {
+                    childName = "ClothModel",
+                    material = clothMat
+                },
+                new CustomRendererInfo
+                {
+                    childName = "CrystalModel",
+                    material = Modules.Skins.CreateMaterial("matNemPaladin", 15f)
+                },
+                new CustomRendererInfo
+                {
+                    childName = "HairModel",
+                    material = featherMat
+                },
+                new CustomRendererInfo
+                {
+                    childName = "FeatherModel",
+                    material = featherMat
+                },
+                new CustomRendererInfo
+                {
+                    childName = "Model",
+                    material = Modules.Skins.CreateMaterial("matNemPaladin", 15f)
+                }
+            }, 4);
+
+            CharacterCameraParams nemPaladinCameraParams = ScriptableObject.CreateInstance<CharacterCameraParams>();
+            nemPaladinCameraParams.name = "ccpNemPaladin";
+            nemPaladinCameraParams.minPitch = -70f;
+            nemPaladinCameraParams.maxPitch = 70f;
+            nemPaladinCameraParams.wallCushion = 0.1f;
+            nemPaladinCameraParams.pivotVerticalOffset = 1.37f;
+            nemPaladinCameraParams.standardLocalCameraPos = new Vector3(0, 0.75f, -10.5f);
+
+            nemPaladinPrefab.GetComponent<CharacterBody>().sprintingSpeedMultiplier = 1.6f;
+
+            nemPaladinPrefab.GetComponent<CameraTargetParams>().cameraParams = nemPaladinCameraParams;
+
+            nemPaladinDisplayPrefab = CreateDisplayPrefab("NemPaladinDisplay", nemPaladinPrefab);
+
+            // create hitboxes
+
+            GameObject model = nemPaladinPrefab.GetComponent<ModelLocator>().modelTransform.gameObject;
+            ChildLocator childLocator = model.GetComponent<ChildLocator>();
+
+            Modules.Helpers.CreateHitbox(model, childLocator.FindChild("PunchHitbox"), "Punch");
         }
 
         private static void CreateLunarKnight()

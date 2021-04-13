@@ -2,11 +2,14 @@
 using EntityStates;
 using UnityEngine;
 using PaladinMod.Misc;
+using System;
 
 namespace PaladinMod.States
 {
     public class PaladinMain : GenericCharacterMain
     {
+        public static event Action<Run> onSunSurvived = delegate { };
+
         private bool swordActive;
         private Material swordMat;
         private float swordTransition;
@@ -14,7 +17,12 @@ namespace PaladinMod.States
         private PaladinSwordController swordController;
         private ChildLocator childLocator;
         private Animator animator;
+        private ParticleSystem swordTrailEffect;
+        private bool trailEffectIsPlaying;
         private bool wasActive;
+        private uint trailEffectPlayID;
+        private float sunSurvivalStopwatch;
+        private bool hasBeenBurned;
 
         public LocalUser localUser;
 
@@ -47,8 +55,11 @@ namespace PaladinMod.States
 
             if (this.childLocator)
             {
+                this.childLocator.FindChild("SwordActiveEffect").gameObject.SetActive(false);
                 string effectString = Modules.Effects.GetSkinInfo(this.swordController.skinName).passiveEffectName;
                 if (effectString != "") this.swordActiveEffect = this.childLocator.FindChild(effectString).gameObject;
+
+                this.swordTrailEffect = this.childLocator.FindChild("SwordSparksEffect").GetComponent<ParticleSystem>();
             }
         }
 
@@ -79,10 +90,26 @@ namespace PaladinMod.States
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            this.sunSurvivalStopwatch -= Time.fixedDeltaTime;
+
+            // cruel sun unlock
+            if (base.characterBody.HasBuff(RoR2Content.Buffs.Overheat))
+            {
+                if (base.characterBody.GetBuffCount(RoR2Content.Buffs.Overheat) >= 23)
+                {
+                    this.hasBeenBurned = true;
+                    this.sunSurvivalStopwatch = 1.5f;
+                }
+            }
+            if (this.hasBeenBurned == this.sunSurvivalStopwatch <= 0f)
+            {
+                onSunSurvived(Run.instance);
+            }
 
             if (base.healthComponent && this.swordMat)
             {
-                if (base.healthComponent.combinedHealth >= (0.9f * base.healthComponent.fullCombinedHealth) || base.healthComponent.barrier > 0)
+                // set to fullCombinedHealth to count shields- check for supply drop and aetherium when those are working again
+                if (base.healthComponent.combinedHealth >= (0.9f * base.healthComponent.fullHealth) || base.healthComponent.barrier > 0)
                 {
                     this.swordActive = true;
                 }
@@ -113,12 +140,67 @@ namespace PaladinMod.States
             {
                 //this.animator.SetFloat("sprintValue", base.characterBody.isSprinting ? -1 : 0, 0.2f, Time.fixedDeltaTime);
                 this.animator.SetBool("inCombat", (!base.characterBody.outOfCombat || !base.characterBody.outOfDanger));
+                this.animator.SetBool("isAttacking", !base.characterBody.outOfCombat);
             }
+
+            if (base.characterBody.isSprinting && this.isGrounded && base.characterBody.outOfCombat)
+            {
+                RaycastHit raycastHit = default(RaycastHit);
+                Vector3 raycastOrigin = this.swordTrailEffect.transform.position;
+                raycastOrigin.y += 0.5f;
+
+                bool isSwordOnGround = false;
+                if (Physics.Raycast(new Ray(raycastOrigin, Vector3.down), out raycastHit, 1.75f, LayerIndex.world.mask | LayerIndex.water.mask, QueryTriggerInteraction.Collide))
+                {
+                    isSwordOnGround = true;
+                }
+
+                if (this.trailEffectIsPlaying)
+                {
+                    if (!isSwordOnGround)
+                    {
+                        this.StopDraggingSword();
+                    }
+
+                    //this.swordTrailEffect.transform.position = raycastHit.point;
+                    //this.swordTrailEffect.transform.rotation = Quaternion.Euler(raycastHit.normal);
+                }
+                else
+                {
+                    if (isSwordOnGround)
+                    {
+                        this.StartDraggingSword();
+                    }
+                }
+            }
+            else
+            {
+                if (this.trailEffectIsPlaying)
+                {
+                    this.StopDraggingSword();
+                }
+            }
+        }
+
+        private void StartDraggingSword()
+        {
+            this.trailEffectIsPlaying = true;
+            this.swordTrailEffect.Play();
+            //this.trailEffectPlayID = Util.PlaySound("PaladinDragSword", base.gameObject);
+        }
+
+        private void StopDraggingSword()
+        {
+            this.trailEffectIsPlaying = false;
+            this.swordTrailEffect.Stop();
+            AkSoundEngine.StopPlayingID(this.trailEffectPlayID);
+            //this.trailEffectPlayID = 0;
         }
 
         public override void OnExit()
         {
             base.OnExit();
+            this.StopDraggingSword();
         }
     }
 }

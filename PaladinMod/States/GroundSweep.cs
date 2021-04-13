@@ -23,6 +23,8 @@ namespace PaladinMod.States
         private Animator animator;
         private BaseState.HitStopCachedState hitStopCachedState;
         private PaladinSwordController swordController;
+        private Vector3 storedVelocity;
+        //private int startingJumpCount;
 
         public override void OnEnter()
         {
@@ -33,6 +35,8 @@ namespace PaladinMod.States
             this.swordController = base.GetComponent<PaladinSwordController>();
             base.StartAimMode(0.5f + this.duration, false);
             base.characterBody.isSprinting = false;
+            //this.startingJumpCount = base.characterMotor.jumpCount;
+            //base.characterMotor.jumpCount = base.characterBody.maxJumpCount;
 
             if (this.swordController) this.swordController.attacking = true;
 
@@ -71,7 +75,7 @@ namespace PaladinMod.States
         public override void OnExit()
         {
             base.OnExit();
-
+            //base.characterMotor.jumpCount = this.startingJumpCount;
             if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.Slow50);
 
             if (this.swordController) this.swordController.attacking = false;
@@ -96,6 +100,7 @@ namespace PaladinMod.States
                     {
                         if (!this.inHitPause)
                         {
+                            if (base.characterMotor.velocity != Vector3.zero) this.storedVelocity = base.characterMotor.velocity;
                             this.hitStopCachedState = base.CreateHitStopCachedState(base.characterMotor, this.animator, "Whirlwind.playbackRate");
                             this.hitPauseTimer = (4f * EntityStates.Merc.GroundLight.hitPauseDuration) / this.attackSpeedStat;
                             this.inHitPause = true;
@@ -117,6 +122,7 @@ namespace PaladinMod.States
             {
                 base.ConsumeHitStopCachedState(this.hitStopCachedState, base.characterMotor, this.animator);
                 this.inHitPause = false;
+                if (this.storedVelocity != Vector3.zero) base.characterMotor.velocity = this.storedVelocity;
             }
 
             if (!this.inHitPause)

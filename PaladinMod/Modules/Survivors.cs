@@ -47,6 +47,27 @@ namespace PaladinMod.Modules
             };
 
             SurvivorAPI.AddSurvivor(tempDef);*/
+
+            string fuck = "if you're reading this turn back. spoiling this code's existence is punishable by death.";
+
+            if (Modules.Prefabs.nemPaladinPrefab != null)
+            {
+                survivorDef = ScriptableObject.CreateInstance<SurvivorDef>();
+                survivorDef.bodyPrefab = Prefabs.nemPaladinPrefab;
+                survivorDef.displayPrefab = Prefabs.nemPaladinDisplayPrefab;
+                survivorDef.displayNameToken = "NEMPALADIN_NAME";
+                survivorDef.descriptionToken = "NEMPALADIN_DESCRIPTION";
+                survivorDef.outroFlavorToken = "NEMPALADIN_OUTRO_FLAVOR";
+                survivorDef.mainEndingEscapeFailureFlavorToken = "NEMPALADIN_OUTRO_FAILURE";
+                survivorDef.desiredSortPosition = 50.1f;
+                survivorDef.unlockableDef = null;
+
+                Modules.Prefabs.survivorDefinitions.Add(survivorDef);
+
+                paladinStateMachine = Prefabs.nemPaladinPrefab.GetComponent<EntityStateMachine>();
+                //paladinStateMachine.mainStateType = new SerializableEntityStateType(typeof(PaladinMain));
+                paladinStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Heretic.SpawnState));
+            }
         }
     }
 }

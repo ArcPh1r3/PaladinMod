@@ -1,4 +1,6 @@
-﻿namespace PaladinMod.States.Emotes
+﻿using PaladinMod.Misc;
+
+namespace PaladinMod.States.Emotes
 {
     public class PraiseTheSun : BaseEmote
     {
@@ -7,13 +9,13 @@
             this.animString = "PraiseTheSun";
             this.duration = 3;
 
-            /*if (base.swordController.skinName == "PALADINBODY_DRIP_SKIN_NAME")
+            if (base.GetComponent<PaladinSwordController>().skinName == "PALADINBODY_DRIP_SKIN_NAME")
             {
                 this.animString = "DripPose";
                 this.duration = 0f;
                 this.animDuration = 0.75f;
                 this.soundString = Modules.Sounds.Drip;
-            }*/
+            }
 
             base.OnEnter();
         }

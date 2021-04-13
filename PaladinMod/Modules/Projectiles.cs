@@ -83,6 +83,8 @@ namespace PaladinMod.Modules
             swordBeam.GetComponent<ProjectileController>().ghostPrefab = Resources.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab;
             swordBeam.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
 
+            PaladinPlugin.Destroy(swordBeam.transform.Find("SweetSpotBehavior").gameObject);
+
             //run this in case moffein's phase round lightning is installed
             if (swordBeam.GetComponent<ProjectileProximityBeamController>()) PaladinPlugin.Destroy(swordBeam.GetComponent<ProjectileProximityBeamController>());
 

@@ -13,6 +13,7 @@ namespace PaladinMod.States
         private Transform modelTransform;
         private Animator animator;
         private bool isClay;
+        private Material swordMat;
 
         public override void OnEnter()
         {
@@ -90,8 +91,14 @@ namespace PaladinMod.States
                 Transform modelTransform = base.GetModelTransform();
                 if (modelTransform)
                 {
-                    modelTransform.GetComponent<CharacterModel>().baseRendererInfos[0].defaultMaterial.SetFloat("_EmPower", StaticValues.maxSwordGlow);
+                    this.swordMat = modelTransform.GetComponent<CharacterModel>().baseRendererInfos[0].defaultMaterial;
                 }
+            }
+
+            ChildLocator childLocator = base.GetModelChildLocator();
+            if (childLocator)
+            {
+                childLocator.FindChild("SwordActiveEffect").gameObject.SetActive(false);
             }
         }
 
@@ -99,6 +106,7 @@ namespace PaladinMod.States
         {
             base.FixedUpdate();
             if (this.animator) this.animator.SetBool("inCombat", true);
+            this.swordMat.SetFloat("_EmPower", StaticValues.maxSwordGlow);
 
             if (base.fixedAge >= SpawnState.duration && base.isAuthority)
             {
