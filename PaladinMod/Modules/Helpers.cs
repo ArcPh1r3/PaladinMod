@@ -22,6 +22,13 @@ namespace PaladinMod.Modules
 
             hitBoxGroup.groupName = hitboxName;
         }
+
+        public const string agilePrefix = "<style=cIsUtility>Agile.</style> ";
+
+        public static string ScepterDescription(string desc)
+        {
+            return "\n<color=#d299ff>SCEPTER: " + desc + "</color>";
+        }
     }
 
     internal static class ArrayHelper

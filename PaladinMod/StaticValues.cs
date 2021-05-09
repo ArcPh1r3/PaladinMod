@@ -45,12 +45,12 @@
         public const float spinSlashDamageCoefficient = 10f;
 
         //Sunlight Spear
-        public const float lightningSpearMinDamageCoefficient = 2f;
-        public const float lightningSpearMaxDamageCoefficient = 10f;
-        public const float lightningSpearChargeTime = 1.5f;
+        public const float lightningSpearMinDamageCoefficient = 3f;
+        public const float lightningSpearMaxDamageCoefficient = 8f;
+        public const float lightningSpearChargeTime = 1.25f;
 
         //Lunar Shards
-        public const float lunarShardDamageCoefficient = 2.25f;
+        public const float lunarShardDamageCoefficient = 0.75f;
         public const int lunarShardMaxStock = 12;
 
         //Quickstep
@@ -69,10 +69,10 @@
         public const float healZoneDuration = 12f;
 
         //Hallowed Sunlight
-        public const float scepterHealZoneChannelDuration = 2f;
-        public const float scepterHealZoneRadius = 24f;
+        public const float scepterHealZoneChannelDuration = 1.5f;
+        public const float scepterHealZoneRadius = 16f;
         public const float scepterHealZoneAmount = 0.02f;
-        public const float scepterHealZoneBarrier = 0.015f;
+        public const float scepterHealZoneBarrier = 0.02f;
         public const float scepterHealZoneDuration = 12f;
 
         //Vow of Silence
@@ -83,23 +83,23 @@
 
         //Oath of Silence
         public const float scepterTorporChannelDuration = 2f;
-        public const float scepterTorporRadius = 24f;
+        public const float scepterTorporRadius = 32f;
         public const float scepterTorporSlowAmount = 0.8f;
-        public const float scepterTorporDuration = 12;
+        public const float scepterTorporDuration = 10;
 
         //Sacred Oath
         public const float warcryChannelDuration = 2f;
         public const float warcryRadius = 20f;
-        public const float warcryDamageMultiplier = 0.5f;
+        public const float warcryDamageMultiplier = 0.25f;
         public const float warcryAttackSpeedBuff = 1;
         public const float warcryDuration = 8;
 
         //Sacred Oath(Scepter)
-        public const float scepterWarcryChannelDuration = 1.5f;
-        public const float scepterWarcryRadius = 24f;
-        public const float scepterWarcryDamageMultiplier = 1f;
+        public const float scepterWarcryChannelDuration = 1f;
+        public const float scepterWarcryRadius = 20f;
+        public const float scepterWarcryDamageMultiplier = 0.5f;
         public const float scepterWarcryAttackSpeedBuff = 2f;
-        public const float scepterWarcryDuration = 12;
+        public const float scepterWarcryDuration = 8;
 
         //Cruel Sun
         public const float cruelSunChannelDuration = 5f;

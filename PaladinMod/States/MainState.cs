@@ -150,7 +150,7 @@ namespace PaladinMod.States
                 raycastOrigin.y += 0.5f;
 
                 bool isSwordOnGround = false;
-                if (Physics.Raycast(new Ray(raycastOrigin, Vector3.down), out raycastHit, 1.75f, LayerIndex.world.mask | LayerIndex.water.mask, QueryTriggerInteraction.Collide))
+                if (Physics.Raycast(new Ray(raycastOrigin, Vector3.down), out raycastHit, 1.25f, LayerIndex.world.mask | LayerIndex.water.mask, QueryTriggerInteraction.Collide))
                 {
                     isSwordOnGround = true;
                 }
@@ -185,15 +185,15 @@ namespace PaladinMod.States
         private void StartDraggingSword()
         {
             this.trailEffectIsPlaying = true;
-            this.swordTrailEffect.Play();
+            if (this.swordTrailEffect) this.swordTrailEffect.Play();
             //this.trailEffectPlayID = Util.PlaySound("PaladinDragSword", base.gameObject);
         }
 
         private void StopDraggingSword()
         {
             this.trailEffectIsPlaying = false;
-            this.swordTrailEffect.Stop();
-            AkSoundEngine.StopPlayingID(this.trailEffectPlayID);
+            if (this.swordTrailEffect) this.swordTrailEffect.Stop();
+            //AkSoundEngine.StopPlayingID(this.trailEffectPlayID);
             //this.trailEffectPlayID = 0;
         }
 

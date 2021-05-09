@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 377245983
+CRC: 3966743052
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 582260dd004b43983cdf400b91ae0118
+    Hash: 5a1502adaad5a56c8a6ca278f1ee7723
   TypeTreeHash:
     serializedVersion: 2
-    Hash: acbb72eeff060702a8a53230011826c3
+    Hash: 6524f6ce856b23cf5cc2a637d7df1b62
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -42,6 +42,8 @@ ClassTypes:
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
+  Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 67079b849227b734694872d8810229b8, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 2334069450a65d042a95a873e5229b20, type: 3}
@@ -67,6 +69,10 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
 - Class: 319
   Script: {instanceID: 0}
 Assets:
@@ -80,6 +86,7 @@ Assets:
 - Assets/LunarKnight/Animations/WalkF.anim
 - Assets/Paladin/Materials/Shields/matArtyShield.mat
 - Assets/Paladin/VFX/texFireSoft.png
+- Assets/Paladin/Icons/WarcryIconTemp.png
 - Assets/Paladin/Effects/SwingEffects/PaladinSwing.prefab
 - Assets/Paladin/Animations/Ascend.anim
 - Assets/NemPaladin/NemPaladinDisplay.prefab
@@ -94,7 +101,9 @@ Assets:
 - Assets/Paladin/Animations/FireVisions.anim
 - Assets/Paladin/Icons/texMasteryAchievement.png
 - Assets/NemPaladin/Animations/DefaultPose.anim
+- Assets/Paladin/Animations/RageSprintFAltV02.anim
 - Assets/Paladin/Mesh/meshPaladin.mesh
+- Assets/Paladin/VFX/matSunCharge.mat
 - Assets/NemPaladin/Textures/T_NemPaladin_Em.png
 - Assets/Paladin/Animations/RestIdle.anim
 - Assets/NemPaladin/Animations/Punch1.anim
@@ -111,6 +120,7 @@ Assets:
 - Assets/Paladin/Textures/Shields/texArtyShield.dds
 - Assets/NemPaladin/Textures/T_NemPaladinClothes_Normal.png
 - Assets/Paladin/Mesh/meshPaladinDrip.mesh
+- Assets/Paladin/UI/texRageGaugeFill.png
 - Assets/Paladin/Materials/matPaladinNkuhana.mat
 - Assets/Paladin/Textures/Shields/texPursuerShieldNormal.png
 - Assets/Paladin/Effects/SwingEffects/SpinSlashEffectBlack.prefab
@@ -123,6 +133,7 @@ Assets:
 - Assets/Paladin/Shields/DisplayWatcherDagger.prefab
 - Assets/Paladin/Textures/texFurNormal.png
 - Assets/Paladin/Animations/ThrowSpell.anim
+- Assets/Paladin/Animations/WalkF.anim
 - Assets/Paladin/VFX/matTorporKill.mat
 - Assets/LunarKnight/Animations/Ascend.anim
 - Assets/Paladin/Textures/texPaladinEmission.png
@@ -156,9 +167,9 @@ Assets:
 - Assets/Paladin/Icons/ScepterHealZoneIcon.png
 - Assets/Paladin/VFX/texPaladinHitRing.png
 - Assets/Paladin/Effects/SwingEffects/SpinSlashEffectPurple.prefab
+- Assets/Paladin/Animations/CastSun.anim
 - Assets/Paladin/VFX/matPaladinSwing.mat
 - Assets/Paladin/Icons/texPaladinAchievement.png
-- Assets/Paladin/Animations/WalkB.anim
 - Assets/NemPaladin/Animations/maskNemAimYaw.mask
 - Assets/LunarKnight/Animations/Descend.anim
 - Assets/Paladin/VFX/matPaladinHitSparkGreen.mat
@@ -170,17 +181,22 @@ Assets:
 - Assets/NemPaladin/Icons/texNemPaladinIcon.png
 - Assets/Paladin/Animations/Spawn.anim
 - Assets/Paladin/Textures/texPaladinNkuhanaEmission.png
+- Assets/Paladin/Animations/ChannelSunLoop.anim
 - Assets/Paladin/Effects/SwingEffects/SpinSlashEffectClay.prefab
 - Assets/NemPaladin/Animations/animNemPaladinMenu.controller
 - Assets/Paladin/Materials/matLunarSword.mat
+- Assets/Paladin/VFX/texSun.png
 - Assets/Paladin/VFX/matEyeTrail.mat
 - Assets/NemPaladin/Materials/matNemPaladin.mat
+- Assets/Paladin/UI/texRageGaugeBase.png
 - Assets/Paladin/Materials/matPaladinDrip.mat
+- Assets/Paladin/Animations/CastHeal.anim
 - Assets/Paladin/Textures/texClayPaladinEmission.png
 - Assets/Paladin/Effects/SwingEffects/PaladinSwingPurple.prefab
 - Assets/Paladin/Effects/SwingEffects/EmpSpinSlashEffectGreen.prefab
 - Assets/LunarKnight/Animations/LKIdle.anim
 - Assets/Paladin/Effects/SwingEffects/PaladinSwingYellow.prefab
+- Assets/Paladin/Animations/WalkB.anim
 - Assets/Paladin/Mesh/meshSwordLunar.mesh
 - Assets/Paladin/VFX/texTorpor.png
 - Assets/Paladin/Effects/SwingEffects/EmpSpinSlashEffectPurple.prefab
@@ -204,7 +220,6 @@ Assets:
 - Assets/Paladin/Animations/Slash1.anim
 - Assets/Paladin/Icons/ScepterCruelSunIcon.png
 - Assets/NemPaladin/Materials/matNemPaladinFeather.mat
-- Assets/Paladin/Animations/WalkF.anim
 - Assets/Paladin/Textures/texPaladinLunarNormal.png
 - Assets/Paladin/Effects/HealEffect.prefab
 - Assets/Paladin/Shields/DisplayPursuerShield.prefab
@@ -213,6 +228,9 @@ Assets:
 - Assets/Paladin/VFX/texPaladinHitSpark.png
 - Assets/Paladin/VFX/texFireAB.png
 - Assets/Paladin/Effects/HitEffects/ImpactPaladinSwingYellow.prefab
+- Assets/Paladin/Animations/RageRunF.anim
+- Assets/Paladin/Animations/SprintCombatF.anim
+- Assets/Paladin/UI/RageGauge.prefab
 - Assets/Paladin/Animations/SpawnClay.anim
 - Assets/Paladin/Mesh/meshPaladinLunarNoCape.mesh
 - Assets/NemPaladin/Animations/FireChain.anim
@@ -243,7 +261,9 @@ Assets:
 - Assets/Paladin/VFX/matTorporCast.mat
 - Assets/Paladin/VFX/matEmber 1.mat
 - Assets/Paladin/Materials/matMinecraftSword.mat
+- Assets/Paladin/VFX/matSun.mat
 - Assets/Paladin/Mesh/meshMinecraftSwordOld.mesh
+- Assets/Paladin/Animations/WalkL.anim
 - Assets/NemPaladin/Animations/MenuIdleIn.anim
 - Assets/NemPaladin/Animations/JojoWalk.anim
 - Assets/Paladin/Icons/texAbyssAchievement.png
@@ -260,6 +280,7 @@ Assets:
 - Assets/NemPaladin/Animations/MenuIdle.anim
 - Assets/Paladin/Textures/texNormalConcrete.png
 - Assets/Paladin/Textures/texPaladinSword.png
+- Assets/Paladin/Animations/RageIdle.anim
 - Assets/Paladin/VFX/matHitRingAlt.mat
 - Assets/Paladin/VFX/matHeal.mat
 - Assets/Paladin/VFX/matPaladinSwing3.mat
@@ -267,8 +288,11 @@ Assets:
 - Assets/Paladin/Animations/ThrowSpearGesture.anim
 - Assets/Paladin/Animations/RestIdleIn.anim
 - Assets/Paladin/VFX/texSmoke.png
+- Assets/Paladin/Animations/ChannelSun.anim
 - Assets/Paladin/VFX/texPaladinHitSpark2.png
 - Assets/Paladin/VFX/matHealZone.mat
+- Assets/Paladin/Animations/SprintCombatToRest.anim
+- Assets/Paladin/Animations/CastSunEnd.anim
 - Assets/Paladin/VFX/matSmoke.mat
 - Assets/NemPaladin/Icons/texNemPaladinPlayerIcon.png
 - Assets/Paladin/Animations/ChargeSpearGesture.anim
@@ -276,8 +300,7 @@ Assets:
 - Assets/LunarKnight/Animations/MaceSlam.anim
 - Assets/Paladin/Effects/HitEffects/ImpactPaladinSwingBlunt.prefab
 - Assets/NemPaladin/Animations/AnimeSprint.anim
-- Assets/Paladin/Animations/WalkL.anim
-- Assets/Paladin/Animations/SprintCombatF.anim
+- Assets/Paladin/Animations/RageChargeM1.anim
 - Assets/Paladin/Materials/Shields/matGiantShield.mat
 - Assets/Paladin/Icons/HealIcon.png
 - Assets/Paladin/Mesh/meshPaladinNkuhana.mesh
@@ -292,13 +315,11 @@ Assets:
 - Assets/Paladin/VFX/texPaladinSwing.png
 - Assets/Paladin/Textures/Shields/texGiantShield.dds
 - Assets/Paladin/Icons/TorporIcon.png
-- Assets/Paladin/Animations/SprintToRest.anim
 - Assets/Paladin/VFX/texFire.png
 - Assets/Paladin/Effects/HitEffects/ImpactPaladinSwingGreen.prefab
 - Assets/Paladin/Mesh/meshPaladinClay.mesh
-- Assets/Paladin/Animations/SprintRestF.anim
+- Assets/Paladin/Animations/RageSprintF.anim
 - Assets/Paladin/Animations/MenuIdle.anim
-- Assets/Paladin/Animations/WalkR.anim
 - Assets/Paladin/VFX/texRedSlash.png
 - Assets/Paladin/Effects/SwingEffects/SpinSlashEffectRed.prefab
 - Assets/Paladin/Textures/Shields/texSunlightShield.dds
@@ -345,9 +366,11 @@ Assets:
 - Assets/Paladin/Shields/DisplayArtoriasShield.prefab
 - Assets/Paladin/VFX/matFire.mat
 - Assets/Paladin/VFX/texSwordBeam.png
+- Assets/Paladin/Icons/BerserkIcon.png
 - Assets/Paladin/VFX/matTornado.mat
 - Assets/Paladin/Animations/animPaladinMenu.controller
 - Assets/Paladin/Materials/Shields/matSunlightShield.mat
+- Assets/Paladin/Animations/SprintRestF.anim
 - Assets/LunarKnight/Animations/IdleIn.anim
 - Assets/Paladin/Textures/texClayPaladin.png
 - Assets/Paladin/Animations/gestureMask.mask
@@ -367,15 +390,21 @@ Assets:
 - Assets/Paladin/Mesh/meshSwordMinecraft.mesh
 - Assets/Paladin/Animations/CloseHand.anim
 - Assets/Paladin/Icons/WarcryIcon.png
+- Assets/Paladin/Animations/CastSunLoop.anim
 - Assets/Paladin/VFX/matEmber2.mat
 - Assets/Paladin/Textures/texMinecraftPaladin.png
+- Assets/Paladin/Animations/ChannelHeal.anim
+- Assets/Paladin/Animations/RageEnter.anim
 - Assets/Paladin/VFX/matPaladinSwingAB.mat
+- Assets/Paladin/Animations/WalkFAlt.anim
+- Assets/Paladin/Animations/RageSwingM1.anim
 - Assets/Paladin/VFX/matPaladinSwing2.mat
 - Assets/Paladin/VFX/texHealZone.png
 - Assets/Paladin/Textures/texPaladinSwordNormal.png
 - Assets/Paladin/Animations/GroundSweepContinuous.anim
 - Assets/Paladin/Materials/matLunarPaladin.mat
 - Assets/Paladin/Materials/matPaladinGMSword.mat
+- Assets/Paladin/Animations/WalkR.anim
 - Assets/Paladin/VFX/matLightning.mat
 - Assets/Paladin/Materials/Shields/matPursuerShield.mat
 - Assets/Paladin/Textures/Shields/texBlackKnightShield.dds

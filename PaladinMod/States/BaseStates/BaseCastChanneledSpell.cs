@@ -14,6 +14,7 @@ namespace PaladinMod.States
         public Vector3 spellPosition;
         public Quaternion spellRotation;
         public string castSoundString;
+        public string muzzleString = "SpellCastEffect";
 
         protected float overrideDuration;
 
@@ -27,11 +28,11 @@ namespace PaladinMod.States
             if (this.overrideDuration == 0) this.duration = this.baseDuration / this.attackSpeedStat;
             else this.duration = this.overrideDuration;
 
-            base.PlayAnimation("Gesture, Override", "CastSpell", "Spell.playbackRate", this.duration);
+            this.PlayCastAnimation();
 
             if (this.muzzleflashEffectPrefab)
             {
-                EffectManager.SimpleMuzzleFlash(this.muzzleflashEffectPrefab, base.gameObject, "SpellCastEffect", false);
+                EffectManager.SimpleMuzzleFlash(this.muzzleflashEffectPrefab, base.gameObject, this.muzzleString, false);
             }
 
             if (NetworkServer.active) base.characterBody.AddBuff(RoR2Content.Buffs.Slow50);
@@ -41,22 +42,31 @@ namespace PaladinMod.States
                 base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Aura;
             }
 
-            ChildLocator childLocator = base.GetModelChildLocator();
-            if (childLocator)
+            if (this.muzzleString == "SpellCastEffect")
             {
-                GameObject castEffect = childLocator.FindChild("SpellCastEffect").gameObject;
-                castEffect.SetActive(false);
-                castEffect.SetActive(true);
+                ChildLocator childLocator = base.GetModelChildLocator();
+                if (childLocator)
+                {
+                    GameObject castEffect = childLocator.FindChild("SpellCastEffect").gameObject;
+                    castEffect.SetActive(false);
+                    castEffect.SetActive(true);
+                }
             }
 
-            Util.PlaySound(this.castSoundString, base.gameObject);
+            if (this.castSoundString != "") Util.PlaySound(this.castSoundString, base.gameObject);
 
             this.Fire();
+        }
+
+        protected virtual void PlayCastAnimation()
+        {
+            base.PlayAnimation("Gesture, Override", "CastSpell", "Spell.playbackRate", this.duration);
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            base.characterBody.outOfCombatStopwatch = 0f;
 
             if (base.fixedAge >= (0.5f * this.duration))
             {
@@ -78,6 +88,7 @@ namespace PaladinMod.States
             if (base.cameraTargetParams)
             {
                 base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Standard;
+                base.cameraTargetParams.cameraParams = Modules.CameraParams.defaultCameraParamsPaladin;
             }
         }
 

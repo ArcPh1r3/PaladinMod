@@ -2,6 +2,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace PaladinMod.Misc
 {
@@ -16,6 +17,7 @@ namespace PaladinMod.Misc
 
         public Vector3 sunPosition;
 
+        private ParticleSystem lightningEffect;
         private Modules.Effects.PaladinSkinInfo skinInfo;
         private CharacterBody body;
         private CharacterModel model;
@@ -27,6 +29,8 @@ namespace PaladinMod.Misc
             this.body = base.GetComponent<CharacterBody>();
             this.model = base.GetComponentInChildren<CharacterModel>();
             this.childLocator = base.GetComponentInChildren<ChildLocator>();
+
+            this.lightningEffect = this.childLocator.FindChild("SwordLightningEffect").GetComponentInChildren<ParticleSystem>();
         }
 
         private void Start()
@@ -40,6 +44,21 @@ namespace PaladinMod.Misc
             }
 
             Invoke("CheckInventory", 0.2f);
+        }
+
+        public void ApplyLightningBuff()
+        {
+            if (!this.body.HasBuff(Modules.Buffs.overchargeBuff) && NetworkServer.active) this.body.AddBuff(Modules.Buffs.overchargeBuff);
+
+            this.CancelInvoke();
+            this.Invoke("KillLightningBuff", 4f);
+            if (this.lightningEffect) this.lightningEffect.Play();
+        }
+
+        private void KillLightningBuff()
+        {
+            if (NetworkServer.active) this.body.RemoveBuff(Modules.Buffs.overchargeBuff);
+            if (this.lightningEffect) this.lightningEffect.Stop();
         }
 
         private void EditEyeTrail()
@@ -63,6 +82,11 @@ namespace PaladinMod.Misc
                         if (CheckForBlasterSword(inventory)) hasLeftHandWeapon = true;
                     }
 
+                    if (PaladinPlugin.ancientScepterInstalled)
+                    {
+                        if (CheckForAncientScepter(inventory)) hasLeftHandWeapon = true;
+                    }
+
                     if (hasLeftHandWeapon)
                     {
                         Animator animator = this.model.GetComponent<Animator>();
@@ -82,6 +106,13 @@ namespace PaladinMod.Misc
         {
             if (Aetherium.Items.BlasterSword.instance == null) return false;// this should work? idk
             if (inventory.GetItemCount(ItemCatalog.FindItemIndex("ITEM_BLASTER_SWORD")) > 0) return true;
+            return false;
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private bool CheckForAncientScepter(Inventory inventory)
+        {
+            if (inventory.GetItemCount(AncientScepter.AncientScepterItem.instance.ItemDef) > 0) return true;
             return false;
         }
 

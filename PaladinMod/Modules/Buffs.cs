@@ -15,6 +15,9 @@ namespace PaladinMod.Modules
         public static BuffDef scepterTorporDebuff;
         public static BuffDef scepterWarcryBuff;
 
+        public static BuffDef overchargeBuff;
+        public static BuffDef rageBuff;
+
         internal static List<BuffDef> buffDefs = new List<BuffDef>();
 
         public static void RegisterBuffs()
@@ -24,6 +27,9 @@ namespace PaladinMod.Modules
 
             torporDebuff = AddNewBuff("Torpor", Resources.Load<Sprite>("Textures/BuffIcons/texBuffCloakIcon"), Color.black, false, true);
             scepterTorporDebuff = AddNewBuff("Torpor (Scepter)", Resources.Load<Sprite>("Textures/BuffIcons/texBuffCloakIcon"), Color.black, false, true);
+
+            overchargeBuff = AddNewBuff("PaladinOvercharge", Resources.Load<Sprite>("Textures/BuffIcons/texBuffTeslaIcon"), Color.yellow, false, false);
+            rageBuff = AddNewBuff("PaladinBerserk", Resources.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.red, false, false);
         }
 
         // simple helper method

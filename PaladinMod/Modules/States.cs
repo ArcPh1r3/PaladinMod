@@ -1,6 +1,7 @@
 ﻿using PaladinMod.States;
 using PaladinMod.States.Emotes;
 using PaladinMod.States.Quickstep;
+using PaladinMod.States.Rage;
 using PaladinMod.States.Spell;
 using PaladinMod.States.LunarKnight;
 using System;
@@ -42,20 +43,36 @@ namespace PaladinMod.Modules
 
             AddSkill(typeof(QuickstepSimple));
 
-            AddSkill(typeof(AimHeal));
-            AddSkill(typeof(CastHeal));
+            //AddSkill(typeof(AimHeal));
+            //AddSkill(typeof(CastHeal));
+            AddSkill(typeof(ChannelSmallHeal));
+            AddSkill(typeof(CastSmallHeal));
 
             AddSkill(typeof(ChannelHealZone));
             AddSkill(typeof(CastChanneledHealZone));
+            AddSkill(typeof(ScepterChannelHealZone));
+            AddSkill(typeof(ScepterCastHealZone));
 
             AddSkill(typeof(ChannelTorpor));
             AddSkill(typeof(CastChanneledTorpor));
+            AddSkill(typeof(ScepterChannelTorpor));
+            AddSkill(typeof(ScepterCastTorpor));
 
             AddSkill(typeof(ChannelWarcry));
             AddSkill(typeof(CastChanneledWarcry));
+            AddSkill(typeof(ScepterChannelWarcry));
+            AddSkill(typeof(ScepterCastWarcry));
 
             AddSkill(typeof(ChannelCruelSun));
             AddSkill(typeof(CastCruelSun));
+            AddSkill(typeof(ScepterChannelCruelSun));
+            AddSkill(typeof(ScepterCastCruelSun));
+
+            AddSkill(typeof(RageEnter));
+            AddSkill(typeof(RageEnterOut));
+            AddSkill(typeof(RageExit));
+
+            AddSkill(typeof(FlashStep));
 
             AddSkill(typeof(MaceSlam));
         }

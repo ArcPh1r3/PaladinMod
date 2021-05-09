@@ -10,8 +10,8 @@ namespace PaladinMod.States.Spell
         {
             this.chargeEffectPrefab = null;
             this.chargeSoundString = Modules.Sounds.ChannelTorpor;
-            this.maxSpellRadius = StaticValues.torporRadius;
-            this.baseDuration = StaticValues.torporChannelDuration;
+            this.maxSpellRadius = StaticValues.scepterTorporRadius;
+            this.baseDuration = StaticValues.scepterTorporChannelDuration;
 
             base.OnEnter();
 

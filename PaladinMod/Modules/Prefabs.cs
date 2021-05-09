@@ -68,29 +68,33 @@ namespace PaladinMod.Modules
             }, 1);
 
             paladinPrefab.AddComponent<Misc.PaladinSwordController>();
+            paladinPrefab.AddComponent<Misc.PaladinRageController>();
+            paladinPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.AddComponent<Misc.PaladinAnimationEvents>();
 
+            ChildLocator childLocator = paladinPrefab.GetComponentInChildren<ChildLocator>();
             Material eyeTrailMat = Resources.Load<GameObject>("Prefabs/CharacterBodies/BrotherBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[4].defaultMaterial;
-            paladinPrefab.GetComponentInChildren<ChildLocator>().FindChild("EyeTrail").gameObject.GetComponentInChildren<TrailRenderer>().material = eyeTrailMat;
-
-            CharacterCameraParams paladinCameraParams = ScriptableObject.CreateInstance<CharacterCameraParams>();
-            paladinCameraParams.name = "ccpPaladin";
-            paladinCameraParams.minPitch = -70f;
-            paladinCameraParams.maxPitch = 70f;
-            paladinCameraParams.wallCushion = 0.1f;
-            paladinCameraParams.pivotVerticalOffset = 1.37f;
-            paladinCameraParams.standardLocalCameraPos = new Vector3(0, 0.75f, -10.5f);
+            childLocator.FindChild("EyeTrail").gameObject.GetComponentInChildren<TrailRenderer>().material = eyeTrailMat;
 
             paladinPrefab.GetComponent<CharacterBody>().sprintingSpeedMultiplier = 1.6f;
 
-            paladinPrefab.GetComponent<CameraTargetParams>().cameraParams = paladinCameraParams;
+            paladinPrefab.GetComponent<CameraTargetParams>().cameraParams = Modules.CameraParams.defaultCameraParamsPaladin;
 
             paladinDisplayPrefab = CreateDisplayPrefab("PaladinDisplay", paladinPrefab);
             paladinDisplayPrefab.AddComponent<Misc.MenuSound>();
 
+            // lightning vfx
+            #region VFX
+            childLocator.FindChild("SpearChargeEffect").Find("ChargeSphere").GetComponent<ParticleSystemRenderer>().material = Modules.Assets.matLoaderLightningSphere;
+            childLocator.FindChild("SpearChargeEffect").Find("ChargeSphere").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matYellowLightningLong;
+            childLocator.FindChild("SpearChargeEffect").Find("ChargeSphere").Find("Spear").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matYellowLightningLong;
+            childLocator.FindChild("SpearChargeEffect").Find("ChargeSphere").Find("Spear").Find("SpearLightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matYellowLightningLong;
+
+            childLocator.FindChild("SwordLightningEffect").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matYellowLightningLong;
+            #endregion
+
             // create hitboxes
 
             GameObject model = paladinPrefab.GetComponent<ModelLocator>().modelTransform.gameObject;
-            ChildLocator childLocator = model.GetComponent<ChildLocator>();
 
             Modules.Helpers.CreateHitbox(model, childLocator.FindChild("SwordHitbox"), "Sword");
             Modules.Helpers.CreateHitbox(model, childLocator.FindChild("LeapHitbox"), "LeapStrike");

@@ -94,6 +94,12 @@ namespace PaladinMod.States
             this.attack.isCrit = base.RollCrit();
             this.attack.impactSound = Modules.Assets.swordHitSoundEventS.index;
             if (this.swordController.isBlunt) this.attack.impactSound = Modules.Assets.batHitSoundEventS.index;
+
+            if (base.characterBody.HasBuff(Modules.Buffs.overchargeBuff))
+            {
+                this.attack.damageType = DamageType.Stun1s;
+                this.attack.damage = 4f * this.damageStat;
+            }
         }
 
         public override void OnExit()

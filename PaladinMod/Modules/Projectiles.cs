@@ -44,8 +44,8 @@ namespace PaladinMod.Modules
             PaladinPlugin.Destroy(shockwaveGhost.transform.GetChild(0).Find("Infection, World").gameObject);
             PaladinPlugin.Destroy(shockwaveGhost.transform.GetChild(0).Find("Water").gameObject);
 
-            Material shockwaveMat = Resources.Load<GameObject>("Prefabs/Projectiles/LunarWispTrackingBomb").GetComponent<ProjectileController>().ghostPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material;
-            shockwaveGhost.transform.GetChild(1).GetComponent<MeshRenderer>().material = shockwaveMat;
+            //Material shockwaveMat = Resources.Load<GameObject>("Prefabs/Projectiles/LunarWispTrackingBomb").GetComponent<ProjectileController>().ghostPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material;
+            shockwaveGhost.transform.GetChild(1).GetComponent<MeshRenderer>().material = Modules.Assets.matMeteorIndicator;
 
             shockwave.GetComponent<ProjectileController>().ghostPrefab = shockwaveGhost;
             #endregion
@@ -58,8 +58,20 @@ namespace PaladinMod.Modules
 
             #region SunlightSpear
             lightningSpear = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageLightningBombProjectile"), "LightningSpear", true);
+            lightningSpear.AddComponent<Misc.ProjectileOverchargeOnImpact>();
+
             GameObject spearGhost = Assets.lightningSpear.InstantiateClone("LightningSpearGhost", false);
             spearGhost.AddComponent<ProjectileGhostController>();
+
+            //vfx
+            foreach (ParticleSystemRenderer i in spearGhost.GetComponentsInChildren<ParticleSystemRenderer>())
+            {
+                if (i) i.trailMaterial = Modules.Assets.matYellowLightningLong;
+            }
+            Light light = spearGhost.GetComponentInChildren<Light>();
+            light.range = 16f;
+            light.intensity = 32f;
+            spearGhost.GetComponentInChildren<TrailRenderer>().material = Modules.Assets.matYellowLightningLong;
 
             lightningSpear.transform.localScale *= 2f;
 
@@ -166,6 +178,7 @@ namespace PaladinMod.Modules
             scepterHealZoneController.healAmount = StaticValues.scepterHealZoneAmount;
             scepterHealZoneController.barrierAmount = StaticValues.scepterHealZoneBarrier;
             scepterHealZoneController.freezeProjectiles = false;
+            scepterHealZoneController.cleanseDebuffs = true;
 
             PaladinMod.PaladinPlugin.Destroy(scepterHealZone.transform.GetChild(0).gameObject);
             GameObject scepterHealZoneFX = Assets.healZoneEffectPrefab.InstantiateClone("ScepterHealZoneEffect", false);
@@ -253,7 +266,7 @@ namespace PaladinMod.Modules
             warcryController.interval = 0.25f;
             warcryController.rangeIndicator = null;
             warcryController.buffDef = Buffs.warcryBuff;
-            warcryController.buffDuration = 1f;
+            warcryController.buffDuration = 2f;
             warcryController.floorWard = false;
             warcryController.expires = true;
             warcryController.invertTeamFilter = false;

@@ -65,7 +65,7 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_SECONDARY_SPINSLASH_NAME", "Spinning Slash");
             LanguageAPI.Add("PALADIN_SECONDARY_SPINSLASH_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Shocking.</style> <style=cIsUtility>Agile.</style> Charge up and throw a <style=cIsUtility>lightning bolt</style>, dealing up to <style=cIsDamage>" + 100f * StaticValues.lightningSpearMaxDamageCoefficient + "% damage</style>.";
+            desc = "<style=cIsUtility>Shocking.</style> <style=cIsUtility>Agile.</style> Charge up and throw a <style=cIsUtility>lightning bolt</style>, dealing up to <style=cIsDamage>" + 100f * StaticValues.lightningSpearMaxDamageCoefficient + "% damage</style>. If hit by the bolt, coat your blade in <style=cIsUtility>lightning</style> for <style=cIsUtility>4 seconds</style>.";
 
             LanguageAPI.Add("PALADIN_SECONDARY_LIGHTNING_NAME", "Sunlight Spear");
             LanguageAPI.Add("PALADIN_SECONDARY_LIGHTNING_DESCRIPTION", desc);
@@ -90,7 +90,7 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_SPECIAL_HEALZONE_NAME", "Sacred Sunlight");
             LanguageAPI.Add("PALADIN_SPECIAL_HEALZONE_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.scepterHealZoneChannelDuration + "</style> seconds, then release to <style=cIsUtility>Bless</style> an area for <style=cIsDamage>" + StaticValues.scepterHealZoneDuration + " seconds</style>, gradually <style=cIsHealing>restoring health</style> and granting <style=cIsHealing>barrier</style> to all allies inside.";
+            desc += Helpers.ScepterDescription("Double healing. Double barrier. Cleanses debuffs.");
 
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERHEALZONE_NAME", "Hallowed Sunlight");
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERHEALZONE_DESCRIPTION", desc);
@@ -100,7 +100,7 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_SPECIAL_TORPOR_NAME", "Vow of Silence");
             LanguageAPI.Add("PALADIN_SPECIAL_TORPOR_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.scepterTorporChannelDuration + "</style> seconds, then release to <style=cIsUtility>Silence</style> an area for <style=cIsDamage>" + StaticValues.scepterTorporDuration + " seconds</style>, inflicting <style=cIsHealth>torpor</style> on all enemies in the vicinity and <style=cIsUtility>destroying projectiles</style>.";
+            desc += Helpers.ScepterDescription("Stronger debuff. Larger radius. Destroys projectiles.");
 
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERTORPOR_NAME", "Oath of Silence");
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERTORPOR_DESCRIPTION", desc);
@@ -110,15 +110,25 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_SPECIAL_WARCRY_NAME", "Sacred Oath");
             LanguageAPI.Add("PALADIN_SPECIAL_WARCRY_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.scepterWarcryChannelDuration + "</style> seconds, then release to <style=cIsUtility>Empower</style> an area for <style=cIsDamage>" + StaticValues.scepterWarcryDuration + " seconds</style>, increasing <style=cIsDamage>damage</style> and <style=cIsDamage>attack speed</style> for all allies inside.";
+            desc += Helpers.ScepterDescription("Faster cast speed. Double damage. Double attack speed.");
 
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERWARCRY_NAME", "Sacred Oath (Scepter)");
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERWARCRY_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.cruelSunChannelDuration + "</style> seconds, then release to create a <style=cIsUtility>massive star</style> that <style=cIsDamage>drains health</style> from <style=cIsHealth>ALL</style> entities inside.";
+            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.cruelSunChannelDuration + "</style> seconds, then release to create a <style=cIsUtility>miniature star</style> that <style=cIsDamage>drains health</style> from <style=cIsHealth>ALL</style> entities around it.";
 
             LanguageAPI.Add("PALADIN_SPECIAL_SUN_NAME", "Cruel Sun");
             LanguageAPI.Add("PALADIN_SPECIAL_SUN_DESCRIPTION", desc);
+
+            desc += Helpers.ScepterDescription("Explodes for a massive burst of " + PaladinMod.States.Spell.ScepterCastCruelSun.flareDamageCoefficient * 100f + "% damage.");
+
+            LanguageAPI.Add("PALADIN_SPECIAL_SCEPSUN_NAME", "Pride Flare");
+            LanguageAPI.Add("PALADIN_SPECIAL_SCEPSUN_DESCRIPTION", desc);
+
+            desc = "While below <style=cIsHealth>25% health</style>, generate <style=cIsDamage>Rage</style>. When at max <style=cIsDamage>Rage</style>, use to enter <color=#dc0000>Berserker Mode</color>, gaining a <style=cIsHealing>massive buff</style> and a <style=cIsUtility>new set of skills</style>.";
+
+            LanguageAPI.Add("PALADIN_SPECIAL_BERSERK_NAME", "Berserk");
+            LanguageAPI.Add("PALADIN_SPECIAL_BERSERK_DESCRIPTION", desc);
 
 
             LanguageAPI.Add("KEYWORD_SWORDBEAM", "<style=cKeywordName>Sword Beam</style><style=cSub>A piercing, short range beam of light that deals <style=cIsDamage>" + 100f * StaticValues.beamDamageCoefficient + "% damage</style>.");

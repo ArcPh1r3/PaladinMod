@@ -10,8 +10,8 @@ namespace PaladinMod.States.Spell
         {
             this.chargeEffectPrefab = null;
             this.chargeSoundString = Modules.Sounds.ChannelHeal;
-            this.maxSpellRadius = StaticValues.healZoneRadius;
-            this.baseDuration = StaticValues.healZoneChannelDuration;
+            this.maxSpellRadius = StaticValues.scepterHealZoneRadius;
+            this.baseDuration = StaticValues.scepterHealZoneChannelDuration;
 
             base.OnEnter();
 

@@ -14,6 +14,7 @@ namespace PaladinMod.States
         public float maxSpellRadius;
         public float baseDuration = 3f;
         public Material overrideAreaIndicatorMat;
+        public bool zooming = true;
 
         private bool hasCharged;
         private GameObject defaultCrosshairPrefab;
@@ -49,7 +50,7 @@ namespace PaladinMod.States
                 }
             }
 
-            base.PlayAnimation("Gesture, Override", "ChannelSpell", "Spell.playbackRate", 0.85f);
+            this.PlayChannelAnimation();
             this.loopSoundInstanceId = Util.PlayAttackSpeedSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
             this.defaultCrosshairPrefab = base.characterBody.crosshairPrefab;
 
@@ -68,8 +69,16 @@ namespace PaladinMod.States
                 if (this.overrideAreaIndicatorMat) this.areaIndicatorInstance.GetComponentInChildren<MeshRenderer>().material = this.overrideAreaIndicatorMat;
             }
 
-            this.defaultCameraParams = base.cameraTargetParams.cameraParams;
-            base.cameraTargetParams.cameraParams = Modules.CameraParams.channelCameraParamsPaladin;
+            if (this.zooming)
+            {
+                this.defaultCameraParams = base.cameraTargetParams.cameraParams;
+                base.cameraTargetParams.cameraParams = Modules.CameraParams.channelCameraParamsPaladin;
+            }
+        }
+
+        protected virtual void PlayChannelAnimation()
+        {
+            base.PlayAnimation("Gesture, Override", "ChannelSpell", "Spell.playbackRate", 0.85f);
         }
 
         private void UpdateAreaIndicator()
@@ -113,15 +122,21 @@ namespace PaladinMod.States
 
             if (!this.outer.destroying)
             {
-                base.PlayAnimation("Gesture, Override", "BufferEmpty");
+                this.EndAnimation();
             }
 
-            base.cameraTargetParams.cameraParams = this.defaultCameraParams;
+            if (this.zooming) base.cameraTargetParams.cameraParams = Modules.CameraParams.defaultCameraParamsPaladin;
 
             if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.Slow50);
 
-            EntityState.Destroy(this.chargeEffectInstance);
+            if (this.chargeEffectInstance) EntityState.Destroy(this.chargeEffectInstance);
+
             base.OnExit();
+        }
+
+        protected virtual void EndAnimation()
+        {
+            base.PlayAnimation("Gesture, Override", "BufferEmpty");
         }
 
         protected float CalcCharge()
@@ -134,6 +149,7 @@ namespace PaladinMod.States
             base.FixedUpdate();
             base.characterBody.isSprinting = false;
             base.StartAimMode(0.5f, false);
+            base.characterBody.outOfCombatStopwatch = 0f;
 
             float charge = this.CalcCharge();
 
@@ -144,7 +160,7 @@ namespace PaladinMod.States
                 this.areaIndicatorInstance.transform.localScale = new Vector3(size, size, size);
             }
 
-            if (charge >= 0.75f)
+            if (charge >= 0.75f && this.zooming)
             {
                 base.cameraTargetParams.cameraParams = Modules.CameraParams.channelFullCameraParamsPaladin;
                 base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Aura;
@@ -164,6 +180,7 @@ namespace PaladinMod.States
                 if (base.inputBank.sprint.wasDown)
                 {
                     base.characterBody.isSprinting = true;
+                    if (this.zooming) base.cameraTargetParams.cameraParams = Modules.CameraParams.defaultCameraParamsPaladin;
                     this.RefundCooldown();
                     this.outer.SetNextStateToMain();
                     return;
@@ -189,7 +206,7 @@ namespace PaladinMod.States
 
         private void RefundCooldown()
         {
-            base.skillLocator.special.rechargeStopwatch = (0.9f * base.skillLocator.special.finalRechargeInterval);
+            base.activatorSkillSlot.rechargeStopwatch = (0.9f * base.activatorSkillSlot.finalRechargeInterval);
         }
 
         public override void Update()

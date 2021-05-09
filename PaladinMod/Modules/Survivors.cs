@@ -23,7 +23,7 @@ namespace PaladinMod.Modules
             survivorDef.descriptionToken = "PALADIN_DESCRIPTION";
             survivorDef.outroFlavorToken = "PALADIN_OUTRO_FLAVOR";
             survivorDef.mainEndingEscapeFailureFlavorToken = "PALADIN_OUTRO_FAILURE";
-            survivorDef.desiredSortPosition = 50f;
+            survivorDef.desiredSortPosition = 7.001f;
             survivorDef.unlockableDef = unlockDef;
 
             Modules.Prefabs.survivorDefinitions.Add(survivorDef);
@@ -59,7 +59,7 @@ namespace PaladinMod.Modules
                 survivorDef.descriptionToken = "NEMPALADIN_DESCRIPTION";
                 survivorDef.outroFlavorToken = "NEMPALADIN_OUTRO_FLAVOR";
                 survivorDef.mainEndingEscapeFailureFlavorToken = "NEMPALADIN_OUTRO_FAILURE";
-                survivorDef.desiredSortPosition = 50.1f;
+                survivorDef.desiredSortPosition = 7.002f;
                 survivorDef.unlockableDef = null;
 
                 Modules.Prefabs.survivorDefinitions.Add(survivorDef);

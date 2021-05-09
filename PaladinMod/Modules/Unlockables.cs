@@ -44,10 +44,9 @@ namespace PaladinMod.Modules
             paladinPoisonSkinDef = AddUnlockable<Achievements.PoisonAchievement>(true);
             paladinClaySkinDef = AddUnlockable<Achievements.ClayAchievement>(true);
 
-            AddUnlockable<Achievements.GrandMasteryAchievement>(true);
             if (PaladinPlugin.starstormInstalled)
             {
-                //AddUnlockable<Achievements.GrandMasteryAchievement>(true);
+                AddUnlockable<Achievements.GrandMasteryAchievement>(true);
             }
         }
 

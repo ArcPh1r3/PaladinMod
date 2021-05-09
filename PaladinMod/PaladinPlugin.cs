@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using BepInEx;
+﻿using BepInEx;
 using R2API;
 using R2API.Utils;
 using EntityStates;
@@ -9,6 +7,11 @@ using RoR2.Skills;
 using UnityEngine;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
+using RoR2.UI;
+using UnityEngine.UI;
+using PaladinMod.Misc;
+using RoR2.Orbs;
+using System.Collections.Generic;
 
 namespace PaladinMod
 {
@@ -19,7 +22,7 @@ namespace PaladinMod
     [BepInDependency("com.K1454.SupplyDrop", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.TeamMoonstorm.Starstorm2", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "1.4.8")]
+    [BepInPlugin(MODUID, "Paladin", "1.4.16")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -46,11 +49,13 @@ namespace PaladinMod
         public static SkillDef scepterHealDef;
         public static SkillDef scepterTorporDef;
         public static SkillDef scepterWarcryDef;
+        public static SkillDef scepterCruelSunDef;
 
         // for modded item display rules
         public static bool aetheriumInstalled = false;
         public static bool sivsItemsInstalled = false;
         public static bool supplyDropInstalled = false;
+        public static bool ancientScepterInstalled = false;
 
         // ss2 compat
         public static bool starstormInstalled = false;
@@ -65,6 +70,7 @@ namespace PaladinMod
             // load assets and read config
             Modules.Assets.PopulateAssets();
             Modules.Config.ReadConfig();
+            Modules.CameraParams.InitializeParams(); // create camera params for our character to use
 
             // modded item displays
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.KomradeSpectre.Aetherium")) aetheriumInstalled = true;
@@ -75,9 +81,8 @@ namespace PaladinMod
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamMoonstorm.Starstorm2"))
             {
                 starstormInstalled = true;
-                //claySkinIndex++;
+                claySkinIndex++;
             }
-            claySkinIndex++;
 
             Modules.Unlockables.RegisterUnlockables(); // add unlockables
             Modules.States.RegisterStates(); // register states
@@ -94,21 +99,67 @@ namespace PaladinMod
             Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
             Modules.Effects.RegisterEffects(); // add and register custom effects
             Modules.Tokens.AddTokens(); // register name tokens
-            Modules.CameraParams.InitializeParams(); // create camera params for our character to use
 
             CreateDoppelganger(); // artifact of vengeance
 
             //scepter upgrades
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter"))
             {
-                //ScepterSkillSetup();
-                //ScepterSetup();
+                ancientScepterInstalled = true;
+                ScepterSkillSetup();
+                ScepterSetup();
             }
 
             new Modules.ContentPacks().Initialize();
 
             Hook();
             RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
+            On.RoR2.EntityStateCatalog.Init += EntityStateCatalog_Init;
+        }
+
+        private void EntityStateCatalog_Init(On.RoR2.EntityStateCatalog.orig_Init orig)
+        {
+            orig();
+
+            // this is some godawful code but i'm not sure how else to do this.
+
+            Material circleMat = UnityEngine.Object.Instantiate(EntityStates.GolemMonster.ChargeLaser.effectPrefab.transform.Find("Particles").Find("Glow").GetComponent<ParticleSystemRenderer>().material);
+
+            ChildLocator childLocator = Modules.Prefabs.paladinPrefab.GetComponentInChildren<ChildLocator>();
+
+            childLocator.FindChild("HealChannelEffect").Find("Orbs").Find("MagicCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("HealChannelEffect").Find("Orbs").Find("MagicCircle").Find("BigCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("HealChannelEffect").Find("Orbs").Find("MagicCircle").Find("MagicCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("HealChannelEffect").Find("Orbs").Find("MagicCircle").Find("MagicCircle2").Find("BigCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
+
+            childLocator.FindChild("ScepterHealChannelEffect").Find("Orbs").Find("MagicCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("ScepterHealChannelEffect").Find("Orbs").Find("MagicCircle").Find("BigCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("ScepterHealChannelEffect").Find("Orbs").Find("MagicCircle").Find("MagicCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("ScepterHealChannelEffect").Find("Orbs").Find("MagicCircle").Find("MagicCircle2").Find("BigCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
+
+            childLocator.FindChild("TorporChannelEffect").Find("Lightning").Find("MagicCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("TorporChannelEffect").Find("Lightning").Find("BigCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("TorporChannelEffect").Find("Lightning").Find("MagicCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("TorporChannelEffect").Find("Lightning").Find("MagicCircle2").Find("BigCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
+
+            childLocator.FindChild("ScepterTorporChannelEffect").Find("Orbs").Find("MagicCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("ScepterTorporChannelEffect").Find("Orbs").Find("MagicCircle").Find("BigCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("ScepterTorporChannelEffect").Find("Orbs").Find("MagicCircle").Find("MagicCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("ScepterTorporChannelEffect").Find("Orbs").Find("MagicCircle").Find("MagicCircle2").Find("BigCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
+
+            childLocator.FindChild("WarcryChannelEffect").Find("Orbs").Find("MagicCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("WarcryChannelEffect").Find("Orbs").Find("MagicCircle").Find("BigCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("WarcryChannelEffect").Find("Orbs").Find("MagicCircle").Find("MagicCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("WarcryChannelEffect").Find("Orbs").Find("MagicCircle").Find("MagicCircle2").Find("BigCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
+
+            childLocator.FindChild("ScepterWarcryChannelEffect").Find("Orbs").Find("MagicCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("ScepterWarcryChannelEffect").Find("Orbs").Find("MagicCircle").Find("BigCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("ScepterWarcryChannelEffect").Find("Orbs").Find("MagicCircle").Find("MagicCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("ScepterWarcryChannelEffect").Find("Orbs").Find("MagicCircle").Find("MagicCircle2").Find("BigCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
+
+            //childLocator.FindChild("SpawnEffect").Find("MagicCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("SpawnEffect").Find("MagicCircle").Find("BigCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            childLocator.FindChild("SpawnEffect").Find("MagicCircle").Find("BigCircle").Find("BigCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
         }
 
         private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
@@ -120,9 +171,10 @@ namespace PaladinMod
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private void ScepterSetup()
         {
-            //ThinkInvisible.ClassicItems.Scepter_V2.instance.RegisterScepterSkill(scepterHealDef, "RobPaladinBody", SkillSlot.Special, 0);
-            //ThinkInvisible.ClassicItems.Scepter_V2.instance.RegisterScepterSkill(scepterTorporDef, "RobPaladinBody", SkillSlot.Special, 1);
-            //ThinkInvisible.ClassicItems.Scepter_V2.instance.RegisterScepterSkill(scepterWarcryDef, "RobPaladinBody", SkillSlot.Special, 2);
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterHealDef, "RobPaladinBody", SkillSlot.Special, 0);
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterTorporDef, "RobPaladinBody", SkillSlot.Special, 1);
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterWarcryDef, "RobPaladinBody", SkillSlot.Special, 2);
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterCruelSunDef, "RobPaladinBody", SkillSlot.Special, 3);
         }
 
         private void Hook()
@@ -131,6 +183,7 @@ namespace PaladinMod
             On.RoR2.CharacterModel.UpdateOverlays += CharacterModel_UpdateOverlays;
             On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+            On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
             //On.RoR2.SceneDirector.Start += SceneDirector_Start;
             On.EntityStates.GlobalSkills.LunarNeedle.FireLunarNeedle.OnEnter += PlayVisionsAnimation;
             On.EntityStates.GlobalSkills.LunarNeedle.ChargeLunarSecondary.PlayChargeAnimation += PlayChargeLunarAnimation;
@@ -139,6 +192,50 @@ namespace PaladinMod
 
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.DoInitialSightResponse += BrotherSpeechDriver_DoInitialSightResponse;
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.OnBodyKill += BrotherSpeechDriver_OnBodyKill;
+
+            On.RoR2.UI.HUD.Awake += HUDAwake;
+        }
+
+        private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
+        {
+            orig(self, damageInfo, victim);
+
+            if (damageInfo.attacker && damageInfo.procCoefficient >= 1f)
+            {
+                CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+                if (attackerBody)
+                {
+                    if (attackerBody.HasBuff(Modules.Buffs.overchargeBuff))
+                    {
+                        float damageCoefficient = 0.75f;
+                        float damageValue = Util.OnHitProcDamage(damageInfo.damage, attackerBody.damage, damageCoefficient);
+
+                        LightningOrb lightningOrb = new LightningOrb();
+                        lightningOrb.origin = damageInfo.position;
+                        lightningOrb.damageValue = damageValue;
+                        lightningOrb.isCrit = damageInfo.crit;
+                        lightningOrb.bouncesRemaining = 3;
+                        lightningOrb.teamIndex = attackerBody.teamComponent.teamIndex;
+                        lightningOrb.attacker = damageInfo.attacker;
+                        lightningOrb.bouncedObjects = new List<HealthComponent>
+                            {
+                                victim.GetComponent<HealthComponent>()
+                            };
+                        lightningOrb.procChainMask = damageInfo.procChainMask;
+                        lightningOrb.procChainMask.AddProc(ProcType.ChainLightning);
+                        lightningOrb.procCoefficient = 0f;
+                        lightningOrb.lightningType = LightningOrb.LightningType.Loader;
+                        lightningOrb.damageColorIndex = DamageColorIndex.Default;
+                        lightningOrb.range += 6f;
+                        HurtBox hurtBox = lightningOrb.PickNextTarget(damageInfo.position);
+                        if (hurtBox)
+                        {
+                            lightningOrb.target = hurtBox;
+                            OrbManager.instance.AddOrb(lightningOrb);
+                        }
+                    }
+                }
+            }
         }
 
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
@@ -335,6 +432,20 @@ namespace PaladinMod
                     self.moveSpeed *= (1 - StaticValues.scepterTorporSlowAmount);
                     self.attackSpeed *= (1 - StaticValues.scepterTorporSlowAmount);
                 }
+
+                if (self.HasBuff(Modules.Buffs.rageBuff))
+                {
+                    self.armor += 100f;
+                    self.damage *= 1.5f;
+                    self.moveSpeed += 6f;
+
+                    PaladinRageController rageComponent = self.GetComponent<PaladinRageController>();
+                    if (rageComponent)
+                    {
+                        float regenAmount = rageComponent.currentRegen;
+                        self.regen += regenAmount;
+                    }
+                }
             }
         }
 
@@ -346,12 +457,12 @@ namespace PaladinMod
             {
                 if (self.body && self.body.HasBuff(Modules.Buffs.torporDebuff))
                 {
-                    var torporController = self.body.GetComponent<Misc.PaladinTorporTracker>();
-                    if (!torporController) torporController = self.body.gameObject.AddComponent<Misc.PaladinTorporTracker>();
+                    var torporController = self.body.GetComponent<PaladinTorporTracker>();
+                    if (!torporController) torporController = self.body.gameObject.AddComponent<PaladinTorporTracker>();
                     else return;
 
                     torporController.Body = self.body;
-                    TemporaryOverlay overlay = self.gameObject.AddComponent<RoR2.TemporaryOverlay>();
+                    TemporaryOverlay overlay = self.gameObject.AddComponent<TemporaryOverlay>();
                     overlay.duration = float.PositiveInfinity;
                     overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                     overlay.animateShaderAlpha = true;
@@ -359,6 +470,23 @@ namespace PaladinMod
                     overlay.originalMaterial = Resources.Load<Material>("Materials/matDoppelganger");
                     overlay.AddToCharacerModel(self);
                     torporController.Overlay = overlay;
+                }
+
+                if (self.body && self.body.HasBuff(Modules.Buffs.rageBuff))
+                {
+                    var rageTracker = self.body.GetComponent<PaladinRageTracker>();
+                    if (!rageTracker) rageTracker = self.body.gameObject.AddComponent<PaladinRageTracker>();
+                    else return;
+
+                    rageTracker.Body = self.body;
+                    TemporaryOverlay overlay = self.gameObject.AddComponent<TemporaryOverlay>();
+                    overlay.duration = float.PositiveInfinity;
+                    overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                    overlay.animateShaderAlpha = true;
+                    overlay.destroyComponentOnEnd = true;
+                    overlay.originalMaterial = Resources.Load<Material>("Materials/matMercEvisTarget");
+                    overlay.AddToCharacerModel(self);
+                    rageTracker.Overlay = overlay;
                 }
             }
         }
@@ -455,6 +583,22 @@ namespace PaladinMod
             orig(self);
         }
 
+        #region HUD
+        internal static void HUDAwake(On.RoR2.UI.HUD.orig_Awake orig, HUD self)
+        {
+            orig(self);
+
+            Misc.RageHUD rageHud = self.gameObject.AddComponent<Misc.RageHUD>();
+
+            GameObject rageGauge = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("RageGauge"), self.transform.Find("MainContainer").Find("MainUIArea").Find("SpringCanvas").Find("BottomLeftCluster"));
+            rageGauge.GetComponent<RectTransform>().localPosition = Vector3.zero;
+            rageGauge.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -147.8f);
+            rageGauge.GetComponent<RectTransform>().localScale = new Vector3(0.72f, 0.15f, 1f);
+            rageHud.rageGauge = rageGauge;
+            rageHud.rageFill = rageGauge.transform.Find("GaugeFill").gameObject.GetComponent<Image>();
+        }
+        #endregion
+
         private void CreateDoppelganger()
         {
             doppelganger = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterMasters/MercMonsterMaster"), "PaladinMonsterMaster");
@@ -545,6 +689,29 @@ namespace PaladinMod
             scepterWarcryDef.skillNameToken = "PALADIN_SPECIAL_SCEPTERWARCRY_NAME";
 
             Modules.Skills.skillDefs.Add(scepterWarcryDef);
+
+            scepterCruelSunDef = ScriptableObject.CreateInstance<SkillDef>();
+            scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ScepterChannelCruelSun));
+            scepterCruelSunDef.activationStateMachineName = "Weapon";
+            scepterCruelSunDef.baseMaxStock = 1;
+            scepterCruelSunDef.baseRechargeInterval = 40f;
+            scepterCruelSunDef.beginSkillCooldownOnSkillEnd = true;
+            scepterCruelSunDef.canceledFromSprinting = false;
+            scepterCruelSunDef.fullRestockOnAssign = true;
+            scepterCruelSunDef.interruptPriority = InterruptPriority.Skill;
+            scepterCruelSunDef.resetCooldownTimerOnUse = false;
+            scepterCruelSunDef.isCombatSkill = true;
+            scepterCruelSunDef.mustKeyPress = false;
+            scepterCruelSunDef.cancelSprintingOnActivation = true;
+            scepterCruelSunDef.rechargeStock = 1;
+            scepterCruelSunDef.requiredStock = 1;
+            scepterCruelSunDef.stockToConsume = 1;
+            scepterCruelSunDef.icon = Modules.Assets.icon4dS;
+            scepterCruelSunDef.skillDescriptionToken = "PALADIN_SPECIAL_SCEPSUN_DESCRIPTION";
+            scepterCruelSunDef.skillName = "PALADIN_SPECIAL_SCEPSUN_NAME";
+            scepterCruelSunDef.skillNameToken = "PALADIN_SPECIAL_SCEPSUN_NAME";
+
+            Modules.Skills.skillDefs.Add(scepterCruelSunDef);
         }
     }
 }

@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\DynamicBone.cs" />
     <Compile Include="Assets\Scripts\DynamicBoneCollider.cs" />
     <Compile Include="Assets\Scripts\FootstepHandler.cs" />
+    <Compile Include="Assets\Scripts\PaladinAnimationEvents.cs" />
     <Compile Include="Assets\Scripts\RagdollController.cs" />
     <Compile Include="Assets\Scripts\ResetFootsteps.cs" />
     <Compile Include="Assets\Scripts\SetRandomIntOnEnter.cs" />

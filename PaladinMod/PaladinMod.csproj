@@ -29,6 +29,9 @@
     <Reference Include="Aetherium">
       <HintPath>libs\Aetherium.dll</HintPath>
     </Reference>
+    <Reference Include="AncientScepter">
+      <HintPath>libs\AncientScepter.dll</HintPath>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>libs\Assembly-CSharp.dll</HintPath>
     </Reference>

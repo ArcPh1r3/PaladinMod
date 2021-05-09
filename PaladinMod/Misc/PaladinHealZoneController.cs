@@ -33,6 +33,7 @@ namespace PaladinMod.Misc
         public bool invertTeamFilter;
         [Tooltip("If set, stops all projectiles in the vicinity.")]
         public bool freezeProjectiles;
+        public bool cleanseDebuffs;
         public bool grounding;
         public float expireDuration;
         public bool animateRadius;
@@ -202,6 +203,11 @@ namespace PaladinMod.Misc
                         if (this.grounding)
                         {
                             if (charBody.GetComponent<PaladinGroundController>() == null) charBody.gameObject.AddComponent<PaladinGroundController>().body = charBody;
+                        }
+
+                        if (this.cleanseDebuffs)
+                        {
+                            Util.CleanseBody(charBody, true, false, true, false, false);
                         }
                     }
                 }

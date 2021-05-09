@@ -22,10 +22,15 @@ namespace PaladinMod.States.Spell
             ChildLocator childLocator = base.GetModelChildLocator();
             if (childLocator)
             {
-                this.chargeEffect = childLocator.FindChild("WarcryChannelEffect").gameObject;
+                this.chargeEffect = childLocator.FindChild("CruelSunChannelEffect").gameObject;
                 this.chargeEffect.SetActive(false);
                 this.chargeEffect.SetActive(true);
             }
+        }
+
+        protected override void PlayChannelAnimation()
+        {
+            base.PlayAnimation("Gesture, Override", "ChannelSun", "Spell.playbackRate", 2f);
         }
 
         public override void FixedUpdate()

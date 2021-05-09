@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using PaladinMod.Misc;
 using RoR2;
 using RoR2.Skills;
 using System;
@@ -10,6 +11,11 @@ namespace PaladinMod.Modules
 {
     public static class Skills
     {
+        internal static SkillDef berserkOutSkillDef;
+        //internal static SkillDef berserkSlashSkillDef;
+        //internal static SkillDef berserkSpinSlashSkillDef;
+        internal static SkillDef berserkDashSkillDef;
+
         private static SkillLocator skillLocator;
 
         internal static List<SkillFamily> skillFamilies = new List<SkillFamily>();
@@ -137,7 +143,7 @@ namespace PaladinMod.Modules
             mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.ChargeLightningSpear));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
-            mySkillDef.baseRechargeInterval = 6f;
+            mySkillDef.baseRechargeInterval = 8f;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
@@ -242,7 +248,7 @@ namespace PaladinMod.Modules
             };
 
             mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
-            mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.AimHeal));
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelSmallHeal));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
             mySkillDef.baseRechargeInterval = 8;
@@ -379,7 +385,7 @@ namespace PaladinMod.Modules
             mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelCruelSun));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
-            mySkillDef.baseRechargeInterval = 48f;
+            mySkillDef.baseRechargeInterval = 40f;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
@@ -405,6 +411,253 @@ namespace PaladinMod.Modules
                 unlockableDef = Modules.Unlockables.paladinCruelSunSkillDefDef,
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
+
+            SkillDef berserkSkillDef = CreateRageSkillDef(new SkillDefInfo
+            {
+                skillName = "PALADIN_SPECIAL_BERSERK_NAME",
+                skillNameToken = "PALADIN_SPECIAL_BERSERK_NAME",
+                skillDescriptionToken = "PALADIN_SPECIAL_BERSERK_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("BerserkIcon"),
+                activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Rage.RageEnter)),
+                activationStateMachineName = "Body",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = true,
+                rechargeStock = 100,
+                requiredStock = 0,
+                stockToConsume = 0
+            });
+
+            berserkOutSkillDef = CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "PALADIN_SPECIAL_BERSERK_NAME",
+                skillNameToken = "PALADIN_SPECIAL_BERSERK_NAME",
+                skillDescriptionToken = "PALADIN_SPECIAL_BERSERK_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("BerserkIcon"),
+                activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Rage.RageExit)),
+                activationStateMachineName = "Slide",
+                baseMaxStock = 1,
+                baseRechargeInterval = 5f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = false,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1
+            });
+
+            berserkDashSkillDef = CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "PALADIN_UTILITY_BLINK_NAME",
+                skillNameToken = "PALADIN_UTILITY_BLINK_NAME",
+                skillDescriptionToken = "PALADIN_UTILITY_BLINK_DESCRIPTION",
+                skillIcon = Assets.icon3,
+                activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Quickstep.FlashStep)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 3,
+                baseRechargeInterval = 4f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = false,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = true,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1
+            });
+
+            //if (Modules.Config.cursed.Value) AddSpecialSkill(bodyPrefab, berserkSkillDef);
+        }
+
+        internal static SkillDef CreateSkillDef(SkillDefInfo skillDefInfo)
+        {
+            SkillDef skillDef = ScriptableObject.CreateInstance<SkillDef>();
+
+            skillDef.skillName = skillDefInfo.skillName;
+            skillDef.skillNameToken = skillDefInfo.skillNameToken;
+            skillDef.skillDescriptionToken = skillDefInfo.skillDescriptionToken;
+            skillDef.icon = skillDefInfo.skillIcon;
+
+            skillDef.activationState = skillDefInfo.activationState;
+            skillDef.activationStateMachineName = skillDefInfo.activationStateMachineName;
+            skillDef.baseMaxStock = skillDefInfo.baseMaxStock;
+            skillDef.baseRechargeInterval = skillDefInfo.baseRechargeInterval;
+            skillDef.beginSkillCooldownOnSkillEnd = skillDefInfo.beginSkillCooldownOnSkillEnd;
+            skillDef.canceledFromSprinting = skillDefInfo.canceledFromSprinting;
+            skillDef.forceSprintDuringState = skillDefInfo.forceSprintDuringState;
+            skillDef.fullRestockOnAssign = skillDefInfo.fullRestockOnAssign;
+            skillDef.interruptPriority = skillDefInfo.interruptPriority;
+            skillDef.resetCooldownTimerOnUse = skillDefInfo.resetCooldownTimerOnUse;
+            skillDef.isCombatSkill = skillDefInfo.isCombatSkill;
+            skillDef.mustKeyPress = skillDefInfo.mustKeyPress;
+            skillDef.cancelSprintingOnActivation = skillDefInfo.cancelSprintingOnActivation;
+            skillDef.rechargeStock = skillDefInfo.rechargeStock;
+            skillDef.requiredStock = skillDefInfo.requiredStock;
+            skillDef.stockToConsume = skillDefInfo.stockToConsume;
+
+            skillDef.keywordTokens = skillDefInfo.keywordTokens;
+
+            skillDefs.Add(skillDef);
+
+            return skillDef;
+        }
+
+        internal static SkillDef CreateRageSkillDef(SkillDefInfo skillDefInfo)
+        {
+            PaladinRageSkillDef skillDef = ScriptableObject.CreateInstance<PaladinRageSkillDef>();
+
+            skillDef.skillName = skillDefInfo.skillName;
+            skillDef.skillNameToken = skillDefInfo.skillNameToken;
+            skillDef.skillDescriptionToken = skillDefInfo.skillDescriptionToken;
+            skillDef.icon = skillDefInfo.skillIcon;
+
+            skillDef.activationState = skillDefInfo.activationState;
+            skillDef.activationStateMachineName = skillDefInfo.activationStateMachineName;
+            skillDef.baseMaxStock = skillDefInfo.baseMaxStock;
+            skillDef.baseRechargeInterval = skillDefInfo.baseRechargeInterval;
+            skillDef.beginSkillCooldownOnSkillEnd = skillDefInfo.beginSkillCooldownOnSkillEnd;
+            skillDef.canceledFromSprinting = skillDefInfo.canceledFromSprinting;
+            skillDef.forceSprintDuringState = skillDefInfo.forceSprintDuringState;
+            skillDef.fullRestockOnAssign = skillDefInfo.fullRestockOnAssign;
+            skillDef.interruptPriority = skillDefInfo.interruptPriority;
+            skillDef.resetCooldownTimerOnUse = skillDefInfo.resetCooldownTimerOnUse;
+            skillDef.isCombatSkill = skillDefInfo.isCombatSkill;
+            skillDef.mustKeyPress = skillDefInfo.mustKeyPress;
+            skillDef.cancelSprintingOnActivation = skillDefInfo.cancelSprintingOnActivation;
+            skillDef.rechargeStock = skillDefInfo.rechargeStock;
+            skillDef.requiredStock = skillDefInfo.requiredStock;
+            skillDef.stockToConsume = skillDefInfo.stockToConsume;
+
+            skillDef.keywordTokens = skillDefInfo.keywordTokens;
+
+            skillDefs.Add(skillDef);
+
+            return skillDef;
+        }
+
+        internal static void AddPrimarySkill(GameObject targetPrefab, SkillDef skillDef)
+        {
+            SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
+
+            SkillFamily skillFamily = skillLocator.primary.skillFamily;
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = skillDef,
+                viewableNode = new ViewablesCatalog.Node(skillDef.skillNameToken, false, null)
+            };
+        }
+
+        internal static void AddSecondarySkill(GameObject targetPrefab, SkillDef skillDef)
+        {
+            SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
+
+            SkillFamily skillFamily = skillLocator.secondary.skillFamily;
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = skillDef,
+                viewableNode = new ViewablesCatalog.Node(skillDef.skillNameToken, false, null)
+            };
+        }
+
+        internal static void AddSecondarySkills(GameObject targetPrefab, params SkillDef[] skillDefs)
+        {
+            foreach (SkillDef i in skillDefs)
+            {
+                AddSecondarySkill(targetPrefab, i);
+            }
+        }
+
+        internal static void AddUtilitySkill(GameObject targetPrefab, SkillDef skillDef)
+        {
+            SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
+
+            SkillFamily skillFamily = skillLocator.utility.skillFamily;
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = skillDef,
+                viewableNode = new ViewablesCatalog.Node(skillDef.skillNameToken, false, null)
+            };
+        }
+
+        internal static void AddUtilitySkills(GameObject targetPrefab, params SkillDef[] skillDefs)
+        {
+            foreach (SkillDef i in skillDefs)
+            {
+                AddUtilitySkill(targetPrefab, i);
+            }
+        }
+
+        internal static void AddSpecialSkill(GameObject targetPrefab, SkillDef skillDef)
+        {
+            SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
+
+            SkillFamily skillFamily = skillLocator.special.skillFamily;
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = skillDef,
+                viewableNode = new ViewablesCatalog.Node(skillDef.skillNameToken, false, null)
+            };
+        }
+
+        internal static void AddSpecialSkills(GameObject targetPrefab, params SkillDef[] skillDefs)
+        {
+            foreach (SkillDef i in skillDefs)
+            {
+                AddSpecialSkill(targetPrefab, i);
+            }
         }
     }
+}
+
+internal class SkillDefInfo
+{
+    public string skillName;
+    public string skillNameToken;
+    public string skillDescriptionToken;
+    public Sprite skillIcon;
+
+    public SerializableEntityStateType activationState;
+    public string activationStateMachineName;
+    public int baseMaxStock;
+    public float baseRechargeInterval;
+    public bool beginSkillCooldownOnSkillEnd;
+    public bool canceledFromSprinting;
+    public bool forceSprintDuringState;
+    public bool fullRestockOnAssign;
+    public InterruptPriority interruptPriority;
+    public bool resetCooldownTimerOnUse;
+    public bool isCombatSkill;
+    public bool mustKeyPress;
+    public bool cancelSprintingOnActivation;
+    public int rechargeStock;
+    public int requiredStock;
+    public int stockToConsume;
+
+    public string[] keywordTokens;
 }

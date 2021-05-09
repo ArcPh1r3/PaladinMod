@@ -250,7 +250,7 @@ namespace PaladinMod.Modules
 
             grandMasterySkin.gameObjectActivations = capeActivations;
 
-            skinDefs.Add(grandMasterySkin);
+            if (PaladinPlugin.starstormInstalled) skinDefs.Add(grandMasterySkin);
             #endregion
 
             #region PoisonSkin
@@ -362,7 +362,6 @@ namespace PaladinMod.Modules
             #endregion
 
             skinController.skins = skinDefs.ToArray();
-
 
             InitializeNemSkins();
         }

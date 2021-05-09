@@ -21,6 +21,7 @@ namespace PaladinMod.States
             this.animator = base.GetModelAnimator();
             this.modelTransform = base.GetModelTransform();
             this.isClay = false;
+            ChildLocator childLocator = base.GetModelChildLocator();
 
             if (NetworkServer.active) base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, SpawnState.duration * 1.5f);
 
@@ -57,7 +58,7 @@ namespace PaladinMod.States
             {
                 base.PlayAnimation("Body", "Spawn", "Spawn.playbackRate", SpawnState.duration);
                 Util.PlaySound(EntityStates.ParentMonster.SpawnState.spawnSoundString, base.gameObject);
-                base.GetModelChildLocator().FindChild("SpawnEffect").gameObject.SetActive(true);
+                if (childLocator.FindChild("SpawnEffect")) childLocator.FindChild("SpawnEffect").gameObject.SetActive(true);
 
                 if (this.modelTransform)
                 {
@@ -86,16 +87,11 @@ namespace PaladinMod.States
                 this.animator.SetFloat(AnimationParameters.aimWeight, 0f);
             }
 
-            if (base.characterBody)
+            if (this.modelTransform)
             {
-                Transform modelTransform = base.GetModelTransform();
-                if (modelTransform)
-                {
-                    this.swordMat = modelTransform.GetComponent<CharacterModel>().baseRendererInfos[0].defaultMaterial;
-                }
+                this.swordMat = modelTransform.GetComponent<CharacterModel>().baseRendererInfos[0].defaultMaterial;
             }
 
-            ChildLocator childLocator = base.GetModelChildLocator();
             if (childLocator)
             {
                 childLocator.FindChild("SwordActiveEffect").gameObject.SetActive(false);
@@ -106,11 +102,12 @@ namespace PaladinMod.States
         {
             base.FixedUpdate();
             if (this.animator) this.animator.SetBool("inCombat", true);
-            this.swordMat.SetFloat("_EmPower", StaticValues.maxSwordGlow);
+            if (this.swordMat) this.swordMat.SetFloat("_EmPower", StaticValues.maxSwordGlow);
 
             if (base.fixedAge >= SpawnState.duration && base.isAuthority)
             {
                 this.outer.SetNextStateToMain();
+                return;
             }
         }
 

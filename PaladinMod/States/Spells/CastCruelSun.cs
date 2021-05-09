@@ -12,7 +12,7 @@ namespace PaladinMod.States.Spell
 
         private GameObject sunInstance;
         public Vector3? sunSpawnPosition;
-        private PaladinSwordController swordController;
+        protected PaladinSwordController swordController;
 
         public override void OnEnter()
         {
@@ -44,6 +44,23 @@ namespace PaladinMod.States.Spell
                 ChannelSun.sunPlacementMinDistance = oldMinDistance;
                 ChannelSun.sunPlacementIdealAltitudeBonus = oldIdealAltitude;
             }
+
+            Transform modelTransform = base.GetModelTransform();
+            if (modelTransform)
+            {
+                TemporaryOverlay temporaryOverlay = modelTransform.gameObject.AddComponent<TemporaryOverlay>();
+                temporaryOverlay.duration = this.baseDuration;
+                temporaryOverlay.animateShaderAlpha = true;
+                temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                temporaryOverlay.destroyComponentOnEnd = true;
+                temporaryOverlay.originalMaterial = Resources.Load<Material>("Materials/matGrandparentTeleportOutBoom");
+                temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
+            }
+        }
+
+        protected override void PlayCastAnimation()
+        {
+            base.PlayAnimation("Gesture, Override", "CastSun", "Spell.playbackRate", 0.25f);
         }
 
         public override void OnExit()
@@ -55,6 +72,8 @@ namespace PaladinMod.States.Spell
             }
 
             base.OnExit();
+
+            base.PlayAnimation("Gesture, Override", "CastSunEnd", "Spell.playbackRate", 0.8f);
         }
 
         private GameObject CreateSun(Vector3 sunSpawnPosition)

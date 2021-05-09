@@ -86,7 +86,7 @@ namespace PaladinMod.Modules
             skinList.Add(new PaladinSkinInfo
             {
                 skinName = "PALADINBODY_CLAY_SKIN_NAME",
-                passiveEffectName = "",
+                passiveEffectName = "SwordActiveEffectTar",
                 swingSoundString = Sounds.Swing,
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFXClay,

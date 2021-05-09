@@ -284,6 +284,24 @@ ModelImporter:
     7400150: Armature|ChargeLunarSecondary
     7400152: Armature|FireVisions
     7400154: Armature|ThrowLunarSecondary
+    7400156: Armature|RageChargeM1
+    7400158: Armature|RageEnter
+    7400160: Armature|RageIdle
+    7400162: Armature|RageRunF
+    7400164: Armature|RageSprintF
+    7400166: Armature|RageSprintFAltV01
+    7400168: Armature|RageSprintFAltV02
+    7400170: Armature|RageSwingM1
+    7400172: Armature|SprintCombatToRestLong
+    7400174: Armature|WalkFAlt
+    7400176: Armature|CastHeal
+    7400178: Armature|CastSun
+    7400180: Armature|CastSunEnd
+    7400182: Armature|CastSunLoop
+    7400184: Armature|ChannelHeal
+    7400186: Armature|ChannelSun
+    7400188: Armature|ChannelSunLoop
+    7400190: Armature|RageSlash1
     9500000: //RootNode
     10800000: Sun
     13700000: meshPaladin
