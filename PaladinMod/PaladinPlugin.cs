@@ -15,14 +15,14 @@ using System.Collections.Generic;
 
 namespace PaladinMod
 {
-    [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)] 
     [BepInDependency("com.DestroyedClone.AncientScepter", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInDependency("com.KomradeSpectre.Aetherium", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.KomradeSpectre.Aetherium", BepInDependency.DependencyFlags.SoftDependency)] 
     [BepInDependency("com.Sivelos.SivsItems", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.K1454.SupplyDrop", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.TeamMoonstorm.Starstorm2", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "1.4.16")]
+    [BepInPlugin(MODUID, "Paladin", "1.4.69")] 
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -33,7 +33,7 @@ namespace PaladinMod
     public class PaladinPlugin : BaseUnityPlugin
     {
         public const string MODUID = "com.rob.Paladin";
-
+         
         public static PaladinPlugin instance;
 
         public static GameObject characterPrefab;
@@ -47,9 +47,9 @@ namespace PaladinMod
 
         // for scepter upgrades
         public static SkillDef scepterHealDef;
-        public static SkillDef scepterTorporDef;
+        public static SkillDef scepterTorporDef; 
         public static SkillDef scepterWarcryDef;
-        public static SkillDef scepterCruelSunDef;
+        public static SkillDef scepterCruelSunDef; 
 
         // for modded item display rules
         public static bool aetheriumInstalled = false;

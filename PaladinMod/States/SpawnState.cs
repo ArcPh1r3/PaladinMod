@@ -56,11 +56,14 @@ namespace PaladinMod.States
             }
             else
             {
+                Debug.LogWarning("n");
                 base.PlayAnimation("Body", "Spawn", "Spawn.playbackRate", SpawnState.duration);
                 Util.PlaySound(EntityStates.ParentMonster.SpawnState.spawnSoundString, base.gameObject);
                 if (childLocator.FindChild("SpawnEffect")) childLocator.FindChild("SpawnEffect").gameObject.SetActive(true);
+                Debug.LogWarning("n");
 
                 if (this.modelTransform)
+                Debug.LogWarning("n");
                 {
                     TemporaryOverlay overlay = this.modelTransform.gameObject.AddComponent<TemporaryOverlay>();
                     overlay.duration = SpawnState.duration * 0.75f;
@@ -69,6 +72,7 @@ namespace PaladinMod.States
                     overlay.destroyComponentOnEnd = true;
                     overlay.originalMaterial = Resources.Load<Material>("Materials/matHuntressFlashBright");
                     overlay.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
+                    Debug.LogWarning("n");
 
                     PrintController printController = this.modelTransform.gameObject.AddComponent<PrintController>();
                     printController.printTime = EntityStates.ClayBruiserMonster.SpawnState.printDuration;
@@ -81,6 +85,7 @@ namespace PaladinMod.States
                     printController.printCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
                 }
             }
+            Debug.LogWarning("n");
 
             if (this.animator)
             {
@@ -91,6 +96,7 @@ namespace PaladinMod.States
             {
                 this.swordMat = modelTransform.GetComponent<CharacterModel>().baseRendererInfos[0].defaultMaterial;
             }
+            Debug.LogWarning("n");
 
             if (childLocator)
             {

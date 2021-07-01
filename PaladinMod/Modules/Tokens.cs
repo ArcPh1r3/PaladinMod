@@ -28,6 +28,7 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADINBODY_TYPHOON_SKIN_NAME", "Sovereign");
             LanguageAPI.Add("PALADINBODY_POISON_SKIN_NAME", "Corruption");
             LanguageAPI.Add("PALADINBODY_CLAY_SKIN_NAME", "Aphelian");
+            LanguageAPI.Add("PALADINBODY_SPECTER_SKIN_NAME", "Specter");
             LanguageAPI.Add("PALADINBODY_DRIP_SKIN_NAME", "Drip");
             LanguageAPI.Add("PALADINBODY_MINECRAFT_SKIN_NAME", "Minecraft");
 

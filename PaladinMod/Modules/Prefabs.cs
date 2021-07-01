@@ -62,11 +62,21 @@ namespace PaladinMod.Modules
                 },
                 new CustomRendererInfo
                 {
+                    childName = "MeshCreepyArmsLeft",
+                    material = Modules.Skins.CreateMaterial("matPaladinNkuhana", 3, Color.white)
+                },
+                new CustomRendererInfo
+                {
+                    childName = "MeshCreepyArmsRight",
+                    material = Modules.Skins.CreateMaterial("matPaladinNkuhana", 3, Color.white)
+                },
+                new CustomRendererInfo
+                {
                     childName = "Model",
                     material = Modules.Skins.CreateMaterial("matPaladin", 10, Color.white, 0.25f)
                 }
-            }, 1);
-
+            }, 4); 
+             
             paladinPrefab.AddComponent<Misc.PaladinSwordController>();
             paladinPrefab.AddComponent<Misc.PaladinRageController>();
             paladinPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.AddComponent<Misc.PaladinAnimationEvents>();
@@ -247,7 +257,7 @@ namespace PaladinMod.Modules
             {
                 rendererInfos.Add(new CharacterModel.RendererInfo
                 {
-                    renderer = childLocator.FindChild(rendererInfo[i].childName).GetComponent<SkinnedMeshRenderer>(),
+                    renderer = childLocator.FindChild(rendererInfo[i].childName).GetComponent<SkinnedMeshRenderer>(), 
                     defaultMaterial = rendererInfo[i].material,
                     ignoreOverlays = rendererInfo[i].ignoreOverlays,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On
@@ -256,7 +266,7 @@ namespace PaladinMod.Modules
 
             characterModel.baseRendererInfos = rendererInfos.ToArray();
 
-            characterModel.autoPopulateLightInfos = true;
+            characterModel.autoPopulateLightInfos = true; 
             characterModel.invisibilityCount = 0;
             characterModel.temporaryOverlays = new List<TemporaryOverlay>();
 
