@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: 7f7483ee987e3eb4dbe47d74465c13cb
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: base
+    100002: cape.l1
+    100004: cape.l1.001
+    100006: cape.l1.002
+    100008: cape.l1.003
+    100010: cape.l1.004
+    100012: cape.l1.005
+    100014: cape.l1.006
+    100016: cape.l2
+    100018: cape.l2.001
+    100020: cape.l2.002
+    100022: cape.l2.003
+    100024: cape.l2.004
+    100026: cape.l2.005
+    100028: cape.l2.006
+    100030: cape.m
+    100032: cape.m.001
+    100034: cape.m.002
+    100036: cape.m.003
+    100038: cape.m.004
+    100040: cape.m.005
+    100042: cape.m.006
+    100044: cape.r1
+    100046: cape.r1.001
+    100048: cape.r1.002
+    100050: cape.r1.003
+    100052: cape.r1.004
+    100054: cape.r1.005
+    100056: cape.r1.006
+    100058: cape.r2
+    100060: cape.r2.001
+    100062: cape.r2.002
+    100064: cape.r2.003
+    100066: cape.r2.004
+    100068: cape.r2.005
+    100070: cape.r2.006
+    100072: CapeArmature2
+    100074: meshPaladinCapeAlsoGMSexy
+    100076: //RootNode
+    100078: CapeArmature
+    100080: meshCapeGMSexy
+    100082: meshCapeOldForReference
+    400000: base
+    400002: cape.l1
+    400004: cape.l1.001
+    400006: cape.l1.002
+    400008: cape.l1.003
+    400010: cape.l1.004
+    400012: cape.l1.005
+    400014: cape.l1.006
+    400016: cape.l2
+    400018: cape.l2.001
+    400020: cape.l2.002
+    400022: cape.l2.003
+    400024: cape.l2.004
+    400026: cape.l2.005
+    400028: cape.l2.006
+    400030: cape.m
+    400032: cape.m.001
+    400034: cape.m.002
+    400036: cape.m.003
+    400038: cape.m.004
+    400040: cape.m.005
+    400042: cape.m.006
+    400044: cape.r1
+    400046: cape.r1.001
+    400048: cape.r1.002
+    400050: cape.r1.003
+    400052: cape.r1.004
+    400054: cape.r1.005
+    400056: cape.r1.006
+    400058: cape.r2
+    400060: cape.r2.001
+    400062: cape.r2.002
+    400064: cape.r2.003
+    400066: cape.r2.004
+    400068: cape.r2.005
+    400070: cape.r2.006
+    400072: CapeArmature2
+    400074: meshPaladinCapeAlsoGMSexy
+    400076: //RootNode
+    400078: CapeArmature
+    400080: meshCapeGMSexy
+    400082: meshCapeOldForReference
+    2100000: matPaladinGM
+    2100002: matPaladin.001
+    4300000: meshPaladinCapeAlsoGMSexy
+    4300002: meshCapeGMSexy
+    4300004: meshCapeOldForReference
+    9500000: //RootNode
+    13700000: meshPaladinCapeAlsoGMSexy
+    13700002: meshCapeGMSexy
+    13700004: meshCapeOldForReference
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

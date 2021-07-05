@@ -57,10 +57,10 @@ namespace PaladinMod.Modules
                 eyeTrailColor = new Color(196 / 255, 255 / 255, 254 / 255)
             });
 
-            skinList.Add(new PaladinSkinInfo
+            skinList.Add(new PaladinSkinInfo 
             {
                 skinName = "PALADINBODY_TYPHOON_SKIN_NAME",
-                passiveEffectName = "SwordActiveEffect",
+                passiveEffectName = "SwordActiveEffectGM", 
                 swingSoundString = Sounds.Swing,
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFX,
@@ -96,6 +96,17 @@ namespace PaladinMod.Modules
                 eyeTrailColor = new Color(255 / 255, 64 / 255, 64 / 255)
             });
 
+            skinList.Add(new PaladinSkinInfo {
+                skinName = "PALADINBODY_SPECTER_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffectRedScythe",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFXRed,
+                swingEffect = Assets.swordSwingRed,
+                spinSlashEffect = Assets.spinningSlashFXRed,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXRed,
+                //eyeTrailColor = new Color(248 / 255, 23 / 255, 83 / 255)
+            });
             skinList.Add(new PaladinSkinInfo
             {
                 skinName = "PALADINBODY_DRIP_SKIN_NAME",

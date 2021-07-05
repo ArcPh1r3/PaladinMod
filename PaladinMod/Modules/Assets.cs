@@ -108,10 +108,12 @@ namespace PaladinMod.Modules
         //skin meshes
         public static Mesh defaultMesh;
         public static Mesh defaultSwordMesh;
+        public static Mesh defaultCapeMesh;
         public static Mesh lunarMesh;
         public static Mesh lunarSwordMesh;
         public static Mesh gmMesh;
         public static Mesh gmSwordMesh;
+        public static Mesh gmCapeMesh;
         public static Mesh poisonMesh;
         public static Mesh poisonSwordMesh;
         public static Mesh specterMesh;
@@ -316,13 +318,15 @@ namespace PaladinMod.Modules
             #region Meshes
             defaultMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladin");
             defaultSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSword");
-            lunarMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinLunarNoCape");
+            defaultCapeMesh = mainAssetBundle.LoadAsset<Mesh>("meshCape");
+            lunarMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinLunar");
             lunarSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordLunar");
             gmMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinGM");
             gmSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordGM");
+            gmCapeMesh = mainAssetBundle.LoadAsset<Mesh>("meshCapeGM");
             poisonMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinNkuhana");
             poisonSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordNkuhana");
-            specterMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinSpecter");
+            specterMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinSpecter");  
             //hunterMesh = mainAssetBundle.LoadAsset<Mesh>("HunterMesh");
             dripMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinDrip");
             batMesh = mainAssetBundle.LoadAsset<Mesh>("meshBat");
@@ -332,7 +336,8 @@ namespace PaladinMod.Modules
             minecraftSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordMinecraft");
             #endregion
 
-            capeMat = Skins.CreateMaterial("matPaladinGM", 1, Color.white);
+            //capeMat = Skins.CreateMaterial("matPaladinGMOld", 1, Color.white);
+            //was this being used anywhere?
 
             altLightningImpactFX = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact"), "PaladinLightningStrikeImpact", true);
             PaladinPlugin.Destroy(altLightningImpactFX.transform.Find("LightningRibbon").gameObject);

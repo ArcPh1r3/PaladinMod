@@ -64,7 +64,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Editor\CharacterSelectSurvivorPreviewDisplayController.cs" />
     <Compile Include="Assets\Editor\EditoRecordAndSetTransforms.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/Abbas's stuff VII I think/1337 haxx/ror2lol/Chikara ga minegitte kuru/PaladinMod/PaladinUnityProject/Paladin/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

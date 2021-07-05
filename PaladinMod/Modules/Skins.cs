@@ -10,6 +10,8 @@ namespace PaladinMod.Modules
     {
         static List<GameObject> allGameObjectActivations = new List<GameObject>();
 
+        static List<Material> cachedMaterials = new List<Material>();
+
         /// <summary>
         /// create an array of all gameobjects that are activated/deactivated by skins, then for each skin pass in the specific objects that will be active
         /// </summary>
@@ -125,6 +127,11 @@ namespace PaladinMod.Modules
         public static Material CreateMaterial(string materialName, float emission, Color emissionColor, float normalStrength)
         {
             if (!PaladinPlugin.commandoMat) PaladinPlugin.commandoMat = Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
+            
+            Material cachedMaterial = cachedMaterials.Find((item) => { return item.name == materialName; });
+            if (cachedMaterial) {
+                return cachedMaterial;
+            }
 
             Material mat = UnityEngine.Object.Instantiate<Material>(PaladinPlugin.commandoMat);
             Material tempMat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
@@ -141,6 +148,7 @@ namespace PaladinMod.Modules
             mat.SetTexture("_EmTex", tempMat.GetTexture("_EmissionMap"));
             mat.SetFloat("_NormalStrength", normalStrength);
 
+            cachedMaterials.Add(mat);
             return mat;
         }
 
@@ -156,19 +164,27 @@ namespace PaladinMod.Modules
 
             SkinnedMeshRenderer mainRenderer = characterModel.mainSkinnedMeshRenderer;
 
+            GameObject displayPrefab = Prefabs.paladinDisplayPrefab;
+            ChildLocator displayChildLocator = displayPrefab.GetComponent<ChildLocator>(); 
+            CharacterSelectSurvivorPreviewDisplayController CSSPreviewController = displayPrefab.GetComponent<CharacterSelectSurvivorPreviewDisplayController>();
+            CSSPreviewController.bodyPrefab = bodyPrefab;
+
             List<SkinDef> skinDefs = new List<SkinDef>();
 
             GameObject cape = childLocator.FindChild("Cape").gameObject;
             GameObject armLeft = childLocator.FindChild("CreepyArmsLeft").gameObject;
             GameObject armRight = childLocator.FindChild("CreepyArmsRight").gameObject;
+            GameObject fuckingCrystalCrown = childLocator.FindChild("FuckMe").gameObject;
 
             allGameObjectActivations.Add(cape);
             allGameObjectActivations.Add(armLeft);
             allGameObjectActivations.Add(armRight);
+            allGameObjectActivations.Add(fuckingCrystalCrown);
 
             SkinDef.GameObjectActivation[] defaultActivations = getActivations();
             SkinDef.GameObjectActivation[] capeActivations = getActivations(cape);
             SkinDef.GameObjectActivation[] nkuhanaActivations = getActivations(armLeft, armRight);
+            SkinDef.GameObjectActivation[] GMActivations = getActivations(cape, fuckingCrystalCrown);
 
             #region DefaultSkin
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
@@ -185,6 +201,11 @@ namespace PaladinMod.Modules
                     mesh = Assets.defaultSwordMesh,
                     renderer = defaultRenderers[0].renderer
                 },
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.defaultCapeMesh,
+                    renderer = defaultRenderers[1].renderer
+                },
             }; 
 
             if (Modules.Config.cape.Value)
@@ -195,16 +216,18 @@ namespace PaladinMod.Modules
             else defaultSkin.gameObjectActivations = defaultActivations;
 
             skinDefs.Add(defaultSkin);
+
+            CSSPreviewController.skinChangeResponses[0].triggerSkin = defaultSkin;
             #endregion
-            
-            #region MasterySkin
+
+            #region MasterySkin(lunar)
             CharacterModel.RendererInfo[] masteryRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(masteryRendererInfos, 0);
 
             // add the passive effect
             GameObject lunarPassiveEffect = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/CharacterBodies/BrotherBody").GetComponentInChildren<ChildLocator>().FindChild("Phase3HammerFX").gameObject);
             lunarPassiveEffect.transform.parent = childLocator.FindChild("SwordActiveEffectLunar");
-            lunarPassiveEffect.transform.localScale = Vector3.one * 0.0001f;
+            lunarPassiveEffect.transform.localScale = Vector3.one * 0.0002f;
             lunarPassiveEffect.transform.rotation = Quaternion.Euler(new Vector3(45, 90, 0));
             lunarPassiveEffect.transform.localPosition = new Vector3(0, 0, -0.003f);
             lunarPassiveEffect.gameObject.SetActive(true);
@@ -215,13 +238,20 @@ namespace PaladinMod.Modules
             lunarPassiveEffect.transform.Find("Blocks, Spinny").localScale = Vector3.one * 0.4f;
             lunarPassiveEffect.transform.Find("Sparks").localScale = Vector3.one * 0.4f;
 
-            Material lunarSwordMat = CreateMaterial("matLunarSword", StaticValues.maxSwordGlow, Color.white, 1f);
+            lunarPassiveEffect = GameObject.Instantiate(lunarPassiveEffect);
+            lunarPassiveEffect.transform.parent = displayChildLocator.FindChild("SwordActiveEffectLunar");
+            lunarPassiveEffect.transform.localScale = Vector3.one * 0.0002f;
+            lunarPassiveEffect.transform.rotation = Quaternion.Euler(new Vector3(45, 90, 0));
+            lunarPassiveEffect.transform.localPosition = new Vector3(0, 0, -0.003f);
+            lunarPassiveEffect.gameObject.SetActive(true);
+
+            Material lunarSwordMat = CreateMaterial("matLunarSword", 0, Color.black, 1f);
             lunarSwordMat.EnableKeyword("FORCE_SPEC");
             lunarSwordMat.EnableKeyword("FRESNEL_EMISSION");
             lunarSwordMat.SetFloat("_SpecularStrength", 1f);
 
             masteryRendererInfos[0].defaultMaterial = lunarSwordMat;
-            masteryRendererInfos[1].defaultMaterial = CreateMaterial("matLunarCape");
+            //masteryRendererInfos[1].defaultMaterial = CreateMaterial("matLunarCape");
             masteryRendererInfos[2].defaultMaterial = CreateMaterial("matLunarPaladin", 5, Color.white, 1f);
 
             SkinDef masterySkin = CreateSkinDef("PALADINBODY_LUNAR_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"), masteryRendererInfos, mainRenderer, model, Modules.Unlockables.paladinMasterySkinDef);
@@ -239,9 +269,11 @@ namespace PaladinMod.Modules
                 }
             };
 
-            masterySkin.gameObjectActivations = capeActivations;
+            masterySkin.gameObjectActivations = defaultActivations;
 
             skinDefs.Add(masterySkin);
+
+            CSSPreviewController.skinChangeResponses[1].triggerSkin = masterySkin;
             #endregion
 
             #region GrandMasterySkin
@@ -252,7 +284,7 @@ namespace PaladinMod.Modules
             grandMasteryRendererInfos[1].defaultMaterial = CreateMaterial("matPaladinGM");
             grandMasteryRendererInfos[4].defaultMaterial = CreateMaterial("matPaladinGM", 15, Color.white, 1f);
 
-            SkinDef grandMasterySkin = CreateSkinDef("PALADINBODY_TYPHOON_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"), grandMasteryRendererInfos, mainRenderer, model, Modules.Unlockables.paladinGrandMasterySkinDef);
+            SkinDef grandMasterySkin = CreateSkinDef("PALADINBODY_TYPHOON_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texGrandMasteryAchievement"), grandMasteryRendererInfos, mainRenderer, model, Modules.Unlockables.paladinGrandMasterySkinDef);
             grandMasterySkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
                 new SkinDef.MeshReplacement
@@ -264,12 +296,21 @@ namespace PaladinMod.Modules
                 {
                     mesh = Assets.gmSwordMesh,
                     renderer = defaultRenderers[0].renderer
+                },
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.gmCapeMesh,
+                    renderer = defaultRenderers[1].renderer
                 }
             };
 
-            grandMasterySkin.gameObjectActivations = capeActivations; 
+            grandMasterySkin.gameObjectActivations = GMActivations; 
 
-            if (PaladinPlugin.starstormInstalled) skinDefs.Add(grandMasterySkin);
+            //if (PaladinPlugin.starstormInstalled) 
+                skinDefs.Add(grandMasterySkin);
+
+            CSSPreviewController.skinChangeResponses[2].triggerSkin = grandMasterySkin; 
+
             #endregion
 
             #region PoisonSkin
@@ -300,6 +341,8 @@ namespace PaladinMod.Modules
             poisonSkin.gameObjectActivations = nkuhanaActivations;
 
             skinDefs.Add(poisonSkin);
+
+            CSSPreviewController.skinChangeResponses[3].triggerSkin = poisonSkin;
             #endregion
 
             #region ClaySkin
@@ -327,6 +370,8 @@ namespace PaladinMod.Modules
             claySkin.gameObjectActivations = defaultActivations;
 
             skinDefs.Add(claySkin);
+
+            CSSPreviewController.skinChangeResponses[4].triggerSkin = claySkin;
             #endregion
 
             #region SpecterSkin
@@ -334,8 +379,8 @@ namespace PaladinMod.Modules
             defaultRenderers.CopyTo(specterRendererInfos, 0);
 
             specterRendererInfos[0].defaultMaterial = CreateMaterial("matPaladinSpecterScythe", StaticValues.maxSwordGlow, Color.white);
-            specterRendererInfos[1].defaultMaterial = CreateMaterial("matPaladinGM");
-            specterRendererInfos[4].defaultMaterial = CreateMaterial("matPaladinSpecter", 3, Color.white);
+            specterRendererInfos[1].defaultMaterial = CreateMaterial("matPaladinGMOld"); //HACK
+            specterRendererInfos[4].defaultMaterial = CreateMaterial("matPaladinSpecter");
 
             SkinDef specterSkin = CreateSkinDef("PALADINBODY_SPECTER_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecterSkin"), specterRendererInfos, mainRenderer, model, Modules.Unlockables.paladinPoisonSkinDef);
             specterSkin.meshReplacements = new SkinDef.MeshReplacement[]  
@@ -348,13 +393,21 @@ namespace PaladinMod.Modules
                 new SkinDef.MeshReplacement
                 {
                     mesh = Assets.poisonSwordMesh,
-                    renderer = defaultRenderers[0].renderer
+                    renderer = defaultRenderers[0].renderer 
+                },
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.defaultCapeMesh,
+                    renderer = defaultRenderers[1].renderer
                 }
             };
 
             specterSkin.gameObjectActivations = capeActivations;
 
             if (Modules.Config.cursed.Value) skinDefs.Add(specterSkin);
+
+            CSSPreviewController.skinChangeResponses[5].triggerSkin = specterSkin;
+
             #endregion
 
             #region DripSkin
@@ -382,6 +435,8 @@ namespace PaladinMod.Modules
             dripSkin.gameObjectActivations = defaultActivations;
 
             if (Modules.Config.cursed.Value) skinDefs.Add(dripSkin);
+
+            CSSPreviewController.skinChangeResponses[6].triggerSkin = dripSkin;
             #endregion
 
             #region MinecraftSkin
@@ -409,8 +464,9 @@ namespace PaladinMod.Modules
             minecraftSkin.gameObjectActivations = defaultActivations;
 
             if (Modules.Config.cursed.Value) skinDefs.Add(minecraftSkin);
-            #endregion
 
+            CSSPreviewController.skinChangeResponses[7].triggerSkin = minecraftSkin;
+            #endregion
 
             skinController.skins = skinDefs.ToArray();
 

@@ -13,7 +13,7 @@ namespace PaladinMod.Achievements
         public override string PrerequisiteUnlockableIdentifier { get; } = "PALADIN_UNLOCKABLE_REWARD_ID";
         public override string UnlockableNameToken { get; } = "PALADIN_TYPHOONUNLOCKABLE_UNLOCKABLE_NAME";
         public override string AchievementDescToken { get; } = "PALADIN_TYPHOONUNLOCKABLE_ACHIEVEMENT_DESC";
-        public override Sprite Sprite { get; } = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement");
+        public override Sprite Sprite { get; } = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texGrandMasteryAchievement");
 
         public override Func<string> GetHowToUnlock { get; } = (() => Language.GetStringFormatted("UNLOCK_VIA_ACHIEVEMENT_FORMAT", new object[]
                             {

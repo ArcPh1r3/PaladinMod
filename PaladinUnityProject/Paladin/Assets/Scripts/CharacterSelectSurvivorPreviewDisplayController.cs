@@ -23,6 +23,7 @@ namespace RoR2 {
         // Token: 0x020001E9 RID: 489
         [Serializable]
         public struct SkillChangeResponse {
+            //for my benefit. not in ror2
             public string name;
             //// Token: 0x04000A8B RID: 2699
             //public SkillFamily triggerSkillFamily;
@@ -37,6 +38,7 @@ namespace RoR2 {
         // Token: 0x020001EA RID: 490
         [Serializable]
         public struct SkinChangeResponse {
+            //for my benefit. not in ror2
             public string name;
             //// Token: 0x04000A8E RID: 2702
             //public SkinDef triggerSkin;
