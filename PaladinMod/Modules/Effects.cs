@@ -64,7 +64,7 @@ namespace PaladinMod.Modules
                 swingSoundString = Sounds.Swing,
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFX,
-                swingEffect = Assets.swordSwing,
+                swingEffect = Assets.swordSwing, 
                 spinSlashEffect = Assets.spinningSlashFX,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX,
                 eyeTrailColor = new Color(255 / 255, 215 / 255, 0)

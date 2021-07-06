@@ -290,7 +290,7 @@ namespace PaladinMod.Modules
                 new SkinDef.MeshReplacement
                 {
                     mesh = Assets.gmMesh,
-                    renderer = defaultRenderers[4].renderer
+                    renderer = defaultRenderers[4].renderer 
                 },
                 new SkinDef.MeshReplacement
                 {

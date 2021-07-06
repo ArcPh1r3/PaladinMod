@@ -205,9 +205,9 @@ namespace PaladinMod.States
                 if (this.animator) this.animator.SetFloat("Slash.playbackRate", 0f);
             }
 
-            if (this.stopwatch >= this.duration * 0.225f && this.stopwatch <= this.duration * 0.4f)
+            if (this.stopwatch >= this.duration * 0.2669f && this.stopwatch <= this.duration * 0.4f)
             {
-                this.FireAttack();
+                this.FireAttack(); 
             }
 
             if (base.isAuthority)
@@ -218,7 +218,7 @@ namespace PaladinMod.States
                     nextSwing.swingIndex = this.swingIndex + 1;
                     this.outer.SetNextState(nextSwing);
                     return;
-                }
+                } 
 
                 if (base.fixedAge >= this.duration)
                 {
