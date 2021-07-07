@@ -117,6 +117,7 @@ namespace PaladinMod.Modules
         public static Mesh poisonMesh;
         public static Mesh poisonSwordMesh;
         public static Mesh specterMesh;
+        public static Mesh specterSwordMesh;
         //public static Mesh hunterMesh;
         public static Mesh dripMesh;
         public static Mesh batMesh;
@@ -326,7 +327,8 @@ namespace PaladinMod.Modules
             gmCapeMesh = mainAssetBundle.LoadAsset<Mesh>("meshCapeGM");
             poisonMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinNkuhana");
             poisonSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordNkuhana");
-            specterMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinSpecter");  
+            specterMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinSpecter");
+            specterSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordSpecter");
             //hunterMesh = mainAssetBundle.LoadAsset<Mesh>("HunterMesh");
             dripMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinDrip");
             batMesh = mainAssetBundle.LoadAsset<Mesh>("meshBat");

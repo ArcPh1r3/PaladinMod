@@ -252,7 +252,7 @@ namespace PaladinMod.Modules
 
             masteryRendererInfos[0].defaultMaterial = lunarSwordMat;
             //masteryRendererInfos[1].defaultMaterial = CreateMaterial("matLunarCape");
-            masteryRendererInfos[2].defaultMaterial = CreateMaterial("matLunarPaladin", 5, Color.white, 1f);
+            masteryRendererInfos[4].defaultMaterial = CreateMaterial("matLunarPaladin", 5, Color.white, 1f);
 
             SkinDef masterySkin = CreateSkinDef("PALADINBODY_LUNAR_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"), masteryRendererInfos, mainRenderer, model, Modules.Unlockables.paladinMasterySkinDef);
             masterySkin.meshReplacements = new SkinDef.MeshReplacement[]
@@ -392,7 +392,7 @@ namespace PaladinMod.Modules
                 },
                 new SkinDef.MeshReplacement
                 {
-                    mesh = Assets.poisonSwordMesh,
+                    mesh = Assets.specterSwordMesh,
                     renderer = defaultRenderers[0].renderer 
                 },
                 new SkinDef.MeshReplacement

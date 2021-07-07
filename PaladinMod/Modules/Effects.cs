@@ -12,8 +12,8 @@ namespace PaladinMod.Modules
         public struct PaladinSkinInfo
         {
             public string skinName;
-
-            public string passiveEffectName;
+             
+            public string passiveEffectName; 
 
             public string swingSoundString;
             public bool isWeaponBlunt;

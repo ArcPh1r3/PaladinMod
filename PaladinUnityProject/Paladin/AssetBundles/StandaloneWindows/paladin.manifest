@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1943919161
+CRC: 3197329333
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b601bdf8259782d9f9a4f4d85422bd9f
+    Hash: 478dc21079ec2997b306fe779eccbc7f
   TypeTreeHash:
     serializedVersion: 2
     Hash: 20b679f07b4d8415ffada85ca5f50c6e
@@ -135,6 +135,7 @@ Assets:
 - Assets/Paladin/Effects/SwingEffects/SpinSlashEffectBlack.prefab
 - Assets/Paladin/Textures/Shields/texPursuerShield.png
 - Assets/Paladin/Effects/SwingEffects/EmpSpinSlashEffectClay.prefab
+- Assets/Paladin/Mesh/meshSwordSpecter.mesh
 - Assets/NemPaladin/Textures/T_NemPaladin_C.png
 - Assets/Paladin/Textures/Shields/tex_WatcherDagger.png
 - Assets/Paladin/Textures/Shields/texHavelShield.dds
@@ -370,6 +371,7 @@ Assets:
 - Assets/Paladin/Effects/SwingEffects/EmpSpinSlashEffect.prefab
 - Assets/Paladin/Animations/Crystal_NNE.controller
 - Assets/Paladin/Icons/HealZoneIcon.png
+- Assets/Paladin/Textures/TexLunarSwordNormal.png
 - Assets/Paladin/Effects/LightningSpear.prefab
 - Assets/Paladin/Textures/texPaladinGMEmissionSword.png
 - Assets/Paladin/Textures/texPaladin.png

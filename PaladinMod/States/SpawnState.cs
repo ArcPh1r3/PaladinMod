@@ -69,7 +69,6 @@ namespace PaladinMod.States
                     overlay.destroyComponentOnEnd = true;
                     overlay.originalMaterial = Resources.Load<Material>("Materials/matHuntressFlashBright");
                     overlay.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
-                    Debug.LogWarning("n");
 
                     PrintController printController = this.modelTransform.gameObject.AddComponent<PrintController>();
                     printController.printTime = EntityStates.ClayBruiserMonster.SpawnState.printDuration;
