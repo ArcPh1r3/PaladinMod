@@ -71,15 +71,15 @@ namespace PaladinMod.Modules
             });
 
             skinList.Add(new PaladinSkinInfo
-            {
-                skinName = "PALADINBODY_POISON_SKIN_NAME",
+            { 
+                skinName = "PALADINBODY_POISON_SKIN_NAME", 
                 passiveEffectName = "SwordActiveEffectGreen",
                 swingSoundString = Sounds.Swing,
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFXGreen,
                 swingEffect = Assets.swordSwingGreen,
                 spinSlashEffect = Assets.spinningSlashFXGreen,
-                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXGreen,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXGreen, 
                 eyeTrailColor = new Color(133 / 255, 255 / 255, 147 / 255)
             });
 

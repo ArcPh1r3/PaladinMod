@@ -281,8 +281,8 @@ namespace PaladinMod.Modules
             defaultRenderers.CopyTo(grandMasteryRendererInfos, 0);
 
             grandMasteryRendererInfos[0].defaultMaterial = CreateMaterial("matPaladinGMSword", StaticValues.maxSwordGlow, Color.white);
-            grandMasteryRendererInfos[1].defaultMaterial = CreateMaterial("matPaladinGM");
-            grandMasteryRendererInfos[4].defaultMaterial = CreateMaterial("matPaladinGM", 15, Color.white, 1f);
+            grandMasteryRendererInfos[1].defaultMaterial = CreateMaterial("matPaladinGM", 10, Color.white);
+            grandMasteryRendererInfos[4].defaultMaterial = CreateMaterial("matPaladinGM", 10, Color.white);
 
             SkinDef grandMasterySkin = CreateSkinDef("PALADINBODY_TYPHOON_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texGrandMasteryAchievement"), grandMasteryRendererInfos, mainRenderer, model, Modules.Unlockables.paladinGrandMasterySkinDef);
             grandMasterySkin.meshReplacements = new SkinDef.MeshReplacement[]
@@ -306,7 +306,7 @@ namespace PaladinMod.Modules
 
             grandMasterySkin.gameObjectActivations = GMActivations; 
 
-            //if (PaladinPlugin.starstormInstalled) 
+            if (PaladinPlugin.starstormInstalled) 
                 skinDefs.Add(grandMasterySkin);
 
             CSSPreviewController.skinChangeResponses[2].triggerSkin = grandMasterySkin; 

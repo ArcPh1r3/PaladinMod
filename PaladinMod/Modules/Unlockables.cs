@@ -46,7 +46,7 @@ namespace PaladinMod.Modules
 
             if (PaladinPlugin.starstormInstalled)
             {
-                AddUnlockable<Achievements.GrandMasteryAchievement>(true);
+                paladinGrandMasterySkinDef = AddUnlockable<Achievements.GrandMasteryAchievement>(true);
             }
         }
 

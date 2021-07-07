@@ -363,6 +363,8 @@ ModelImporter:
     400356: meshCapeGMSexy
     2100000: matPaladinGM
     2100002: matSword
+    2100004: matPaladin
+    2100006: matSword.002
     4300000: meshPaladinGMSexy
     4300002: meshSwordGMSexy
     4300004: meshCapeGMSexy

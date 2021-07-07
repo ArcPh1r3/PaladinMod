@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4096876981
+CRC: 671745728
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 418bf07964037902914ecde04e72d946
+    Hash: cc01358503c83438fa333bfea8d98a65
   TypeTreeHash:
     serializedVersion: 2
     Hash: 20b679f07b4d8415ffada85ca5f50c6e
@@ -300,6 +300,7 @@ Assets:
 - Assets/Paladin/mdlPaladin.prefab
 - Assets/Paladin/Textures/Shields/texArtyShieldNormal.dds
 - Assets/LunarKnight/Materials/matLunarKnight.mat
+- Assets/Paladin/Textures/texPaladinGMEmissionOld.png
 - Assets/Paladin/Icons/texDripAchievement.png
 - Assets/Paladin/Icons/texMainSkin.png
 - Assets/Paladin/VFX/matHitSpark.mat
@@ -461,6 +462,7 @@ Assets:
 - Assets/Paladin/Textures/texPaladinLunarEmission.png
 - Assets/Paladin/Shields/DisplaySunlightShield.prefab
 - Assets/NemPaladin/Textures/texHereticFeatherEmission.png
+- Assets/Paladin/Textures/texPaladinLunarEmissionOld.png
 - Assets/Paladin/Effects/SwingEffects/PaladinSwingGreen.prefab
 - Assets/Paladin/Mesh/meshSwordGMFuck.004.mesh
 - Assets/Paladin/Animations/Crystals_FuckMe.anim
