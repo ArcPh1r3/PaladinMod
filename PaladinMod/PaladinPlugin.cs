@@ -22,7 +22,7 @@ namespace PaladinMod
     [BepInDependency("com.K1454.SupplyDrop", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.TeamMoonstorm.Starstorm2", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "1.5.69")] 
+    [BepInPlugin(MODUID, "Paladin", "1.5.0")] 
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
