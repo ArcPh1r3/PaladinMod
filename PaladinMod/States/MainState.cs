@@ -83,6 +83,9 @@ namespace PaladinMod.States
                 {
                     this.outer.SetInterruptState(new Emotes.PointDown(), InterruptPriority.Any);
                     return;
+                } else if (Input.GetKeyDown(Modules.Config.swordPoseKeybind.Value)) {
+                    this.outer.SetInterruptState(new Emotes.TestPose(), InterruptPriority.Any);
+                    return;
                 }
             }
         }

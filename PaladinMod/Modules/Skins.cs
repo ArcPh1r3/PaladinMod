@@ -15,8 +15,7 @@ namespace PaladinMod.Modules
         /// <summary>
         /// create an array of all gameobjects that are activated/deactivated by skins, then for each skin pass in the specific objects that will be active
         /// </summary>
-        /// <param name="allObjects">array of all gameobjects that are activated/deactivated by skins</param>
-        /// <param name="activatedObjects">specific objects that will be active</param>
+        /// <param name="activatedObjects">specific objects that will be active. add these objects to the allGameObjectActivations list</param>
         /// <returns></returns>
         private static SkinDef.GameObjectActivation[] getActivations(params GameObject[] activatedObjects) {
 
@@ -128,10 +127,10 @@ namespace PaladinMod.Modules
         {
             if (!PaladinPlugin.commandoMat) PaladinPlugin.commandoMat = Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
             
-            Material cachedMaterial = cachedMaterials.Find((item) => { return item.name == materialName; });
-            if (cachedMaterial) {
-                return cachedMaterial;
-            }
+            //Material cachedMaterial = cachedMaterials.Find((item) => { return item.name == materialName; });
+            //if (cachedMaterial) {
+            //    return cachedMaterial;
+            //}
 
             Material mat = UnityEngine.Object.Instantiate<Material>(PaladinPlugin.commandoMat);
             Material tempMat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
@@ -148,17 +147,17 @@ namespace PaladinMod.Modules
             mat.SetTexture("_EmTex", tempMat.GetTexture("_EmissionMap"));
             mat.SetFloat("_NormalStrength", normalStrength);
 
-            cachedMaterials.Add(mat);
+            //cachedMaterials.Add(mat);
             return mat;
         }
 
-        public static void RegisterSkins()
+        public static void RegisterSkins() 
         {
             GameObject bodyPrefab = Prefabs.paladinPrefab;
 
             GameObject model = bodyPrefab.GetComponentInChildren<ModelLocator>().modelTransform.gameObject;
             CharacterModel characterModel = model.GetComponent<CharacterModel>();
-
+             
             ModelSkinController skinController = model.AddComponent<ModelSkinController>();
             ChildLocator childLocator = model.GetComponent<ChildLocator>();
 
@@ -350,7 +349,7 @@ namespace PaladinMod.Modules
             defaultRenderers.CopyTo(clayRendererInfos, 0);
 
             clayRendererInfos[0].defaultMaterial = CreateMaterial("matClayPaladin", StaticValues.maxSwordGlow, Color.white);
-            clayRendererInfos[4].defaultMaterial = CreateMaterial("matClayPaladin");
+            clayRendererInfos[4].defaultMaterial = CreateMaterial("matClayPaladin", 10, Color.white);
 
             SkinDef claySkin = CreateSkinDef("PALADINBODY_CLAY_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texClayAchievement"), clayRendererInfos, mainRenderer, model, Modules.Unlockables.paladinClaySkinDef);
             claySkin.meshReplacements = new SkinDef.MeshReplacement[]

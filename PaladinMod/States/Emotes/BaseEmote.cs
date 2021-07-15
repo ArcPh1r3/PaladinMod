@@ -15,7 +15,7 @@ namespace PaladinMod.States.Emotes
 
         private uint activePlayID;
         private Animator animator;
-        private ChildLocator childLocator;
+        protected ChildLocator childLocator;
         private CharacterCameraParams originalCameraParams;
         protected PaladinSwordController swordController;
         public LocalUser localUser;
@@ -118,6 +118,9 @@ namespace PaladinMod.States.Emotes
                 else if (Input.GetKeyDown(Modules.Config.pointKeybind.Value))
                 {
                     this.outer.SetInterruptState(new PointDown(), InterruptPriority.Any);
+                    return;
+                } else if (Input.GetKeyDown(Modules.Config.swordPoseKeybind.Value)) {
+                    this.outer.SetInterruptState(new TestPose(), InterruptPriority.Any);
                     return;
                 }
             }

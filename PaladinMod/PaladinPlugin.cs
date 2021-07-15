@@ -32,6 +32,7 @@ namespace PaladinMod
 
     public class PaladinPlugin : BaseUnityPlugin
     {
+        //keeping id the same so it versions over previous paladin
         public const string MODUID = "com.rob.Paladin";
          
         public static PaladinPlugin instance;
