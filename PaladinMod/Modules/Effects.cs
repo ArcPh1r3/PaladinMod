@@ -20,6 +20,7 @@ namespace PaladinMod.Modules
 
             public GameObject hitEffect;
             public GameObject swingEffect;
+            public GameObject swordBeamProjectile;
             public GameObject spinSlashEffect;
             public GameObject empoweredSpinSlashEffect;
 
@@ -31,14 +32,14 @@ namespace PaladinMod.Modules
             skinList = new List<PaladinSkinInfo>();
 
             #region Skins
-            skinList.Add(new PaladinSkinInfo
-            {
+            skinList.Add(new PaladinSkinInfo {
                 skinName = "PALADINBODY_DEFAULT_SKIN_NAME",
                 passiveEffectName = "SwordActiveEffect",
                 swingSoundString = Sounds.Swing,
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFX,
                 swingEffect = Assets.swordSwing,
+                swordBeamProjectile = Projectiles.swordBeam,
                 spinSlashEffect = Assets.spinningSlashFX,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX,
                 eyeTrailColor = Color.white
@@ -52,6 +53,19 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFX,
                 swingEffect = Assets.swordSwing,
+                swordBeamProjectile = Projectiles.swordBeam,
+                spinSlashEffect = Assets.spinningSlashFX,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX,
+                eyeTrailColor = new Color(196 / 255, 255 / 255, 254 / 255)
+            });
+            skinList.Add(new PaladinSkinInfo {
+                skinName = "PALADINBODY_LUNARKNIGHT_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffect",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = true,
+                hitEffect = Assets.hitFX,
+                swingEffect = Assets.swordSwing,
+                swordBeamProjectile = Projectiles.swordBeam,
                 spinSlashEffect = Assets.spinningSlashFX,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX,
                 eyeTrailColor = new Color(196 / 255, 255 / 255, 254 / 255)
@@ -64,7 +78,20 @@ namespace PaladinMod.Modules
                 swingSoundString = Sounds.Swing,
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFX,
-                swingEffect = Assets.swordSwing, 
+                swingEffect = Assets.swordSwing,
+                swordBeamProjectile = Projectiles.swordBeam,
+                spinSlashEffect = Assets.spinningSlashFX,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX,
+                eyeTrailColor = new Color(255 / 255, 215 / 255, 0)
+            });
+            skinList.Add(new PaladinSkinInfo {
+                skinName = "PALADINBODY_TYPHOONLEGACY_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffectGM",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFX,
+                swingEffect = Assets.swordSwing,
+                swordBeamProjectile = Projectiles.swordBeam,
                 spinSlashEffect = Assets.spinningSlashFX,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX,
                 eyeTrailColor = new Color(255 / 255, 215 / 255, 0)
@@ -78,8 +105,21 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFXGreen,
                 swingEffect = Assets.swordSwingGreen,
+                swordBeamProjectile = Projectiles.swordBeamGreen,
                 spinSlashEffect = Assets.spinningSlashFXGreen,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXGreen, 
+                eyeTrailColor = new Color(133 / 255, 255 / 255, 147 / 255)
+            });
+            skinList.Add(new PaladinSkinInfo {
+                skinName = "PALADINBODY_POISONLEGACY_SKIN_NAME",
+                passiveEffectName = "SwordActiveEffectGreenOld",
+                swingSoundString = Sounds.Swing,
+                isWeaponBlunt = false,
+                hitEffect = Assets.hitFXGreen,
+                swingEffect = Assets.swordSwingGreen,
+                swordBeamProjectile = Projectiles.swordBeamGreen,
+                spinSlashEffect = Assets.spinningSlashFXGreen,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXGreen,
                 eyeTrailColor = new Color(133 / 255, 255 / 255, 147 / 255)
             });
 
@@ -91,6 +131,7 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFXClay,
                 swingEffect = Assets.swordSwingClay,
+                swordBeamProjectile = Projectiles.swordBeamNi,
                 spinSlashEffect = Assets.spinningSlashFXClay,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXClay,
                 eyeTrailColor = new Color(255 / 255, 64 / 255, 64 / 255)
@@ -103,6 +144,7 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFXRed,
                 swingEffect = Assets.swordSwingRed,
+                swordBeamProjectile = Projectiles.swordBeamRed,
                 spinSlashEffect = Assets.spinningSlashFXRed,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXRed,
                 //eyeTrailColor = new Color(248 / 255, 23 / 255, 83 / 255)
@@ -115,6 +157,7 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = true,
                 hitEffect = Assets.hitFXBlunt,
                 swingEffect = Assets.swordSwingBat,
+                swordBeamProjectile = Projectiles.swordBeamNi,
                 spinSlashEffect = Assets.spinningSlashFX,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX,
                 eyeTrailColor = Color.white
@@ -128,6 +171,7 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFX,
                 swingEffect = Assets.swordSwing,
+                swordBeamProjectile = Projectiles.swordBeam,
                 spinSlashEffect = Assets.spinningSlashFX,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX,
                 eyeTrailColor = Color.white
@@ -143,6 +187,7 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFXRed,
                 swingEffect = Assets.swordSwingFlame,
+                swordBeamProjectile = Projectiles.swordBeamRed,
                 spinSlashEffect = Assets.spinningSlashFXFlame,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXFlame
             });
@@ -154,6 +199,7 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFXPurple,
                 swingEffect = Assets.swordSwingPurple,
+                swordBeamProjectile = Projectiles.swordBeamRed,
                 spinSlashEffect = Assets.spinningSlashFXPurple,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXPurple
             });
@@ -165,6 +211,7 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFX,
                 swingEffect = Assets.swordSwingWhite,
+                swordBeamProjectile = Projectiles.swordBeam,
                 spinSlashEffect = Assets.spinningSlashFX,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX
             });
@@ -187,6 +234,7 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFXYellow,
                 swingEffect = Assets.swordSwingYellow,
+                swordBeamProjectile = Projectiles.swordBeamNi,
                 spinSlashEffect = Assets.spinningSlashFXYellow,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXYellow
             });
@@ -198,6 +246,7 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFXRed,
                 swingEffect = Assets.swordSwingFlame,
+                swordBeamProjectile = Projectiles.swordBeamNi,
                 spinSlashEffect = Assets.spinningSlashFXFlame,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXFlame
             });
@@ -209,6 +258,7 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = true,
                 hitEffect = Assets.hitFXBlunt,
                 swingEffect = Assets.swordSwingWhite,
+                swordBeamProjectile = Projectiles.swordBeam,
                 spinSlashEffect = Assets.spinningSlashFX,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX
             });
@@ -220,6 +270,7 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFXYellow,
                 swingEffect = Assets.swordSwingYellow,
+                swordBeamProjectile = Projectiles.swordBeamNi,
                 spinSlashEffect = Assets.spinningSlashFXYellow,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXYellow
             });
@@ -231,6 +282,7 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFXRed,
                 swingEffect = Assets.swordSwingRed,
+                swordBeamProjectile = Projectiles.swordBeamRed,
                 spinSlashEffect = Assets.spinningSlashFXRed,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXRed
             });
@@ -242,6 +294,7 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFXRed,
                 swingEffect = Assets.swordSwingFlame,
+                swordBeamProjectile = Projectiles.swordBeamNi,
                 spinSlashEffect = Assets.spinningSlashFXFlame,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXFlame
             });
@@ -253,6 +306,7 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFXYellow,
                 swingEffect = Assets.swordSwingYellow,
+                swordBeamProjectile = Projectiles.swordBeamNi,
                 spinSlashEffect = Assets.spinningSlashFXYellow,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXYellow
             });
@@ -264,6 +318,7 @@ namespace PaladinMod.Modules
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFXBlack,
                 swingEffect = Assets.swordSwingBlack,
+                swordBeamProjectile = Projectiles.swordBeamRed,
                 spinSlashEffect = Assets.spinningSlashFXBlack,
                 empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFXBlack
             });

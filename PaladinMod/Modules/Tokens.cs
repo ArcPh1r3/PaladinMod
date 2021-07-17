@@ -25,8 +25,11 @@ namespace PaladinMod.Modules
 
             LanguageAPI.Add("PALADINBODY_DEFAULT_SKIN_NAME", "Default");
             LanguageAPI.Add("PALADINBODY_LUNAR_SKIN_NAME", "Lunar");
+            LanguageAPI.Add("PALADINBODY_LUNARKNIGHT_SKIN_NAME", "Lunar Knight");
             LanguageAPI.Add("PALADINBODY_TYPHOON_SKIN_NAME", "Sovereign");
+            LanguageAPI.Add("PALADINBODY_TYPHOONLEGACY_SKIN_NAME", "Sovereign (legacy)");
             LanguageAPI.Add("PALADINBODY_POISON_SKIN_NAME", "Corruption");
+            LanguageAPI.Add("PALADINBODY_POISONLEGACY_SKIN_NAME", "Corruption (legacy)");
             LanguageAPI.Add("PALADINBODY_CLAY_SKIN_NAME", "Aphelian");
             LanguageAPI.Add("PALADINBODY_SPECTER_SKIN_NAME", "Specter");
             LanguageAPI.Add("PALADINBODY_DRIP_SKIN_NAME", "Drip");

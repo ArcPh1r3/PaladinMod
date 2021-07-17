@@ -227,6 +227,12 @@ namespace PaladinMod.Misc
             }
         }
 
+        public GameObject swordBeam {
+            get {
+                return this.skinInfo.swordBeamProjectile;
+            }
+        }
+
         public GameObject hitEffect
         {
             get

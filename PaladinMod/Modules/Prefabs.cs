@@ -70,6 +70,53 @@ namespace PaladinMod.Modules
                     childName = "MeshCreepyArmsRight",
                     material = Modules.Skins.CreateMaterial("matPaladinNkuhana", 3, Color.white)
                 },
+                #region forgive me for i do not forgive myself
+                new CustomRendererInfo
+                {
+                    childName = "CrownCrystal0",
+                    material = Modules.Skins.CreateMaterial("matPaladinGMSword")
+                },
+                new CustomRendererInfo
+                {
+                    childName = "CrownCrystal1",
+                    material = Modules.Skins.CreateMaterial("matPaladinGMSword")
+                },
+                new CustomRendererInfo
+                {
+                    childName = "CrownCrystal2",
+                    material = Modules.Skins.CreateMaterial("matPaladinGMSword")
+                },
+                new CustomRendererInfo
+                {
+                    childName = "CrownCrystal3",
+                    material = Modules.Skins.CreateMaterial("matPaladinGMSword")
+                },
+                new CustomRendererInfo
+                {
+                    childName = "CrownCrystal4",
+                    material = Modules.Skins.CreateMaterial("matPaladinGMSword")
+                },
+                new CustomRendererInfo
+                {
+                    childName = "CrownCrystal-1",
+                    material = Modules.Skins.CreateMaterial("matPaladinGMSword")
+                },
+                new CustomRendererInfo
+                {
+                    childName = "CrownCrystal-2",
+                    material = Modules.Skins.CreateMaterial("matPaladinGMSword")
+                },
+                new CustomRendererInfo
+                {
+                    childName = "CrownCrystal-3",
+                    material = Modules.Skins.CreateMaterial("matPaladinGMSword")
+                },
+                new CustomRendererInfo
+                {
+                    childName = "CrownCrystal-4",
+                    material = Modules.Skins.CreateMaterial("matPaladinGMSword") 
+                },
+#endregion 
                 new CustomRendererInfo
                 {
                     childName = "Model",
@@ -255,9 +302,14 @@ namespace PaladinMod.Modules
 
             for (int i = 0; i < rendererInfo.Length; i++)
             {
+                Renderer renderer = childLocator.FindChild(rendererInfo[i].childName).GetComponent<SkinnedMeshRenderer>();
+                if (renderer == null) {
+                    renderer = childLocator.FindChild(rendererInfo[i].childName).GetComponent<MeshRenderer>();
+                }
+
                 rendererInfos.Add(new CharacterModel.RendererInfo
                 {
-                    renderer = childLocator.FindChild(rendererInfo[i].childName).GetComponent<SkinnedMeshRenderer>(), 
+                    renderer = renderer, 
                     defaultMaterial = rendererInfo[i].material,
                     ignoreOverlays = rendererInfo[i].ignoreOverlays,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On
