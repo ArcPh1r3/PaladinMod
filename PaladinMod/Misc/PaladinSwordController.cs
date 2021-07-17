@@ -75,7 +75,7 @@ namespace PaladinMod.Misc
                 Inventory inventory = this.body.master.inventory;
                 if (inventory)
                 {
-                    bool hasLeftHandWeapon = (inventory.GetItemCount(RoR2Content.Items.BleedOnHit) > 0 || inventory.GetItemCount(RoR2Content.Items.ArmorReductionOnHit) > 0);
+                    bool hasLeftHandWeapon = (inventory.GetItemCount(RoR2Content.Items.BleedOnHit) > 0 || inventory.GetItemCount(RoR2Content.Items.ArmorReductionOnHit) > 0 || inventory.GetItemCount(RoR2Content.Items.CritHeal) > 0);
 
                     if (PaladinPlugin.aetheriumInstalled)
                     {

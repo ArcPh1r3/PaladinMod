@@ -32,7 +32,13 @@ namespace PaladinMod.Modules
 
             // add item displays here
             //  HIGHLY recommend using KingEnderBrine's ItemDisplayPlacementHelper mod for this
-            #region Item Displays
+/*
+                            childName = {childName},
+                            localPos = {localPos},
+                            localAngles = {localAngles},
+                            localScale = {localScale}
+*/
+            #region Regular Item Displays
 
             #region Essential
             itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
@@ -99,8 +105,6 @@ localScale = new Vector3(0.15F, 0.15F, 0.15F),
             });
             #endregion
 
-            if (Config.itemDisplays.Value)
-            {
                 #region NonEssential
                 itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
@@ -219,9 +223,9 @@ localScale = new Vector3(1.2428F, 1.2428F, 1.2299F),
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayHoof"),
                             childName = "CalfL",
-                            localPos = new Vector3(0.00394F, 0.48843F, -0.05985F),
-                            localAngles = new Vector3(80.52387F, 9.70587F, 22.86975F),
-                            localScale = new Vector3(0.17124F, 0.17124F, 0.1534F),
+                            localPos = new Vector3(-0.03586F, 0.49177F, -0.04191F),
+                            localAngles = new Vector3(80.42696F, 8.01645F, 347.4096F),
+                            localScale = new Vector3(0.17124F, 0.16339F, 0.14453F),
                             limbMask = LimbFlags.None
                         }
                         }
@@ -344,10 +348,10 @@ localScale = new Vector3(0.3814F, 0.3814F, 0.3814F),
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayWarbanner"),
-                            childName = "Stomach",
-                            localPos = new Vector3(0.01679F, 0.21163F, -0.23691F),
-                            localAngles = new Vector3(309.5242F, 180F, 270F),
-                            localScale = new Vector3(0.45769F, 0.45769F, 0.45769F),
+                            childName = "HandL",
+                            localPos = new Vector3(0.01435F, 0.17578F, -0.23544F),
+                            localAngles = new Vector3(315.682F, 177.5153F, 272.9106F),
+                            localScale = new Vector3(0.53229F, 0.53229F, 0.53229F),
                             limbMask = LimbFlags.None
                         }
                         }
@@ -428,11 +432,10 @@ localScale = new Vector3(0.3814F, 0.3814F, 0.3814F),
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayAegis"),
-childName = "LowerArmL",
-localPos = new Vector3(0.125F, -0.0741F, 0F),
-localAngles = new Vector3(87.2315F, 90F, 180F),
-localScale = new Vector3(0.4326F, 0.4326F, 0.4326F),
-                            limbMask = LimbFlags.None
+                            childName = "LowerArmL",
+                            localPos = new Vector3(0.09811F, 0.15264F, -0.04067F),
+                            localAngles = new Vector3(83.36375F, 102.634F, 171.2473F),
+                            localScale = new Vector3(0.4326F, 0.4326F, 0.4326F),
                         }
                         }
                     }
@@ -513,9 +516,9 @@ localScale = new Vector3(0.3351F, 0.3351F, 0.3351F),
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayIceRing"),
                             childName = "Sword",
-                            localPos = new Vector3(0.00085F, 0.20191F, 0.00001F),
+                            localPos = new Vector3(-0.00076F, 0.18081F, -0.00001F),
                             localAngles = new Vector3(274.3965F, 90.00002F, 230.002F),
-                            localScale = new Vector3(0.5317F, 0.5317F, 0.5317F),
+                            localScale = new Vector3(0.69889F, 0.69889F, 0.58687F),
                             limbMask = LimbFlags.None
                         }
                         }
@@ -533,10 +536,10 @@ localScale = new Vector3(0.3351F, 0.3351F, 0.3351F),
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayFireRing"),
-childName = "Sword",
-localPos = new Vector3(0.0051F, 0.2746F, 0F),
-localAngles = new Vector3(274.3965F, 90F, 270F),
-localScale = new Vector3(0.5317F, 0.5317F, 0.5317F),
+                            childName = "Sword",
+                            localPos = new Vector3(0.00438F, 0.26471F, -0.00007F),
+                            localAngles = new Vector3(274.3965F, 90F, 270F),
+                            localScale = new Vector3(0.67664F, 0.67664F, 0.53723F),
                             limbMask = LimbFlags.None
                         }
                         }
@@ -1309,8 +1312,8 @@ localScale = new Vector3(0.3395F, 0.3395F, -0.3395F),
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBrokenMask"),
                             childName = "CalfR",
-                            localPos = new Vector3(0.13797F, 0.3404F, 0.07933F),
-                            localAngles = new Vector3(348.2674F, 59.21594F, 346.5542F),
+                            localPos = new Vector3(0.17945F, 0.26677F, -0.04186F),
+                            localAngles = new Vector3(357.2185F, 90.88068F, 180.2081F),
                             localScale = new Vector3(0.31593F, 0.31593F, 0.31593F),
                             limbMask = LimbFlags.None
                         }
@@ -1456,9 +1459,9 @@ localScale = new Vector3(0.6914F, 0.6914F, 0.6914F),
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBirdHeart"),
                             childName = "Root",
-                            localPos = new Vector3(-1.04505F, 1.30794F, -0.04457F),
-                            localAngles = new Vector3(12.69814F, 22.32321F, 158.0208F),
-                            localScale = new Vector3(0.32864F, 0.32864F, 0.32864F),
+localPos = new Vector3(-1.3761F, -0.06751F, 2.9999F),
+localAngles = new Vector3(90F, 0F, 0F),
+localScale = new Vector3(0.32864F, 0.32864F, 0.32864F),
                             limbMask = LimbFlags.None
                         }
                         }
@@ -1709,8 +1712,8 @@ localScale = new Vector3(0.4448F, 0.5076F, 0.4448F),
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayStealthkit"),
                             childName = "ThighL",
                             localPos = new Vector3(-0.10296F, 0.55226F, 0.16297F),
-                            localAngles = new Vector3(83.88314F, 239.1878F, 75.82957F),
-                            localScale = new Vector3(0.303F, 0.49993F, 0.33343F),
+                            localAngles = new Vector3(83.8832F, 239.1878F, 75.82954F),
+                            localScale = new Vector3(0.41544F, 0.68545F, 0.45716F),
                             limbMask = LimbFlags.None
                         }
                         }
@@ -1990,9 +1993,9 @@ localScale = new Vector3(0.0789F, 0.0789F, 0.0789F),
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayFrostRelic"),
-childName = "Root",
-localPos = new Vector3(-0.658F, 0.5246F, -2.1232F),
-localAngles = new Vector3(90F, 0F, 0F),
+                            childName = "Root",
+localPos = new Vector3(1.41676F, -0.23F, 2.99975F),
+localAngles = new Vector3(0.00002F, -0.00001F, 257.5745F),
 localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
                         }
@@ -2012,9 +2015,9 @@ localScale = new Vector3(1F, 1F, 1F),
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayTalisman"),
                             childName = "Root",
-                            localPos = new Vector3(0.8357F, 1.06047F, -1.37617F),
-                            localAngles = new Vector3(0F, 0F, 0F),
-                            localScale = new Vector3(1F, 1F, 1F),
+localPos = new Vector3(0.8357F, 1.06047F, 3F),
+localAngles = new Vector3(90F, 0F, 0F),
+localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
                         }
                         }
@@ -2053,9 +2056,9 @@ localScale = new Vector3(1F, 1F, 1F),
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayFocusedConvergence"),
-childName = "Root",
-localPos = new Vector3(-0.0554F, 1.5801F, -2.062F),
-localAngles = new Vector3(0F, 0F, 0F),
+                            childName = "Root",
+localPos = new Vector3(-0.54443F, 1.50272F, 3.212F),
+localAngles = new Vector3(90F, 0F, 0F),
 localScale = new Vector3(0.1F, 0.1F, 0.1F),
                             limbMask = LimbFlags.None
                         }
@@ -2599,9 +2602,9 @@ localScale = new Vector3(1.1682F, 1.1682F, 1.1682F),
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayMeteor"),
                             childName = "Root",
-                            localPos = new Vector3(-1.53599F, 1.70134F, 0.46027F),
-                            localAngles = new Vector3(0F, 0F, 0F),
-                            localScale = new Vector3(1F, 1F, 1F),
+localPos = new Vector3(-1.2F, 0.56994F, 3.39991F),
+localAngles = new Vector3(0F, 0F, 0F),
+localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
                         }
                         }
@@ -2620,9 +2623,9 @@ localScale = new Vector3(1.1682F, 1.1682F, 1.1682F),
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplaySawmerang"),
                             childName = "Root",
-                            localPos = new Vector3(-1.21534F, 0.94276F, -1.33412F),
-                            localAngles = new Vector3(90F, 0F, 0F),
-                            localScale = new Vector3(0.2F, 0.2F, 0.2F),
+localPos = new Vector3(-1.20444F, 0.32968F, 3.40442F),
+localAngles = new Vector3(331.6471F, 24.28736F, -0.00001F),
+localScale = new Vector3(0.2F, 0.2F, 0.2F),
                             limbMask = LimbFlags.None
                         }
                         }
@@ -2640,10 +2643,10 @@ localScale = new Vector3(1.1682F, 1.1682F, 1.1682F),
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayGravCube"),
-childName = "Root",
-localPos = new Vector3(0F, 1.2052F, -2.6039F),
+                            childName = "Root",
+localPos = new Vector3(-1.21883F, 0.33493F, 3.47181F),
 localAngles = new Vector3(0F, 0F, 0F),
-localScale = new Vector3(0.5F, 0.5F, 0.5F),
+localScale = new Vector3(1.76854F, 1.76854F, 1.76854F),
                             limbMask = LimbFlags.None
                         }
                         }
@@ -2734,9 +2737,98 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
                     }
                 });
                 #endregion
-            }
 
             if (PaladinPlugin.ancientScepterInstalled) SetupScepterDisplay();
+            #endregion
+
+            #region negro displays
+
+            if (PaladinPlugin.aetheriumInstalled) {
+                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("AccursedPotion"), 
+                                                              ItemDisplays.LoadAetheriumDisplay("AccursedPotion"),
+                                                              "ThighL",
+                                                              new Vector3(-0.23043F, 0.32284F, -0.12665F),
+                                                              new Vector3(4.45731F, 185.4647F, 177.6174F),
+                                                              new Vector3(0.9687F, 0.9687F, 0.9687F)));
+                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("VoidHeart"),
+                                                              ItemDisplays.LoadAetheriumDisplay("VoidHeart"),
+                                                              "Chest",
+                                                              new Vector3(-0.09543F, -0.19796F, 0.28118F),
+                                                              new Vector3(16.96353F, 5.14273F, 10.3974F),
+                                                              new Vector3(-0.16727F, 0.16658F, 0.15696F)));
+                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("SharkTeeth"),
+                                                              ItemDisplays.LoadAetheriumDisplay("SharkTeeth"),
+                                                              "CalfL",
+                                                              new Vector3(0.06211F, 0.25415F, -0.08777F),
+                                                              new Vector3(320.2775F, 38.01559F, 271.8767F),
+                                                              new Vector3(0.78844F, 0.78844F, 0.78844F)));
+                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("BloodSoakedShield"),
+                                                              ItemDisplays.LoadAetheriumDisplay("BloodSoakedShield"),
+                                                              "LowerArmR",
+                                                              new Vector3(0.10348F, 0.26132F, -0.01819F),
+                                                              new Vector3(356.2767F, 97.25786F, 89.52616F),
+                                                              new Vector3(0.34019F, 0.34019F, 0.34019F)));
+                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("FeatheredPlume"),
+                                                              ItemDisplays.LoadAetheriumDisplay("FeatheredPlume"),
+                                                              "Head",
+                                                              new Vector3(-0.00678F, 0.35193F, 0.02659F),
+                                                              new Vector3(357.7291F, 285.8923F, 359.0515F),
+                                                              new Vector3(0.50003F, 0.50003F, 0.50003F)));
+                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("ShieldingCore"),
+                                                              ItemDisplays.LoadAetheriumDisplay("ShieldingCore"),
+                                                              "LowerArmR",
+                                                              new Vector3(-0.23784F, 0.3286F, -0.0176F),
+                                                              new Vector3(0.97314F, 271.1276F, 357.6589F),
+                                                              new Vector3(0.31628F, 0.31628F, 0.31628F)));
+                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("UnstableDesign"),
+                                                              ItemDisplays.LoadAetheriumDisplay("UnstableDesign"),
+                                                              "Stomach",
+                                                              new Vector3(-0.05487F, 0.04344F, -0.28199F),
+                                                              new Vector3(358.3217F, 224.4477F, 1.91643F),
+                                                              new Vector3(1.24548F, 1.24548F, 0.9051F)));
+                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("WeightedAnklet"),
+                                                              ItemDisplays.LoadAetheriumDisplay("WeightedAnklet"),
+                                                              "CalfR",
+                                                              new Vector3(-0.00001F, 0.53876F, -0.01653F),
+                                                              new Vector3(0F, 0F, 0F),
+                                                              new Vector3(0.31933F, 0.31933F, 0.31933F)));
+                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("BlasterSword"),
+                                                              ItemDisplays.LoadAetheriumDisplay("BlasterSword"),
+                                                              "SwordSmearFront",
+                                                              new Vector3(-0.10833F, 2.5525F, 0.07879F),
+                                                              new Vector3(0.08772F, 40.946F, 180.1556F),
+                                                              new Vector3(0.32696F, 0.29056F, 0.12386F)));
+
+                ItemDisplayRule ringRule = CreateDisplayRule(ItemDisplays.LoadAetheriumDisplay("WitchesRing"),
+                                                              "Sword",
+                                                              new Vector3(-0.01001F, 0.36895F, -0.01177F),
+                                                              new Vector3(0F, 220.5148F, 0F),
+                                                              new Vector3(0.49134F, 0.49134F, 0.37622F));
+
+                ItemDisplayRule circleRule = CreateDisplayRule(ItemDisplays.LoadAetheriumDisplay("WitchesRingCircle"),
+                                                              "Sword",
+                                                              new Vector3(-0.00782F, 0.36927F, -0.00924F),
+                                                              new Vector3(272.2881F, 220.515F, -0.00017F),
+                                                              new Vector3(0.27066F, 0.27066F, 0.12244F));
+                itemDisplayRules.Add(CreateDisplayRuleGroupWithRules(ItemDisplays.LoadAetheriumKeyAsset("WitchesRing"), ringRule, circleRule));
+               
+                itemDisplayRules.Add(CreateFollowerDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("AlienMagnet"),
+                                                              ItemDisplays.LoadAetheriumDisplay("AlienMagnet"),
+                                                              new Vector3(1.06397F, -1.08486F, 3.27534F),
+                                                              new Vector3(0F, 0F, 359.3367F),
+                                                              new Vector3(0.1541F, 0.1541F, 0.1541F)));
+                itemDisplayRules.Add(CreateFollowerDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("InspiringDrone"),
+                                                              ItemDisplays.LoadAetheriumDisplay("InspiringDrone"),
+                                                              new Vector3(-1.44714F, -1.444F, 3.64135F),
+                                                              new Vector3(291.0149F, 90.00006F, 89.99995F),
+                                                              new Vector3(0.12676F, 0.12676F, 0.12929F)));
+                
+                itemDisplayRules.Add(CreateFollowerDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("JarOfReshaping"),
+                                                              ItemDisplays.LoadAetheriumDisplay("JarOfReshaping"),
+                                                              new Vector3(-1.2588F, 0.72566F, 3.23362F),
+                                                              new Vector3(0F, 0F, 0F),
+                                                              new Vector3(0.11192F, 0.11192F, 0.11192F)));
+            }
             #endregion
 
             itemDisplayRuleSet.keyAssetRuleGroups = itemDisplayRules.ToArray();
@@ -2839,8 +2931,42 @@ localScale = new Vector3(0.7711F, 0.7711F, 0.7711F),
                     return Aetherium.Items.WeightedAnklet.ItemBodyModelPrefab;
                 case "WitchesRing":
                     return Aetherium.Items.WitchesRing.ItemBodyModelPrefab;
+                case "WitchesRingCircle":
+                    return Aetherium.Items.WitchesRing.CircleBodyModelPrefab;
                 case "JarOfReshaping":
                     return Aetherium.Equipment.JarOfReshaping.ItemBodyModelPrefab;
+            }
+            return null;
+        }
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        public static Object LoadAetheriumKeyAsset(string name) {
+            switch (name) {
+                case "AccursedPotion":
+                    return Aetherium.Items.AccursedPotion.instance.ItemDef;
+                case "AlienMagnet":
+                    return Aetherium.Items.AlienMagnet.instance.ItemDef;
+                case "BlasterSword":
+                    return Aetherium.Items.BlasterSword.instance.ItemDef;
+                case "BloodSoakedShield":
+                    return Aetherium.Items.BloodSoakedShield.instance.ItemDef;
+                case "FeatheredPlume":
+                    return Aetherium.Items.FeatheredPlume.instance.ItemDef;
+                case "InspiringDrone":
+                    return Aetherium.Items.InspiringDrone.instance.ItemDef;
+                case "SharkTeeth":
+                    return Aetherium.Items.SharkTeeth.instance.ItemDef;
+                case "ShieldingCore":
+                    return Aetherium.Items.ShieldingCore.instance.ItemDef;
+                case "UnstableDesign":
+                    return Aetherium.Items.UnstableDesign.instance.ItemDef;
+                case "VoidHeart":
+                    return Aetherium.Items.Voidheart.instance.ItemDef;
+                case "WeightedAnklet":
+                    return Aetherium.Items.WeightedAnklet.instance.ItemDef;
+                case "WitchesRing":
+                    return Aetherium.Items.WitchesRing.instance.ItemDef;
+                case "JarOfReshaping":
+                    return Aetherium.Equipment.JarOfReshaping.instance.EquipmentDef;
             }
             return null;
         }
@@ -2908,5 +3034,60 @@ localScale = new Vector3(0.7711F, 0.7711F, 0.7711F),
             }*/
             return null;
         }
+
+
+
+        //halp
+
+        //use these
+        private static ItemDisplayRuleSet.KeyAssetRuleGroup CreateGenericDisplayRuleGroup(Object keyAsset_, GameObject itemPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
+
+            ItemDisplayRule singleRule = CreateDisplayRule(itemPrefab, childName, position, rotation, scale);
+            return CreateDisplayRuleGroupWithRules(keyAsset_, singleRule);
+        }
+        public static ItemDisplayRuleSet.KeyAssetRuleGroup CreateGenericDisplayRuleGroup(string itemName, GameObject itemPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
+
+            ItemDisplayRule singleRule = CreateDisplayRule(itemPrefab, childName, position, rotation, scale);
+            return CreateDisplayRuleGroupWithRules(Resources.Load<ItemDef>("ItemDefs/" + itemName), singleRule);
+        }
+
+        public static ItemDisplayRuleSet.KeyAssetRuleGroup CreateFollowerDisplayRuleGroup(Object keyAsset_, GameObject itemPrefab, Vector3 position, Vector3 rotation, Vector3 scale) {
+
+            ItemDisplayRule singleRule = CreateFollowerDisplayRule(itemPrefab, position, rotation, scale);
+            return CreateDisplayRuleGroupWithRules(keyAsset_, singleRule);
+        }
+        public static ItemDisplayRuleSet.KeyAssetRuleGroup CreateFollowerDisplayRuleGroup(string itemName, GameObject itemPrefab, Vector3 position, Vector3 rotation, Vector3 scale) {
+
+            ItemDisplayRule singleRule = CreateFollowerDisplayRule(itemPrefab, position, rotation, scale);
+            return CreateDisplayRuleGroupWithRules(Resources.Load<ItemDef>("ItemDefs/" + itemName), singleRule);
+        }
+
+        //they use these
+        //but use these one yourself if you are doing multiple
+        private static ItemDisplayRuleSet.KeyAssetRuleGroup CreateDisplayRuleGroupWithRules(Object keyAsset_, params ItemDisplayRule[] rules) {
+            return new ItemDisplayRuleSet.KeyAssetRuleGroup {
+                keyAsset = keyAsset_,
+                displayRuleGroup = new DisplayRuleGroup {
+                    rules = rules
+                }
+            };
+        }
+
+        private static ItemDisplayRule CreateFollowerDisplayRule(GameObject itemPrefab, Vector3 position, Vector3 rotation, Vector3 scale) {
+            return CreateDisplayRule(itemPrefab, "Root", position, rotation, scale);
+        }
+        private static ItemDisplayRule CreateDisplayRule(GameObject itemPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
+            return new ItemDisplayRule {
+                ruleType = ItemDisplayRuleType.ParentedPrefab,
+                childName = childName,
+                followerPrefab = itemPrefab,
+                limbMask = LimbFlags.None,
+                localPos = position,
+                localAngles = rotation,
+                localScale = scale
+            };
+        }
+
+
     }
 }
