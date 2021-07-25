@@ -23,7 +23,6 @@ namespace PaladinMod.Modules
 
             public GameObject hitEffect;
             public GameObject swingEffect;
-            public GameObject swordBeamProjectile;
             public GameObject spinSlashEffect;
             public GameObject empoweredSpinSlashEffect;
 
@@ -56,7 +55,7 @@ namespace PaladinMod.Modules
                 hitEffect = Assets.hitFX,
                 swingEffect = Assets.swordSwing,
                 spinSlashEffect = Assets.spinningSlashFX,
-                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX,
+                empoweredSpinSlashEffect = Assets.spinningSlashEmpoweredFX, 
                 eyeTrailColor = new Color(196 / 255, 255 / 255, 254 / 255)
             });
             skinList.Add(new PaladinSkinInfo {
