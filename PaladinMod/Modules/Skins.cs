@@ -3,6 +3,7 @@ using UnityEngine;
 using RoR2;
 using System.Collections.Generic;
 using System.Linq;
+using SkinChangeResponse = RoR2.CharacterSelectSurvivorPreviewDisplayController.SkinChangeResponse;
 
 namespace PaladinMod.Modules
 {
@@ -11,6 +12,53 @@ namespace PaladinMod.Modules
         static List<GameObject> allGameObjectActivations = new List<GameObject>();
 
         static List<Material> cachedMaterials = new List<Material>();
+
+        private static CharacterSelectSurvivorPreviewDisplayController paladinCSSPreviewController;
+        private static SkinChangeResponse[] defaultResponses;
+
+        public enum paladinCSSEffect {
+            DEFAULT,
+            LUNAR,
+            BEEFY,
+            TAR,
+            YELLOW,
+            GREEN,
+            GREENSCYTHE,
+            RED,
+            REDSCYTHE,
+            PURPLE,
+            FLAME
+
+        }
+
+        /// <summary>
+        /// use this to add a skin change event for the sword effects in css
+        /// <para> otherwise in css your skin won't show the sword effect properly </para>
+        /// </summary>
+        /// 
+        /// <param name="def">
+        /// pass in your skilldef here
+        /// </param>
+        /// 
+        /// <param name="cssEffect">
+        /// use an entry in this enum to choose an effect
+        /// <para> DEFAULT, LUNAR, BEEFY, TAR, YELLOW, GREEN, GREENSCYTHE, RED, REDSCYTHE, PURPLE, FLAME </para>
+        /// <para> if you want me to add a new one fuck it let me know </para>
+        /// </param>
+        public static void AddCSSSkinChangeResponse(SkinDef def, paladinCSSEffect cssEffect) {
+
+            //duplicating a skinchangeresponse from defaults that I set up in editor
+            SkinChangeResponse newSkinResponse = defaultResponses[(int)cssEffect];
+            newSkinResponse.triggerSkin = def;
+
+            //gotta do this song and dance instead of simply adding our own custom skinchangeresponses because for some reason adding events for skinchangeresponses in code doesn't work
+            //or at least didn't work last time i tried
+            SkinChangeResponse[] addedSkinchange = new SkinChangeResponse[] { 
+                newSkinResponse
+            };
+
+            paladinCSSPreviewController.skinChangeResponses = paladinCSSPreviewController.skinChangeResponses.Concat(addedSkinchange).ToArray();
+        }
 
         #region tools
         /// <summary>
@@ -35,7 +83,6 @@ namespace PaladinMod.Modules
 
             return GameObjectActivations.ToArray();
         }
-
 
         public static SkinDef CreateSkinDef(string skinName, Sprite skinIcon, CharacterModel.RendererInfo[] rendererInfos, SkinnedMeshRenderer mainRenderer, GameObject root)
         {
@@ -166,8 +213,9 @@ namespace PaladinMod.Modules
 
             GameObject displayPrefab = Prefabs.paladinDisplayPrefab;
             ChildLocator displayChildLocator = displayPrefab.GetComponent<ChildLocator>(); 
-            CharacterSelectSurvivorPreviewDisplayController CSSPreviewController = displayPrefab.GetComponent<CharacterSelectSurvivorPreviewDisplayController>();
-            CSSPreviewController.bodyPrefab = bodyPrefab;
+            paladinCSSPreviewController = displayPrefab.GetComponent<CharacterSelectSurvivorPreviewDisplayController>();
+            paladinCSSPreviewController.bodyPrefab = bodyPrefab;
+            defaultResponses = paladinCSSPreviewController.skinChangeResponses; 
 
             List<SkinDef> skinDefs = new List<SkinDef>();
 
@@ -216,9 +264,9 @@ namespace PaladinMod.Modules
             }
             else defaultSkin.gameObjectActivations = defaultActivations;
 
-            skinDefs.Add(defaultSkin);
+            AddCSSSkinChangeResponse(defaultSkin, paladinCSSEffect.DEFAULT);
 
-            CSSPreviewController.skinChangeResponses[0].triggerSkin = defaultSkin;
+            skinDefs.Add(defaultSkin);
             #endregion
 
             #region MasterySkin(lunar)
@@ -226,6 +274,7 @@ namespace PaladinMod.Modules
             defaultRenderers.CopyTo(masteryRendererInfos, 0);
 
             // add the passive effect
+            #region clone mithrix effect
             GameObject lunarPassiveEffect = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/CharacterBodies/BrotherBody").GetComponentInChildren<ChildLocator>().FindChild("Phase3HammerFX").gameObject);
             lunarPassiveEffect.transform.parent = childLocator.FindChild("SwordActiveEffectLunar");
             lunarPassiveEffect.transform.localScale = Vector3.one * 0.0002f;
@@ -245,12 +294,12 @@ namespace PaladinMod.Modules
             lunarPassiveEffect.transform.rotation = Quaternion.Euler(new Vector3(45, 90, 0));
             lunarPassiveEffect.transform.localPosition = new Vector3(0, 0, -0.003f);
             lunarPassiveEffect.gameObject.SetActive(true);
+            #endregion
 
             Material lunarSwordMat = CreateMaterial("matLunarSword", 0, Color.black, 1f);
             lunarSwordMat.EnableKeyword("FORCE_SPEC");
             lunarSwordMat.EnableKeyword("FRESNEL_EMISSION");
             lunarSwordMat.SetFloat("_SpecularStrength", 1f);
-
             masteryRendererInfos[0].defaultMaterial = lunarSwordMat;
             //masteryRendererInfos[1].defaultMaterial = CreateMaterial("matLunarCape");
             masteryRendererInfos[lastRend].defaultMaterial = CreateMaterial("matLunarPaladin", 5, Color.white, 1f);
@@ -272,9 +321,16 @@ namespace PaladinMod.Modules
 
             masterySkin.gameObjectActivations = defaultActivations;
 
-            skinDefs.Add(masterySkin);
+            masterySkin.projectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[] {
+                new SkinDef.ProjectileGhostReplacement{
+                    projectilePrefab = Projectiles.swordBeamProjectile,
+                    projectileGhostReplacementPrefab = Projectiles.CloneAndColorSwordBeam(new Color(0.3f, 0.1f, 1f), 1.2f)//slightly darker blue than normal
+                }
+            };
 
-            CSSPreviewController.skinChangeResponses[1].triggerSkin = masterySkin;
+            AddCSSSkinChangeResponse(masterySkin, paladinCSSEffect.LUNAR);
+
+            skinDefs.Add(masterySkin);
             #endregion
 
             #region GrandMasterySkin
@@ -305,12 +361,12 @@ namespace PaladinMod.Modules
                 }
             };
 
-            grandMasterySkin.gameObjectActivations = GMActivations; 
+            grandMasterySkin.gameObjectActivations = GMActivations;
+
+            AddCSSSkinChangeResponse(grandMasterySkin, paladinCSSEffect.BEEFY);
 
             if (PaladinPlugin.starstormInstalled) 
                 skinDefs.Add(grandMasterySkin);
-
-            CSSPreviewController.skinChangeResponses[3].triggerSkin = grandMasterySkin;
 
             #endregion
 
@@ -334,14 +390,21 @@ namespace PaladinMod.Modules
                     mesh = Assets.poisonSwordMesh,
                     renderer = defaultRenderers[0].renderer
                 }
-                //if arms are only in this skin they don't need to be mesh replaced, just activated
+                //if arms are only in this skin they don't need to be mesh replacements, just gameobjectactivations 
             };
 
             poisonSkin.gameObjectActivations = nkuhanaActivations;
 
-            skinDefs.Add(poisonSkin);
+            poisonSkin.projectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[] {
+                new SkinDef.ProjectileGhostReplacement{
+                    projectilePrefab = Projectiles.swordBeamProjectile,
+                    projectileGhostReplacementPrefab = Projectiles.CloneAndColorSwordBeam(Color.green, 0.6f)
+                }
+            };
 
-            CSSPreviewController.skinChangeResponses[5].triggerSkin = poisonSkin;
+            AddCSSSkinChangeResponse(poisonSkin, paladinCSSEffect.GREENSCYTHE);
+
+            skinDefs.Add(poisonSkin);
             #endregion
 
             #region ClaySkin
@@ -368,9 +431,16 @@ namespace PaladinMod.Modules
 
             claySkin.gameObjectActivations = defaultActivations;
 
-            skinDefs.Add(claySkin);
+            claySkin.projectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[] {
+                new SkinDef.ProjectileGhostReplacement{
+                    projectilePrefab = Projectiles.swordBeamProjectile,
+                    projectileGhostReplacementPrefab = Projectiles.CloneAndColorSwordBeam(new Color(1f,0.35f,0), 0.65f) //yello smello
+                }
+            };
 
-            CSSPreviewController.skinChangeResponses[7].triggerSkin = claySkin;
+            AddCSSSkinChangeResponse(claySkin, paladinCSSEffect.TAR);
+
+            skinDefs.Add(claySkin);
             #endregion
 
             #region SpecterSkin
@@ -381,7 +451,7 @@ namespace PaladinMod.Modules
             specterRendererInfos[1].defaultMaterial = CreateMaterial("matPaladinGMOld"); //HACK
             specterRendererInfos[lastRend].defaultMaterial = CreateMaterial("matPaladinSpecter");
 
-            SkinDef specterSkin = CreateSkinDef("PALADINBODY_SPECTER_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecterSkin"), specterRendererInfos, mainRenderer, model, Modules.Unlockables.paladinPoisonSkinDef);
+            SkinDef specterSkin = CreateSkinDef("PALADINBODY_SPECTER_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecterSkin"), specterRendererInfos, mainRenderer, model);
             specterSkin.meshReplacements = new SkinDef.MeshReplacement[]  
             {
                 new SkinDef.MeshReplacement
@@ -403,9 +473,16 @@ namespace PaladinMod.Modules
 
             specterSkin.gameObjectActivations = capeActivations;
 
-            if (Modules.Config.cursed.Value) skinDefs.Add(specterSkin);
+            specterSkin.projectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[] {
+                new SkinDef.ProjectileGhostReplacement{
+                    projectilePrefab = Projectiles.swordBeamProjectile,
+                    projectileGhostReplacementPrefab = Projectiles.CloneAndColorSwordBeam(Color.red, 0.669f)//slightly darker blue than normal
+                }
+            };
 
-            CSSPreviewController.skinChangeResponses[8].triggerSkin = specterSkin;
+            AddCSSSkinChangeResponse(specterSkin, paladinCSSEffect.REDSCYTHE);
+
+            if (Modules.Config.cursed.Value) skinDefs.Add(specterSkin);
 
             #endregion
 
@@ -433,9 +510,9 @@ namespace PaladinMod.Modules
 
             dripSkin.gameObjectActivations = defaultActivations;
 
-            if (Modules.Config.cursed.Value) skinDefs.Add(dripSkin);
+            AddCSSSkinChangeResponse(dripSkin, paladinCSSEffect.DEFAULT);
 
-            CSSPreviewController.skinChangeResponses[9].triggerSkin = dripSkin;
+            if (Modules.Config.cursed.Value) skinDefs.Add(dripSkin);
             #endregion
 
             #region MinecraftSkin
@@ -462,9 +539,9 @@ namespace PaladinMod.Modules
 
             minecraftSkin.gameObjectActivations = defaultActivations;
 
-            if (Modules.Config.cursed.Value) skinDefs.Add(minecraftSkin);
+            AddCSSSkinChangeResponse(minecraftSkin, paladinCSSEffect.DEFAULT);
 
-            CSSPreviewController.skinChangeResponses[10].triggerSkin = minecraftSkin;
+            if (Modules.Config.cursed.Value) skinDefs.Add(minecraftSkin);
             #endregion
 
             #region LunarKnightSkin(lunar)
@@ -474,7 +551,7 @@ namespace PaladinMod.Modules
             lunarKnightRendererInfos[0].defaultMaterial = CreateMaterial("matLunarKnight", StaticValues.maxSwordGlow, Color.white); ;
             lunarKnightRendererInfos[lastRend].defaultMaterial = CreateMaterial("matLunarKnight", 5, Color.white, 1f);
 
-            SkinDef lunarKnightSkin = CreateSkinDef("PALADINBODY_LUNARKNIGHT_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"), lunarKnightRendererInfos, mainRenderer, model, Modules.Unlockables.paladinMasterySkinDef);
+            SkinDef lunarKnightSkin = CreateSkinDef("PALADINBODY_LUNARKNIGHT_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievementLegacy"), lunarKnightRendererInfos, mainRenderer, model, Modules.Unlockables.paladinMasterySkinDef);
             lunarKnightSkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
                 new SkinDef.MeshReplacement
@@ -491,20 +568,27 @@ namespace PaladinMod.Modules
 
             lunarKnightSkin.gameObjectActivations = defaultActivations;
 
-            if(Config.legacySkins.Value) 
-                skinDefs.Add(lunarKnightSkin);
+            lunarKnightSkin.projectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[] {
+                new SkinDef.ProjectileGhostReplacement{
+                    projectilePrefab = Projectiles.swordBeamProjectile,
+                    projectileGhostReplacementPrefab = Projectiles.CloneAndColorSwordBeam(new Color(0.3f, 0.1f, 1f), 1.2f)//mastery blue
+                }
+            };
 
-            CSSPreviewController.skinChangeResponses[2].triggerSkin = lunarKnightSkin;
+            AddCSSSkinChangeResponse(minecraftSkin, paladinCSSEffect.DEFAULT);
+
+            if (Config.legacySkins.Value) 
+                skinDefs.Add(lunarKnightSkin);
             #endregion
             #region GrandMasterySkinLegacy
             CharacterModel.RendererInfo[] grandMasteryLegacyRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(grandMasteryLegacyRendererInfos, 0);
 
             grandMasteryLegacyRendererInfos[0].defaultMaterial = CreateMaterial("matPaladinGMSwordOld", StaticValues.maxSwordGlow, Color.white);
-            grandMasteryLegacyRendererInfos[1].defaultMaterial = CreateMaterial("matPaladinGM", 10, Color.white);
-            grandMasteryLegacyRendererInfos[lastRend].defaultMaterial = CreateMaterial("matPaladinGMOld", 10, Color.white);
+            grandMasteryLegacyRendererInfos[1].defaultMaterial = CreateMaterial("matPaladinGMOld", 6.9f, Color.white);
+            grandMasteryLegacyRendererInfos[lastRend].defaultMaterial = CreateMaterial("matPaladinGMOld", 6.9f, Color.white);
 
-            SkinDef grandMasteryLegacySkin = CreateSkinDef("PALADINBODY_TYPHOONLEGACY_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texGrandMasteryAchievement"), grandMasteryLegacyRendererInfos, mainRenderer, model, Modules.Unlockables.paladinGrandMasterySkinDef);
+            SkinDef grandMasteryLegacySkin = CreateSkinDef("PALADINBODY_TYPHOONLEGACY_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texGrandMasteryAchievementLegacy"), grandMasteryLegacyRendererInfos, mainRenderer, model, Modules.Unlockables.paladinGrandMasterySkinDef);
             grandMasteryLegacySkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
                 new SkinDef.MeshReplacement
@@ -519,17 +603,17 @@ namespace PaladinMod.Modules
                 },
                 new SkinDef.MeshReplacement
                 {
-                    mesh = Assets.gmCapeMesh,
+                    mesh = Assets.defaultCapeMesh,
                     renderer = defaultRenderers[1].renderer
                 }
             };
 
             grandMasteryLegacySkin.gameObjectActivations = capeActivations;
 
+            AddCSSSkinChangeResponse(grandMasteryLegacySkin, paladinCSSEffect.BEEFY);
+
             if (PaladinPlugin.starstormInstalled && Config.legacySkins.Value)
                 skinDefs.Add(grandMasteryLegacySkin);
-
-            CSSPreviewController.skinChangeResponses[4].triggerSkin = grandMasteryLegacySkin;
 
             #endregion
             #region PoisonSkinLegacy
@@ -539,7 +623,7 @@ namespace PaladinMod.Modules
             poisonLegacyRendererInfos[0].defaultMaterial = CreateMaterial("matPaladinNkuhanaLegacy", StaticValues.maxSwordGlow, Color.white);
             poisonLegacyRendererInfos[lastRend].defaultMaterial = CreateMaterial("matPaladinNkuhanaLegacy", 3, Color.white);
 
-            SkinDef poisonLegacySkin = CreateSkinDef("PALADINBODY_POISONLEGACY_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texPoisonAchievement"), poisonLegacyRendererInfos, mainRenderer, model, Modules.Unlockables.paladinPoisonSkinDef);
+            SkinDef poisonLegacySkin = CreateSkinDef("PALADINBODY_POISONLEGACY_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texPoisonAchievementLegacy"), poisonLegacyRendererInfos, mainRenderer, model, Modules.Unlockables.paladinPoisonSkinDef);
             poisonLegacySkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
                 new SkinDef.MeshReplacement
@@ -557,10 +641,17 @@ namespace PaladinMod.Modules
 
             poisonLegacySkin.gameObjectActivations = defaultActivations;
 
+            poisonLegacySkin.projectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[] {
+                new SkinDef.ProjectileGhostReplacement{
+                    projectilePrefab = Projectiles.swordBeamProjectile,
+                    projectileGhostReplacementPrefab = Projectiles.CloneAndColorSwordBeam(Color.green, 0.6f)
+                }
+            };
+
+            AddCSSSkinChangeResponse(poisonLegacySkin, paladinCSSEffect.GREEN);
+
             if (Config.legacySkins.Value) 
                 skinDefs.Add(poisonLegacySkin);
-
-            CSSPreviewController.skinChangeResponses[6].triggerSkin = poisonLegacySkin;
             #endregion
 
             skinController.skins = skinDefs.ToArray();

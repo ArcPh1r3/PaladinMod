@@ -8,11 +8,14 @@ namespace PaladinMod.Modules
 {
     public static class Projectiles
     {
-        public static GameObject swordBeam;
-        public static GameObject swordBeamRed;
-        public static GameObject swordBeamGreen;
-        public static GameObject swordBeamNi;
-        public static GameObject shockwave;
+        public static GameObject swordBeamProjectile;
+        //public static GameObject beamGhostRed;
+        //public static GameObject beamGhostGreen;
+        //public static GameObject beamGhostYellow;
+        //public static GameObject beamGhostBlue;
+        //public static GameObject beamGhostPurple;
+
+        public static GameObject shockwave; 
         public static GameObject lightningSpear;
         public static GameObject lunarShard;
 
@@ -28,7 +31,7 @@ namespace PaladinMod.Modules
         public static void LateSetup()
         {
             //fuck man
-            var overlapAttack = swordBeam.GetComponent<ProjectileOverlapAttack>();
+            var overlapAttack = swordBeamProjectile.GetComponent<ProjectileOverlapAttack>();
             if (overlapAttack) overlapAttack.damageCoefficient = 1f;
         }
 
@@ -87,27 +90,23 @@ namespace PaladinMod.Modules
             #endregion
 
             #region SwordBeam
-            swordBeam = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/FMJ"), "PaladinSwordBeam", true);
-            swordBeam.transform.localScale = new Vector3(6, 3, 2);
+            swordBeamProjectile = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/FMJ"), "PaladinSwordBeam", true);
+            swordBeamProjectile.transform.localScale = new Vector3(6, 3, 2);
             //GameObject beamGhost = Assets.swordBeam.InstantiateClone("SwordBeamGhost", false);
             //beamGhost.AddComponent<ProjectileGhostController>();
 
-            //swordBeam.GetComponent<ProjectileController>().ghostPrefab = Assets.swordBeamGhost;
+            //swordBeam.GetComponent<ProjectileController>().ghostPrefab = Assets.swordBeamGhost; 
 
             GameObject MercEvisProjectileGhost = Resources.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab;
-            swordBeam.GetComponent<ProjectileController>().ghostPrefab = MercEvisProjectileGhost;
-            swordBeam.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
+            swordBeamProjectile.GetComponent<ProjectileController>().ghostPrefab = MercEvisProjectileGhost;
+            swordBeamProjectile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
 
-            PaladinPlugin.Destroy(swordBeam.transform.Find("SweetSpotBehavior").gameObject);
+            PaladinPlugin.Destroy(swordBeamProjectile.transform.Find("SweetSpotBehavior").gameObject);
 
             //run this in case moffein's phase round lightning is installed
-            if (swordBeam.GetComponent<ProjectileProximityBeamController>()) PaladinPlugin.Destroy(swordBeam.GetComponent<ProjectileProximityBeamController>());
+            if (swordBeamProjectile.GetComponent<ProjectileProximityBeamController>()) PaladinPlugin.Destroy(swordBeamProjectile.GetComponent<ProjectileProximityBeamController>());
 
-            swordBeam.AddComponent<DestroyOnTimer>().duration = 0.3f;
-
-            swordBeamRed = DuplicateSwordBeam(swordBeam, MercEvisProjectileGhost, Color.red);
-            swordBeamGreen = DuplicateSwordBeam(swordBeam, MercEvisProjectileGhost, Color.green);
-            swordBeamNi = DuplicateSwordBeam(swordBeam, MercEvisProjectileGhost, new Color(1,0.5f,0));
+            swordBeamProjectile.AddComponent<DestroyOnTimer>().duration = 0.3f;
 
             #endregion
 
@@ -320,10 +319,7 @@ namespace PaladinMod.Modules
 
             Modules.Prefabs.projectilePrefabs = new List<GameObject>
             {
-                swordBeam,
-                swordBeamRed,
-                swordBeamGreen,
-                swordBeamNi,
+                swordBeamProjectile,
                 shockwave,
                 lightningSpear,
                 lunarShard,
@@ -336,13 +332,25 @@ namespace PaladinMod.Modules
                 scepterWarcry
             };
         }
+        /// <summary>
+        /// To add a custom colored sword beam for your skin
+        /// <para> create a projectileGhostReplacement in your skindef, and you can use this to easily get a new ProjectileGhost variation of Paladin's sword beam </para>
+        /// </summary>
+        /// <param name="beamColor"></param>
+        /// <param name="lightBright"></param>
+        /// <returns></returns>
+        public static GameObject CloneAndColorSwordBeam(Color beamColor, float lightBright = 0.8f) {
 
-        private static GameObject DuplicateSwordBeam(GameObject swordBeam, GameObject MercEvisProjectileGhost, Color beamColor) {
+            GameObject MercEvisProjectileGhost = Resources.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab;
 
-            GameObject swordBeamNew = PrefabAPI.InstantiateClone(swordBeam, "PaladinSwordBeamRed", true);
-            GameObject evisGhostNew = PrefabAPI.InstantiateClone(MercEvisProjectileGhost, "EvisProjectileRed");
+            return CloneAndColorGhost(MercEvisProjectileGhost, beamColor, lightBright);
+        }
 
-            foreach (ParticleSystemRenderer i in evisGhostNew.GetComponentsInChildren<ParticleSystemRenderer>()) {
+        public static GameObject CloneAndColorGhost(GameObject projectileGhost, Color beamColor, float lightBright = 0.8f) {
+
+            GameObject evisGhostNew = PrefabAPI.InstantiateClone(projectileGhost, "EvisProjectileClone", false);
+
+            foreach (ParticleSystemRenderer i in evisGhostNew.GetComponentsInChildren<ParticleSystemRenderer>()) { 
                 if (i) {
                     Material mat = UnityEngine.Object.Instantiate<Material>(i.material);
                     mat.SetColor("_TintColor", beamColor); 
@@ -350,11 +358,9 @@ namespace PaladinMod.Modules
                 }
             }
 
-            evisGhostNew.GetComponentInChildren<Light>().color = beamColor;
+            evisGhostNew.GetComponentInChildren<Light>().color = beamColor * lightBright;
 
-            swordBeamNew.GetComponent<ProjectileController>().ghostPrefab = evisGhostNew;
-
-            return swordBeamNew;
+            return evisGhostNew;
         }
 
         public static void InitSpellEffect(GameObject target, float radius, float duration)

@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{F7110A4A-2F3C-459E-A9CE-6A9B8E9B6879}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaladinMod", "PaladinMod.csproj", "{659363CD-38C7-A2B8-3CFB-CCE99685E2A7}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{FE5055E8-FAD2-1C28-4DAD-FF8A1101A473}"
 EndProject
 Global
@@ -15,6 +17,10 @@ Global
 		{F7110A4A-2F3C-459E-A9CE-6A9B8E9B6879}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7110A4A-2F3C-459E-A9CE-6A9B8E9B6879}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7110A4A-2F3C-459E-A9CE-6A9B8E9B6879}.Release|Any CPU.Build.0 = Release|Any CPU
+		{659363CD-38C7-A2B8-3CFB-CCE99685E2A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{659363CD-38C7-A2B8-3CFB-CCE99685E2A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{659363CD-38C7-A2B8-3CFB-CCE99685E2A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{659363CD-38C7-A2B8-3CFB-CCE99685E2A7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FE5055E8-FAD2-1C28-4DAD-FF8A1101A473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE5055E8-FAD2-1C28-4DAD-FF8A1101A473}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE5055E8-FAD2-1C28-4DAD-FF8A1101A473}.Release|Any CPU.ActiveCfg = Release|Any CPU

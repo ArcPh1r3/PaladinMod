@@ -1,8 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 
-namespace PaladinMod.Misc
-{
+namespace PaladinMod.Misc {
     public class MenuSound : MonoBehaviour
     {
         private uint playID;
@@ -28,4 +27,5 @@ namespace PaladinMod.Misc
             if (this.playID != 0) AkSoundEngine.StopPlayingID(this.playID);
         }
     }
+
 }

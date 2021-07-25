@@ -75,7 +75,10 @@ namespace PaladinMod.Misc
                 Inventory inventory = this.body.master.inventory;
                 if (inventory)
                 {
-                    bool hasLeftHandWeapon = (inventory.GetItemCount(RoR2Content.Items.BleedOnHit) > 0 || inventory.GetItemCount(RoR2Content.Items.ArmorReductionOnHit) > 0 || inventory.GetItemCount(RoR2Content.Items.CritHeal) > 0);
+                    bool hasLeftHandWeapon = 
+                        inventory.GetItemCount(RoR2Content.Items.BleedOnHit) > 0 || 
+                        inventory.GetItemCount(RoR2Content.Items.ArmorReductionOnHit) > 0 || 
+                        inventory.GetItemCount(RoR2Content.Items.HealOnCrit) > 0;
 
                     if (PaladinPlugin.aetheriumInstalled)
                     {
@@ -224,12 +227,6 @@ namespace PaladinMod.Misc
             get
             {
                 return this.skinInfo.swingEffect;
-            }
-        }
-
-        public GameObject swordBeam {
-            get {
-                return this.skinInfo.swordBeamProjectile;
             }
         }
 

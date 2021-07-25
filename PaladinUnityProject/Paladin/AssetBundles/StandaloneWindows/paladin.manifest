@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4265743953
+CRC: 3478441915
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 24737a587fde0da6f7b45e25a4f3b068
+    Hash: ff3a7bdba7e050f2468fdbf81b9eef37
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 20b679f07b4d8415ffada85ca5f50c6e
+    Hash: 83ff3113a66dc8ebfc6a7ff327ab76a6
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -57,6 +57,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: fef0780b96a0f12448b6dd86f9c8139b, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 55cd8dac900b1a24b955c08fee5174f2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b0f1fcdb5b6fd3d47a083a65dd054c2b, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 135
@@ -233,6 +235,7 @@ Assets:
 - Assets/Paladin/VFX/matPaladinImpact.mat
 - Assets/Paladin/Animations/CreepyArmsRight.anim
 - Assets/Paladin/VFX/matChargeHeal.mat
+- Assets/Paladin/Icons/texMasteryAchievementLegacy.png
 - Assets/Paladin/Icons/texTorporAchievement.png
 - Assets/Paladin/Materials/Shields/matGoldenShield.mat
 - Assets/NemPaladin/Animations/animNemPaladin.controller
@@ -263,6 +266,7 @@ Assets:
 - Assets/NemPaladin/Animations/FireChain.anim
 - Assets/NemPaladin/Animations/RunF.anim
 - Assets/Paladin/VFX/matChargeSphere.mat
+- Assets/Paladin/Textures/texPaladinLunarBak.png
 - Assets/Paladin/Shields/DisplayGoldenShield.prefab
 - Assets/Paladin/Animations/Crystal_NEE.controller
 - Assets/Paladin/Animations/ChargeSpear.anim
@@ -308,6 +312,7 @@ Assets:
 - Assets/Paladin/Textures/texPaladinGMEmissionOld.png
 - Assets/Paladin/Icons/texDripAchievement.png
 - Assets/Paladin/Icons/texMainSkin.png
+- Assets/Paladin/Icons/texGrandMasteryAchievementLegacy.png
 - Assets/Paladin/VFX/matHitSpark.mat
 - Assets/Paladin/Textures/texPaladinNkuhanaEmission_old.png
 - Assets/NemPaladin/Animations/MenuIdle.anim
@@ -387,6 +392,7 @@ Assets:
 - Assets/Paladin/Textures/Shields/tex_WatcherDaggerNormal.png
 - Assets/Paladin/Animations/Slash1Combo.anim
 - Assets/NemPaladin/Animations/maskNemGesture.mask
+- Assets/Paladin/Icons/texPoisonAchievementLegacy.png
 - Assets/Paladin/Animations/aimMask.mask
 - Assets/Paladin/Effects/SwingEffects/PaladinSwingBat.prefab
 - Assets/Paladin/Animations/LightImpact.anim

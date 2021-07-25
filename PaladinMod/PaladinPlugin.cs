@@ -22,7 +22,7 @@ namespace PaladinMod
     [BepInDependency("com.K1454.SupplyDrop", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.TeamMoonstorm.Starstorm2", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "1.5.0")] 
+    [BepInPlugin(MODUID, "Paladin", "1.5.69")] 
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
@@ -30,6 +30,7 @@ namespace PaladinMod
         "SoundAPI",
     })]
 
+    
     public class PaladinPlugin : BaseUnityPlugin
     {
         //keeping id the same so it versions over previous paladin
@@ -44,7 +45,7 @@ namespace PaladinMod
         // clone this material to make our own with proper shader/properties
         public static Material commandoMat;
 
-        public static readonly Color characterColor = new Color(0.7176f, 0.098039f, 0.098039f);
+        public static readonly Color characterColor = new Color(0.7176f, 0.098039f, 0.098039f); 
 
         // for scepter upgrades
         public static SkillDef scepterHealDef;
@@ -95,9 +96,9 @@ namespace PaladinMod
             Modules.Skills.SetupSkills(Modules.Prefabs.lunarKnightPrefab);
             //Modules.Skills.SetupSkills(Modules.Prefabs.nemPaladinPrefab);
             Modules.Survivors.RegisterSurvivors(); // register them into the body catalog
-            Modules.Skins.RegisterSkins(); // add skins
             Modules.Buffs.RegisterBuffs(); // add and register custom buffs
             Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
+            Modules.Skins.RegisterSkins(); // add skins
             Modules.Effects.RegisterEffects(); // add and register custom effects
             Modules.Tokens.AddTokens(); // register name tokens
 

@@ -348,7 +348,7 @@ localScale = new Vector3(0.3814F, 0.3814F, 0.3814F),
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayWarbanner"),
-                            childName = "HandL",
+                            childName = "Stomach",
                             localPos = new Vector3(0.01435F, 0.17578F, -0.23544F),
                             localAngles = new Vector3(315.682F, 177.5153F, 272.9106F),
                             localScale = new Vector3(0.53229F, 0.53229F, 0.53229F),
@@ -370,8 +370,8 @@ localScale = new Vector3(0.3814F, 0.3814F, 0.3814F),
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayScythe"),
                             childName = "HandL",
-                            localPos = new Vector3(0.07655F, -0.05483F, 0.91776F),
-                            localAngles = new Vector3(10.16696F, 6.65651F, 294.6421F),
+                            localPos = new Vector3(-0.06617F, 0.2783F, 0.8635F),
+                            localAngles = new Vector3(345.3667F, 0.23077F, 295.8703F),
                             localScale = new Vector3(0.71734F, 0.6443F, 0.86362F),
                             limbMask = LimbFlags.None
                         }
@@ -609,10 +609,10 @@ localScale = new Vector3(0.3351F, 0.3351F, 0.3351F),
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayWarhammer"),
-childName = "HandL",
-localPos = new Vector3(-0.0637F, 0.1314F, 0.4058F),
-localAngles = new Vector3(0F, 0F, 297.256F),
-localScale = new Vector3(0.386F, 0.386F, 0.386F),
+                            childName = "HandL",
+                            localPos = new Vector3(-0.06382F, 0.13177F, 0.5327F),
+                            localAngles = new Vector3(0F, 0F, 297.256F),
+                            localScale = new Vector3(0.386F, 0.386F, 0.386F),
                             limbMask = LimbFlags.None
                         }
                         }
@@ -2798,6 +2798,12 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
                                                               new Vector3(-0.10833F, 2.5525F, 0.07879F),
                                                               new Vector3(0.08772F, 40.946F, 180.1556F),
                                                               new Vector3(0.32696F, 0.29056F, 0.12386F)));
+                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("EngiBelt"),
+                                                              ItemDisplays.LoadAetheriumDisplay("EngiBelt"),
+                                                              "HandL",
+                                                              new Vector3(-0.10833F, 2.5525F, 0.07879F),
+                                                              new Vector3(0.08772F, 40.946F, 180.1556F),
+                                                              new Vector3(0.32696F, 0.29056F, 0.12386F)));
 
                 ItemDisplayRule ringRule = CreateDisplayRule(ItemDisplays.LoadAetheriumDisplay("WitchesRing"),
                                                               "Sword",
@@ -2849,10 +2855,10 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = AncientScepter.AncientScepterItem.displayPrefab,
-childName = "HandL",
-localPos = new Vector3(-0.0717F, 0.1117F, 0.0202F),
-localAngles = new Vector3(88.6982F, 180F, 180F),
-localScale = new Vector3(0.7711F, 0.7711F, 0.7711F),
+                            childName = "HandL",
+                            localPos = new Vector3(-0.05522F, 0.14813F, -0.13256F),
+                            localAngles = new Vector3(272.924F, 122.5896F, 239.0718F),
+                            localScale = new Vector3(0.60001F, 0.70329F, 0.60001F),
                             limbMask = LimbFlags.None
                         }
         }
@@ -2933,6 +2939,8 @@ localScale = new Vector3(0.7711F, 0.7711F, 0.7711F),
                     return Aetherium.Items.WitchesRing.ItemBodyModelPrefab;
                 case "WitchesRingCircle":
                     return Aetherium.Items.WitchesRing.CircleBodyModelPrefab;
+                case "EngiBelt":
+                    return Aetherium.Items.EngineersToolbelt.ItemBodyModelPrefab;
                 case "JarOfReshaping":
                     return Aetherium.Equipment.JarOfReshaping.ItemBodyModelPrefab;
             }
@@ -2965,6 +2973,8 @@ localScale = new Vector3(0.7711F, 0.7711F, 0.7711F),
                     return Aetherium.Items.WeightedAnklet.instance.ItemDef;
                 case "WitchesRing":
                     return Aetherium.Items.WitchesRing.instance.ItemDef;
+                case "EngiBelt":
+                    return Aetherium.Items.EngineersToolbelt.instance.ItemDef;
                 case "JarOfReshaping":
                     return Aetherium.Equipment.JarOfReshaping.instance.EquipmentDef;
             }

@@ -701,6 +701,10 @@
       <Project>{F7110A4A-2F3C-459E-A9CE-6A9B8E9B6879}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
+    <ProjectReference Include="PaladinMod.csproj">
+      <Project>{659363CD-38C7-A2B8-3CFB-CCE99685E2A7}</Project>
+      <Name>PaladinMod</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

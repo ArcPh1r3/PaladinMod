@@ -38,7 +38,7 @@ namespace PaladinMod.Modules
                 bodyName = "RobPaladinBody",
                 bodyNameToken = "PALADIN_NAME",
                 characterPortrait = Assets.charPortrait,
-                crosshair = Resources.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"),
+                crosshair = Resources.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"), 
                 damage = StaticValues.baseDamage,
                 healthGrowth = 64,
                 healthRegen = 1.5f,
