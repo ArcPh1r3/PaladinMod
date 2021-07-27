@@ -575,7 +575,7 @@ namespace PaladinMod.Modules
                 }
             };
 
-            AddCSSSkinChangeResponse(minecraftSkin, paladinCSSEffect.DEFAULT);
+            AddCSSSkinChangeResponse(lunarKnightSkin, paladinCSSEffect.DEFAULT);
 
             if (Config.legacySkins.Value) 
                 skinDefs.Add(lunarKnightSkin);
