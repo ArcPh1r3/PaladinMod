@@ -32,6 +32,8 @@ namespace PaladinMod.Modules
 
             // add item displays here
             //  HIGHLY recommend using KingEnderBrine's ItemDisplayPlacementHelper mod for this
+
+            #region Regular Item Displays
             //enderbrine custom copy thing
 /*
 
@@ -40,12 +42,10 @@ namespace PaladinMod.Modules
                             localAngles = {localAngles},
                             localScale = {localScale}
 */
-            #region Regular Item Displays
-            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
-            {
+
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup {
                 keyAsset = RoR2Content.Equipment.Jetpack,
-                displayRuleGroup = new DisplayRuleGroup
-                {
+                displayRuleGroup = new DisplayRuleGroup {
                     rules = new ItemDisplayRule[]
                     {
                         new ItemDisplayRule
@@ -2733,175 +2733,192 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
                         }
                     }
                 });
-                #endregion
-
-            if (PaladinPlugin.ancientScepterInstalled) SetupScepterDisplay();
-
-            #region negro displays
-
-            //enderbrine custom copy thing
-/*
-
-                                                               {childName},
-                                                               {localPos},
-                                                               {localAngles},
-                                                               {localScale}
-*/
-
-            if (PaladinPlugin.aetheriumInstalled) {
-                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("AccursedPotion"), 
-                                                              ItemDisplays.LoadAetheriumDisplay("AccursedPotion"),
-                                                              "ThighL",
-                                                              new Vector3(-0.23043F, 0.32284F, -0.12665F),
-                                                              new Vector3(4.45731F, 185.4647F, 177.6174F),
-                                                              new Vector3(0.9687F, 0.9687F, 0.9687F)));
-                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("VoidHeart"),
-                                                              ItemDisplays.LoadAetheriumDisplay("VoidHeart"),
-                                                              "Chest",
-                                                              new Vector3(-0.09543F, -0.19796F, 0.28118F),
-                                                              new Vector3(16.96353F, 5.14273F, 10.3974F),
-                                                              new Vector3(-0.16727F, 0.16658F, 0.15696F)));
-                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("SharkTeeth"),
-                                                              ItemDisplays.LoadAetheriumDisplay("SharkTeeth"),
-                                                              "CalfL",
-                                                              new Vector3(0.06211F, 0.25415F, -0.08777F),
-                                                              new Vector3(320.2775F, 38.01559F, 271.8767F),
-                                                              new Vector3(0.78844F, 0.78844F, 0.78844F)));
-                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("BloodSoakedShield"),
-                                                              ItemDisplays.LoadAetheriumDisplay("BloodSoakedShield"),
-                                                              "LowerArmR",
-                                                              new Vector3(0.10348F, 0.26132F, -0.01819F),
-                                                              new Vector3(356.2767F, 97.25786F, 89.52616F),
-                                                              new Vector3(0.34019F, 0.34019F, 0.34019F)));
-                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("FeatheredPlume"),
-                                                              ItemDisplays.LoadAetheriumDisplay("FeatheredPlume"),
-                                                              "Head",
-                                                              new Vector3(-0.00678F, 0.35193F, 0.02659F),
-                                                              new Vector3(357.7291F, 285.8923F, 359.0515F),
-                                                              new Vector3(0.50003F, 0.50003F, 0.50003F)));
-                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("ShieldingCore"),
-                                                              ItemDisplays.LoadAetheriumDisplay("ShieldingCore"),
-                                                              "LowerArmR",
-                                                              new Vector3(-0.23784F, 0.3286F, -0.0176F),
-                                                              new Vector3(0.97314F, 271.1276F, 357.6589F),
-                                                              new Vector3(0.31628F, 0.31628F, 0.31628F)));
-                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("UnstableDesign"),
-                                                              ItemDisplays.LoadAetheriumDisplay("UnstableDesign"),
-                                                              "Stomach",
-                                                              new Vector3(-0.05487F, 0.04344F, -0.28199F),
-                                                              new Vector3(358.3217F, 224.4477F, 1.91643F),
-                                                              new Vector3(1.24548F, 1.24548F, 0.9051F)));
-                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("WeightedAnklet"),
-                                                              ItemDisplays.LoadAetheriumDisplay("WeightedAnklet"),
-                                                              "CalfR",
-                                                              new Vector3(-0.00001F, 0.53876F, -0.01653F),
-                                                              new Vector3(0F, 0F, 0F),
-                                                              new Vector3(0.31933F, 0.31933F, 0.31933F)));
-                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("BlasterSword"),
-                                                              ItemDisplays.LoadAetheriumDisplay("BlasterSword"),
-                                                              "SwordSmearFront",
-                                                              new Vector3(-0.10833F, 2.5525F, 0.07879F),
-                                                              new Vector3(0.08772F, 40.946F, 180.1556F),
-                                                              new Vector3(0.32696F, 0.29056F, 0.12386F)));
-                itemDisplayRules.Add(CreateGenericDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("EngiBelt"),
-                                                              ItemDisplays.LoadAetheriumDisplay("EngiBelt"),
-                                                              "Pelvis",
-                                                              new Vector3(0F, 0.39276F, 0.0787F),
-                                                              new Vector3(0F, 116.6814F, 0F),
-                                                              new Vector3(0.29462F, 0.29462F, 0.29462F)));
-
-                ItemDisplayRule ringRule = CreateDisplayRule(ItemDisplays.LoadAetheriumDisplay("WitchesRing"),
-                                                              "Sword",
-                                                              new Vector3(-0.01001F, 0.36895F, -0.01177F),
-                                                              new Vector3(0F, 220.5148F, 0F),
-                                                              new Vector3(0.49134F, 0.49134F, 0.37622F));
-
-                ItemDisplayRule circleRule = CreateDisplayRule(ItemDisplays.LoadAetheriumDisplay("WitchesRingCircle"),
-                                                              "Sword",
-                                                              new Vector3(-0.00782F, 0.36927F, -0.00924F),
-                                                              new Vector3(272.2881F, 220.515F, -0.00017F),
-                                                              new Vector3(0.27066F, 0.27066F, 0.12244F));
-                itemDisplayRules.Add(CreateDisplayRuleGroupWithRules(ItemDisplays.LoadAetheriumKeyAsset("WitchesRing"), ringRule, circleRule));
-               
-                itemDisplayRules.Add(CreateFollowerDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("AlienMagnet"),
-                                                              ItemDisplays.LoadAetheriumDisplay("AlienMagnet"),
-                                                              new Vector3(1.06397F, -1.08486F, 3.27534F),
-                                                              new Vector3(0F, 0F, 359.3367F),
-                                                              new Vector3(0.1541F, 0.1541F, 0.1541F)));
-                itemDisplayRules.Add(CreateFollowerDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("InspiringDrone"),
-                                                              ItemDisplays.LoadAetheriumDisplay("InspiringDrone"),
-                                                              new Vector3(-1.44714F, -1.444F, 3.64135F),
-                                                              new Vector3(291.0149F, 90.00006F, 89.99995F),
-                                                              new Vector3(0.12676F, 0.12676F, 0.12929F)));
-                
-                itemDisplayRules.Add(CreateFollowerDisplayRuleGroup(ItemDisplays.LoadAetheriumKeyAsset("JarOfReshaping"),
-                                                              ItemDisplays.LoadAetheriumDisplay("JarOfReshaping"),
-                                                              new Vector3(-1.2588F, 0.72566F, 3.23362F),
-                                                              new Vector3(0F, 0F, 0F),
-                                                              new Vector3(0.11192F, 0.11192F, 0.11192F)));
-            }
-
-            if (PaladinPlugin.supplyDropInstalled) {
-
-                itemDisplayRules.Add(CreateSupplyDropRuleGroup("PlagueMask",
-                                                               "Head",
-                                                               new Vector3(0.00094F, 0.14277F, 0.37744F),
-                                                               new Vector3(350.8227F, 180F, 0F),
-                                                               new Vector3(0.21812F, 0.34679F, 0.29885F)));
-                itemDisplayRules.Add(CreateSupplyDropRuleGroup("PlagueHat",
-                                                               "Head",
-                                                               new Vector3(0.00001F, 0.3758F, 0.05085F),
-                                                               new Vector3(0F, 0F, 0F),
-                                                               new Vector3(0.21804F, 0.17341F, 0.29817F)));
-
-                itemDisplayRules.Add(CreateSupplyDropRuleGroup("Bones",
-                                                               "CalfR",
-                                                               new Vector3(0.17997F, -0.05238F, 0.07133F),
-                                                               new Vector3(13.68323F, 76.44486F, 191.9287F),
-                                                               new Vector3(1.25683F, 1.25683F, 1.25683F)));
-                itemDisplayRules.Add(CreateSupplyDropRuleGroup("Berries",
-                                                               "loinFront2",
-                                                               new Vector3(0.11782F, 0.27382F, -0.13743F),
-                                                               new Vector3(341.1884F, 284.1298F, 180.0032F),
-                                                               new Vector3(0.08647F, 0.08647F, 0.08647F)));
-                itemDisplayRules.Add(CreateSupplyDropRuleGroup("UnassumingTie",
-                                                               "Chest",
-                                                               new Vector3(-0.08132F, 0.30226F, 0.34786F),
-                                                               new Vector3(351.786F, 356.4574F, 0.73319F),
-                                                               new Vector3(0.32213F, 0.35018F, 0.42534F)));
-                itemDisplayRules.Add(CreateSupplyDropRuleGroup("SalvagedWires",
-                                                               "UpperArmL",
-                                                               new Vector3(-0.00419F, 0.10839F, -0.20693F),
-                                                               new Vector3(21.68419F, 165.3445F, 132.0565F),
-                                                               new Vector3(0.63809F, 0.63809F, 0.63809F)));
-
-                itemDisplayRules.Add(CreateSupplyDropRuleGroup("ShellPlating",
-                                                               "ThighR",
-                                                               new Vector3(0.02115F, 0.52149F, -0.31269F),
-                                                               new Vector3(319.6181F, 168.4007F, 184.779F),
-                                                               new Vector3(0.24302F, 0.26871F, 0.26871F)));
-                itemDisplayRules.Add(CreateSupplyDropRuleGroup("ElectroPlankton",
-                                                               "ThighR",
-                                                               new Vector3(0.21067F, 0.49094F, -0.08702F),
-                                                               new Vector3(8.08377F, 285.087F, 164.4582F),
-                                                               new Vector3(0.11243F, 0.11243F, 0.11243F)));
-
-                itemDisplayRules.Add(CreateSupplyDropRuleGroup("BloodBook",
-                                                               "Root",
-                                                               new Vector3(2.19845F, -1.51445F, 1.59871F),
-                                                               new Vector3(303.5005F, 271.0879F, 269.2205F),
-                                                               new Vector3(0.12F, 0.12F, 0.12F)));
-                itemDisplayRules.Add(CreateSupplyDropRuleGroup("QSGen",
-                                                               "LowerArmL",
-                                                               new Vector3(0.06003F, 0.1038F, -0.02042F),
-                                                               new Vector3(0F, 18.75576F, 268.4665F),
-                                                               new Vector3(0.12301F, 0.12301F, 0.12301F)));
-            }
-
             #endregion
 
+            try {
+                if (PaladinPlugin.ancientScepterInstalled)
+                    SetupScepterDisplay();
+            }
+            catch (System.Exception e) {
+                PaladinPlugin.logger.LogWarning($"could not add displays for Ancient Scepter\n{e}");
+            }
+
+            try {
+                if (PaladinPlugin.aetheriumInstalled)
+                    AddAetheriumDisplays();
+            }
+            catch (System.Exception e) {
+                PaladinPlugin.logger.LogWarning($"could not add displays for Aetherium\n{e}");
+            }
+
+            try {
+                if (PaladinPlugin.supplyDropInstalled)
+                    AddSupplyDropDisplays();
+            }
+            catch (System.Exception e) {
+                PaladinPlugin.logger.LogWarning($"could not add displays for Supply Drop\n{e}");
+            }
+            
             itemDisplayRuleSet.keyAssetRuleGroups = itemDisplayRules.ToArray();
-            itemDisplayRuleSet.GenerateRuntimeValues();
+            itemDisplayRuleSet.GenerateRuntimeValues(); 
+        }
+
+        #region negro displays
+
+        //enderbrine custom copy thing
+/*
+
+                                                           {childName},
+                                                           {localPos},
+                                                           {localAngles},
+                                                           {localScale}
+*/
+
+
+        enum mod {
+            AETH,
+            SUPP,
+            SIVS,
+            GOLD,
+            SCEP
+        }
+        private static void AddAetheriumDisplays() {
+            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "AccursedPotion",
+                                                          "ThighL",
+                                                          new Vector3(-0.23043F, 0.32284F, -0.12665F),
+                                                          new Vector3(4.45731F, 185.4647F, 177.6174F),
+                                                          new Vector3(0.9687F, 0.9687F, 0.9687F)));
+            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "VoidHeart",
+                                                          "Chest",
+                                                          new Vector3(-0.09543F, -0.19796F, 0.28118F),
+                                                          new Vector3(16.96353F, 5.14273F, 10.3974F),
+                                                          new Vector3(-0.16727F, 0.16658F, 0.15696F)));
+            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "SharkTeeth",
+                                                          "CalfL",
+                                                          new Vector3(0.06211F, 0.25415F, -0.08777F),
+                                                          new Vector3(320.2775F, 38.01559F, 271.8767F),
+                                                          new Vector3(0.78844F, 0.78844F, 0.78844F)));
+            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "BloodSoakedShield",
+                                                          "LowerArmR",
+                                                          new Vector3(0.10348F, 0.26132F, -0.01819F),
+                                                          new Vector3(356.2767F, 97.25786F, 89.52616F),
+                                                          new Vector3(0.34019F, 0.34019F, 0.34019F)));
+            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "FeatheredPlume",
+                                                          "Head",
+                                                          new Vector3(-0.00678F, 0.35193F, 0.02659F),
+                                                          new Vector3(357.7291F, 285.8923F, 359.0515F),
+                                                          new Vector3(0.50003F, 0.50003F, 0.50003F)));
+            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "ShieldingCore",
+                                                          "LowerArmR",
+                                                          new Vector3(-0.23784F, 0.3286F, -0.0176F),
+                                                          new Vector3(0.97314F, 271.1276F, 357.6589F),
+                                                          new Vector3(0.31628F, 0.31628F, 0.31628F)));
+            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "UnstableDesign",
+                                                          "Stomach",
+                                                          new Vector3(-0.05487F, 0.04344F, -0.28199F),
+                                                          new Vector3(358.3217F, 224.4477F, 1.91643F),
+                                                          new Vector3(1.24548F, 1.24548F, 0.9051F)));
+            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "WeightedAnklet",
+                                                          "CalfR",
+                                                          new Vector3(-0.00001F, 0.53876F, -0.01653F),
+                                                          new Vector3(0F, 0F, 0F),
+                                                          new Vector3(0.31933F, 0.31933F, 0.31933F)));
+            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "BlasterSword",
+                                                          "SwordSmearFront",
+                                                          new Vector3(-0.10833F, 2.5525F, 0.07879F),
+                                                          new Vector3(0.08772F, 40.946F, 180.1556F),
+                                                          new Vector3(0.32696F, 0.29056F, 0.12386F)));
+            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "EngiBelt",
+                                                          "Pelvis",
+                                                          new Vector3(0F, 0.39276F, 0.0787F),
+                                                          new Vector3(0F, 116.6814F, 0F),
+                                                          new Vector3(0.29462F, 0.29462F, 0.29462F)));
+
+            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "AlienMagnet",
+                                                          "Root",
+                                                          new Vector3(1.06397F, -1.08486F, 3.27534F),
+                                                          new Vector3(0F, 0F, 359.3367F),
+                                                          new Vector3(0.1541F, 0.1541F, 0.1541F)));
+            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "InspiringDrone",
+                                                          "Root",
+                                                          new Vector3(-1.44714F, -1.444F, 3.64135F),
+                                                          new Vector3(291.0149F, 90.00006F, 89.99995F),
+                                                          new Vector3(0.12676F, 0.12676F, 0.12929F)));
+
+            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "JarOfReshaping",
+                                                          "Root",
+                                                          new Vector3(-1.2588F, 0.72566F, 3.23362F),
+                                                          new Vector3(0F, 0F, 0F),
+                                                          new Vector3(0.11192F, 0.11192F, 0.11192F)));
+
+            ItemDisplayRule ringRule = CreateDisplayRule(ItemDisplays.LoadAetheriumDisplay("WitchesRing"),
+                                                          "Sword",
+                                                          new Vector3(-0.01001F, 0.36895F, -0.01177F),
+                                                          new Vector3(0F, 220.5148F, 0F),
+                                                          new Vector3(0.49134F, 0.49134F, 0.37622F));
+
+            ItemDisplayRule circleRule = CreateDisplayRule(ItemDisplays.LoadAetheriumDisplay("WitchesRingCircle"),
+                                                          "Sword",
+                                                          new Vector3(-0.00782F, 0.36927F, -0.00924F),
+                                                          new Vector3(272.2881F, 220.515F, -0.00017F),
+                                                          new Vector3(0.27066F, 0.27066F, 0.12244F));
+            itemDisplayRules.Add(CreateDisplayRuleGroupWithRules(ItemDisplays.LoadAetheriumKeyAsset("WitchesRing"), ringRule, circleRule));
+        }
+
+        private static void AddSupplyDropDisplays() {
+            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "PlagueMask",
+                                                           "Head",
+                                                           new Vector3(0.00094F, 0.14277F, 0.37744F),
+                                                           new Vector3(350.8227F, 180F, 0F),
+                                                           new Vector3(0.21812F, 0.34679F, 0.29885F)));
+            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "PlagueHat",
+                                                           "Head",
+                                                           new Vector3(0.00001F, 0.3758F, 0.05085F),
+                                                           new Vector3(0F, 0F, 0F),
+                                                           new Vector3(0.21804F, 0.17341F, 0.29817F)));
+
+            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "Bones",
+                                                           "CalfR",
+                                                           new Vector3(0.17997F, -0.05238F, 0.07133F),
+                                                           new Vector3(13.68323F, 76.44486F, 191.9287F),
+                                                           new Vector3(1.25683F, 1.25683F, 1.25683F)));
+            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "Berries",
+                                                           "loinFront2",
+                                                           new Vector3(0.11782F, 0.27382F, -0.13743F),
+                                                           new Vector3(341.1884F, 284.1298F, 180.0032F),
+                                                           new Vector3(0.08647F, 0.08647F, 0.08647F)));
+            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "UnassumingTie",
+                                                           "Chest",
+                                                           new Vector3(-0.08132F, 0.30226F, 0.34786F),
+                                                           new Vector3(351.786F, 356.4574F, 0.73319F),
+                                                           new Vector3(0.32213F, 0.35018F, 0.42534F)));
+            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "SalvagedWires",
+                                                           "UpperArmL",
+                                                           new Vector3(-0.00419F, 0.10839F, -0.20693F),
+                                                           new Vector3(21.68419F, 165.3445F, 132.0565F),
+                                                           new Vector3(0.63809F, 0.63809F, 0.63809F)));
+
+            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "ShellPlating",
+                                                           "ThighR",
+                                                           new Vector3(0.02115F, 0.52149F, -0.31269F),
+                                                           new Vector3(319.6181F, 168.4007F, 184.779F),
+                                                           new Vector3(0.24302F, 0.26871F, 0.26871F)));
+            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "ElectroPlankton",
+                                                           "ThighR",
+                                                           new Vector3(0.21067F, 0.49094F, -0.08702F),
+                                                           new Vector3(8.08377F, 285.087F, 164.4582F),
+                                                           new Vector3(0.11243F, 0.11243F, 0.11243F)));
+
+            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "BloodBook",
+                                                           "Root",
+                                                           new Vector3(2.19845F, -1.51445F, 1.59871F),
+                                                           new Vector3(303.5005F, 271.0879F, 269.2205F),
+                                                           new Vector3(0.12F, 0.12F, 0.12F)));
+            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "QSGen",
+                                                           "LowerArmL",
+                                                           new Vector3(0.06003F, 0.1038F, -0.02042F),
+                                                           new Vector3(0F, 18.75576F, 268.4665F),
+                                                           new Vector3(0.12301F, 0.12301F, 0.12301F)));
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
@@ -2928,6 +2945,8 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
                 }
             });
         }
+        #endregion
+
 
         internal static void PopulateDisplays()
         {
@@ -2971,6 +2990,7 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
             return null;
         }
 
+        #region negro tools
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         public static GameObject LoadAetheriumDisplay(string name)
         {
@@ -3090,7 +3110,11 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
                 case "PlagueHat":
                     return SupplyDrop.Items.PlagueHat.ItemBodyModelPrefab;
                 case "PlagueMask":
-                    return SupplyDrop.Items.PlagueMask.ItemBodyModelPrefab;
+                    GameObject masku = PrefabAPI.InstantiateClone(SupplyDrop.Items.PlagueMask.ItemBodyModelPrefab, "PlagueMask");
+                    Material heeheehee = new Material(masku.GetComponent<ItemDisplay>().rendererInfos[0].defaultMaterial);
+                    heeheehee.color = Color.green; ;
+                    masku.GetComponent<ItemDisplay>().rendererInfos[0].defaultMaterial = heeheehee;
+                    return masku;
 
                 case "BloodBook":
                     return SupplyDrop.Items.BloodBook.ItemBodyModelPrefab;
@@ -3142,7 +3166,7 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
             }*/
             return null;
         }
-
+        #endregion
 
 
         //halp
@@ -3170,6 +3194,45 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
             return CreateDisplayRuleGroupWithRules(Resources.Load<ItemDef>("ItemDefs/" + itemName), singleRule);
         }
 
+
+
+        private static ItemDisplayRuleSet.KeyAssetRuleGroup CreateModRuleGroup(mod mod, string itemName, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
+
+            ItemDisplayRuleSet.KeyAssetRuleGroup ruleGroup = new ItemDisplayRuleSet.KeyAssetRuleGroup();
+            //god dang this function is tryhard
+            //just use the original function
+            //      oh i guess I wanted to generalize the trycatches
+            //          but right now I'm like no they're way too verbose so idk i'll look at it again
+            // oh hey. it should be going
+            //      nevermind, it's not because it fuxk here with the load keyasset and not at the create part
+
+            //it's not like it makes this any easier on a new look. to know what this does you'd have to go down the whole rabbit hole
+            //guess comments would fix that but yeah
+            //it's all interesting
+            //try {
+
+                switch (mod) {
+                    case mod.AETH:
+                        ruleGroup = CreateAetheriumRuleGroup(itemName, childName, position, rotation, scale);
+                        break;
+                    case mod.SUPP:
+                        ruleGroup = CreateSupplyDropRuleGroup(itemName, childName, position, rotation, scale);
+                        break;
+                    case mod.SIVS:
+                        break;
+                }
+
+                return ruleGroup;
+            //}
+            //catch (System.Exception e) {
+
+            //    PaladinPlugin.logger.LogWarning($"could not create item display for {mod.ToString().ToLower()}'s {itemName}. skipping.\n(Error: {e.Message})");
+
+            //    return ruleGroup;
+            //}
+            
+        }
+
         private static ItemDisplayRuleSet.KeyAssetRuleGroup CreateSupplyDropRuleGroup(string itemName, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
             return CreateGenericDisplayRuleGroup(LoadSupplyDropKeyAsset(itemName), LoadSupplyDropDisplay(itemName), childName, position, rotation, scale);
         }
@@ -3178,14 +3241,24 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
         }
 
         //they use these
-        //but use these one yourself if you are doing multiple
+        //but use these ones yourself if you are doing multiple
         private static ItemDisplayRuleSet.KeyAssetRuleGroup CreateDisplayRuleGroupWithRules(Object keyAsset_, params ItemDisplayRule[] rules) {
-            return new ItemDisplayRuleSet.KeyAssetRuleGroup {
-                keyAsset = keyAsset_,
-                displayRuleGroup = new DisplayRuleGroup {
-                    rules = rules
-                }
-            };
+            try {
+
+                return new ItemDisplayRuleSet.KeyAssetRuleGroup {
+                    keyAsset = keyAsset_,
+                    displayRuleGroup = new DisplayRuleGroup {
+                        rules = rules
+                    }
+                };
+            }
+            catch (System.Exception e) {
+
+                Debug.LogError($"couldn't create Item display \n{e}");
+
+                return new ItemDisplayRuleSet.KeyAssetRuleGroup();
+            }
+
         }
 
         private static ItemDisplayRule CreateFollowerDisplayRule(GameObject itemPrefab, Vector3 position, Vector3 rotation, Vector3 scale) {

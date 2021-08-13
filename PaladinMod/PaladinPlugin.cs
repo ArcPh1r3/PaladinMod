@@ -12,6 +12,7 @@ using UnityEngine.UI;
 using PaladinMod.Misc;
 using RoR2.Orbs;
 using System.Collections.Generic;
+using BepInEx.Logging;
 
 namespace PaladinMod
 {
@@ -37,6 +38,8 @@ namespace PaladinMod
         public const string MODUID = "com.rob.Paladin";
          
         public static PaladinPlugin instance;
+
+        public static ManualLogSource logger;
 
         public static GameObject characterPrefab;
 
@@ -68,6 +71,7 @@ namespace PaladinMod
         public void Awake()
         {
             instance = this;
+            logger = base.Logger;
 
             // load assets and read config
             Modules.Assets.PopulateAssets();
