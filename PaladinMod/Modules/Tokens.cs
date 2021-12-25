@@ -137,7 +137,7 @@ namespace PaladinMod.Modules
 
             LanguageAPI.Add("KEYWORD_SWORDBEAM", "<style=cKeywordName>Sword Beam</style><style=cSub>A piercing, short range beam of light that deals <style=cIsDamage>" + 100f * StaticValues.beamDamageCoefficient + "% damage</style>.");
             LanguageAPI.Add("KEYWORD_TORPOR", "<style=cKeywordName>Torpor</style><style=cSub>Applies a <style=cIsHealth>" + 100 * StaticValues.torporSlowAmount + "%</style> attack and movement speed <style=cIsDamage>slow</style>. <style=cIsHealth>Drags enemies to the ground.</style>");
-
+            
 
             LanguageAPI.Add("PALADIN_UNLOCKABLE_ACHIEVEMENT_NAME", "A Paladin's Vow");
             LanguageAPI.Add("PALADIN_UNLOCKABLE_ACHIEVEMENT_DESC", "Use the Beads of Fealty and become whole once more.");
@@ -147,8 +147,9 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, beat the game or obliterate on Monsoon.");
             LanguageAPI.Add("PALADIN_MASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Paladin: Mastery");
 
+            string masteryFootnote = PaladinPlugin.starstormInstalled ? "" : "\n<color=#8888>(Typhoon difficulty requires Starstorm 2)</color>";
             LanguageAPI.Add("PALADIN_TYPHOONUNLOCKABLE_ACHIEVEMENT_NAME", "Paladin: Grand Mastery");
-            LanguageAPI.Add("PALADIN_TYPHOONUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, beat the game or obliterate on Typhoon.");
+            LanguageAPI.Add("PALADIN_TYPHOONUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, beat the game or obliterate on Typhoon or higher." + masteryFootnote);
             LanguageAPI.Add("PALADIN_TYPHOONUNLOCKABLE_UNLOCKABLE_NAME", "Paladin: Grand Mastery");
 
             LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_ACHIEVEMENT_NAME", "Her Disciple");

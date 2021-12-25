@@ -2748,7 +2748,7 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
                     AddAetheriumDisplays();
             }
             catch (System.Exception e) {
-                PaladinPlugin.logger.LogWarning($"could not add displays for Aetherium\n{e}");
+                //PaladinPlugin.logger.LogWarning($"could not add displays for Aetherium\n{e}");
             }
 
             try {
@@ -2756,7 +2756,7 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
                     AddSupplyDropDisplays();
             }
             catch (System.Exception e) {
-                PaladinPlugin.logger.LogWarning($"could not add displays for Supply Drop\n{e}");
+                //PaladinPlugin.logger.LogWarning($"could not add displays for Supply Drop\n{e}");
             }
             
             itemDisplayRuleSet.keyAssetRuleGroups = itemDisplayRules.ToArray();
@@ -3003,7 +3003,7 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
                 case "BlasterSword":
                     return Aetherium.Items.BlasterSword.ItemBodyModelPrefab;
                 case "BloodSoakedShield":
-                    return Aetherium.Items.BloodSoakedShield.ItemBodyModelPrefab;
+                    return Aetherium.Items.BloodthirstyShield.ItemBodyModelPrefab;
                 case "FeatheredPlume":
                     return Aetherium.Items.FeatheredPlume.ItemBodyModelPrefab;
                 case "InspiringDrone":
@@ -3039,7 +3039,7 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
                 case "BlasterSword":
                     return Aetherium.Items.BlasterSword.instance.ItemDef;
                 case "BloodSoakedShield":
-                    return Aetherium.Items.BloodSoakedShield.instance.ItemDef;
+                    return Aetherium.Items.BloodthirstyShield.instance.ItemDef;
                 case "FeatheredPlume":
                     return Aetherium.Items.FeatheredPlume.instance.ItemDef;
                 case "InspiringDrone":

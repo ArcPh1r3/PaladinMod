@@ -28,7 +28,6 @@ namespace PaladinMod.Modules
             REDSCYTHE,
             PURPLE,
             FLAME
-
         }
 
         /// <summary>
@@ -183,6 +182,7 @@ namespace PaladinMod.Modules
             Material tempMat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
             if (!tempMat)
             {
+                Debug.LogWarning("no material wtf " + materialName);
                 return PaladinPlugin.commandoMat;
             }
 
@@ -193,6 +193,7 @@ namespace PaladinMod.Modules
             mat.SetFloat("_EmPower", emission);
             mat.SetTexture("_EmTex", tempMat.GetTexture("_EmissionMap"));
             mat.SetFloat("_NormalStrength", normalStrength);
+            mat.SetInt("_Cull", 0);
 
             //cachedMaterials.Add(mat);
             return mat;
@@ -365,8 +366,7 @@ namespace PaladinMod.Modules
 
             AddCSSSkinChangeResponse(grandMasterySkin, paladinCSSEffect.BEEFY);
 
-            if (PaladinPlugin.starstormInstalled) 
-                skinDefs.Add(grandMasterySkin);
+            skinDefs.Add(grandMasterySkin);
 
             #endregion
 
@@ -612,7 +612,7 @@ namespace PaladinMod.Modules
 
             AddCSSSkinChangeResponse(grandMasteryLegacySkin, paladinCSSEffect.BEEFY);
 
-            if (PaladinPlugin.starstormInstalled && Config.legacySkins.Value)
+            if (Config.legacySkins.Value)
                 skinDefs.Add(grandMasteryLegacySkin);
 
             #endregion
