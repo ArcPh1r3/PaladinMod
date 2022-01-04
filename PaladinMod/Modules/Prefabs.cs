@@ -117,12 +117,28 @@ namespace PaladinMod.Modules
                     material = Modules.Skins.CreateMaterial("matPaladinGMSword") 
                 },
 #endregion 
+                
+                new CustomRendererInfo
+                {
+                    childName = "archbod",
+                    material = Modules.Skins.CreateMaterial("archbod", 10, Color.white, 0.25f)
+                },
+                new CustomRendererInfo
+                {
+                    childName = "archcloth",
+                    material = Modules.Skins.CreateMaterial("archcloth")
+                },
+                new CustomRendererInfo
+                {
+                    childName = "archarmor",
+                    material = Modules.Skins.CreateMaterial("archarmor")
+                },
                 new CustomRendererInfo
                 {
                     childName = "Model",
                     material = Modules.Skins.CreateMaterial("matPaladin", 10, Color.white, 0.25f)
-                }
-            }, 4); 
+                },
+            }, 7); 
              
             paladinPrefab.AddComponent<Misc.PaladinSwordController>();
             paladinPrefab.AddComponent<Misc.PaladinRageController>();
