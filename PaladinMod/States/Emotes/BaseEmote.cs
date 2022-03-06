@@ -16,9 +16,10 @@ namespace PaladinMod.States.Emotes
         private uint activePlayID;
         private Animator animator;
         protected ChildLocator childLocator;
-        private CharacterCameraParams originalCameraParams;
+        //private CharacterCameraParams originalCameraParams;
         protected PaladinSwordController swordController;
         public LocalUser localUser;
+        private CameraTargetParams.CameraParamsOverrideHandle handle;
 
         public override void OnEnter()
         {
@@ -49,8 +50,8 @@ namespace PaladinMod.States.Emotes
                 }
             }
 
-            this.originalCameraParams = base.cameraTargetParams.cameraParams;
-            base.cameraTargetParams.cameraParams = Modules.CameraParams.emoteCameraParamsPaladin;
+            //this.originalCameraParams = base.cameraTargetParams.cameraParams;
+            handle = Modules.CameraParams.OverridePaladinCameraParams(base.cameraTargetParams, PaladinCameraParams.EMOTE, 0.5f);
         }
 
         public override void OnExit()
@@ -58,7 +59,10 @@ namespace PaladinMod.States.Emotes
             base.OnExit();
 
             base.characterBody.hideCrosshair = false;
-            base.cameraTargetParams.cameraParams = this.originalCameraParams;
+            //base.cameraTargetParams.cameraParams = this.originalCameraParams;
+            //base.cameraTargetParams.RequestAimType(CameraTargetParams.AimType.Standard);
+            //Modules.CameraParams.OverridePaladinCameraParams(base.cameraTargetParams, PaladinCameraParams.DEFAULT);
+            base.cameraTargetParams.RemoveParamsOverride(handle, 0.2f);
 
             if (base.GetAimAnimator()) base.GetAimAnimator().enabled = true;
             if (this.animator)
