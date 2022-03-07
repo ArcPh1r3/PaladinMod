@@ -25,8 +25,9 @@ namespace PaladinMod.States.Rage
 
             if (NetworkServer.active) base.characterBody.AddBuff(Modules.Buffs.rageBuff);
 
-            base.cameraTargetParams.cameraParams = Modules.CameraParams.rageEnterOutCameraParamsPaladin;
-            base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Aura;
+            //todo fix with new camera params system
+            Modules.CameraParams.OverridePaladinCameraParams(base.cameraTargetParams, PaladinCameraParams.RAGE_ENTER_OUT);
+            base.cameraTargetParams.RequestAimType( CameraTargetParams.AimType.Aura);
 
             this.FireShockwave();
 
@@ -58,7 +59,7 @@ namespace PaladinMod.States.Rage
                 blastAttack.baseDamage = 0f;
                 blastAttack.falloffModel = BlastAttack.FalloffModel.None;
                 blastAttack.damageColorIndex = DamageColorIndex.Item;
-                blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
+                blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
                 blastAttack.Fire();
             }
 
@@ -81,8 +82,9 @@ namespace PaladinMod.States.Rage
         {
             base.OnExit();
 
-            base.cameraTargetParams.cameraParams = Modules.CameraParams.defaultCameraParamsPaladin;
-            base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Standard;
+            //todo fix with new camera params system
+            Modules.CameraParams.OverridePaladinCameraParams(base.cameraTargetParams, PaladinCameraParams.DEFAULT);
+            base.cameraTargetParams.RequestAimType( CameraTargetParams.AimType.Standard);
 
             if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
         }

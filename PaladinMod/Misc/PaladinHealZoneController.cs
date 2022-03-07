@@ -204,10 +204,10 @@ namespace PaladinMod.Misc
                         {
                             if (charBody.GetComponent<PaladinGroundController>() == null) charBody.gameObject.AddComponent<PaladinGroundController>().body = charBody;
                         }
-
+                        
                         if (this.cleanseDebuffs)
                         {
-                            Util.CleanseBody(charBody, true, false, true, false, false);
+                            Util.CleanseBody(charBody, true, false, true, true, false, false);
                         }
                     }
                 }

@@ -38,7 +38,7 @@ namespace PaladinMod.Modules
                 bodyName = "RobPaladinBody",
                 bodyNameToken = "PALADIN_NAME",
                 characterPortrait = Assets.charPortrait,
-                crosshair = Resources.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"), 
+                crosshair = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"), 
                 damage = StaticValues.baseDamage,
                 healthGrowth = 64,
                 healthRegen = 1.5f,
@@ -48,7 +48,7 @@ namespace PaladinMod.Modules
                 bodyColor = PaladinPlugin.characterColor
             });
 
-            SetupCharacterModel(paladinPrefab, new CustomRendererInfo[]
+            CustomRendererInfo[] customRendererInfos = new CustomRendererInfo[]
             {
                 new CustomRendererInfo
                 {
@@ -114,43 +114,30 @@ namespace PaladinMod.Modules
                 new CustomRendererInfo
                 {
                     childName = "CrownCrystal-4",
-                    material = Modules.Skins.CreateMaterial("matPaladinGMSword") 
+                    material = Modules.Skins.CreateMaterial("matPaladinGMSword")
                 },
 #endregion 
                 
                 new CustomRendererInfo
                 {
-                    childName = "archbod",
-                    material = Modules.Skins.CreateMaterial("archbod", 10, Color.white, 0.25f)
-                },
-                new CustomRendererInfo
-                {
-                    childName = "archcloth",
-                    material = Modules.Skins.CreateMaterial("archcloth")
-                },
-                new CustomRendererInfo
-                {
-                    childName = "archarmor",
-                    material = Modules.Skins.CreateMaterial("archarmor")
-                },
-                new CustomRendererInfo
-                {
                     childName = "Model",
                     material = Modules.Skins.CreateMaterial("matPaladin", 10, Color.white, 0.25f)
                 },
-            }, 7); 
+            };
+
+            SetupCharacterModel(paladinPrefab, customRendererInfos, customRendererInfos.Length-1); 
              
             paladinPrefab.AddComponent<Misc.PaladinSwordController>();
             paladinPrefab.AddComponent<Misc.PaladinRageController>();
             paladinPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.AddComponent<Misc.PaladinAnimationEvents>();
 
             ChildLocator childLocator = paladinPrefab.GetComponentInChildren<ChildLocator>();
-            Material eyeTrailMat = Resources.Load<GameObject>("Prefabs/CharacterBodies/BrotherBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[4].defaultMaterial;
+            Material eyeTrailMat = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/BrotherBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[4].defaultMaterial;
             childLocator.FindChild("EyeTrail").gameObject.GetComponentInChildren<TrailRenderer>().material = eyeTrailMat;
 
             paladinPrefab.GetComponent<CharacterBody>().sprintingSpeedMultiplier = 1.6f;
 
-            paladinPrefab.GetComponent<CameraTargetParams>().cameraParams = Modules.CameraParams.defaultCameraParamsPaladin;
+            paladinPrefab.GetComponent<CameraTargetParams>().cameraParams = Modules.CameraParams.CreateCameraParamsWithData(PaladinCameraParams.DEFAULT);
 
             paladinDisplayPrefab = CreateDisplayPrefab("PaladinDisplay", paladinPrefab);
             paladinDisplayPrefab.AddComponent<Misc.MenuSound>();
@@ -184,7 +171,7 @@ namespace PaladinMod.Modules
                 bodyName = "NemesisPaladinBody",
                 bodyNameToken = "NEMPALADIN_NAME",
                 characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texNemPaladinPlayerIcon"),
-                crosshair = Resources.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"),
+                crosshair = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"),
                 damage = StaticValues.baseDamage,
                 healthGrowth = 64,
                 healthRegen = 1.5f,
@@ -229,17 +216,9 @@ namespace PaladinMod.Modules
                 }
             }, 4);
 
-            CharacterCameraParams nemPaladinCameraParams = ScriptableObject.CreateInstance<CharacterCameraParams>();
-            nemPaladinCameraParams.name = "ccpNemPaladin";
-            nemPaladinCameraParams.minPitch = -70f;
-            nemPaladinCameraParams.maxPitch = 70f;
-            nemPaladinCameraParams.wallCushion = 0.1f;
-            nemPaladinCameraParams.pivotVerticalOffset = 1.37f;
-            nemPaladinCameraParams.standardLocalCameraPos = new Vector3(0, 0.75f, -10.5f);
-
             nemPaladinPrefab.GetComponent<CharacterBody>().sprintingSpeedMultiplier = 1.6f;
 
-            nemPaladinPrefab.GetComponent<CameraTargetParams>().cameraParams = nemPaladinCameraParams;
+            nemPaladinPrefab.GetComponent<CameraTargetParams>().cameraParams = Modules.CameraParams.CreateCameraParamsWithData(PaladinCameraParams.DEFAULT);
 
             nemPaladinDisplayPrefab = CreateDisplayPrefab("NemPaladinDisplay", nemPaladinPrefab);
 
@@ -259,7 +238,7 @@ namespace PaladinMod.Modules
                 bodyName = "LunarKnightBody",
                 bodyNameToken = "LUNAR_KNIGHT_BODY_NAME",
                 characterPortrait = Assets.charPortrait,
-                crosshair = Resources.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"),
+                crosshair = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"),
                 damage = 12f,
                 healthGrowth = 144,
                 healthRegen = 0f,
@@ -297,7 +276,7 @@ namespace PaladinMod.Modules
 
         public static GameObject CreateDisplayPrefab(string modelName, GameObject prefab)
         {
-            GameObject newPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), modelName + "Prefab");
+            GameObject newPrefab = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), modelName + "Prefab");
 
             GameObject model = CreateModel(newPrefab, modelName);
             Transform modelBaseTransform = SetupModel(newPrefab, model.transform);
@@ -311,16 +290,20 @@ namespace PaladinMod.Modules
         {
             CharacterModel characterModel = prefab.GetComponent<ModelLocator>().modelTransform.gameObject.AddComponent<CharacterModel>();
             ChildLocator childLocator = characterModel.GetComponent<ChildLocator>();
-
+            
             characterModel.body = prefab.GetComponent<CharacterBody>();
 
             List<CharacterModel.RendererInfo> rendererInfos = new List<CharacterModel.RendererInfo>();
 
             for (int i = 0; i < rendererInfo.Length; i++)
             {
-                Renderer renderer = childLocator.FindChild(rendererInfo[i].childName).GetComponent<SkinnedMeshRenderer>();
+                Renderer renderer = childLocator.FindChild(rendererInfo[i].childName)?.GetComponent<SkinnedMeshRenderer>();
+
                 if (renderer == null) {
-                    renderer = childLocator.FindChild(rendererInfo[i].childName).GetComponent<MeshRenderer>();
+                    renderer = childLocator.FindChild(rendererInfo[i].childName)?.GetComponent<MeshRenderer>();
+                }
+                if(renderer == null) {
+                    Debug.LogError("no renderer found for " + rendererInfo[i].childName);
                 }
 
                 rendererInfos.Add(new CharacterModel.RendererInfo
@@ -343,7 +326,7 @@ namespace PaladinMod.Modules
 
         public static GameObject CreatePrefab(string bodyName, string modelName, BodyInfo bodyInfo)
         {
-            GameObject newPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), bodyName);
+            GameObject newPrefab = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), bodyName);
 
             GameObject model = CreateModel(newPrefab, modelName);
             Transform modelBaseTransform = SetupModel(newPrefab, model.transform);
@@ -355,7 +338,7 @@ namespace PaladinMod.Modules
             bodyComponent.baseNameToken = bodyInfo.bodyNameToken;
             bodyComponent.subtitleNameToken = bodyInfo.subtitleNameToken;
             bodyComponent.portraitIcon = bodyInfo.characterPortrait;
-            bodyComponent.crosshairPrefab = bodyInfo.crosshair;
+            bodyComponent._defaultCrosshairPrefab = bodyInfo.crosshair;
             bodyComponent.bodyColor = bodyInfo.bodyColor;
 
             bodyComponent.bodyFlags = CharacterBody.BodyFlags.ImmuneToExecutes;
@@ -469,12 +452,10 @@ namespace PaladinMod.Modules
         private static void SetupCameraTargetParams(GameObject prefab)
         {
             CameraTargetParams cameraTargetParams = prefab.GetComponent<CameraTargetParams>();
-            cameraTargetParams.cameraParams = Resources.Load<GameObject>("Prefabs/CharacterBodies/MercBody").GetComponent<CameraTargetParams>().cameraParams;
+            cameraTargetParams.cameraParams = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/ToolBotBody").GetComponent<CameraTargetParams>().cameraParams;
             cameraTargetParams.cameraPivotTransform = prefab.transform.Find("ModelBase").Find("CameraPivot");
-            cameraTargetParams.aimMode = CameraTargetParams.AimType.Standard;
+            //cameraTargetParams.currentCameraParamsData.default = CameraTargetParams.AimType.Standard;
             cameraTargetParams.recoil = Vector2.zero;
-            cameraTargetParams.idealLocalCameraPos = Vector3.zero;
-            cameraTargetParams.dontRaycastToPivot = false;
         }
 
         private static void SetupModelLocator(GameObject prefab, Transform modelBaseTransform, Transform modelTransform)
@@ -527,7 +508,7 @@ namespace PaladinMod.Modules
             footstepHandler.baseFootstepString = "Play_player_footstep";
             footstepHandler.sprintFootstepOverrideString = "";
             footstepHandler.enableFootstepDust = true;
-            footstepHandler.footstepDustPrefab = Resources.Load<GameObject>("Prefabs/GenericFootstepDust");
+            footstepHandler.footstepDustPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/GenericFootstepDust");
         }
 
         private static void SetupRagdoll(GameObject model)
@@ -536,7 +517,7 @@ namespace PaladinMod.Modules
 
             if (!ragdollController) return;
 
-            if (ragdollMaterial == null) ragdollMaterial = Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<RagdollController>().bones[1].GetComponent<Collider>().material;
+            if (ragdollMaterial == null) ragdollMaterial = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<RagdollController>().bones[1].GetComponent<Collider>().material;
 
             foreach (Transform i in ragdollController.bones)
             {

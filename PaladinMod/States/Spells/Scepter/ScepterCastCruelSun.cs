@@ -20,8 +20,8 @@ namespace PaladinMod.States.Spell
             EffectData effectData = new EffectData();
             effectData.origin = this.swordController.sunPosition;
 
-            EffectManager.SpawnEffect(Resources.Load<GameObject>("prefabs/effects/impacteffects/GrandparentSpawnImpact"), effectData, false);
-            EffectManager.SpawnEffect(Resources.Load<GameObject>("prefabs/effects/ClayBossDeath"), effectData, false);
+            EffectManager.SpawnEffect(RoR2.LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/GrandparentSpawnImpact"), effectData, false);
+            EffectManager.SpawnEffect(RoR2.LegacyResourcesAPI.Load<GameObject>("prefabs/effects/ClayBossDeath"), effectData, false);
 
             if (base.isAuthority)
             {
@@ -37,7 +37,7 @@ namespace PaladinMod.States.Spell
                 blastAttack.baseDamage = ScepterCastCruelSun.flareDamageCoefficient * this.damageStat;
                 blastAttack.falloffModel = BlastAttack.FalloffModel.Linear;
                 blastAttack.damageColorIndex = DamageColorIndex.Item;
-                blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
+                blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
                 blastAttack.Fire();
             }
 

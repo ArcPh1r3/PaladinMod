@@ -3,6 +3,7 @@ using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.Networking;
+using static RoR2.CameraTargetParams;
 
 namespace PaladinMod.States
 {
@@ -15,6 +16,9 @@ namespace PaladinMod.States
         public Quaternion spellRotation;
         public string castSoundString;
         public string muzzleString = "SpellCastEffect";
+
+        public CameraParamsOverrideHandle camParamsOverrideHandle;
+        public AimRequest aimRequest;
 
         protected float overrideDuration;
 
@@ -39,7 +43,8 @@ namespace PaladinMod.States
 
             if (base.cameraTargetParams)
             {
-                base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Aura;
+
+                //base.cameraTargetParams.RequestAimType(CameraTargetParams.AimType.Aura);
             }
 
             if (this.muzzleString == "SpellCastEffect")
@@ -85,10 +90,10 @@ namespace PaladinMod.States
 
             if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.Slow50);
 
-            if (base.cameraTargetParams)
-            {
-                base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Standard;
-                base.cameraTargetParams.cameraParams = Modules.CameraParams.defaultCameraParamsPaladin;
+            if (base.cameraTargetParams) {
+
+                base.cameraTargetParams.RemoveParamsOverride(camParamsOverrideHandle, 1f);
+                //base.cameraTargetParams.RemoveRequest(aimRequest);
             }
         }
 

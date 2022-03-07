@@ -190,7 +190,7 @@ namespace PaladinMod.States
                 effectData.origin = base.characterBody.footPosition;
                 effectData.scale = 2f;
 
-                EffectManager.SpawnEffect(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/ParentSlamEffect"), effectData, true);
+                EffectManager.SpawnEffect(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/ParentSlamEffect"), effectData, true);
             }
         }
 

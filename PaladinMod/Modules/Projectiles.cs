@@ -38,7 +38,7 @@ namespace PaladinMod.Modules
         public static void RegisterProjectiles() {
             //would like to simplify this all eventually....
             #region SpinningSlashShockwave
-            shockwave = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/BrotherSunderWave"), "PaladinShockwave", true);
+            shockwave = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/BrotherSunderWave"), "PaladinShockwave", true);
             shockwave.transform.GetChild(0).transform.localScale = new Vector3(10, 1.5f, 1);
             shockwave.GetComponent<ProjectileCharacterController>().lifetime = 0.5f;
             shockwave.GetComponent<ProjectileDamage>().damageType = DamageType.Stun1s;
@@ -49,20 +49,20 @@ namespace PaladinMod.Modules
             PaladinPlugin.Destroy(shockwaveGhost.transform.GetChild(0).Find("Infection, World").gameObject);
             PaladinPlugin.Destroy(shockwaveGhost.transform.GetChild(0).Find("Water").gameObject);
 
-            //Material shockwaveMat = Resources.Load<GameObject>("Prefabs/Projectiles/LunarWispTrackingBomb").GetComponent<ProjectileController>().ghostPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material;
+            //Material shockwaveMat = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/LunarWispTrackingBomb").GetComponent<ProjectileController>().ghostPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material;
             shockwaveGhost.transform.GetChild(1).GetComponent<MeshRenderer>().material = Modules.Assets.matMeteorIndicator;
 
             shockwave.GetComponent<ProjectileController>().ghostPrefab = shockwaveGhost;
             #endregion
 
             #region LunarShard
-            lunarShard = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/LunarShardProjectile"), "PaladinLunarShard", true);
+            lunarShard = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/LunarShardProjectile"), "PaladinLunarShard", true);
             PaladinPlugin.Destroy(lunarShard.GetComponent<ProjectileSteerTowardTarget>());
             lunarShard.GetComponent<ProjectileImpactExplosion>().blastDamageCoefficient = 1f;
             #endregion
 
             #region SunlightSpear
-            lightningSpear = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/MageLightningBombProjectile"), "LightningSpear", true);
+            lightningSpear = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/MageLightningBombProjectile"), "LightningSpear", true);
             lightningSpear.AddComponent<Misc.ProjectileOverchargeOnImpact>();
 
             GameObject spearGhost = Assets.lightningSpear.InstantiateClone("LightningSpearGhost", false);
@@ -90,14 +90,14 @@ namespace PaladinMod.Modules
             #endregion
 
             #region SwordBeam
-            swordBeamProjectile = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/FMJ"), "PaladinSwordBeam", true);
+            swordBeamProjectile = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/FMJ"), "PaladinSwordBeam", true);
             swordBeamProjectile.transform.localScale = new Vector3(6, 3, 2);
             //GameObject beamGhost = Assets.swordBeam.InstantiateClone("SwordBeamGhost", false);
             //beamGhost.AddComponent<ProjectileGhostController>();
 
             //swordBeam.GetComponent<ProjectileController>().ghostPrefab = Assets.swordBeamGhost; 
 
-            GameObject MercEvisProjectileGhost = Resources.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab;
+            GameObject MercEvisProjectileGhost = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab;
             swordBeamProjectile.GetComponent<ProjectileController>().ghostPrefab = MercEvisProjectileGhost;
             swordBeamProjectile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
 
@@ -111,7 +111,7 @@ namespace PaladinMod.Modules
             #endregion
 
             #region Replenish
-            heal = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinHeal", true);
+            heal = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinHeal", true);
             heal.transform.localScale = Vector3.one;
 
             PaladinMod.PaladinPlugin.Destroy(heal.GetComponent<ProjectileDotZone>());
@@ -133,7 +133,7 @@ namespace PaladinMod.Modules
             #endregion
 
             #region SacredSunlight
-            healZone = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinHealZone", true);
+            healZone = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinHealZone", true);
             healZone.transform.localScale = Vector3.one;
 
             PaladinMod.PaladinPlugin.Destroy(healZone.GetComponent<ProjectileDotZone>());
@@ -164,7 +164,7 @@ namespace PaladinMod.Modules
             #endregion
 
             #region ScepterSacredSunlight
-            scepterHealZone = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinScepterHealZone", true);
+            scepterHealZone = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinScepterHealZone", true);
             scepterHealZone.transform.localScale = Vector3.one;
 
             PaladinMod.PaladinPlugin.Destroy(scepterHealZone.GetComponent<ProjectileDotZone>());
@@ -196,7 +196,7 @@ namespace PaladinMod.Modules
             #endregion
 
             #region VowOfSilence
-            torpor = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinTorpor", true);
+            torpor = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinTorpor", true);
             torpor.transform.localScale = Vector3.one;
 
             PaladinMod.PaladinPlugin.Destroy(torpor.GetComponent<ProjectileDotZone>());
@@ -228,7 +228,7 @@ namespace PaladinMod.Modules
             #endregion
 
             #region ScepterVowOfSilence
-            scepterTorpor = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinScepterTorpor", true);
+            scepterTorpor = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinScepterTorpor", true);
             scepterTorpor.transform.localScale = Vector3.one;
 
             PaladinMod.PaladinPlugin.Destroy(scepterTorpor.GetComponent<ProjectileDotZone>());
@@ -260,7 +260,7 @@ namespace PaladinMod.Modules
             #endregion
 
             #region SacredOath
-            warcry = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinWarcry", true);
+            warcry = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinWarcry", true);
             warcry.transform.localScale = Vector3.one;
 
             PaladinMod.PaladinPlugin.Destroy(warcry.GetComponent<ProjectileDotZone>());
@@ -289,7 +289,7 @@ namespace PaladinMod.Modules
             #endregion
 
             #region ScepterSacredOath
-            scepterWarcry = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinScepterWarcry", true);
+            scepterWarcry = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/SporeGrenadeProjectileDotZone"), "PaladinScepterWarcry", true);
             scepterWarcry.transform.localScale = Vector3.one;
 
             PaladinMod.PaladinPlugin.Destroy(scepterWarcry.GetComponent<ProjectileDotZone>());
@@ -341,7 +341,7 @@ namespace PaladinMod.Modules
         /// <returns></returns>
         public static GameObject CloneAndColorSwordBeam(Color beamColor, float lightBright = 0.8f) {
 
-            GameObject MercEvisProjectileGhost = Resources.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab;
+            GameObject MercEvisProjectileGhost = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab;
 
             return CloneAndColorGhost(MercEvisProjectileGhost, beamColor, lightBright);
         }

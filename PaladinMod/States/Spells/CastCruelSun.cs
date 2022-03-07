@@ -18,7 +18,7 @@ namespace PaladinMod.States.Spell
         {
             this.baseDuration = 15f;
             this.overrideDuration = 15f;
-            this.muzzleflashEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/ExplosionSolarFlare");
+            this.muzzleflashEffectPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/ExplosionSolarFlare");
             this.projectilePrefab = null;
             this.castSoundString = Modules.Sounds.CastTorpor;
             this.swordController = base.gameObject.GetComponent<PaladinSwordController>();
@@ -53,7 +53,7 @@ namespace PaladinMod.States.Spell
                 temporaryOverlay.animateShaderAlpha = true;
                 temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                 temporaryOverlay.destroyComponentOnEnd = true;
-                temporaryOverlay.originalMaterial = Resources.Load<Material>("Materials/matGrandparentTeleportOutBoom");
+                temporaryOverlay.originalMaterial = RoR2.LegacyResourcesAPI.Load<Material>("Materials/matGrandparentTeleportOutBoom");
                 temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
             }
         }

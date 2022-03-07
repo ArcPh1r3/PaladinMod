@@ -107,7 +107,7 @@ namespace PaladinMod.Misc
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private bool CheckForBlasterSword(Inventory inventory)
         {
-            if (Aetherium.Items.BlasterSword.instance == null) return false;// this should work? idk
+            //if (Aetherium.Items.BlasterSword.instance == null) return false;// this should work? idk
             if (inventory.GetItemCount(ItemCatalog.FindItemIndex("ITEM_BLASTER_SWORD")) > 0) return true;
             return false;
         }
@@ -115,7 +115,8 @@ namespace PaladinMod.Misc
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private bool CheckForAncientScepter(Inventory inventory)
         {
-            if (inventory.GetItemCount(AncientScepter.AncientScepterItem.instance.ItemDef) > 0) return true;
+            //todo CUM2 how find scepter
+            //if (inventory.GetItemCount(AncientScepter.AncientScepterItem.instance.ItemDef) > 0) return true;
             return false;
         }
 

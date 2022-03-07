@@ -184,18 +184,14 @@ namespace PaladinMod.Modules
 
         public static Material capeMat;
 
-        public static void PopulateAssets()
-        {
-            if (mainAssetBundle == null)
-            {
-                using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("PaladinMod.paladin"))
-                {
+        public static void PopulateAssets() {
+            if (mainAssetBundle == null) {
+                using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("PaladinMod.paladin")) {
                     mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
                 }
             }
 
-            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("PaladinMod.PaladinBank.bnk"))
-            {
+            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("PaladinMod.PaladinBank.bnk")) {
                 byte[] array = new byte[manifestResourceStream2.Length];
                 manifestResourceStream2.Read(array, 0, array.Length);
                 SoundAPI.SoundBanks.Add(array);
@@ -203,66 +199,53 @@ namespace PaladinMod.Modules
 
             GatherMaterials();
 
-            #region Icons
-            charPortrait = mainAssetBundle.LoadAsset<Sprite>("texPaladinIcon").texture;
+            PopulateIcons();
 
-            iconP = mainAssetBundle.LoadAsset<Sprite>("PassiveIcon");
-            icon1 = mainAssetBundle.LoadAsset<Sprite>("SlashIcon");
-            icon2 = mainAssetBundle.LoadAsset<Sprite>("SpinSlashIcon");
-            icon2b = mainAssetBundle.LoadAsset<Sprite>("LightningSpearIcon");
-            icon2c = mainAssetBundle.LoadAsset<Sprite>("LunarShardIcon");
-            icon3 = mainAssetBundle.LoadAsset<Sprite>("DashIcon");
-            icon3b = mainAssetBundle.LoadAsset<Sprite>("HealIcon");
-            icon4 = mainAssetBundle.LoadAsset<Sprite>("HealZoneIcon");
-            icon4b = mainAssetBundle.LoadAsset<Sprite>("TorporIcon");
-            icon4c = mainAssetBundle.LoadAsset<Sprite>("WarcryIcon");
-            icon4S = mainAssetBundle.LoadAsset<Sprite>("ScepterHealZoneIcon");
-            icon4bS = mainAssetBundle.LoadAsset<Sprite>("ScepterTorporIcon");
-            icon4cS = mainAssetBundle.LoadAsset<Sprite>("ScepterWarcryIcon");
-            icon4d = mainAssetBundle.LoadAsset<Sprite>("CruelSunIcon");
-            icon4dS = mainAssetBundle.LoadAsset<Sprite>("ScepterCruelSunIcon");
-            #endregion
+            PopulateProjectileGhosts();
 
-            #region ProjectileGhosts
-            lightningSpear = mainAssetBundle.LoadAsset<GameObject>("LightningSpear");
-            swordBeam = mainAssetBundle.LoadAsset<GameObject>("SwordBeam");
-            swordBeamGhost = mainAssetBundle.LoadAsset<GameObject>("SwordBeamGhost");
-            swordBeamGhost.AddComponent<ProjectileGhostController>();
-            tornadoEffect = mainAssetBundle.LoadAsset<GameObject>("PaladinTornadoEffect");
-            tornadoEffect.AddComponent<ProjectileGhostController>();
-            #endregion
+            PopulateSpellEffects();
 
-            #region SpellEffects
-            healEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("HealEffect");
-            healZoneEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("HealZoneEffect");
-            torporEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("TorporEffect");
-            warcryEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("HealZoneEffect").InstantiateClone("WarcryEffect", false);
+            PopulateSwordEffects();
 
-            GameObject engiShieldObj = Resources.Load<GameObject>("Prefabs/Projectiles/EngiBubbleShield");
+            PopulateMiscEffects();
 
-            Material shieldFillMat = UnityEngine.Object.Instantiate<Material>(engiShieldObj.transform.Find("Collision").Find("ActiveVisual").GetComponent<MeshRenderer>().material);
-            Material shieldOuterMat = UnityEngine.Object.Instantiate<Material>(engiShieldObj.transform.Find("Collision").Find("ActiveVisual").Find("Edge").GetComponent<MeshRenderer>().material);
+            PopulateMeshes();
+            //capeMat = Skins.CreateMaterial("matPaladinGMOld", 1, Color.white);
+            //was this being used anywhere?
 
-            GameObject voidExplosionObj = Resources.Load<GameObject>("Prefabs/Effects/NullifierDeathExplosion");//DeathExplosion
-            Material voidMat = voidExplosionObj.transform.Find("AreaIndicator (1)").GetComponent<ParticleSystemRenderer>().material;
-            torporMat = voidMat;
+            altLightningImpactFX = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact"), "PaladinLightningStrikeImpact", true);
+            PaladinPlugin.Destroy(altLightningImpactFX.transform.Find("LightningRibbon").gameObject);
+            PaladinPlugin.Destroy(altLightningImpactFX.transform.Find("Ring").gameObject);
+            altLightningImpactFX.transform.Find("PostProcess").GetComponent<PostProcessVolume>().sharedProfile = grandParentPP;
+            altLightningImpactFX.transform.Find("Sphere").GetComponent<ParticleSystemRenderer>().material = matLoaderLightningSphere;
+            Light light = altLightningImpactFX.GetComponentInChildren<Light>();
+            light.intensity = 80f;
+            light.color = Color.yellow;
 
-            GameObject healNovaObj = Resources.Load<GameObject>("Prefabs/Effects/TPHealNovaEffect");
-            Material healMat = healNovaObj.transform.Find("AreaIndicator").GetComponent<ParticleSystemRenderer>().material;
+            altLightningImpactFX.AddComponent<NetworkIdentity>();
 
-            healEffectPrefab.GetComponentInChildren<ParticleSystemRenderer>().material = healMat;
+            AddEffect(altLightningImpactFX, altLightningImpactFX.GetComponent<EffectComponent>().soundName);
 
-            healZoneEffectPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material = shieldOuterMat;
-            healZoneEffectPrefab.transform.GetChild(0).GetChild(0).GetComponent<ParticleSystemRenderer>().material = healMat;
+            //clone mithrix's dash effect and resize it for my dash
+            dashFX = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/BrotherDashEffect"), "PaladinDashEffect", true);
+            dashFX.AddComponent<NetworkIdentity>();
+            dashFX.GetComponent<EffectComponent>().applyScale = true;
+            dashFX.transform.localScale *= 0.5f;
 
-            torporEffectPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material = voidMat;
+            AddEffect(dashFX);
 
-            warcryEffectPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material = shieldOuterMat;
-            warcryEffectPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material.SetColor("_TintColor", Color.red);
-            warcryEffectPrefab.transform.GetChild(0).GetChild(0).GetComponent<ParticleSystemRenderer>().material = Resources.Load<Material>("materials/matFullCrit");
-            //
-            //GameObject warbannerEffect = Resources.Load<GameObject>("Prefabs/NetworkedObjects/WarbannerWard").InstantiateClone("x", true);
-            #endregion
+            //InitCustomItems();
+
+            swordHitSoundEventS = CreateNetworkSoundEventDef(Modules.Sounds.HitS);
+            swordHitSoundEventM = CreateNetworkSoundEventDef(Modules.Sounds.HitM);
+            swordHitSoundEventL = CreateNetworkSoundEventDef(Modules.Sounds.HitL);
+
+            batHitSoundEventS = CreateNetworkSoundEventDef(Modules.Sounds.HitBluntS);
+            batHitSoundEventM = CreateNetworkSoundEventDef(Modules.Sounds.HitBluntM);
+            batHitSoundEventL = CreateNetworkSoundEventDef(Modules.Sounds.HitBluntL);
+        }
+
+        private static void PopulateSwordEffects() {
 
             #region SwordEffects
             swordSwing = Assets.LoadEffect("PaladinSwing", "");
@@ -315,12 +298,18 @@ namespace PaladinMod.Modules
             spinningSlashEmpoweredFXBlack = Assets.LoadEffect("EmpSpinSlashEffectBlack", "");
             hitFXBlack = Assets.LoadEffect("ImpactPaladinSwingBlack", "");
             #endregion
+        }
+
+        private static void PopulateMiscEffects() {
 
             #region MiscEffects
             lightningHitFX = Assets.LoadEffect("LightningHitFX", "");
             lightningImpactFX = Assets.LoadEffect("LightningImpact", "Play_mage_R_lightningBlast");
             torporVoidFX = Assets.LoadEffect("TorporVoidFX", "RoR2_nullifier_attack1_explode_02");
             #endregion
+        }
+
+        private static void PopulateMeshes() {
 
             #region Meshes
             defaultMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladin");
@@ -349,60 +338,106 @@ namespace PaladinMod.Modules
             minecraftMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinMinecraft");
             minecraftSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordMinecraft");
             #endregion
+        }
 
-            //capeMat = Skins.CreateMaterial("matPaladinGMOld", 1, Color.white);
-            //was this being used anywhere?
+        private static void PopulateProjectileGhosts() {
 
-            altLightningImpactFX = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact"), "PaladinLightningStrikeImpact", true);
-            PaladinPlugin.Destroy(altLightningImpactFX.transform.Find("LightningRibbon").gameObject);
-            PaladinPlugin.Destroy(altLightningImpactFX.transform.Find("Ring").gameObject);
-            altLightningImpactFX.transform.Find("PostProcess").GetComponent<PostProcessVolume>().sharedProfile = grandParentPP;
-            altLightningImpactFX.transform.Find("Sphere").GetComponent<ParticleSystemRenderer>().material = matLoaderLightningSphere;
-            Light light = altLightningImpactFX.GetComponentInChildren<Light>();
-            light.intensity = 80f;
-            light.color = Color.yellow;
+            #region ProjectileGhosts
+            lightningSpear = mainAssetBundle.LoadAsset<GameObject>("LightningSpear");
+            swordBeam = mainAssetBundle.LoadAsset<GameObject>("SwordBeam");
+            swordBeamGhost = mainAssetBundle.LoadAsset<GameObject>("SwordBeamGhost");
+            swordBeamGhost.AddComponent<ProjectileGhostController>();
+            tornadoEffect = mainAssetBundle.LoadAsset<GameObject>("PaladinTornadoEffect");
+            tornadoEffect.AddComponent<ProjectileGhostController>();
+            #endregion
+        }
 
-            altLightningImpactFX.AddComponent<NetworkIdentity>();
+        private static void PopulateSpellEffects() {
 
-            AddEffect(altLightningImpactFX, altLightningImpactFX.GetComponent<EffectComponent>().soundName);
+            #region SpellEffects
+            healEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("HealEffect");
+            healZoneEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("HealZoneEffect");
+            torporEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("TorporEffect");
+            warcryEffectPrefab = mainAssetBundle.LoadAsset<GameObject>("HealZoneEffect").InstantiateClone("WarcryEffect", false);
 
-            //clone mithrix's dash effect and resize it for my dash
-            dashFX = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/BrotherDashEffect"), "PaladinDashEffect", true);
-            dashFX.AddComponent<NetworkIdentity>();
-            dashFX.GetComponent<EffectComponent>().applyScale = true;
-            dashFX.transform.localScale *= 0.5f;
+            GameObject engiShieldObj = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EngiBubbleShield");
 
-            AddEffect(dashFX);
+            Material shieldFillMat = UnityEngine.Object.Instantiate<Material>(engiShieldObj.transform.Find("Collision").Find("ActiveVisual").GetComponent<MeshRenderer>().material);
+            Material shieldOuterMat = UnityEngine.Object.Instantiate<Material>(engiShieldObj.transform.Find("Collision").Find("ActiveVisual").Find("Edge").GetComponent<MeshRenderer>().material);
 
-            //InitCustomItems();
+            GameObject voidExplosionObj = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/NullifierDeathExplosion");//DeathExplosion
+            Material voidMat = voidExplosionObj.transform.Find("AreaIndicator").GetComponent<ParticleSystemRenderer>().material;
+            torporMat = voidMat;
 
-            swordHitSoundEventS = CreateNetworkSoundEventDef(Modules.Sounds.HitS);
-            swordHitSoundEventM = CreateNetworkSoundEventDef(Modules.Sounds.HitM);
-            swordHitSoundEventL = CreateNetworkSoundEventDef(Modules.Sounds.HitL);
+            GameObject healNovaObj = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/TPHealNovaEffect");
+            Material healMat = healNovaObj.transform.Find("AreaIndicator").GetComponent<ParticleSystemRenderer>().material;
 
-            batHitSoundEventS = CreateNetworkSoundEventDef(Modules.Sounds.HitBluntS);
-            batHitSoundEventM = CreateNetworkSoundEventDef(Modules.Sounds.HitBluntM);
-            batHitSoundEventL = CreateNetworkSoundEventDef(Modules.Sounds.HitBluntL);
+            healEffectPrefab.GetComponentInChildren<ParticleSystemRenderer>().material = healMat;
+
+            healZoneEffectPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material = shieldOuterMat;
+            healZoneEffectPrefab.transform.GetChild(0).GetChild(0).GetComponent<ParticleSystemRenderer>().material = healMat;
+
+            torporEffectPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material = voidMat;
+
+            warcryEffectPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material = shieldOuterMat;
+            warcryEffectPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material.SetColor("_TintColor", Color.red);
+            warcryEffectPrefab.transform.GetChild(0).GetChild(0).GetComponent<ParticleSystemRenderer>().material = RoR2.LegacyResourcesAPI.Load<Material>("materials/matFullCrit");
+            //
+            //GameObject warbannerEffect = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/WarbannerWard").InstantiateClone("x", true);
+            #endregion
+        }
+
+        private static void PopulateIcons() {
+
+            #region Icons
+            charPortrait = mainAssetBundle.LoadAsset<Sprite>("texPaladinIcon").texture;
+
+            iconP = mainAssetBundle.LoadAsset<Sprite>("PassiveIcon");
+            icon1 = mainAssetBundle.LoadAsset<Sprite>("SlashIcon");
+            icon2 = mainAssetBundle.LoadAsset<Sprite>("SpinSlashIcon");
+            icon2b = mainAssetBundle.LoadAsset<Sprite>("LightningSpearIcon");
+            icon2c = mainAssetBundle.LoadAsset<Sprite>("LunarShardIcon");
+            icon3 = mainAssetBundle.LoadAsset<Sprite>("DashIcon");
+            icon3b = mainAssetBundle.LoadAsset<Sprite>("HealIcon");
+            icon4 = mainAssetBundle.LoadAsset<Sprite>("HealZoneIcon");
+            icon4b = mainAssetBundle.LoadAsset<Sprite>("TorporIcon");
+            icon4c = mainAssetBundle.LoadAsset<Sprite>("WarcryIcon");
+            icon4S = mainAssetBundle.LoadAsset<Sprite>("ScepterHealZoneIcon");
+            icon4bS = mainAssetBundle.LoadAsset<Sprite>("ScepterTorporIcon");
+            icon4cS = mainAssetBundle.LoadAsset<Sprite>("ScepterWarcryIcon");
+            icon4d = mainAssetBundle.LoadAsset<Sprite>("CruelSunIcon");
+            icon4dS = mainAssetBundle.LoadAsset<Sprite>("ScepterCruelSunIcon");
+            #endregion
         }
 
         private static void GatherMaterials()
         {
-            grandParentPP = Resources.Load<GameObject>("Prefabs/CharacterBodies/GrandParentBody").GetComponentInChildren<PostProcessVolume>().sharedProfile;
-            supplyDropMat = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/NetworkedObjects/CaptainSupplyDrops/CaptainSupplyDrop, Healing").transform.Find("Inactive").Find("Sphere, Outer").GetComponent<MeshRenderer>().material);
-            airStrikeMat = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/ProjectileGhosts/CaptainAirstrikeGhost1").transform.Find("Expander").Find("Sphere, Outer").GetComponent<MeshRenderer>().material);
-            crippleSphereMat = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/TemporaryVisualEffects/CrippleEffect").transform.Find("Visual").GetChild(1).GetComponent<MeshRenderer>().material);
-            areaIndicatorMat = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Effects/SpiteBombDelayEffect").transform.Find("Nova Sphere").GetComponent<ParticleSystemRenderer>().material);
-            matBlueLightningLong = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Effects/OrbEffects/LightningStrikeOrbEffect").transform.Find("Ring").GetComponent<ParticleSystemRenderer>().material);
-            matJellyfishLightning = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Effects/JellyfishNova").transform.Find("Lightning, Spark Center").GetComponent<ParticleSystemRenderer>().material);
-            matJellyfishLightningLarge = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/VagrantCannonExplosion").transform.Find("Lightning, Radial").GetComponent<ParticleSystemRenderer>().material);
-            matMageMatrixDirectionalLightning = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniImpactVFXLightningMage").transform.Find("Matrix, Directional").GetComponent<ParticleSystemRenderer>().material);
-            matDistortion = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LoaderGroundSlam").transform.Find("Sphere, Distortion").GetComponent<ParticleSystemRenderer>().material);
-            matMercSwipe = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab.transform.Find("Base").GetComponent<ParticleSystemRenderer>().material);
-            matLoaderLightningSphere = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LoaderGroundSlam").transform.Find("Sphere, Expanding").GetComponent<ParticleSystemRenderer>().material);
-            matYellowLightningLong = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Projectiles/LoaderPylon").transform.Find("loader pylon").Find("LoaderPylonArmature").Find("ROOT").Find("ActiveParticles").Find("Sparks, Trail").GetComponent<ParticleSystemRenderer>().trailMaterial);
-            matMeteorIndicator = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Effects/MeteorStrikePredictionEffect").transform.Find("GroundSlamIndicator").GetComponent<MeshRenderer>().material);
+            grandParentPP = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/GrandParentBody").GetComponentInChildren<PostProcessVolume>().sharedProfile;
+            supplyDropMat = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/CaptainSupplyDrops/CaptainSupplyDrop, Healing").transform.Find("Inactive").Find("Sphere, Outer").GetComponent<MeshRenderer>().material);
+            airStrikeMat = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/CaptainAirstrikeGhost1").transform.Find("Expander").Find("Sphere, Outer").GetComponent<MeshRenderer>().material);
+            crippleSphereMat = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/TemporaryVisualEffects/CrippleEffect").transform.Find("Visual").GetChild(1).GetComponent<MeshRenderer>().material);
+            areaIndicatorMat = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/SpiteBombDelayEffect").transform.Find("Nova Sphere").GetComponent<ParticleSystemRenderer>().material);
+            matBlueLightningLong = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/LightningStrikeOrbEffect").transform.Find("Ring").GetComponent<ParticleSystemRenderer>().material);
+            matJellyfishLightning = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/JellyfishNova").transform.Find("Lightning, Spark Center").GetComponent<ParticleSystemRenderer>().material);
+            matJellyfishLightningLarge = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/VagrantCannonExplosion").transform.Find("Lightning, Radial").GetComponent<ParticleSystemRenderer>().material);
+            matMageMatrixDirectionalLightning = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniImpactVFXLightningMage").transform.Find("Matrix, Directional").GetComponent<ParticleSystemRenderer>().material);
+            matDistortion = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LoaderGroundSlam").transform.Find("Sphere, Distortion").GetComponent<ParticleSystemRenderer>().material);
+            matMercSwipe = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab.transform.Find("Base").GetComponent<ParticleSystemRenderer>().material);
+            matLoaderLightningSphere = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LoaderGroundSlam").transform.Find("Sphere, Expanding").GetComponent<ParticleSystemRenderer>().material);
+            matYellowLightningLong = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/LoaderPylon").transform.Find("loader pylon").Find("LoaderPylonArmature").Find("ROOT").Find("ActiveParticles").Find("Sparks, Trail").GetComponent<ParticleSystemRenderer>().trailMaterial);
+            matMeteorIndicator = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/MeteorStrikePredictionEffect").transform.Find("GroundSlamIndicator").GetComponent<MeshRenderer>().material);
         }
 
+        public static T LoadResources<T>(string assString) where T : UnityEngine.Object {
+
+            T loadedAss = RoR2.LegacyResourcesAPI.Load<T>(assString);
+
+            if (loadedAss == null) {
+                Debug.LogError($"Null asset: {assString}.\nAttempt to load asset '{assString}' from assetbundles returned null");
+            }
+
+            return loadedAss;
+        }
         internal static NetworkSoundEventDef CreateNetworkSoundEventDef(string eventName)
         {
             NetworkSoundEventDef networkSoundEventDef = ScriptableObject.CreateInstance<NetworkSoundEventDef>();

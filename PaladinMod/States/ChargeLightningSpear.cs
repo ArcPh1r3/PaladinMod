@@ -12,7 +12,7 @@ namespace PaladinMod.States
             this.baseDuration = StaticValues.lightningSpearChargeTime;
             this.chargeEffectPrefab = null;
             this.chargeSoundString = "Play_mage_m2_charge";
-            this.crosshairOverridePrefab = Resources.Load<GameObject>("Prefabs/Crosshair/ToolbotGrenadeLauncherCrosshair");
+            this.crosshairOverridePrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/ToolbotGrenadeLauncherCrosshair");
             this.maxBloomRadius = 0.1f;
             this.minBloomRadius = 1;
 

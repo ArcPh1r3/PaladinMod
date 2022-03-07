@@ -52,7 +52,8 @@ namespace PaladinMod.States.Rage
             base.PlayAnimation("FullBody, Override", "RageEnter", "Rage.playbackRate", this.duration * 2.75f);
             Util.PlaySound("HenryFrenzyCharge", base.gameObject);
 
-            base.cameraTargetParams.cameraParams = Modules.CameraParams.rageEnterCameraParamsPaladin;
+            //todo fix with new camera params system
+            Modules.CameraParams.OverridePaladinCameraParams(base.cameraTargetParams, PaladinCameraParams.RAGE_ENTER);
 
             this.storedPosition = base.transform.position;
         }

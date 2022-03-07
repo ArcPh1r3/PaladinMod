@@ -1,4 +1,6 @@
-﻿namespace PaladinMod.Modules
+﻿using UnityEngine;
+
+namespace PaladinMod.Modules
 {
     public static class Sounds
     {
@@ -6,12 +8,12 @@
 
         public const string MenuSound = "PaladinMenuSound";
 
-        public const string Swing = "PaladinSwing";
+        public const string Swing ="PaladinSwing";
         public const string HitS = "PaladinHitS";
         public const string HitM = "PaladinHitM";
         public const string HitL = "PaladinHitL";
 
-        public const string SwingBlunt = "PaladinSwingBlunt";
+        public const string SwingBlunt ="PaladinSwingBlunt";
         public const string HitBluntS = "PaladinHitBluntS";
         public const string HitBluntM = "PaladinHitBluntM";
         public const string HitBluntL = "PaladinHitBluntL";

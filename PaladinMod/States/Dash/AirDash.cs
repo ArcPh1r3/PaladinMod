@@ -86,7 +86,7 @@ namespace PaladinMod.States.Dash
                     overlay.animateShaderAlpha = true;
                     overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                     overlay.destroyComponentOnEnd = true;
-                    overlay.originalMaterial = Resources.Load<Material>("Materials/matHuntressFlashBright");
+                    overlay.originalMaterial = RoR2.LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashBright");
                     overlay.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
                 }
             }

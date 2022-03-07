@@ -7,7 +7,7 @@ namespace PaladinMod.States.Spell
         public override void OnEnter()
         {
             this.baseDuration = 0.6f;
-            this.muzzleflashEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniExplosionVFXArchWispCannonImpact");
+            this.muzzleflashEffectPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniExplosionVFXArchWispCannonImpact");
             this.projectilePrefab = Modules.Projectiles.scepterWarcry;
             this.castSoundString = Modules.Sounds.CastHeal;
 

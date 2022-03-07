@@ -7,7 +7,7 @@ namespace PaladinMod.States
         public override void OnEnter()
         {
             this.baseDuration = 0.3f;
-            this.muzzleflashEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/MuzzleFlashes/MuzzleflashCroco");
+            this.muzzleflashEffectPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/MuzzleFlashes/MuzzleflashCroco");
             this.projectilePrefab = Modules.Projectiles.heal;
 
             base.OnEnter();

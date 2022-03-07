@@ -16,46 +16,51 @@ namespace PaladinMod.Modules
     internal static class CameraParams
     {
         internal static CharacterCameraParamsData defaultCameraParamsPaladin;
+
         internal static CharacterCameraParamsData channelCameraParamsPaladin;
         internal static CharacterCameraParamsData channelFullCameraParamsPaladin;
+
         internal static CharacterCameraParamsData rageEnterCameraParamsPaladin;
         internal static CharacterCameraParamsData rageEnterOutCameraParamsPaladin;
+
         internal static CharacterCameraParamsData emoteCameraParamsPaladin;
+
+        internal static float defaultVerticalOffset = 1.53f;
 
 
         internal static void InitializeParams()
         {
-            defaultCameraParamsPaladin = NewCameraParams("ccpPaladin", 70f, 1.37f, new Vector3(0, 0.75f, -10.5f));
+            defaultCameraParamsPaladin = NewCameraParams("ccpPaladin", 70f, defaultVerticalOffset, new Vector3(0f, 1.25f, -12f));
 
-            channelCameraParamsPaladin = NewCameraParams("ccpPaladinSpellChannel", 70f, 1.37f, new Vector3(2f, 0.5f, -8f));
-            channelFullCameraParamsPaladin = NewCameraParams("ccpPaladinSpellChannel", 70f, 1.37f, new Vector3(2f, 0.75f, -12f));
+            channelCameraParamsPaladin = NewCameraParams("ccpPaladinSpellChannel", 70f, 1.6f, new Vector3(0f, 2.8f, -14f));
+            channelFullCameraParamsPaladin = NewCameraParams("ccpPaladinSpellChannelFull", 70f, 1.65f, new Vector3(0f, 3.5f, -16f));
 
-            rageEnterCameraParamsPaladin = NewCameraParams("ccpPaladinRageEnter", 70f, 1.37f, new Vector3(0f, -1.2f, -6.5f));
-            rageEnterOutCameraParamsPaladin = NewCameraParams("ccpPaladinRageEnterOut", 70f, 1.37f, new Vector3(0f, 0.75f, -12f));
+            rageEnterCameraParamsPaladin = NewCameraParams("ccpPaladinRageEnter", 70f, defaultVerticalOffset, new Vector3(0f, -1.2f, -8.5f));
+            rageEnterOutCameraParamsPaladin = NewCameraParams("ccpPaladinRageEnterOut", 70f, defaultVerticalOffset, new Vector3(0f, 0.75f, -12f));
 
-            emoteCameraParamsPaladin = NewCameraParams("ccpPaladinEmote", 70f, 1.37f, new Vector3(0f, -0.5f, -7.5f));
+            emoteCameraParamsPaladin = NewCameraParams("ccpPaladinEmote", 70f, defaultVerticalOffset, new Vector3(0f, -0.6f, -8.5f));
         }
 
-        private static CharacterCameraParamsData NewCameraParams(string name, float pitch, float pivotVerticalOffset, Vector3 standardPosition)
+        private static CharacterCameraParamsData NewCameraParams(string name, float pitch, float pivotVerticalOffset, Vector3 idealPosition)
         {
-            return NewCameraParams(name, pitch, pivotVerticalOffset, standardPosition, 0.1f);
+            return NewCameraParams(name, pitch, pivotVerticalOffset, idealPosition, 0.1f);
         }
 
-        private static CharacterCameraParamsData NewCameraParams(string name, float pitch, float pivotVerticalOffset, Vector3 standardPosition, float wallCushion)
+        private static CharacterCameraParamsData NewCameraParams(string name, float pitch, float pivotVerticalOffset, Vector3 idealPosition, float wallCushion)
         {
             CharacterCameraParamsData newParams = new CharacterCameraParamsData();
 
             newParams.maxPitch = pitch;
             newParams.minPitch = -pitch;
             newParams.pivotVerticalOffset = pivotVerticalOffset;
-            newParams.idealLocalCameraPos = standardPosition;
+            newParams.idealLocalCameraPos = idealPosition;
             newParams.wallCushion = wallCushion;
 
             return newParams;
         }
 
 
-        internal static CameraTargetParams.CameraParamsOverrideHandle OverridePaladinCameraParams(CameraTargetParams camParams, PaladinCameraParams camera, float transitionDuration = 0.2f) {
+        internal static CameraTargetParams.CameraParamsOverrideHandle OverridePaladinCameraParams(CameraTargetParams camParams, PaladinCameraParams camera, float transitionDuration = 0.5f) {
 
             CharacterCameraParamsData paramsData = GetNewPaladinParams(camera);
 

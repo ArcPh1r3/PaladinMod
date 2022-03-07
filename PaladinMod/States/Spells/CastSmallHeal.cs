@@ -8,7 +8,7 @@ namespace PaladinMod.States
         {
             this.baseDuration = 0.4f;
             this.muzzleString = "HandL";
-            this.muzzleflashEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/CrocoDiseaseImpactEffect");
+            this.muzzleflashEffectPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/CrocoDiseaseImpactEffect");
             this.projectilePrefab = Modules.Projectiles.heal;
             this.castSoundString = Modules.Sounds.CastHeal;
 

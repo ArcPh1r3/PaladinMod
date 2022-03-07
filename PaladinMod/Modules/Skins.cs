@@ -171,7 +171,7 @@ namespace PaladinMod.Modules
 
         public static Material CreateMaterial(string materialName, float emission, Color emissionColor, float normalStrength)
         {
-            if (!PaladinPlugin.commandoMat) PaladinPlugin.commandoMat = Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
+            if (!PaladinPlugin.commandoMat) PaladinPlugin.commandoMat = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
             
             //Material cachedMaterial = cachedMaterials.Find((item) => { return item.name == materialName; });
             //if (cachedMaterial) {
@@ -182,7 +182,7 @@ namespace PaladinMod.Modules
             Material tempMat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
             if (!tempMat)
             {
-                Debug.LogWarning("no material wtf " + materialName);
+                Debug.LogError("failed to load material from bundle: " + materialName);
                 return PaladinPlugin.commandoMat;
             }
 
@@ -276,7 +276,7 @@ namespace PaladinMod.Modules
 
             // add the passive effect
             #region clone mithrix effect
-            GameObject lunarPassiveEffect = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/CharacterBodies/BrotherBody").GetComponentInChildren<ChildLocator>().FindChild("Phase3HammerFX").gameObject);
+            GameObject lunarPassiveEffect = GameObject.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/BrotherBody").GetComponentInChildren<ChildLocator>().FindChild("Phase3HammerFX").gameObject);
             lunarPassiveEffect.transform.parent = childLocator.FindChild("SwordActiveEffectLunar");
             lunarPassiveEffect.transform.localScale = Vector3.one * 0.0002f;
             lunarPassiveEffect.transform.rotation = Quaternion.Euler(new Vector3(45, 90, 0));

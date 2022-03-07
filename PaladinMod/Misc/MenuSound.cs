@@ -18,7 +18,7 @@ namespace PaladinMod.Misc {
             ChildLocator childLocator = this.GetComponentInChildren<ChildLocator>();
             if (childLocator)
             {
-                UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/GenericHugeFootstepDust"), childLocator.FindChild("MenuEffect").position, childLocator.FindChild("MenuEffect").rotation);
+                UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/GenericHugeFootstepDust"), childLocator.FindChild("MenuEffect").position, childLocator.FindChild("MenuEffect").rotation);
             }
         }
 

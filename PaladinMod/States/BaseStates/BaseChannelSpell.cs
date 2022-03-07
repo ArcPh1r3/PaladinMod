@@ -2,6 +2,7 @@
 using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
+using static RoR2.CameraTargetParams;
 
 namespace PaladinMod.States
 {
@@ -14,17 +15,21 @@ namespace PaladinMod.States
         public float maxSpellRadius;
         public float baseDuration = 3f;
         public Material overrideAreaIndicatorMat;
+
         public bool zooming = true;
+        private bool zoomRequested;
+        private CameraParamsOverrideHandle camParamsOverrideHandle;
+        private AimRequest aimRequest;
 
         private bool hasCharged;
         private GameObject defaultCrosshairPrefab;
-        private CharacterCameraParams defaultCameraParams;
         private uint loopSoundInstanceId;
         private float duration { get; set; }
         private Animator animator { get; set; }
         private ChildLocator childLocator { get; set; }
         private GameObject chargeEffectInstance { get; set; }
         protected GameObject areaIndicatorInstance { get; set; }
+        protected bool castSuccess;
 
         public override void OnEnter()
         {
@@ -52,11 +57,11 @@ namespace PaladinMod.States
 
             this.PlayChannelAnimation();
             this.loopSoundInstanceId = Util.PlayAttackSpeedSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
-            this.defaultCrosshairPrefab = base.characterBody.crosshairPrefab;
+            this.defaultCrosshairPrefab = base.characterBody._defaultCrosshairPrefab;
 
             if (this.crosshairOverridePrefab)
             {
-                base.characterBody.crosshairPrefab = this.crosshairOverridePrefab;
+                base.characterBody._defaultCrosshairPrefab = this.crosshairOverridePrefab;
             }
 
             if (NetworkServer.active) base.characterBody.AddBuff(RoR2Content.Buffs.Slow50);
@@ -69,10 +74,10 @@ namespace PaladinMod.States
                 if (this.overrideAreaIndicatorMat) this.areaIndicatorInstance.GetComponentInChildren<MeshRenderer>().material = this.overrideAreaIndicatorMat;
             }
 
-            if (this.zooming)
-            {
-                this.defaultCameraParams = base.cameraTargetParams.cameraParams;
-                base.cameraTargetParams.cameraParams = Modules.CameraParams.channelCameraParamsPaladin;
+            if (this.zooming) {
+
+                //aimRequest = base.cameraTargetParams.RequestAimType(CameraTargetParams.AimType.Aura);
+                camParamsOverrideHandle = Modules.CameraParams.OverridePaladinCameraParams(base.cameraTargetParams, PaladinCameraParams.CHANNEL, 0.5f);
             }
         }
 
@@ -102,43 +107,6 @@ namespace PaladinMod.States
             }
         }
 
-        public override void OnExit()
-        {
-            if (this.crosshairOverridePrefab)
-            {
-                base.characterBody.crosshairPrefab = this.defaultCrosshairPrefab;
-            }
-            else
-            {
-                base.characterBody.hideCrosshair = false;
-            }
-
-            if (this.areaIndicatorInstance)
-            {
-                EntityState.Destroy(this.areaIndicatorInstance.gameObject);
-            }
-
-            AkSoundEngine.StopPlayingID(this.loopSoundInstanceId);
-
-            if (!this.outer.destroying)
-            {
-                this.EndAnimation();
-            }
-
-            if (this.zooming) base.cameraTargetParams.cameraParams = Modules.CameraParams.defaultCameraParamsPaladin;
-
-            if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.Slow50);
-
-            if (this.chargeEffectInstance) EntityState.Destroy(this.chargeEffectInstance);
-
-            base.OnExit();
-        }
-
-        protected virtual void EndAnimation()
-        {
-            base.PlayAnimation("Gesture, Override", "BufferEmpty");
-        }
-
         protected float CalcCharge()
         {
             return Mathf.Clamp01(base.fixedAge / this.duration);
@@ -160,10 +128,11 @@ namespace PaladinMod.States
                 this.areaIndicatorInstance.transform.localScale = new Vector3(size, size, size);
             }
 
-            if (charge >= 0.75f && this.zooming)
+            if (charge >= 0.8f && this.zooming && !zoomRequested)
             {
-                base.cameraTargetParams.cameraParams = Modules.CameraParams.channelFullCameraParamsPaladin;
-                base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Aura;
+                zoomRequested = true;
+                base.cameraTargetParams.RemoveParamsOverride(camParamsOverrideHandle, 1f);
+                camParamsOverrideHandle = Modules.CameraParams.OverridePaladinCameraParams(base.cameraTargetParams, PaladinCameraParams.CHANNEL_FULL, 0.4f);
             }
 
             if (charge >= 1f)
@@ -180,8 +149,8 @@ namespace PaladinMod.States
                 if (base.inputBank.sprint.wasDown)
                 {
                     base.characterBody.isSprinting = true;
-                    if (this.zooming) base.cameraTargetParams.cameraParams = Modules.CameraParams.defaultCameraParamsPaladin;
                     this.RefundCooldown();
+                    castSuccess = false;
                     this.outer.SetNextStateToMain();
                     return;
                 }
@@ -189,30 +158,62 @@ namespace PaladinMod.States
 
             if (base.isAuthority && !base.IsKeyDownAuthority() && charge >= 1f)
             {
+                castSuccess = true;
                 BaseCastChanneledSpellState nextState = this.GetNextState();
-                if (this.areaIndicatorInstance)
-                {
-                    nextState.spellPosition = this.areaIndicatorInstance.transform.position;
-                    nextState.spellRotation = this.areaIndicatorInstance.transform.rotation;
-                }
-                else
-                {
-                    nextState.spellPosition = base.transform.position;
-                    nextState.spellRotation = this.areaIndicatorInstance.transform.rotation;
-                }
+
+                Transform indicatorTransform = this.areaIndicatorInstance ? this.areaIndicatorInstance.transform : transform;
+
+                nextState.spellPosition = indicatorTransform.position;
+                nextState.spellRotation = indicatorTransform.rotation;
+                nextState.camParamsOverrideHandle = camParamsOverrideHandle;
+                nextState.aimRequest = aimRequest;
+
                 this.outer.SetNextState(nextState);
             }
+        }
+
+        public override void Update() {
+            base.Update();
+            this.UpdateAreaIndicator();
+        }
+
+        public override void OnExit() {
+            if (this.crosshairOverridePrefab) {
+                base.characterBody._defaultCrosshairPrefab = this.defaultCrosshairPrefab;
+            } else {
+                base.characterBody.hideCrosshair = false;
+            }
+
+            if (this.areaIndicatorInstance) {
+                EntityState.Destroy(this.areaIndicatorInstance.gameObject);
+            }
+
+            AkSoundEngine.StopPlayingID(this.loopSoundInstanceId);
+
+            if (!this.outer.destroying) {
+                this.EndAnimation();
+            }
+
+            if (this.zooming && !castSuccess) {
+
+                //base.cameraTargetParams.RemoveRequest(aimRequest);
+                base.cameraTargetParams.RemoveParamsOverride(camParamsOverrideHandle, 0.3f);
+            }
+
+            if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.Slow50);
+
+            if (this.chargeEffectInstance) EntityState.Destroy(this.chargeEffectInstance);
+
+            base.OnExit();
+        }
+
+        protected virtual void EndAnimation() {
+            base.PlayAnimation("Gesture, Override", "BufferEmpty");
         }
 
         private void RefundCooldown()
         {
             base.activatorSkillSlot.rechargeStopwatch = (0.9f * base.activatorSkillSlot.finalRechargeInterval);
-        }
-
-        public override void Update()
-        {
-            base.Update();
-            this.UpdateAreaIndicator();
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

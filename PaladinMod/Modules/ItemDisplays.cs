@@ -995,7 +995,7 @@ localScale = new Vector3(0.1194F, 0.1194F, 0.1194F),
 
                 itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
-                    keyAsset = RoR2Content.Items.Knurl,
+                    keyAsset = DLC1Content.Items.EquipmentMagazineVoid,
                     displayRuleGroup = new DisplayRuleGroup
                     {
                         rules = new ItemDisplayRule[]
@@ -1677,7 +1677,7 @@ localScale = new Vector3(0.0761F, 0.0761F, 0.0761F),
 
                 itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
-                    keyAsset = RoR2Content.Items.CooldownOnCrit,
+                    keyAsset = JunkContent.Items.CooldownOnCrit,
                     displayRuleGroup = new DisplayRuleGroup
                     {
                         rules = new ItemDisplayRule[]
@@ -2065,7 +2065,7 @@ localScale = new Vector3(0.1F, 0.1F, 0.1F),
 
                 itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
-                    keyAsset = RoR2Content.Items.Incubator,
+                    keyAsset = JunkContent.Items.Incubator,
                     displayRuleGroup = new DisplayRuleGroup
                     {
                         rules = new ItemDisplayRule[]
@@ -2740,20 +2740,24 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
                     SetupScepterDisplay();
             }
             catch (System.Exception e) {
-                PaladinPlugin.logger.LogWarning($"could not add displays for Ancient Scepter\n{e}");
+                //PaladinPlugin.logger.LogWarning($"could not add displays for Ancient Scepter\n{e}");
             }
 
             try {
-                if (PaladinPlugin.aetheriumInstalled)
-                    AddAetheriumDisplays();
+                if (PaladinPlugin.aetheriumInstalled) { 
+                    //todo CUM2 aetherium?
+                    //AddAetheriumDisplays();
+                    }
             }
             catch (System.Exception e) {
                 //PaladinPlugin.logger.LogWarning($"could not add displays for Aetherium\n{e}");
             }
 
             try {
-                if (PaladinPlugin.supplyDropInstalled)
+                if (PaladinPlugin.supplyDropInstalled) {
+                    //todo CUM2 aetherium?
                     AddSupplyDropDisplays();
+                }
             }
             catch (System.Exception e) {
                 //PaladinPlugin.logger.LogWarning($"could not add displays for Supply Drop\n{e}");
@@ -2924,26 +2928,27 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private static void SetupScepterDisplay()
         {
-            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
-            {
-                keyAsset = AncientScepter.AncientScepterItem.instance.ItemDef,
-                displayRuleGroup = new DisplayRuleGroup
-                {
-                    rules = new ItemDisplayRule[]
-        {
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = AncientScepter.AncientScepterItem.displayPrefab,
-                            childName = "HandL",
-                            localPos = new Vector3(-0.05522F, 0.14813F, -0.13256F),
-                            localAngles = new Vector3(272.924F, 122.5896F, 239.0718F),
-                            localScale = new Vector3(0.60001F, 0.70329F, 0.60001F),
-                            limbMask = LimbFlags.None
-                        }
-        }
-                }
-            });
+            //CUM2 fix item displays
+        //    itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+        //    {
+        //        keyAsset = AncientScepter.AncientScepterItem.instance.ItemDef,
+        //        displayRuleGroup = new DisplayRuleGroup
+        //        {
+        //            rules = new ItemDisplayRule[]
+        //{
+        //                new ItemDisplayRule
+        //                {
+        //                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+        //                    followerPrefab = AncientScepter.AncientScepterItem.displayPrefab,
+        //                    childName = "HandL",
+        //                    localPos = new Vector3(-0.05522F, 0.14813F, -0.13256F),
+        //                    localAngles = new Vector3(272.924F, 122.5896F, 239.0718F),
+        //                    localScale = new Vector3(0.60001F, 0.70329F, 0.60001F),
+        //                    limbMask = LimbFlags.None
+        //                }
+        //}
+        //        }
+        //    });
         }
         #endregion
 
@@ -2956,7 +2961,7 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
 
         private static void PopulateFromBody(string bodyName)
         {
-            ItemDisplayRuleSet itemDisplayRuleSet = Resources.Load<GameObject>("Prefabs/CharacterBodies/" + bodyName + "Body").GetComponent<ModelLocator>().modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet;
+            ItemDisplayRuleSet itemDisplayRuleSet = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyName + "Body").GetComponent<ModelLocator>().modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet;
 
             ItemDisplayRuleSet.KeyAssetRuleGroup[] item = itemDisplayRuleSet.keyAssetRuleGroups;
 
@@ -2994,73 +2999,74 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         public static GameObject LoadAetheriumDisplay(string name)
         {
-            switch (name)
-            {
-                case "AccursedPotion":
-                    return Aetherium.Items.AccursedPotion.ItemBodyModelPrefab;
-                case "AlienMagnet":
-                    return Aetherium.Items.AlienMagnet.ItemFollowerPrefab;
-                case "BlasterSword":
-                    return Aetherium.Items.BlasterSword.ItemBodyModelPrefab;
-                case "BloodSoakedShield":
-                    return Aetherium.Items.BloodthirstyShield.ItemBodyModelPrefab;
-                case "FeatheredPlume":
-                    return Aetherium.Items.FeatheredPlume.ItemBodyModelPrefab;
-                case "InspiringDrone":
-                    return Aetherium.Items.InspiringDrone.ItemFollowerPrefab;
-                case "SharkTeeth":
-                    return Aetherium.Items.SharkTeeth.ItemBodyModelPrefab;
-                case "ShieldingCore":
-                    return Aetherium.Items.ShieldingCore.ItemBodyModelPrefab;
-                case "UnstableDesign":
-                    return Aetherium.Items.UnstableDesign.ItemBodyModelPrefab;
-                case "VoidHeart":
-                    return Aetherium.Items.Voidheart.ItemBodyModelPrefab;
-                case "WeightedAnklet":
-                    return Aetherium.Items.WeightedAnklet.ItemBodyModelPrefab;
-                case "WitchesRing":
-                    return Aetherium.Items.WitchesRing.ItemBodyModelPrefab;
-                case "WitchesRingCircle":
-                    return Aetherium.Items.WitchesRing.CircleBodyModelPrefab;
-                case "EngiBelt":
-                    return Aetherium.Items.EngineersToolbelt.ItemBodyModelPrefab;
-                case "JarOfReshaping":
-                    return Aetherium.Equipment.JarOfReshaping.ItemBodyModelPrefab;
-            }
+            //todo CUM2 aetherium?
+            //switch (name)
+            //{
+            //    case "AccursedPotion":
+            //        return Aetherium.Items.AccursedPotion.ItemBodyModelPrefab;
+            //    case "AlienMagnet":
+            //        return Aetherium.Items.AlienMagnet.ItemFollowerPrefab;
+            //    case "BlasterSword":
+            //        return Aetherium.Items.BlasterSword.ItemBodyModelPrefab;
+            //    case "BloodSoakedShield":
+            //        return Aetherium.Items.BloodthirstyShield.ItemBodyModelPrefab;
+            //    case "FeatheredPlume":
+            //        return Aetherium.Items.FeatheredPlume.ItemBodyModelPrefab;
+            //    case "InspiringDrone":
+            //        return Aetherium.Items.InspiringDrone.ItemFollowerPrefab;
+            //    case "SharkTeeth":
+            //        return Aetherium.Items.SharkTeeth.ItemBodyModelPrefab;
+            //    case "ShieldingCore":
+            //        return Aetherium.Items.ShieldingCore.ItemBodyModelPrefab;
+            //    case "UnstableDesign":
+            //        return Aetherium.Items.UnstableDesign.ItemBodyModelPrefab;
+            //    case "VoidHeart":
+            //        return Aetherium.Items.Voidheart.ItemBodyModelPrefab;
+            //    case "WeightedAnklet":
+            //        return Aetherium.Items.WeightedAnklet.ItemBodyModelPrefab;
+            //    case "WitchesRing":
+            //        return Aetherium.Items.WitchesRing.ItemBodyModelPrefab;
+            //    case "WitchesRingCircle":
+            //        return Aetherium.Items.WitchesRing.CircleBodyModelPrefab;
+            //    case "EngiBelt":
+            //        return Aetherium.Items.EngineersToolbelt.ItemBodyModelPrefab;
+            //    case "JarOfReshaping":
+            //        return Aetherium.Equipment.JarOfReshaping.ItemBodyModelPrefab;
+            //}
             return null;
         }
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         public static Object LoadAetheriumKeyAsset(string name) {
-            switch (name) {
-                case "AccursedPotion":
-                    return Aetherium.Items.AccursedPotion.instance.ItemDef;
-                case "AlienMagnet":
-                    return Aetherium.Items.AlienMagnet.instance.ItemDef;
-                case "BlasterSword":
-                    return Aetherium.Items.BlasterSword.instance.ItemDef;
-                case "BloodSoakedShield":
-                    return Aetherium.Items.BloodthirstyShield.instance.ItemDef;
-                case "FeatheredPlume":
-                    return Aetherium.Items.FeatheredPlume.instance.ItemDef;
-                case "InspiringDrone":
-                    return Aetherium.Items.InspiringDrone.instance.ItemDef;
-                case "SharkTeeth":
-                    return Aetherium.Items.SharkTeeth.instance.ItemDef;
-                case "ShieldingCore":
-                    return Aetherium.Items.ShieldingCore.instance.ItemDef;
-                case "UnstableDesign":
-                    return Aetherium.Items.UnstableDesign.instance.ItemDef;
-                case "VoidHeart":
-                    return Aetherium.Items.Voidheart.instance.ItemDef;
-                case "WeightedAnklet":
-                    return Aetherium.Items.WeightedAnklet.instance.ItemDef;
-                case "WitchesRing":
-                    return Aetherium.Items.WitchesRing.instance.ItemDef;
-                case "EngiBelt":
-                    return Aetherium.Items.EngineersToolbelt.instance.ItemDef;
-                case "JarOfReshaping":
-                    return Aetherium.Equipment.JarOfReshaping.instance.EquipmentDef;
-            }
+            //switch (name) {
+            //    case "AccursedPotion":
+            //        return Aetherium.Items.AccursedPotion.instance.ItemDef;
+            //    case "AlienMagnet":
+            //        return Aetherium.Items.AlienMagnet.instance.ItemDef;
+            //    case "BlasterSword":
+            //        return Aetherium.Items.BlasterSword.instance.ItemDef;
+            //    case "BloodSoakedShield":
+            //        return Aetherium.Items.BloodthirstyShield.instance.ItemDef;
+            //    case "FeatheredPlume":
+            //        return Aetherium.Items.FeatheredPlume.instance.ItemDef;
+            //    case "InspiringDrone":
+            //        return Aetherium.Items.InspiringDrone.instance.ItemDef;
+            //    case "SharkTeeth":
+            //        return Aetherium.Items.SharkTeeth.instance.ItemDef;
+            //    case "ShieldingCore":
+            //        return Aetherium.Items.ShieldingCore.instance.ItemDef;
+            //    case "UnstableDesign":
+            //        return Aetherium.Items.UnstableDesign.instance.ItemDef;
+            //    case "VoidHeart":
+            //        return Aetherium.Items.Voidheart.instance.ItemDef;
+            //    case "WeightedAnklet":
+            //        return Aetherium.Items.WeightedAnklet.instance.ItemDef;
+            //    case "WitchesRing":
+            //        return Aetherium.Items.WitchesRing.instance.ItemDef;
+            //    case "EngiBelt":
+            //        return Aetherium.Items.EngineersToolbelt.instance.ItemDef;
+            //    case "JarOfReshaping":
+            //        return Aetherium.Equipment.JarOfReshaping.instance.EquipmentDef;
+            //}
             return null;
         }
 
@@ -3126,32 +3132,33 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         public static Object LoadSupplyDropKeyAsset(string name) {
-            switch (name) {
-                //would be cool if these are enums maybe
-                case "Bones":
-                    return SupplyDrop.Items.HardenedBoneFragments.instance.itemDef;
-                case "Berries":
-                    return SupplyDrop.Items.NumbingBerries.instance.itemDef;
-                case "UnassumingTie":
-                    return SupplyDrop.Items.UnassumingTie.instance.itemDef;
-                case "SalvagedWires":
-                    return SupplyDrop.Items.SalvagedWires.instance.itemDef;
+            //todo CUM2 supply drop?
+            //switch (name) {
+            //    //would be cool if these are enums maybe
+            //    case "Bones":
+            //        return SupplyDrop.Items.HardenedBoneFragments.instance.itemDef;
+            //    case "Berries":
+            //        return SupplyDrop.Items.NumbingBerries.instance.itemDef;
+            //    case "UnassumingTie":
+            //        return SupplyDrop.Items.UnassumingTie.instance.itemDef;
+            //    case "SalvagedWires":
+            //        return SupplyDrop.Items.SalvagedWires.instance.itemDef;
 
-                case "ShellPlating":
-                    return SupplyDrop.Items.ShellPlating.instance.itemDef;
-                case "ElectroPlankton":
-                    return SupplyDrop.Items.ElectroPlankton.instance.itemDef;
-                case "PlagueHat":
-                    return SupplyDrop.Items.PlagueHat.instance.itemDef;
-                case "PlagueMask":
-                    return SupplyDrop.Items.PlagueMask.instance.itemDef;
+            //    case "ShellPlating":
+            //        return SupplyDrop.Items.ShellPlating.instance.itemDef;
+            //    case "ElectroPlankton":
+            //        return SupplyDrop.Items.ElectroPlankton.instance.itemDef;
+            //    case "PlagueHat":
+            //        return SupplyDrop.Items.PlagueHat.instance.itemDef;
+            //    case "PlagueMask":
+            //        return SupplyDrop.Items.PlagueMask.instance.itemDef;
 
-                case "BloodBook":
-                    return SupplyDrop.Items.BloodBook.instance.itemDef;
-                case "QSGen":
-                    return SupplyDrop.Items.QSGen.instance.itemDef;
+            //    case "BloodBook":
+            //        return SupplyDrop.Items.BloodBook.instance.itemDef;
+            //    case "QSGen":
+            //        return SupplyDrop.Items.QSGen.instance.itemDef;
 
-            }
+            //}
             return null;
         }
 
@@ -3180,7 +3187,7 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
         public static ItemDisplayRuleSet.KeyAssetRuleGroup CreateGenericDisplayRuleGroup(string itemName, GameObject itemPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
 
             ItemDisplayRule singleRule = CreateDisplayRule(itemPrefab, childName, position, rotation, scale);
-            return CreateDisplayRuleGroupWithRules(Resources.Load<ItemDef>("ItemDefs/" + itemName), singleRule);
+            return CreateDisplayRuleGroupWithRules(RoR2.LegacyResourcesAPI.Load<ItemDef>("ItemDefs/" + itemName), singleRule);
         }
 
         public static ItemDisplayRuleSet.KeyAssetRuleGroup CreateFollowerDisplayRuleGroup(Object keyAsset_, GameObject itemPrefab, Vector3 position, Vector3 rotation, Vector3 scale) {
@@ -3191,7 +3198,7 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
         public static ItemDisplayRuleSet.KeyAssetRuleGroup CreateFollowerDisplayRuleGroup(string itemName, GameObject itemPrefab, Vector3 position, Vector3 rotation, Vector3 scale) {
 
             ItemDisplayRule singleRule = CreateFollowerDisplayRule(itemPrefab, position, rotation, scale);
-            return CreateDisplayRuleGroupWithRules(Resources.Load<ItemDef>("ItemDefs/" + itemName), singleRule);
+            return CreateDisplayRuleGroupWithRules(RoR2.LegacyResourcesAPI.Load<ItemDef>("ItemDefs/" + itemName), singleRule);
         }
 
 

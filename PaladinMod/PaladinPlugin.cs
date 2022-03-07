@@ -16,20 +16,20 @@ using BepInEx.Logging;
 
 namespace PaladinMod
 {
-    [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)] 
+    [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.DestroyedClone.AncientScepter", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInDependency("com.KomradeSpectre.Aetherium", BepInDependency.DependencyFlags.SoftDependency)] 
+    [BepInDependency("com.KomradeSpectre.Aetherium", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Sivelos.SivsItems", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.K1454.SupplyDrop", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.TeamMoonstorm.Starstorm2", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "1.5.70")] 
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
         "LanguageAPI",
         "SoundAPI",
     })]
+    [BepInPlugin(MODUID, "Paladin", "1.5.70")] 
 
     
     public class PaladinPlugin : BaseUnityPlugin
@@ -66,10 +66,10 @@ namespace PaladinMod
         public static bool starstormInstalled = false;
 
         // eh
-        public static uint claySkinIndex = 3;
-
-        public void Awake()
-        {
+        public static uint claySkinIndex = 4;
+        public void Start() {
+            Logger.LogInfo("Initializing Paladin");
+            //Modules.States.FixStates();
             instance = this;
             logger = base.Logger;
 
@@ -87,7 +87,6 @@ namespace PaladinMod
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamMoonstorm.Starstorm2"))
             {
                 starstormInstalled = true;
-                claySkinIndex++;
             }
 
             Modules.Unlockables.RegisterUnlockables(); // add unlockables
@@ -171,7 +170,8 @@ namespace PaladinMod
         private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
             Modules.Projectiles.LateSetup();
-            Modules.ItemDisplays.SetItemDisplays();
+            //todod CUM2
+            //Modules.ItemDisplays.SetItemDisplays();
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
@@ -403,7 +403,7 @@ namespace PaladinMod
                 Util.PlaySound("PaladinFingerSnap", self.gameObject);
                 self.StartAimMode(self.duration + 0.5f);
 
-                EffectManager.SimpleMuzzleFlash(Resources.Load<GameObject>("Prefabs/Effects/MuzzleFlashes/MuzzleflashLunarNeedle"), self.gameObject, "HandL", false);
+                EffectManager.SimpleMuzzleFlash(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/MuzzleFlashes/MuzzleflashLunarNeedle"), self.gameObject, "HandL", false);
             }
         }
 
@@ -473,7 +473,7 @@ namespace PaladinMod
                     overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                     overlay.animateShaderAlpha = true;
                     overlay.destroyComponentOnEnd = true;
-                    overlay.originalMaterial = Resources.Load<Material>("Materials/matDoppelganger");
+                    overlay.originalMaterial = RoR2.LegacyResourcesAPI.Load<Material>("Materials/matDoppelganger");
                     overlay.AddToCharacerModel(self);
                     torporController.Overlay = overlay;
                 }
@@ -490,7 +490,7 @@ namespace PaladinMod
                     overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                     overlay.animateShaderAlpha = true;
                     overlay.destroyComponentOnEnd = true;
-                    overlay.originalMaterial = Resources.Load<Material>("Materials/matMercEvisTarget");
+                    overlay.originalMaterial = RoR2.LegacyResourcesAPI.Load<Material>("Materials/matMercEvisTarget");
                     overlay.AddToCharacerModel(self);
                     rageTracker.Overlay = overlay;
                 }
@@ -607,7 +607,7 @@ namespace PaladinMod
 
         private void CreateDoppelganger()
         {
-            doppelganger = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterMasters/MercMonsterMaster"), "PaladinMonsterMaster");
+            doppelganger = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/MercMonsterMaster"), "PaladinMonsterMaster");
             doppelganger.GetComponent<CharacterMaster>().bodyPrefab = Modules.Prefabs.paladinPrefab;
 
             Modules.Prefabs.masterPrefabs.Add(doppelganger);
