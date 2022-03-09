@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3124849040
+CRC: 227529533
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 7120f380394f9612596e9d565618f69f
+    Hash: cc723ad855ed5b2d23c4eb5c1af1d866
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 83ff3113a66dc8ebfc6a7ff327ab76a6
+    Hash: 041388fe7ef74db63a68f1d40bd5d735
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -56,9 +56,9 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: fef0780b96a0f12448b6dd86f9c8139b, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 55cd8dac900b1a24b955c08fee5174f2, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: b0f1fcdb5b6fd3d47a083a65dd054c2b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 55cd8dac900b1a24b955c08fee5174f2, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 135
@@ -98,6 +98,7 @@ Assets:
 - Assets/Paladin/Effects/SwingEffects/PaladinSwing.prefab
 - Assets/Paladin/Animations/Ascend.anim
 - Assets/NemPaladin/NemPaladinDisplay.prefab
+- Assets/Uh oh/archbod.mat
 - Assets/Paladin/Effects/SwingEffects/PaladinSwingClay.prefab
 - Assets/Paladin/Mesh/meshSwordGMFuck.003.mesh
 - Assets/Paladin/Textures/texPaladinNkuhana.png
@@ -126,6 +127,7 @@ Assets:
 - Assets/Paladin/Animations/PraiseTheSun.anim
 - Assets/Paladin/Textures/texLunarPaladinSword.png
 - Assets/Paladin/Mesh/meshCapeGM.mesh
+- Assets/Uh oh/archcloth.mat
 - Assets/Paladin/Shields/DisplayGiantShield.prefab
 - Assets/Paladin/VFX/texPaladinHitFlash.png
 - Assets/Paladin/VFX/texLunarEmber.dds
@@ -157,6 +159,7 @@ Assets:
 - Assets/Paladin/Animations/ThrowLunarSecondary.anim
 - Assets/Paladin/Animations/ThrowSpear.anim
 - Assets/NemPaladin/Textures/T_NemPaladinCloth_C.png
+- Assets/Uh oh/T_Archangel_Cloth.png
 - Assets/Paladin/Materials/matMinecraftPaladin.mat
 - Assets/Paladin/Effects/SwingEffects/SpinSlashEffect.prefab
 - Assets/Paladin/Materials/matPaladinSword.mat
@@ -168,6 +171,7 @@ Assets:
 - Assets/Paladin/Mesh/meshPaladinLunar.mesh
 - Assets/Paladin/Animations/RestPose.anim
 - Assets/Paladin/Materials/Shields/matBlackKnightShield.mat
+- Assets/Uh oh/archangel.fbx
 - Assets/Paladin/Effects/SwingEffects/EmpSpinSlashEffectFlame.prefab
 - Assets/Paladin/Animations/GroundSweep.anim
 - Assets/Paladin/Effects/SwordBeamGhost.prefab
@@ -292,9 +296,12 @@ Assets:
 - Assets/Paladin/Icons/PassiveIcon.png
 - Assets/Paladin/Mesh/meshLunarKnightMace.mesh
 - Assets/Paladin/Textures/texNormalBumpyRock.png
+- Assets/Uh oh/archarmor.mat
 - Assets/Paladin/VFX/texPaladinHitSparkGreen.png
+- Assets/Uh oh/T_Archangel_Body_Emission.png
 - Assets/Paladin/VFX/matTorporCast.mat
 - Assets/Paladin/VFX/matEmber 1.mat
+- Assets/Uh oh/T_Archangel_Armor.png
 - Assets/Paladin/Materials/matMinecraftSword.mat
 - Assets/Paladin/VFX/matSun.mat
 - Assets/Paladin/Mesh/meshMinecraftSwordOld.mesh
@@ -341,6 +348,7 @@ Assets:
 - Assets/Paladin/Icons/texPaladinIcon.png
 - Assets/LunarKnight/Animations/MaceSlam.anim
 - Assets/Paladin/Effects/HitEffects/ImpactPaladinSwingBlunt.prefab
+- Assets/Uh oh/T_Archangel_Body.png
 - Assets/NemPaladin/Animations/AnimeSprint.anim
 - Assets/Paladin/Animations/RageChargeM1.anim
 - Assets/Paladin/Materials/Shields/matGiantShield.mat

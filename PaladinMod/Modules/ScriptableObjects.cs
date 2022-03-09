@@ -49,5 +49,5 @@ public class CustomRendererInfo
 {
     public string childName;
     public Material material;
-    public bool ignoreOverlays;
+    public bool ignoreOverlays = false;
 }

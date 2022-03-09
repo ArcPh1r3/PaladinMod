@@ -28,8 +28,8 @@ namespace PaladinMod
         "PrefabAPI",
         "LanguageAPI",
         "SoundAPI",
-    })]
-    [BepInPlugin(MODUID, "Paladin", "1.5.70")] 
+    })]                                  //pushed out a version 69 so we gotta put a 7 here my b
+    [BepInPlugin(MODUID, "Paladin", "1.5.75")] 
 
     
     public class PaladinPlugin : BaseUnityPlugin
