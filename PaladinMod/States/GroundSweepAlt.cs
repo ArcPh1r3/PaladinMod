@@ -134,7 +134,7 @@ namespace PaladinMod.States
                 if (this.animator) this.animator.SetFloat("Whirlwind.playbackRate", 0f);
             }
 
-            if (base.characterMotor)
+            if (base.characterMotor && stopwatch < duration * 0.7f)
             {
                 base.characterMotor.moveDirection /= 2f;
             }

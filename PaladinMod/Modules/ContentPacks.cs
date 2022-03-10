@@ -5,6 +5,7 @@ namespace PaladinMod.Modules
     internal class ContentPacks : IContentPackProvider
     {
         internal ContentPack contentPack = new ContentPack();
+            
         public string identifier => PaladinPlugin.MODUID;
 
         public void Initialize()

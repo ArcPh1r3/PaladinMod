@@ -29,7 +29,7 @@ namespace PaladinMod
         "LanguageAPI",
         "SoundAPI",
     })]                                  //pushed out a version 69 so we gotta put a 7 here my b
-    [BepInPlugin(MODUID, "Paladin", "1.5.75")] 
+    [BepInPlugin(MODUID, "Paladin", "1.5.76")] 
 
     
     public class PaladinPlugin : BaseUnityPlugin
@@ -52,7 +52,7 @@ namespace PaladinMod
 
         // for scepter upgrades
         public static SkillDef scepterHealDef;
-        public static SkillDef scepterTorporDef; 
+        public static SkillDef scepterTorporDef;
         public static SkillDef scepterWarcryDef;
         public static SkillDef scepterCruelSunDef; 
 
@@ -118,6 +118,7 @@ namespace PaladinMod
             new Modules.ContentPacks().Initialize();
 
             Hook();
+
             RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
             On.RoR2.EntityStateCatalog.Init += EntityStateCatalog_Init;
         }

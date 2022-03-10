@@ -7,15 +7,15 @@ namespace PaladinMod.Modules
         public const string Drip = "PaladinDrip";
 
         public const string MenuSound = "PaladinMenuSound";
-
+        
         public const string Swing ="PaladinSwing";
         public const string HitS = "PaladinHitS";
         public const string HitM = "PaladinHitM";
         public const string HitL = "PaladinHitL";
 
-        public const string SwingBlunt ="PaladinSwingBlunt";
+        public const string SwingBlunt = "PaladinSwingBlunt";// "PaladinSwingBlunt";
         public const string HitBluntS = "PaladinHitBluntS";
-        public const string HitBluntM = "PaladinHitBluntM";
+        public const string HitBluntM = "PaladinHitBluntL";//M";
         public const string HitBluntL = "PaladinHitBluntL";
 
         public const string Cloth1 = "PaladinCloth1";

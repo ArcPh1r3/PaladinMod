@@ -191,7 +191,7 @@ namespace PaladinMod.Modules
                 }
             }
 
-            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("PaladinMod.PaladinBank.bnk")) {
+            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("PaladinMod.Paladin.bnk")) {
                 byte[] array = new byte[manifestResourceStream2.Length];
                 manifestResourceStream2.Read(array, 0, array.Length);
                 SoundAPI.SoundBanks.Add(array);

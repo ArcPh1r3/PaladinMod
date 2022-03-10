@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{9C349725-5821-41CE-9BFE-A793403CE725}" SchemaVersion="97">
+<WwiseDocument Type="WorkUnit" ID="{7CB67C03-051C-473E-A5B3-36FEB1495229}" SchemaVersion="97">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{9C349725-5821-41CE-9BFE-A793403CE725}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{7CB67C03-051C-473E-A5B3-36FEB1495229}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Paladin" ID="{BF93E73C-D31C-46AF-92F9-D87D8735CA49}">
+					<ObjectInclusionList>
+						<ObjectRef Name="PaladinMenuSound" ID="{D9EDA9B3-2E6F-4130-9BEC-386D8900D9B1}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinSwingBlunt" ID="{E7D1E197-8F13-415F-A544-AD0F7C749CCC}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinChannelHeal" ID="{1CF1814B-F20E-4167-8957-D6EB8D411BD9}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinCastHeal" ID="{132B981E-01A3-4301-A199-3EBF71773D04}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinSwing" ID="{D42232C9-D60A-4337-8EA3-EA103B07C997}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinLunge" ID="{70A36726-0FA5-4398-BE1B-7C66D332070B}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinCloth1" ID="{527935FE-687D-4513-A8D3-CE0F50BE4D5E}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinChannelMax" ID="{81442A9F-09A1-4716-B706-A33FD37ED5E4}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinHitBluntM" ID="{3BD88D1C-BCAF-49AE-9301-DFE93735C5B8}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinSpearThrow" ID="{34587170-A622-4A34-9A26-A0A4A59B463E}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinHitBluntS" ID="{E36C12F3-0328-4A4F-A378-61AE010F6307}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinFingerSnap" ID="{F08593DF-DC8D-4A91-9610-38484BE66662}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinHitS" ID="{A9013906-FBB6-4AD2-BF16-EEB3A3FC685A}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinCloth2" ID="{25AA752B-53E1-4B49-AB03-6C31FDECF138}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinHitM" ID="{F13DAB75-42E9-4C54-A405-97FAF3E5EFD6}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinDrip" ID="{D4A48E3B-C434-4D23-9E0F-A42DC8361340}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinSwordActive" ID="{FD6479BC-E284-4EDE-957F-0A2C96FF2622}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinCloth3" ID="{A406A654-B213-4F04-A1C2-7EE95E81E771}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinLeapSlam" ID="{DAD9DA69-1F9B-4F19-A3F3-3C29E3A65F80}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinCastTorpor" ID="{129F97E1-7658-4F8B-BA68-5974D4F005C9}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinExplosion" ID="{E197DB3E-A984-4FA3-804C-9812AB116119}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinHitBluntL" ID="{456E730E-1C9C-4FC2-BABE-089440105E01}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinHitL" ID="{0E7F5361-9F52-4FD4-8A56-95EBF827A049}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PaladinChannelTorpor" ID="{027E14F0-4E26-4FDA-9AC3-EC02211D1978}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Nemforcer" ID="{D60D2207-A74E-4E83-87F8-E1F7F8BED38C}">
+					<ObjectInclusionList>
+						<ObjectRef Name="SuperDededeJumpEnd" ID="{592A5B66-3D98-42C7-B200-D68F7B956DA8}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SuperDededeJumpStart" ID="{DE1DA2C5-7F04-43A1-A200-2FA687F97B7F}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="DededeJump" ID="{ACDCF8AF-CDD4-44DD-A464-FD65B5156B6F}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="NemforcerAxeSwing" ID="{17CEC6A4-FD31-4703-A9D0-28D763D0E673}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="DededeGordoThrow" ID="{FB69CF1D-40A2-4723-931E-63C49AD79DC7}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="play_dedede_hammer_attack_m" ID="{3E37F522-66F2-48C1-8058-14071FEB477E}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_se_dedede_hammer_swing_m" ID="{6A747787-846E-48FD-B1F1-8B5077BE0C29}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="NemforcerAxeHit" ID="{E2D37D92-9690-4B68-8541-9619D69DDE03}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="NemforcerMinigunSpinUp" ID="{16DA63B9-FE99-4C52-9B1A-61A4A11118FD}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Minigun_Shoot2" ID="{4E6543F9-EF74-4DBD-B9F5-C0A6CDB86F5D}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="NemforcerMinigunSpinDown" ID="{E0E8012F-EC68-4EC0-8D56-EB61D6E6B897}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="play_dedede_hammer_attack_l" ID="{D9605489-59B9-4FD9-BD48-6E77669155E9}" WorkUnitID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>

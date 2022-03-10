@@ -1,0 +1,58 @@
+Event	ID	Name			Wwise Object Path	Notes
+	61478347	PaladinLunge			\Default Work Unit\paladin\PaladinLunge	
+	266303471	PaladinSpearThrow			\Default Work Unit\paladin\PaladinSpearThrow	
+	559541155	PaladinExplosion			\Default Work Unit\paladin\PaladinExplosion	
+	606421317	PaladinChannelTorpor			\Default Work Unit\paladin\PaladinChannelTorpor	
+	1004601327	PaladinDrip			\Default Work Unit\paladin\PaladinDrip	
+	1770827703	PaladinLeapSlam			\Default Work Unit\paladin\PaladinLeapSlam	
+	1818979850	PaladinHitM			\Default Work Unit\paladin\PaladinHitM	
+	1818979851	PaladinHitL			\Default Work Unit\paladin\PaladinHitL	
+	1818979860	PaladinHitS			\Default Work Unit\paladin\PaladinHitS	
+	2117360560	PaladinSwing			\Default Work Unit\paladin\PaladinSwing	
+	2258948407	PaladinChannelMax			\Default Work Unit\paladin\PaladinChannelMax	
+	2259531664	PaladinMenuSound			\Default Work Unit\paladin\PaladinMenuSound	
+	2424620204	PaladinCloth2			\Default Work Unit\paladin\PaladinCloth2	
+	2424620205	PaladinCloth3			\Default Work Unit\paladin\PaladinCloth3	
+	2424620207	PaladinCloth1			\Default Work Unit\paladin\PaladinCloth1	
+	2634331089	PaladinCastTorpor			\Default Work Unit\paladin\PaladinCastTorpor	
+	2819528845	PaladinFingerSnap			\Default Work Unit\paladin\PaladinFingerSnap	
+	2869508097	PaladinCastHeal			\Default Work Unit\paladin\PaladinCastHeal	
+	3361364425	PaladinSwingBlunt			\Default Work Unit\paladin\PaladinSwingBlunt	
+	3664359810	PaladinHitBluntL			\Default Work Unit\paladin\PaladinHitBluntL	
+	3664359811	PaladinHitBluntM			\Default Work Unit\paladin\PaladinHitBluntM	
+	3664359837	PaladinHitBluntS			\Default Work Unit\paladin\PaladinHitBluntS	
+	3953845295	PaladinSwordActive			\Default Work Unit\paladin\PaladinSwordActive	
+	4085864877	PaladinChannelHeal			\Default Work Unit\paladin\PaladinChannelHeal	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	53309015	PaladinSpearThrow	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinSpearThrow_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinSpearThrow		13785
+	129829374	PaladinSwing2	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinSwing2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\swing\PaladinSwing2		5667
+	176360210	PaladinSwordActive	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinSwordActive_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinSwordActive		20586
+	215071040	PaladinHitBluntSS	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinHitBluntSS_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinHitBluntSS		6868
+	243176335	PaladinLunge	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinLunge_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinLunge		6835
+	266065062	PaladinHitL	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinHitL_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinHitL		10195
+	381079306	PaladinDrip	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinDrip_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\drip\PaladinDrip		306140
+	395471021	PaladinChannelTorpor	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinChannelTorpor_9EDFC787.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinChannelTorpor		32003
+	408188179	PaladinHitBluntM	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinHitBluntM_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinHitBluntM		6040
+	512605586	PaladinSnap	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinSnap_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinSnap		12246
+	538800254	PaladinDrip2	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinDrip2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\drip\PaladinDrip2		312237
+	543650420	PaladinCloth2	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinCloth2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinCloth2		11121
+	584181473	PaladinMenuSound	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinMenuSound_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinMenuSound		8493
+	584835422	PaladinCloth3	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinCloth3_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinCloth3		8073
+	584904886	PaladinHitBluntS	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinHitBluntS_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinHitBluntS		4288
+	591389793	PaladinLeapSlam	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinLeapSlam_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinLeapSlam		11382
+	603731468	PaladinCastHeal	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinCastHeal_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinCastHeal		7281
+	607711604	PaladinSwing	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinSwing_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\swing\PaladinSwing		4956
+	670118908	PaladinCastTorpor	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinCastTorpor_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinCastTorpor		10555
+	749548995	PaladinChannelHeal	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinChannelHeal_9EDFC787.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinChannelHeal		38489
+	813446919	PaladinHitS	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinHitS_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinHitS		5218
+	863728932	PaladinHitM	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinHitM_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinHitM		8376
+	911301249	PaladinSwingBlunt	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinSwingBlunt_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinSwingBlunt		3577
+	948465750	PaladinChannelMax2	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinCastWarcry_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\channelmax\PaladinChannelMax2		10288
+	951721078	PaladinCloth1	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinCloth1_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinCloth1		7803
+	954700323	PaladinExplosion	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinExplosion_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinExplosion		21041
+	1020432476	PaladinChannelMax	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinCastHealZone_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\channelmax\PaladinChannelMax		10582
+

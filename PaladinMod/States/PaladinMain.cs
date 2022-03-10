@@ -61,7 +61,6 @@ namespace PaladinMod.States
 
                 //ugly hack because for some reason the sparks are being retarded in this one scene
                 string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-                Debug.LogWarning("scene " + sceneName);
                 if (sceneName != "sulfurpools"){
                     this.swordTrailEffect = this.childLocator.FindChild("SwordSparksEffect").GetComponent<ParticleSystem>();
                 } 

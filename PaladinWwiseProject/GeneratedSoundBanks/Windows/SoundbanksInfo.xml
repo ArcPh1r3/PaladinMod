@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
+	<RootPaths>
+		<ProjectRoot>E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\</ProjectRoot>
+		<SourceFilesRoot>E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX" Hash="3701367528">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="1744638590" Language="SFX" Hash="697505140">
+			<ObjectPath>\SoundBanks\Default Work Unit\Nemforcer</ObjectPath>
+			<ShortName>Nemforcer</ShortName>
+			<Path>Nemforcer.bnk</Path>
+			<IncludedEvents>
+				<Event Id="1396415473" Name="DededeGordoThrow" ObjectPath="\Events\Default Work Unit\nemforcer\DededeGordoThrow">
+					<IncludedMemoryFiles>
+						<File Id="239566699" Language="SFX">
+							<ShortName>se_dedede_gordo_throw.wav</ShortName>
+							<Path>SFX\se_dedede_gordo_throw_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3901697920" Name="DededeJump" ObjectPath="\Events\Default Work Unit\nemforcer\DededeJump">
+					<IncludedMemoryFiles>
+						<File Id="749060630" Language="SFX">
+							<ShortName>se_dedede_jump02.wav</ShortName>
+							<Path>SFX\se_dedede_jump02_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4242037945" Name="NemforcerAxeHit" ObjectPath="\Events\Default Work Unit\nemforcer\NemforcerAxeHit">
+					<IncludedMemoryFiles>
+						<File Id="160355544" Language="SFX">
+							<ShortName>NemforcerAxeHit2.wav</ShortName>
+							<Path>SFX\NemforcerAxeHit2_3F75BDB9.wem</Path>
+						</File>
+						<File Id="661133510" Language="SFX">
+							<ShortName>NemforcerAxeHit3.wav</ShortName>
+							<Path>SFX\NemforcerAxeHit3_3F75BDB9.wem</Path>
+						</File>
+						<File Id="955932314" Language="SFX">
+							<ShortName>NemforcerAxeHit.wav</ShortName>
+							<Path>SFX\NemforcerAxeHit_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="252613388" Name="NemforcerAxeSwing" ObjectPath="\Events\Default Work Unit\nemforcer\NemforcerAxeSwing">
+					<IncludedMemoryFiles>
+						<File Id="93215376" Language="SFX">
+							<ShortName>NemforcerAxeSwing3.wav</ShortName>
+							<Path>SFX\NemforcerAxeSwing3_3F75BDB9.wem</Path>
+						</File>
+						<File Id="414882283" Language="SFX">
+							<ShortName>NemforcerAxeSwing4.wav</ShortName>
+							<Path>SFX\NemforcerAxeSwing4_3F75BDB9.wem</Path>
+						</File>
+						<File Id="474473547" Language="SFX">
+							<ShortName>NemforcerAxeSwing.wav</ShortName>
+							<Path>SFX\NemforcerAxeSwing_3F75BDB9.wem</Path>
+						</File>
+						<File Id="658594982" Language="SFX">
+							<ShortName>NemforcerAxeSwing2.wav</ShortName>
+							<Path>SFX\NemforcerAxeSwing2_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4078425363" Name="NemforcerMinigunSpinDown" ObjectPath="\Events\Default Work Unit\nemforcer\NemforcerMinigunSpinDown">
+					<IncludedMemoryFiles>
+						<File Id="435557966" Language="SFX">
+							<ShortName>NemforcerMinigunSpinDown.wav</ShortName>
+							<Path>SFX\NemforcerMinigunSpinDown_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="223230356" Name="NemforcerMinigunSpinUp" ObjectPath="\Events\Default Work Unit\nemforcer\NemforcerMinigunSpinUp">
+					<IncludedMemoryFiles>
+						<File Id="393158346" Language="SFX">
+							<ShortName>NemforcerMinigunSpinUp.wav</ShortName>
+							<Path>SFX\NemforcerMinigunSpinUp_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="547001894" Name="play_dedede_hammer_attack_l" ObjectPath="\Events\Default Work Unit\nemforcer\play_dedede_hammer_attack_l">
+					<IncludedMemoryFiles>
+						<File Id="238140023" Language="SFX">
+							<ShortName>se_dedede_hammer_attack_l.wav</ShortName>
+							<Path>SFX\se_dedede_hammer_attack_l_3F75BDB9.wem</Path>
+						</File>
+						<File Id="384598124" Language="SFX">
+							<ShortName>se_dedede_hammer_attack_ll.wav</ShortName>
+							<Path>SFX\se_dedede_hammer_attack_ll_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="547001895" Name="play_dedede_hammer_attack_m" ObjectPath="\Events\Default Work Unit\nemforcer\play_dedede_hammer_attack_m">
+					<IncludedMemoryFiles>
+						<File Id="51468599" Language="SFX">
+							<ShortName>se_dedede_hammer_attack_s.wav</ShortName>
+							<Path>SFX\se_dedede_hammer_attack_s_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="676420139" Name="Play_Minigun_Shoot2" ObjectPath="\Events\Default Work Unit\nemforcer\Play_Minigun_Shoot2">
+					<IncludedMemoryFiles>
+						<File Id="318027046" Language="SFX">
+							<ShortName>Play_Minigun_Shoot.wav</ShortName>
+							<Path>SFX\Play_Minigun_Shoot_9EDFC787.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3555953518" Name="Play_se_dedede_hammer_swing_m" ObjectPath="\Events\Default Work Unit\nemforcer\Play_se_dedede_hammer_swing_m">
+					<IncludedMemoryFiles>
+						<File Id="112176353" Language="SFX">
+							<ShortName>se_dedede_hammer_swing_m.wav</ShortName>
+							<Path>SFX\se_dedede_hammer_swing_m_3F75BDB9.wem</Path>
+						</File>
+						<File Id="329983460" Language="SFX">
+							<ShortName>se_dedede_hammer_swing_l.wav</ShortName>
+							<Path>SFX\se_dedede_hammer_swing_l_3F75BDB9.wem</Path>
+						</File>
+						<File Id="596827886" Language="SFX">
+							<ShortName>se_dedede_hammer_swing_s.wav</ShortName>
+							<Path>SFX\se_dedede_hammer_swing_s_3F75BDB9.wem</Path>
+						</File>
+						<File Id="665470741" Language="SFX">
+							<ShortName>se_dedede_hammer_swing_ll.wav</ShortName>
+							<Path>SFX\se_dedede_hammer_swing_ll_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4082970534" Name="SuperDededeJumpEnd" ObjectPath="\Events\Default Work Unit\nemforcer\SuperDededeJumpEnd">
+					<IncludedMemoryFiles>
+						<File Id="566259440" Language="SFX">
+							<ShortName>se_dedede_special_H02.wav</ShortName>
+							<Path>SFX\se_dedede_special_H02_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2454711181" Name="SuperDededeJumpStart" ObjectPath="\Events\Default Work Unit\nemforcer\SuperDededeJumpStart">
+					<IncludedMemoryFiles>
+						<File Id="948787278" Language="SFX">
+							<ShortName>se_dedede_special_H01.wav</ShortName>
+							<Path>SFX\se_dedede_special_H01_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+			<GameParameters>
+				<GameParameter Id="3673881719" Name="Volume_SFX" ObjectPath="\Game Parameters\Default Work Unit\Volume_SFX"/>
+			</GameParameters>
+		</SoundBank>
+		<SoundBank Id="3024907506" Language="SFX" Hash="245413070">
+			<ObjectPath>\SoundBanks\Default Work Unit\Paladin</ObjectPath>
+			<ShortName>Paladin</ShortName>
+			<Path>Paladin.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2869508097" Name="PaladinCastHeal" ObjectPath="\Events\Default Work Unit\paladin\PaladinCastHeal">
+					<IncludedMemoryFiles>
+						<File Id="603731468" Language="SFX">
+							<ShortName>PaladinCastHeal.wav</ShortName>
+							<Path>SFX\PaladinCastHeal_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2634331089" Name="PaladinCastTorpor" ObjectPath="\Events\Default Work Unit\paladin\PaladinCastTorpor">
+					<IncludedMemoryFiles>
+						<File Id="670118908" Language="SFX">
+							<ShortName>PaladinCastTorpor.wav</ShortName>
+							<Path>SFX\PaladinCastTorpor_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4085864877" Name="PaladinChannelHeal" ObjectPath="\Events\Default Work Unit\paladin\PaladinChannelHeal">
+					<IncludedMemoryFiles>
+						<File Id="749548995" Language="SFX">
+							<ShortName>PaladinChannelHeal.wav</ShortName>
+							<Path>SFX\PaladinChannelHeal_9EDFC787.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2258948407" Name="PaladinChannelMax" ObjectPath="\Events\Default Work Unit\paladin\PaladinChannelMax">
+					<IncludedMemoryFiles>
+						<File Id="948465750" Language="SFX">
+							<ShortName>PaladinCastWarcry.wav</ShortName>
+							<Path>SFX\PaladinCastWarcry_3F75BDB9.wem</Path>
+						</File>
+						<File Id="1020432476" Language="SFX">
+							<ShortName>PaladinCastHealZone.wav</ShortName>
+							<Path>SFX\PaladinCastHealZone_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="606421317" Name="PaladinChannelTorpor" ObjectPath="\Events\Default Work Unit\paladin\PaladinChannelTorpor">
+					<IncludedMemoryFiles>
+						<File Id="395471021" Language="SFX">
+							<ShortName>PaladinChannelTorpor.wav</ShortName>
+							<Path>SFX\PaladinChannelTorpor_9EDFC787.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2424620207" Name="PaladinCloth1" ObjectPath="\Events\Default Work Unit\paladin\PaladinCloth1">
+					<IncludedMemoryFiles>
+						<File Id="951721078" Language="SFX">
+							<ShortName>PaladinCloth1.wav</ShortName>
+							<Path>SFX\PaladinCloth1_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2424620204" Name="PaladinCloth2" ObjectPath="\Events\Default Work Unit\paladin\PaladinCloth2">
+					<IncludedMemoryFiles>
+						<File Id="543650420" Language="SFX">
+							<ShortName>PaladinCloth2.wav</ShortName>
+							<Path>SFX\PaladinCloth2_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2424620205" Name="PaladinCloth3" ObjectPath="\Events\Default Work Unit\paladin\PaladinCloth3">
+					<IncludedMemoryFiles>
+						<File Id="584835422" Language="SFX">
+							<ShortName>PaladinCloth3.wav</ShortName>
+							<Path>SFX\PaladinCloth3_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1004601327" Name="PaladinDrip" ObjectPath="\Events\Default Work Unit\paladin\PaladinDrip">
+					<IncludedMemoryFiles>
+						<File Id="381079306" Language="SFX">
+							<ShortName>PaladinDrip.wav</ShortName>
+							<Path>SFX\PaladinDrip_3F75BDB9.wem</Path>
+						</File>
+						<File Id="538800254" Language="SFX">
+							<ShortName>PaladinDrip2.wav</ShortName>
+							<Path>SFX\PaladinDrip2_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="559541155" Name="PaladinExplosion" ObjectPath="\Events\Default Work Unit\paladin\PaladinExplosion">
+					<IncludedMemoryFiles>
+						<File Id="954700323" Language="SFX">
+							<ShortName>PaladinExplosion.wav</ShortName>
+							<Path>SFX\PaladinExplosion_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2819528845" Name="PaladinFingerSnap" ObjectPath="\Events\Default Work Unit\paladin\PaladinFingerSnap">
+					<IncludedMemoryFiles>
+						<File Id="512605586" Language="SFX">
+							<ShortName>PaladinSnap.wav</ShortName>
+							<Path>SFX\PaladinSnap_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3664359810" Name="PaladinHitBluntL" ObjectPath="\Events\Default Work Unit\paladin\PaladinHitBluntL">
+					<IncludedMemoryFiles>
+						<File Id="408188179" Language="SFX">
+							<ShortName>PaladinHitBluntM.wav</ShortName>
+							<Path>SFX\PaladinHitBluntM_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3664359811" Name="PaladinHitBluntM" ObjectPath="\Events\Default Work Unit\paladin\PaladinHitBluntM">
+					<IncludedMemoryFiles>
+						<File Id="215071040" Language="SFX">
+							<ShortName>PaladinHitBluntSS.wav</ShortName>
+							<Path>SFX\PaladinHitBluntSS_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3664359837" Name="PaladinHitBluntS" ObjectPath="\Events\Default Work Unit\paladin\PaladinHitBluntS">
+					<IncludedMemoryFiles>
+						<File Id="584904886" Language="SFX">
+							<ShortName>PaladinHitBluntS.wav</ShortName>
+							<Path>SFX\PaladinHitBluntS_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1818979851" Name="PaladinHitL" ObjectPath="\Events\Default Work Unit\paladin\PaladinHitL">
+					<IncludedMemoryFiles>
+						<File Id="266065062" Language="SFX">
+							<ShortName>PaladinHitL.wav</ShortName>
+							<Path>SFX\PaladinHitL_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1818979850" Name="PaladinHitM" ObjectPath="\Events\Default Work Unit\paladin\PaladinHitM">
+					<IncludedMemoryFiles>
+						<File Id="863728932" Language="SFX">
+							<ShortName>PaladinHitM.wav</ShortName>
+							<Path>SFX\PaladinHitM_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1818979860" Name="PaladinHitS" ObjectPath="\Events\Default Work Unit\paladin\PaladinHitS">
+					<IncludedMemoryFiles>
+						<File Id="813446919" Language="SFX">
+							<ShortName>PaladinHitS.wav</ShortName>
+							<Path>SFX\PaladinHitS_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1770827703" Name="PaladinLeapSlam" ObjectPath="\Events\Default Work Unit\paladin\PaladinLeapSlam">
+					<IncludedMemoryFiles>
+						<File Id="591389793" Language="SFX">
+							<ShortName>PaladinLeapSlam.wav</ShortName>
+							<Path>SFX\PaladinLeapSlam_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="61478347" Name="PaladinLunge" ObjectPath="\Events\Default Work Unit\paladin\PaladinLunge">
+					<IncludedMemoryFiles>
+						<File Id="243176335" Language="SFX">
+							<ShortName>PaladinLunge.wav</ShortName>
+							<Path>SFX\PaladinLunge_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2259531664" Name="PaladinMenuSound" ObjectPath="\Events\Default Work Unit\paladin\PaladinMenuSound">
+					<IncludedMemoryFiles>
+						<File Id="584181473" Language="SFX">
+							<ShortName>PaladinMenuSound.wav</ShortName>
+							<Path>SFX\PaladinMenuSound_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="266303471" Name="PaladinSpearThrow" ObjectPath="\Events\Default Work Unit\paladin\PaladinSpearThrow">
+					<IncludedMemoryFiles>
+						<File Id="53309015" Language="SFX">
+							<ShortName>PaladinSpearThrow.wav</ShortName>
+							<Path>SFX\PaladinSpearThrow_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2117360560" Name="PaladinSwing" ObjectPath="\Events\Default Work Unit\paladin\PaladinSwing">
+					<IncludedMemoryFiles>
+						<File Id="129829374" Language="SFX">
+							<ShortName>PaladinSwing2.wav</ShortName>
+							<Path>SFX\PaladinSwing2_3F75BDB9.wem</Path>
+						</File>
+						<File Id="607711604" Language="SFX">
+							<ShortName>PaladinSwing.wav</ShortName>
+							<Path>SFX\PaladinSwing_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3361364425" Name="PaladinSwingBlunt" ObjectPath="\Events\Default Work Unit\paladin\PaladinSwingBlunt">
+					<IncludedMemoryFiles>
+						<File Id="911301249" Language="SFX">
+							<ShortName>PaladinSwingBlunt.wav</ShortName>
+							<Path>SFX\PaladinSwingBlunt_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3953845295" Name="PaladinSwordActive" ObjectPath="\Events\Default Work Unit\paladin\PaladinSwordActive">
+					<IncludedMemoryFiles>
+						<File Id="176360210" Language="SFX">
+							<ShortName>PaladinSwordActive.wav</ShortName>
+							<Path>SFX\PaladinSwordActive_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+			<GameParameters>
+				<GameParameter Id="3673881719" Name="Volume_SFX" ObjectPath="\Game Parameters\Default Work Unit\Volume_SFX"/>
+			</GameParameters>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{59F847DD-0CC2-47FC-8B32-EB9724C9D3C9}" SchemaVersion="97">
+<WwiseDocument Type="WorkUnit" ID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}" SchemaVersion="97">
 	<Conversions>
-		<WorkUnit Name="Default Work Unit" ID="{59F847DD-0CC2-47FC-8B32-EB9724C9D3C9}" PersistMode="Standalone">
+		<WorkUnit Name="Default Work Unit" ID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}" PersistMode="Standalone">
 			<ChildrenList>
 				<Conversion Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}">
 					<PropertyList>
@@ -33,7 +33,7 @@
 					</PropertyList>
 					<ConversionPluginInfoList>
 						<ConversionPluginInfo Platform="Windows">
-							<ConversionPlugin Name="" ID="{E490D7DD-A808-46AA-AE68-0431846590BD}" PluginName="PCM" CompanyID="0" PluginID="1"/>
+							<ConversionPlugin Name="" ID="{E36CF173-DECB-4B2F-B143-5BFF171B151B}" PluginName="Vorbis" CompanyID="0" PluginID="4"/>
 						</ConversionPluginInfo>
 					</ConversionPluginInfoList>
 				</Conversion>

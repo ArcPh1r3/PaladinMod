@@ -1,0 +1,40 @@
+Event	ID	Name			Wwise Object Path	Notes
+	223230356	NemforcerMinigunSpinUp			\Default Work Unit\nemforcer\NemforcerMinigunSpinUp	
+	252613388	NemforcerAxeSwing			\Default Work Unit\nemforcer\NemforcerAxeSwing	
+	547001894	play_dedede_hammer_attack_l			\Default Work Unit\nemforcer\play_dedede_hammer_attack_l	
+	547001895	play_dedede_hammer_attack_m			\Default Work Unit\nemforcer\play_dedede_hammer_attack_m	
+	676420139	Play_Minigun_Shoot2			\Default Work Unit\nemforcer\Play_Minigun_Shoot2	
+	1396415473	DededeGordoThrow			\Default Work Unit\nemforcer\DededeGordoThrow	
+	2454711181	SuperDededeJumpStart			\Default Work Unit\nemforcer\SuperDededeJumpStart	
+	3555953518	Play_se_dedede_hammer_swing_m			\Default Work Unit\nemforcer\Play_se_dedede_hammer_swing_m	
+	3901697920	DededeJump			\Default Work Unit\nemforcer\DededeJump	
+	4078425363	NemforcerMinigunSpinDown			\Default Work Unit\nemforcer\NemforcerMinigunSpinDown	
+	4082970534	SuperDededeJumpEnd			\Default Work Unit\nemforcer\SuperDededeJumpEnd	
+	4242037945	NemforcerAxeHit			\Default Work Unit\nemforcer\NemforcerAxeHit	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	51468599	se_dedede_hammer_attack_s	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\se_dedede_hammer_attack_s_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\se_dedede_hammer_attack_s		3787
+	93215376	NemforcerAxeSwing3	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\NemforcerAxeSwing3_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\swing\NemforcerAxeSwing3		7229
+	112176353	se_dedede_hammer_swing_m	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\se_dedede_hammer_swing_m_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\dededeswing\se_dedede_hammer_swing_m		5535
+	160355544	NemforcerAxeHit2	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\NemforcerAxeHit2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\hit\NemforcerAxeHit2		5645
+	238140023	se_dedede_hammer_attack_l	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\se_dedede_hammer_attack_l_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\dededehit\se_dedede_hammer_attack_l		7011
+	239566699	se_dedede_gordo_throw	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\se_dedede_gordo_throw_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\se_dedede_gordo_throw		3066
+	318027046	Play_Minigun_Shoot	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\Play_Minigun_Shoot_9EDFC787.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\Play_Minigun_Shoot		25506
+	329983460	se_dedede_hammer_swing_l	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\se_dedede_hammer_swing_l_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\dededeswing\se_dedede_hammer_swing_l		5400
+	384598124	se_dedede_hammer_attack_ll	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\se_dedede_hammer_attack_ll_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\dededehit\se_dedede_hammer_attack_ll		7934
+	393158346	NemforcerMinigunSpinUp	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\NemforcerMinigunSpinUp_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\NemforcerMinigunSpinUp		12522
+	414882283	NemforcerAxeSwing4	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\NemforcerAxeSwing4_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\swing\NemforcerAxeSwing4		7087
+	435557966	NemforcerMinigunSpinDown	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\NemforcerMinigunSpinDown_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\NemforcerMinigunSpinDown		6204
+	474473547	NemforcerAxeSwing	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\NemforcerAxeSwing_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\swing\NemforcerAxeSwing		7039
+	566259440	se_dedede_special_H02	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\se_dedede_special_H02_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\se_dedede_special_H02		8548
+	596827886	se_dedede_hammer_swing_s	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\se_dedede_hammer_swing_s_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\dededeswing\se_dedede_hammer_swing_s		4522
+	658594982	NemforcerAxeSwing2	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\NemforcerAxeSwing2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\swing\NemforcerAxeSwing2		8218
+	661133510	NemforcerAxeHit3	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\NemforcerAxeHit3_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\hit\NemforcerAxeHit3		5818
+	665470741	se_dedede_hammer_swing_ll	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\se_dedede_hammer_swing_ll_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\dededeswing\se_dedede_hammer_swing_ll		5893
+	749060630	se_dedede_jump02	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\se_dedede_jump02_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\se_dedede_jump02		4796
+	948787278	se_dedede_special_H01	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\se_dedede_special_H01_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\se_dedede_special_H01		7039
+	955932314	NemforcerAxeHit	E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\NemforcerAxeHit_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\nemforcer\hit\NemforcerAxeHit		8717
+
