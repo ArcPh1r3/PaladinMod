@@ -92,12 +92,12 @@ namespace PaladinMod.Misc
 
                     if (hasLeftHandWeapon)
                     {
-                        Animator animator = this.model.GetComponent<Animator>();
+                        Animator animator = this.model?.GetComponent<Animator>();
                         if (animator) animator.SetBool("fistClosed", true);
                     }
                     else
                     {
-                        Animator animator = this.model.GetComponent<Animator>();
+                        Animator animator = this.model?.GetComponent<Animator>();
                         if (animator) animator.SetBool("fistClosed", false);
                     }
                 }

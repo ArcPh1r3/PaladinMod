@@ -67,8 +67,9 @@ namespace PaladinMod
 
         // eh
         public static uint claySkinIndex = 4;
+
         public void Start() {
-            Logger.LogInfo("Initializing Paladin");
+            Logger.LogInfo("[Initializing Paladin]");
             //Modules.States.FixStates();
             instance = this;
             logger = base.Logger;
@@ -120,7 +121,17 @@ namespace PaladinMod
             Hook();
 
             RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
+            RoR2.RoR2Application.onLoad += LateSetupItemDisplays;
             On.RoR2.EntityStateCatalog.Init += EntityStateCatalog_Init;
+        }
+
+        private void LateSetupItemDisplays() {
+            Modules.ItemDisplays.SetItemDisplays();
+        }
+
+        private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
+        {
+            Modules.Projectiles.LateSetup();
         }
 
         private void EntityStateCatalog_Init(On.RoR2.EntityStateCatalog.orig_Init orig)
@@ -168,12 +179,6 @@ namespace PaladinMod
             childLocator.FindChild("SpawnEffect").Find("MagicCircle").Find("BigCircle").Find("BigCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
         }
 
-        private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
-        {
-            Modules.Projectiles.LateSetup();
-            //todod CUM2
-            //Modules.ItemDisplays.SetItemDisplays();
-        }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private void ScepterSetup()
