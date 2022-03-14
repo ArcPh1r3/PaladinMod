@@ -1,5 +1,4 @@
-﻿using EntityStates.GrandParent;
-using PaladinMod.Misc;
+﻿using PaladinMod.Misc;
 using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -8,41 +7,25 @@ namespace PaladinMod.States.Spell
 {
     public class CastCruelSun : BaseCastChanneledSpellState
     {
-        public static float sunPrefabDiameter = 10f;
-
         private GameObject sunInstance;
         public Vector3? sunSpawnPosition;
         protected PaladinSwordController swordController;
 
+
         public override void OnEnter()
         {
-            this.baseDuration = 15f;
-            this.overrideDuration = 15f;
+            this.baseDuration = this.overrideDuration = StaticValues.cruelSunDuration;
             this.muzzleflashEffectPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/ExplosionSolarFlare");
             this.projectilePrefab = null;
             this.castSoundString = Modules.Sounds.CastTorpor;
             this.swordController = base.gameObject.GetComponent<PaladinSwordController>();
-            
+
             base.OnEnter();
 
             if (NetworkServer.active)
             {
-                Vector3? vector = this.sunSpawnPosition;
-
-                float oldMinDistance = ChannelSun.sunPlacementMinDistance;
-                float oldIdealAltitude = ChannelSun.sunPlacementIdealAltitudeBonus;
-
-                ChannelSun.sunPlacementMinDistance = 0f;
-                ChannelSun.sunPlacementIdealAltitudeBonus = 0f;
-
-                this.sunSpawnPosition = this.swordController.sunPosition + Vector3.up;//((vector != null) ? vector : ChannelSun.FindSunSpawnPosition(this.spellPosition));
-                if (this.sunSpawnPosition != null)
-                {
-                    this.sunInstance = this.CreateSun(this.sunSpawnPosition.Value);
-                }
-
-                ChannelSun.sunPlacementMinDistance = oldMinDistance;
-                ChannelSun.sunPlacementIdealAltitudeBonus = oldIdealAltitude;
+                this.sunSpawnPosition = this.characterBody.corePosition + new Vector3(0f, 10f, 0f);
+                if (this.sunSpawnPosition != null) this.sunInstance = this.SpawnPaladinSun(this.sunSpawnPosition.Value);
             }
 
             Transform modelTransform = base.GetModelTransform();
@@ -56,6 +39,18 @@ namespace PaladinMod.States.Spell
                 temporaryOverlay.originalMaterial = RoR2.LegacyResourcesAPI.Load<Material>("Materials/matGrandparentTeleportOutBoom");
                 temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
             }
+        }
+
+        public override void FixedUpdate()
+        {
+            this.characterBody.isSprinting = false;
+
+            if (NetworkServer.active)
+            {
+                sunInstance.transform.position = this.characterBody.transform.position + new Vector3(0f, 10f, 0f);
+            }
+
+            base.FixedUpdate();
         }
 
         protected override void PlayCastAnimation()
@@ -76,10 +71,11 @@ namespace PaladinMod.States.Spell
             base.PlayAnimation("Gesture, Override", "CastSunEnd", "Spell.playbackRate", 0.8f);
         }
 
-        private GameObject CreateSun(Vector3 sunSpawnPosition)
+        private GameObject SpawnPaladinSun(Vector3 sunSpawnPosition)
         {
-            GameObject sun = UnityEngine.Object.Instantiate<GameObject>(ChannelSun.sunPrefab, sunSpawnPosition, Quaternion.identity);
+            GameObject sun = UnityEngine.Object.Instantiate<GameObject>(Modules.Prefabs.paladinSunPrefab, sunSpawnPosition, Quaternion.identity);
             sun.GetComponent<GenericOwnership>().ownerObject = base.gameObject;
+            sun.transform.localScale = new Vector3(StaticValues.cruelSunSize, StaticValues.cruelSunSize, StaticValues.cruelSunSize);
             NetworkServer.Spawn(sun);
             return sun;
         }

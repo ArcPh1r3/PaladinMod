@@ -4,15 +4,14 @@ using PaladinMod.States.Quickstep;
 using PaladinMod.States.Rage;
 using PaladinMod.States.Spell;
 using PaladinMod.States.LunarKnight;
+using PaladinMod.States.Sun;
+
 using System;
 using System.Collections.Generic;
 
 using EntityStates;
 using MonoMod.RuntimeDetour;
 using RoR2;
-using RoR2.Skills;
-using System;
-using System.Collections.Generic;
 using System.Reflection;
 
 namespace PaladinMod.Modules
@@ -83,6 +82,11 @@ namespace PaladinMod.Modules
             AddSkill(typeof(FlashStep));
 
             AddSkill(typeof(MaceSlam));
+
+            AddSkill(typeof(PaladinSunBase));
+            AddSkill(typeof(PaladinSunMain));
+            AddSkill(typeof(PaladinSunSpawn));
+            AddSkill(typeof(PaladinSunDeath));
         }
 
 

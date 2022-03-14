@@ -12,10 +12,8 @@ namespace PaladinMod.States.Spell
         {
             this.chargeEffectPrefab = null;
             this.chargeSoundString = Modules.Sounds.ChannelTorpor;
-            this.maxSpellRadius = CastCruelSun.sunPrefabDiameter * 0.5f;
             this.baseDuration = StaticValues.cruelSunChannelDuration;
             this.swordController = base.gameObject.GetComponent<PaladinSwordController>();
-            this.overrideAreaIndicatorMat = Modules.Assets.areaIndicatorMat;
 
             base.OnEnter();
 
@@ -31,12 +29,6 @@ namespace PaladinMod.States.Spell
         protected override void PlayChannelAnimation()
         {
             base.PlayAnimation("Gesture, Override", "ChannelSun", "Spell.playbackRate", 2f);
-        }
-
-        public override void FixedUpdate()
-        {
-            base.FixedUpdate();
-            if (this.swordController) this.swordController.sunPosition = this.areaIndicatorInstance.transform.position;
         }
 
         public override void OnExit()

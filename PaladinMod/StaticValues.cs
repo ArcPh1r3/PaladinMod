@@ -102,6 +102,11 @@
         public const float scepterWarcryDuration = 8;
 
         //Cruel Sun
-        public const float cruelSunChannelDuration = 5f;
+        public const float cruelSunChannelDuration = 2.5f;
+        public const float cruelSunDuration = 10f;
+        public const float cruelSunSize = 0.25f;
+        public const float cruelSunBurnDuration = 1f;
+        public const int cruelSunMinimumStacksBeforeApplyingBurns = 20;
+        public const float cruelSunAllyDamageMultiplier = 0f;
     }
 }
