@@ -40,13 +40,22 @@ namespace PaladinMod.States.Spell
                 temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
             }
 
+            //borked, no idea why
             base.camParamsOverrideHandle = Modules.CameraParams.OverridePaladinCameraParams(base.cameraTargetParams, PaladinCameraParams.CRUEL_SUN, 1f);
         }
 
         public override void FixedUpdate()
         {
-            this.characterBody.isSprinting = false;
-            //if (NetworkServer.active) sunInstance.transform.position = this.characterBody.transform.position + new Vector3(0f, 10f, 0f);
+            if (base.isAuthority && base.inputBank && base.fixedAge >= 0.2f)
+            {
+                if (base.inputBank.sprint.wasDown)
+                {
+                    base.characterBody.isSprinting = true;
+                    this.outer.SetNextStateToMain();
+                    return;
+                }
+            }
+
             base.FixedUpdate();
         }
 

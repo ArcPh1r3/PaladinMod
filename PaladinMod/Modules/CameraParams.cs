@@ -43,7 +43,8 @@ namespace PaladinMod.Modules
 
             emoteCameraParamsPaladin = NewCameraParams("ccpPaladinEmote", 70f, defaultVerticalOffset, new Vector3(0f, -0.6f, -8.5f));
 
-            cruelSunCameraParamsPaladin = NewCameraParams("ccpPaladinCruelSun", 70f, 3f, new Vector3(0f, 10f, -24f));
+            //these settings are extreme for testing purposes, camera is borked anyway
+            cruelSunCameraParamsPaladin = NewCameraParams("ccpPaladinCruelSun", 70f, 3f, new Vector3(0f, 100f, -240f));
         }
 
         private static CharacterCameraParamsData NewCameraParams(string name, float pitch, float pivotVerticalOffset, Vector3 idealPosition)
