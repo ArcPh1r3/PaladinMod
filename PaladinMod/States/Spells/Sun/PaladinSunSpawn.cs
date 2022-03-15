@@ -4,7 +4,7 @@ namespace PaladinMod.States.Sun
 {
 	public class PaladinSunSpawn : PaladinSunBase
 	{
-		public static float baseDuration;
+		public static float baseDuration = 0.6f;
 
 		private float duration;
 
@@ -14,6 +14,7 @@ namespace PaladinMod.States.Sun
 		{
 			base.OnEnter();
 			duration = baseDuration;
+			//Debug.Log("SunSpawn enter");
 		}
 
 		public override void FixedUpdate()

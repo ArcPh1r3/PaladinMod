@@ -7,6 +7,9 @@ using RoR2.Projectile;
 using System.Collections.Generic;
 using R2API;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.AddressableAssets;
+using RoR2.Audio;
+using EntityStates;
 
 namespace PaladinMod.Modules
 {
@@ -49,6 +52,8 @@ namespace PaladinMod.Modules
         public static GameObject healZoneEffectPrefab;
         public static GameObject torporEffectPrefab;
         public static GameObject warcryEffectPrefab;
+        public static GameObject paladinSunPrefab;
+        public static GameObject paladinSunSpawnPrefab;
 
         //particle effects
         public static GameObject swordSwing;
@@ -384,6 +389,67 @@ namespace PaladinMod.Modules
             warcryEffectPrefab.transform.GetChild(0).GetChild(0).GetComponent<ParticleSystemRenderer>().material = RoR2.LegacyResourcesAPI.Load<Material>("materials/matFullCrit");
             //
             //GameObject warbannerEffect = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/WarbannerWard").InstantiateClone("x", true);
+
+            //Clone the existing Grandparent Sun prefab and modify it for our own use.
+            paladinSunPrefab = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Grandparent/GrandParentSun.prefab").WaitForCompletion(), "PaladinSun", true);
+
+            //Transfering over some data we need from the old script.
+            paladinSunPrefab.AddComponent<PaladinSunController>();
+            GrandParentSunController baseScript = paladinSunPrefab.GetComponent<GrandParentSunController>();
+            PaladinSunController newScript = paladinSunPrefab.GetComponent<PaladinSunController>();
+            newScript.buffApplyEffect = baseScript.buffApplyEffect;
+            newScript.buffDef = baseScript.buffDef;
+
+            //SFX
+            newScript.activeLoopDef = baseScript.activeLoopDef;
+            newScript.damageLoopDef = baseScript.damageLoopDef;
+            newScript.stopSoundName = baseScript.stopSoundName;
+
+            /*var test = paladinSunPrefab.GetComponents<AkEvent>();
+            foreach (AkEvent t in test)
+            {
+                if (t.soundEmitterObject) t.soundEmitterObject = paladinSunPrefab.gameObject;
+            }*/
+
+            //Important to remove this since we now have our own controller
+            Object.Destroy(baseScript);
+
+            //EntityStateMachine that can go die in the actual sun
+            Object.DestroyImmediate(paladinSunPrefab.GetComponent<EntityStateMachine>());
+            paladinSunPrefab.AddComponent<EntityStateMachine>();
+            EntityStateMachine esmPaladin = paladinSunPrefab.GetComponent<EntityStateMachine>();
+            esmPaladin.name = "Body";
+            esmPaladin.initialStateType = new SerializableEntityStateType(typeof(PaladinMod.States.Sun.PaladinSunSpawn));
+
+            //reset the NetworkStateMachine value just in case
+            paladinSunPrefab.GetComponent<NetworkStateMachine>().stateMachines[0] = esmPaladin;
+
+            //VFX
+            paladinSunPrefab.transform.localScale = new Vector3(StaticValues.cruelSunVfxSize, StaticValues.cruelSunVfxSize, StaticValues.cruelSunVfxSize);
+            paladinSunPrefab.transform.Find("VfxRoot/LightSpinner/LightSpinner/Point Light").GetComponent<Light>().intensity *= StaticValues.cruelSunVfxSize;
+            paladinSunPrefab.transform.Find("VfxRoot/LightSpinner/LightSpinner/Point Light").GetComponent<Light>().range = 200 * StaticValues.cruelSunVfxSize;
+            Object.Destroy(paladinSunPrefab.transform.Find("VfxRoot/Mesh/SunMesh/MoonMesh").gameObject);
+            paladinSunPrefab.transform.Find("VfxRoot/Mesh/AreaIndicator").transform.localScale = new Vector3(105, 105, 105);
+
+            //ParticleSystems need to have their modules referenced in a variable before we can assign anything to them. I have no fucking idea why.
+            //Removing some distracting effects that don't work well here (imo).
+            ParticleSystem psSparks = paladinSunPrefab.transform.Find("VfxRoot/Particles/Sparks").GetComponent<ParticleSystem>();
+            var psSparks_emission = psSparks.emission;
+            psSparks_emission.enabled = false;
+            ParticleSystem psGoo = paladinSunPrefab.transform.Find("VfxRoot/Particles/Goo, Drip").GetComponent<ParticleSystem>();
+            var psGoo_emission = psGoo.emission;
+            psGoo_emission.enabled = false;
+            //var colorOverLifetime = ps.colorOverLifetime;
+            //colorOverLifetime.color = new ParticleSystem.MinMaxGradient(Color.white, new Color(0,0,0,0));
+
+            //Cruel Sun spawn explosion effect
+            paladinSunSpawnPrefab = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Grandparent/GrandParentSunSpawn.prefab").WaitForCompletion(), "PaladinSunSpawn", false);
+            paladinSunSpawnPrefab.transform.localScale = new Vector3(StaticValues.cruelSunVfxSize, StaticValues.cruelSunVfxSize, StaticValues.cruelSunVfxSize);
+            paladinSunSpawnPrefab.transform.Find("Point Light").GetComponent<Light>().intensity *= StaticValues.cruelSunVfxSize;
+            paladinSunSpawnPrefab.transform.Find("Point Light").GetComponent<Light>().range = 200 * StaticValues.cruelSunVfxSize;
+            paladinSunSpawnPrefab.GetComponent<DestroyOnTimer>().duration = 1.5f;
+            AddEffect(paladinSunSpawnPrefab, "Play_grandparent_attack3_sun_spawn");
+
             #endregion
         }
 

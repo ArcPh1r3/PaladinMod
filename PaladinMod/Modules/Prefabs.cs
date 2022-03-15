@@ -13,7 +13,6 @@ namespace PaladinMod.Modules
     {
         public static GameObject paladinPrefab;
         public static GameObject paladinDisplayPrefab;
-        public static GameObject paladinSunPrefab;
 
         public static GameObject nemPaladinPrefab;
         public static GameObject nemPaladinDisplayPrefab;
@@ -27,60 +26,13 @@ namespace PaladinMod.Modules
         internal static List<GameObject> masterPrefabs = new List<GameObject>();
         internal static List<GameObject> projectilePrefabs = new List<GameObject>();
 
-        public static void CreateSun()
-        {
-            paladinSunPrefab = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Grandparent/GrandParentSun.prefab").WaitForCompletion(), "PaladinSun", true);
-            paladinSunPrefab.AddComponent<PaladinSunController>();
 
-            //I fucking hate this
-            paladinSunPrefab.GetComponent<EntityStateMachine>().mainStateType = new SerializableEntityStateType(typeof(PaladinSunMain));
-            paladinSunPrefab.GetComponent<EntityStateMachine>().initialStateType = new SerializableEntityStateType(typeof(PaladinSunSpawn));
-
-            paladinSunPrefab.GetComponent<EntityStateMachine>().state = new PaladinSunSpawn();
-            //paladinSunPrefab.GetComponent<EntityStateMachine>().SetState(new PaladinSunSpawn()); This throws nullref errors?????????
-            //paladinSunPrefab.GetComponent<EntityStateMachine>().SetNextState(new PaladinSunMain());
-
-            //paladinSunPrefab.GetComponent<NetworkStateMachine>().stateMachines[0] = paladinSunPrefab.GetComponent<EntityStateMachine>();
-            //paladinSunPrefab.GetComponent<TeamFilter>().defaultTeam = TeamIndex.Player;
-
-            //Transfering over some data we need from the old script.
-            GrandParentSunController baseScript = paladinSunPrefab.GetComponent<GrandParentSunController>();
-            PaladinSunController newScript = paladinSunPrefab.GetComponent<PaladinSunController>();
-            newScript.enabled = true;
-            newScript.buffApplyEffect = baseScript.buffApplyEffect;
-            newScript.buffDef = baseScript.buffDef;
-            newScript.activeLoopDef = Addressables.LoadAssetAsync<LoopSoundDef>("RoR2/Base/Grandparent/lsdGrandparentSunActive.asset").WaitForCompletion();
-            newScript.damageLoopDef = Addressables.LoadAssetAsync<LoopSoundDef>("RoR2/Base/Grandparent/lsdGrandparentSunDamage.asset").WaitForCompletion();
-            baseScript.enabled = false;
-            Object.Destroy(baseScript);
-
-            //VFX
-            paladinSunPrefab.transform.Find("VfxRoot/LightSpinner/LightSpinner/Point Light").GetComponent<Light>().intensity *= StaticValues.cruelSunVfxSize;
-            paladinSunPrefab.transform.Find("VfxRoot/LightSpinner/LightSpinner/Point Light").GetComponent<Light>().range = 200 * StaticValues.cruelSunVfxSize;
-
-            Object.Destroy(paladinSunPrefab.transform.Find("VfxRoot/Mesh/SunMesh/MoonMesh").gameObject);
-
-            paladinSunPrefab.transform.Find("VfxRoot/Mesh/AreaIndicator").transform.localScale = new Vector3(105, 105, 105);
-
-            //ParticleSystems need to have their modules referenced in a variable before we can assign anything to them. I have no fucking idea why.
-            //Removing some distracting effects that don't work well here (imo).
-            ParticleSystem psSparks = paladinSunPrefab.transform.Find("VfxRoot/Particles/Sparks").GetComponent<ParticleSystem>();
-            var psSparks_emission = psSparks.emission;
-            psSparks_emission.enabled = false;
-            ParticleSystem psGoo = paladinSunPrefab.transform.Find("VfxRoot/Particles/Goo, Drip").GetComponent<ParticleSystem>();
-            var psGoo_emission = psGoo.emission;
-            psGoo_emission.enabled = false;
-
-            //var colorOverLifetime = ps.colorOverLifetime;
-            //colorOverLifetime.color = new ParticleSystem.MinMaxGradient(Color.white, new Color(0,0,0,0));
-        }
 
         public static void CreatePrefabs()
         {
             CreatePaladin();
             CreateLunarKnight();
             //CreateNemesisPaladin();
-            CreateSun();
         }
 
         private static void CreatePaladin()

@@ -11,7 +11,6 @@ namespace PaladinMod.States.Spell
         public Vector3? sunSpawnPosition;
         protected PaladinSwordController swordController;
 
-
         public override void OnEnter()
         {
             this.baseDuration = this.overrideDuration = StaticValues.cruelSunDuration;
@@ -28,6 +27,7 @@ namespace PaladinMod.States.Spell
                 if (this.sunSpawnPosition != null) this.sunInstance = this.SpawnPaladinSun(this.sunSpawnPosition.Value);
             }
 
+            //What does this do???
             Transform modelTransform = base.GetModelTransform();
             if (modelTransform)
             {
@@ -39,17 +39,14 @@ namespace PaladinMod.States.Spell
                 temporaryOverlay.originalMaterial = RoR2.LegacyResourcesAPI.Load<Material>("Materials/matGrandparentTeleportOutBoom");
                 temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
             }
+
+            base.camParamsOverrideHandle = Modules.CameraParams.OverridePaladinCameraParams(base.cameraTargetParams, PaladinCameraParams.CRUEL_SUN, 1f);
         }
 
         public override void FixedUpdate()
         {
             this.characterBody.isSprinting = false;
-
-            if (NetworkServer.active)
-            {
-                sunInstance.transform.position = this.characterBody.transform.position + new Vector3(0f, 10f, 0f);
-            }
-
+            //if (NetworkServer.active) sunInstance.transform.position = this.characterBody.transform.position + new Vector3(0f, 10f, 0f);
             base.FixedUpdate();
         }
 
@@ -73,9 +70,8 @@ namespace PaladinMod.States.Spell
 
         private GameObject SpawnPaladinSun(Vector3 sunSpawnPosition)
         {
-            GameObject sun = UnityEngine.Object.Instantiate<GameObject>(Modules.Prefabs.paladinSunPrefab, sunSpawnPosition, Quaternion.identity);
+            GameObject sun = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.paladinSunPrefab, sunSpawnPosition, Quaternion.identity, this.characterBody.transform);
             sun.GetComponent<GenericOwnership>().ownerObject = base.gameObject;
-            sun.transform.localScale = new Vector3(StaticValues.cruelSunVfxSize, StaticValues.cruelSunVfxSize, StaticValues.cruelSunVfxSize);
             NetworkServer.Spawn(sun);
             return sun;
         }

@@ -8,6 +8,7 @@ using UnityEngine;
         RAGE_ENTER,
         RAGE_ENTER_OUT,
         EMOTE,
+        CRUEL_SUN,
     }
 
 namespace PaladinMod.Modules
@@ -25,6 +26,8 @@ namespace PaladinMod.Modules
 
         internal static CharacterCameraParamsData emoteCameraParamsPaladin;
 
+        internal static CharacterCameraParamsData cruelSunCameraParamsPaladin;
+
         internal static float defaultVerticalOffset = 1.53f;
 
 
@@ -39,6 +42,8 @@ namespace PaladinMod.Modules
             rageEnterOutCameraParamsPaladin = NewCameraParams("ccpPaladinRageEnterOut", 70f, defaultVerticalOffset, new Vector3(0f, 0.75f, -12f));
 
             emoteCameraParamsPaladin = NewCameraParams("ccpPaladinEmote", 70f, defaultVerticalOffset, new Vector3(0f, -0.6f, -8.5f));
+
+            cruelSunCameraParamsPaladin = NewCameraParams("ccpPaladinCruelSun", 70f, 3f, new Vector3(0f, 10f, -24f));
         }
 
         private static CharacterCameraParamsData NewCameraParams(string name, float pitch, float pivotVerticalOffset, Vector3 idealPosition)
@@ -58,7 +63,6 @@ namespace PaladinMod.Modules
 
             return newParams;
         }
-
 
         internal static CameraTargetParams.CameraParamsOverrideHandle OverridePaladinCameraParams(CameraTargetParams camParams, PaladinCameraParams camera, float transitionDuration = 0.5f) {
 
@@ -106,6 +110,9 @@ namespace PaladinMod.Modules
                     break;
                 case PaladinCameraParams.EMOTE:
                     paramsData = emoteCameraParamsPaladin;
+                    break;
+                case PaladinCameraParams.CRUEL_SUN:
+                    paramsData = cruelSunCameraParamsPaladin;
                     break;
             }
 

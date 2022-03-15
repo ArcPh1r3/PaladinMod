@@ -24,7 +24,7 @@ public class PaladinSunController : MonoBehaviour
 	public LoopSoundDef damageLoopDef;
 
 	[SerializeField]
-	public string stopSoundName = "Play_grandParent_attack3_sun_destroy";
+	public string stopSoundName;
 
 	private Run.FixedTimeStamp previousCycle = Run.FixedTimeStamp.negativeInfinity;
 
@@ -50,6 +50,11 @@ public class PaladinSunController : MonoBehaviour
 		}
 	}
 
+	private void OnDisable()
+    {
+		OnDestroy();
+    }
+
 	private void OnDestroy()
 	{
 		if ((bool)activeLoopDef)
@@ -64,6 +69,8 @@ public class PaladinSunController : MonoBehaviour
 		{
 			Util.PlaySound(stopSoundName, base.gameObject);
 		}
+		//Fix the damn loop sound
+		AkSoundEngine.StopPlayingID(3203163036);
 	}
 
 	private void FixedUpdate()
@@ -150,7 +157,7 @@ public class PaladinSunController : MonoBehaviour
 								TeamDef teamDef = TeamCatalog.GetTeamDef(ownerBody.teamComponent.teamIndex);
 								float ffScale = 1f;
 								if (teamDef != null && teamDef.friendlyFireScaling > 0f) { ffScale /= teamDef.friendlyFireScaling; }
-								if (body.teamComponent.teamIndex == ownerBody.teamComponent.teamIndex){ ffScale *= StaticValues.cruelSunAllyDamageMultiplier; }
+								if (body.teamComponent.teamIndex == ownerBody.teamComponent.teamIndex & body != ownerBody){ ffScale *= StaticValues.cruelSunAllyDamageMultiplier; }
 
 								dotInfo.totalDamage = 0.5f * ownerBody.damage * StaticValues.cruelSunBurnDuration * (float)burnCount * ffScale;
 								dotInfo.damageMultiplier = 1f * ffScale;

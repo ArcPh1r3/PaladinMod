@@ -1,4 +1,5 @@
 ﻿using RoR2;
+using UnityEngine;
 
 namespace PaladinMod.States.Sun
 {
@@ -8,12 +9,15 @@ namespace PaladinMod.States.Sun
 
 		protected override bool shouldEnableSunController => true;
 
+		protected override bool shouldSpawnEffect => false;
+
 		protected override float desiredVfxScale => 1f;
 
 		public override void OnEnter()
 		{
 			base.OnEnter();
 			ownership = GetComponent<GenericOwnership>();
+			//Debug.Log("SunMain enter");
 		}
 
 		public override void FixedUpdate()

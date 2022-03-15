@@ -6,14 +6,13 @@ namespace PaladinMod.States.Sun
 {
 	public abstract class PaladinSunBase : BaseState
 	{
-		[SerializeField]
-		public GameObject enterEffectPrefab;
-
 		protected PaladinSunController sunController { get; private set; }
 
 		protected Transform vfxRoot { get; private set; }
 
-		protected virtual bool shouldEnableSunController => true;
+		protected virtual bool shouldEnableSunController => false;
+
+		protected virtual bool shouldSpawnEffect => true;
 
 		protected abstract float desiredVfxScale { get; }
 
@@ -23,9 +22,9 @@ namespace PaladinMod.States.Sun
 			sunController = GetComponent<PaladinSunController>();
 			sunController.enabled = shouldEnableSunController;
 			vfxRoot = base.transform.Find("VfxRoot");
-			if ((bool)enterEffectPrefab)
+			if ((bool)Modules.Assets.paladinSunSpawnPrefab & shouldSpawnEffect)
 			{
-				EffectManager.SimpleImpactEffect(enterEffectPrefab, vfxRoot.position, Vector3.up, transmit: false);
+				EffectManager.SimpleImpactEffect(Modules.Assets.paladinSunSpawnPrefab, vfxRoot.position, Vector3.up, transmit: false);
 			}
 			SetVfxScale(desiredVfxScale);
 		}
