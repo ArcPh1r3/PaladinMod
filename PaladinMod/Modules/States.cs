@@ -84,9 +84,9 @@ namespace PaladinMod.Modules
 
             //"AddSkill" should really be called "AddState" or something
             AddSkill(typeof(PaladinMod.States.Sun.PaladinSunBase));
-            AddSkill(typeof(PaladinMod.States.Sun.PaladinSunBase));
-            AddSkill(typeof(PaladinMod.States.Sun.PaladinSunBase));
-            AddSkill(typeof(PaladinMod.States.Sun.PaladinSunBase));
+            AddSkill(typeof(PaladinMod.States.Sun.PaladinSunSpawn));
+            AddSkill(typeof(PaladinMod.States.Sun.PaladinSunMain));
+            AddSkill(typeof(PaladinMod.States.Sun.PaladinSunDeath));
         }
 
 
