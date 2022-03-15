@@ -33,8 +33,12 @@ namespace PaladinMod.Modules
             paladinSunPrefab.AddComponent<PaladinSunController>();
 
             //I fucking hate this
+            paladinSunPrefab.GetComponent<EntityStateMachine>().mainStateType = new SerializableEntityStateType(typeof(PaladinSunMain));
             paladinSunPrefab.GetComponent<EntityStateMachine>().initialStateType = new SerializableEntityStateType(typeof(PaladinSunSpawn));
-            paladinSunPrefab.GetComponent<EntityStateMachine>().nextState = new PaladinSunSpawn();
+
+            paladinSunPrefab.GetComponent<EntityStateMachine>().state = new PaladinSunSpawn();
+            //paladinSunPrefab.GetComponent<EntityStateMachine>().SetState(new PaladinSunSpawn()); This throws nullref errors?????????
+            //paladinSunPrefab.GetComponent<EntityStateMachine>().SetNextState(new PaladinSunMain());
 
             //paladinSunPrefab.GetComponent<NetworkStateMachine>().stateMachines[0] = paladinSunPrefab.GetComponent<EntityStateMachine>();
             //paladinSunPrefab.GetComponent<TeamFilter>().defaultTeam = TeamIndex.Player;
@@ -51,8 +55,8 @@ namespace PaladinMod.Modules
             Object.Destroy(baseScript);
 
             //VFX
-            paladinSunPrefab.transform.Find("VfxRoot/LightSpinner/LightSpinner/Point Light").GetComponent<Light>().intensity *= StaticValues.cruelSunSize;
-            paladinSunPrefab.transform.Find("VfxRoot/LightSpinner/LightSpinner/Point Light").GetComponent<Light>().range = 200 * StaticValues.cruelSunSize;
+            paladinSunPrefab.transform.Find("VfxRoot/LightSpinner/LightSpinner/Point Light").GetComponent<Light>().intensity *= StaticValues.cruelSunVfxSize;
+            paladinSunPrefab.transform.Find("VfxRoot/LightSpinner/LightSpinner/Point Light").GetComponent<Light>().range = 200 * StaticValues.cruelSunVfxSize;
 
             Object.Destroy(paladinSunPrefab.transform.Find("VfxRoot/Mesh/SunMesh/MoonMesh").gameObject);
 

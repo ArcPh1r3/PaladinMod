@@ -15,15 +15,6 @@ public class PaladinSunController : MonoBehaviour
 
 	public BuffDef buffDef;
 
-	[Min(0.001f)]
-	public float cycleInterval = 1f;
-
-	[Min(0.001f)]
-	public float nearBuffDuration = 1f;
-
-	[Min(0.001f)]
-	public float maxDistance = 50f;
-
 	public GameObject buffApplyEffect;
 
 	[SerializeField]
@@ -116,7 +107,7 @@ public class PaladinSunController : MonoBehaviour
 
 	private void ServerFixedUpdate()
 	{
-		float num = Mathf.Clamp01(previousCycle.timeSince / cycleInterval);
+		float num = Mathf.Clamp01(previousCycle.timeSince / StaticValues.cruelSunCycleInterval);
 		int num2 = ((num == 1f) ? cycleTargets.Count : Mathf.FloorToInt((float)cycleTargets.Count * num));
 		Vector3 position = base.transform.position;
 		while (cycleIndex < num2)
@@ -134,7 +125,7 @@ public class PaladinSunController : MonoBehaviour
 					if (!Physics.Linecast(position, corePosition, out var hitInfo, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
 					{
 						float distanceFromSun = Mathf.Max(1f, hitInfo.distance);
-						body.AddTimedBuff(buffDef, nearBuffDuration / distanceFromSun);
+						body.AddTimedBuff(buffDef, StaticValues.cruelSunOverheatDuration / distanceFromSun);
 						if ((bool)buffApplyEffect)
 						{
 							EffectData effectData = new EffectData
@@ -172,7 +163,7 @@ public class PaladinSunController : MonoBehaviour
 			}
 			cycleIndex++;
 		}
-		if (previousCycle.timeSince >= cycleInterval)
+		if (previousCycle.timeSince >= StaticValues.cruelSunCycleInterval)
 		{
 			previousCycle = Run.FixedTimeStamp.now;
 			cycleIndex = 0;
@@ -186,7 +177,7 @@ public class PaladinSunController : MonoBehaviour
 		bullseyeSearch.searchOrigin = base.transform.position;
 		bullseyeSearch.minAngleFilter = 0f;
 		bullseyeSearch.maxAngleFilter = 180f;
-		bullseyeSearch.maxDistanceFilter = maxDistance * StaticValues.cruelSunSize;
+		bullseyeSearch.maxDistanceFilter = StaticValues.cruelSunRange;
 		bullseyeSearch.filterByDistinctEntity = true;
 		bullseyeSearch.sortMode = BullseyeSearch.SortMode.Distance;
 		bullseyeSearch.viewer = null;

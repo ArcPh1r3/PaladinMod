@@ -13,7 +13,7 @@ namespace PaladinMod.States.Sun
 
 		protected Transform vfxRoot { get; private set; }
 
-		protected virtual bool shouldEnableSunController => false;
+		protected virtual bool shouldEnableSunController => true;
 
 		protected abstract float desiredVfxScale { get; }
 

@@ -75,7 +75,7 @@ namespace PaladinMod.States.Spell
         {
             GameObject sun = UnityEngine.Object.Instantiate<GameObject>(Modules.Prefabs.paladinSunPrefab, sunSpawnPosition, Quaternion.identity);
             sun.GetComponent<GenericOwnership>().ownerObject = base.gameObject;
-            sun.transform.localScale = new Vector3(StaticValues.cruelSunSize, StaticValues.cruelSunSize, StaticValues.cruelSunSize);
+            sun.transform.localScale = new Vector3(StaticValues.cruelSunVfxSize, StaticValues.cruelSunVfxSize, StaticValues.cruelSunVfxSize);
             NetworkServer.Spawn(sun);
             return sun;
         }

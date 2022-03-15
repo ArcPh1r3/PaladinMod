@@ -104,9 +104,12 @@
         //Cruel Sun
         public const float cruelSunChannelDuration = 2.5f;
         public const float cruelSunDuration = 10f;
-        public const float cruelSunSize = 0.25f;
+        public const float cruelSunVfxSize = 0.25f;
+        public const float cruelSunRange = 50f;
+        public const float cruelSunCycleInterval = 0.5f;
+        public const float cruelSunOverheatDuration = 3f;
+        public const int cruelSunMinimumStacksBeforeApplyingBurns = 4;
         public const float cruelSunBurnDuration = 1f;
-        public const int cruelSunMinimumStacksBeforeApplyingBurns = 20;
         public const float cruelSunAllyDamageMultiplier = 0f;
     }
 }

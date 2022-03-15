@@ -4,7 +4,6 @@ using PaladinMod.States.Quickstep;
 using PaladinMod.States.Rage;
 using PaladinMod.States.Spell;
 using PaladinMod.States.LunarKnight;
-using PaladinMod.States.Sun;
 
 using System;
 using System.Collections.Generic;
@@ -83,10 +82,11 @@ namespace PaladinMod.Modules
 
             AddSkill(typeof(MaceSlam));
 
-            AddSkill(typeof(PaladinSunBase));
-            AddSkill(typeof(PaladinSunMain));
-            AddSkill(typeof(PaladinSunSpawn));
-            AddSkill(typeof(PaladinSunDeath));
+            //"AddSkill" should really be called "AddState" or something
+            AddSkill(typeof(PaladinMod.States.Sun.PaladinSunBase));
+            AddSkill(typeof(PaladinMod.States.Sun.PaladinSunBase));
+            AddSkill(typeof(PaladinMod.States.Sun.PaladinSunBase));
+            AddSkill(typeof(PaladinMod.States.Sun.PaladinSunBase));
         }
 
 

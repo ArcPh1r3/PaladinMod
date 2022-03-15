@@ -12,7 +12,7 @@ namespace PaladinMod.States.Spell
         {
             this.chargeEffectPrefab = null;
             this.chargeSoundString = Modules.Sounds.ChannelTorpor;
-            this.maxSpellRadius = StaticValues.cruelSunSize * 0.5f;
+            this.maxSpellRadius = StaticValues.cruelSunVfxSize * 0.5f;
             this.baseDuration = StaticValues.cruelSunChannelDuration;
             this.swordController = base.gameObject.GetComponent<PaladinSwordController>();
             this.overrideAreaIndicatorMat = Modules.Assets.areaIndicatorMat;
