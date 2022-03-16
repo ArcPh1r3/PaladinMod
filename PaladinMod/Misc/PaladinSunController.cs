@@ -131,8 +131,10 @@ public class PaladinSunController : MonoBehaviour
 					Ray ray = new Ray(position, corePosition - position);
 					if (!Physics.Linecast(position, corePosition, out var hitInfo, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
 					{
-						float distanceFromSun = Mathf.Max(1f, hitInfo.distance);
-						body.AddTimedBuff(buffDef, StaticValues.cruelSunOverheatDuration / distanceFromSun);
+						//Grandparent's Overheat debuff duration gets longer the closer you are to it to discourage approaching, but this mechanic seems unneccessary here.
+						//float distanceFromSun = Mathf.Max(1f, hitInfo.distance);
+						//body.AddTimedBuff(buffDef, StaticValues.cruelSunOverheatDuration / distanceFromSun);
+						body.AddTimedBuff(buffDef, StaticValues.cruelSunOverheatDuration);
 						if ((bool)buffApplyEffect)
 						{
 							EffectData effectData = new EffectData
@@ -145,8 +147,8 @@ public class PaladinSunController : MonoBehaviour
 							EffectManager.SpawnEffect(buffApplyEffect, effectData, transmit: true);
 						}
 
-						int burnCount = body.GetBuffCount(buffDef) - StaticValues.cruelSunMinimumStacksBeforeApplyingBurns;
-						if (burnCount > 0)
+						int overheatCount = body.GetBuffCount(buffDef);
+						if (overheatCount >= StaticValues.cruelSunMinimumStacksBeforeApplyingBurns)
 						{
 							InflictDotInfo dotInfo = default(InflictDotInfo);
 							dotInfo.dotIndex = DotController.DotIndex.Burn;
@@ -158,8 +160,7 @@ public class PaladinSunController : MonoBehaviour
 								float ffScale = 1f;
 								if (teamDef != null && teamDef.friendlyFireScaling > 0f) { ffScale *= teamDef.friendlyFireScaling; }
 								if (body.teamComponent.teamIndex == ownerBody.teamComponent.teamIndex & body != ownerBody){ ffScale *= StaticValues.cruelSunAllyDamageMultiplier; }
-
-								dotInfo.totalDamage = 0.5f * ownerBody.damage * StaticValues.cruelSunBurnDuration * (float)burnCount * ffScale;
+								dotInfo.totalDamage = StaticValues.cruelSunBurnDamageCoefficient * ownerBody.damage * (float)overheatCount * ffScale;
 								dotInfo.damageMultiplier = 1f * ffScale;
 								StrengthenBurnUtils.CheckDotForUpgrade(ownerBody.inventory, ref dotInfo);
 							}

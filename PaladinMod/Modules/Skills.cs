@@ -383,11 +383,14 @@ namespace PaladinMod.Modules
 
             mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
             mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelCruelSun));
+            if (Config.legacyCruelSun.Value) mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelCruelSunOld));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
-            mySkillDef.baseRechargeInterval = 40f;
+            mySkillDef.baseRechargeInterval = 20f;
+            if (Config.legacyCruelSun.Value) mySkillDef.baseRechargeInterval = 40f;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
-            mySkillDef.canceledFromSprinting = false;
+            mySkillDef.canceledFromSprinting = true;
+            if (Config.legacyCruelSun.Value) mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.resetCooldownTimerOnUse = false;
@@ -401,6 +404,10 @@ namespace PaladinMod.Modules
             mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_SUN_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SPECIAL_SUN_NAME";
             mySkillDef.skillNameToken = "PALADIN_SPECIAL_SUN_NAME";
+            mySkillDef.keywordTokens = new string[] {
+                "KEYWORD_OVERHEAT"
+            };
+            if (Config.legacyCruelSun.Value) mySkillDef.keywordTokens = null;
 
             skillDefs.Add(mySkillDef);
 
@@ -411,6 +418,44 @@ namespace PaladinMod.Modules
                 unlockableDef = Modules.Unlockables.paladinCruelSunSkillDefDef,
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
+
+            //testing
+            /*
+            SkillDef scepterCruelSunDef = ScriptableObject.CreateInstance<SkillDef>();
+            scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ScepterChannelCruelSun));
+            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ScepterChannelCruelSunOld));
+            scepterCruelSunDef.activationStateMachineName = "Weapon";
+            scepterCruelSunDef.baseMaxStock = 1;
+            scepterCruelSunDef.baseRechargeInterval = 20f;
+            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.baseRechargeInterval = 40f;
+            scepterCruelSunDef.beginSkillCooldownOnSkillEnd = true;
+            scepterCruelSunDef.canceledFromSprinting = true;
+            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.canceledFromSprinting = false;
+            scepterCruelSunDef.fullRestockOnAssign = true;
+            scepterCruelSunDef.interruptPriority = InterruptPriority.Skill;
+            scepterCruelSunDef.resetCooldownTimerOnUse = false;
+            scepterCruelSunDef.isCombatSkill = true;
+            scepterCruelSunDef.mustKeyPress = false;
+            scepterCruelSunDef.cancelSprintingOnActivation = true;
+            scepterCruelSunDef.rechargeStock = 1;
+            scepterCruelSunDef.requiredStock = 1;
+            scepterCruelSunDef.stockToConsume = 1;
+            scepterCruelSunDef.icon = Modules.Assets.icon4dS;
+            scepterCruelSunDef.skillDescriptionToken = "PALADIN_SPECIAL_SCEPSUN_DESCRIPTION";
+            scepterCruelSunDef.skillName = "PALADIN_SPECIAL_SCEPSUN_NAME";
+            scepterCruelSunDef.skillNameToken = "PALADIN_SPECIAL_SCEPSUN_NAME";
+
+            skillDefs.Add(scepterCruelSunDef);
+
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = scepterCruelSunDef,
+                unlockableDef = Modules.Unlockables.paladinCruelSunSkillDefDef,
+                viewableNode = new ViewablesCatalog.Node(scepterCruelSunDef.skillNameToken, false, null)
+            };
+            */
+            //end testing
 
             SkillDef berserkSkillDef = CreateRageSkillDef(new SkillDefInfo
             {

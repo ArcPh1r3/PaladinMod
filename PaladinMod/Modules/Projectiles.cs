@@ -27,6 +27,7 @@ namespace PaladinMod.Modules
         public static GameObject scepterHealZone;
         public static GameObject scepterTorpor;
         public static GameObject scepterWarcry;
+        public static GameObject scepterCruelSun;
 
         public static void LateSetup()
         {
@@ -315,6 +316,24 @@ namespace PaladinMod.Modules
             scepterWarcryFX.transform.localPosition = Vector3.zero;
 
             InitSpellEffect(scepterWarcryFX, StaticValues.scepterWarcryRadius, StaticValues.scepterWarcryDuration);
+            #endregion
+
+            #region PrideFlare
+            /*
+            scepterCruelSun = PrefabAPI.InstantiateClone(Assets.paladinSunPrefab, "PaladinScepterSun");
+
+            scepterCruelSun.AddComponent<MeshFilter>().mesh = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/MageLightningBombProjectile").GetComponent<MeshFilter>().mesh;
+
+            Rigidbody scsRigidBody = scepterCruelSun.AddComponent<Rigidbody>();
+            scsRigidBody.mass = 10f;
+            scsRigidBody.drag = 0f;
+            scsRigidBody.angularDrag = 0.05f;
+            scsRigidBody.useGravity = true;
+            scsRigidBody.interpolation = RigidbodyInterpolation.Interpolate;
+            scsRigidBody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+            */
+            //PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/MageLightningBombProjectile"), "PrideFlare", true);
+
             #endregion
 
             Modules.Prefabs.projectilePrefabs = new List<GameObject>

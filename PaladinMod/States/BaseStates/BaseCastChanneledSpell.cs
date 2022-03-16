@@ -22,7 +22,7 @@ namespace PaladinMod.States
 
         protected float overrideDuration;
 
-        private float duration;
+        protected float duration;
         public float charge;
         private bool hasFired;
 

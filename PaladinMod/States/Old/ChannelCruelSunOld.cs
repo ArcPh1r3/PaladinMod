@@ -3,15 +3,19 @@ using UnityEngine;
 
 namespace PaladinMod.States.Spell
 {
-    public class ChannelCruelSun : BaseChannelSpellState
+    public class ChannelCruelSunOld : BaseChannelSpellState
     {
         private GameObject chargeEffect;
+        private PaladinSwordController swordController;
 
         public override void OnEnter()
         {
             this.chargeEffectPrefab = null;
             this.chargeSoundString = Modules.Sounds.ChannelTorpor;
-            this.baseDuration = StaticValues.cruelSunChannelDuration;
+            this.maxSpellRadius = CastCruelSunOld.sunPrefabDiameter * 0.5f;
+            this.baseDuration = StaticValues.cruelSunChannelDurationOld;
+            this.swordController = base.gameObject.GetComponent<PaladinSwordController>();
+            this.overrideAreaIndicatorMat = Modules.Assets.areaIndicatorMat;
 
             base.OnEnter();
 
@@ -29,6 +33,12 @@ namespace PaladinMod.States.Spell
             base.PlayAnimation("Gesture, Override", "ChannelSun", "Spell.playbackRate", 2f);
         }
 
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            if (this.swordController) this.swordController.sunPosition = this.areaIndicatorInstance.transform.position;
+        }
+
         public override void OnExit()
         {
             base.OnExit();
@@ -41,7 +51,7 @@ namespace PaladinMod.States.Spell
 
         protected override BaseCastChanneledSpellState GetNextState()
         {
-            return new CastCruelSun();
+            return new CastCruelSunOld();
         }
     }
 }

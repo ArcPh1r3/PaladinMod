@@ -1,11 +1,7 @@
-﻿using EntityStates;
-using R2API;
+﻿using R2API;
 using RoR2;
-using RoR2.Audio;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using PaladinMod.States.Sun;
 
 namespace PaladinMod.Modules
 {
@@ -26,8 +22,6 @@ namespace PaladinMod.Modules
         internal static List<GameObject> masterPrefabs = new List<GameObject>();
         internal static List<GameObject> projectilePrefabs = new List<GameObject>();
 
-
-
         public static void CreatePrefabs()
         {
             CreatePaladin();
@@ -44,7 +38,7 @@ namespace PaladinMod.Modules
                 bodyName = "RobPaladinBody",
                 bodyNameToken = "PALADIN_NAME",
                 characterPortrait = Assets.charPortrait,
-                crosshair = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"), 
+                crosshair = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"),
                 damage = StaticValues.baseDamage,
                 healthGrowth = 64,
                 healthRegen = 1.5f,
@@ -132,8 +126,8 @@ namespace PaladinMod.Modules
                 },
             };
 
-            SetupCharacterModel(paladinPrefab, customRendererInfos, customRendererInfos.Length-1); 
-             
+            SetupCharacterModel(paladinPrefab, customRendererInfos, customRendererInfos.Length - 1);
+
             paladinPrefab.AddComponent<Misc.PaladinSwordController>();
             paladinPrefab.AddComponent<Misc.PaladinRageController>();
             paladinPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.AddComponent<Misc.PaladinAnimationEvents>();
@@ -297,7 +291,7 @@ namespace PaladinMod.Modules
         {
             CharacterModel characterModel = prefab.GetComponent<ModelLocator>().modelTransform.gameObject.AddComponent<CharacterModel>();
             ChildLocator childLocator = characterModel.GetComponent<ChildLocator>();
-            
+
             characterModel.body = prefab.GetComponent<CharacterBody>();
 
             List<CharacterModel.RendererInfo> rendererInfos = new List<CharacterModel.RendererInfo>();
@@ -306,16 +300,18 @@ namespace PaladinMod.Modules
             {
                 Renderer renderer = childLocator.FindChild(rendererInfo[i].childName)?.GetComponent<SkinnedMeshRenderer>();
 
-                if (renderer == null) {
+                if (renderer == null)
+                {
                     renderer = childLocator.FindChild(rendererInfo[i].childName)?.GetComponent<MeshRenderer>();
                 }
-                if(renderer == null) {
+                if (renderer == null)
+                {
                     Debug.LogError("no renderer found for " + rendererInfo[i].childName);
                 }
 
                 rendererInfos.Add(new CharacterModel.RendererInfo
                 {
-                    renderer = renderer, 
+                    renderer = renderer,
                     defaultMaterial = rendererInfo[i].material,
                     ignoreOverlays = rendererInfo[i].ignoreOverlays,
                     defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On
@@ -324,7 +320,7 @@ namespace PaladinMod.Modules
 
             characterModel.baseRendererInfos = rendererInfos.ToArray();
 
-            characterModel.autoPopulateLightInfos = true; 
+            characterModel.autoPopulateLightInfos = true;
             characterModel.invisibilityCount = 0;
             characterModel.temporaryOverlays = new List<TemporaryOverlay>();
 

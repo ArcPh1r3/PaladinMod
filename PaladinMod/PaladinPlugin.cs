@@ -621,8 +621,8 @@ namespace PaladinMod
 
         private void ScepterSkillSetup()
         {
-            Modules.States.AddSkill(typeof(States.Spell.ScepterChannelHealZone));
-            Modules.States.AddSkill(typeof(States.Spell.ScepterCastHealZone));
+            Modules.States.AddState(typeof(States.Spell.ScepterChannelHealZone));
+            Modules.States.AddState(typeof(States.Spell.ScepterCastHealZone));
 
             scepterHealDef = ScriptableObject.CreateInstance<SkillDef>();
             scepterHealDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ScepterChannelHealZone));
@@ -647,8 +647,8 @@ namespace PaladinMod
 
             Modules.Skills.skillDefs.Add(scepterHealDef);
 
-            Modules.States.AddSkill(typeof(States.Spell.ScepterChannelTorpor));
-            Modules.States.AddSkill(typeof(States.Spell.ScepterCastTorpor));
+            Modules.States.AddState(typeof(States.Spell.ScepterChannelTorpor));
+            Modules.States.AddState(typeof(States.Spell.ScepterCastTorpor));
 
             scepterTorporDef = ScriptableObject.CreateInstance<SkillDef>();
             scepterTorporDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ScepterChannelTorpor));
@@ -676,8 +676,8 @@ namespace PaladinMod
 
             Modules.Skills.skillDefs.Add(scepterTorporDef);
 
-            Modules.States.AddSkill(typeof(States.Spell.ScepterChannelWarcry));
-            Modules.States.AddSkill(typeof(States.Spell.ScepterCastWarcry));
+            Modules.States.AddState(typeof(States.Spell.ScepterChannelWarcry));
+            Modules.States.AddState(typeof(States.Spell.ScepterCastWarcry));
 
             scepterWarcryDef = ScriptableObject.CreateInstance<SkillDef>();
             scepterWarcryDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ScepterChannelWarcry));
@@ -704,6 +704,7 @@ namespace PaladinMod
 
             scepterCruelSunDef = ScriptableObject.CreateInstance<SkillDef>();
             scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ScepterChannelCruelSun));
+            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ScepterChannelCruelSunOld));
             scepterCruelSunDef.activationStateMachineName = "Weapon";
             scepterCruelSunDef.baseMaxStock = 1;
             scepterCruelSunDef.baseRechargeInterval = 40f;
