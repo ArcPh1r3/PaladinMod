@@ -702,19 +702,21 @@ namespace PaladinMod
 
             Modules.Skills.skillDefs.Add(scepterWarcryDef);
 
-            scepterCruelSunDef = ScriptableObject.CreateInstance<SkillDef>();
-            scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ScepterChannelCruelSun));
-            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ScepterChannelCruelSunOld));
+            SkillDef scepterCruelSunDef = ScriptableObject.CreateInstance<SkillDef>();
+            scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ScepterChannelCruelSun));
+            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ScepterChannelCruelSunOld));
             scepterCruelSunDef.activationStateMachineName = "Weapon";
             scepterCruelSunDef.baseMaxStock = 1;
-            scepterCruelSunDef.baseRechargeInterval = 40f;
+            scepterCruelSunDef.baseRechargeInterval = 20f;
+            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.baseRechargeInterval = 40f;
             scepterCruelSunDef.beginSkillCooldownOnSkillEnd = true;
-            scepterCruelSunDef.canceledFromSprinting = false;
+            scepterCruelSunDef.canceledFromSprinting = true;
+            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.canceledFromSprinting = false;
             scepterCruelSunDef.fullRestockOnAssign = true;
             scepterCruelSunDef.interruptPriority = InterruptPriority.Skill;
             scepterCruelSunDef.resetCooldownTimerOnUse = false;
             scepterCruelSunDef.isCombatSkill = true;
-            scepterCruelSunDef.mustKeyPress = false;
+            scepterCruelSunDef.mustKeyPress = true;
             scepterCruelSunDef.cancelSprintingOnActivation = true;
             scepterCruelSunDef.rechargeStock = 1;
             scepterCruelSunDef.requiredStock = 1;
@@ -723,6 +725,10 @@ namespace PaladinMod
             scepterCruelSunDef.skillDescriptionToken = "PALADIN_SPECIAL_SCEPSUN_DESCRIPTION";
             scepterCruelSunDef.skillName = "PALADIN_SPECIAL_SCEPSUN_NAME";
             scepterCruelSunDef.skillNameToken = "PALADIN_SPECIAL_SCEPSUN_NAME";
+            scepterCruelSunDef.keywordTokens = new string[] {
+                "KEYWORD_OVERHEAT"
+            };
+            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.keywordTokens = null;
 
             Modules.Skills.skillDefs.Add(scepterCruelSunDef);
         }

@@ -7,6 +7,7 @@ namespace PaladinMod.States.Spell
 {
     public class CastCruelSun : BaseCastChanneledSpellState
     {
+        protected virtual GameObject sunPrefab => Modules.Assets.paladinSunPrefab;
         protected GameObject sunInstance;
         private Vector3? sunSpawnPosition;
 
@@ -22,7 +23,7 @@ namespace PaladinMod.States.Spell
             if (NetworkServer.active)
             {
                 this.sunSpawnPosition = this.characterBody.corePosition + new Vector3(0f, 10f, 0f);
-                if (this.sunSpawnPosition != null) this.sunInstance = this.SpawnPaladinSun(this.sunSpawnPosition.Value);
+                if (sunPrefab && sunSpawnPosition != null) sunInstance = SpawnPaladinSun(sunPrefab, sunSpawnPosition.Value);
             }
 
             //What does this do??? It's VFX but
@@ -62,22 +63,26 @@ namespace PaladinMod.States.Spell
             base.PlayAnimation("Gesture, Override", "CastSun", "Spell.playbackRate", 0.25f);
         }
 
-        public override void OnExit()
+        protected override void Exit()
         {
-            if (NetworkServer.active && this.sunInstance)
+            //Effect moved here so that Scepter version doesn't get an explosion when starting the throw.
+            if ((bool)Modules.Assets.paladinSunSpawnPrefab)
+            {
+                EffectManager.SimpleImpactEffect(Modules.Assets.paladinSunSpawnPrefab, sunInstance.transform.position, Vector3.up, transmit: false);
+            }
+
+            if (NetworkServer.active)
             {
                 this.sunInstance.GetComponent<GenericOwnership>().ownerObject = null;
                 this.sunInstance = null;
             }
 
-            base.OnExit();
-
             base.PlayAnimation("Gesture, Override", "CastSunEnd", "Spell.playbackRate", 0.8f);
         }
 
-        private GameObject SpawnPaladinSun(Vector3 spawnPosition)
+        private GameObject SpawnPaladinSun(GameObject prefab, Vector3 spawnPosition)
         {
-            GameObject sun = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.paladinSunPrefab, spawnPosition, Quaternion.identity, this.characterBody.transform);
+            GameObject sun = UnityEngine.Object.Instantiate<GameObject>(prefab, spawnPosition, Quaternion.identity, this.characterBody.transform);
             sun.GetComponent<GenericOwnership>().ownerObject = base.gameObject;
             NetworkServer.Spawn(sun);
             return sun;

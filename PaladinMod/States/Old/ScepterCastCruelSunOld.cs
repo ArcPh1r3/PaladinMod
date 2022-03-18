@@ -15,7 +15,7 @@ namespace PaladinMod.States.Spell
             base.OnEnter();
         }
 
-        public override void OnExit()
+        protected override void Exit()
         {
             EffectData effectData = new EffectData();
             effectData.origin = this.swordController.sunPosition;
@@ -40,8 +40,6 @@ namespace PaladinMod.States.Spell
                 blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
                 blastAttack.Fire();
             }
-
-            base.OnExit();
 
             base.PlayAnimation("Gesture, Override", "CastSunEnd", "Spell.playbackRate", 1.5f);
         }

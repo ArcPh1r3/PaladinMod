@@ -63,15 +63,13 @@ namespace PaladinMod.States.Spell
             base.PlayAnimation("Gesture, Override", "CastSun", "Spell.playbackRate", 0.25f);
         }
 
-        public override void OnExit()
+        protected override void Exit()
         {
             if (NetworkServer.active && this.sunInstance)
             {
                 this.sunInstance.GetComponent<GenericOwnership>().ownerObject = null;
                 this.sunInstance = null;
             }
-
-            base.OnExit();
 
             base.PlayAnimation("Gesture, Override", "CastSunEnd", "Spell.playbackRate", 0.8f);
         }

@@ -9,7 +9,7 @@ namespace PaladinMod.States.Sun
 
 		protected override bool shouldEnableSunController => true;
 
-		protected override bool shouldSpawnEffect => false;
+		public override bool shouldSpawnEffect => false;
 
 		protected override float desiredVfxScale => 1f;
 
@@ -17,7 +17,6 @@ namespace PaladinMod.States.Sun
 		{
 			base.OnEnter();
 			ownership = GetComponent<GenericOwnership>();
-			//Debug.Log("SunMain enter");
 		}
 
 		public override void FixedUpdate()

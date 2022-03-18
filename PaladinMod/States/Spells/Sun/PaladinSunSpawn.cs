@@ -14,7 +14,6 @@ namespace PaladinMod.States.Sun
 		{
 			base.OnEnter();
 			duration = baseDuration;
-			//Debug.Log("SunSpawn enter");
 		}
 
 		public override void FixedUpdate()

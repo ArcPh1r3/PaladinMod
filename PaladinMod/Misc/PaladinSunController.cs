@@ -4,14 +4,16 @@ using RoR2.Audio;
 using UnityEngine;
 using UnityEngine.Networking;
 using PaladinMod;
+using RoR2.Projectile;
 
 [RequireComponent(typeof(TeamFilter))]
-[RequireComponent(typeof(GenericOwnership))]
 public class PaladinSunController : MonoBehaviour
 {
 	private TeamFilter teamFilter;
 
-	private GenericOwnership ownership;
+	private GameObject ownerObj;
+
+	private CharacterBody ownerBody;
 
 	public BuffDef buffDef;
 
@@ -39,11 +41,14 @@ public class PaladinSunController : MonoBehaviour
 	private void Awake()
 	{
 		teamFilter = GetComponent<TeamFilter>();
-		ownership = GetComponent<GenericOwnership>();
 	}
 
 	private void Start()
 	{
+		ownerObj = GetComponent<GenericOwnership>() ? GetComponent<GenericOwnership>().ownerObject : GetComponent<ProjectileController>().owner;
+
+		ownerBody = ownerObj.GetComponent<CharacterBody>();
+
 		if ((bool)activeLoopDef)
 		{
 			Util.PlaySound(activeLoopDef.startSoundName, base.gameObject);
@@ -123,10 +128,14 @@ public class PaladinSunController : MonoBehaviour
 			if ((bool)hurtBox && (bool)hurtBox.healthComponent)
 			{
 				CharacterBody body = hurtBox.healthComponent.body;
-				CharacterBody ownerBody = ownership?.ownerObject?.GetComponent<CharacterBody>();
-				//Debug.Log(body.teamComponent.teamIndex.ToString() + " vs " + ownerBody.teamComponent.teamIndex.ToString());
-				if ( ( (body.teamComponent.teamIndex != ownerBody.teamComponent.teamIndex) || StaticValues.cruelSunAllyDamageMultiplier > 0 ) 
-					& ( (body.bodyFlags & CharacterBody.BodyFlags.OverheatImmune) == 0 || body.teamComponent.teamIndex != TeamIndex.Player ) ){
+				//Only perform extra logic IF ALL ARE TRUE:
+				//ownerBody still exists (avoids NRE)
+				//The target is an enemy OR the ally damage setting is above 0
+				//The target is NOT immune to overheat, OR they are not a player (gets around Grandparent immunity)
+				//Known possible issue (untested): might still affect enemies who have Ben's Raincoat because of this logic
+				if ( ownerBody &&
+					( (body.teamComponent.teamIndex != ownerBody.teamComponent.teamIndex) || StaticValues.cruelSunAllyDamageMultiplier > 0 ) &&
+					( (body.bodyFlags & CharacterBody.BodyFlags.OverheatImmune) == 0 || body.teamComponent.teamIndex != TeamIndex.Player ) ){
 					Vector3 corePosition = body.corePosition;
 					Ray ray = new Ray(position, corePosition - position);
 					if (!Physics.Linecast(position, corePosition, out var hitInfo, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
@@ -152,7 +161,7 @@ public class PaladinSunController : MonoBehaviour
 						{
 							InflictDotInfo dotInfo = default(InflictDotInfo);
 							dotInfo.dotIndex = DotController.DotIndex.Burn;
-							dotInfo.attackerObject = ownership.ownerObject;
+							dotInfo.attackerObject = ownerObj;
 							dotInfo.victimObject = body.gameObject;
 							if ((bool)ownerBody && (bool)ownerBody.inventory)
 							{
@@ -185,7 +194,7 @@ public class PaladinSunController : MonoBehaviour
 		bullseyeSearch.searchOrigin = base.transform.position;
 		bullseyeSearch.minAngleFilter = 0f;
 		bullseyeSearch.maxAngleFilter = 180f;
-		bullseyeSearch.maxDistanceFilter = StaticValues.cruelSunRange;
+		bullseyeSearch.maxDistanceFilter = StaticValues.cruelSunAoE;
 		bullseyeSearch.filterByDistinctEntity = true;
 		bullseyeSearch.sortMode = BullseyeSearch.SortMode.Distance;
 		bullseyeSearch.viewer = null;

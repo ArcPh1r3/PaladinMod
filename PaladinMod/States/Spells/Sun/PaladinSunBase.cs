@@ -12,7 +12,7 @@ namespace PaladinMod.States.Sun
 
 		protected virtual bool shouldEnableSunController => false;
 
-		protected virtual bool shouldSpawnEffect => true;
+		public virtual bool shouldSpawnEffect => true;
 
 		protected abstract float desiredVfxScale { get; }
 

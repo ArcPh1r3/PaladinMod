@@ -5,9 +5,11 @@ namespace PaladinMod.States.Sun
 {
 	public class PaladinSunDeath : PaladinSunBase
 	{
-		public static float baseDuration = 0.2f;
+		public static float baseDuration = 0f;
 
 		private float duration;
+
+		public override bool shouldSpawnEffect => false;
 
 		protected override float desiredVfxScale => 1f - Mathf.Clamp01(base.age / duration);
 
@@ -15,7 +17,6 @@ namespace PaladinMod.States.Sun
 		{
 			base.OnEnter();
 			duration = baseDuration;
-			//Debug.Log("SunDeath enter");
 		}
 
 		public override void FixedUpdate()
@@ -24,7 +25,6 @@ namespace PaladinMod.States.Sun
 			if (NetworkServer.active && base.fixedAge >= duration)
 			{
 				NetworkServer.Destroy(base.gameObject);
-				//Debug.Log("SunDeath destroy");
 			}
 		}
 	}

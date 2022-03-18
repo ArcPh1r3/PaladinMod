@@ -395,7 +395,7 @@ namespace PaladinMod.Modules
             mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = true;
-            mySkillDef.mustKeyPress = false;
+            mySkillDef.mustKeyPress = true;
             mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
@@ -419,7 +419,7 @@ namespace PaladinMod.Modules
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
 
-            //testing
+            //pride flare testing; see PaladinPlugin.cs for real settings (why tho???)
             /*
             SkillDef scepterCruelSunDef = ScriptableObject.CreateInstance<SkillDef>();
             scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ScepterChannelCruelSun));
@@ -435,7 +435,7 @@ namespace PaladinMod.Modules
             scepterCruelSunDef.interruptPriority = InterruptPriority.Skill;
             scepterCruelSunDef.resetCooldownTimerOnUse = false;
             scepterCruelSunDef.isCombatSkill = true;
-            scepterCruelSunDef.mustKeyPress = false;
+            scepterCruelSunDef.mustKeyPress = true;
             scepterCruelSunDef.cancelSprintingOnActivation = true;
             scepterCruelSunDef.rechargeStock = 1;
             scepterCruelSunDef.requiredStock = 1;
@@ -444,6 +444,10 @@ namespace PaladinMod.Modules
             scepterCruelSunDef.skillDescriptionToken = "PALADIN_SPECIAL_SCEPSUN_DESCRIPTION";
             scepterCruelSunDef.skillName = "PALADIN_SPECIAL_SCEPSUN_NAME";
             scepterCruelSunDef.skillNameToken = "PALADIN_SPECIAL_SCEPSUN_NAME";
+            scepterCruelSunDef.keywordTokens = new string[] {
+                "KEYWORD_OVERHEAT"
+            };
+            if (Config.legacyCruelSun.Value) scepterCruelSunDef.keywordTokens = null;
 
             skillDefs.Add(scepterCruelSunDef);
 

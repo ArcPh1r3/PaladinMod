@@ -12,6 +12,7 @@ namespace PaladinMod.States.Spell
             this.chargeEffectPrefab = null;
             this.chargeSoundString = Modules.Sounds.ChannelTorpor;
             this.baseDuration = StaticValues.cruelSunChannelDuration;
+            this.castAtMaxCharge = true;
 
             base.OnEnter();
 

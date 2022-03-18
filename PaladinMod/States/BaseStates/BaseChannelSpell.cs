@@ -22,6 +22,7 @@ namespace PaladinMod.States
         private AimRequest aimRequest;
 
         private bool hasCharged;
+        protected bool castAtMaxCharge;
         private GameObject defaultCrosshairPrefab;
         private uint loopSoundInstanceId;
         private float duration { get; set; }
@@ -29,6 +30,7 @@ namespace PaladinMod.States
         private ChildLocator childLocator { get; set; }
         private GameObject chargeEffectInstance { get; set; }
         protected GameObject areaIndicatorInstance { get; set; }
+
         protected bool castSuccess;
 
         public override void OnEnter()
@@ -156,7 +158,7 @@ namespace PaladinMod.States
                 }
             }
 
-            if (base.isAuthority && !base.IsKeyDownAuthority() && charge >= 1f)
+            if (base.isAuthority && (!base.IsKeyDownAuthority() || castAtMaxCharge ) && charge >= 1f)
             {
                 castSuccess = true;
                 BaseCastChanneledSpellState nextState = this.GetNextState();
