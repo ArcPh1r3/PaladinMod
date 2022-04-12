@@ -50,7 +50,7 @@ namespace PaladinMod.Modules
             SkinChangeResponse newSkinResponse = defaultResponses[(int)cssEffect];
             newSkinResponse.triggerSkin = def;
 
-            //gotta do this song and dance instead of simply adding our own custom skinchangeresponses because for some reason adding events for skinchangeresponses in code doesn't work
+            //gotta do this song and dance instead of simply adding our own custom skinchangeresponses because for some reason adding to unityevents in code doesn't work
             //or at least didn't work last time i tried
             SkinChangeResponse[] addedSkinchange = new SkinChangeResponse[] { 
                 newSkinResponse

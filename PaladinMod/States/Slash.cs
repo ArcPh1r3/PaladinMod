@@ -5,11 +5,13 @@ using System;
 using PaladinMod.Misc;
 using RoR2.Projectile;
 using UnityEngine.Networking;
+using RoR2.Skills;
 
 namespace PaladinMod.States
 {
-    public class Slash : BaseSkillState
+    public class Slash : BaseSkillState, SteppedSkillDef.IStepSetter
     {
+    
         public static float damageCoefficient = StaticValues.slashDamageCoefficient;
         public float baseDuration = 1.6f;
         public static float attackRecoil = 1.5f;
@@ -43,7 +45,6 @@ namespace PaladinMod.States
             this.swordController = base.GetComponent<PaladinSwordController>();
             base.StartAimMode(0.5f + this.duration, false);
             base.characterBody.isSprinting = false;
-            this.inCombo = false;
             base.characterBody.outOfCombatStopwatch = 0f;
 
             if (this.swordController) this.swordController.attacking = true;
@@ -56,11 +57,11 @@ namespace PaladinMod.States
                 hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "Sword");
             }
 
-            if (this.swingIndex > 1)
-            {
-                this.swingIndex = 0;
-                this.inCombo = true;
-            }
+            //if (this.swingIndex > 1) {
+            //    ((SteppedSkillDef.InstanceData)activatorSkillSlot.skillInstanceData).step = 0;
+            //    this.swingIndex = 0;
+            //   this.inCombo = true;
+            //}
 
             Util.PlaySound(Modules.Sounds.Cloth1, base.gameObject);
 
@@ -212,13 +213,13 @@ namespace PaladinMod.States
 
             if (base.isAuthority)
             {
-                if (base.fixedAge >= this.earlyExitDuration && base.inputBank.skill1.down)
-                {
-                    var nextSwing = new Slash();
-                    nextSwing.swingIndex = this.swingIndex + 1;
-                    this.outer.SetNextState(nextSwing);
-                    return;
-                } 
+                //if (base.fixedAge >= this.earlyExitDuration && base.inputBank.skill1.down)
+                //{
+                //    var nextSwing = new Slash();
+                //    nextSwing.swingIndex = this.swingIndex + 1;
+                //    this.outer.SetNextState(nextSwing);
+                //    return;
+                //} 
 
                 if (base.fixedAge >= this.duration)
                 {
@@ -230,20 +231,33 @@ namespace PaladinMod.States
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            if (this.cancelling) return InterruptPriority.Any;
-            else return InterruptPriority.Skill;
-        }
+            if (this.cancelling) 
+                return InterruptPriority.Any;
 
-        public override void OnSerialize(NetworkWriter writer)
-        {
+            if (base.fixedAge >= this.earlyExitDuration)
+                return InterruptPriority.Any;
+
+            return InterruptPriority.Skill;
+        }
+        
+        public void SetStep(int i) {
+            swingIndex = i;
+
+            if (this.swingIndex > 1) {
+                ((SteppedSkillDef.InstanceData)activatorSkillSlot.skillInstanceData).step = 0;
+                this.swingIndex = 0;
+                this.inCombo = true;
+            }
+        }
+        
+        public override void OnSerialize(NetworkWriter writer) {
             base.OnSerialize(writer);
-            writer.Write(this.swingIndex);
+            writer.Write((byte)this.swingIndex);
         }
 
-        public override void OnDeserialize(NetworkReader reader)
-        {
+        public override void OnDeserialize(NetworkReader reader) {
             base.OnDeserialize(reader);
-            this.swingIndex = reader.ReadInt32();
+            this.swingIndex = (int)reader.ReadByte();
         }
     }
 }

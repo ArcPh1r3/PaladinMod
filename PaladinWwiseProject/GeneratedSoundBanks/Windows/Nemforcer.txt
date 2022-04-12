@@ -13,6 +13,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	4242037945	NemforcerAxeHit			\Default Work Unit\nemforcer\NemforcerAxeHit	
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
+	2221076878	Minigun_Speed			\Default Work Unit\Minigun_Speed	
 	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size

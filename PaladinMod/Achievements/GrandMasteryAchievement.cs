@@ -8,7 +8,7 @@ namespace PaladinMod.Achievements
     internal class GrandMasteryAchievement : BaseMasteryUnlockable
     {
         public override string AchievementTokenPrefix => "PALADIN_TYPHOON";
-        public override string PrerequisiteIdentifier => "PALADIN_UNLOCKABLE_REWARD_ID";
+        public override string PrerequisiteIdentifier => "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID";
         public override string AchievementSpriteName => "texGrandMasteryAchievement";
 
         public override string RequiredCharacterBody => "RobPaladinBody";

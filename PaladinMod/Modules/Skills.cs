@@ -47,7 +47,8 @@ namespace PaladinMod.Modules
 
         private static void PrimarySetup(GameObject bodyPrefab)
         {
-            SkillDef mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+            SteppedSkillDef mySkillDef = ScriptableObject.CreateInstance<SteppedSkillDef>();
+            mySkillDef.stepCount = 4;
             mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Slash));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;

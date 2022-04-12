@@ -5,6 +5,7 @@ using System;
 using PaladinMod.Misc;
 using RoR2.Projectile;
 using UnityEngine.Networking;
+using RoR2.Skills;
 
 namespace PaladinMod.States
 {
@@ -95,18 +96,16 @@ namespace PaladinMod.States
 
                     Ray aimRay = base.GetAimRay();
 
-                    if (this.attack.Fire())
-                    {
-                        if (!this.inHitPause)
-                        {
-                            if (base.characterMotor.velocity != Vector3.zero) this.storedVelocity = base.characterMotor.velocity;
-                            this.hitStopCachedState = base.CreateHitStopCachedState(base.characterMotor, this.animator, "Whirlwind.playbackRate");
-                            this.hitPauseTimer = (4f * EntityStates.Merc.GroundLight.hitPauseDuration) / this.attackSpeedStat;
-                            this.inHitPause = true;
-                        }
-                    }
-
                     base.characterMotor.velocity += (base.characterDirection.forward * 25f);
+                }
+            }
+
+            if (this.attack.Fire()) {
+                if (!this.inHitPause) {
+                    if (base.characterMotor.velocity != Vector3.zero) this.storedVelocity = base.characterMotor.velocity;
+                    this.hitStopCachedState = base.CreateHitStopCachedState(base.characterMotor, this.animator, "Whirlwind.playbackRate");
+                    this.hitPauseTimer = (4f * EntityStates.Merc.GroundLight.hitPauseDuration) / this.attackSpeedStat;
+                    this.inHitPause = true;
                 }
             }
         }
@@ -134,20 +133,21 @@ namespace PaladinMod.States
                 if (this.animator) this.animator.SetFloat("Whirlwind.playbackRate", 0f);
             }
 
-            if (base.characterMotor && stopwatch < duration * 0.7f)
+            if (base.characterMotor && stopwatch < duration * 0.6f)
             {
                 base.characterMotor.moveDirection /= 2f;
             }
+            
+            bool skillStarted = this.stopwatch >= this.duration * 0.26f;
+            bool skillEnded = this.stopwatch > this.duration * 0.9f;
 
-            if (this.stopwatch >= this.duration * 0.4f)
+            if ((skillStarted && !skillEnded) || (skillStarted && skillEnded && !hasFired))
             {
                 this.FireAttack();
             }
 
             if (this.stopwatch >= this.duration * 0.6f)
             {
-                this.FireAttack();
-
                 if (base.isAuthority && base.inputBank.skill2.down)
                 {
                     if (base.skillLocator.secondary.stock > 0)

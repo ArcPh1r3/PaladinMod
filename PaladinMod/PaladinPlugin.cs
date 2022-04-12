@@ -29,9 +29,8 @@ namespace PaladinMod
         "LanguageAPI",
         "SoundAPI",
     })]                                  //pushed out a version 69 so we gotta put a 7 here my b
-    [BepInPlugin(MODUID, "Paladin", "1.5.76")] 
+    [BepInPlugin(MODUID, "Paladin", "1.5.78")]
 
-    
     public class PaladinPlugin : BaseUnityPlugin
     {
         //keeping id the same so it versions over previous paladin
@@ -123,6 +122,7 @@ namespace PaladinMod
             RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
             RoR2.RoR2Application.onLoad += LateSetupItemDisplays;
             On.RoR2.EntityStateCatalog.Init += EntityStateCatalog_Init;
+            Logger.LogInfo("[Initialized]");
         }
 
         private void LateSetupItemDisplays() {
