@@ -57,10 +57,7 @@ namespace PaladinMod.Misc
 
                         this.rageFill.fillAmount = this.currentFill;
 
-                        float r = Mathf.Lerp(this.startColor.r, this.endColor.r, this.currentFill);
-                        float g = Mathf.Lerp(this.startColor.g, this.endColor.g, this.currentFill);
-                        float b = Mathf.Lerp(this.startColor.b, this.endColor.b, this.currentFill);
-                        Color desiredColor = new Color(r, g, b);
+                        Color desiredColor = Color.Lerp(startColor, endColor, currentFill);
                         if (this.currentFill >= 1f) desiredColor = Color.red;
 
                         this.rageFill.color = desiredColor;

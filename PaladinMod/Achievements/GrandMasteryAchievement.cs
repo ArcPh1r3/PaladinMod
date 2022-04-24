@@ -1,9 +1,4 @@
-﻿using PaladinMod.Modules;
-using RoR2;
-using System;
-using UnityEngine;
-
-namespace PaladinMod.Achievements
+﻿namespace PaladinMod.Achievements
 {
     internal class GrandMasteryAchievement : BaseMasteryUnlockable
     {

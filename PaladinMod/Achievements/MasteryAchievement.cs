@@ -1,6 +1,5 @@
 ﻿namespace PaladinMod.Achievements
 {
-
     internal class MasteryAchievement : BaseMasteryUnlockable
     {
         public override string AchievementTokenPrefix => "PALADIN_MASTERY";

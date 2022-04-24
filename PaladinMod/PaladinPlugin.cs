@@ -28,8 +28,9 @@ namespace PaladinMod
         "PrefabAPI",
         "LanguageAPI",
         "SoundAPI",
+        "UnlockableAPI"
     })]                                  //pushed out a version 69 so we gotta put a 7 here my b
-    [BepInPlugin(MODUID, "Paladin", "1.5.78")]
+    [BepInPlugin(MODUID, "Paladin", "1.5.710")]
 
     public class PaladinPlugin : BaseUnityPlugin
     {
@@ -39,7 +40,7 @@ namespace PaladinMod
         public static PaladinPlugin instance;
 
         public static ManualLogSource logger;
-
+        
         public static GameObject characterPrefab;
 
         public GameObject doppelganger;
@@ -489,7 +490,7 @@ namespace PaladinMod
                     var rageTracker = self.body.GetComponent<PaladinRageTracker>();
                     if (!rageTracker) rageTracker = self.body.gameObject.AddComponent<PaladinRageTracker>();
                     else return;
-
+                    
                     rageTracker.Body = self.body;
                     TemporaryOverlay overlay = self.gameObject.AddComponent<TemporaryOverlay>();
                     overlay.duration = float.PositiveInfinity;
