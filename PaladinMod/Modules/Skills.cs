@@ -47,7 +47,8 @@ namespace PaladinMod.Modules
 
         private static void PrimarySetup(GameObject bodyPrefab)
         {
-            SkillDef mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+            SteppedSkillDef mySkillDef = ScriptableObject.CreateInstance<SteppedSkillDef>();
+            mySkillDef.stepCount = 4;
             mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Slash));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
@@ -86,6 +87,7 @@ namespace PaladinMod.Modules
 
             skillLocator.primary = bodyPrefab.AddComponent<GenericSkill>();
             SkillFamily newFamily = ScriptableObject.CreateInstance<SkillFamily>();
+            (newFamily as ScriptableObject).name = "rob_Paladin_Primary";
             newFamily.variants = new SkillFamily.Variant[1];
             skillFamilies.Add(newFamily);
             skillLocator.primary._skillFamily = newFamily;
@@ -128,6 +130,7 @@ namespace PaladinMod.Modules
 
             skillLocator.secondary = bodyPrefab.AddComponent<GenericSkill>();
             SkillFamily newFamily = ScriptableObject.CreateInstance<SkillFamily>();
+            (newFamily as ScriptableObject).name = "rob_Paladin_Secondary";
             newFamily.variants = new SkillFamily.Variant[1];
             skillFamilies.Add(newFamily);
             skillLocator.secondary._skillFamily = newFamily;
@@ -236,6 +239,7 @@ namespace PaladinMod.Modules
 
             skillLocator.utility = bodyPrefab.AddComponent<GenericSkill>();
             SkillFamily newFamily = ScriptableObject.CreateInstance<SkillFamily>();
+            (newFamily as ScriptableObject).name = "rob_Paladin_Utility";
             newFamily.variants = new SkillFamily.Variant[1];
             skillFamilies.Add(newFamily);
             skillLocator.utility._skillFamily = newFamily;
@@ -306,6 +310,7 @@ namespace PaladinMod.Modules
 
             skillLocator.special = bodyPrefab.AddComponent<GenericSkill>();
             SkillFamily newFamily = ScriptableObject.CreateInstance<SkillFamily>();
+            (newFamily as ScriptableObject).name = "rob_Paladin_Special";
             newFamily.variants = new SkillFamily.Variant[1];
             skillFamilies.Add(newFamily);
             skillLocator.special._skillFamily = newFamily;

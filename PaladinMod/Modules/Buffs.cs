@@ -22,14 +22,44 @@ namespace PaladinMod.Modules
 
         public static void RegisterBuffs()
         {
-            warcryBuff = AddNewBuff("Divine Blessing", RoR2.LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), PaladinPlugin.characterColor, false, false);
-            scepterWarcryBuff = AddNewBuff("Divine Blessing (Scepter)", RoR2.LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), PaladinPlugin.characterColor, false, false);
+            warcryBuff = 
+                AddNewBuff("Divine Blessing", 
+                           LegacyResourcesAPI.Load<BuffDef>("BuffDefs/HiddenInvincibility").iconSprite, 
+                           PaladinPlugin.characterColor, 
+                           false, 
+                           false);
+            scepterWarcryBuff = 
+                AddNewBuff("Divine Blessing (Scepter)",
+                           LegacyResourcesAPI.Load<BuffDef>("BuffDefs/HiddenInvincibility").iconSprite,
+                           PaladinPlugin.characterColor, 
+                           false, 
+                           false);
+                                            
+            torporDebuff = 
+                AddNewBuff("Torpor",
+                           LegacyResourcesAPI.Load<BuffDef>("BuffDefs/Cloak").iconSprite,
+                           Color.black, 
+                           false, 
+                           true);
+            scepterTorporDebuff = 
+                AddNewBuff("Torpor (Scepter)",
+                           LegacyResourcesAPI.Load<BuffDef>("BuffDefs/Cloak").iconSprite,
+                           Color.black, 
+                           false, 
+                           true);
 
-            torporDebuff = AddNewBuff("Torpor", RoR2.LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffCloakIcon"), Color.black, false, true);
-            scepterTorporDebuff = AddNewBuff("Torpor (Scepter)", RoR2.LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffCloakIcon"), Color.black, false, true);
-
-            overchargeBuff = AddNewBuff("PaladinOvercharge", RoR2.LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffTeslaIcon"), Color.yellow, false, false);
-            rageBuff = AddNewBuff("PaladinBerserk", RoR2.LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.red, false, false);
+            overchargeBuff = 
+                AddNewBuff("PaladinOvercharge",
+                           LegacyResourcesAPI.Load<BuffDef>("BuffDefs/TeslaField").iconSprite,
+                           Color.yellow,
+                           false,
+                           false);
+            rageBuff = 
+                AddNewBuff("PaladinBerserk",
+                           LegacyResourcesAPI.Load<BuffDef>("BuffDefs/HiddenInvincibility").iconSprite,
+                           Color.red, 
+                           false, 
+                           false);
         }
 
         // simple helper method

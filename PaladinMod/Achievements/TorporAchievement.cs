@@ -2,6 +2,7 @@
 using RoR2;
 using System;
 using UnityEngine;
+using R2API;
 
 namespace PaladinMod.Achievements
 {
@@ -10,7 +11,7 @@ namespace PaladinMod.Achievements
         public override string AchievementIdentifier { get; } = "PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_ID";
         public override string UnlockableIdentifier { get; } = "PALADIN_TORPORUNLOCKABLE_REWARD_ID";
         public override string AchievementNameToken { get; } = "PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_NAME";
-        public override string PrerequisiteUnlockableIdentifier { get; } = "PALADIN_UNLOCKABLE_REWARD_ID";
+        public override string PrerequisiteUnlockableIdentifier { get; } = "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID";
         public override string UnlockableNameToken { get; } = "PALADIN_TORPORUNLOCKABLE_UNLOCKABLE_NAME";
         public override string AchievementDescToken { get; } = "PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_DESC";
         public override Sprite Sprite { get; } = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texTorporAchievement");

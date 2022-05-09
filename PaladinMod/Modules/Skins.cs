@@ -11,8 +11,6 @@ namespace PaladinMod.Modules
     {
         static List<GameObject> allGameObjectActivations = new List<GameObject>();
 
-        static List<Material> cachedMaterials = new List<Material>();
-
         private static CharacterSelectSurvivorPreviewDisplayController paladinCSSPreviewController;
         private static SkinChangeResponse[] defaultResponses;
 
@@ -50,7 +48,7 @@ namespace PaladinMod.Modules
             SkinChangeResponse newSkinResponse = defaultResponses[(int)cssEffect];
             newSkinResponse.triggerSkin = def;
 
-            //gotta do this song and dance instead of simply adding our own custom skinchangeresponses because for some reason adding events for skinchangeresponses in code doesn't work
+            //gotta do this song and dance instead of simply adding our own custom skinchangeresponses because for some reason adding to unityevents in code doesn't work
             //or at least didn't work last time i tried
             SkinChangeResponse[] addedSkinchange = new SkinChangeResponse[] { 
                 newSkinResponse
@@ -173,11 +171,6 @@ namespace PaladinMod.Modules
         {
             if (!PaladinPlugin.commandoMat) PaladinPlugin.commandoMat = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
             
-            //Material cachedMaterial = cachedMaterials.Find((item) => { return item.name == materialName; });
-            //if (cachedMaterial) {
-            //    return cachedMaterial;
-            //}
-
             Material mat = UnityEngine.Object.Instantiate<Material>(PaladinPlugin.commandoMat);
             Material tempMat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
             if (!tempMat)
@@ -194,8 +187,6 @@ namespace PaladinMod.Modules
             mat.SetTexture("_EmTex", tempMat.GetTexture("_EmissionMap"));
             mat.SetFloat("_NormalStrength", normalStrength);
             mat.SetInt("_Cull", 0);
-
-            //cachedMaterials.Add(mat);
             return mat;
         }
 #endregion

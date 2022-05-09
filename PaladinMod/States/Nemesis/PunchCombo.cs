@@ -3,10 +3,11 @@ using RoR2;
 using UnityEngine;
 using System;
 using UnityEngine.Networking;
+using RoR2.Skills;
 
 namespace PaladinMod.States.Nemesis
 {
-    public class PunchCombo : BaseSkillState
+    public class PunchCombo : BaseSkillState, SteppedSkillDef.IStepSetter
     {
         public static float damageCoefficient = 3.8f;
         public float baseDuration = 0.8f;
@@ -177,13 +178,13 @@ namespace PaladinMod.States.Nemesis
 
             if (base.isAuthority)
             {
-                if (base.fixedAge >= this.earlyExitDuration && base.inputBank.skill1.down)
-                {
-                    var nextSwing = new PunchCombo();
-                    nextSwing.swingIndex = this.swingIndex + 1;
-                    this.outer.SetNextState(nextSwing);
-                    return;
-                }
+                //if (base.fixedAge >= this.earlyExitDuration && base.inputBank.skill1.down)
+                //{
+                //    var nextSwing = new PunchCombo();
+                //    nextSwing.swingIndex = this.swingIndex + 1;
+                //    this.outer.SetNextState(nextSwing);
+                //    return;
+                //}
 
                 if (base.fixedAge >= this.duration)
                 {
@@ -195,20 +196,29 @@ namespace PaladinMod.States.Nemesis
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            if (this.cancelling) return InterruptPriority.Any;
-            else return InterruptPriority.Skill;
+            if (this.cancelling) 
+                return InterruptPriority.Any;
+
+            if (base.fixedAge >= this.earlyExitDuration)
+                return InterruptPriority.Any;
+
+            return InterruptPriority.Skill;
         }
 
         public override void OnSerialize(NetworkWriter writer)
         {
             base.OnSerialize(writer);
-            writer.Write(this.swingIndex);
+            writer.Write((byte)this.swingIndex);
         }
 
         public override void OnDeserialize(NetworkReader reader)
         {
             base.OnDeserialize(reader);
-            this.swingIndex = reader.ReadInt32();
+            this.swingIndex = (int)reader.ReadByte();
+        }
+
+        public void SetStep(int i) {
+            swingIndex = i;
         }
     }
 }

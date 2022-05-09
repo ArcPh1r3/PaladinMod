@@ -1,4 +1,7 @@
 ﻿using RoR2.ContentManagement;
+using RoR2.Skills;
+using System;
+using System.Collections.Generic;
 
 namespace PaladinMod.Modules
 {
@@ -28,13 +31,19 @@ namespace PaladinMod.Modules
             contentPack.masterPrefabs.Add(Prefabs.masterPrefabs.ToArray());
             contentPack.networkSoundEventDefs.Add(Assets.networkSoundEventDefs.ToArray());
             contentPack.projectilePrefabs.Add(Prefabs.projectilePrefabs.ToArray());
+            HackSkillDefNames(Skills.skillDefs);
             contentPack.skillDefs.Add(Skills.skillDefs.ToArray());
             contentPack.skillFamilies.Add(Skills.skillFamilies.ToArray());
             contentPack.survivorDefs.Add(Prefabs.survivorDefinitions.ToArray());
-            contentPack.unlockableDefs.Add(Unlockables.unlockableDefs.ToArray());
 
             args.ReportProgress(1f);
             yield break;
+        }
+
+        private void HackSkillDefNames(List<SkillDef> skillDefs) {
+            foreach (SkillDef skillDef in skillDefs) {
+                (skillDef as UnityEngine.ScriptableObject).name = skillDef.skillName;
+            }
         }
 
         public System.Collections.IEnumerator GenerateContentPackAsync(GetContentPackAsyncArgs args)

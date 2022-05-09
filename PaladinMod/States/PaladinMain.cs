@@ -152,7 +152,7 @@ namespace PaladinMod.States
                 this.animator.SetBool("isAttacking", !base.characterBody.outOfCombat);
             }
 
-            if (base.characterBody.isSprinting && this.isGrounded && base.characterBody.outOfCombat)
+            if (base.characterBody.isSprinting && this.isGrounded && base.characterBody.outOfCombat && this.swordTrailEffect)
             {
                 RaycastHit raycastHit = default(RaycastHit);
                 Vector3 raycastOrigin = this.swordTrailEffect.transform.position;
