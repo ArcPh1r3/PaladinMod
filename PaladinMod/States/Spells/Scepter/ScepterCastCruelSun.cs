@@ -1,49 +1,128 @@
 ﻿using RoR2;
+using RoR2.Projectile;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace PaladinMod.States.Spell
 {
     public class ScepterCastCruelSun : CastCruelSun
     {
-        public static float flareRadius = 80f;
-        public static float flareDamageCoefficient = 90.01f;
-        public static float flareProcCoefficient = 1f;
-        public static float flareForce = 8000f;
+        protected bool sunAim;
+        protected bool sunLaunched;
+        protected float aimTime;
+        protected Vector3 sunTarget;
+
+        protected override GameObject sunPrefab => Modules.Assets.paladinScepterSunPrefab;
+
+        protected GameObject areaIndicatorInstance { get; set; }
 
         public override void OnEnter()
         {
+            sunAim = false;
+            sunLaunched = false;
+            aimTime = 0f;
+            sunTarget = Vector3.zero;
+            areaIndicatorInstance = null;
+
             base.OnEnter();
         }
 
-        public override void OnExit()
+        public override void FixedUpdate()
         {
-            EffectData effectData = new EffectData();
-            effectData.origin = this.swordController.sunPosition;
-
-            EffectManager.SpawnEffect(RoR2.LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/GrandparentSpawnImpact"), effectData, false);
-            EffectManager.SpawnEffect(RoR2.LegacyResourcesAPI.Load<GameObject>("prefabs/effects/ClayBossDeath"), effectData, false);
-
-            if (base.isAuthority)
+            if (!sunLaunched && base.isAuthority && base.inputBank.skill4.down && base.fixedAge >= 0.2f)
             {
-                BlastAttack blastAttack = new BlastAttack();
-                blastAttack.attacker = base.gameObject;
-                blastAttack.inflictor = base.gameObject;
-                blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
-                blastAttack.position = this.swordController.sunPosition;
-                blastAttack.procCoefficient = ScepterCastCruelSun.flareProcCoefficient;
-                blastAttack.radius = ScepterCastCruelSun.flareRadius;
-                blastAttack.baseForce = ScepterCastCruelSun.flareForce;
-                blastAttack.bonusForce = Vector3.zero;
-                blastAttack.baseDamage = ScepterCastCruelSun.flareDamageCoefficient * this.damageStat;
-                blastAttack.falloffModel = BlastAttack.FalloffModel.Linear;
-                blastAttack.damageColorIndex = DamageColorIndex.Item;
-                blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
-                blastAttack.Fire();
+                //Only set up the aim indicator once.
+                if (!sunAim) {
+                    areaIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab);
+                    areaIndicatorInstance.transform.localScale = new Vector3(StaticValues.prideFlareExplosionRadius * 0.33f, StaticValues.prideFlareExplosionRadius * 0.33f, StaticValues.prideFlareExplosionRadius * 0.33f);
+                    areaIndicatorInstance.GetComponentInChildren<MeshRenderer>().material = Modules.Assets.areaIndicatorMat;
+                    sunAim = true;
+                }
+                base.StartAimMode(0.5f, true);
+                //Extend the duration of the skill while the player is aiming, but only to an upper limit.
+                base.duration += Time.fixedDeltaTime;
+                aimTime += Time.fixedDeltaTime;
+            }
+            if (sunAim && (!base.inputBank.skill4.down || aimTime >= StaticValues.prideFlareAimTimeMax))
+            {
+                sunLaunched = true;
+                sunAim = false;
+                this.outer.SetNextStateToMain();
+            }
+            base.FixedUpdate();
+        }
+
+        public override void Update()
+        {
+            UpdateAreaIndicator();
+            base.Update();
+        }
+
+        protected override void Exit()
+        {
+            if (areaIndicatorInstance)
+            {
+                Destroy(areaIndicatorInstance.gameObject);
+                Fire();
+                base.PlayAnimation("Gesture, Override", "ThrowSpell", "Spell.playbackRate", 0.5f);
+            }
+            else
+            {
+                if ((bool)Modules.Assets.paladinSunSpawnPrefab)
+                {
+                    EffectManager.SimpleImpactEffect(Modules.Assets.paladinSunSpawnPrefab, sunInstance.transform.position, Vector3.up, transmit: false);
+                }
+                base.PlayAnimation("Gesture, Override", "CastSunEnd", "Spell.playbackRate", 0.8f);
             }
 
-            base.OnExit();
+            if (NetworkServer.active && sunInstance)
+            {
+                this.sunInstance.GetComponent<GenericOwnership>().ownerObject = null;
+                this.sunInstance = null;
+            }
+        }
+ 
+        private void Fire()
+        {
+            if (base.isAuthority)
+            {
+                var tempPos = base.gameObject.transform.position + new Vector3(0, 10f, 0);
+                if (sunInstance) tempPos = sunInstance.transform.position;
 
-            base.PlayAnimation("Gesture, Override", "CastSunEnd", "Spell.playbackRate", 1.5f);
+                FireProjectileInfo sunShot = default(FireProjectileInfo);
+                sunShot.projectilePrefab = Modules.Projectiles.scepterCruelSun;
+                sunShot.position = tempPos;
+                sunShot.rotation = Util.QuaternionSafeLookRotation(sunTarget - tempPos);
+                sunShot.owner = base.gameObject;
+                sunShot.damage = damageStat;
+                sunShot.force = StaticValues.prideFlareForce;
+                sunShot.crit = RollCrit();
+
+                ProjectileManager.instance.FireProjectile(sunShot);
+
+                if ((bool)base.characterMotor)
+                {
+                    base.characterMotor.ApplyForce((sunTarget - tempPos) * -StaticValues.prideFlareSelfForce);
+                }
+            }
+        }
+
+        private void UpdateAreaIndicator()
+        {
+            if (areaIndicatorInstance)
+            {
+                Ray aimRay = GetAimRay();
+                RaycastHit raycastHit;
+                if (Physics.Raycast(aimRay, out raycastHit, StaticValues.prideFlareMaxIndicatorRange, LayerIndex.CommonMasks.bullet))
+                {
+                    sunTarget = areaIndicatorInstance.transform.position = raycastHit.point;
+                    
+                }
+                else
+                {
+                    sunTarget = areaIndicatorInstance.transform.position = aimRay.GetPoint(StaticValues.prideFlareMaxIndicatorRange);
+                }
+            }
         }
     }
 }

@@ -119,12 +119,14 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERWARCRY_NAME", "Sacred Oath (Scepter)");
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERWARCRY_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.cruelSunChannelDuration + "</style> seconds, then release to create a <style=cIsUtility>miniature star</style> that <style=cIsDamage>drains health</style> from <style=cIsHealth>ALL</style> entities around it.";
+            desc = "<style=cIsHealth>Overheat</style>. <style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.cruelSunChannelDuration + "</style> seconds to create a <style=cIsUtility>miniature star</style> for <style=cIsDamage>" + StaticValues.cruelSunDuration + "</style> seconds that overheats <style=cDeath>EVERYTHING</style> around it. At <style=cIsHealth>" + StaticValues.cruelSunMinimumStacksBeforeApplyingBurns + "</style> stacks or more, targets burn for <style=cIsDamage>" + StaticValues.cruelSunBurnDamageCoefficient * 100f + "% damage</style>.";
+            if (Config.legacyCruelSun.Value) desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.cruelSunChannelDurationOld + "</style> seconds, then release to create a <style=cIsUtility>miniature star</style> that <style=cIsDamage>drains health</style> from <style=cIsHealth>ALL</style> entities around it.";
 
             LanguageAPI.Add("PALADIN_SPECIAL_SUN_NAME", "Cruel Sun");
             LanguageAPI.Add("PALADIN_SPECIAL_SUN_DESCRIPTION", desc);
 
-            desc += Helpers.ScepterDescription("Explodes for a massive burst of " + PaladinMod.States.Spell.ScepterCastCruelSun.flareDamageCoefficient * 100f + "% damage.");
+            if (Config.legacyCruelSun.Value) desc += Helpers.ScepterDescription("Explodes for a massive burst of " + PaladinMod.States.Spell.ScepterCastCruelSunOld.flareDamageCoefficient * 100f + "% damage.");
+            else desc += Helpers.ScepterDescription("Cast again and hold to aim, then release to throw the star, exploding for <style=cIsDamage>" + StaticValues.prideFlareDamageCoefficient * 100f + "% damage</style> to <style=cDeath>EVERYTHING</style> around it.");
 
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPSUN_NAME", "Pride Flare");
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPSUN_DESCRIPTION", desc);
@@ -137,7 +139,7 @@ namespace PaladinMod.Modules
 
             LanguageAPI.Add("KEYWORD_SWORDBEAM", "<style=cKeywordName>Sword Beam</style><style=cSub>A piercing, short range beam of light that deals <style=cIsDamage>" + 100f * StaticValues.beamDamageCoefficient + "% damage</style>.");
             LanguageAPI.Add("KEYWORD_TORPOR", "<style=cKeywordName>Torpor</style><style=cSub>Applies a <style=cIsHealth>" + 100 * StaticValues.torporSlowAmount + "%</style> attack and movement speed <style=cIsDamage>slow</style>. <style=cIsHealth>Drags enemies to the ground.</style>");
-            
+            LanguageAPI.Add("KEYWORD_OVERHEAT", "<style=cKeywordName>Overheat</style><style=cSub>Multiplies the damage received from <style=cIsDamage>the sun</style>.</style>");
 
             LanguageAPI.Add("PALADIN_UNLOCKABLE_ACHIEVEMENT_NAME", "A Paladin's Vow");
             LanguageAPI.Add("PALADIN_UNLOCKABLE_ACHIEVEMENT_DESC", "Use the Beads of Fealty and become whole once more.");

@@ -113,6 +113,9 @@
     <Reference Include="Unity.Postprocessing.Runtime">
       <HintPath>E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinMod\libs\Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>libs\Unity.ResourceManager.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinMod\libs\Unity.TextMeshPro.dll</HintPath>
     </Reference>
@@ -155,11 +158,10 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if &quot;$(Username)&quot; == &quot;Erikbir&quot; copy &quot;$(TargetPath)&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\r2modman\BepInEx\plugins\Paladin_Alliance-PaladinMod&quot;&#xD;&#xA;if &quot;$(Username)&quot; == &quot;Erikbir&quot; copy &quot;$(TargetPath)&quot; &quot;$(ProjectDir)\..\Release&quot;&#xD;&#xA;if &quot;$(Username)&quot; == &quot;Erikbir&quot; mkdir &quot;C:\EnforcerBuild\plugins\Paladin_Alliance-PaladinMod&quot;&#xD;&#xA;if &quot;$(Username)&quot; == &quot;Erikbir&quot; copy /Y &quot;$(TargetPath)&quot; &quot;C:\EnforcerBuild\plugins\Paladin_Alliance-PaladinMod&quot;" />
+    <Exec Command="if &quot;$(Username)&quot; == &quot;Erikbir&quot; copy &quot;$(TargetPath)&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\r2modman\BepInEx\plugins\Paladin_Alliance-PaladinMod&quot;&#xD;&#xA;if &quot;$(Username)&quot; == &quot;Erikbir&quot; copy &quot;$(TargetPath)&quot; &quot;$(ProjectDir)\..\Release&quot;&#xD;&#xA;if &quot;$(Username)&quot; == &quot;Erikbir&quot; mkdir &quot;C:\EnforcerBuild\plugins\Paladin_Alliance-PaladinMod&quot;&#xD;&#xA;if &quot;$(Username)&quot; == &quot;Erikbir&quot; copy /Y &quot;$(TargetPath)&quot; &quot;C:\EnforcerBuild\plugins\Paladin_Alliance-PaladinMod&quot; mkdir &quot;C:\Users\rylun\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\DevTest\BepInEx\plugins\Paladin_Alliance-PaladinMod&quot;&#xD;&#xA;if &quot;$(Username)&quot; == &quot;Varna&quot; mkdir &quot;C:\Users\rylun\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\DevTest\BepInEx\plugins\DEVTEST&quot;&#xD;&#xA;if &quot;$(Username)&quot; == &quot;Varna&quot; copy /Y &quot;$(TargetPath)&quot; &quot;C:\Users\rylun\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\DevTest\BepInEx\plugins\DEVTEST&quot;" />
   </Target>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="if &quot;$(Username)&quot; == &quot;Erikbir&quot; copy /Y &quot;$(ProjectDir)..\PaladinUnityProject\AssetBundles\StandaloneWindows\paladin&quot; &quot;$(ProjectDir)&quot;" />
   </Target>
-
 </Project>

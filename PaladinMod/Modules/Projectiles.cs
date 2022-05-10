@@ -3,6 +3,7 @@ using RoR2;
 using RoR2.Projectile;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace PaladinMod.Modules
 {
@@ -27,6 +28,8 @@ namespace PaladinMod.Modules
         public static GameObject scepterHealZone;
         public static GameObject scepterTorpor;
         public static GameObject scepterWarcry;
+        public static GameObject scepterCruelSun;
+        public static GameObject scepterCruelSunGhost;
 
         public static void LateSetup()
         {
@@ -317,6 +320,60 @@ namespace PaladinMod.Modules
             InitSpellEffect(scepterWarcryFX, StaticValues.scepterWarcryRadius, StaticValues.scepterWarcryDuration);
             #endregion
 
+            #region PrideFlare
+            //Ghost
+            scepterCruelSunGhost = PrefabAPI.InstantiateClone(Assets.paladinScepterSunPrefab, "PaladinScepterSunProjectileGhost");
+
+            Object.DestroyImmediate(scepterCruelSunGhost.GetComponent<EntityStateMachine>());
+            Object.DestroyImmediate(scepterCruelSunGhost.GetComponent<NetworkStateMachine>());
+            Object.DestroyImmediate(scepterCruelSunGhost.GetComponent<PaladinSunController>());
+            scepterCruelSunGhost.AddComponent<ProjectileGhostController>();
+            VFXAttributes scsgVFXA = scepterCruelSunGhost.AddComponent<VFXAttributes>();
+            scsgVFXA.vfxPriority = VFXAttributes.VFXPriority.Always;
+            scsgVFXA.vfxIntensity = VFXAttributes.VFXIntensity.High;
+
+            //scepterCruelSunGhost.AddComponent<DetachParticleOnDestroyAndEndEmission>().particleSystem = ;
+
+            //Projectile
+            scepterCruelSun = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MageLightningBombProjectile.prefab").WaitForCompletion(), "PaladinScepterSunProjectile");
+
+            Object.Destroy(scepterCruelSun.GetComponent<ProjectileProximityBeamController>());
+            Object.Destroy(scepterCruelSun.GetComponent<AkEvent>());
+
+            ProjectileController scsPC = scepterCruelSun.GetComponent<ProjectileController>();
+            scsPC.ghostPrefab = scepterCruelSunGhost;
+            scsPC.canImpactOnTrigger = false;
+            scsPC.cannotBeDeleted = true;
+            scsPC.procCoefficient = StaticValues.prideFlareProcCoefficient;
+
+            scepterCruelSun.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
+            scepterCruelSun.GetComponent<ProjectileSimple>().desiredForwardSpeed = StaticValues.prideFlareSpeed;
+
+            ProjectileImpactExplosion scsPE = scepterCruelSun.GetComponent<ProjectileImpactExplosion>();
+            scsPE.blastAttackerFiltering = AttackerFiltering.AlwaysHit;
+            scsPE.blastDamageCoefficient = StaticValues.prideFlareDamageCoefficient;
+            scsPE.blastProcCoefficient = StaticValues.prideFlareProcCoefficient;
+            scsPE.blastRadius = StaticValues.prideFlareExplosionRadius;
+            scsPE.falloffModel = BlastAttack.FalloffModel.SweetSpot;
+            scsPE.canRejectForce = false;
+            scsPE.destroyOnEnemy = false;
+            scsPE.impactEffect = Assets.paladinSunSpawnPrefab;
+
+            scepterCruelSun.AddComponent<AlignToNormal>();
+            scepterCruelSun.GetComponent<AntiGravityForce>().antiGravityCoefficient = 0.95f;
+
+            //maybe: delete meshfilter?
+
+            //Transfering over some data we need to keep the burn AoE going.
+            PaladinSunController baseScript = Assets.paladinSunPrefab.GetComponent<PaladinSunController>();
+            PaladinSunController newScript = scepterCruelSun.AddComponent<PaladinSunController>();
+            newScript.buffApplyEffect = baseScript.buffApplyEffect;
+            newScript.buffDef = baseScript.buffDef;
+            newScript.activeLoopDef = baseScript.activeLoopDef;
+            newScript.damageLoopDef = baseScript.damageLoopDef;
+            newScript.stopSoundName = baseScript.stopSoundName;
+            #endregion
+
             Modules.Prefabs.projectilePrefabs = new List<GameObject>
             {
                 swordBeamProjectile,
@@ -329,7 +386,8 @@ namespace PaladinMod.Modules
                 torpor,
                 scepterTorpor,
                 warcry,
-                scepterWarcry
+                scepterWarcry,
+                scepterCruelSun
             };
         }
         /// <summary>

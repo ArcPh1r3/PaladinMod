@@ -622,8 +622,8 @@ namespace PaladinMod
 
         private void ScepterSkillSetup()
         {
-            Modules.States.AddSkill(typeof(States.Spell.ScepterChannelHealZone));
-            Modules.States.AddSkill(typeof(States.Spell.ScepterCastHealZone));
+            Modules.States.AddState(typeof(States.Spell.ScepterChannelHealZone));
+            Modules.States.AddState(typeof(States.Spell.ScepterCastHealZone));
 
             scepterHealDef = ScriptableObject.CreateInstance<SkillDef>();
             scepterHealDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ScepterChannelHealZone));
@@ -648,8 +648,8 @@ namespace PaladinMod
 
             Modules.Skills.skillDefs.Add(scepterHealDef);
 
-            Modules.States.AddSkill(typeof(States.Spell.ScepterChannelTorpor));
-            Modules.States.AddSkill(typeof(States.Spell.ScepterCastTorpor));
+            Modules.States.AddState(typeof(States.Spell.ScepterChannelTorpor));
+            Modules.States.AddState(typeof(States.Spell.ScepterCastTorpor));
 
             scepterTorporDef = ScriptableObject.CreateInstance<SkillDef>();
             scepterTorporDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ScepterChannelTorpor));
@@ -677,8 +677,8 @@ namespace PaladinMod
 
             Modules.Skills.skillDefs.Add(scepterTorporDef);
 
-            Modules.States.AddSkill(typeof(States.Spell.ScepterChannelWarcry));
-            Modules.States.AddSkill(typeof(States.Spell.ScepterCastWarcry));
+            Modules.States.AddState(typeof(States.Spell.ScepterChannelWarcry));
+            Modules.States.AddState(typeof(States.Spell.ScepterCastWarcry));
 
             scepterWarcryDef = ScriptableObject.CreateInstance<SkillDef>();
             scepterWarcryDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ScepterChannelWarcry));
@@ -703,18 +703,21 @@ namespace PaladinMod
 
             Modules.Skills.skillDefs.Add(scepterWarcryDef);
 
-            scepterCruelSunDef = ScriptableObject.CreateInstance<SkillDef>();
-            scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(States.Spell.ScepterChannelCruelSun));
+            SkillDef scepterCruelSunDef = ScriptableObject.CreateInstance<SkillDef>();
+            scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ScepterChannelCruelSun));
+            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ScepterChannelCruelSunOld));
             scepterCruelSunDef.activationStateMachineName = "Weapon";
             scepterCruelSunDef.baseMaxStock = 1;
-            scepterCruelSunDef.baseRechargeInterval = 40f;
+            scepterCruelSunDef.baseRechargeInterval = 20f;
+            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.baseRechargeInterval = 40f;
             scepterCruelSunDef.beginSkillCooldownOnSkillEnd = true;
-            scepterCruelSunDef.canceledFromSprinting = false;
+            scepterCruelSunDef.canceledFromSprinting = true;
+            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.canceledFromSprinting = false;
             scepterCruelSunDef.fullRestockOnAssign = true;
             scepterCruelSunDef.interruptPriority = InterruptPriority.Skill;
             scepterCruelSunDef.resetCooldownTimerOnUse = false;
             scepterCruelSunDef.isCombatSkill = true;
-            scepterCruelSunDef.mustKeyPress = false;
+            scepterCruelSunDef.mustKeyPress = true;
             scepterCruelSunDef.cancelSprintingOnActivation = true;
             scepterCruelSunDef.rechargeStock = 1;
             scepterCruelSunDef.requiredStock = 1;
@@ -723,6 +726,10 @@ namespace PaladinMod
             scepterCruelSunDef.skillDescriptionToken = "PALADIN_SPECIAL_SCEPSUN_DESCRIPTION";
             scepterCruelSunDef.skillName = "PALADIN_SPECIAL_SCEPSUN_NAME";
             scepterCruelSunDef.skillNameToken = "PALADIN_SPECIAL_SCEPSUN_NAME";
+            scepterCruelSunDef.keywordTokens = new string[] {
+                "KEYWORD_OVERHEAT"
+            };
+            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.keywordTokens = null;
 
             Modules.Skills.skillDefs.Add(scepterCruelSunDef);
         }
