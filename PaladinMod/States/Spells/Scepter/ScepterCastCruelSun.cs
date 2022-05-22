@@ -58,7 +58,7 @@ namespace PaladinMod.States.Spell
             base.Update();
         }
 
-        protected override void Exit()
+        protected override void OnChanneledSpellExit()
         {
             if (areaIndicatorInstance)
             {
@@ -68,9 +68,9 @@ namespace PaladinMod.States.Spell
             }
             else
             {
-                if ((bool)Modules.Assets.paladinSunSpawnPrefab)
+                if ((bool)Modules.Assets.paladinSunSpawnPrefab && NetworkServer.active)
                 {
-                    EffectManager.SimpleImpactEffect(Modules.Assets.paladinSunSpawnPrefab, sunInstance.transform.position, Vector3.up, transmit: false);
+                    EffectManager.SimpleImpactEffect(Modules.Assets.paladinSunSpawnPrefab, sunInstance.transform.position, Vector3.up, transmit: true);
                 }
                 base.PlayAnimation("Gesture, Override", "CastSunEnd", "Spell.playbackRate", 0.8f);
             }

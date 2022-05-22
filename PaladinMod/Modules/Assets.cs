@@ -398,14 +398,17 @@ namespace PaladinMod.Modules
 
             //Transfering over some data we need from the old script; buff definitions, SFX definitions
             paladinSunPrefab.AddComponent<PaladinSunController>();
-            GrandParentSunController baseScript = paladinSunPrefab.GetComponent<GrandParentSunController>();
-            PaladinSunController newScript = paladinSunPrefab.GetComponent<PaladinSunController>();
-            newScript.buffApplyEffect = baseScript.buffApplyEffect;
-            newScript.buffDef = baseScript.buffDef;
-            newScript.activeLoopDef = baseScript.activeLoopDef;
-            newScript.damageLoopDef = baseScript.damageLoopDef;
-            newScript.stopSoundName = baseScript.stopSoundName;
-            Object.DestroyImmediate(baseScript); //VERY important to remove this once we're done transfering data, since we now have our own controller.
+            GrandParentSunController baseSunScript = paladinSunPrefab.GetComponent<GrandParentSunController>();
+            PaladinSunController paladinSunScript = paladinSunPrefab.GetComponent<PaladinSunController>();
+            paladinSunScript.buffApplyEffect = baseSunScript.buffApplyEffect;
+            paladinSunScript.buffDef = baseSunScript.buffDef;
+            paladinSunScript.activeLoopDef = baseSunScript.activeLoopDef;
+            paladinSunScript.damageLoopDef = baseSunScript.damageLoopDef;
+            paladinSunScript.stopSoundName = baseSunScript.stopSoundName;
+            Object.DestroyImmediate(baseSunScript); //VERY important to remove this once we're done transfering data, since we now have our own controller.
+
+            //Simple script for syncing positions
+            paladinSunPrefab.AddComponent<PaladinSunNetworkController>();
 
             //EntityStateMachine that can go die in the actual sun. reset the NetworkStateMachine value just in case
             Object.DestroyImmediate(paladinSunPrefab.GetComponent<EntityStateMachine>());

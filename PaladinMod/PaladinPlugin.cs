@@ -121,18 +121,14 @@ namespace PaladinMod
             Hook();
 
             RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
-            RoR2.RoR2Application.onLoad += LateSetupItemDisplays;
             On.RoR2.EntityStateCatalog.Init += EntityStateCatalog_Init;
             Logger.LogInfo("[Initialized]");
-        }
-
-        private void LateSetupItemDisplays() {
-            Modules.ItemDisplays.SetItemDisplays();
         }
 
         private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
             Modules.Projectiles.LateSetup();
+            Modules.ItemDisplays.SetItemDisplays();
         }
 
         private void EntityStateCatalog_Init(On.RoR2.EntityStateCatalog.orig_Init orig)
@@ -703,7 +699,7 @@ namespace PaladinMod
 
             Modules.Skills.skillDefs.Add(scepterWarcryDef);
 
-            SkillDef scepterCruelSunDef = ScriptableObject.CreateInstance<SkillDef>();
+            scepterCruelSunDef = ScriptableObject.CreateInstance<SkillDef>();
             scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ScepterChannelCruelSun));
             if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ScepterChannelCruelSunOld));
             scepterCruelSunDef.activationStateMachineName = "Weapon";

@@ -15,7 +15,7 @@ namespace PaladinMod.States.Spell
             base.OnEnter();
         }
 
-        protected override void Exit()
+        protected override void OnChanneledSpellExit()
         {
             EffectData effectData = new EffectData();
             effectData.origin = this.swordController.sunPosition;

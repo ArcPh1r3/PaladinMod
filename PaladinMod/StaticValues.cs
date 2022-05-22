@@ -111,7 +111,7 @@
         public const float cruelSunOverheatDuration = 1f;
         public const int cruelSunMinimumStacksBeforeApplyingBurns = 2;
         public const float cruelSunBurnDamageCoefficient = 1.5f;
-        public const float cruelSunAllyDamageMultiplier = 0.25f;
+        public const float cruelSunAllyDamageMultiplier = 0.2f;
 
         //Pride Flare(Cruel Sun Scepter)
         public const float prideFlareExplosionRadius = cruelSunAoE;

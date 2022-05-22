@@ -39,8 +39,8 @@ namespace PaladinMod.States.Spell
                 temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
             }
 
-            //borked, no idea why
-            //base.camParamsOverrideHandle = Modules.CameraParams.OverridePaladinCameraParams(base.cameraTargetParams, PaladinCameraParams.CRUEL_SUN, 1f);
+            base.cameraTargetParams.RemoveParamsOverride(camParamsOverrideHandle, 1f);
+            camParamsOverrideHandle = Modules.CameraParams.OverridePaladinCameraParams(base.cameraTargetParams, PaladinCameraParams.CRUEL_SUN, 1f);
         }
 
         public override void FixedUpdate()
@@ -63,16 +63,15 @@ namespace PaladinMod.States.Spell
             base.PlayAnimation("Gesture, Override", "CastSun", "Spell.playbackRate", 0.25f);
         }
 
-        protected override void Exit()
+        protected override void OnChanneledSpellExit()
         {
-            //Effect moved here so that Scepter version doesn't get an explosion when starting the throw.
-            if ((bool)Modules.Assets.paladinSunSpawnPrefab)
-            {
-                EffectManager.SimpleImpactEffect(Modules.Assets.paladinSunSpawnPrefab, sunInstance.transform.position, Vector3.up, transmit: false);
-            }
 
-            if (NetworkServer.active)
-            {
+            if (NetworkServer.active) {
+
+                //Effect moved here so that Scepter version doesn't get an explosion when starting the throw.
+                if ((bool)Modules.Assets.paladinSunSpawnPrefab) {
+                    EffectManager.SimpleImpactEffect(Modules.Assets.paladinSunSpawnPrefab, sunInstance.transform.position, Vector3.up, transmit: true);
+                }
                 this.sunInstance.GetComponent<GenericOwnership>().ownerObject = null;
                 this.sunInstance = null;
             }
@@ -82,9 +81,10 @@ namespace PaladinMod.States.Spell
 
         private GameObject SpawnPaladinSun(GameObject prefab, Vector3 spawnPosition)
         {
-            GameObject sun = UnityEngine.Object.Instantiate<GameObject>(prefab, spawnPosition, Quaternion.identity, this.characterBody.transform);
+            GameObject sun = UnityEngine.Object.Instantiate<GameObject>(prefab, spawnPosition, Quaternion.identity, transform);
             sun.GetComponent<GenericOwnership>().ownerObject = base.gameObject;
             NetworkServer.Spawn(sun);
+            sun.GetComponent<PaladinSunNetworkController>().RpcPosition(gameObject);
             return sun;
         }
     }

@@ -5,6 +5,16 @@ using UnityEngine;
 using UnityEngine.Networking;
 using PaladinMod;
 using RoR2.Projectile;
+using System;
+
+public class PaladinSunNetworkController : NetworkBehaviour {
+
+	[ClientRpc]
+	public void RpcPosition(GameObject parentTransform) {
+		transform.SetParent(parentTransform.transform);
+		transform.localPosition = new Vector3(0, 10, 0);
+	}
+}
 
 [RequireComponent(typeof(TeamFilter))]
 public class PaladinSunController : MonoBehaviour
@@ -130,53 +140,60 @@ public class PaladinSunController : MonoBehaviour
 				CharacterBody body = hurtBox.healthComponent.body;
 				//Only perform extra logic IF ALL ARE TRUE:
 				//ownerBody still exists (avoids NRE)
-				//The target is an enemy OR the ally damage setting is above 0
+				//The target is an enemy OR The target is an ally and has less than 3 stacks of overheat (capping ally overheat at 3)
 				//The target is NOT immune to overheat, OR they are not a player (gets around Grandparent immunity)
 				//Known possible issue (untested): might still affect enemies who have Ben's Raincoat because of this logic
-				if ( ownerBody &&
-					( (body.teamComponent.teamIndex != ownerBody.teamComponent.teamIndex) || StaticValues.cruelSunAllyDamageMultiplier > 0 ) &&
-					( (body.bodyFlags & CharacterBody.BodyFlags.OverheatImmune) == 0 || body.teamComponent.teamIndex != TeamIndex.Player ) ){
-					Vector3 corePosition = body.corePosition;
-					Ray ray = new Ray(position, corePosition - position);
-					if (!Physics.Linecast(position, corePosition, out var hitInfo, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
-					{
-						//Grandparent's Overheat debuff duration gets longer the closer you are to it to discourage approaching, but this mechanic seems unneccessary here.
-						//float distanceFromSun = Mathf.Max(1f, hitInfo.distance);
-						//body.AddTimedBuff(buffDef, StaticValues.cruelSunOverheatDuration / distanceFromSun);
-						body.AddTimedBuff(buffDef, StaticValues.cruelSunOverheatDuration);
-						if ((bool)buffApplyEffect)
-						{
-							EffectData effectData = new EffectData
-							{
-								origin = corePosition,
-								rotation = Util.QuaternionSafeLookRotation(-ray.direction),
-								scale = body.bestFitRadius
-							};
-							effectData.SetHurtBoxReference(hurtBox);
-							EffectManager.SpawnEffect(buffApplyEffect, effectData, transmit: true);
-						}
 
-						int overheatCount = body.GetBuffCount(buffDef);
-						if (overheatCount >= StaticValues.cruelSunMinimumStacksBeforeApplyingBurns)
+				if(ownerBody) {
+
+					bool isEnemy = (body.teamComponent.teamIndex != ownerBody.teamComponent.teamIndex);
+					bool affectPlayer = !isEnemy && StaticValues.cruelSunAllyDamageMultiplier > 0 && body.GetBuffCount(RoR2Content.Buffs.Overheat) < 3;
+					bool overrideEnemyImmune = ((body.bodyFlags & CharacterBody.BodyFlags.OverheatImmune) == 0 || body.teamComponent.teamIndex != TeamIndex.Player);
+                    if ((isEnemy || affectPlayer) && overrideEnemyImmune) {
+
+						Vector3 corePosition = body.corePosition;
+						Ray ray = new Ray(position, corePosition - position);
+						if (!Physics.Linecast(position, corePosition, out var hitInfo, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
 						{
-							InflictDotInfo dotInfo = default(InflictDotInfo);
-							dotInfo.dotIndex = DotController.DotIndex.Burn;
-							dotInfo.attackerObject = ownerObj;
-							dotInfo.victimObject = body.gameObject;
-							if ((bool)ownerBody && (bool)ownerBody.inventory)
+							//Grandparent's Overheat debuff duration gets longer the closer you are to it to discourage approaching, but this mechanic seems unneccessary here.
+							//float distanceFromSun = Mathf.Max(1f, hitInfo.distance);
+							//body.AddTimedBuff(buffDef, StaticValues.cruelSunOverheatDuration / distanceFromSun);
+							body.AddTimedBuff(buffDef, StaticValues.cruelSunOverheatDuration);
+							if ((bool)buffApplyEffect)
 							{
-								TeamDef teamDef = TeamCatalog.GetTeamDef(ownerBody.teamComponent.teamIndex);
-								float ffScale = 1f;
-								if (teamDef != null && teamDef.friendlyFireScaling > 0f) { ffScale *= teamDef.friendlyFireScaling; }
-								if (body.teamComponent.teamIndex == ownerBody.teamComponent.teamIndex & body != ownerBody){ ffScale *= StaticValues.cruelSunAllyDamageMultiplier; }
-								dotInfo.totalDamage = StaticValues.cruelSunBurnDamageCoefficient * ownerBody.damage * (float)overheatCount * ffScale;
-								dotInfo.damageMultiplier = 1f * ffScale;
-								StrengthenBurnUtils.CheckDotForUpgrade(ownerBody.inventory, ref dotInfo);
+								EffectData effectData = new EffectData
+								{
+									origin = corePosition,
+									rotation = Util.QuaternionSafeLookRotation(-ray.direction),
+									scale = body.bestFitRadius
+								};
+								effectData.SetHurtBoxReference(hurtBox);
+								EffectManager.SpawnEffect(buffApplyEffect, effectData, transmit: true);
 							}
-							if (dotInfo.totalDamage > 0) DotController.InflictDot(ref dotInfo);
+
+							int overheatCount = body.GetBuffCount(buffDef);
+							if (overheatCount >= StaticValues.cruelSunMinimumStacksBeforeApplyingBurns)
+							{
+								InflictDotInfo dotInfo = default(InflictDotInfo);
+								dotInfo.dotIndex = DotController.DotIndex.Burn;
+								dotInfo.attackerObject = ownerObj;
+								dotInfo.victimObject = body.gameObject;
+								if ((bool)ownerBody && (bool)ownerBody.inventory)
+								{
+									TeamDef teamDef = TeamCatalog.GetTeamDef(ownerBody.teamComponent.teamIndex);
+									float ffScale = 1f;
+									if (teamDef != null && teamDef.friendlyFireScaling > 0f) { ffScale *= teamDef.friendlyFireScaling; }
+									if (body.teamComponent.teamIndex == ownerBody.teamComponent.teamIndex & body != ownerBody){ ffScale *= StaticValues.cruelSunAllyDamageMultiplier; }
+									dotInfo.totalDamage = StaticValues.cruelSunBurnDamageCoefficient * ownerBody.damage * (float)overheatCount * ffScale;
+									dotInfo.damageMultiplier = 1f * ffScale;
+									StrengthenBurnUtils.CheckDotForUpgrade(ownerBody.inventory, ref dotInfo);
+								}
+								if (dotInfo.totalDamage > 0) DotController.InflictDot(ref dotInfo);
+							}
 						}
 					}
 				}
+
 			}
 			cycleIndex++;
 		}
@@ -189,7 +206,7 @@ public class PaladinSunController : MonoBehaviour
 		}
 	}
 
-	private void SearchForTargets(List<HurtBox> dest)
+    private void SearchForTargets(List<HurtBox> dest)
 	{
 		bullseyeSearch.searchOrigin = base.transform.position;
 		bullseyeSearch.minAngleFilter = 0f;

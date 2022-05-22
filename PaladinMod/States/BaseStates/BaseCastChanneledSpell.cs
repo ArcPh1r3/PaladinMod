@@ -84,13 +84,17 @@ namespace PaladinMod.States
             }
         }
 
-        public override void OnExit()
-        {
-            Exit();
+        public override void OnExit() {
+            OnChanneledSpellExit();
 
             base.OnExit();
 
             if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.Slow50);
+
+            disposeCamera();
+        }
+
+        protected void disposeCamera() {
 
             if (base.cameraTargetParams) {
 
@@ -100,7 +104,7 @@ namespace PaladinMod.States
         }
 
         //Calling our derived logic. By allowing our children classes to override this instead of overriding OnExit, children can inherit from other children and maintain entirely seperate OnExit behaviors that still use the BaseCastChanneledSpellState OnExit.
-        protected virtual void Exit()
+        protected virtual void OnChanneledSpellExit()
         {
         }
 

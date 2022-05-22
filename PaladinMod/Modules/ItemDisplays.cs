@@ -2764,7 +2764,6 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
             }
             
             itemDisplayRuleSet.keyAssetRuleGroups = itemDisplayRules.ToArray();
-            itemDisplayRuleSet.GenerateRuntimeValues(); 
         }
 
         #region negro displays
