@@ -12,7 +12,7 @@ public class PaladinSunNetworkController : NetworkBehaviour {
 	[ClientRpc]
 	public void RpcPosition(GameObject parentTransform) {
 		transform.SetParent(parentTransform.transform);
-		transform.localPosition = new Vector3(0, 10, 0);
+		transform.localPosition = new Vector3(0, 11, 0);
 	}
 }
 
@@ -147,7 +147,7 @@ public class PaladinSunController : MonoBehaviour
 				if(ownerBody) {
 
 					bool isEnemy = (body.teamComponent.teamIndex != ownerBody.teamComponent.teamIndex);
-					bool affectPlayer = !isEnemy && StaticValues.cruelSunAllyDamageMultiplier > 0 && body.GetBuffCount(RoR2Content.Buffs.Overheat) < 3;
+					bool affectPlayer = !isEnemy && StaticValues.cruelSunAllyDamageMultiplier > 0 && body.GetBuffCount(RoR2Content.Buffs.Overheat) < StaticValues.cruelSunMaximumAllyStacks;
 					bool overrideEnemyImmune = ((body.bodyFlags & CharacterBody.BodyFlags.OverheatImmune) == 0 || body.teamComponent.teamIndex != TeamIndex.Player);
                     if ((isEnemy || affectPlayer) && overrideEnemyImmune) {
 

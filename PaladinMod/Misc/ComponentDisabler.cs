@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-    public class ComponentDisabler : MonoBehaviour {
+public class ComponentDisabler : MonoBehaviour {
 
         [SerializeField]
         private Behaviour[] MoreComponentsToDisable;
@@ -14,4 +14,4 @@
                 nig.enabled = false;
             }
         }
-    } 
+} 

@@ -74,6 +74,8 @@ namespace PaladinMod
             instance = this;
             logger = base.Logger;
 
+            gameObject.AddComponent<TestValueManager>();
+
             // load assets and read config
             Modules.Assets.PopulateAssets();
             Modules.Config.ReadConfig();

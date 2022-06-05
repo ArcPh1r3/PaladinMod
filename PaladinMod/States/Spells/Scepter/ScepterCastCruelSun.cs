@@ -29,7 +29,7 @@ namespace PaladinMod.States.Spell
 
         public override void FixedUpdate()
         {
-            if (!sunLaunched && base.isAuthority && base.inputBank.skill4.down && base.fixedAge >= 0.2f)
+            if (!sunLaunched && base.isAuthority && base.inputBank.skill4.down && base.fixedAge >= 0.5f)
             {
                 //Only set up the aim indicator once.
                 if (!sunAim) {

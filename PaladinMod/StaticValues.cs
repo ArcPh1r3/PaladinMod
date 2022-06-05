@@ -105,22 +105,25 @@
         public const float cruelSunChannelDurationOld = 5f;
         public const float cruelSunChannelDuration = 2.5f;
         public const float cruelSunDuration = 12.5f;
-        public const float cruelSunVfxSize = 0.375f;
-        public const float cruelSunAoE = 52.5f;
+        public static float cruelSunVfxSize = 0.35f;
+        public static float cruelSunVfxCenterSize = 9.5f;
+        public static float cruelSunVfxLightIntensity = 0.275f;
+        public static float cruelSunAoE = 60f;
         public const float cruelSunCycleInterval = 0.5f;
         public const float cruelSunOverheatDuration = 1f;
         public const int cruelSunMinimumStacksBeforeApplyingBurns = 2;
+        public const int cruelSunMaximumAllyStacks = 3;
         public const float cruelSunBurnDamageCoefficient = 1.5f;
-        public const float cruelSunAllyDamageMultiplier = 0.2f;
+        public static float cruelSunAllyDamageMultiplier = 0.2f;
 
         //Pride Flare(Cruel Sun Scepter)
-        public const float prideFlareExplosionRadius = cruelSunAoE;
-        public const float prideFlareMaxIndicatorRange = cruelSunAoE * 2f;
+        public static float prideFlareExplosionRadius = cruelSunAoE;
+        public static float prideFlareMaxIndicatorRange = cruelSunAoE * 2f;
         public const float prideFlareDamageCoefficient = 90.01f;
         public const float prideFlareProcCoefficient = 1f;
         public const float prideFlareForce = 500f;
         public const float prideFlareSelfForce = 10f;
-        public const float prideFlareSpeed = cruelSunAoE * 0.4f;
+        public static float prideFlareSpeed = cruelSunAoE * 0.4f;
         public const float prideFlareAimTimeMax = 3f;
     }
 }

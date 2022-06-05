@@ -419,11 +419,11 @@ namespace PaladinMod.Modules
             paladinSunPrefab.GetComponent<NetworkStateMachine>().stateMachines[0] = esmPaladin;
 
             //VFX - Use StaticValues.cruelSunVfxSize to control the scale, changing anything here will cause it not to align with gameplay logic anymore.
-            paladinSunPrefab.transform.localScale = new Vector3(StaticValues.cruelSunVfxSize, StaticValues.cruelSunVfxSize, StaticValues.cruelSunVfxSize);
+            paladinSunPrefab.transform.localScale = Vector3.one * StaticValues.cruelSunVfxSize;
             paladinSunPrefab.transform.Find("VfxRoot/LightSpinner/LightSpinner/Point Light").GetComponent<Light>().intensity *= StaticValues.cruelSunVfxSize;
             paladinSunPrefab.transform.Find("VfxRoot/LightSpinner/LightSpinner/Point Light").GetComponent<Light>().range = 200 * StaticValues.cruelSunVfxSize;
-            paladinSunPrefab.transform.Find("VfxRoot/Mesh/SunMesh").transform.localScale = new Vector3(10, 10, 10);
-            paladinSunPrefab.transform.Find("VfxRoot/Mesh/AreaIndicator").transform.localScale = new Vector3(105, 105, 105);
+            paladinSunPrefab.transform.Find("VfxRoot/Mesh/SunMesh").transform.localScale = Vector3.one * StaticValues.cruelSunVfxCenterSize;
+            paladinSunPrefab.transform.Find("VfxRoot/Mesh/AreaIndicator").transform.localScale = Vector3.one * 180;
 
             //Removing some distracting effects that don't work well here (imo).
             Object.DestroyImmediate(paladinSunPrefab.transform.Find("VfxRoot/Mesh/SunMesh/MoonMesh").gameObject);
@@ -441,7 +441,7 @@ namespace PaladinMod.Modules
             //Cruel Sun spawn explosion effect
             paladinSunSpawnPrefab = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Grandparent/GrandParentSunSpawn.prefab").WaitForCompletion(), "PaladinSunSpawn", false);
             paladinSunSpawnPrefab.transform.localScale = new Vector3(StaticValues.cruelSunVfxSize, StaticValues.cruelSunVfxSize, StaticValues.cruelSunVfxSize);
-            paladinSunSpawnPrefab.transform.Find("Point Light").GetComponent<Light>().intensity *= StaticValues.cruelSunVfxSize;
+            paladinSunSpawnPrefab.transform.Find("Point Light").GetComponent<Light>().intensity *= StaticValues.cruelSunVfxLightIntensity;
             paladinSunSpawnPrefab.transform.Find("Point Light").GetComponent<Light>().range = 200 * StaticValues.cruelSunVfxSize;
             paladinSunSpawnPrefab.GetComponent<DestroyOnTimer>().duration = 1.5f;
             AddEffect(paladinSunSpawnPrefab, "Play_grandparent_attack3_sun_spawn");

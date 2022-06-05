@@ -39,7 +39,7 @@ namespace PaladinMod.Modules
 
             //these settings are extreme for testing purposes, camera is borked anyway
             //cruelSunCameraParams = NewCameraParams("ccpPaladinCruelSun", 70f, 3f, new Vector3(0f, 100f, -240f));
-            cruelSunCameraParams = NewCameraParams("ccpPaladinCruelSun", 70f, 1.65f, new Vector3(0f, 4f, -18f));
+            cruelSunCameraParams = NewCameraParams("ccpPaladinCruelSun", 70f, 1.65f, new Vector3(0f, 5f, -22f));
 
             rageEnterCameraParams = NewCameraParams("ccpPaladinRageEnter", 70f, defaultVerticalOffset, new Vector3(0f, -1.2f, -8.5f));
             rageEnterOutCameraParams = NewCameraParams("ccpPaladinRageEnterOut", 70f, defaultVerticalOffset, new Vector3(0f, 0.75f, -12f));

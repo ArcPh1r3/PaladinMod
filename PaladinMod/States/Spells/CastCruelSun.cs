@@ -1,5 +1,6 @@
 ﻿using PaladinMod.Misc;
 using RoR2;
+using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -22,7 +23,7 @@ namespace PaladinMod.States.Spell
 
             if (NetworkServer.active)
             {
-                this.sunSpawnPosition = this.characterBody.corePosition + new Vector3(0f, 10f, 0f);
+                this.sunSpawnPosition = this.characterBody.corePosition + new Vector3(0f, 11f, 0f);
                 if (sunPrefab && sunSpawnPosition != null) sunInstance = SpawnPaladinSun(sunPrefab, sunSpawnPosition.Value);
             }
 
