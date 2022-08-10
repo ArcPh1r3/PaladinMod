@@ -188,16 +188,30 @@ namespace PaladinMod.Misc
 
 
         private LinkedList<Vector3> swordPointings = new LinkedList<Vector3>();
-        private int swordPointingIndex = 0; 
+        private bool swinging;
+        private Vector3[] tipPath = new Vector3[3] { Vector3.zero, Vector3.zero, Vector3.zero, };
 
         void FixedUpdate()
         {
             if (weaponTip)
             {
-                if(swordPointings.Count > 10)
-                    swordPointings.RemoveFirst();
+                Vector3 newPoint = Camera.main.transform.InverseTransformPoint(weaponTip.position);
 
-                swordPointings.AddLast(weaponTip.forward);
+                if (newPoint != tipPath[0])
+                {
+                    tipPath[2] = tipPath[1];
+                    tipPath[1] = tipPath[0];
+                    tipPath[0] = newPoint;
+                }
+
+                swinging = (Time.fixedDeltaTime * 8) < (Vector3.Distance(tipPath[0], tipPath[2]) / 2);
+                if (swinging)
+                {
+                    if (swordPointings.Count > 10)
+                        swordPointings.RemoveFirst();
+
+                    swordPointings.AddLast(weaponTip.forward);
+                }
             }
         }
 
@@ -211,6 +225,13 @@ namespace PaladinMod.Misc
                 node = node.Next;
             }
             return pointingDirection;
+        }
+
+        public Vector3 GetSlashUpward()
+        {
+            var zAxis = Camera.main.transform.forward;
+            var xAxis = swordPointings.Last.Value - swordPointings.Last.Previous.Value;
+            return Vector3.Cross(xAxis, zAxis);
         }
 
     }
