@@ -66,11 +66,11 @@ public class WeaponTrail : MonoBehaviour
 
     #region Public
     public float height = 1.4f;
-    public float time = 0.25f;
+    public float time = 0.15f;
     public bool alwaysUp = false;
     public float minDistance = 0f;
     public float timeTransitionSpeed = 1f;
-    public float desiredTime = 0.25f;
+    public float desiredTime = 0.15f;
     public Color startColor = Color.white;
     public Color endColor = new Color(1, 1, 1, 0);
     #endregion

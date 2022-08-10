@@ -201,7 +201,7 @@ namespace PaladinMod.Misc
 
         public void PlaySwingSound()
         {
-            Util.PlaySound(this.skinInfo.swingSoundString, base.gameObject);
+            Util.PlaySound(this.skinInfo.swingSoundString, (PaladinPlugin.IsLocalVRPlayer(body))?VRAPI.MotionControls.dominantHand.muzzle.gameObject : base.gameObject);
         }
 
         public void PlayHitSound(int index)
@@ -210,15 +210,15 @@ namespace PaladinMod.Misc
             {
                 case 0:
                     if (this.isBlunt) Util.PlaySound(Modules.Sounds.HitBluntS, base.gameObject);
-                    else Util.PlaySound(Modules.Sounds.HitS, base.gameObject);
+                    else Util.PlaySound(Modules.Sounds.HitS, (PaladinPlugin.IsLocalVRPlayer(body)) ? VRAPI.MotionControls.dominantHand.muzzle.gameObject : base.gameObject);
                     break;
                 case 1:
                     if (this.isBlunt) Util.PlaySound(Modules.Sounds.HitBluntM, base.gameObject);
-                    else Util.PlaySound(Modules.Sounds.HitM, base.gameObject);
+                    else Util.PlaySound(Modules.Sounds.HitM, (PaladinPlugin.IsLocalVRPlayer(body)) ? VRAPI.MotionControls.dominantHand.muzzle.gameObject : base.gameObject);
                     break;
                 case 2:
                     if (this.isBlunt) Util.PlaySound(Modules.Sounds.HitBluntL, base.gameObject);
-                    else Util.PlaySound(Modules.Sounds.HitL, base.gameObject);
+                    else Util.PlaySound(Modules.Sounds.HitL, (PaladinPlugin.IsLocalVRPlayer(body)) ? VRAPI.MotionControls.dominantHand.muzzle.gameObject : base.gameObject);
                     break;
             }
         }

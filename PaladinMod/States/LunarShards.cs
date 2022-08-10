@@ -45,7 +45,9 @@ namespace PaladinMod.States
             base.AddRecoil(-0.4f * LunarShards.recoilAmplitude, -0.8f * LunarShards.recoilAmplitude, -0.3f * LunarShards.recoilAmplitude, 0.3f * LunarShards.recoilAmplitude);
             base.characterBody.AddSpreadBloom(LunarShards.spreadBloomValue);
 
-            EffectManager.SimpleMuzzleFlash(EntityStates.BrotherMonster.Weapon.FireLunarShards.muzzleFlashEffectPrefab, base.gameObject, "HandL", false);
+            // Too shiny in VR
+            if (!PaladinPlugin.IsLocalVRPlayer(characterBody))
+                EffectManager.SimpleMuzzleFlash(EntityStates.BrotherMonster.Weapon.FireLunarShards.muzzleFlashEffectPrefab, base.gameObject, "HandL", false);
             Util.PlaySound(EntityStates.BrotherMonster.Weapon.FireLunarShards.fireSound, base.gameObject);
 
             base.skillLocator.secondary.rechargeStopwatch = 0f;

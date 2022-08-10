@@ -9,6 +9,7 @@ namespace PaladinMod.Misc
     public class PaladinVRController : MonoBehaviour
     {
         private PaladinSwordController swordController;
+        private Transform weaponTip;
 
         void OnEnable()
         {
@@ -63,7 +64,7 @@ namespace PaladinMod.Misc
         {
             if (PaladinPlugin.IsLocalVRPlayer(self.characterBody) && self.characterBody.name.Contains("RobPaladinBody"))
             {
-                if (self is States.LunarShards || self is States.Spell.ChannelSmallHeal || self is States.ThrowLightningSpear 
+                if (self is States.LunarShards || self is States.Spell.ChannelSmallHeal || self is States.ThrowLightningSpear
                     || self is States.Spell.ChannelCruelSun || self is States.Spell.ChannelCruelSunOld)
                     return MotionControls.nonDominantHand.aimRay;
             }
@@ -92,6 +93,8 @@ namespace PaladinMod.Misc
 
                 swordController = base.GetComponent<PaladinSwordController>();
                 swordController.lightningEffect = vrWeaponChildLocator.FindChild("SwordLightningEffect").GetComponentInChildren<ParticleSystem>();
+
+                weaponTip = vrWeaponChildLocator.FindChild("WeaponTip");
 
                 List<GameObject> allVRWeapons = new List<GameObject>()
                 {
@@ -181,6 +184,33 @@ namespace PaladinMod.Misc
                     allVROffHands[0].SetActive(true);
                 }
             }
+        }
+
+
+        private LinkedList<Vector3> swordPointings = new LinkedList<Vector3>();
+        private int swordPointingIndex = 0; 
+
+        void FixedUpdate()
+        {
+            if (weaponTip)
+            {
+                if(swordPointings.Count > 10)
+                    swordPointings.RemoveFirst();
+
+                swordPointings.AddLast(weaponTip.forward);
+            }
+        }
+
+        public Vector3 GetSwordPointing()
+        {
+            LinkedListNode<Vector3> node = swordPointings.First;
+            Vector3 pointingDirection = node.Value;
+            while (node.Next != null)
+            {
+                pointingDirection = Vector3.Lerp(pointingDirection, node.Next.Value, 0.5f);
+                node = node.Next;
+            }
+            return pointingDirection;
         }
 
     }

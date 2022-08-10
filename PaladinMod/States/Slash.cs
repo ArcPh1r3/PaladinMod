@@ -33,6 +33,7 @@ namespace PaladinMod.States
         private BaseState.HitStopCachedState hitStopCachedState;
         private PaladinSwordController swordController;
         private Vector3 storedVelocity;
+        private PaladinVRController vrController;
 
         public override void OnEnter()
         {
@@ -43,6 +44,7 @@ namespace PaladinMod.States
             this.cancelling = false;
             this.animator = base.GetModelAnimator();
             this.swordController = base.GetComponent<PaladinSwordController>();
+            this.vrController = base.GetComponent<PaladinVRController>();
             base.StartAimMode(0.5f + this.duration, false);
             base.characterBody.isSprinting = false;
             base.characterBody.outOfCombatStopwatch = 0f;
@@ -123,11 +125,24 @@ namespace PaladinMod.States
 
         protected virtual void FireSwordBeam()
         {
-            Ray aimRay = base.GetAimRay();
 
-            if (this.swordController && this.swordController.swordActive)
+            if (PaladinPlugin.IsLocalVRPlayer(base.characterBody))
             {
-                ProjectileManager.instance.FireProjectile(Modules.Projectiles.swordBeamProjectile, aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, StaticValues.beamDamageCoefficient * this.damageStat, 0f, Util.CheckRoll(this.critStat, base.characterBody.master), DamageColorIndex.WeakPoint, null, StaticValues.beamSpeed);
+                if (this.swordController && this.swordController.swordActive)
+                {
+                    // using mainly where the player is looking at, but adding a little of sword pointing direaction
+                    Vector3 direction = Vector3.Lerp(Camera.main.transform.forward, vrController.GetSwordPointing(), 0.1f);
+                    ProjectileManager.instance.FireProjectile(Modules.Projectiles.swordBeamProjectile, Camera.main.transform.position, Util.QuaternionSafeLookRotation(direction), base.gameObject, StaticValues.beamDamageCoefficient * this.damageStat, 0f, Util.CheckRoll(this.critStat, base.characterBody.master), DamageColorIndex.WeakPoint, null, StaticValues.beamSpeed);
+                }
+            }
+            else
+            {
+                Ray aimRay = base.GetAimRay();
+
+                if (this.swordController && this.swordController.swordActive)
+                {
+                    ProjectileManager.instance.FireProjectile(Modules.Projectiles.swordBeamProjectile, aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, StaticValues.beamDamageCoefficient * this.damageStat, 0f, Util.CheckRoll(this.critStat, base.characterBody.master), DamageColorIndex.WeakPoint, null, StaticValues.beamSpeed);
+                }
             }
         }
 
@@ -206,7 +221,7 @@ namespace PaladinMod.States
                 if (this.animator) this.animator.SetFloat("Slash.playbackRate", 0f);
             }
 
-            if (this.stopwatch >= this.duration * 0.2669f && this.stopwatch <= this.duration * 0.4f)
+            if (this.stopwatch >= this.duration * 0.2669f && this.stopwatch <= this.duration * 0.4f || PaladinPlugin.IsLocalVRPlayer(characterBody))
             {
                 this.FireAttack(); 
             }
