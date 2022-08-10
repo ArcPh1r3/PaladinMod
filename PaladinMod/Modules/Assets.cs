@@ -17,6 +17,7 @@ namespace PaladinMod.Modules
     {
         //the bundle to load assets from
         public static AssetBundle mainAssetBundle;
+        public static AssetBundle VRAssetBundle = null;
 
         //character portrait
         public static Texture charPortrait;
@@ -183,6 +184,27 @@ namespace PaladinMod.Modules
 
         #region PostProcessing
         internal static PostProcessProfile grandParentPP;
+        #endregion
+
+
+        #region VRAssets
+        public static GameObject vrPaladinDominantHand;
+        public static GameObject vrPaladinNonDominantHand;
+
+        public static void loadVRBundle()
+        {
+
+            if (VRAssetBundle == null)
+            {
+                using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("PaladinMod.paladinvr"))
+                {
+                    VRAssetBundle = AssetBundle.LoadFromStream(assetStream);
+                }
+            }
+
+            vrPaladinDominantHand = VRAssetBundle.LoadAsset<GameObject>("PaladinDominantHand");
+            vrPaladinNonDominantHand = VRAssetBundle.LoadAsset<GameObject>("PaladinNonDominantHand");
+        }
         #endregion
 
         internal static List<EffectDef> effectDefs = new List<EffectDef>();

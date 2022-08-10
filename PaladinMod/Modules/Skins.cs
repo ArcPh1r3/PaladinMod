@@ -14,6 +14,7 @@ namespace PaladinMod.Modules
         private static CharacterSelectSurvivorPreviewDisplayController paladinCSSPreviewController;
         private static SkinChangeResponse[] defaultResponses;
 
+
         public enum paladinCSSEffect {
             DEFAULT,
             LUNAR,
@@ -189,7 +190,69 @@ namespace PaladinMod.Modules
             mat.SetInt("_Cull", 0);
             return mat;
         }
-#endregion
+        #endregion
+
+
+        #region GET SKIN
+        public static Dictionary<int, string> SkinIdices = new Dictionary<int, string>();
+        public static List<SkinDef> skinDefs = new List<SkinDef>();
+
+        public enum PaladinSkin
+        {
+            NONE = -1,
+            DEFAULT,
+            MASTERY,
+            GRANDMASTERY,
+            POISON,
+            CLAY,
+            SPECTER,
+            DRIP,
+            MINECRAFT,
+            LUNARKNIGHT,
+            TYPHOONLEGACY,
+            POISONLEGACY
+        }
+
+        public static bool isPaladinCurrentSkin(CharacterBody characterbody, string skin)
+        {
+            return characterbody.baseNameToken == "PALADIN_NAME" && SkinIdices[(int)characterbody.skinIndex] == skin;
+        }
+
+        public static bool isPaladinCurrentSkin(CharacterBody characterbody, PaladinSkin skin)
+        {
+            return isPaladinCurrentSkin(characterbody, GetFuckingSkinID(skin));
+        }
+
+        public static string GetFuckingSkinID(PaladinSkin skin)
+        {
+            switch (skin)
+            {
+                default:
+                case PaladinSkin.DEFAULT:
+                    return "PALADINBODY_DEFAULT_SKIN_NAME";
+                case PaladinSkin.MASTERY:
+                    return "PALADINBODY_LUNAR_SKIN_NAME";
+                case PaladinSkin.GRANDMASTERY:
+                    return "PALADINBODY_TYPHOON_SKIN_NAME";
+                case PaladinSkin.POISON:
+                    return "PALADINBODY_POISON_SKIN_NAME";
+                case PaladinSkin.CLAY:
+                    return "PALADINBODY_CLAY_SKIN_NAME";
+                case PaladinSkin.SPECTER:
+                    return "PALADINBODY_SPECTER_SKIN_NAME";
+                case PaladinSkin.DRIP:
+                    return "PALADINBODY_DRIP_SKIN_NAME";
+                case PaladinSkin.MINECRAFT:
+                    return "PALADINBODY_MINECRAFT_SKIN_NAME";
+                case PaladinSkin.LUNARKNIGHT:
+                    return "PALADINBODY_LUNARKNIGHT_SKIN_NAME";
+                case PaladinSkin.TYPHOONLEGACY:
+                    return "PALADINBODY_TYPHOONLEGACY_SKIN_NAME";
+                case PaladinSkin.POISONLEGACY:
+                    return "PALADINBODY_POISONLEGACY_SKIN_NAME";
+            }
+        }
+        #endregion
 
         public static void RegisterSkins() 
         {
@@ -209,7 +272,7 @@ namespace PaladinMod.Modules
             paladinCSSPreviewController.bodyPrefab = bodyPrefab;
             defaultResponses = paladinCSSPreviewController.skinChangeResponses; 
 
-            List<SkinDef> skinDefs = new List<SkinDef>();
+            skinDefs = new List<SkinDef>();
 
             GameObject cape = childLocator.FindChild("Cape").gameObject;
             GameObject armLeft = childLocator.FindChild("CreepyArmsLeft").gameObject;
@@ -646,6 +709,11 @@ namespace PaladinMod.Modules
             #endregion
 
             skinController.skins = skinDefs.ToArray();
+
+            for (int i = 0; i < skinDefs.Count; i++)
+            {
+                SkinIdices[i] = skinDefs[i].name;
+            }
 
             InitializeNemSkins();
         }

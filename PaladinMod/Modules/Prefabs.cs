@@ -132,6 +132,9 @@ namespace PaladinMod.Modules
             paladinPrefab.AddComponent<Misc.PaladinRageController>();
             paladinPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.AddComponent<Misc.PaladinAnimationEvents>();
 
+            //VR 
+            paladinPrefab.AddComponent<Misc.PaladinVRController>();
+
             ChildLocator childLocator = paladinPrefab.GetComponentInChildren<ChildLocator>();
             Material eyeTrailMat = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/BrotherBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[4].defaultMaterial;
             childLocator.FindChild("EyeTrail").gameObject.GetComponentInChildren<TrailRenderer>().material = eyeTrailMat;

@@ -17,7 +17,7 @@ namespace PaladinMod.Misc
 
         public Vector3 sunPosition;
 
-        private ParticleSystem lightningEffect;
+        public ParticleSystem lightningEffect;
         private Modules.Effects.PaladinSkinInfo skinInfo;
         private CharacterBody body;
         private CharacterModel model;

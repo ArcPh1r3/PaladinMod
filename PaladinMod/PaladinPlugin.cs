@@ -22,6 +22,7 @@ namespace PaladinMod
     [BepInDependency("com.Sivelos.SivsItems", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.K1454.SupplyDrop", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.TeamMoonstorm.Starstorm2", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.DrBibop.VRAPI", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [R2APISubmoduleDependency(new string[]
     {
@@ -65,6 +66,9 @@ namespace PaladinMod
         // ss2 compat
         public static bool starstormInstalled = false;
 
+        // VR compat
+        public static bool VRInstalled = false;
+
         // eh
         public static uint claySkinIndex = 4;
 
@@ -90,6 +94,12 @@ namespace PaladinMod
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamMoonstorm.Starstorm2"))
             {
                 starstormInstalled = true;
+            }
+
+            //VR stuff
+            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DrBibop.VRAPI"))
+            {
+                SetupVR();
             }
 
             Modules.Unlockables.RegisterUnlockables(); // add unlockables
@@ -127,6 +137,18 @@ namespace PaladinMod
             Logger.LogInfo("[Initialized]");
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void SetupVR()
+        {
+            if (!VRAPI.VR.enabled || !VRAPI.MotionControls.enabled) return;
+
+            VRInstalled = true;
+            Modules.Assets.loadVRBundle();
+            VRAPI.MotionControls.AddHandPrefab(Modules.Assets.vrPaladinDominantHand);
+            VRAPI.MotionControls.AddHandPrefab(Modules.Assets.vrPaladinNonDominantHand);
+            VRAPI.MotionControls.AddSkillBindingOverride("RobPaladinBody", SkillSlot.Primary, SkillSlot.Secondary, SkillSlot.Utility, SkillSlot.Special);
+        }
+
         private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
             Modules.Projectiles.LateSetup();
@@ -137,11 +159,15 @@ namespace PaladinMod
         {
             orig();
 
+            ChildLocator childLocator = Modules.Prefabs.paladinPrefab.GetComponentInChildren<ChildLocator>();
+            ReplaceVFXMaterials(childLocator);
+        }
+
+        public static void ReplaceVFXMaterials(ChildLocator childLocator)
+        {
             // this is some godawful code but i'm not sure how else to do this.
 
             Material circleMat = UnityEngine.Object.Instantiate(EntityStates.GolemMonster.ChargeLaser.effectPrefab.transform.Find("Particles").Find("Glow").GetComponent<ParticleSystemRenderer>().material);
-
-            ChildLocator childLocator = Modules.Prefabs.paladinPrefab.GetComponentInChildren<ChildLocator>();
 
             childLocator.FindChild("HealChannelEffect").Find("Orbs").Find("MagicCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
             childLocator.FindChild("HealChannelEffect").Find("Orbs").Find("MagicCircle").Find("BigCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
@@ -174,8 +200,11 @@ namespace PaladinMod
             childLocator.FindChild("ScepterWarcryChannelEffect").Find("Orbs").Find("MagicCircle").Find("MagicCircle2").Find("BigCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
 
             //childLocator.FindChild("SpawnEffect").Find("MagicCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
-            childLocator.FindChild("SpawnEffect").Find("MagicCircle").Find("BigCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
-            childLocator.FindChild("SpawnEffect").Find("MagicCircle").Find("BigCircle").Find("BigCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            if (!VRInstalled)
+            {
+                childLocator.FindChild("SpawnEffect").Find("MagicCircle").Find("BigCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
+                childLocator.FindChild("SpawnEffect").Find("MagicCircle").Find("BigCircle").Find("BigCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
+            }
         }
 
 
@@ -731,5 +760,12 @@ namespace PaladinMod
 
             Modules.Skills.skillDefs.Add(scepterCruelSunDef);
         }
+
+        #region VR Compat
+        public static bool IsLocalVRPlayer(CharacterBody body)
+        {
+            return VRInstalled && body == LocalUserManager.GetFirstLocalUser().cachedBody;
+        }
+        #endregion
     }
 }

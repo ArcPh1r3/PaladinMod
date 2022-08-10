@@ -96,7 +96,9 @@ namespace PaladinMod.States
             //base.characterBody.isSprinting = false;
 
             float charge = this.CalcCharge();
-            if (base.isAuthority && ((!base.IsKeyDownAuthority() && base.fixedAge >= BaseChargeSpellState.minChargeDuration) || base.fixedAge >= this.duration))
+            if (base.isAuthority && ((!base.IsKeyDownAuthority() && base.fixedAge >= BaseChargeSpellState.minChargeDuration) 
+                //|| base.fixedAge >= this.duration  // Why not allow throw on release?
+                ))
             {
                 BaseThrowSpellState nextState = this.GetNextState();
                 nextState.charge = charge;

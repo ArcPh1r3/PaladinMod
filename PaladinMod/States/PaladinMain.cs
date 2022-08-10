@@ -55,14 +55,14 @@ namespace PaladinMod.States
 
             if (this.childLocator)
             {
-                this.childLocator.FindChild("SwordActiveEffect").gameObject.SetActive(false);
+                this.childLocator.FindChild("SwordActiveEffect")?.gameObject.SetActive(false);
                 string effectString = Modules.Effects.GetSkinInfo(this.swordController.skinName).passiveEffectName;
-                if (effectString != "") this.swordActiveEffect = this.childLocator.FindChild(effectString).gameObject;
+                if (effectString != "") this.swordActiveEffect = this.childLocator.FindChild(effectString)?.gameObject;
 
                 //ugly hack because for some reason the sparks are being retarded in this one scene
                 string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
                 if (sceneName != "sulfurpools"){
-                    this.swordTrailEffect = this.childLocator.FindChild("SwordSparksEffect").GetComponent<ParticleSystem>();
+                    this.swordTrailEffect = this.childLocator.FindChild("SwordSparksEffect")?.GetComponent<ParticleSystem>();
                 } 
             }
         }
