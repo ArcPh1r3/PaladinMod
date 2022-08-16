@@ -86,8 +86,9 @@ namespace PaladinMod.Misc
             body.aimOriginTransform = MotionControls.dominantHand.muzzle;
 
             ChildLocator vrWeaponChildLocator = MotionControls.dominantHand.transform.GetComponentInChildren<ChildLocator>();
+            ChildLocator vrOffHandChildLocator = MotionControls.nonDominantHand.transform.GetComponentInChildren<ChildLocator>();
 
-            if (vrWeaponChildLocator)
+            if (vrWeaponChildLocator && vrOffHandChildLocator)
             {
                 PaladinPlugin.ReplaceVFXMaterials(vrWeaponChildLocator);
 
@@ -98,94 +99,114 @@ namespace PaladinMod.Misc
 
                 List<GameObject> allVRWeapons = new List<GameObject>()
                 {
-                    vrWeaponChildLocator.FindChild("PaladinHand").gameObject,
-                    vrWeaponChildLocator.FindChild("ClayPaladinHand").gameObject,
-                    vrWeaponChildLocator.FindChild("PoisonHand").gameObject,
-                    vrWeaponChildLocator.FindChild("PaladinGMSexyHand").gameObject,
-                    vrWeaponChildLocator.FindChild("LunarHand").gameObject,
-                    vrWeaponChildLocator.FindChild("SpecterHand").gameObject,
-                    vrWeaponChildLocator.FindChild("DripHand").gameObject,
-                    vrWeaponChildLocator.FindChild("LunarKnightHand").gameObject,
-                    vrWeaponChildLocator.FindChild("PaladinGMLegacyHand").gameObject,
-                    vrWeaponChildLocator.FindChild("PoisonGMLegacyHand").gameObject
+                    vrWeaponChildLocator.FindChildGameObject("PaladinHand"),
+                    vrWeaponChildLocator.FindChildGameObject("ClayPaladinHand"),
+                    vrWeaponChildLocator.FindChildGameObject("PoisonHand"),
+                    vrWeaponChildLocator.FindChildGameObject("PaladinGMSexyHand"),
+                    vrWeaponChildLocator.FindChildGameObject("LunarHand"),
+                    vrWeaponChildLocator.FindChildGameObject("SpecterHand"),
+                    vrWeaponChildLocator.FindChildGameObject("DripHand"),
+                    vrWeaponChildLocator.FindChildGameObject("LunarKnightHand"),
+                    vrWeaponChildLocator.FindChildGameObject("PaladinGMLegacyHand"),
+                    vrWeaponChildLocator.FindChildGameObject("PoisonGMLegacyHand")
                 };
                 List<GameObject> allVROffHands = new List<GameObject>()
                 {
-                    vrWeaponChildLocator.FindChild("PaladinOffHand").gameObject,
-                    vrWeaponChildLocator.FindChild("ClayPaladinOffHand").gameObject,
-                    vrWeaponChildLocator.FindChild("PoisonOffHand").gameObject,
-                    vrWeaponChildLocator.FindChild("PaladinGMSexyOffHand").gameObject,
-                    vrWeaponChildLocator.FindChild("LunarOffHand").gameObject,
-                    vrWeaponChildLocator.FindChild("SpecterOffHand").gameObject,
-                    vrWeaponChildLocator.FindChild("BareOffHand").gameObject
+                    vrWeaponChildLocator.FindChildGameObject("PaladinOffHand"),
+                    vrWeaponChildLocator.FindChildGameObject("ClayPaladinOffHand"),
+                    vrWeaponChildLocator.FindChildGameObject("PoisonOffHand"),
+                    vrWeaponChildLocator.FindChildGameObject("PaladinGMSexyOffHand"),
+                    vrWeaponChildLocator.FindChildGameObject("LunarOffHand"),
+                    vrWeaponChildLocator.FindChildGameObject("SpecterOffHand"),
+                    vrWeaponChildLocator.FindChildGameObject("BareOffHand")
+                };
+                List<GameObject> allVRNonDominantHands = new List<GameObject>()
+                {
+                    vrOffHandChildLocator.FindChildGameObject("PaladinHand"),
+                    vrOffHandChildLocator.FindChildGameObject("ClayPaladinHand"),
+                    vrOffHandChildLocator.FindChildGameObject("NkuhanaHand"),
+                    vrOffHandChildLocator.FindChildGameObject("PaladinGMSexyHand"),
+                    vrOffHandChildLocator.FindChildGameObject("LunarHand"),
+                    vrOffHandChildLocator.FindChildGameObject("SpecterHand"),
+                    vrOffHandChildLocator.FindChildGameObject("BareHand")
                 };
 
                 foreach (GameObject weaponObject in allVRWeapons)
                 {
-                    weaponObject.SetActive(true);
                     weaponObject.SetActive(false);
                     weaponObject.transform.Find("TrailStart")?.gameObject.AddComponent<WeaponTrail>();
                 }
-
                 foreach (GameObject handObject in allVROffHands)
                 {
-                    handObject.SetActive(true);
                     handObject.SetActive(false);
+                }
+                foreach (GameObject offHandObject in allVRNonDominantHands) 
+                {
+                    offHandObject.SetActive(false);
                 }
 
                 if (Skins.isPaladinCurrentSkin(body, Skins.PaladinSkin.MASTERY))
                 {
                     allVRWeapons[4].SetActive(true);
                     allVROffHands[4].SetActive(true);
+                    allVRNonDominantHands[4].SetActive(true);
                 }
                 else if (Skins.isPaladinCurrentSkin(body, Skins.PaladinSkin.GRANDMASTERY))
                 {
                     allVRWeapons[3].SetActive(true);
                     allVROffHands[3].SetActive(true);
+                    allVRNonDominantHands[3].SetActive(true);
                 }
                 else if (Skins.isPaladinCurrentSkin(body, Skins.PaladinSkin.POISON))
                 {
                     allVRWeapons[2].SetActive(true);
                     allVROffHands[2].SetActive(true);
+                    allVRNonDominantHands[2].SetActive(true);
                 }
                 else if (Skins.isPaladinCurrentSkin(body, Skins.PaladinSkin.CLAY))
                 {
                     allVRWeapons[1].SetActive(true);
                     allVROffHands[1].SetActive(true);
+                    allVRNonDominantHands[1].SetActive(true);
                 }
                 else if (Skins.isPaladinCurrentSkin(body, Skins.PaladinSkin.SPECTER))
                 {
                     allVRWeapons[5].SetActive(true);
                     allVROffHands[5].SetActive(true);
+                    allVRNonDominantHands[5].SetActive(true);
                 }
                 else if (Skins.isPaladinCurrentSkin(body, Skins.PaladinSkin.DRIP))
                 {
                     allVRWeapons[6].SetActive(true);
                     allVROffHands[6].SetActive(true);
+                    allVRNonDominantHands[6].SetActive(true);
                 }
                 else if (Skins.isPaladinCurrentSkin(body, Skins.PaladinSkin.LUNARKNIGHT))
                 {
                     allVRWeapons[7].SetActive(true);
                     allVROffHands[6].SetActive(true);
+                    allVRNonDominantHands[6].SetActive(true);
                 }
                 else if (Skins.isPaladinCurrentSkin(body, Skins.PaladinSkin.TYPHOONLEGACY))
                 {
                     allVRWeapons[8].SetActive(true);
                     allVROffHands[6].SetActive(true);
+                    allVRNonDominantHands[6].SetActive(true);
                 }
                 else if (Skins.isPaladinCurrentSkin(body, Skins.PaladinSkin.POISONLEGACY))
                 {
                     allVRWeapons[9].SetActive(true);
                     allVROffHands[6].SetActive(true);
+                    allVRNonDominantHands[6].SetActive(true);
                 }
                 else
                 {
                     allVRWeapons[0].SetActive(true);
                     allVROffHands[0].SetActive(true);
+                    allVRNonDominantHands[0].SetActive(true);
                 }
             }
         }
-
 
         private LinkedList<Vector3> swordPointings = new LinkedList<Vector3>();
         private bool swinging;

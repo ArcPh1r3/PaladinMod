@@ -1,0 +1,64 @@
+ManifestFileVersion: 0
+CRC: 1415895085
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4007bad33d6629b87a20d4c20b24f497
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2bc7021b1369f94fc56b52643b64aa8a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: e688c30771a3b0d48ab9ee24ae967c38, type: 3}
+- Class: 114
+  Script: {fileID: -244749158, guid: ff42e2aba31e95c4a8a574e41169a593, type: 3}
+- Class: 114
+  Script: {fileID: -1086023540, guid: ff42e2aba31e95c4a8a574e41169a593, type: 3}
+- Class: 114
+  Script: {fileID: 1552514162, guid: ff42e2aba31e95c4a8a574e41169a593, type: 3}
+- Class: 114
+  Script: {fileID: -2038423122, guid: ff42e2aba31e95c4a8a574e41169a593, type: 3}
+- Class: 114
+  Script: {fileID: -932517318, guid: ff42e2aba31e95c4a8a574e41169a593, type: 3}
+- Class: 114
+  Script: {fileID: 396746956, guid: ff42e2aba31e95c4a8a574e41169a593, type: 3}
+- Class: 114
+  Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/VR/Prefabs/PaladinDominantHand.prefab
+- Assets/VR/Prefabs/PaladinNonDominantHand.prefab
+Dependencies: []

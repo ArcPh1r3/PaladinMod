@@ -202,8 +202,8 @@ namespace PaladinMod.Modules
                 }
             }
 
-            vrPaladinDominantHand = VRAssetBundle.LoadAsset<GameObject>("PaladinDominantHand");
-            vrPaladinNonDominantHand = VRAssetBundle.LoadAsset<GameObject>("PaladinNonDominantHand");
+            vrPaladinDominantHand = VRAssetBundle.LoadAsset<GameObject>("PaladinDominantHand").ConvertAllRenderersToHopooShader();
+            vrPaladinNonDominantHand = VRAssetBundle.LoadAsset<GameObject>("PaladinNonDominantHand").ConvertAllRenderersToHopooShader();   
         }
         #endregion
 
@@ -582,6 +582,24 @@ namespace PaladinMod.Modules
             };
 
             return displayPrefab;
+        }
+
+        public static GameObject ConvertAllRenderersToHopooShader(this GameObject rootObject) {
+            if (!rootObject) return rootObject;
+
+            foreach (MeshRenderer i in rootObject.GetComponentsInChildren<MeshRenderer>()) {
+                if (i?.sharedMaterial != null) {
+                    i.sharedMaterial.SetHotpooMaterial();
+                }
+            }
+
+            foreach (SkinnedMeshRenderer i in rootObject.GetComponentsInChildren<SkinnedMeshRenderer>()) {
+                if (i?.sharedMaterial != null) {
+                    i.sharedMaterial.SetHotpooMaterial();
+                }
+            }
+
+            return rootObject;
         }
 
         private static GameObject LoadEffect(string resourceName, string soundName)

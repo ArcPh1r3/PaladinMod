@@ -167,6 +167,6 @@
   </Target>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="if &quot;$(Username)&quot; == &quot;Erikbir&quot; copy /Y &quot;$(ProjectDir)..\PaladinUnityProject\Paladin\AssetBundles\StandaloneWindows\paladin&quot; &quot;$(ProjectDir)&quot;&#xD;&#xA;copy /Y &quot;$(ProjectDir)..\PaladinUnityProject\PaladinVR\AssetBundles\paladinvr&quot; &quot;$(ProjectDir)&quot;" />
+    <Exec Command="copy /Y &quot;$(ProjectDir)..\PaladinUnityProject\AssetBundles\StandaloneWindows\paladin&quot; &quot;$(ProjectDir)&quot;&#xD;&#xA;copy /Y &quot;$(ProjectDir)..\PaladinVRProject\AssetBundles\paladinvr&quot; &quot;$(ProjectDir)&quot;" />
   </Target>
 </Project>

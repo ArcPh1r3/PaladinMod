@@ -194,7 +194,7 @@ namespace PaladinMod.Modules
 
 
         #region GET SKIN
-        public static Dictionary<int, string> SkinIdices = new Dictionary<int, string>();
+        public static Dictionary<uint, string> SkinIdices = new Dictionary<uint, string>();
         public static List<SkinDef> skinDefs = new List<SkinDef>();
 
         public enum PaladinSkin
@@ -215,7 +215,7 @@ namespace PaladinMod.Modules
 
         public static bool isPaladinCurrentSkin(CharacterBody characterbody, string skin)
         {
-            return characterbody.baseNameToken == "PALADIN_NAME" && SkinIdices[(int)characterbody.skinIndex] == skin;
+            return characterbody.baseNameToken == "PALADIN_NAME" && SkinIdices.ContainsKey(characterbody.skinIndex) && SkinIdices[characterbody.skinIndex] == skin;
         }
 
         public static bool isPaladinCurrentSkin(CharacterBody characterbody, PaladinSkin skin)
@@ -712,7 +712,7 @@ namespace PaladinMod.Modules
 
             for (int i = 0; i < skinDefs.Count; i++)
             {
-                SkinIdices[i] = skinDefs[i].name;
+                SkinIdices[(uint)i] = skinDefs[i].name;
             }
 
             InitializeNemSkins();

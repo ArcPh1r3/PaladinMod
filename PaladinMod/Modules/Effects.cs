@@ -8,7 +8,7 @@ namespace PaladinMod.Modules
         private static List<PaladinSkinInfo> skinList;
 
         public static PaladinSkinInfo[] skinInfos;
-
+        
         public struct PaladinSkinInfo
         {
             public string skinName;

@@ -28,7 +28,7 @@ namespace PaladinMod.States.Emotes
             this.childLocator = base.GetModelChildLocator();
             this.swordController = base.GetComponent<PaladinSwordController>();
             this.localUser = LocalUserManager.readOnlyLocalUsersList[0];
-
+            
             base.characterBody.hideCrosshair = true;
 
             if (base.GetAimAnimator()) base.GetAimAnimator().enabled = false;

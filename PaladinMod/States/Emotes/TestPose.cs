@@ -6,6 +6,7 @@
         public override void OnEnter()
         {
             this.animString = "TestPose";
+            this.soundString = Modules.Sounds.MenuSound;
             this.animDuration = 1.6f;
             base.OnEnter();
         }
