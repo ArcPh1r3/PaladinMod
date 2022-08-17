@@ -112,7 +112,7 @@
         public const float cruelSunCycleInterval = 0.5f;
         public const float cruelSunOverheatDuration = 1f;
         public const int cruelSunMinimumStacksBeforeApplyingBurns = 2;
-        public const int cruelSunMaximumAllyStacks = 3;
+        public const int cruelSunMaximumAllyStacks = 2;
         public const float cruelSunBurnDamageCoefficient = 1.5f;
         public static float cruelSunAllyDamageMultiplier = 0.2f;
 

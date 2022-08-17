@@ -199,9 +199,21 @@ namespace PaladinMod.Misc
             ruleset.FindItemDisplayRuleGroup("BleedOnHit").rules[0].localScale = scale;
         }*/
 
-        public void PlaySwingSound()
-        {
-            Util.PlaySound(this.skinInfo.swingSoundString, (PaladinPlugin.IsLocalVRPlayer(body))?VRAPI.MotionControls.dominantHand.muzzle.gameObject : base.gameObject);
+        public void PlaySwingSound() {
+            Util.PlaySound(skinInfo.swingSoundString, GetSoundObject());
+        }
+
+        private GameObject GetSoundObject() {
+            if (PaladinPlugin.IsLocalVRPlayer(body)) {
+                return GetVRMuzzleObject();
+            } else {
+                return gameObject;
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private static GameObject GetVRMuzzleObject() {
+            return VRAPI.MotionControls.dominantHand.muzzle.gameObject;
         }
 
         public void PlayHitSound(int index)
@@ -210,15 +222,15 @@ namespace PaladinMod.Misc
             {
                 case 0:
                     if (this.isBlunt) Util.PlaySound(Modules.Sounds.HitBluntS, base.gameObject);
-                    else Util.PlaySound(Modules.Sounds.HitS, (PaladinPlugin.IsLocalVRPlayer(body)) ? VRAPI.MotionControls.dominantHand.muzzle.gameObject : base.gameObject);
+                    else Util.PlaySound(Modules.Sounds.HitS, GetSoundObject());
                     break;
                 case 1:
                     if (this.isBlunt) Util.PlaySound(Modules.Sounds.HitBluntM, base.gameObject);
-                    else Util.PlaySound(Modules.Sounds.HitM, (PaladinPlugin.IsLocalVRPlayer(body)) ? VRAPI.MotionControls.dominantHand.muzzle.gameObject : base.gameObject);
+                    else Util.PlaySound(Modules.Sounds.HitM, GetSoundObject());
                     break;
                 case 2:
                     if (this.isBlunt) Util.PlaySound(Modules.Sounds.HitBluntL, base.gameObject);
-                    else Util.PlaySound(Modules.Sounds.HitL, (PaladinPlugin.IsLocalVRPlayer(body)) ? VRAPI.MotionControls.dominantHand.muzzle.gameObject : base.gameObject);
+                    else Util.PlaySound(Modules.Sounds.HitL, GetSoundObject());
                     break;
             }
         }

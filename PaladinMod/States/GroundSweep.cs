@@ -96,7 +96,14 @@ namespace PaladinMod.States
 
                     Ray aimRay = base.GetAimRay();
 
-                    base.characterMotor.velocity += (base.characterDirection.forward * 25f);
+                    Vector3 forwardDirection = base.characterDirection.forward;
+                    if (PaladinPlugin.IsLocalVRPlayer(characterBody)) {
+                        forwardDirection = Camera.main.transform.forward;
+                        forwardDirection.y = 0;
+                        forwardDirection = forwardDirection.normalized;
+                    }
+
+                    base.characterMotor.velocity += forwardDirection * 25f;
                 }
             }
 
