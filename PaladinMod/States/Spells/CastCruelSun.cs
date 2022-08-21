@@ -1,4 +1,5 @@
-﻿using PaladinMod.Misc;
+﻿using EntityStates;
+using PaladinMod.Misc;
 using RoR2;
 using System;
 using UnityEngine;
@@ -12,25 +13,24 @@ namespace PaladinMod.States.Spell
         protected GameObject sunInstance;
         private Vector3? sunSpawnPosition;
 
-        public override void OnEnter()
-        {
+        public override void OnEnter() {
             this.baseDuration = this.overrideDuration = StaticValues.cruelSunDuration;
             this.muzzleflashEffectPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/ExplosionSolarFlare");
             this.projectilePrefab = null;
             this.castSoundString = Modules.Sounds.CastTorpor;
 
+            SetCancelSkillOverride();
+
             base.OnEnter();
 
-            if (NetworkServer.active)
-            {
+            if (NetworkServer.active) {
                 this.sunSpawnPosition = this.characterBody.corePosition + new Vector3(0f, 11f, 0f);
                 if (sunPrefab && sunSpawnPosition != null) sunInstance = SpawnPaladinSun(sunPrefab, sunSpawnPosition.Value);
             }
 
             //What does this do??? It's VFX but
             Transform modelTransform = base.GetModelTransform();
-            if (modelTransform)
-            {
+            if (modelTransform) {
                 TemporaryOverlay temporaryOverlay = modelTransform.gameObject.AddComponent<TemporaryOverlay>();
                 temporaryOverlay.duration = this.baseDuration;
                 temporaryOverlay.animateShaderAlpha = true;
@@ -44,13 +44,22 @@ namespace PaladinMod.States.Spell
             camParamsOverrideHandle = Modules.CameraParams.OverridePaladinCameraParams(base.cameraTargetParams, PaladinCameraParams.CRUEL_SUN, 1f);
         }
 
+        protected virtual void SetCancelSkillOverride(bool shouldOverride = true) {
+
+            if (shouldOverride) {
+                skillLocator.special.SetSkillOverride(this, Modules.Skills.cancelSunSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+            } else {
+                skillLocator.special.UnsetSkillOverride(this, Modules.Skills.cancelSunSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+            }
+        }
+
         public override void FixedUpdate()
         {
+            characterBody.isSprinting = false;
+
             if (base.isAuthority && base.inputBank && base.fixedAge >= 0.2f)
             {
-                if (base.inputBank.sprint.wasDown)
-                {
-                    base.characterBody.isSprinting = true;
+                if (base.inputBank.sprint.justPressed && !PaladinPlugin.autoSprintInstalled) {
                     this.outer.SetNextStateToMain();
                     return;
                 }
@@ -76,6 +85,8 @@ namespace PaladinMod.States.Spell
                 this.sunInstance.GetComponent<GenericOwnership>().ownerObject = null;
                 this.sunInstance = null;
             }
+
+            SetCancelSkillOverride(false);
 
             base.PlayAnimation("Gesture, Override", "CastSunEnd", "Spell.playbackRate", 0.8f);
         }

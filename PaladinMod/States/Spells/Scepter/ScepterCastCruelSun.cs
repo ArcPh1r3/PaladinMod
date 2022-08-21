@@ -51,6 +51,10 @@ namespace PaladinMod.States.Spell
             }
             base.FixedUpdate();
         }
+        
+        protected override void SetCancelSkillOverride(bool shouldOverride = true) {
+            return;
+        }
 
         public override void Update()
         {

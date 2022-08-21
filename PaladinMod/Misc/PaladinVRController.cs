@@ -46,14 +46,22 @@ namespace PaladinMod.Misc
         {
             if (PaladinPlugin.IsLocalVRPlayer(self.characterBody) && self.characterBody.name.Contains("RobPaladinBody"))
             {
-                if (self is States.PaladinMain || self is States.Spell.ChannelHealZone|| self is States.Spell.ChannelTorpor || self is States.Spell.ChannelWarcry 
-                    || self is States.Spell.ScepterChannelHealZone || self is States.Spell.ScepterChannelTorpor || self is States.Spell.ScepterChannelWarcry)
+                if (self is States.PaladinMain || 
+                    self is States.Spell.ChannelHealZone|| 
+                    self is States.Spell.ChannelTorpor || 
+                    self is States.Spell.ChannelWarcry || 
+                    self is States.Spell.ScepterChannelHealZone || 
+                    self is States.Spell.ScepterChannelTorpor || 
+                    self is States.Spell.ScepterChannelWarcry)
 
                     return MotionControls.dominantHand.transform.GetComponentInChildren<ChildLocator>();
 
-                else if (self is States.ChargeLightningSpear || self is States.Spell.ChannelSmallHeal
-                    || self is States.Spell.ChannelCruelSun || self is States.Spell.ScepterChannelCruelSun 
-                    || self is States.Spell.ChannelCruelSunOld || self is States.Spell.ScepterChannelCruelSunOld)
+                else if (self is States.ChargeLightningSpear || 
+                         self is States.Spell.ChannelSmallHeal || 
+                         self is States.Spell.ChannelCruelSun || 
+                         self is States.Spell.ScepterChannelCruelSun || 
+                         self is States.Spell.ChannelCruelSunOld || 
+                         self is States.Spell.ScepterChannelCruelSunOld)
 
                     return MotionControls.nonDominantHand.transform.GetComponentInChildren<ChildLocator>();
             }
@@ -64,8 +72,12 @@ namespace PaladinMod.Misc
         {
             if (PaladinPlugin.IsLocalVRPlayer(self.characterBody) && self.characterBody.name.Contains("RobPaladinBody"))
             {
-                if (self is States.LunarShards || self is States.Spell.ChannelSmallHeal || self is States.ThrowLightningSpear
-                    || self is States.Spell.ChannelCruelSun || self is States.Spell.ChannelCruelSunOld)
+                if (self is States.LunarShards || 
+                    self is States.Spell.ChannelSmallHeal || 
+                    self is States.ThrowLightningSpear ||
+                    self is States.Spell.ChannelCruelSun ||
+                    self is States.Spell.ChannelCruelSunOld || 
+                    self is States.Spell.ScepterCastCruelSun)
                     return MotionControls.nonDominantHand.aimRay;
             }
             return orig(self);

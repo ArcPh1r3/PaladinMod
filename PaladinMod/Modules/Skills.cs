@@ -16,6 +16,8 @@ namespace PaladinMod.Modules
         //internal static SkillDef berserkSpinSlashSkillDef;
         internal static SkillDef berserkDashSkillDef;
 
+        internal static SkillDef cancelSunSkillDef;
+
         private static SkillLocator skillLocator;
 
         internal static List<SkillFamily> skillFamilies = new List<SkillFamily>();
@@ -260,7 +262,7 @@ namespace PaladinMod.Modules
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
-            mySkillDef.interruptPriority = InterruptPriority.Skill;
+            mySkillDef.interruptPriority = InterruptPriority.PrioritySkill;
             mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
@@ -392,12 +394,12 @@ namespace PaladinMod.Modules
             if (Config.legacyCruelSun.Value) mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelCruelSunOld));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
-            mySkillDef.baseRechargeInterval = 20f;
+            mySkillDef.baseRechargeInterval = 12f;
             if (Config.legacyCruelSun.Value) mySkillDef.baseRechargeInterval = 40f;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
             mySkillDef.canceledFromSprinting = true;
             if (Config.legacyCruelSun.Value) mySkillDef.canceledFromSprinting = false;
-            mySkillDef.fullRestockOnAssign = true;
+            mySkillDef.fullRestockOnAssign = false;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = true;
@@ -424,6 +426,24 @@ namespace PaladinMod.Modules
                 unlockableDef = Modules.Unlockables.paladinCruelSunSkillDefDef,
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
+
+            cancelSunSkillDef = ScriptableObject.CreateInstance<SkillDef>();
+            cancelSunSkillDef.activationState = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            cancelSunSkillDef.activationStateMachineName = "Weapon";
+            cancelSunSkillDef.baseMaxStock = 0;
+            cancelSunSkillDef.baseRechargeInterval = 0f;
+            cancelSunSkillDef.fullRestockOnAssign = false;
+            cancelSunSkillDef.interruptPriority = InterruptPriority.PrioritySkill;
+            cancelSunSkillDef.resetCooldownTimerOnUse = false;
+            cancelSunSkillDef.isCombatSkill = false;
+            cancelSunSkillDef.mustKeyPress = true;
+            cancelSunSkillDef.rechargeStock = 0;
+            cancelSunSkillDef.requiredStock = 0;
+            cancelSunSkillDef.stockToConsume = 0;
+            cancelSunSkillDef.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("CruelSunIconCancel");
+            cancelSunSkillDef.skillDescriptionToken = "PALADIN_SPECIAL_SUN_CANCEL_DESCRIPTION";
+            cancelSunSkillDef.skillName = "PALADIN_SPECIAL_SUN_CANCEL_NAME";
+            cancelSunSkillDef.skillNameToken = "PALADIN_SPECIAL_SUN_CANCEL_NAME";
 
             //pride flare testing; see PaladinPlugin.cs for real settings (why tho???)
             /*

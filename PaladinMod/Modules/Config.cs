@@ -17,6 +17,7 @@ namespace PaladinMod.Modules
         public static ConfigEntry<KeyCode> restKeybind;
         public static ConfigEntry<KeyCode> swordPoseKeybind;
         public static ConfigEntry<bool> legacyCruelSun;
+        public static ConfigEntry<float> cruelSunMultiplier;
 
         public static void ReadConfig()
         {
@@ -73,6 +74,12 @@ namespace PaladinMod.Modules
                                                          "Cruel Sun",
                                                          false,
                                                          "Use the old version of Cruel Sun.");
+            cruelSunMultiplier =
+                PaladinPlugin.instance.Config.Bind<float>("03 - Legacy",
+                                                          "Pride Flare Multiplier",
+                                                          9001f,
+                                                          "Multiplier for Scepter Cruel Sun damage and force" +
+                                                          "\n will be set to a reasonable value in a later update (2000). For now, have fun c:");
         }
 
 

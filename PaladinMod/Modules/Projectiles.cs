@@ -351,7 +351,7 @@ namespace PaladinMod.Modules
 
             ProjectileImpactExplosion scsPE = scepterCruelSun.GetComponent<ProjectileImpactExplosion>();
             scsPE.blastAttackerFiltering = AttackerFiltering.AlwaysHit;
-            scsPE.blastDamageCoefficient = StaticValues.prideFlareDamageCoefficient;
+            scsPE.blastDamageCoefficient = StaticValues.prideFlareDamageCoefficient * Config.cruelSunMultiplier.Value;
             scsPE.blastProcCoefficient = StaticValues.prideFlareProcCoefficient;
             scsPE.blastRadius = StaticValues.prideFlareExplosionRadius;
             scsPE.falloffModel = BlastAttack.FalloffModel.SweetSpot;

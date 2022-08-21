@@ -119,9 +119,9 @@
         //Pride Flare(Cruel Sun Scepter)
         public static float prideFlareExplosionRadius = cruelSunAoE;
         public static float prideFlareMaxIndicatorRange = cruelSunAoE * 2f;
-        public const float prideFlareDamageCoefficient = 90.01f;
+        public const float prideFlareDamageCoefficient = 0.01f; //multiplied by config value 9001
         public const float prideFlareProcCoefficient = 1f;
-        public const float prideFlareForce = 500f;
+        public const float prideFlareForce = 400f;
         public const float prideFlareSelfForce = 10f;
         public static float prideFlareSpeed = cruelSunAoE * 0.4f;
         public const float prideFlareAimTimeMax = 3f;

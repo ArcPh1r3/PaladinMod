@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 605368404
+CRC: 2085781902
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d9fa885c8bc92d4e9d46238c495150d2
+    Hash: 8c03e0f39a2ce9c524af8a6ad6826db7
   TypeTreeHash:
     serializedVersion: 2
     Hash: 041388fe7ef74db63a68f1d40bd5d735
@@ -218,6 +218,7 @@ Assets:
 - Assets/Paladin/VFX/matEyeTrail.mat
 - Assets/NemPaladin/Materials/matNemPaladin.mat
 - Assets/Paladin/UI/texRageGaugeBase.png
+- Assets/Paladin/Icons/CruelSunIconCancel.png
 - Assets/Paladin/Materials/matPaladinDrip.mat
 - Assets/Paladin/Animations/CastHeal.anim
 - Assets/Paladin/Textures/texClayPaladinEmission.png

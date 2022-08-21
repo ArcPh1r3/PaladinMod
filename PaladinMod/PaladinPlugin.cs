@@ -31,8 +31,8 @@ namespace PaladinMod
         "SoundAPI",
         "UnlockableAPI"
     })]                                  //pushed out a version 69 so we gotta put a 7 here my b
-    [BepInPlugin(MODUID, "Paladin", "1.5.710")]
-
+    [BepInPlugin(MODUID, "Paladin", "1.6.0")]
+    
     public class PaladinPlugin : BaseUnityPlugin
     {
         //keeping id the same so it versions over previous paladin
@@ -69,6 +69,9 @@ namespace PaladinMod
         // VR compat
         public static bool VRInstalled = false;
 
+        // cruel sun acnaceling
+        public static bool autoSprintInstalled = false;
+
         // eh
         public static uint claySkinIndex = 4;
 
@@ -78,7 +81,7 @@ namespace PaladinMod
             instance = this;
             logger = base.Logger;
 
-            gameObject.AddComponent<TestValueManager>();
+            //gameObject.AddComponent<TestValueManager>();
 
             // load assets and read config
             Modules.Assets.PopulateAssets();
@@ -86,15 +89,13 @@ namespace PaladinMod
             Modules.CameraParams.InitializeParams(); // create camera params for our character to use
 
             // modded item displays
-            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.KomradeSpectre.Aetherium")) aetheriumInstalled = true;
-            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Sivelos.SivsItems")) sivsItemsInstalled = true;
-            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.K1454.SupplyDrop")) supplyDropInstalled = true;
+            aetheriumInstalled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.KomradeSpectre.Aetherium");
+            sivsItemsInstalled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Sivelos.SivsItems");
+            supplyDropInstalled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.K1454.SupplyDrop");
 
-            // ss2
-            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamMoonstorm.Starstorm2"))
-            {
-                starstormInstalled = true;
-            }
+            starstormInstalled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamMoonstorm.Starstorm2");
+
+            autoSprintInstalled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.johnedwa.RTAutoSprintEx");
 
             //VR stuff
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DrBibop.VRAPI"))

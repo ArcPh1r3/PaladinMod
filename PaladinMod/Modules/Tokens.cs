@@ -125,6 +125,9 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_SPECIAL_SUN_NAME", "Cruel Sun");
             LanguageAPI.Add("PALADIN_SPECIAL_SUN_DESCRIPTION", desc);
 
+            LanguageAPI.Add("PALADIN_SPECIAL_SUN_CANCEL_NAME", "Cancel Cruel Sun");
+            LanguageAPI.Add("PALADIN_SPECIAL_SUN_CANCEL_DESCRIPTION", "Stop channelling the current Cruel Sun");
+
             if (Config.legacyCruelSun.Value) desc += Helpers.ScepterDescription("Explodes for a massive burst of " + PaladinMod.States.Spell.ScepterCastCruelSunOld.flareDamageCoefficient * 100f + "% damage.");
             else desc += Helpers.ScepterDescription("Cast again and hold to aim, then release to throw the star, exploding for <style=cIsDamage>" + StaticValues.prideFlareDamageCoefficient * 100f + "% damage</style> to <style=cDeath>EVERYTHING</style> around it.");
 
