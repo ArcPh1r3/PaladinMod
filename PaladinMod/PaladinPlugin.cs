@@ -13,6 +13,7 @@ using PaladinMod.Misc;
 using RoR2.Orbs;
 using System.Collections.Generic;
 using BepInEx.Logging;
+using System;
 
 namespace PaladinMod
 {
@@ -145,10 +146,30 @@ namespace PaladinMod
 
             VRInstalled = true;
             Modules.Assets.loadVRBundle();
+
+
             VRAPI.MotionControls.AddHandPrefab(Modules.Assets.vrPaladinDominantHand);
             VRAPI.MotionControls.AddHandPrefab(Modules.Assets.vrPaladinNonDominantHand);
+
+            VRAPI.MotionControls.onHandPairSet += SetVRHandsMaterials;
+
             VRAPI.MotionControls.AddSkillBindingOverride("RobPaladinBody", SkillSlot.Primary, SkillSlot.Secondary, SkillSlot.Utility, SkillSlot.Special);
         }
+        
+        private void SetVRHandsMaterials(CharacterBody body) {
+
+            SetVRHandRendererInfosToHopooShader(VRAPI.MotionControls.dominantHand);
+            SetVRHandRendererInfosToHopooShader(VRAPI.MotionControls.nonDominantHand);
+        }
+
+        private void SetVRHandRendererInfosToHopooShader(VRAPI.MotionControls.HandController hand) {
+
+            for (int i = 0; i < hand.rendererInfos.Length; i++) {
+                CharacterModel.RendererInfo rend = VRAPI.MotionControls.dominantHand.rendererInfos[i];
+                Modules.Materials.SetHotpooMaterial(rend.defaultMaterial);                
+            }
+        }
+
 
         private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {

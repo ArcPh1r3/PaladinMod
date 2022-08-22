@@ -97,7 +97,7 @@ namespace PaladinMod.States
 
             float charge = this.CalcCharge();
             if (base.isAuthority && ((!base.IsKeyDownAuthority() && base.fixedAge >= BaseChargeSpellState.minChargeDuration) 
-                //|| base.fixedAge >= this.duration  // Why not allow throw on release?
+                || (base.fixedAge >= this.duration && !PaladinPlugin.IsLocalVRPlayer(base.characterBody))  // Why not allow throw on release? // because it feels awkward not knowing when to throw it at max charge // that said, you probably felt this way in VR so could be a welcome change for that to more comfortably let you aim
                 ))
             {
                 BaseThrowSpellState nextState = this.GetNextState();

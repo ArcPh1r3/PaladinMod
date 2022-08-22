@@ -49358,6 +49358,11 @@ MonoBehaviour:
   bodyName: RobPaladinBody
   useRay: 1
   rendererInfos:
+  - renderer: {fileID: 8739970140540906782}
+    defaultMaterial: {fileID: 2100000, guid: 167fe43c31e5f7644bf1ee4537e852a1, type: 2}
+    defaultShadowCastingMode: 0
+    ignoreOverlays: 0
+    hideOnDeath: 0
   - renderer: {fileID: 8739970139673849689}
     defaultMaterial: {fileID: 2100000, guid: 41c384b1be63bba43b9174f19c11e8ec, type: 2}
     defaultShadowCastingMode: 0

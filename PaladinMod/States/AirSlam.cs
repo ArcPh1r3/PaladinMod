@@ -41,6 +41,10 @@ namespace PaladinMod.States
 
             Vector3 direction = base.GetAimRay().direction;
 
+            if (PaladinPlugin.IsLocalVRPlayer(characterBody)) {
+                direction = Camera.main.transform.forward;
+            }
+
             if (base.isAuthority)
             {
                 base.characterBody.isSprinting = true;

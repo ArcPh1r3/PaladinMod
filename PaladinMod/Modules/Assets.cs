@@ -202,8 +202,8 @@ namespace PaladinMod.Modules
                 }
             }
 
-            vrPaladinDominantHand = VRAssetBundle.LoadAsset<GameObject>("PaladinDominantHand").ConvertAllRenderersToHopooShader();
-            vrPaladinNonDominantHand = VRAssetBundle.LoadAsset<GameObject>("PaladinNonDominantHand").ConvertAllRenderersToHopooShader();   
+            vrPaladinDominantHand = VRAssetBundle.LoadAsset<GameObject>("PaladinDominantHand");
+            vrPaladinNonDominantHand = VRAssetBundle.LoadAsset<GameObject>("PaladinNonDominantHand");   
         }
         #endregion
 

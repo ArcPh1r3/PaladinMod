@@ -28,6 +28,9 @@ namespace PaladinMod.Modules
 
         internal static void SetItemDisplays()
         {
+            if (PaladinMod.PaladinPlugin.VRInstalled)
+                return;
+
             itemDisplayRules = new List<ItemDisplayRuleSet.KeyAssetRuleGroup>();
 
             // add item displays here
