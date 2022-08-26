@@ -31,9 +31,8 @@ namespace PaladinMod
         "LanguageAPI",
         "SoundAPI",
         "UnlockableAPI"
-    })]                                  //pushed out a version 69 so we gotta put a 7 here my b
-    [BepInPlugin(MODUID, "Paladin", "1.6.0")]
-    
+    })]
+    [BepInPlugin(MODUID, "Paladin", "1.6.1")]    
     public class PaladinPlugin : BaseUnityPlugin
     {
         //keeping id the same so it versions over previous paladin
@@ -70,7 +69,7 @@ namespace PaladinMod
         // VR compat
         public static bool VRInstalled = false;
 
-        // cruel sun acnaceling
+        // cruel sun canaceling
         public static bool autoSprintInstalled = false;
 
         // eh

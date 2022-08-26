@@ -32,7 +32,7 @@ namespace PaladinMod.Misc
 
             this.lightningEffect = this.childLocator.FindChild("SwordLightningEffect").GetComponentInChildren<ParticleSystem>();
         }
-
+        
         private void Start()
         {
             if (this.body)
