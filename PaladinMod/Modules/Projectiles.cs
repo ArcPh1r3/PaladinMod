@@ -354,7 +354,7 @@ namespace PaladinMod.Modules
             scsPE.blastDamageCoefficient = StaticValues.prideFlareDamageCoefficient * Config.prideFlareMultiplier.Value;
             scsPE.blastProcCoefficient = StaticValues.prideFlareProcCoefficient;
             scsPE.blastRadius = StaticValues.prideFlareExplosionRadius;
-            scsPE.falloffModel = BlastAttack.FalloffModel.SweetSpot;
+            scsPE.falloffModel = BlastAttack.FalloffModel.Linear;
             scsPE.canRejectForce = false;
             scsPE.destroyOnEnemy = false;
             scsPE.impactEffect = Assets.paladinSunSpawnPrefab;

@@ -32,7 +32,7 @@ namespace PaladinMod
         "SoundAPI",
         "UnlockableAPI"
     })]
-    [BepInPlugin(MODUID, "Paladin", "1.6.1")]    
+    [BepInPlugin(MODUID, "Paladin", "1.6.2")]    
     public class PaladinPlugin : BaseUnityPlugin
     {
         //keeping id the same so it versions over previous paladin
@@ -55,7 +55,8 @@ namespace PaladinMod
         public static SkillDef scepterHealDef;
         public static SkillDef scepterTorporDef;
         public static SkillDef scepterWarcryDef;
-        public static SkillDef scepterCruelSunDef; 
+        public static SkillDef scepterCruelSunDef;
+        public static SkillDef scepterCruelSunLegacyDef;
 
         // for modded item display rules
         public static bool aetheriumInstalled = false;
@@ -67,7 +68,7 @@ namespace PaladinMod
         public static bool starstormInstalled = false;
 
         // VR compat
-        public static bool VRInstalled = false;
+        public static bool VREnabled = false;
 
         // cruel sun canaceling
         public static bool autoSprintInstalled = false;
@@ -143,7 +144,7 @@ namespace PaladinMod
         {
             if (!VRAPI.VR.enabled || !VRAPI.MotionControls.enabled) return;
 
-            VRInstalled = true;
+            VREnabled = true;
             Modules.Assets.loadVRBundle();
 
 
@@ -156,9 +157,11 @@ namespace PaladinMod
         }
         
         private void SetVRHandsMaterials(CharacterBody body) {
+            if (body.baseNameToken == "PALADIN_NAME") {
 
-            SetVRHandRendererInfosToHopooShader(VRAPI.MotionControls.dominantHand);
-            SetVRHandRendererInfosToHopooShader(VRAPI.MotionControls.nonDominantHand);
+                SetVRHandRendererInfosToHopooShader(VRAPI.MotionControls.dominantHand);
+                SetVRHandRendererInfosToHopooShader(VRAPI.MotionControls.nonDominantHand);
+            }
         }
 
         private void SetVRHandRendererInfosToHopooShader(VRAPI.MotionControls.HandController hand) {
@@ -221,7 +224,7 @@ namespace PaladinMod
             childLocator.FindChild("ScepterWarcryChannelEffect").Find("Orbs").Find("MagicCircle").Find("MagicCircle2").Find("BigCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
 
             //childLocator.FindChild("SpawnEffect").Find("MagicCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
-            if (!VRInstalled)
+            if (!VREnabled)
             {
                 childLocator.FindChild("SpawnEffect").Find("MagicCircle").Find("BigCircle").GetComponent<ParticleSystemRenderer>().material = circleMat;
                 childLocator.FindChild("SpawnEffect").Find("MagicCircle").Find("BigCircle").Find("BigCircle2").GetComponent<ParticleSystemRenderer>().material = circleMat;
@@ -236,6 +239,9 @@ namespace PaladinMod
             AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterTorporDef, "RobPaladinBody", SkillSlot.Special, 1);
             AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterWarcryDef, "RobPaladinBody", SkillSlot.Special, 2);
             AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterCruelSunDef, "RobPaladinBody", SkillSlot.Special, 3);
+            if (Modules.Config.legacyCruelSun.Value) {
+                AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterCruelSunLegacyDef, "RobPaladinBody", SkillSlot.Special, 4);
+            }
         }
 
         private void Hook()
@@ -243,7 +249,8 @@ namespace PaladinMod
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.CharacterModel.UpdateOverlays += CharacterModel_UpdateOverlays;
             On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
-            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+            //todo rewrite lifesteal
+            //On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
             //On.RoR2.SceneDirector.Start += SceneDirector_Start;
             On.EntityStates.GlobalSkills.LunarNeedle.FireLunarNeedle.OnEnter += PlayVisionsAnimation;
@@ -299,6 +306,7 @@ namespace PaladinMod
             }
         }
 
+        //todo rewrite lifesteal
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
             bool isHealing = false;
@@ -753,14 +761,11 @@ namespace PaladinMod
 
             scepterCruelSunDef = ScriptableObject.CreateInstance<SkillDef>();
             scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ScepterChannelCruelSun));
-            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ScepterChannelCruelSunOld));
             scepterCruelSunDef.activationStateMachineName = "Weapon";
             scepterCruelSunDef.baseMaxStock = 1;
             scepterCruelSunDef.baseRechargeInterval = 20f;
-            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.baseRechargeInterval = 40f;
             scepterCruelSunDef.beginSkillCooldownOnSkillEnd = true;
             scepterCruelSunDef.canceledFromSprinting = true;
-            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.canceledFromSprinting = false;
             scepterCruelSunDef.fullRestockOnAssign = true;
             scepterCruelSunDef.interruptPriority = InterruptPriority.Skill;
             scepterCruelSunDef.resetCooldownTimerOnUse = false;
@@ -777,15 +782,38 @@ namespace PaladinMod
             scepterCruelSunDef.keywordTokens = new string[] {
                 "KEYWORD_OVERHEAT"
             };
-            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.keywordTokens = null;
 
             Modules.Skills.skillDefs.Add(scepterCruelSunDef);
+
+            scepterCruelSunLegacyDef = ScriptableObject.CreateInstance<SkillDef>(); 
+            scepterCruelSunLegacyDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ScepterChannelCruelSunOld));
+            scepterCruelSunLegacyDef.activationStateMachineName = "Weapon";
+            scepterCruelSunLegacyDef.baseMaxStock = 1; 
+            scepterCruelSunLegacyDef.baseRechargeInterval = 40f;
+            scepterCruelSunLegacyDef.beginSkillCooldownOnSkillEnd = true;
+            scepterCruelSunLegacyDef.canceledFromSprinting = false;
+            scepterCruelSunLegacyDef.fullRestockOnAssign = true;
+            scepterCruelSunLegacyDef.interruptPriority = InterruptPriority.Skill;
+            scepterCruelSunLegacyDef.resetCooldownTimerOnUse = false;
+            scepterCruelSunLegacyDef.isCombatSkill = true;
+            scepterCruelSunLegacyDef.mustKeyPress = true;
+            scepterCruelSunLegacyDef.cancelSprintingOnActivation = true;
+            scepterCruelSunLegacyDef.rechargeStock = 1;
+            scepterCruelSunLegacyDef.requiredStock = 1;
+            scepterCruelSunLegacyDef.stockToConsume = 1;
+            scepterCruelSunLegacyDef.icon = Modules.Assets.icon4dS;
+            scepterCruelSunLegacyDef.skillDescriptionToken = "PALADIN_SPECIAL_SCEPSUN_LEGACY_DESCRIPTION";
+            scepterCruelSunLegacyDef.skillName = "PALADIN_SPECIAL_SCEPSUN_LEGACY_NAME";
+            scepterCruelSunLegacyDef.skillNameToken = "PALADIN_SPECIAL_SCEPSUN_LEGACY_NAME";
+            scepterCruelSunLegacyDef.keywordTokens = null;
+
+            Modules.Skills.skillDefs.Add(scepterCruelSunLegacyDef);
         }
 
         #region VR Compat
         public static bool IsLocalVRPlayer(CharacterBody body)
         {
-            return VRInstalled && body == LocalUserManager.GetFirstLocalUser().cachedBody;
+            return VREnabled && body == LocalUserManager.GetFirstLocalUser().cachedBody;
         }
         #endregion
     }

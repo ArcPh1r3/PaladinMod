@@ -73,13 +73,13 @@ namespace PaladinMod.Modules
                 PaladinPlugin.instance.Config.Bind<bool>("03 - Legacy",
                                                          "Cruel Sun",
                                                          false,
-                                                         "Use the old version of Cruel Sun.");
+                                                         "Add the old version of Cruel Sun.");
             prideFlareMultiplier =
                 PaladinPlugin.instance.Config.Bind<float>("03 - Legacy",
-                                                          "Pride Flare Multiplier",
-                                                          9001f,
+                                                          "Pride Flare Damage",
+                                                          4000f,
                                                           "Multiplier for Scepter Cruel Sun damage and force" +
-                                                          "\n will be set to a reasonable value in a later update (2000). For now, have fun c:");
+                                                          "\n originally 9001 for shitposting purposes. feel free to reset");
         }
 
 

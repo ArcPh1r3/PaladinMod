@@ -1,4 +1,5 @@
-﻿using PaladinMod.Misc;
+﻿using EntityStates;
+using PaladinMod.Misc;
 using UnityEngine;
 
 namespace PaladinMod.States.Spell
@@ -52,6 +53,10 @@ namespace PaladinMod.States.Spell
         protected override BaseCastChanneledSpellState GetNextState()
         {
             return new CastSmallHeal();
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority() {
+            return InterruptPriority.Frozen;
         }
     }
 }

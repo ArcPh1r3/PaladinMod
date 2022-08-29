@@ -41,6 +41,8 @@ namespace PaladinMod.States.Spell
                 blastAttack.Fire();
             }
 
+            base.OnChanneledSpellExit();
+
             base.PlayAnimation("Gesture, Override", "CastSunEnd", "Spell.playbackRate", 1.5f);
         }
     }

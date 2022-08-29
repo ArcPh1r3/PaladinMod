@@ -22,12 +22,15 @@ namespace PaladinMod.Misc
         private CharacterBody body;
         private CharacterModel model;
         private ChildLocator childLocator;
+        private Animator animator;
+
         public bool isBlunt;
 
         private void Awake()
         {
             this.body = base.GetComponent<CharacterBody>();
             this.model = base.GetComponentInChildren<CharacterModel>();
+            this.animator = model?.GetComponent<Animator>();
             this.childLocator = base.GetComponentInChildren<ChildLocator>();
 
             this.lightningEffect = this.childLocator.FindChild("SwordLightningEffect").GetComponentInChildren<ParticleSystem>();
@@ -78,46 +81,13 @@ namespace PaladinMod.Misc
                     bool hasLeftHandWeapon = 
                         inventory.GetItemCount(RoR2Content.Items.BleedOnHit) > 0 || 
                         inventory.GetItemCount(RoR2Content.Items.ArmorReductionOnHit) > 0 || 
-                        inventory.GetItemCount(RoR2Content.Items.HealOnCrit) > 0;
+                        inventory.GetItemCount(RoR2Content.Items.HealOnCrit) > 0 ||
+                        inventory.GetItemCount(ItemCatalog.FindItemIndex("ITEM_BLASTER_SWORD")) > 0 ||
+                        inventory.GetItemCount(ItemCatalog.FindItemIndex("TIME_ANCIENT_SCEPTER")) > 0;
 
-                    if (PaladinPlugin.aetheriumInstalled)
-                    {
-                        if (CheckForBlasterSword(inventory)) hasLeftHandWeapon = true;
-                    }
-
-                    if (PaladinPlugin.ancientScepterInstalled)
-                    {
-                        if (CheckForAncientScepter(inventory)) hasLeftHandWeapon = true;
-                    }
-
-                    if (hasLeftHandWeapon)
-                    {
-                        Animator animator = this.model?.GetComponent<Animator>();
-                        if (animator) animator.SetBool("fistClosed", true);
-                    }
-                    else
-                    {
-                        Animator animator = this.model?.GetComponent<Animator>();
-                        if (animator) animator.SetBool("fistClosed", false);
-                    }
+                    if (animator) animator.SetBool("fistClosed", hasLeftHandWeapon);
                 }
             }
-        }
-
-        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        private bool CheckForBlasterSword(Inventory inventory)
-        {
-            //if (Aetherium.Items.BlasterSword.instance == null) return false;// this should work? idk
-            if (inventory.GetItemCount(ItemCatalog.FindItemIndex("ITEM_BLASTER_SWORD")) > 0) return true;
-            return false;
-        }
-
-        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        private bool CheckForAncientScepter(Inventory inventory)
-        {
-            //todo CUM2 how find scepter
-            //if (inventory.GetItemCount(AncientScepter.AncientScepterItem.instance.ItemDef) > 0) return true;
-            return false;
         }
 
         private void InitItemDisplays()
@@ -152,52 +122,51 @@ namespace PaladinMod.Misc
                         this.SetAegisDisplay(Modules.Assets.havelShield, "ElbowL", new Vector3(-0.0005f, 0.003f, 0), new Vector3(30, 270, 270), new Vector3(0.0001f, 0.0001f, 0.0001f));
                         break;
                 }
+                */
 
                 //razorwire
-                if (this.skinName == "PALADINBODY_DRIP_SKIN_NAME")
-                {
-                    this.SetRazorwireDisplay(new Vector3(-0.0004f, 0.01f, -0.0005f), new Vector3(270, 300, 0), new Vector3(0.004f, 0.004f, 0.008f));
-                }
-                else this.SetRazorwireDisplay(new Vector3(0, 0.006f, -0.001f), new Vector3(270, 300, 0), new Vector3(0.006f, 0.009f, 0.012f));
-                */
+                //if (this.skinName == "PALADINBODY_DRIP_SKIN_NAME") {
+                //    this.SetRazorwireDisplay(new Vector3(-0.0004f, 0.01f, -0.0005f), new Vector3(270, 300, 0), new Vector3(0.004f, 0.004f, 0.008f));
+                //} else this.SetRazorwireDisplay(new Vector3(0, 0.006f, -0.001f), new Vector3(270, 300, 0), new Vector3(0.006f, 0.009f, 0.012f));
+
                 //tri tip
                 // nvm the skin already holds the dagger
-                /*if (this.skinName == "PALADINBODY_ABYSSWATCHER_SKIN_NAME")
-                {
-                    this.SetDaggerDisplay(Modules.Assets.watcherDagger, new Vector3(-0.0004f, 0.01f, -0.0005f), new Vector3(270, 300, 0), new Vector3(0.004f, 0.004f, 0.008f));
-                }*/
+                //if (this.skinName == "PALADINBODY_ABYSSWATCHER_SKIN_NAME")
+                //{
+                //    this.SetDaggerDisplay(Modules.Assets.watcherDagger, new Vector3(-0.0004f, 0.01f, -0.0005f), new Vector3(270, 300, 0), new Vector3(0.004f, 0.004f, 0.008f));
+                //}
             }
         }
 
-        /*private void SetAegisDisplay(GameObject displayPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale)
-        {
-            ItemDisplayRuleSet ruleset = this.model.itemDisplayRuleSet;
+        //private void SetAegisDisplay(GameObject displayPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale)
+        //{
+        //    ItemDisplayRuleSet ruleset = this.model.itemDisplayRuleSet;
 
-            ruleset.FindItemDisplayRuleGroup("BarrierOnOverHeal").rules[0].followerPrefab = displayPrefab;
-            ruleset.FindItemDisplayRuleGroup("BarrierOnOverHeal").rules[0].childName = childName;
-            ruleset.FindItemDisplayRuleGroup("BarrierOnOverHeal").rules[0].localPos = position;
-            ruleset.FindItemDisplayRuleGroup("BarrierOnOverHeal").rules[0].localAngles = rotation;
-            ruleset.FindItemDisplayRuleGroup("BarrierOnOverHeal").rules[0].localScale = scale;
-        }
+        //    ruleset.FindItemDisplayRuleGroup("BarrierOnOverHeal").rules[0].followerPrefab = displayPrefab;
+        //    ruleset.FindItemDisplayRuleGroup("BarrierOnOverHeal").rules[0].childName = childName;
+        //    ruleset.FindItemDisplayRuleGroup("BarrierOnOverHeal").rules[0].localPos = position;
+        //    ruleset.FindItemDisplayRuleGroup("BarrierOnOverHeal").rules[0].localAngles = rotation;
+        //    ruleset.FindItemDisplayRuleGroup("BarrierOnOverHeal").rules[0].localScale = scale;
+        //}
 
         private void SetRazorwireDisplay(Vector3 position, Vector3 rotation, Vector3 scale)
         {
             ItemDisplayRuleSet ruleset = this.model.itemDisplayRuleSet;
 
-            ruleset.FindItemDisplayRuleGroup("Thorns").rules[0].localPos = position;
-            ruleset.FindItemDisplayRuleGroup("Thorns").rules[0].localAngles = rotation;
-            ruleset.FindItemDisplayRuleGroup("Thorns").rules[0].localScale = scale;
+            ruleset.FindDisplayRuleGroup(RoR2Content.Items.Thorns).rules[0].localPos = position;
+            ruleset.FindDisplayRuleGroup(RoR2Content.Items.Thorns).rules[0].localAngles = rotation;
+            ruleset.FindDisplayRuleGroup(RoR2Content.Items.Thorns).rules[0].localScale = scale;
         }
 
-        private void SetDaggerDisplay(GameObject displayPrefab, Vector3 position, Vector3 rotation, Vector3 scale)
-        {
-            ItemDisplayRuleSet ruleset = this.model.itemDisplayRuleSet;
+        //private void SetDaggerDisplay(GameObject displayPrefab, Vector3 position, Vector3 rotation, Vector3 scale)
+        //{
+        //    ItemDisplayRuleSet ruleset = this.model.itemDisplayRuleSet;
 
-            ruleset.FindItemDisplayRuleGroup("BleedOnHit").rules[0].followerPrefab = displayPrefab;
-            ruleset.FindItemDisplayRuleGroup("BleedOnHit").rules[0].localPos = position;
-            ruleset.FindItemDisplayRuleGroup("BleedOnHit").rules[0].localAngles = rotation;
-            ruleset.FindItemDisplayRuleGroup("BleedOnHit").rules[0].localScale = scale;
-        }*/
+        //    ruleset.FindItemDisplayRuleGroup("BleedOnHit").rules[0].followerPrefab = displayPrefab;
+        //    ruleset.FindItemDisplayRuleGroup("BleedOnHit").rules[0].localPos = position;
+        //    ruleset.FindItemDisplayRuleGroup("BleedOnHit").rules[0].localAngles = rotation;
+        //    ruleset.FindItemDisplayRuleGroup("BleedOnHit").rules[0].localScale = scale;
+        //}
 
         public void PlaySwingSound() {
             Util.PlaySound(skinInfo.swingSoundString, GetSoundObject());

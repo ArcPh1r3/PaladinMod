@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-namespace PaladinMod.Modules
-{
-    public static class ItemDisplays
+namespace PaladinMod.Modules {
+
+    internal static class ItemDisplays
     {
         internal static ItemDisplayRuleSet itemDisplayRuleSet;
         internal static List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules;
@@ -28,7 +28,7 @@ namespace PaladinMod.Modules
 
         internal static void SetItemDisplays()
         {
-            if (PaladinMod.PaladinPlugin.VRInstalled)
+            if (PaladinMod.PaladinPlugin.VREnabled)
                 return;
 
             itemDisplayRules = new List<ItemDisplayRuleSet.KeyAssetRuleGroup>();
@@ -117,17 +117,35 @@ localScale = new Vector3(0.15F, 0.15F, 0.15F),
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayGlasses"),
-                            childName = "Head",
-                            localPos = new Vector3(0F, 0.15267F, 0.20987F),
-                            localAngles = new Vector3(0F, 0F, 90F),
-                            localScale = new Vector3(0.29887F, 0.31575F, 0.31575F),
+childName = "Head",
+localPos = new Vector3(0F, 0.13851F, 0.20987F),
+localAngles = new Vector3(0F, 0F, 90F),
+localScale = new Vector3(0.29887F, 0.31575F, 0.31575F),
                             limbMask = LimbFlags.None
                         }
                         }
                     }
                 });
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup {
+                keyAsset = DLC1Content.Items.CritGlassesVoid,
+                displayRuleGroup = new DisplayRuleGroup {
+                    rules = new ItemDisplayRule[]
+                    {
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplays.LoadDisplay("DisplayGlassesVoid"),
+childName = "Head",
+localPos = new Vector3(0F, 0.13851F, 0.20987F),
+localAngles = new Vector3(0F, 0F, 90F),
+localScale = new Vector3(0.29887F, 0.31575F, 0.31575F),
+                            limbMask = LimbFlags.None
+                        }
+                    }
+                }
+            });
 
-                itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
                     keyAsset = RoR2Content.Items.Syringe,
                     displayRuleGroup = new DisplayRuleGroup
@@ -190,7 +208,26 @@ localScale = new Vector3(0.1F, 0.1F, 0.1F),
                     }
                 });
 
-                itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup {
+                keyAsset = DLC1Content.Items.MissileVoid,
+                displayRuleGroup = new DisplayRuleGroup {
+                    rules = new ItemDisplayRule[]
+                    {
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplays.LoadDisplay("DisplayMissileLauncherVoid"),
+                            childName = "Chest",
+                            localPos = new Vector3(0.42197F, 0.61158F, -0.53733F),
+                            localAngles = new Vector3(310.2395F, 10.78981F, 335.808F),
+                            localScale = new Vector3(0.12615F, 0.12615F, 0.12615F),
+                            limbMask = LimbFlags.None
+                        }
+                    }
+                }
+            });
+
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
                     keyAsset = RoR2Content.Items.Dagger,
                     displayRuleGroup = new DisplayRuleGroup
@@ -253,7 +290,26 @@ localScale = new Vector3(1.2428F, 1.2428F, 1.2299F),
                     }
                 });
 
-                itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup {
+                keyAsset = DLC1Content.Items.ChainLightningVoid,
+                displayRuleGroup = new DisplayRuleGroup {
+                    rules = new ItemDisplayRule[]
+                    {
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplays.LoadDisplay("DisplayUkuleleVoid"),
+                            childName = "Chest",
+                            localPos = new Vector3(0.0788F, 0.4095F, -0.19088F),
+                            localAngles = new Vector3(323.0142F, 180.056F, 89.31227F),
+                            localScale = new Vector3(0.98885F, 0.98885F, 0.98885F),
+                            limbMask = LimbFlags.None
+                        }
+                    }
+                }
+            });
+
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
                     keyAsset = RoR2Content.Items.GhostOnKill,
                     displayRuleGroup = new DisplayRuleGroup
@@ -295,7 +351,26 @@ localScale = new Vector3(1.2428F, 1.2428F, 1.2299F),
                     }
                 });
 
-                itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup {
+                keyAsset = DLC1Content.Items.MushroomVoid,
+                displayRuleGroup = new DisplayRuleGroup {
+                    rules = new ItemDisplayRule[]
+                    {
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplays.LoadDisplay("DisplayMushroomVoid"),
+                            childName = "UpperArmR",
+                            localPos = new Vector3(-0.03466F, 0.36978F, -0.114F),
+                            localAngles = new Vector3(359.4572F, 277.4478F, 79.3168F),
+                            localScale = new Vector3(0.08371F, 0.08371F, 0.08371F),
+                            limbMask = LimbFlags.None
+                        }
+                    }
+                }
+            });
+
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
                     keyAsset = RoR2Content.Items.AttackSpeedOnCrit,
                     displayRuleGroup = new DisplayRuleGroup
@@ -337,7 +412,26 @@ localScale = new Vector3(0.3814F, 0.3814F, 0.3814F),
                     }
                 });
 
-                itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup {
+                keyAsset = DLC1Content.Items.BleedOnHitVoid,
+                displayRuleGroup = new DisplayRuleGroup {
+                    rules = new ItemDisplayRule[]
+                    {
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplays.LoadDisplay("DisplayTriTipVoid"),
+                            childName = "HandL",
+                            localPos = new Vector3(-0.07315F, 0.11133F, -0.15195F),
+                            localAngles = new Vector3(11.41095F, 180F, 180F),
+                            localScale = new Vector3(0.76274F, 0.76274F, 0.79862F),
+                            limbMask = LimbFlags.None
+                        }
+                    }
+                }
+            });
+
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
                     keyAsset = RoR2Content.Items.WardOnLevel,
                     displayRuleGroup = new DisplayRuleGroup
@@ -370,7 +464,7 @@ localScale = new Vector3(0.3814F, 0.3814F, 0.3814F),
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayScythe"),
                             childName = "HandL",
-                            localPos = new Vector3(-0.06617F, 0.2783F, 0.8635F),
+                            localPos = new Vector3(-0.01842F, 0.30092F, 0.87655F),
                             localAngles = new Vector3(345.3667F, 0.23077F, 295.8703F),
                             localScale = new Vector3(0.71734F, 0.6443F, 0.86362F),
                             limbMask = LimbFlags.None
@@ -421,7 +515,27 @@ localScale = new Vector3(0.3814F, 0.3814F, 0.3814F),
                     }
                 });
 
-                itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup {
+                keyAsset = DLC1Content.Items.CloverVoid,
+                displayRuleGroup = new DisplayRuleGroup {
+                    rules = new ItemDisplayRule[]
+                    {
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplays.LoadDisplay("DisplayCloverVoid"),
+                            childName = "Sword",
+                            localPos = new Vector3(0.00111F, 0.1156F, -0.05202F),
+                            localAngles = new Vector3(85.61921F, 0.0001F, 179.4897F),
+                            localScale = new Vector3(0.3406F, 0.3406F, 0.3406F),
+                            limbMask = LimbFlags.None
+                        }
+                    }
+                }
+            });
+
+
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
                     keyAsset = RoR2Content.Items.BarrierOnOverHeal,
                     displayRuleGroup = new DisplayRuleGroup
@@ -797,7 +911,26 @@ localScale = new Vector3(0.28086F, 0.28086F, 0.31495F),
                     }
                 });
 
-                itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup {
+                keyAsset = DLC1Content.Items.EquipmentMagazineVoid,
+                displayRuleGroup = new DisplayRuleGroup {
+                    rules = new ItemDisplayRule[]
+                    {
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplays.LoadDisplay("DisplayFuelCellVoid"),
+                            childName = "Chest",
+localPos = new Vector3(0.0155F, -0.21842F, 0.35325F),
+localAngles = new Vector3(0F, 270F, 270.1707F),
+localScale = new Vector3(0.28086F, 0.28086F, 0.31495F),
+                            limbMask = LimbFlags.None
+                        }
+                    }
+                }
+            });
+
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
                     keyAsset = RoR2Content.Items.NovaOnHeal,
                     displayRuleGroup = new DisplayRuleGroup
@@ -998,7 +1131,7 @@ localScale = new Vector3(0.1194F, 0.1194F, 0.1194F),
 
                 itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
-                    keyAsset = DLC1Content.Items.EquipmentMagazineVoid,
+                    keyAsset = RoR2Content.Items.Knurl,
                     displayRuleGroup = new DisplayRuleGroup
                     {
                         rules = new ItemDisplayRule[]
@@ -1122,7 +1255,26 @@ localScale = new Vector3(1.42076F, 1.42076F, 1.42076F),
                     }
                 });
 
-                itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup {
+                keyAsset = DLC1Content.Items.TreasureCacheVoid,
+                displayRuleGroup = new DisplayRuleGroup {
+                    rules = new ItemDisplayRule[]
+                    {
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplays.LoadDisplay("DisplayKeyVoid"),
+                            childName = "ThighL",
+localPos = new Vector3(-0.18865F, 0.53931F, -0.02826F),
+localAngles = new Vector3(31.98337F, 193.9092F, 258.6169F),
+localScale = new Vector3(1.42076F, 1.42076F, 1.42076F),
+                            limbMask = LimbFlags.None
+                        }
+                    }
+                }
+            });
+
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
                     keyAsset = RoR2Content.Items.BossDamageBonus,
                     displayRuleGroup = new DisplayRuleGroup
@@ -1164,7 +1316,26 @@ localScale = new Vector3(0.0687F, 0.0687F, 0.0687F),
                     }
                 });
 
-                itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup {
+                keyAsset = DLC1Content.Items.SlowOnHitVoid,
+                displayRuleGroup = new DisplayRuleGroup {
+                    rules = new ItemDisplayRule[]
+                    {
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplays.LoadDisplay("DisplayBaubleVoid"),
+childName = "Pelvis",
+localPos = new Vector3(-0.0074F, 0.076F, -0.0864F),
+localAngles = new Vector3(0F, 23.7651F, 0F),
+localScale = new Vector3(0.0687F, 0.0687F, 0.0687F),
+                            limbMask = LimbFlags.None
+                        }
+                    }
+                }
+            });
+
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
                     keyAsset = RoR2Content.Items.ExtraLife,
                     displayRuleGroup = new DisplayRuleGroup
@@ -1185,7 +1356,26 @@ localScale = new Vector3(0.2517F, 0.2517F, 0.2517F),
                     }
                 });
 
-                itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup {
+                keyAsset = DLC1Content.Items.ExtraLifeVoid,
+                displayRuleGroup = new DisplayRuleGroup {
+                    rules = new ItemDisplayRule[]
+                    {
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplays.LoadDisplay("DisplayHippoVoid"),
+childName = "Chest",
+localPos = new Vector3(0F, 0.4728F, 0.2285F),
+localAngles = new Vector3(18.9577F, 0F, 0F),
+localScale = new Vector3(0.2517F, 0.2517F, 0.2517F),
+                            limbMask = LimbFlags.None
+                        }
+                    }
+                }
+            });
+
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
                     keyAsset = RoR2Content.Items.KillEliteFrenzy,
                     displayRuleGroup = new DisplayRuleGroup
@@ -1594,6 +1784,25 @@ localScale = new Vector3(0.3416F, 0.3416F, 0.3416F),
                     }
                 });
 
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup {
+                keyAsset = DLC1Content.Items.BearVoid,
+                displayRuleGroup = new DisplayRuleGroup {
+                    rules = new ItemDisplayRule[]
+                    {
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplays.LoadDisplay("DisplayBearVoid"),
+childName = "Chest",
+localPos = new Vector3(0F, 0.5822F, -0.0926F),
+localAngles = new Vector3(29.2877F, 180F, 0F),
+localScale = new Vector3(0.3416F, 0.3416F, 0.3416F),
+                            limbMask = LimbFlags.None
+                        }
+                    }
+                }
+            });
+
                 itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
                     keyAsset = RoR2Content.Items.DeathMark,
@@ -1635,6 +1844,25 @@ localScale = new Vector3(0.0761F, 0.0761F, 0.0761F),
                         }
                     }
                 });
+
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup {
+                keyAsset = DLC1Content.Items.ExplodeOnDeathVoid,
+                displayRuleGroup = new DisplayRuleGroup {
+                    rules = new ItemDisplayRule[]
+                    {
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplays.LoadDisplay("DisplayWillowWispVoid"),
+childName = "Pelvis",
+localPos = new Vector3(0.3575F, 0.1348F, -0.0543F),
+localAngles = new Vector3(0F, 0F, 0F),
+localScale = new Vector3(0.0761F, 0.0761F, 0.0761F),
+                            limbMask = LimbFlags.None
+                        }
+                    }
+                }
+            });
 
                 itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
@@ -2736,196 +2964,226 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
                         }
                     }
                 });
+
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(RoR2Content.Equipment.AffixLunar, "DisplayEliteLunar,Eye",
+                "Head",
+                new Vector3(0F, 0.75634F, 0.05155F),
+                new Vector3(273.9666F, 180F, 180F),
+                new Vector3(0.5172F, 0.5172F, 0.5172F)));
             #endregion
+
+            #region dlc1
+
+            itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(DLC1Content.Items.LunarSun,
+                ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplaySunHead"),
+                    "Head",
+                    new Vector3(0F, 0.18173F, 0.0528F),
+                    new Vector3(0F, 0F, 0F),
+                    new Vector3(1.6646F, 1.6646F, 1.6646F)),
+                ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplaySunHeadNeck"),
+                    "Chest",
+                    new Vector3(-0.00334F, 0.38633F, 0.08729F),
+                    new Vector3(11.54904F, 309.0327F, 353.434F),
+                    new Vector3(2.48852F, 2.48852F, 2.48852F))));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.MinorConstructOnKill, "DisplayDefenseNucleus",
+                "Base",
+                new Vector3(0.9848F, 1.43184F, 0.75031F),
+                new Vector3(0F, 0F, 0F),
+                new Vector3(0.54246F, 0.54246F, 0.54246F)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.OutOfCombatArmor, "DisplayOddlyShapedOpal",
+                "Chest",
+                new Vector3(-0.22705F, 0.05014F, 0.35047F),
+                new Vector3(0F, 330.7491F, 0F),
+                new Vector3(0.37277F, 0.37277F, 0.37277F)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.PrimarySkillShuriken, "DisplayShuriken",
+                "Sword",
+                new Vector3(0.00022F, 0.33324F, 0.00343F),
+                new Vector3(86.58396F, 8.70276F, 11.65009F),
+                new Vector3(1.19837F, 1.19837F, 1.19837F)));
+
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Equipment.EliteVoidEquipment, "DisplayAffixVoid",
+                "Head",
+                new Vector3(0F, 0.16922F, 0.20354F),
+                new Vector3(80.45753F, 0F, 0F),
+                new Vector3(0.20064F, 0.20064F, 0.20064F)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Equipment.Molotov, "DisplayMolotov",
+                "ThighL",
+                new Vector3(-0.06409F, 0.31354F, 0.17595F),
+                new Vector3(9.26339F, 310.4366F, 97.81091F),
+                new Vector3(0.44644F, 0.44644F, 0.44644F)));
+
+
+            #region not done
+            /*
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Elites.Earth.eliteEquipmentDef, "DisplayEliteMendingAntlers",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Equipment.VendingMachine, "DisplayVendingMachine",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Equipment.BossHunterConsumed, "DisplayTricornUsed",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.HalfAttackSpeedHalfCooldowns, "DisplayLunarShoulderNature",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.HalfSpeedDoubleHealth, "DisplayLunarShoulderStone",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.AttackSpeedAndMoveSpeed, "DisplayCoffee",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.GoldOnHurt, "DisplayRollOfPennies",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.FragileDamageBonus, "DisplayDelicateWatch",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(DLC1Content.Equipment.BossHunter,
+                ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayTricornGhost"),
+                    "Chest",
+                    new Vector3(2, 2, 2),
+                    new Vector3(0, 0, 0),
+                    new Vector3(1, 1, 1)),
+                ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayBlunderbuss"),
+                    "Chest",
+                    new Vector3(2, 2, 2),
+                    new Vector3(0, 0, 0),
+                    new Vector3(1, 1, 1))));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Equipment.LunarPortalOnUse, "DisplayLunarPortalOnUse",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule("IrradiatingLaser", "DisplayIrradiatingLaser",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.ImmuneToDebuff, "DisplayRainCoatBelt",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.RandomEquipmentTrigger, "DisplayBottledChaos",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.StrengthenBurn, "DisplayGasTank",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(DLC1Content.Items.LunarSun,
+                ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplaySunHead"),
+                    "Chest",
+                    new Vector3(2, 2, 2),
+                    new Vector3(0, 0, 0),
+                    new Vector3(1, 1, 1)),
+                ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplaySunHeadNeck"),
+                    "Chest",
+                    new Vector3(2, 2, 2),
+                    new Vector3(0, 0, 0),
+                    new Vector3(1, 1, 1))));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.VoidMegaCrabItem, "DisplayMegaCrabItem",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.RegeneratingScrap, "DisplayRegeneratingScrap",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.PermanentDebuffOnHit, "DisplayScorpion",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.ElementalRingVoid, "DisplayVoidRing",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.FreeChest, "DisplayShippingRequestForm",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            
+            itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(DLC1Content.Items.CritDamage,
+                ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayLaserSight"),
+                    "Chest",
+                    new Vector3(2, 2, 2),
+                    new Vector3(0, 0, 0),
+                    new Vector3(1, 1, 1)),
+                ItemDisplays.CreateDisplayRule(ItemDisplays.LoadDisplay("DisplayLaserSight"),
+                    "Chest",
+                    new Vector3(2, 2, 2),
+                    new Vector3(0, 0, 0),
+                    new Vector3(1, 1, 1))));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.MoveSpeedOnKill, "DisplayGrappleHook",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.RandomlyLunar, "DisplayDomino",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Equipment.MultiShopCard, "DisplayExecutiveCard",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.HealingPotion, "DisplayHealingPotion",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.MoreMissile, "DisplayICBM",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Equipment.GummyClone, "DisplayGummyClone",
+                "Chest",
+                new Vector3(2, 2, 2),
+                new Vector3(0, 0, 0),
+                new Vector3(1, 1, 1)));
+            */
+            #endregion not done
+            #endregion dlc1
 
             try {
                 if (PaladinPlugin.ancientScepterInstalled)
                     SetupScepterDisplay();
             }
-            catch (System.Exception e) {
-                //PaladinPlugin.logger.LogWarning($"could not add displays for Ancient Scepter\n{e}");
-            }
-
-            try {
-                if (PaladinPlugin.aetheriumInstalled) { 
-                    //todo CUM2 aetherium?
-                    //AddAetheriumDisplays();
-                    }
-            }
-            catch (System.Exception e) {
-                //PaladinPlugin.logger.LogWarning($"could not add displays for Aetherium\n{e}");
-            }
-
-            try {
-                if (PaladinPlugin.supplyDropInstalled) {
-                    //todo CUM2 aetherium?
-                    AddSupplyDropDisplays();
-                }
-            }
-            catch (System.Exception e) {
-                //PaladinPlugin.logger.LogWarning($"could not add displays for Supply Drop\n{e}");
-            }
+            catch { }
             
             itemDisplayRuleSet.keyAssetRuleGroups = itemDisplayRules.ToArray();
         }
 
-        #region negro displays
-
-        //enderbrine custom copy thing
-/*
-
-                                                           {childName},
-                                                           {localPos},
-                                                           {localAngles},
-                                                           {localScale}
-*/
-
-
-        enum mod {
-            AETH,
-            SUPP,
-            SIVS,
-            GOLD,
-            SCEP
-        }
-        private static void AddAetheriumDisplays() {
-            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "AccursedPotion",
-                                                          "ThighL",
-                                                          new Vector3(-0.23043F, 0.32284F, -0.12665F),
-                                                          new Vector3(4.45731F, 185.4647F, 177.6174F),
-                                                          new Vector3(0.9687F, 0.9687F, 0.9687F)));
-            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "VoidHeart",
-                                                          "Chest",
-                                                          new Vector3(-0.09543F, -0.19796F, 0.28118F),
-                                                          new Vector3(16.96353F, 5.14273F, 10.3974F),
-                                                          new Vector3(-0.16727F, 0.16658F, 0.15696F)));
-            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "SharkTeeth",
-                                                          "CalfL",
-                                                          new Vector3(0.06211F, 0.25415F, -0.08777F),
-                                                          new Vector3(320.2775F, 38.01559F, 271.8767F),
-                                                          new Vector3(0.78844F, 0.78844F, 0.78844F)));
-            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "BloodSoakedShield",
-                                                          "LowerArmR",
-                                                          new Vector3(0.10348F, 0.26132F, -0.01819F),
-                                                          new Vector3(356.2767F, 97.25786F, 89.52616F),
-                                                          new Vector3(0.34019F, 0.34019F, 0.34019F)));
-            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "FeatheredPlume",
-                                                          "Head",
-                                                          new Vector3(-0.00678F, 0.35193F, 0.02659F),
-                                                          new Vector3(357.7291F, 285.8923F, 359.0515F),
-                                                          new Vector3(0.50003F, 0.50003F, 0.50003F)));
-            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "ShieldingCore",
-                                                          "LowerArmR",
-                                                          new Vector3(-0.23784F, 0.3286F, -0.0176F),
-                                                          new Vector3(0.97314F, 271.1276F, 357.6589F),
-                                                          new Vector3(0.31628F, 0.31628F, 0.31628F)));
-            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "UnstableDesign",
-                                                          "Stomach",
-                                                          new Vector3(-0.05487F, 0.04344F, -0.28199F),
-                                                          new Vector3(358.3217F, 224.4477F, 1.91643F),
-                                                          new Vector3(1.24548F, 1.24548F, 0.9051F)));
-            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "WeightedAnklet",
-                                                          "CalfR",
-                                                          new Vector3(-0.00001F, 0.53876F, -0.01653F),
-                                                          new Vector3(0F, 0F, 0F),
-                                                          new Vector3(0.31933F, 0.31933F, 0.31933F)));
-            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "BlasterSword",
-                                                          "SwordSmearFront",
-                                                          new Vector3(-0.10833F, 2.5525F, 0.07879F),
-                                                          new Vector3(0.08772F, 40.946F, 180.1556F),
-                                                          new Vector3(0.32696F, 0.29056F, 0.12386F)));
-            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "EngiBelt",
-                                                          "Pelvis",
-                                                          new Vector3(0F, 0.39276F, 0.0787F),
-                                                          new Vector3(0F, 116.6814F, 0F),
-                                                          new Vector3(0.29462F, 0.29462F, 0.29462F)));
-
-            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "AlienMagnet",
-                                                          "Root",
-                                                          new Vector3(1.06397F, -1.08486F, 3.27534F),
-                                                          new Vector3(0F, 0F, 359.3367F),
-                                                          new Vector3(0.1541F, 0.1541F, 0.1541F)));
-            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "InspiringDrone",
-                                                          "Root",
-                                                          new Vector3(-1.44714F, -1.444F, 3.64135F),
-                                                          new Vector3(291.0149F, 90.00006F, 89.99995F),
-                                                          new Vector3(0.12676F, 0.12676F, 0.12929F)));
-
-            itemDisplayRules.Add(CreateModRuleGroup(mod.AETH, "JarOfReshaping",
-                                                          "Root",
-                                                          new Vector3(-1.2588F, 0.72566F, 3.23362F),
-                                                          new Vector3(0F, 0F, 0F),
-                                                          new Vector3(0.11192F, 0.11192F, 0.11192F)));
-
-            ItemDisplayRule ringRule = CreateDisplayRule(ItemDisplays.LoadAetheriumDisplay("WitchesRing"),
-                                                          "Sword",
-                                                          new Vector3(-0.01001F, 0.36895F, -0.01177F),
-                                                          new Vector3(0F, 220.5148F, 0F),
-                                                          new Vector3(0.49134F, 0.49134F, 0.37622F));
-
-            ItemDisplayRule circleRule = CreateDisplayRule(ItemDisplays.LoadAetheriumDisplay("WitchesRingCircle"),
-                                                          "Sword",
-                                                          new Vector3(-0.00782F, 0.36927F, -0.00924F),
-                                                          new Vector3(272.2881F, 220.515F, -0.00017F),
-                                                          new Vector3(0.27066F, 0.27066F, 0.12244F));
-            itemDisplayRules.Add(CreateDisplayRuleGroupWithRules(ItemDisplays.LoadAetheriumKeyAsset("WitchesRing"), ringRule, circleRule));
-        }
-
-        private static void AddSupplyDropDisplays() {
-            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "PlagueMask",
-                                                           "Head",
-                                                           new Vector3(0.00094F, 0.14277F, 0.37744F),
-                                                           new Vector3(350.8227F, 180F, 0F),
-                                                           new Vector3(0.21812F, 0.34679F, 0.29885F)));
-            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "PlagueHat",
-                                                           "Head",
-                                                           new Vector3(0.00001F, 0.3758F, 0.05085F),
-                                                           new Vector3(0F, 0F, 0F),
-                                                           new Vector3(0.21804F, 0.17341F, 0.29817F)));
-
-            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "Bones",
-                                                           "CalfR",
-                                                           new Vector3(0.17997F, -0.05238F, 0.07133F),
-                                                           new Vector3(13.68323F, 76.44486F, 191.9287F),
-                                                           new Vector3(1.25683F, 1.25683F, 1.25683F)));
-            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "Berries",
-                                                           "loinFront2",
-                                                           new Vector3(0.11782F, 0.27382F, -0.13743F),
-                                                           new Vector3(341.1884F, 284.1298F, 180.0032F),
-                                                           new Vector3(0.08647F, 0.08647F, 0.08647F)));
-            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "UnassumingTie",
-                                                           "Chest",
-                                                           new Vector3(-0.08132F, 0.30226F, 0.34786F),
-                                                           new Vector3(351.786F, 356.4574F, 0.73319F),
-                                                           new Vector3(0.32213F, 0.35018F, 0.42534F)));
-            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "SalvagedWires",
-                                                           "UpperArmL",
-                                                           new Vector3(-0.00419F, 0.10839F, -0.20693F),
-                                                           new Vector3(21.68419F, 165.3445F, 132.0565F),
-                                                           new Vector3(0.63809F, 0.63809F, 0.63809F)));
-
-            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "ShellPlating",
-                                                           "ThighR",
-                                                           new Vector3(0.02115F, 0.52149F, -0.31269F),
-                                                           new Vector3(319.6181F, 168.4007F, 184.779F),
-                                                           new Vector3(0.24302F, 0.26871F, 0.26871F)));
-            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "ElectroPlankton",
-                                                           "ThighR",
-                                                           new Vector3(0.21067F, 0.49094F, -0.08702F),
-                                                           new Vector3(8.08377F, 285.087F, 164.4582F),
-                                                           new Vector3(0.11243F, 0.11243F, 0.11243F)));
-
-            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "BloodBook",
-                                                           "Root",
-                                                           new Vector3(2.19845F, -1.51445F, 1.59871F),
-                                                           new Vector3(303.5005F, 271.0879F, 269.2205F),
-                                                           new Vector3(0.12F, 0.12F, 0.12F)));
-            itemDisplayRules.Add(CreateModRuleGroup(mod.SUPP, "QSGen",
-                                                           "LowerArmL",
-                                                           new Vector3(0.06003F, 0.1038F, -0.02042F),
-                                                           new Vector3(0F, 18.75576F, 268.4665F),
-                                                           new Vector3(0.12301F, 0.12301F, 0.12301F)));
-        }
+        #region rip
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private static void SetupScepterDisplay()
@@ -2954,7 +3212,6 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
         }
         #endregion
 
-
         internal static void PopulateDisplays()
         {
             PopulateFromBody("Commando");
@@ -2965,12 +3222,11 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
         {
             ItemDisplayRuleSet itemDisplayRuleSet = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyName + "Body").GetComponent<ModelLocator>().modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet;
 
-            ItemDisplayRuleSet.KeyAssetRuleGroup[] item = itemDisplayRuleSet.keyAssetRuleGroups;
+            ItemDisplayRuleSet.KeyAssetRuleGroup[] itemRuleGroups = itemDisplayRuleSet.keyAssetRuleGroups;
 
-            for (int i = 0; i < item.Length; i++)
+            for (int i = 0; i < itemRuleGroups.Length; i++)
             {
-                ItemDisplayRule[] rules = item[i].displayRuleGroup.rules;
-
+                ItemDisplayRule[] rules = itemRuleGroups[i].displayRuleGroup.rules;
                 for (int j = 0; j < rules.Length; j++)
                 {
                     GameObject followerPrefab = rules[j].followerPrefab;
@@ -2996,284 +3252,32 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
 
             return null;
         }
+        
+        #region add rule helpers
 
-        #region negro tools
-        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        public static GameObject LoadAetheriumDisplay(string name)
-        {
-            //todo CUM2 aetherium?
-            //switch (name)
-            //{
-            //    case "AccursedPotion":
-            //        return Aetherium.Items.AccursedPotion.ItemBodyModelPrefab;
-            //    case "AlienMagnet":
-            //        return Aetherium.Items.AlienMagnet.ItemFollowerPrefab;
-            //    case "BlasterSword":
-            //        return Aetherium.Items.BlasterSword.ItemBodyModelPrefab;
-            //    case "BloodSoakedShield":
-            //        return Aetherium.Items.BloodthirstyShield.ItemBodyModelPrefab;
-            //    case "FeatheredPlume":
-            //        return Aetherium.Items.FeatheredPlume.ItemBodyModelPrefab;
-            //    case "InspiringDrone":
-            //        return Aetherium.Items.InspiringDrone.ItemFollowerPrefab;
-            //    case "SharkTeeth":
-            //        return Aetherium.Items.SharkTeeth.ItemBodyModelPrefab;
-            //    case "ShieldingCore":
-            //        return Aetherium.Items.ShieldingCore.ItemBodyModelPrefab;
-            //    case "UnstableDesign":
-            //        return Aetherium.Items.UnstableDesign.ItemBodyModelPrefab;
-            //    case "VoidHeart":
-            //        return Aetherium.Items.Voidheart.ItemBodyModelPrefab;
-            //    case "WeightedAnklet":
-            //        return Aetherium.Items.WeightedAnklet.ItemBodyModelPrefab;
-            //    case "WitchesRing":
-            //        return Aetherium.Items.WitchesRing.ItemBodyModelPrefab;
-            //    case "WitchesRingCircle":
-            //        return Aetherium.Items.WitchesRing.CircleBodyModelPrefab;
-            //    case "EngiBelt":
-            //        return Aetherium.Items.EngineersToolbelt.ItemBodyModelPrefab;
-            //    case "JarOfReshaping":
-            //        return Aetherium.Equipment.JarOfReshaping.ItemBodyModelPrefab;
-            //}
-            return null;
-        }
-        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        public static Object LoadAetheriumKeyAsset(string name) {
-            //switch (name) {
-            //    case "AccursedPotion":
-            //        return Aetherium.Items.AccursedPotion.instance.ItemDef;
-            //    case "AlienMagnet":
-            //        return Aetherium.Items.AlienMagnet.instance.ItemDef;
-            //    case "BlasterSword":
-            //        return Aetherium.Items.BlasterSword.instance.ItemDef;
-            //    case "BloodSoakedShield":
-            //        return Aetherium.Items.BloodthirstyShield.instance.ItemDef;
-            //    case "FeatheredPlume":
-            //        return Aetherium.Items.FeatheredPlume.instance.ItemDef;
-            //    case "InspiringDrone":
-            //        return Aetherium.Items.InspiringDrone.instance.ItemDef;
-            //    case "SharkTeeth":
-            //        return Aetherium.Items.SharkTeeth.instance.ItemDef;
-            //    case "ShieldingCore":
-            //        return Aetherium.Items.ShieldingCore.instance.ItemDef;
-            //    case "UnstableDesign":
-            //        return Aetherium.Items.UnstableDesign.instance.ItemDef;
-            //    case "VoidHeart":
-            //        return Aetherium.Items.Voidheart.instance.ItemDef;
-            //    case "WeightedAnklet":
-            //        return Aetherium.Items.WeightedAnklet.instance.ItemDef;
-            //    case "WitchesRing":
-            //        return Aetherium.Items.WitchesRing.instance.ItemDef;
-            //    case "EngiBelt":
-            //        return Aetherium.Items.EngineersToolbelt.instance.ItemDef;
-            //    case "JarOfReshaping":
-            //        return Aetherium.Equipment.JarOfReshaping.instance.EquipmentDef;
-            //}
-            return null;
-        }
+        private static Object GetKeyAssetFromString(string itemName) {
+            Object itemDef = RoR2.LegacyResourcesAPI.Load<ItemDef>("ItemDefs/" + itemName);
 
-        /*[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        public static GameObject LoadSivDisplay(string name)
-        {
-            switch (name)
-            {
-                case "BeetlePlush":
-                    return SivsItemsRoR2.BeetlePlush.displayPrefab;
-                case "BisonShield":
-                    return SivsItemsRoR2.BisonShield.displayPrefab;
-                case "FlameGland":
-                    return SivsItemsRoR2.FlameGland.displayPrefab;
-                case "Geode":
-                    return SivsItemsRoR2.Geode.displayPrefab;
-                case "ImpEye":
-                    return SivsItemsRoR2.ImpEye.displayPrefab;
-                case "NullSeed":
-                    return SivsItemsRoR2.NullSeed.displayPrefab;
-                case "Tarbine":
-                    return SivsItemsRoR2.Tarbine.displayPrefab;
-                case "Tentacle":
-                    return SivsItemsRoR2.Tentacle.displayPrefab;
+            if (itemDef == null) {
+                itemDef = RoR2.LegacyResourcesAPI.Load<EquipmentDef>("EquipmentDefs/" + itemName);
             }
-            return null;
-        }*/
 
-        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        public static GameObject LoadSupplyDropDisplay(string name)
-        {
-            switch (name)
-            {
-                case "Bones":
-                    return SupplyDrop.Items.HardenedBoneFragments.ItemBodyModelPrefab;
-                case "Berries":
-                    return SupplyDrop.Items.NumbingBerries.ItemBodyModelPrefab;
-                case "UnassumingTie":
-                    return SupplyDrop.Items.UnassumingTie.ItemBodyModelPrefab;
-                case "SalvagedWires":
-                    return SupplyDrop.Items.SalvagedWires.ItemBodyModelPrefab;
-
-                case "ShellPlating":
-                    return SupplyDrop.Items.ShellPlating.ItemBodyModelPrefab;
-                case "ElectroPlankton":
-                    return SupplyDrop.Items.ElectroPlankton.ItemBodyModelPrefab;
-                case "PlagueHat":
-                    return SupplyDrop.Items.PlagueHat.ItemBodyModelPrefab;
-                case "PlagueMask":
-                    GameObject masku = PrefabAPI.InstantiateClone(SupplyDrop.Items.PlagueMask.ItemBodyModelPrefab, "PlagueMask");
-                    Material heeheehee = new Material(masku.GetComponent<ItemDisplay>().rendererInfos[0].defaultMaterial);
-                    heeheehee.color = Color.green; ;
-                    masku.GetComponent<ItemDisplay>().rendererInfos[0].defaultMaterial = heeheehee;
-                    return masku;
-
-                case "BloodBook":
-                    return SupplyDrop.Items.BloodBook.ItemBodyModelPrefab;
-                case "QSGen":
-                    return SupplyDrop.Items.QSGen.ItemBodyModelPrefab;
+            if (itemDef == null) {
+                Debug.LogError("Could not load keyasset for " + itemName);
             }
-            return null;
+
+            return itemDef;
         }
 
-        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        public static Object LoadSupplyDropKeyAsset(string name) {
-            //todo CUM2 supply drop?
-            //switch (name) {
-            //    //would be cool if these are enums maybe
-            //    case "Bones":
-            //        return SupplyDrop.Items.HardenedBoneFragments.instance.itemDef;
-            //    case "Berries":
-            //        return SupplyDrop.Items.NumbingBerries.instance.itemDef;
-            //    case "UnassumingTie":
-            //        return SupplyDrop.Items.UnassumingTie.instance.itemDef;
-            //    case "SalvagedWires":
-            //        return SupplyDrop.Items.SalvagedWires.instance.itemDef;
-
-            //    case "ShellPlating":
-            //        return SupplyDrop.Items.ShellPlating.instance.itemDef;
-            //    case "ElectroPlankton":
-            //        return SupplyDrop.Items.ElectroPlankton.instance.itemDef;
-            //    case "PlagueHat":
-            //        return SupplyDrop.Items.PlagueHat.instance.itemDef;
-            //    case "PlagueMask":
-            //        return SupplyDrop.Items.PlagueMask.instance.itemDef;
-
-            //    case "BloodBook":
-            //        return SupplyDrop.Items.BloodBook.instance.itemDef;
-            //    case "QSGen":
-            //        return SupplyDrop.Items.QSGen.instance.itemDef;
-
-            //}
-            return null;
-        }
-
-        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        public static GameObject LoadStarstormDisplay(string name)
-        {
-            // make your fucking items public reeee
-            /*switch (name)
-            {
-                case "Fork"://fuck you rob for doing fork first
-                    return Starstorm2.Cores.Items.
-            }*/
-            return null;
-        }
-        #endregion
-
-
-        //halp
-
-        //use these
-        private static ItemDisplayRuleSet.KeyAssetRuleGroup CreateGenericDisplayRuleGroup(Object keyAsset_, GameObject itemPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
-
+        public static ItemDisplayRuleSet.KeyAssetRuleGroup CreateGenericDisplayRuleGroup(Object keyAsset_, GameObject itemPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
             ItemDisplayRule singleRule = CreateDisplayRule(itemPrefab, childName, position, rotation, scale);
             return CreateDisplayRuleGroupWithRules(keyAsset_, singleRule);
         }
-        public static ItemDisplayRuleSet.KeyAssetRuleGroup CreateGenericDisplayRuleGroup(string itemName, GameObject itemPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
 
-            ItemDisplayRule singleRule = CreateDisplayRule(itemPrefab, childName, position, rotation, scale);
-            return CreateDisplayRuleGroupWithRules(RoR2.LegacyResourcesAPI.Load<ItemDef>("ItemDefs/" + itemName), singleRule);
+        public static ItemDisplayRule CreateDisplayRule(string prefabName, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
+            return CreateDisplayRule(LoadDisplay(prefabName), childName, position, rotation, scale);
         }
-
-        public static ItemDisplayRuleSet.KeyAssetRuleGroup CreateFollowerDisplayRuleGroup(Object keyAsset_, GameObject itemPrefab, Vector3 position, Vector3 rotation, Vector3 scale) {
-
-            ItemDisplayRule singleRule = CreateFollowerDisplayRule(itemPrefab, position, rotation, scale);
-            return CreateDisplayRuleGroupWithRules(keyAsset_, singleRule);
-        }
-        public static ItemDisplayRuleSet.KeyAssetRuleGroup CreateFollowerDisplayRuleGroup(string itemName, GameObject itemPrefab, Vector3 position, Vector3 rotation, Vector3 scale) {
-
-            ItemDisplayRule singleRule = CreateFollowerDisplayRule(itemPrefab, position, rotation, scale);
-            return CreateDisplayRuleGroupWithRules(RoR2.LegacyResourcesAPI.Load<ItemDef>("ItemDefs/" + itemName), singleRule);
-        }
-
-
-
-        private static ItemDisplayRuleSet.KeyAssetRuleGroup CreateModRuleGroup(mod mod, string itemName, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
-
-            ItemDisplayRuleSet.KeyAssetRuleGroup ruleGroup = new ItemDisplayRuleSet.KeyAssetRuleGroup();
-            //god dang this function is tryhard
-            //just use the original function
-            //      oh i guess I wanted to generalize the trycatches
-            //          but right now I'm like no they're way too verbose so idk i'll look at it again
-            // oh hey. it should be going
-            //      nevermind, it's not because it fuxk here with the load keyasset and not at the create part
-
-            //it's not like it makes this any easier on a new look. to know what this does you'd have to go down the whole rabbit hole
-            //guess comments would fix that but yeah
-            //it's all interesting
-            //try {
-
-                switch (mod) {
-                    case mod.AETH:
-                        ruleGroup = CreateAetheriumRuleGroup(itemName, childName, position, rotation, scale);
-                        break;
-                    case mod.SUPP:
-                        ruleGroup = CreateSupplyDropRuleGroup(itemName, childName, position, rotation, scale);
-                        break;
-                    case mod.SIVS:
-                        break;
-                }
-
-                return ruleGroup;
-            //}
-            //catch (System.Exception e) {
-
-            //    PaladinPlugin.logger.LogWarning($"could not create item display for {mod.ToString().ToLower()}'s {itemName}. skipping.\n(Error: {e.Message})");
-
-            //    return ruleGroup;
-            //}
-            
-        }
-
-        private static ItemDisplayRuleSet.KeyAssetRuleGroup CreateSupplyDropRuleGroup(string itemName, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
-            return CreateGenericDisplayRuleGroup(LoadSupplyDropKeyAsset(itemName), LoadSupplyDropDisplay(itemName), childName, position, rotation, scale);
-        }
-        private static ItemDisplayRuleSet.KeyAssetRuleGroup CreateAetheriumRuleGroup(string itemName, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
-            return CreateGenericDisplayRuleGroup(LoadAetheriumKeyAsset(itemName), LoadAetheriumDisplay(itemName), childName, position, rotation, scale);
-        }
-
-        //they use these
-        //but use these ones yourself if you are doing multiple
-        private static ItemDisplayRuleSet.KeyAssetRuleGroup CreateDisplayRuleGroupWithRules(Object keyAsset_, params ItemDisplayRule[] rules) {
-            try {
-
-                return new ItemDisplayRuleSet.KeyAssetRuleGroup {
-                    keyAsset = keyAsset_,
-                    displayRuleGroup = new DisplayRuleGroup {
-                        rules = rules
-                    }
-                };
-            }
-            catch (System.Exception e) {
-
-                Debug.LogError($"couldn't create Item display \n{e}");
-
-                return new ItemDisplayRuleSet.KeyAssetRuleGroup();
-            }
-
-        }
-
-        private static ItemDisplayRule CreateFollowerDisplayRule(GameObject itemPrefab, Vector3 position, Vector3 rotation, Vector3 scale) {
-            return CreateDisplayRule(itemPrefab, "Root", position, rotation, scale);
-        }
-        private static ItemDisplayRule CreateDisplayRule(GameObject itemPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
+        public static ItemDisplayRule CreateDisplayRule(GameObject itemPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
             return new ItemDisplayRule {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,
                 childName = childName,
@@ -3285,6 +3289,63 @@ localScale = new Vector3(0.1246F, 0.1246F, 0.1246F),
             };
         }
 
+        public static ItemDisplayRule CreateLimbMaskDisplayRule(LimbFlags limb) {
+            return new ItemDisplayRule {
+                ruleType = ItemDisplayRuleType.LimbMask,
+                limbMask = limb,
+                childName = "",
+                followerPrefab = null
+                //localPos = Vector3.zero,
+                //localAngles = Vector3.zero,
+                //localScale = Vector3.zero
+            };
+        }
 
+        public static ItemDisplayRuleSet.KeyAssetRuleGroup CreateDisplayRuleGroupWithRules(string itemName, params ItemDisplayRule[] rules) {
+            return CreateDisplayRuleGroupWithRules(GetKeyAssetFromString(itemName), rules);
+        }
+        public static ItemDisplayRuleSet.KeyAssetRuleGroup CreateDisplayRuleGroupWithRules(Object keyAsset_, params ItemDisplayRule[] rules) {
+            return new ItemDisplayRuleSet.KeyAssetRuleGroup {
+                keyAsset = keyAsset_,
+                displayRuleGroup = new DisplayRuleGroup {
+                    rules = rules
+                }
+            };
+        }
+
+        public static ItemDisplayRuleSet.KeyAssetRuleGroup CreateGenericDisplayRule(string itemName, string prefabName, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
+            return CreateGenericDisplayRule(GetKeyAssetFromString(itemName), prefabName, childName, position, rotation, scale);
+        }
+        public static ItemDisplayRuleSet.KeyAssetRuleGroup CreateGenericDisplayRule(Object itemDef, string prefabName, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
+            return CreateGenericDisplayRule(itemDef, LoadDisplay(prefabName), childName, position, rotation, scale);
+        }
+        public static ItemDisplayRuleSet.KeyAssetRuleGroup CreateGenericDisplayRule(string itemName, GameObject displayPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
+            return CreateGenericDisplayRule(GetKeyAssetFromString(itemName), displayPrefab, childName, position, rotation, scale);
+        }
+        public static ItemDisplayRuleSet.KeyAssetRuleGroup CreateGenericDisplayRule(Object itemDef, GameObject displayPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale) {
+            if (displayPrefab == null) {
+                Debug.LogWarning("could not find display prefab for " + itemDef);
+            }
+
+            return new ItemDisplayRuleSet.KeyAssetRuleGroup {
+                keyAsset = itemDef,
+                displayRuleGroup = new DisplayRuleGroup {
+                    rules = new ItemDisplayRule[]
+                    {
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            childName = childName,
+                            followerPrefab = displayPrefab,
+                            limbMask = LimbFlags.None,
+                            localPos = position,
+                            localAngles = rotation,
+                            localScale = scale
+                        }
+                    }
+                }
+            };
+        }
+        #endregion add rule helpers
     }
 }

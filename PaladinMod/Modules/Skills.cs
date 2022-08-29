@@ -391,14 +391,11 @@ namespace PaladinMod.Modules
 
             mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
             mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelCruelSun));
-            if (Config.legacyCruelSun.Value) mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelCruelSunOld));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
             mySkillDef.baseRechargeInterval = 12f;
-            if (Config.legacyCruelSun.Value) mySkillDef.baseRechargeInterval = 40f;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
             mySkillDef.canceledFromSprinting = true;
-            if (Config.legacyCruelSun.Value) mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = false;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.resetCooldownTimerOnUse = false;
@@ -415,7 +412,6 @@ namespace PaladinMod.Modules
             mySkillDef.keywordTokens = new string[] {
                 "KEYWORD_OVERHEAT"
             };
-            if (Config.legacyCruelSun.Value) mySkillDef.keywordTokens = null;
 
             skillDefs.Add(mySkillDef);
 
@@ -445,48 +441,39 @@ namespace PaladinMod.Modules
             cancelSunSkillDef.skillName = "PALADIN_SPECIAL_SUN_CANCEL_NAME";
             cancelSunSkillDef.skillNameToken = "PALADIN_SPECIAL_SUN_CANCEL_NAME";
 
-            //pride flare testing; see PaladinPlugin.cs for real settings (why tho???)
-            /*
-            SkillDef scepterCruelSunDef = ScriptableObject.CreateInstance<SkillDef>();
-            scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ScepterChannelCruelSun));
-            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ScepterChannelCruelSunOld));
-            scepterCruelSunDef.activationStateMachineName = "Weapon";
-            scepterCruelSunDef.baseMaxStock = 1;
-            scepterCruelSunDef.baseRechargeInterval = 20f;
-            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.baseRechargeInterval = 40f;
-            scepterCruelSunDef.beginSkillCooldownOnSkillEnd = true;
-            scepterCruelSunDef.canceledFromSprinting = true;
-            if (Modules.Config.legacyCruelSun.Value) scepterCruelSunDef.canceledFromSprinting = false;
-            scepterCruelSunDef.fullRestockOnAssign = true;
-            scepterCruelSunDef.interruptPriority = InterruptPriority.Skill;
-            scepterCruelSunDef.resetCooldownTimerOnUse = false;
-            scepterCruelSunDef.isCombatSkill = true;
-            scepterCruelSunDef.mustKeyPress = true;
-            scepterCruelSunDef.cancelSprintingOnActivation = true;
-            scepterCruelSunDef.rechargeStock = 1;
-            scepterCruelSunDef.requiredStock = 1;
-            scepterCruelSunDef.stockToConsume = 1;
-            scepterCruelSunDef.icon = Modules.Assets.icon4dS;
-            scepterCruelSunDef.skillDescriptionToken = "PALADIN_SPECIAL_SCEPSUN_DESCRIPTION";
-            scepterCruelSunDef.skillName = "PALADIN_SPECIAL_SCEPSUN_NAME";
-            scepterCruelSunDef.skillNameToken = "PALADIN_SPECIAL_SCEPSUN_NAME";
-            scepterCruelSunDef.keywordTokens = new string[] {
-                "KEYWORD_OVERHEAT"
-            };
-            if (Config.legacyCruelSun.Value) scepterCruelSunDef.keywordTokens = null;
 
-            skillDefs.Add(scepterCruelSunDef);
+            if (Config.legacyCruelSun.Value) {
+                mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+                mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelCruelSunOld));
+                mySkillDef.activationStateMachineName = "Weapon";
+                mySkillDef.baseMaxStock = 1;
+                mySkillDef.baseRechargeInterval = 40f;
+                mySkillDef.beginSkillCooldownOnSkillEnd = true;
+                mySkillDef.canceledFromSprinting = false;
+                mySkillDef.fullRestockOnAssign = false;
+                mySkillDef.interruptPriority = InterruptPriority.Skill;
+                mySkillDef.resetCooldownTimerOnUse = false;
+                mySkillDef.isCombatSkill = true;
+                mySkillDef.mustKeyPress = true;
+                mySkillDef.cancelSprintingOnActivation = true;
+                mySkillDef.rechargeStock = 1;
+                mySkillDef.requiredStock = 1;
+                mySkillDef.stockToConsume = 1;
+                mySkillDef.icon = Assets.icon4d;
+                mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_SUN_LEGACY_DESCRIPTION";
+                mySkillDef.skillName = "PALADIN_SPECIAL_SUN_LEGACY_NAME";
+                mySkillDef.skillNameToken = "PALADIN_SPECIAL_SUN_LEGACY_NAME";
+                mySkillDef.keywordTokens = null;
 
-            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
-            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
-            {
-                skillDef = scepterCruelSunDef,
-                unlockableDef = Modules.Unlockables.paladinCruelSunSkillDefDef,
-                viewableNode = new ViewablesCatalog.Node(scepterCruelSunDef.skillNameToken, false, null)
-            };
-            */
-            //end testing
+                skillDefs.Add(mySkillDef);
 
+                Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+                skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant {
+                    skillDef = mySkillDef,
+                    unlockableDef = Modules.Unlockables.paladinCruelSunSkillDefDef,
+                    viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+                };
+            }
             SkillDef berserkSkillDef = CreateRageSkillDef(new SkillDefInfo
             {
                 skillName = "PALADIN_SPECIAL_BERSERK_NAME",

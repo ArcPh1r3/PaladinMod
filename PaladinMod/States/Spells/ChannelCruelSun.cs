@@ -6,6 +6,7 @@ namespace PaladinMod.States.Spell
     public class ChannelCruelSun : BaseChannelSpellState
     {
         private GameObject chargeEffect;
+        protected virtual string chargeEffectChild => "CruelSunChannelEffect";
 
         public override void OnEnter()
         {
@@ -19,7 +20,7 @@ namespace PaladinMod.States.Spell
             ChildLocator childLocator = base.GetModelChildLocator();
             if (childLocator)
             {
-                this.chargeEffect = childLocator.FindChild("CruelSunChannelEffect").gameObject;
+                this.chargeEffect = childLocator.FindChild(chargeEffectChild).gameObject;
                 this.chargeEffect.SetActive(false);
                 this.chargeEffect.SetActive(true);
             }

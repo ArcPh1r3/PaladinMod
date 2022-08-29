@@ -13,7 +13,7 @@ namespace PaladinMod.Misc
 
         void OnEnable()
         {
-            if (PaladinPlugin.VRInstalled)
+            if (PaladinPlugin.VREnabled)
             {
                 SubscribeToHandPairEvent();
             }
@@ -21,7 +21,7 @@ namespace PaladinMod.Misc
 
         void OnDisable()
         {
-            if (PaladinPlugin.VRInstalled)
+            if (PaladinPlugin.VREnabled)
             {
                 UnsubscribeToHandPairEvent();
             }

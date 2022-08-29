@@ -16,7 +16,7 @@ namespace PaladinMod.Modules
         public static GameObject lunarKnightPrefab;
 
         private static PhysicMaterial ragdollMaterial;
-
+        
         internal static List<SurvivorDef> survivorDefinitions = new List<SurvivorDef>();
         internal static List<GameObject> bodyPrefabs = new List<GameObject>();
         internal static List<GameObject> masterPrefabs = new List<GameObject>();

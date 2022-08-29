@@ -120,19 +120,29 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPTERWARCRY_DESCRIPTION", desc);
 
             desc = "<style=cIsHealth>Overheat</style>. <style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.cruelSunChannelDuration + "</style> seconds to create a <style=cIsUtility>miniature star</style> for <style=cIsDamage>" + StaticValues.cruelSunDuration + "</style> seconds that overheats <style=cDeath>EVERYTHING</style> around it. At <style=cIsHealth>" + StaticValues.cruelSunMinimumStacksBeforeApplyingBurns + "</style> stacks or more, targets burn for <style=cIsDamage>" + StaticValues.cruelSunBurnDamageCoefficient * 100f + "% damage</style>.";
-            if (Config.legacyCruelSun.Value) desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.cruelSunChannelDurationOld + "</style> seconds, then release to create a <style=cIsUtility>miniature star</style> that <style=cIsDamage>drains health</style> from <style=cIsHealth>ALL</style> entities around it.";
-
+            
             LanguageAPI.Add("PALADIN_SPECIAL_SUN_NAME", "Cruel Sun");
             LanguageAPI.Add("PALADIN_SPECIAL_SUN_DESCRIPTION", desc);
 
             LanguageAPI.Add("PALADIN_SPECIAL_SUN_CANCEL_NAME", "Cancel Cruel Sun");
             LanguageAPI.Add("PALADIN_SPECIAL_SUN_CANCEL_DESCRIPTION", "Stop channelling the current Cruel Sun");
 
-            if (Config.legacyCruelSun.Value) desc += Helpers.ScepterDescription("Explodes for a massive burst of " + PaladinMod.States.Spell.ScepterCastCruelSunOld.flareDamageCoefficient * 100f + "% damage.");
-            else desc += Helpers.ScepterDescription("Cast again and hold to aim, then release to throw the star, exploding for <style=cIsDamage>" + StaticValues.prideFlareDamageCoefficient * Config.prideFlareMultiplier.Value * 100f + "% damage</style> to <style=cDeath>EVERYTHING</style> around it.");
+            desc += Helpers.ScepterDescription("Cast again and hold to aim, then release to throw the star, exploding for <style=cIsDamage>" + StaticValues.prideFlareDamageCoefficient * Config.prideFlareMultiplier.Value * 100f + "% damage</style> to <style=cDeath>EVERYTHING</style> around it.");
 
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPSUN_NAME", "Pride Flare");
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPSUN_DESCRIPTION", desc);
+
+            if (Config.legacyCruelSun.Value) {
+                desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.cruelSunChannelDurationOld + "</style> seconds, then release to create a <style=cIsUtility>miniature star</style> that <style=cIsDamage>drains health</style> from <style=cIsHealth>ALL</style> entities around it.";
+
+                LanguageAPI.Add("PALADIN_SPECIAL_SUN_LEGACY_NAME", "Cruel Sun (Legacy)");
+                LanguageAPI.Add("PALADIN_SPECIAL_SUN_LEGACY_DESCRIPTION", desc);
+
+                desc += Helpers.ScepterDescription("Explodes for a massive burst of " + PaladinMod.States.Spell.ScepterCastCruelSunOld.flareDamageCoefficient* 100f + "% damage.");
+
+                LanguageAPI.Add("PALADIN_SPECIAL_SCEPSUN_LEGACY_NAME", "Pride Flare");
+                LanguageAPI.Add("PALADIN_SPECIAL_SCEPSUN_LEGACY_DESCRIPTION", desc);
+            }
 
             desc = "While below <style=cIsHealth>25% health</style>, generate <style=cIsDamage>Rage</style>. When at max <style=cIsDamage>Rage</style>, use to enter <color=#dc0000>Berserker Mode</color>, gaining a <style=cIsHealing>massive buff</style> and a <style=cIsUtility>new set of skills</style>.";
 
