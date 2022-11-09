@@ -5,7 +5,7 @@ set TargetFileName=PaladinMod.dll
 set TargetDir=bin\Debug\netstandard2.0
 
 REM robocopy to our weaver folder. idk what the fuck robocopy does but we leave one there for storage
-robocopy /log:nig.log %TargetDir% Weaver %TargetFileName% > %TargetDir%\Robocopy
+robocopy %TargetDir% Weaver %TargetFileName% > %TargetDir%\Robocopy
 
 REM rename our original build to prepatch
 IF EXIST %TargetDir%\%TargetFileName%.prepatch (

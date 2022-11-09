@@ -38,6 +38,8 @@ public class PaladinSunController : MonoBehaviour
 	[SerializeField]
 	public string stopSoundName;
 
+	private float cycleInterval;
+
 	private Run.FixedTimeStamp previousCycle = Run.FixedTimeStamp.negativeInfinity;
 
 	private int cycleIndex;
@@ -58,6 +60,7 @@ public class PaladinSunController : MonoBehaviour
 		ownerObj = GetComponent<GenericOwnership>() ? GetComponent<GenericOwnership>().ownerObject : GetComponent<ProjectileController>().owner;
 
 		ownerBody = ownerObj.GetComponent<CharacterBody>();
+		cycleInterval = StaticValues.cruelSunCycleInterval/ownerBody.attackSpeed;
 
 		if ((bool)activeLoopDef)
 		{
@@ -129,7 +132,7 @@ public class PaladinSunController : MonoBehaviour
 
 	private void ServerFixedUpdate()
 	{
-		float num = Mathf.Clamp01(previousCycle.timeSince / StaticValues.cruelSunCycleInterval);
+		float num = Mathf.Clamp01(previousCycle.timeSince / cycleInterval);
 		int num2 = ((num == 1f) ? cycleTargets.Count : Mathf.FloorToInt((float)cycleTargets.Count * num));
 		Vector3 position = base.transform.position;
 		while (cycleIndex < num2)
@@ -197,7 +200,7 @@ public class PaladinSunController : MonoBehaviour
 			}
 			cycleIndex++;
 		}
-		if (previousCycle.timeSince >= StaticValues.cruelSunCycleInterval)
+		if (previousCycle.timeSince >= cycleInterval)
 		{
 			previousCycle = Run.FixedTimeStamp.now;
 			cycleIndex = 0;

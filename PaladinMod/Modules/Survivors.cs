@@ -19,6 +19,7 @@ namespace PaladinMod.Modules
             survivorDef.bodyPrefab = Prefabs.paladinPrefab;
             survivorDef.displayPrefab = Prefabs.paladinDisplayPrefab;
             survivorDef.primaryColor = PaladinPlugin.characterColor;
+            survivorDef.cachedName = "RobPaladin";
             survivorDef.displayNameToken = "PALADIN_NAME";
             survivorDef.descriptionToken = "PALADIN_DESCRIPTION";
             survivorDef.outroFlavorToken = "PALADIN_OUTRO_FLAVOR";
@@ -55,6 +56,7 @@ namespace PaladinMod.Modules
                 survivorDef = ScriptableObject.CreateInstance<SurvivorDef>();
                 survivorDef.bodyPrefab = Prefabs.nemPaladinPrefab;
                 survivorDef.displayPrefab = Prefabs.nemPaladinDisplayPrefab;
+                survivorDef.cachedName = "NemPaladin";
                 survivorDef.displayNameToken = "NEMPALADIN_NAME";
                 survivorDef.descriptionToken = "NEMPALADIN_DESCRIPTION";
                 survivorDef.outroFlavorToken = "NEMPALADIN_OUTRO_FLAVOR";

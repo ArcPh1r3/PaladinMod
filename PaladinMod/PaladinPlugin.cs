@@ -32,7 +32,7 @@ namespace PaladinMod
         "SoundAPI",
         "UnlockableAPI"
     })]
-    [BepInPlugin(MODUID, "Paladin", "1.6.2")]    
+    [BepInPlugin(MODUID, "Paladin", "1.6.3")]    
     public class PaladinPlugin : BaseUnityPlugin
     {
         //keeping id the same so it versions over previous paladin
