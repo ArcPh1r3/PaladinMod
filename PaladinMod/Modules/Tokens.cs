@@ -173,7 +173,7 @@ namespace PaladinMod.Modules
 
             LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_NAME", "Paladin: Jolly Cooperation");
             LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, strike an enemy with a Royal Capacitor. <color=#c11>Host only</color>");
-            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_UNLOCKABLE_NAME", "JPaladin: olly Cooperation");
+            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_UNLOCKABLE_NAME", "Paladin: Jolly Cooperation");
 
             LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_ACHIEVEMENT_NAME", "Paladin: Herald of the Lost King");
             LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, hold 8 Lunar items at once.");
