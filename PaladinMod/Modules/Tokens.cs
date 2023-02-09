@@ -167,33 +167,33 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_TYPHOONUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, beat the game or obliterate on Typhoon or higher." + masteryFootnote);
             LanguageAPI.Add("PALADIN_TYPHOONUNLOCKABLE_UNLOCKABLE_NAME", "Paladin: Grand Mastery");
 
-            LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_ACHIEVEMENT_NAME", "Her Disciple");
+            LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_ACHIEVEMENT_NAME", "Paladin: Her Disciple");
             LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, form a covenant with a goddess of corruption.");
-            LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_UNLOCKABLE_NAME", "Her Discple");
+            LanguageAPI.Add("PALADIN_POISONUNLOCKABLE_UNLOCKABLE_NAME", "Paladin: Her Discple");
 
-            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_NAME", "Jolly Cooperation");
+            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_NAME", "Paladin: Jolly Cooperation");
             LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, strike an enemy with a Royal Capacitor. <color=#c11>Host only</color>");
-            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_UNLOCKABLE_NAME", "Jolly Cooperation");
+            LanguageAPI.Add("PALADIN_LIGHTNINGSPEARUNLOCKABLE_UNLOCKABLE_NAME", "JPaladin: olly Cooperation");
 
-            LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_ACHIEVEMENT_NAME", "Herald of the Lost King");
+            LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_ACHIEVEMENT_NAME", "Paladin: Herald of the Lost King");
             LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, hold 8 Lunar items at once.");
-            LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_UNLOCKABLE_NAME", "Herald of the Lost King");
+            LanguageAPI.Add("PALADIN_LUNARSHARDUNLOCKABLE_UNLOCKABLE_NAME", "Paladin: Herald of the Lost King");
 
-            LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_ACHIEVEMENT_NAME", "Warm Embrace");
+            LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_ACHIEVEMENT_NAME", "Paladin: Warm Embrace");
             LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, heal an ally with a Gnarled Woodsprite. <color=#c11>Host only</color>");
-            LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_UNLOCKABLE_NAME", "Warm Embrace");
+            LanguageAPI.Add("PALADIN_HEALUNLOCKABLE_UNLOCKABLE_NAME", "Paladin: Warm Embrace");
 
-            LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_NAME", "Suppression");
+            LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_NAME", "Paladin: Suppression");
             LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, stack 4 debuffs on one enemy.");
-            LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_UNLOCKABLE_NAME", "Suppression");
+            LanguageAPI.Add("PALADIN_TORPORUNLOCKABLE_UNLOCKABLE_NAME", "Paladin: Suppression");
 
-            LanguageAPI.Add("PALADIN_CRUELSUNUNLOCKABLE_ACHIEVEMENT_NAME", "Sunshine");
+            LanguageAPI.Add("PALADIN_CRUELSUNUNLOCKABLE_ACHIEVEMENT_NAME", "Paladin: Sunshine");
             LanguageAPI.Add("PALADIN_CRUELSUNUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, bear the full brunt of a Sun and survive.");
-            LanguageAPI.Add("PALADIN_CRUELSUNUNLOCKABLE_UNLOCKABLE_NAME", "Sunshine");
+            LanguageAPI.Add("PALADIN_CRUELSUNUNLOCKABLE_UNLOCKABLE_NAME", "Paladin: Sunshine");
 
-            LanguageAPI.Add("PALADIN_CLAYUNLOCKABLE_ACHIEVEMENT_NAME", "Ancient Relic");
+            LanguageAPI.Add("PALADIN_CLAYUNLOCKABLE_ACHIEVEMENT_NAME", "Paladin: Ancient Relic");
             LanguageAPI.Add("PALADIN_CLAYUNLOCKABLE_ACHIEVEMENT_DESC", "As Paladin, acquire a certain parasitic urn.");
-            LanguageAPI.Add("PALADIN_CLAYUNLOCKABLE_UNLOCKABLE_NAME", "Ancient Relic");
+            LanguageAPI.Add("PALADIN_CLAYUNLOCKABLE_UNLOCKABLE_NAME", "Paladin: Ancient Relic");
 
 
             LanguageAPI.Add("BROTHER_SEE_PALADIN_1", "Brother? No. Cheap imitation.");
