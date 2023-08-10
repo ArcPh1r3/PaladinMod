@@ -50,6 +50,8 @@ public class PaladinSunController : MonoBehaviour
 
 	private bool isLocalPlayerDamaged;
 
+	private bool crit;
+
 	private void Awake()
 	{
 		teamFilter = GetComponent<TeamFilter>();
@@ -61,6 +63,7 @@ public class PaladinSunController : MonoBehaviour
 
 		ownerBody = ownerObj.GetComponent<CharacterBody>();
 		cycleInterval = StaticValues.cruelSunCycleInterval/ownerBody.attackSpeed;
+		crit = ownerBody.RollCrit();
 
 		if ((bool)activeLoopDef)
 		{
@@ -185,9 +188,12 @@ public class PaladinSunController : MonoBehaviour
 								{
 									TeamDef teamDef = TeamCatalog.GetTeamDef(ownerBody.teamComponent.teamIndex);
 									float ffScale = 1f;
-									if (teamDef != null && teamDef.friendlyFireScaling > 0f) { ffScale *= teamDef.friendlyFireScaling; }
+									if (teamDef != null && teamDef.friendlyFireScaling > 0f) { 
+										ffScale *= teamDef.friendlyFireScaling; 
+									}
+									float critScale = isEnemy && crit ? 2 : 1; 
 									if (body.teamComponent.teamIndex == ownerBody.teamComponent.teamIndex & body != ownerBody){ ffScale *= StaticValues.cruelSunAllyDamageMultiplier; }
-									dotInfo.totalDamage = StaticValues.cruelSunBurnDamageCoefficient * ownerBody.damage * (float)overheatCount * ffScale;
+									dotInfo.totalDamage = StaticValues.cruelSunBurnDamageCoefficient * ownerBody.damage * (float)overheatCount * ffScale * critScale;
 									dotInfo.damageMultiplier = 1f * ffScale;
 									StrengthenBurnUtils.CheckDotForUpgrade(ownerBody.inventory, ref dotInfo);
 								}

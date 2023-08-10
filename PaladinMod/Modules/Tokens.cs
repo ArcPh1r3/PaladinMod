@@ -1,10 +1,20 @@
-﻿using R2API;
+﻿//using R2API;
 using System;
 
-namespace PaladinMod.Modules
-{
+namespace PaladinMod.Modules {
+
     public static class Tokens
     {
+        internal static class LanguageAPI {
+            public static void Add(string token, string text) {
+                Languages.Add(token, text);
+            }
+        }
+
+        public static void Init() {
+            AddTokens();
+            Languages.PrintOutput("funny");
+        }
         public static void AddTokens()
         {
             string desc = "The Paladin is a heavy hitting tank that can opt for otherworldly magic or devastating swordsmanship to aid allies and decimate foes.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine;
@@ -36,19 +46,19 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADINBODY_MINECRAFT_SKIN_NAME", "Minecraft");
 
 
-            LanguageAPI.Add("LUNAR_KNIGHT_BODY_NAME", "Lunar Knight");
-            LanguageAPI.Add("LUNAR_KNIGHT_BODY_DESCRIPTION", desc);
-            LanguageAPI.Add("LUNAR_KNIGHT_BODY_SUBTITLE", "Acolyte of Mithrix");
-            LanguageAPI.Add("LUNAR_KNIGHT_BODY_LORE", StaticValues.characterLore);
-            LanguageAPI.Add("LUNAR_KNIGHT_BODY_OUTRO_FLAVOR", StaticValues.characterOutro);
+            //LanguageAPI.Add("LUNAR_KNIGHT_BODY_NAME", "Lunar Knight");
+            //LanguageAPI.Add("LUNAR_KNIGHT_BODY_DESCRIPTION", desc);
+            //LanguageAPI.Add("LUNAR_KNIGHT_BODY_SUBTITLE", "Acolyte of Mithrix");
+            //LanguageAPI.Add("LUNAR_KNIGHT_BODY_LORE", StaticValues.characterLore);
+            //LanguageAPI.Add("LUNAR_KNIGHT_BODY_OUTRO_FLAVOR", StaticValues.characterOutro);
 
 
-            LanguageAPI.Add("NEMPALADIN_NAME", "Nemesis Paladin");
-            LanguageAPI.Add("NEMPALADIN_DESCRIPTION", desc);
-            LanguageAPI.Add("NEMPALADIN_SUBTITLE", StaticValues.characterSubtitle);
-            LanguageAPI.Add("NEMPALADIN_LORE", StaticValues.characterLore);
-            LanguageAPI.Add("NEMPALADIN_OUTRO_FLAVOR", StaticValues.characterOutro);
-            LanguageAPI.Add("NEMPALADIN_OUTRO_FAILURE", StaticValues.characterOutroFailure);
+            //LanguageAPI.Add("NEMPALADIN_NAME", "Nemesis Paladin");
+            //LanguageAPI.Add("NEMPALADIN_DESCRIPTION", desc);
+            //LanguageAPI.Add("NEMPALADIN_SUBTITLE", StaticValues.characterSubtitle);
+            //LanguageAPI.Add("NEMPALADIN_LORE", StaticValues.characterLore);
+            //LanguageAPI.Add("NEMPALADIN_OUTRO_FLAVOR", StaticValues.characterOutro);
+            //LanguageAPI.Add("NEMPALADIN_OUTRO_FAILURE", StaticValues.characterOutroFailure);
 
 
             LanguageAPI.Add("PALADIN_PASSIVE_NAME", "Bulwark's Blessing");
@@ -132,17 +142,15 @@ namespace PaladinMod.Modules
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPSUN_NAME", "Pride Flare");
             LanguageAPI.Add("PALADIN_SPECIAL_SCEPSUN_DESCRIPTION", desc);
 
-            if (Config.legacyCruelSun.Value) {
-                desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.cruelSunChannelDurationOld + "</style> seconds, then release to create a <style=cIsUtility>miniature star</style> that <style=cIsDamage>drains health</style> from <style=cIsHealth>ALL</style> entities around it.";
+            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.cruelSunChannelDurationOld + "</style> seconds, then release to create a <style=cIsUtility>miniature star</style> that <style=cIsDamage>drains health</style> from <style=cIsHealth>ALL</style> entities around it.";
 
-                LanguageAPI.Add("PALADIN_SPECIAL_SUN_LEGACY_NAME", "Cruel Sun (Legacy)");
-                LanguageAPI.Add("PALADIN_SPECIAL_SUN_LEGACY_DESCRIPTION", desc);
+            LanguageAPI.Add("PALADIN_SPECIAL_SUN_LEGACY_NAME", "Cruel Sun (Legacy)");
+            LanguageAPI.Add("PALADIN_SPECIAL_SUN_LEGACY_DESCRIPTION", desc);
 
-                desc += Helpers.ScepterDescription("Explodes for a massive burst of " + PaladinMod.States.Spell.ScepterCastCruelSunOld.flareDamageCoefficient* 100f + "% damage.");
+            desc += Helpers.ScepterDescription("Explodes for a massive burst of " + PaladinMod.States.Spell.ScepterCastCruelSunOld.flareDamageCoefficient* 100f + "% damage.");
 
-                LanguageAPI.Add("PALADIN_SPECIAL_SCEPSUN_LEGACY_NAME", "Pride Flare");
-                LanguageAPI.Add("PALADIN_SPECIAL_SCEPSUN_LEGACY_DESCRIPTION", desc);
-            }
+            LanguageAPI.Add("PALADIN_SPECIAL_SCEPSUN_LEGACY_NAME", "Pride Flare");
+            LanguageAPI.Add("PALADIN_SPECIAL_SCEPSUN_LEGACY_DESCRIPTION", desc);
 
             desc = "While below <style=cIsHealth>25% health</style>, generate <style=cIsDamage>Rage</style>. When at max <style=cIsDamage>Rage</style>, use to enter <color=#dc0000>Berserker Mode</color>, gaining a <style=cIsHealing>massive buff</style> and a <style=cIsUtility>new set of skills</style>.";
 

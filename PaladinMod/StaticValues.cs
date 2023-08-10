@@ -7,8 +7,15 @@
         public const string characterSubtitle = "Acolyte of Providence";
         public const string characterOutro = "..and so he left, faith in his doctrine shaken.";
         public const string characterOutroFailure = "..and so he vanished, his prayers unheard.";
+        public const string characterLore =
+            "\"You will go to Petrichor V.  This planet has been selected for your pilgrimage, the punishment for the sins committed towards your people<s>, K        </s>.\"\n\n"
+            + "I stared ahead, stripped of my armor and my sword.  My crown, shattered.  My obsidian-stone carapace, damaged and torn.  A small, starry gemstone embedded in my right palm, a remnant of my past as king.  They keep me bound and push me towards a ship, end of the line, my sacrifice for the good of my brothers and sisters.\n\n"
+            + "I did it to save my people, even if they do not accept such niceties.  I would not fall into their habits of never-ending war and suffering.  I tried to change them for the betterment of themselves, but I learned the hard way that traditionalism is something that one alone cannot change.\n\n"
+            + "So be it.  Perhaps my message will live on in the minds of those who tried to defend me.  Maybe my actions will mean something, maybe they will result in nothing.  I do not care for my own fate, I only hope that my people will learn from their pasts and improve themselves.\n\n"
+            + "For the sake of my people, for the sake of our history, for the sake of longevity...\n\n"
+            + "To the stars I go... to this planet of hushed rumors.";
 
-        public const string characterLore = "\nAlpha.  Gaze ahead.  He stands tall.  Similar face.  Blade like the sky, but not violent.  Peaceful yet powerful.  Protector.  Bulwark.  <color=#97d362>Friend.</color>\n\n"
+        public const string oldLore = "\nAlpha.  Gaze ahead.  He stands tall.  Similar face.  Blade like the sky, but not violent.  Peaceful yet powerful.  Protector.  Bulwark.  <color=#97d362>Friend.</color>\n\n"
             + "Me.  Frail.  Not worthy.  Yet he gave me opportunity.  Saw potential.  Imbued me with something.  Strength.  Power.  Understanding.   <color=#390b6d>M o n s t e r .</color>\n\n"
             + "Right hand.  Protectors alongside.  Other monsters.  None resemble me, or the Alpha.  Weapons were bestowed.  Hammer.  Axe.  Sword.  And more.  There was one other, however.  They looked off.  Red cape.  Bird-like.  Enemy.  Enemy?  She was the 13th Guardian.  The Alpha did not trust her, but the Omega insisted.  The Omega.  Brother.  Uncomfortable.  I do not trust him at all.\n\n"
             + "Loud.  A rumbling in the sky.  Massive flying metal beast.  A ship.  Off-world beings.  Landing violently.  They are similar in shape to some of us, yet different to others.  Mixture of flesh and machine.  Full flesh were some.  Full machine were few.\n\n"

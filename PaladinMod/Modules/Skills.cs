@@ -546,7 +546,7 @@ namespace PaladinMod.Modules
                 stockToConsume = 1
             });
 
-            //if (Modules.Config.cursed.Value) AddSpecialSkill(bodyPrefab, berserkSkillDef);
+            if (Modules.Config.cursed.Value) AddSpecialSkill(bodyPrefab, berserkSkillDef);
         }
 
         internal static SkillDef CreateSkillDef(SkillDefInfo skillDefInfo)

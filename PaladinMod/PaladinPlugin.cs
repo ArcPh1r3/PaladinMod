@@ -76,18 +76,27 @@ namespace PaladinMod
         // eh
         public static uint claySkinIndex = 4;
 
-        public void Start() {
-            Logger.LogInfo("[Initializing Paladin]");
-            //Modules.States.FixStates();
+        public void Awake() {
             instance = this;
             logger = base.Logger;
 
+            Modules.Config.ReadConfig();
+
+            Modules.Files.Init(Info); //store path to assembly
+            Modules.Languages.Init(); //register language file to be read
+            //Modules.Tokens.Init(); // print language file from old tokens
+        }
+
+        public void Start() {
+            Logger.LogInfo("[Initializing Paladin]");
+            //Modules.States.FixStates();
+
             //gameObject.AddComponent<TestValueManager>();
 
-            // load assets and read config
+            // load assets
             Modules.Assets.PopulateAssets();
-            Modules.Config.ReadConfig();
-            Modules.CameraParams.InitializeParams(); // create camera params for our character to use
+            // create camera params for our character to use
+            Modules.CameraParams.InitializeParams(); 
 
             // modded item displays
             aetheriumInstalled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.KomradeSpectre.Aetherium");
@@ -118,7 +127,6 @@ namespace PaladinMod
             Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
             Modules.Skins.RegisterSkins(); // add skins
             Modules.Effects.RegisterEffects(); // add and register custom effects
-            Modules.Tokens.AddTokens(); // register name tokens
 
             CreateDoppelganger(); // artifact of vengeance
 
