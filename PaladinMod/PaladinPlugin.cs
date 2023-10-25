@@ -269,7 +269,8 @@ namespace PaladinMod
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.DoInitialSightResponse += BrotherSpeechDriver_DoInitialSightResponse;
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.OnBodyKill += BrotherSpeechDriver_OnBodyKill;
 
-            On.RoR2.UI.HUD.Awake += HUDAwake;
+            // this is fucking ridiculous
+            //On.RoR2.UI.HUD.Awake += HUDAwake;
         }
 
         private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
