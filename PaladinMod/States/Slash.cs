@@ -67,18 +67,20 @@ namespace PaladinMod.States
 
             Util.PlaySound(Modules.Sounds.Cloth1, base.gameObject);
 
+            //Slash1 is first swing, Slash2 is second swing
             string animString = "Slash" + (1 + swingIndex).ToString();
-
+            //SlashCombo1 is first swing after the first time it's been done
             if (this.inCombo)
             {
-                if (!this.animator.GetBool("isMoving") && this.animator.GetBool("isGrounded")) base.PlayCrossfade("FullBody, Override", "SlashCombo1", "Slash.playbackRate", this.duration, 0.05f);
-                base.PlayCrossfade("Gesture, Override", "SlashCombo1", "Slash.playbackRate", this.duration, 0.05f);
+                animString = "SlashCombo1";
             }
-            else
+
+            base.PlayCrossfade("Gesture, Override", animString, "Slash.playbackRate", this.duration, 0.05f);
+            if (!this.animator.GetBool("isMoving") && this.animator.GetBool("isGrounded")) 
             {
-                if (!this.animator.GetBool("isMoving") && this.animator.GetBool("isGrounded")) base.PlayCrossfade("FullBody, Override", animString, "Slash.playbackRate", this.duration, 0.05f);
-                base.PlayCrossfade("Gesture, Override", animString, "Slash.playbackRate", this.duration, 0.05f);
+                base.PlayCrossfade("FullBody, Override", animString, "Slash.playbackRate", this.duration, 0.05f);
             }
+            
 
             float dmg = Slash.damageCoefficient;
             //14.5
