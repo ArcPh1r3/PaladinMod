@@ -38,7 +38,7 @@ public class WeaponTrail : MonoBehaviour
     void LateUpdate()
     {
         t = Mathf.Clamp(Time.deltaTime, 0, 0.066f);
-
+        
         if (t > 0)
         {
             while (tempT < t)

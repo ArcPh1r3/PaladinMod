@@ -86,7 +86,7 @@ namespace PaladinMod
             Modules.Languages.Init(); //register language file to be read
             //Modules.Tokens.Init(); // print language file from old tokens
         }
-
+        
         public void Start() {
             Logger.LogInfo("[Initializing Paladin]");
             //Modules.States.FixStates();

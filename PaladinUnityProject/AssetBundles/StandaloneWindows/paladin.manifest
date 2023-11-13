@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2085781902
+CRC: 1909482219
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8c03e0f39a2ce9c524af8a6ad6826db7
+    Hash: 8434463dd259c94fbc4c0f907d8152fc
   TypeTreeHash:
     serializedVersion: 2
     Hash: 041388fe7ef74db63a68f1d40bd5d735
@@ -112,7 +112,6 @@ Assets:
 - Assets/Paladin/Icons/texMasteryAchievement.png
 - Assets/NemPaladin/Animations/DefaultPose.anim
 - Assets/Paladin/Animations/RageSprintFAltV02.anim
-- Assets/Paladin/Mesh/meshPaladin.mesh
 - Assets/Paladin/VFX/matSunCharge.mat
 - Assets/NemPaladin/Textures/T_NemPaladin_Em.png
 - Assets/Paladin/Animations/RestIdle.anim
@@ -172,6 +171,7 @@ Assets:
 - Assets/Paladin/Animations/RestPose.anim
 - Assets/Paladin/Materials/Shields/matBlackKnightShield.mat
 - Assets/Uh oh/archangel.fbx
+- Assets/Paladin/Mesh/meshSword.mesh
 - Assets/Paladin/Effects/SwingEffects/EmpSpinSlashEffectFlame.prefab
 - Assets/Paladin/Animations/GroundSweep.anim
 - Assets/Paladin/Effects/SwordBeamGhost.prefab
@@ -230,6 +230,7 @@ Assets:
 - Assets/Paladin/Mesh/meshSwordLunar.mesh
 - Assets/Paladin/VFX/texTorpor.png
 - Assets/Paladin/Effects/SwingEffects/EmpSpinSlashEffectPurple.prefab
+- Assets/Paladin/mdlPaladin.prefab
 - Assets/Paladin/Animations/CastSpell.anim
 - Assets/Paladin/Icons/texMinecraftSkin.png
 - Assets/Paladin/VFX/matDeath.mat
@@ -285,6 +286,7 @@ Assets:
 - Assets/Paladin/VFX/texPaladinSwing2.png
 - Assets/Paladin/VFX/texLightning.tif
 - Assets/NemPaladin/Animations/Descend.anim
+- Assets/Paladin/Animations/animPaladinOld.controller
 - Assets/Paladin/Animations/AimYaw.anim
 - Assets/Paladin/Icons/SpinSlashIcon.png
 - Assets/Paladin/VFX/texEmber.tif
@@ -293,7 +295,6 @@ Assets:
 - Assets/Paladin/Textures/texPaladinGMOld.png
 - Assets/Paladin/Animations/MenuIdleIn.anim
 - Assets/Paladin/Animations/FireLunarShard.anim
-- Assets/Paladin/Mesh/meshSword.mesh
 - Assets/Paladin/Icons/PassiveIcon.png
 - Assets/Paladin/Mesh/meshLunarKnightMace.mesh
 - Assets/Paladin/Textures/texNormalBumpyRock.png
@@ -314,7 +315,7 @@ Assets:
 - Assets/Paladin/Effects/LightningHitFX.prefab
 - Assets/Paladin/Icons/LunarShardIcon.png
 - Assets/Paladin/Icons/CruelSunIcon.png
-- Assets/Paladin/mdlPaladin.prefab
+- Assets/Paladin/mdlPaladinOld.prefab
 - Assets/Paladin/Textures/Shields/texArtyShieldNormal.dds
 - Assets/LunarKnight/Materials/matLunarKnight.mat
 - Assets/Paladin/Textures/texPaladinGMEmissionOld.png
@@ -325,6 +326,7 @@ Assets:
 - Assets/Paladin/Textures/texPaladinNkuhanaEmission_old.png
 - Assets/NemPaladin/Animations/MenuIdle.anim
 - Assets/Paladin/Textures/texNormalConcrete.png
+- Assets/Paladin/Mesh/meshPaladin.mesh
 - Assets/Paladin/Textures/texPaladinSword.png
 - Assets/Paladin/Animations/RageIdle.anim
 - Assets/Paladin/VFX/matHitRingAlt.mat
