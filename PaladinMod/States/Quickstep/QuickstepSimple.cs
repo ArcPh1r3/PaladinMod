@@ -9,14 +9,25 @@ namespace PaladinMod.States.Quickstep
         protected Vector3 slipVector = Vector3.zero;
         public float duration = 0.25f;
         public float speedCoefficient = 5.5f;
+        private Vector3 cachedForward;
 
         public override void OnEnter()
         {
             base.OnEnter();
             this.slipVector = ((base.inputBank.moveVector == Vector3.zero) ? base.characterDirection.forward : base.inputBank.moveVector).normalized;
+            this.cachedForward = this.characterDirection.forward;
 
-            base.PlayCrossfade("FullBody, Override", "DashForward", "Whirlwind.playbackRate", this.duration,  0.05f);
-            base.PlayAnimation("Gesture, Override", "BufferEmpty");
+            Animator anim = this.GetModelAnimator();
+
+            Vector3 rhs = base.characterDirection ? base.characterDirection.forward : this.slipVector;
+            Vector3 rhs2 = Vector3.Cross(Vector3.up, rhs);
+            float num = Vector3.Dot(this.slipVector, rhs);
+            float num2 = Vector3.Dot(this.slipVector, rhs2);
+            anim.SetFloat("dashF", num);
+            anim.SetFloat("dashR", num2);
+
+            base.PlayCrossfade("FullBody, Override", "Dash", "Whirlwind.playbackRate", this.duration,  0.05f);
+            //base.PlayAnimation("Gesture, Override", "BufferEmpty");
 
             Util.PlaySound(EntityStates.BrotherMonster.BaseSlideState.soundString, base.gameObject);
 
@@ -48,7 +59,7 @@ namespace PaladinMod.States.Quickstep
             {
                 if (base.characterDirection)
                 {
-                    base.characterDirection.forward = this.slipVector;
+                    base.characterDirection.forward = this.cachedForward;
                 }
             }
 

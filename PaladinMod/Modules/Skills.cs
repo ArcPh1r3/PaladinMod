@@ -298,7 +298,7 @@ namespace PaladinMod.Modules
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.resetCooldownTimerOnUse = false;
-            mySkillDef.isCombatSkill = true;
+            mySkillDef.isCombatSkill = false;
             mySkillDef.mustKeyPress = false;
             mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
@@ -335,7 +335,7 @@ namespace PaladinMod.Modules
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.resetCooldownTimerOnUse = false;
-            mySkillDef.isCombatSkill = true;
+            mySkillDef.isCombatSkill = false;
             mySkillDef.mustKeyPress = false;
             mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
@@ -369,7 +369,7 @@ namespace PaladinMod.Modules
             mySkillDef.fullRestockOnAssign = true;
             mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.resetCooldownTimerOnUse = false;
-            mySkillDef.isCombatSkill = true;
+            mySkillDef.isCombatSkill = false;
             mySkillDef.mustKeyPress = false;
             mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;

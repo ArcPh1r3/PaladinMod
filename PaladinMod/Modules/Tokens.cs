@@ -17,7 +17,7 @@ namespace PaladinMod.Modules {
         }
         public static void AddTokens()
         {
-            string desc = "The Paladin is a heavy hitting tank that can opt for otherworldly magic or devastating swordsmanship to aid allies and decimate foes.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine;
+            string desc = "The Paladin is a versatile spellblade that can opt for otherworldly magic or devastating swordsmanship to aid allies and decimate foes.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine;
             desc = desc + "< ! > Your passive makes up a good portion of your damage, try to keep it up as much as possible." + Environment.NewLine + Environment.NewLine;
             desc = desc + "< ! > Spinning Slash can serve as either a powerful crowd control tool or a form of limited mobility." + Environment.NewLine + Environment.NewLine;
             desc = desc + "< ! > Quickstep's cooldown is lowered with each hit, rewarding you for staying in the thick of it." + Environment.NewLine + Environment.NewLine;
@@ -61,27 +61,27 @@ namespace PaladinMod.Modules {
             //LanguageAPI.Add("NEMPALADIN_OUTRO_FAILURE", StaticValues.characterOutroFailure);
 
 
-            LanguageAPI.Add("PALADIN_PASSIVE_NAME", "Bulwark's Blessing");
-            LanguageAPI.Add("PALADIN_PASSIVE_DESCRIPTION", "Gain <style=cIsHealing>" + StaticValues.armorPerLevel + " armor</style> per level. While above <style=cIsHealth>90% health</style> or while having active <style=cIsHealth>barrier</style>, the Paladin is <style=cIsHealing>blessed</style>, empowering all sword skills.");
+            LanguageAPI.Add("PALADIN_PASSIVE_NAME", "Unwavering Faith");
+            LanguageAPI.Add("PALADIN_PASSIVE_DESCRIPTION", "While above <style=cIsHealth>90% health</style> or while having active <style=cIsHealth>barrier</style>, the Paladin is <style=cIsHealing>blessed</style>, empowering all sword skills and <style=cIsHealing>blessing all nearby allies as well</style>.");
 
-            desc = "Slash forward for <style=cIsDamage>" + 100f * StaticValues.slashDamageCoefficient + "% damage</style>. Fires a <style=cIsUtility>beam of light</style> for <style=cIsDamage>" + 100f * StaticValues.beamDamageCoefficient + "% damage</style> if the Paladin is <style=cIsHealing>blessed</style>.";
+            desc = "Slash for <style=cIsDamage>" + 100f * StaticValues.slashDamageCoefficient + "% damage</style>. Fires a <style=cIsUtility>beam of light</style> for <style=cIsDamage>" + 100f * StaticValues.beamDamageCoefficient + "% damage</style> if the Paladin is <style=cIsHealing>blessed</style>.";
 
             LanguageAPI.Add("PALADIN_PRIMARY_SLASH_NAME", "Divine Blade");
             LanguageAPI.Add("PALADIN_PRIMARY_SLASH_DESCRIPTION", desc);
 
-            desc = "Slash forward for <style=cIsDamage>" + 100f * StaticValues.cursedBladeDamageCoefficient + "% damage</style>. Fires a <style=cIsUtility>beam of light</style> for <style=cIsDamage>" + 100f * StaticValues.beamDamageCoefficient + "% damage</style> if the Paladin is <style=cIsHealing>blessed</style>.";
+            desc = "Slash for <style=cIsDamage>" + 100f * StaticValues.cursedBladeDamageCoefficient + "% damage</style>. Fires a <style=cIsUtility>beam of light</style> for <style=cIsDamage>" + 100f * StaticValues.beamDamageCoefficient + "% damage</style> if the Paladin is <style=cIsHealing>blessed</style>.";
 
             LanguageAPI.Add("PALADIN_PRIMARY_CURSESLASH_NAME", "Accursed Blade");
             LanguageAPI.Add("PALADIN_PRIMARY_CURSESLASH_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Stunning.</style> Perform a wide sweeping slash for <style=cIsDamage>" + 100f * StaticValues.spinSlashDamageCoefficient + "% damage</style>, gaining range if <style=cIsHealing>blessed</style>. Use while airborne to perform a leap strike, firing a <style=cIsUtility>shockwave</style> if <style=cIsHealing>blessed</style>.";
+            desc = "Perform a <style=cIsUtility>wide stunning slash</style> for <style=cIsDamage>" + 100f * StaticValues.spinSlashDamageCoefficient + "% damage</style>, gaining range if <style=cIsHealing>blessed</style>. While airborne, instead perform a leap strike, firing a <style=cIsUtility>shockwave</style> if <style=cIsHealing>blessed</style>.";
 
             LanguageAPI.Add("PALADIN_SECONDARY_SPINSLASH_NAME", "Spinning Slash");
             LanguageAPI.Add("PALADIN_SECONDARY_SPINSLASH_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Shocking.</style> <style=cIsUtility>Agile.</style> Charge up and throw a <style=cIsUtility>lightning bolt</style>, dealing up to <style=cIsDamage>" + 100f * StaticValues.lightningSpearMaxDamageCoefficient + "% damage</style>. If hit by the bolt, coat your blade in <style=cIsUtility>lightning</style> for <style=cIsUtility>4 seconds</style>.";
+            desc = "<style=cIsUtility>Shocking.</style> <style=cIsUtility>Agile.</style> Charge up and throw a <style=cIsUtility>lightning bolt</style>, dealing up to <style=cIsDamage>" + 100f * StaticValues.lightningSpearMaxDamageCoefficient + "% damage</style>. Throw at your feet to coat your blade in <style=cIsUtility>lightning</style> for <style=cIsUtility>4 seconds</style>.";
 
-            LanguageAPI.Add("PALADIN_SECONDARY_LIGHTNING_NAME", "Sunlight Spear");
+            LanguageAPI.Add("PALADIN_SECONDARY_LIGHTNING_NAME", "Lightning Spear");
             LanguageAPI.Add("PALADIN_SECONDARY_LIGHTNING_DESCRIPTION", desc);
 
             desc = "<style=cIsUtility>Agile.</style> Fire a volley of <style=cIsUtility>lunar shards</style>, dealing <style=cIsDamage>" + 100f * StaticValues.lunarShardDamageCoefficient + "% damage</style> each. Hold up to <style=cIsDamage>" + StaticValues.lunarShardMaxStock + "</style> shards.";
@@ -135,7 +135,7 @@ namespace PaladinMod.Modules {
             LanguageAPI.Add("PALADIN_SPECIAL_SUN_DESCRIPTION", desc);
 
             LanguageAPI.Add("PALADIN_SPECIAL_SUN_CANCEL_NAME", "Cancel Cruel Sun");
-            LanguageAPI.Add("PALADIN_SPECIAL_SUN_CANCEL_DESCRIPTION", "Stop channelling the current Cruel Sun");
+            LanguageAPI.Add("PALADIN_SPECIAL_SUN_CANCEL_DESCRIPTION", "Stop channelling the current Cruel Sun.");
 
             desc += Helpers.ScepterDescription("Cast again and hold to aim, then release to throw the star, exploding for <style=cIsDamage>" + StaticValues.prideFlareDamageCoefficient * Config.prideFlareMultiplier.Value * 100f + "% damage</style> to <style=cDeath>EVERYTHING</style> around it.");
 

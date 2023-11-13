@@ -32,7 +32,7 @@ namespace PaladinMod
         "SoundAPI",
         "UnlockableAPI"
     })]
-    [BepInPlugin(MODUID, "Paladin", "1.6.3")]    
+    [BepInPlugin(MODUID, "Paladin", "2.0.0")]    
     public class PaladinPlugin : BaseUnityPlugin
     {
         //keeping id the same so it versions over previous paladin
@@ -485,6 +485,13 @@ namespace PaladinMod
 
             if (self)
             {
+                if (self.HasBuff(Modules.Buffs.blessedBuff))
+                {
+                    self.regen += StaticValues.regenAmount;
+                    float armorBuff = StaticValues.armorPerLevel * self.level;
+                    self.armor += armorBuff;
+                }
+
                 if (self.HasBuff(Modules.Buffs.warcryBuff))
                 {
                     float damageBuff = StaticValues.warcryDamageMultiplier * self.damage;
@@ -548,6 +555,23 @@ namespace PaladinMod
                     overlay.originalMaterial = RoR2.LegacyResourcesAPI.Load<Material>("Materials/matDoppelganger");
                     overlay.AddToCharacerModel(self);
                     torporController.Overlay = overlay;
+                }
+
+                if (self.body && self.body.HasBuff(Modules.Buffs.blessedBuff))
+                {
+                    var blessingTracker = self.body.GetComponent<PaladinBlessingTracker>();
+                    if (!blessingTracker) blessingTracker = self.body.gameObject.AddComponent<PaladinBlessingTracker>();
+                    else return;
+
+                    blessingTracker.Body = self.body;
+                    TemporaryOverlay overlay = self.gameObject.AddComponent<TemporaryOverlay>();
+                    overlay.duration = float.PositiveInfinity;
+                    overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                    overlay.animateShaderAlpha = true;
+                    overlay.destroyComponentOnEnd = true;
+                    overlay.originalMaterial = Modules.Assets.blessingMat;
+                    overlay.AddToCharacerModel(self);
+                    blessingTracker.Overlay = overlay;
                 }
 
                 if (self.body && self.body.HasBuff(Modules.Buffs.rageBuff))
@@ -700,7 +724,7 @@ namespace PaladinMod
             scepterHealDef.fullRestockOnAssign = true;
             scepterHealDef.interruptPriority = InterruptPriority.Skill;
             scepterHealDef.resetCooldownTimerOnUse = false;
-            scepterHealDef.isCombatSkill = true;
+            scepterHealDef.isCombatSkill = false;
             scepterHealDef.mustKeyPress = false;
             scepterHealDef.cancelSprintingOnActivation = true;
             scepterHealDef.rechargeStock = 1;
@@ -726,7 +750,7 @@ namespace PaladinMod
             scepterTorporDef.fullRestockOnAssign = true;
             scepterTorporDef.interruptPriority = InterruptPriority.Skill;
             scepterTorporDef.resetCooldownTimerOnUse = false;
-            scepterTorporDef.isCombatSkill = true;
+            scepterTorporDef.isCombatSkill = false;
             scepterTorporDef.mustKeyPress = false;
             scepterTorporDef.cancelSprintingOnActivation = true;
             scepterTorporDef.rechargeStock = 1;
@@ -755,7 +779,7 @@ namespace PaladinMod
             scepterWarcryDef.fullRestockOnAssign = true;
             scepterWarcryDef.interruptPriority = InterruptPriority.Skill;
             scepterWarcryDef.resetCooldownTimerOnUse = false;
-            scepterWarcryDef.isCombatSkill = true;
+            scepterWarcryDef.isCombatSkill = false;
             scepterWarcryDef.mustKeyPress = false;
             scepterWarcryDef.cancelSprintingOnActivation = true;
             scepterWarcryDef.rechargeStock = 1;

@@ -37,9 +37,10 @@
         public const float baseDamage = 13f;
         public const float baseDamagePerLevel = baseDamage * 0.2f;
         public const float armorPerLevel = 1f;
+        public const float regenAmount = 1.5f;
 
         //Divine Blade
-        public const float slashDamageCoefficient = 3.5f;
+        public const float slashDamageCoefficient = 3.2f;
 
         public const float beamDamageCoefficient = 3f;
         public const float beamSpeed = 160f;
@@ -49,11 +50,11 @@
         public const float cursedBladeHealCoefficient = 0.05f;
 
         //Spinning Slash
-        public const float spinSlashDamageCoefficient = 10f;
+        public const float spinSlashDamageCoefficient = 7.5f;
 
         //Sunlight Spear
         public const float lightningSpearMinDamageCoefficient = 3f;
-        public const float lightningSpearMaxDamageCoefficient = 8f;
+        public const float lightningSpearMaxDamageCoefficient = 7f;
         public const float lightningSpearChargeTime = 1.25f;
 
         //Lunar Shards
@@ -61,7 +62,7 @@
         public const int lunarShardMaxStock = 12;
 
         //Quickstep
-        public const float dashBarrierAmount = 0.1f;
+        public const float dashBarrierAmount = 0.15f;
 
         //Replenish
         public const float healRadius = 16f;

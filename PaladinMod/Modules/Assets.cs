@@ -22,6 +22,9 @@ namespace PaladinMod.Modules
         //character portrait
         public static Texture charPortrait;
 
+        //heheha
+        public static Material blessingMat;
+
         //torpor material
         public static Material torporMat;
 
@@ -258,7 +261,12 @@ namespace PaladinMod.Modules
             dashFX = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/BrotherDashEffect"), "PaladinDashEffect", true);
             dashFX.AddComponent<NetworkIdentity>();
             dashFX.GetComponent<EffectComponent>().applyScale = true;
-            dashFX.transform.localScale *= 0.5f;
+            dashFX.transform.localScale *= 0.35f;
+
+            dashFX.transform.Find("Dash").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Huntress/matHuntressSwipe.mat").WaitForCompletion();
+            dashFX.transform.Find("Dash").transform.localPosition = new Vector3(0f, 0f, -8f);
+            dashFX.transform.Find("Donut").transform.localScale = Vector3.one * 0.35f;
+            dashFX.transform.Find("Donut, Distortion").transform.localScale = Vector3.one * 0.35f;
 
             AddEffect(dashFX);
 
@@ -277,12 +285,13 @@ namespace PaladinMod.Modules
 
             #region SwordEffects
             swordSwing = Assets.LoadEffect("PaladinSwing", "");
+            //swordSwing.transform.Find("SwingTrail").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/VFX/matExpTrail.mat").WaitForCompletion();
             swordSwing.transform.Find("SwingTrail").Find("SwingTrail2").GetComponent<ParticleSystemRenderer>().material = matDistortion;
 
             spinningSlashFX = Assets.LoadEffect("SpinSlashEffect", "");
             spinningSlashEmpoweredFX = Assets.LoadEffect("EmpSpinSlashEffect", "");
-            spinningSlashEmpoweredFX.transform.Find("pog").GetComponent<ParticleSystemRenderer>().material = matJellyfishLightning;
-            spinningSlashEmpoweredFX.transform.Find("pog").Find("champ").GetComponent<ParticleSystemRenderer>().material = matJellyfishLightning;
+            spinningSlashEmpoweredFX.transform.Find("pog").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Lemurian/matLizardBiteTrail.mat").WaitForCompletion();
+            spinningSlashEmpoweredFX.transform.Find("pog").Find("champ").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Loader/matLoaderLightningLarge.mat").WaitForCompletion();
             spinningSlashEmpoweredFX.transform.Find("pog").Find("Distortion").GetComponent<ParticleSystemRenderer>().material = matDistortion;
 
             hitFX = Assets.LoadEffect("ImpactPaladinSwing", "");
@@ -373,8 +382,10 @@ namespace PaladinMod.Modules
             #region ProjectileGhosts
             lightningSpear = mainAssetBundle.LoadAsset<GameObject>("LightningSpear");
             swordBeam = mainAssetBundle.LoadAsset<GameObject>("SwordBeam");
-            swordBeamGhost = mainAssetBundle.LoadAsset<GameObject>("SwordBeamGhost");
-            swordBeamGhost.AddComponent<ProjectileGhostController>();
+            
+            swordBeamGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/EvisProjectileGhost.prefab").WaitForCompletion().InstantiateClone("PaladinSwordBeamGhost", true);
+            swordBeamGhost.transform.Find("Base").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/LunarWisp/matLunarWispBombTrail.mat").WaitForCompletion();
+
             tornadoEffect = mainAssetBundle.LoadAsset<GameObject>("PaladinTornadoEffect");
             tornadoEffect.AddComponent<ProjectileGhostController>();
             #endregion
@@ -512,6 +523,7 @@ namespace PaladinMod.Modules
 
         private static void GatherMaterials()
         {
+            // addressables exist now but do i care enough to rewrite this?
             grandParentPP = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/GrandParentBody").GetComponentInChildren<PostProcessVolume>().sharedProfile;
             supplyDropMat = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/CaptainSupplyDrops/CaptainSupplyDrop, Healing").transform.Find("Inactive").Find("Sphere, Outer").GetComponent<MeshRenderer>().material);
             airStrikeMat = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/CaptainAirstrikeGhost1").transform.Find("Expander").Find("Sphere, Outer").GetComponent<MeshRenderer>().material);
@@ -526,6 +538,10 @@ namespace PaladinMod.Modules
             matLoaderLightningSphere = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LoaderGroundSlam").transform.Find("Sphere, Expanding").GetComponent<ParticleSystemRenderer>().material);
             matYellowLightningLong = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/LoaderPylon").transform.Find("loader pylon").Find("LoaderPylonArmature").Find("ROOT").Find("ActiveParticles").Find("Sparks, Trail").GetComponent<ParticleSystemRenderer>().trailMaterial);
             matMeteorIndicator = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/MeteorStrikePredictionEffect").transform.Find("GroundSlamIndicator").GetComponent<MeshRenderer>().material);
+
+            // no, i don't.
+
+            blessingMat = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/matOnFire.mat").WaitForCompletion();
         }
 
         public static T LoadResources<T>(string assString) where T : UnityEngine.Object {

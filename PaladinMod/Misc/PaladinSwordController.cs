@@ -23,6 +23,11 @@ namespace PaladinMod.Misc
         private CharacterModel model;
         private ChildLocator childLocator;
         private Animator animator;
+        private float lightningBuffTimer;
+        private bool hasLightningBuff;
+        private float passiveBuffTimer;
+        private PaladinPassiveBuffController buffController;
+        private bool wasInCombat;
 
         public bool isBlunt;
 
@@ -32,6 +37,9 @@ namespace PaladinMod.Misc
             this.model = base.GetComponentInChildren<CharacterModel>();
             this.animator = model?.GetComponent<Animator>();
             this.childLocator = base.GetComponentInChildren<ChildLocator>();
+
+            this.buffController = this.gameObject.AddComponent<PaladinPassiveBuffController>();
+            this.buffController.buffDef = Modules.Buffs.blessedBuff;
 
             this.lightningEffect = this.childLocator.FindChild("SwordLightningEffect").GetComponentInChildren<ParticleSystem>();
         }
@@ -46,15 +54,78 @@ namespace PaladinMod.Misc
                 this.EditEyeTrail();
             }
 
-            Invoke("CheckInventory", 0.2f);
+            this.InvokeRepeating("CheckInventory", 0.5f, 2f);
+        }
+
+        private void FixedUpdate()
+        {
+            this.lightningBuffTimer -= Time.fixedDeltaTime;
+            this.passiveBuffTimer -= Time.fixedDeltaTime;
+
+            if (this.lightningBuffTimer <= 0f)
+            {
+                if (this.hasLightningBuff)
+                {
+                    this.KillLightningBuff();
+                }
+            }
+
+            // passive buff
+            if (this.body && this.body.healthComponent)
+            {
+                bool isActive = false;
+
+                if (this.body.healthComponent.combinedHealth >= (0.9f * this.body.healthComponent.fullHealth) || this.body.healthComponent.barrier > 0)
+                {
+                    isActive = true;
+                }
+
+                if (isActive)
+                {
+                    if (this.passiveBuffTimer <= 0f)
+                    {
+                        this.passiveBuffTimer = 0.35f;
+                        if (this.buffController) this.buffController.TryBuff();
+                    }
+                }
+            }
+
+            // combat animation shit
+            if (this.animator && this.body)
+            {
+                bool inCombat = true;
+                if (this.body.outOfDanger && this.body.outOfCombat) inCombat = false;
+
+                if (inCombat) this.animator.SetLayerWeight(this.animator.GetLayerIndex("Body, Combat"), 1f);
+                else this.animator.SetLayerWeight(this.animator.GetLayerIndex("Body, Combat"), 0f);
+
+                if (inCombat != this.wasInCombat)
+                {
+                    if (this.body.characterMotor.isGrounded && this.body.inputBank.moveVector == Vector3.zero)
+                    {
+                        if (!inCombat) EntityStates.EntityState.PlayAnimationOnAnimator(this.animator, "Body", "ToRestIdle");
+                    }
+                    else if (this.body.characterMotor.isGrounded && this.body.isSprinting)
+                    {
+
+                    }
+                    else
+                    {
+                        if (inCombat) EntityStates.EntityState.PlayAnimationOnAnimator(this.animator, "Transition", "ToCombat");
+                        else EntityStates.EntityState.PlayAnimationOnAnimator(this.animator, "Transition", "ToRest");
+                    }
+                }
+
+                this.wasInCombat = inCombat;
+            }
         }
 
         public void ApplyLightningBuff()
         {
             if (!this.body.HasBuff(Modules.Buffs.overchargeBuff) && NetworkServer.active) this.body.AddBuff(Modules.Buffs.overchargeBuff);
 
-            this.CancelInvoke();
-            this.Invoke("KillLightningBuff", 4f);
+            this.hasLightningBuff = true;
+            this.lightningBuffTimer = 4f;
             if (this.lightningEffect) this.lightningEffect.Play();
         }
 

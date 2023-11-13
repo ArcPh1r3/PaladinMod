@@ -9,6 +9,8 @@ namespace PaladinMod.Modules
 {
     public static class Buffs
     {
+        public static BuffDef blessedBuff;
+
         public static BuffDef torporDebuff;
         public static BuffDef warcryBuff;
 
@@ -22,6 +24,13 @@ namespace PaladinMod.Modules
 
         public static void RegisterBuffs()
         {
+            blessedBuff =
+    AddNewBuff("Blessed",
+               LegacyResourcesAPI.Load<BuffDef>("BuffDefs/HiddenInvincibility").iconSprite,
+               PaladinPlugin.characterColor,
+               false,
+               false);
+
             warcryBuff = 
                 AddNewBuff("Divine Blessing", 
                            LegacyResourcesAPI.Load<BuffDef>("BuffDefs/HiddenInvincibility").iconSprite, 
@@ -72,6 +81,7 @@ namespace PaladinMod.Modules
             buffDef.isDebuff = isDebuff;
             buffDef.eliteDef = null;
             buffDef.iconSprite = buffIcon;
+            buffDef.isHidden = false;
 
             buffDefs.Add(buffDef);
 

@@ -182,6 +182,7 @@ namespace PaladinMod.States
                 this.swordController.airSlamStacks = 1;
 
                 Util.PlaySound(Modules.Sounds.GroundImpact, base.gameObject);
+                Util.PlaySound(Modules.Sounds.LeapSlam, base.gameObject);
 
                 EffectData effectData = new EffectData();
                 effectData.origin = base.characterBody.footPosition;

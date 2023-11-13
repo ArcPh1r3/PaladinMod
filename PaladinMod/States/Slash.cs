@@ -224,10 +224,10 @@ namespace PaladinMod.States
             {
                 this.stopwatch += 0.1f * Time.fixedDeltaTime;
                 if (base.characterMotor) base.characterMotor.velocity = Vector3.zero;
-                if (this.animator) this.animator.SetFloat("Slash.playbackRate", 0.1f);
+                if (this.animator) this.animator.SetFloat("Slash.playbackRate", 0.05f);
             }
 
-            if (this.stopwatch >= this.duration * 0.2669f && this.stopwatch <= this.duration * 0.4f || PaladinPlugin.IsLocalVRPlayer(characterBody))
+            if (this.stopwatch >= this.duration * 0.23f && this.stopwatch <= this.duration * 0.4f || PaladinPlugin.IsLocalVRPlayer(characterBody))
             {
                 this.FireAttack(); 
             }

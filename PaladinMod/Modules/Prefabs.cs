@@ -33,17 +33,17 @@ namespace PaladinMod.Modules
         {
             paladinPrefab = CreatePrefab("RobPaladinBody", "mdlPaladin", new BodyInfo
             {
-                armor = 10f,
-                armorGrowth = StaticValues.armorPerLevel,
+                armor = 20f,
+                armorGrowth = 0f,//StaticValues.armorPerLevel,
                 bodyName = "RobPaladinBody",
                 bodyNameToken = "PALADIN_NAME",
                 characterPortrait = Assets.charPortrait,
                 crosshair = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"),
                 damage = StaticValues.baseDamage,
-                healthGrowth = 64,
+                healthGrowth = 44.4f,
                 healthRegen = 1.5f,
                 jumpCount = 1,
-                maxHealth = 160f,
+                maxHealth = 148f,
                 subtitleNameToken = "PALADIN_SUBTITLE",
                 bodyColor = PaladinPlugin.characterColor
             });

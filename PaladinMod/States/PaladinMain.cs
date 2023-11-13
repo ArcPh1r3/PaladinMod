@@ -23,6 +23,7 @@ namespace PaladinMod.States
         private uint trailEffectPlayID;
         private float sunSurvivalStopwatch;
         private bool hasBeenBurned;
+        private float passiveSoundCooldown;
 
         public LocalUser localUser;
 
@@ -100,6 +101,7 @@ namespace PaladinMod.States
         {
             base.FixedUpdate();
             this.sunSurvivalStopwatch -= Time.fixedDeltaTime;
+            this.passiveSoundCooldown -= Time.fixedDeltaTime;
 
             // cruel sun unlock
             if (base.characterBody.HasBuff(RoR2Content.Buffs.Overheat))
@@ -141,7 +143,15 @@ namespace PaladinMod.States
 
                 this.swordMat.SetFloat("_EmPower", this.swordTransition);
 
-                if (this.swordActive && !this.wasActive) Util.PlaySound(Modules.Sounds.SwordActive, base.gameObject);
+                if (this.passiveSoundCooldown <= 0f)
+                {
+                    if (this.swordActive && !this.wasActive)
+                    {
+                        Util.PlaySound(Modules.Sounds.SwordActive, this.gameObject);
+                        this.passiveSoundCooldown = 0.15f;
+                    }
+                }
+                
                 this.wasActive = this.swordActive;
             }
 

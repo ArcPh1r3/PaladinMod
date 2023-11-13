@@ -85,7 +85,8 @@ namespace PaladinMod.States
 
         protected virtual void PlayChannelAnimation()
         {
-            base.PlayAnimation("Gesture, Override", "ChannelSpell", "Spell.playbackRate", 0.85f);
+            if (this.characterBody.outOfCombat && this.characterBody.outOfDanger) base.PlayAnimation("Gesture, Override", "ChannelSpellRest", "Spell.playbackRate", 0.85f);
+            else base.PlayAnimation("Gesture, Override", "ChannelSpell", "Spell.playbackRate", 0.85f);
         }
 
         private void UpdateAreaIndicator()

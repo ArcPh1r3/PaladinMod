@@ -324,6 +324,7 @@ namespace PaladinMod.Modules
             skinDefs.Add(defaultSkin);
             #endregion
 
+            /*
             #region MasterySkin(lunar)
             CharacterModel.RendererInfo[] masteryRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(masteryRendererInfos, 0);
@@ -708,6 +709,7 @@ namespace PaladinMod.Modules
                 skinDefs.Add(poisonLegacySkin);
             #endregion
 
+            */
             skinController.skins = skinDefs.ToArray();
 
             for (int i = 0; i < skinDefs.Count; i++)

@@ -75,7 +75,7 @@ namespace PaladinMod.States
             this.swordController.airSlamStacks = 1;
 
             base.PlayAnimation("FullBody, Override", "LeapSlam", "Whirlwind.playbackRate", this.duration * 1.5f);
-            Util.PlaySound(Modules.Sounds.LeapSlam, base.gameObject);
+            Util.PlaySound(Modules.Sounds.Lunge, base.gameObject);
             Util.PlaySound(Modules.Sounds.Cloth2, base.gameObject);
 
             float dmg = AirSlam.damageCoefficient;
@@ -189,6 +189,7 @@ namespace PaladinMod.States
                 }
 
                 Util.PlaySound(Modules.Sounds.GroundImpact, base.gameObject);
+                Util.PlaySound(Modules.Sounds.LeapSlam, base.gameObject);
 
                 EffectData effectData = new EffectData();
                 effectData.origin = base.characterBody.footPosition;

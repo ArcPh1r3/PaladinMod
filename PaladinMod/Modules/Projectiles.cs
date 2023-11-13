@@ -100,8 +100,8 @@ namespace PaladinMod.Modules
 
             //swordBeam.GetComponent<ProjectileController>().ghostPrefab = Assets.swordBeamGhost; 
 
-            GameObject MercEvisProjectileGhost = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab;
-            swordBeamProjectile.GetComponent<ProjectileController>().ghostPrefab = MercEvisProjectileGhost;
+            //GameObject MercEvisProjectileGhost = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab;
+            swordBeamProjectile.GetComponent<ProjectileController>().ghostPrefab = Assets.swordBeamGhost;//MercEvisProjectileGhost;
             swordBeamProjectile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
 
             PaladinPlugin.Destroy(swordBeamProjectile.transform.Find("SweetSpotBehavior").gameObject);
