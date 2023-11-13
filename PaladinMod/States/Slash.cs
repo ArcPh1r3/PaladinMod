@@ -69,7 +69,7 @@ namespace PaladinMod.States
 
             //Slash1 is first swing, Slash2 is second swing
             string animString = "Slash" + (1 + swingIndex).ToString();
-            //SlashCombo1 is first swing after the first time it's been done
+            //SlashCombo1 is Slash1 but coming off Slash2
             if (this.inCombo)
             {
                 animString = "SlashCombo1";

@@ -1,0 +1,620 @@
+fileFormatVersion: 2
+guid: 6938fd3471710104f9173652727212a8
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: ArmatureNkuhanaArmsBak
+    100004: ArmatureNkuhanaArmsLeft
+    100006: ArmatureNkuhanaArmsRight
+    100008: calf.L
+    100010: calf.R
+    100012: cape.01
+    100014: cape.02
+    100016: cape.03
+    100018: cape.03_end
+    100020: cloak1
+    100022: cloak2
+    100024: cloak2_end
+    100026: elbow.ik.L
+    100028: elbow.ik.L 1
+    100030: elbow.ik.L_end
+    100032: elbow.ik.L_end 1
+    100034: elbow.ik.R
+    100036: elbow.ik.R 1
+    100038: elbow.ik.R_end
+    100040: elbow.ik.R_end 1
+    100042: elbowIK.L
+    100044: elbowIK.L_end
+    100046: elbowIK.R
+    100048: elbowIK.R_end
+    100050: f_index.01.L
+    100052: f_index.01.L 1
+    100054: f_index.01.L 2
+    100056: f_index.01.R
+    100058: f_index.01.R 1
+    100060: f_index.01.R 2
+    100062: f_index.02.L
+    100064: f_index.02.L 1
+    100066: f_index.02.L 2
+    100068: f_index.02.L_end
+    100070: f_index.02.L_end 1
+    100072: f_index.02.R
+    100074: f_index.02.R 1
+    100076: f_index.02.R 2
+    100078: f_index.02.R_end
+    100080: f_index.02.R_end 1
+    100082: f_index.03.L
+    100084: f_index.03.L_end
+    100086: f_index.03.R
+    100088: f_index.03.R_end
+    100090: f_middle.01.L
+    100092: f_middle.01.L 1
+    100094: f_middle.01.L 2
+    100096: f_middle.01.R
+    100098: f_middle.01.R 1
+    100100: f_middle.01.R 2
+    100102: f_middle.02.L
+    100104: f_middle.02.L 1
+    100106: f_middle.02.L 2
+    100108: f_middle.02.L_end
+    100110: f_middle.02.L_end 1
+    100112: f_middle.02.R
+    100114: f_middle.02.R 1
+    100116: f_middle.02.R 2
+    100118: f_middle.02.R_end
+    100120: f_middle.02.R_end 1
+    100122: f_middle.03.L
+    100124: f_middle.03.L_end
+    100126: f_middle.03.R
+    100128: f_middle.03.R_end
+    100130: f_pinky.01.L
+    100132: f_pinky.01.L 1
+    100134: f_pinky.01.L 2
+    100136: f_pinky.01.R
+    100138: f_pinky.01.R 1
+    100140: f_pinky.01.R 2
+    100142: f_pinky.02.L
+    100144: f_pinky.02.L 1
+    100146: f_pinky.02.L 2
+    100148: f_pinky.02.L_end
+    100150: f_pinky.02.L_end 1
+    100152: f_pinky.02.R
+    100154: f_pinky.02.R 1
+    100156: f_pinky.02.R 2
+    100158: f_pinky.02.R_end
+    100160: f_pinky.02.R_end 1
+    100162: f_pinky.03.L
+    100164: f_pinky.03.L_end
+    100166: f_pinky.03.R
+    100168: f_pinky.03.R_end
+    100170: f_ring.01.L
+    100172: f_ring.01.L 1
+    100174: f_ring.01.L 2
+    100176: f_ring.01.R
+    100178: f_ring.01.R 1
+    100180: f_ring.01.R 2
+    100182: f_ring.02.L
+    100184: f_ring.02.L 1
+    100186: f_ring.02.L 2
+    100188: f_ring.02.L_end
+    100190: f_ring.02.L_end 1
+    100192: f_ring.02.R
+    100194: f_ring.02.R 1
+    100196: f_ring.02.R 2
+    100198: f_ring.02.R_end
+    100200: f_ring.02.R_end 1
+    100202: f_ring.03.L
+    100204: f_ring.03.L_end
+    100206: f_ring.03.R
+    100208: f_ring.03.R_end
+    100210: f_thumb.01.L
+    100212: f_thumb.01.L 1
+    100214: f_thumb.01.R
+    100216: f_thumb.01.R 1
+    100218: f_thumb.02.L
+    100220: f_thumb.02.L 1
+    100222: f_thumb.02.L_end
+    100224: f_thumb.02.L_end 1
+    100226: f_thumb.02.R
+    100228: f_thumb.02.R 1
+    100230: f_thumb.02.R_end
+    100232: f_thumb.02.R_end 1
+    100234: foot.L
+    100236: foot.R
+    100238: footIK.L
+    100240: footIK.L_end
+    100242: footIK.R
+    100244: footIK.R_end
+    100246: hand.L
+    100248: hand.L 1
+    100250: hand.L 2
+    100252: hand.R
+    100254: hand.R 1
+    100256: hand.R 2
+    100258: hand_ik.L
+    100260: hand_ik.L 1
+    100262: hand_ik.L_end
+    100264: hand_ik.L_end 1
+    100266: hand_ik.R
+    100268: hand_ik.R 1
+    100270: hand_ik.R_end
+    100272: hand_ik.R_end 1
+    100274: handIK.L
+    100276: handIK.L_end
+    100278: handIK.R
+    100280: handIK.R_end
+    100282: head
+    100284: head_end
+    100286: heel.02.L
+    100288: heel.02.L_end
+    100290: heel.02.R
+    100292: heel.02.R_end
+    100294: kneeIK.L
+    100296: kneeIK.L_end
+    100298: kneeIK.R
+    100300: kneeIK.R_end
+    100302: loin1
+    100304: loin2
+    100306: loin2_end
+    100308: loin3
+    100310: loin4
+    100312: loin4_end
+    100314: lower_arm.L
+    100316: lower_arm.L 1
+    100318: lower_arm.L 2
+    100320: lower_arm.R
+    100322: lower_arm.R 1
+    100324: lower_arm.R 2
+    100326: meshhSpecterScythe
+    100328: meshNkuhana
+    100330: meshNkuhanaArmsLeft
+    100332: meshNkuhanaArmsRight
+    100334: meshNkuhanaScythe
+    100336: meshPaladin
+    100338: meshPaladinSword
+    100340: meshSpecter
+    100342: neck
+    100344: //RootNode
+    100346: palm.01.L
+    100348: palm.01.L 1
+    100350: palm.01.L 2
+    100352: palm.01.R
+    100354: palm.01.R 1
+    100356: palm.01.R 2
+    100358: palm.02.L
+    100360: palm.02.L 1
+    100362: palm.02.L 2
+    100364: palm.02.R
+    100366: palm.02.R 1
+    100368: palm.02.R 2
+    100370: palm.03.L
+    100372: palm.03.L 1
+    100374: palm.03.L 2
+    100376: palm.03.R
+    100378: palm.03.R 1
+    100380: palm.03.R 2
+    100382: palm.04.L
+    100384: palm.04.L 1
+    100386: palm.04.L 2
+    100388: palm.04.R
+    100390: palm.04.R 1
+    100392: palm.04.R 2
+    100394: pelvis.L
+    100396: pelvis.L_end
+    100398: pelvis.R
+    100400: pelvis.R_end
+    100402: shoulder.L
+    100404: shoulder.L 1
+    100406: shoulder.L 2
+    100408: shoulder.R
+    100410: shoulder.R 1
+    100412: shoulder.R 2
+    100414: spine
+    100416: spine.001
+    100418: spine.002
+    100420: spine.003
+    100422: spine.004
+    100424: swordBase
+    100426: swordBottom.01
+    100428: swordBottom.01_end
+    100430: swordBottom.02
+    100432: swordBottom.02_end
+    100434: swordBottom.03
+    100436: swordBottom.03_end
+    100438: swordTip
+    100440: swordTip_end
+    100442: swordTop.01
+    100444: swordTop.01_end
+    100446: swordTop.02
+    100448: swordTop.02_end
+    100450: swordTop.03
+    100452: swordTop.03_end
+    100454: thigh.L
+    100456: thigh.R
+    100458: thumb.01.L
+    100460: thumb.01.R
+    100462: thumb.02.L
+    100464: thumb.02.R
+    100466: thumb.03.L
+    100468: thumb.03.L_end
+    100470: thumb.03.R
+    100472: thumb.03.R_end
+    100474: toe.L
+    100476: toe.L_end
+    100478: toe.R
+    100480: toe.R_end
+    100482: upper_arm.L
+    100484: upper_arm.L 1
+    100486: upper_arm.L 2
+    100488: upper_arm.R
+    100490: upper_arm.R 1
+    100492: upper_arm.R 2
+    100494: wrap1
+    100496: wrap2
+    100498: wrap2_end
+    100500: wrap3
+    100502: wrap4
+    100504: wrap4_end
+    400000: Armature
+    400002: ArmatureNkuhanaArmsBak
+    400004: ArmatureNkuhanaArmsLeft
+    400006: ArmatureNkuhanaArmsRight
+    400008: calf.L
+    400010: calf.R
+    400012: cape.01
+    400014: cape.02
+    400016: cape.03
+    400018: cape.03_end
+    400020: cloak1
+    400022: cloak2
+    400024: cloak2_end
+    400026: elbow.ik.L
+    400028: elbow.ik.L 1
+    400030: elbow.ik.L_end
+    400032: elbow.ik.L_end 1
+    400034: elbow.ik.R
+    400036: elbow.ik.R 1
+    400038: elbow.ik.R_end
+    400040: elbow.ik.R_end 1
+    400042: elbowIK.L
+    400044: elbowIK.L_end
+    400046: elbowIK.R
+    400048: elbowIK.R_end
+    400050: f_index.01.L
+    400052: f_index.01.L 1
+    400054: f_index.01.L 2
+    400056: f_index.01.R
+    400058: f_index.01.R 1
+    400060: f_index.01.R 2
+    400062: f_index.02.L
+    400064: f_index.02.L 1
+    400066: f_index.02.L 2
+    400068: f_index.02.L_end
+    400070: f_index.02.L_end 1
+    400072: f_index.02.R
+    400074: f_index.02.R 1
+    400076: f_index.02.R 2
+    400078: f_index.02.R_end
+    400080: f_index.02.R_end 1
+    400082: f_index.03.L
+    400084: f_index.03.L_end
+    400086: f_index.03.R
+    400088: f_index.03.R_end
+    400090: f_middle.01.L
+    400092: f_middle.01.L 1
+    400094: f_middle.01.L 2
+    400096: f_middle.01.R
+    400098: f_middle.01.R 1
+    400100: f_middle.01.R 2
+    400102: f_middle.02.L
+    400104: f_middle.02.L 1
+    400106: f_middle.02.L 2
+    400108: f_middle.02.L_end
+    400110: f_middle.02.L_end 1
+    400112: f_middle.02.R
+    400114: f_middle.02.R 1
+    400116: f_middle.02.R 2
+    400118: f_middle.02.R_end
+    400120: f_middle.02.R_end 1
+    400122: f_middle.03.L
+    400124: f_middle.03.L_end
+    400126: f_middle.03.R
+    400128: f_middle.03.R_end
+    400130: f_pinky.01.L
+    400132: f_pinky.01.L 1
+    400134: f_pinky.01.L 2
+    400136: f_pinky.01.R
+    400138: f_pinky.01.R 1
+    400140: f_pinky.01.R 2
+    400142: f_pinky.02.L
+    400144: f_pinky.02.L 1
+    400146: f_pinky.02.L 2
+    400148: f_pinky.02.L_end
+    400150: f_pinky.02.L_end 1
+    400152: f_pinky.02.R
+    400154: f_pinky.02.R 1
+    400156: f_pinky.02.R 2
+    400158: f_pinky.02.R_end
+    400160: f_pinky.02.R_end 1
+    400162: f_pinky.03.L
+    400164: f_pinky.03.L_end
+    400166: f_pinky.03.R
+    400168: f_pinky.03.R_end
+    400170: f_ring.01.L
+    400172: f_ring.01.L 1
+    400174: f_ring.01.L 2
+    400176: f_ring.01.R
+    400178: f_ring.01.R 1
+    400180: f_ring.01.R 2
+    400182: f_ring.02.L
+    400184: f_ring.02.L 1
+    400186: f_ring.02.L 2
+    400188: f_ring.02.L_end
+    400190: f_ring.02.L_end 1
+    400192: f_ring.02.R
+    400194: f_ring.02.R 1
+    400196: f_ring.02.R 2
+    400198: f_ring.02.R_end
+    400200: f_ring.02.R_end 1
+    400202: f_ring.03.L
+    400204: f_ring.03.L_end
+    400206: f_ring.03.R
+    400208: f_ring.03.R_end
+    400210: f_thumb.01.L
+    400212: f_thumb.01.L 1
+    400214: f_thumb.01.R
+    400216: f_thumb.01.R 1
+    400218: f_thumb.02.L
+    400220: f_thumb.02.L 1
+    400222: f_thumb.02.L_end
+    400224: f_thumb.02.L_end 1
+    400226: f_thumb.02.R
+    400228: f_thumb.02.R 1
+    400230: f_thumb.02.R_end
+    400232: f_thumb.02.R_end 1
+    400234: foot.L
+    400236: foot.R
+    400238: footIK.L
+    400240: footIK.L_end
+    400242: footIK.R
+    400244: footIK.R_end
+    400246: hand.L
+    400248: hand.L 1
+    400250: hand.L 2
+    400252: hand.R
+    400254: hand.R 1
+    400256: hand.R 2
+    400258: hand_ik.L
+    400260: hand_ik.L 1
+    400262: hand_ik.L_end
+    400264: hand_ik.L_end 1
+    400266: hand_ik.R
+    400268: hand_ik.R 1
+    400270: hand_ik.R_end
+    400272: hand_ik.R_end 1
+    400274: handIK.L
+    400276: handIK.L_end
+    400278: handIK.R
+    400280: handIK.R_end
+    400282: head
+    400284: head_end
+    400286: heel.02.L
+    400288: heel.02.L_end
+    400290: heel.02.R
+    400292: heel.02.R_end
+    400294: kneeIK.L
+    400296: kneeIK.L_end
+    400298: kneeIK.R
+    400300: kneeIK.R_end
+    400302: loin1
+    400304: loin2
+    400306: loin2_end
+    400308: loin3
+    400310: loin4
+    400312: loin4_end
+    400314: lower_arm.L
+    400316: lower_arm.L 1
+    400318: lower_arm.L 2
+    400320: lower_arm.R
+    400322: lower_arm.R 1
+    400324: lower_arm.R 2
+    400326: meshhSpecterScythe
+    400328: meshNkuhana
+    400330: meshNkuhanaArmsLeft
+    400332: meshNkuhanaArmsRight
+    400334: meshNkuhanaScythe
+    400336: meshPaladin
+    400338: meshPaladinSword
+    400340: meshSpecter
+    400342: neck
+    400344: //RootNode
+    400346: palm.01.L
+    400348: palm.01.L 1
+    400350: palm.01.L 2
+    400352: palm.01.R
+    400354: palm.01.R 1
+    400356: palm.01.R 2
+    400358: palm.02.L
+    400360: palm.02.L 1
+    400362: palm.02.L 2
+    400364: palm.02.R
+    400366: palm.02.R 1
+    400368: palm.02.R 2
+    400370: palm.03.L
+    400372: palm.03.L 1
+    400374: palm.03.L 2
+    400376: palm.03.R
+    400378: palm.03.R 1
+    400380: palm.03.R 2
+    400382: palm.04.L
+    400384: palm.04.L 1
+    400386: palm.04.L 2
+    400388: palm.04.R
+    400390: palm.04.R 1
+    400392: palm.04.R 2
+    400394: pelvis.L
+    400396: pelvis.L_end
+    400398: pelvis.R
+    400400: pelvis.R_end
+    400402: shoulder.L
+    400404: shoulder.L 1
+    400406: shoulder.L 2
+    400408: shoulder.R
+    400410: shoulder.R 1
+    400412: shoulder.R 2
+    400414: spine
+    400416: spine.001
+    400418: spine.002
+    400420: spine.003
+    400422: spine.004
+    400424: swordBase
+    400426: swordBottom.01
+    400428: swordBottom.01_end
+    400430: swordBottom.02
+    400432: swordBottom.02_end
+    400434: swordBottom.03
+    400436: swordBottom.03_end
+    400438: swordTip
+    400440: swordTip_end
+    400442: swordTop.01
+    400444: swordTop.01_end
+    400446: swordTop.02
+    400448: swordTop.02_end
+    400450: swordTop.03
+    400452: swordTop.03_end
+    400454: thigh.L
+    400456: thigh.R
+    400458: thumb.01.L
+    400460: thumb.01.R
+    400462: thumb.02.L
+    400464: thumb.02.R
+    400466: thumb.03.L
+    400468: thumb.03.L_end
+    400470: thumb.03.R
+    400472: thumb.03.R_end
+    400474: toe.L
+    400476: toe.L_end
+    400478: toe.R
+    400480: toe.R_end
+    400482: upper_arm.L
+    400484: upper_arm.L 1
+    400486: upper_arm.L 2
+    400488: upper_arm.R
+    400490: upper_arm.R 1
+    400492: upper_arm.R 2
+    400494: wrap1
+    400496: wrap2
+    400498: wrap2_end
+    400500: wrap3
+    400502: wrap4
+    400504: wrap4_end
+    2100000: matPaladin.002
+    2100002: matSword
+    2100004: matNkuhana
+    2100006: matNkuhanaScythe
+    2100008: matSpecter
+    2100010: matSpecterScythe
+    4300000: meshPaladin
+    4300002: meshPaladinSword
+    4300004: meshNkuhana
+    4300006: meshNkuhanaScythe
+    4300008: meshNkuhanaArmsLeft
+    4300010: meshNkuhanaArmsRight
+    4300012: meshSpecter
+    4300014: meshhSpecterScythe
+    9500000: //RootNode
+    13700000: meshhSpecterScythe
+    13700002: meshNkuhana
+    13700004: meshNkuhanaArmsLeft
+    13700006: meshNkuhanaArmsRight
+    13700008: meshNkuhanaScythe
+    13700010: meshPaladin
+    13700012: meshPaladinSword
+    13700014: meshSpecter
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
