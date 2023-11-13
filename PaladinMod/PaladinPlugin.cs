@@ -14,6 +14,7 @@ using RoR2.Orbs;
 using System.Collections.Generic;
 using BepInEx.Logging;
 using System;
+using UnityEngine.AddressableAssets;
 
 namespace PaladinMod
 {
@@ -487,7 +488,7 @@ namespace PaladinMod
             {
                 if (self.HasBuff(Modules.Buffs.blessedBuff))
                 {
-                    self.regen += StaticValues.regenAmount;
+                    self.regen += StaticValues.regenAmount + (self.level * 0.6f);
                     float armorBuff = StaticValues.armorPerLevel * self.level;
                     self.armor += armorBuff;
                 }
@@ -552,7 +553,7 @@ namespace PaladinMod
                     overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                     overlay.animateShaderAlpha = true;
                     overlay.destroyComponentOnEnd = true;
-                    overlay.originalMaterial = RoR2.LegacyResourcesAPI.Load<Material>("Materials/matDoppelganger");
+                    overlay.originalMaterial = Addressables.LoadAssetAsync<Material>("RoR2/DLC1/EliteVoid/matEliteVoidOverlay.mat").WaitForCompletion();
                     overlay.AddToCharacerModel(self);
                     torporController.Overlay = overlay;
                 }

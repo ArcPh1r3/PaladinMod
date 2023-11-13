@@ -10,7 +10,7 @@ namespace PaladinMod.Misc
     {
         [SyncVar]
         [Tooltip("The area of effect.")]
-        public float radius = 12f;
+        public float radius = 32f;
         [Tooltip("The buff type to grant")]
         public BuffDef buffDef;
         [Tooltip("The buff duration")]
@@ -19,16 +19,24 @@ namespace PaladinMod.Misc
         public bool invertTeamFilter = false;
 
         private TeamFilter teamFilter;
+        private TeamComponent teamComponent;
 
         private void Start()
         {
-            this.teamFilter = base.GetComponent<TeamFilter>();
+            this.teamFilter = this.GetComponent<TeamFilter>();
+            this.teamComponent = this.GetComponent<TeamComponent>();
 
             if (!this.teamFilter)
             {
                 this.teamFilter = this.gameObject.AddComponent<TeamFilter>();
-                this.teamFilter.teamIndex = this.GetComponent<TeamComponent>().teamIndex;
             }
+
+            this.InvokeRepeating("SetTeamFilter", 0.5f, 0.5f);
+        }
+
+        private void SetTeamFilter()
+        {
+            if (this.teamComponent && this.teamFilter) this.teamFilter.teamIndex = this.teamComponent.teamIndex;
         }
 
         public void TryBuff()

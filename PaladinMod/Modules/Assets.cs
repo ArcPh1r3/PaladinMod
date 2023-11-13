@@ -541,7 +541,8 @@ namespace PaladinMod.Modules
 
             // no, i don't.
 
-            blessingMat = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/matOnFire.mat").WaitForCompletion();
+            blessingMat = Material.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidMegaCrab/matVoidCrabMatterOverlay.mat").WaitForCompletion());
+            blessingMat.SetColor("_TintColor", new Color(0f / 255f, 145f / 255f, 173f / 255f));
         }
 
         public static T LoadResources<T>(string assString) where T : UnityEngine.Object {
@@ -554,6 +555,7 @@ namespace PaladinMod.Modules
 
             return loadedAss;
         }
+
         internal static NetworkSoundEventDef CreateNetworkSoundEventDef(string eventName)
         {
             NetworkSoundEventDef networkSoundEventDef = ScriptableObject.CreateInstance<NetworkSoundEventDef>();

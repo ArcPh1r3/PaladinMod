@@ -176,6 +176,14 @@ namespace PaladinMod.States
 
         public void FireAttack()
         {
+            // wah
+            if (base.isAuthority)
+            {
+                Vector3 direction = this.GetAimRay().direction;
+                direction.y = Mathf.Max(direction.y, direction.y * 0.5f);
+                this.FindModelChild("SwordHitboxAnchor").rotation = Util.QuaternionSafeLookRotation(direction);
+            }
+
             if (!this.hasFired)
             {
                 this.hasFired = true;

@@ -37,7 +37,7 @@
         public const float baseDamage = 13f;
         public const float baseDamagePerLevel = baseDamage * 0.2f;
         public const float armorPerLevel = 1f;
-        public const float regenAmount = 1.5f;
+        public const float regenAmount = 3f;
 
         //Divine Blade
         public const float slashDamageCoefficient = 3.2f;

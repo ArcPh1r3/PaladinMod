@@ -29,6 +29,8 @@ namespace PaladinMod.Misc
         private PaladinPassiveBuffController buffController;
         private bool wasInCombat;
 
+        public Material buffMat;
+
         public bool isBlunt;
 
         private void Awake()
@@ -37,6 +39,8 @@ namespace PaladinMod.Misc
             this.model = base.GetComponentInChildren<CharacterModel>();
             this.animator = model?.GetComponent<Animator>();
             this.childLocator = base.GetComponentInChildren<ChildLocator>();
+
+            this.buffMat = Modules.Assets.blessingMat;
 
             this.buffController = this.gameObject.AddComponent<PaladinPassiveBuffController>();
             this.buffController.buffDef = Modules.Buffs.blessedBuff;
@@ -107,7 +111,7 @@ namespace PaladinMod.Misc
                     }
                     else if (this.body.characterMotor.isGrounded && this.body.isSprinting)
                     {
-
+                        if (!inCombat) EntityStates.EntityState.PlayAnimationOnAnimator(this.animator, "Body", "SprintToRest2");
                     }
                     else
                     {
