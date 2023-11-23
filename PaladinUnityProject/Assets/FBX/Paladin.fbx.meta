@@ -108,6 +108,43 @@ ModelImporter:
     100204: wrap2
     100206: wrap3
     100208: wrap4
+    100210: cape.l1
+    100212: cape.l1.001
+    100214: cape.l1.002
+    100216: cape.l1.003
+    100218: cape.l1.004
+    100220: cape.l1.005
+    100222: cape.l1.006
+    100224: cape.l2
+    100226: cape.l2.001
+    100228: cape.l2.002
+    100230: cape.l2.003
+    100232: cape.l2.004
+    100234: cape.l2.005
+    100236: cape.l2.006
+    100238: cape.m
+    100240: cape.m.001
+    100242: cape.m.002
+    100244: cape.m.003
+    100246: cape.m.004
+    100248: cape.m.005
+    100250: cape.m.006
+    100252: cape.r1
+    100254: cape.r1.001
+    100256: cape.r1.002
+    100258: cape.r1.003
+    100260: cape.r1.004
+    100262: cape.r1.005
+    100264: cape.r1.006
+    100266: cape.r2
+    100268: cape.r2.001
+    100270: cape.r2.002
+    100272: cape.r2.003
+    100274: cape.r2.004
+    100276: cape.r2.005
+    100278: cape.r2.006
+    100280: CapeBase
+    100282: meshCape
     400000: Armature
     400002: base
     400004: calf.L
@@ -213,12 +250,51 @@ ModelImporter:
     400204: wrap2
     400206: wrap3
     400208: wrap4
+    400210: cape.l1
+    400212: cape.l1.001
+    400214: cape.l1.002
+    400216: cape.l1.003
+    400218: cape.l1.004
+    400220: cape.l1.005
+    400222: cape.l1.006
+    400224: cape.l2
+    400226: cape.l2.001
+    400228: cape.l2.002
+    400230: cape.l2.003
+    400232: cape.l2.004
+    400234: cape.l2.005
+    400236: cape.l2.006
+    400238: cape.m
+    400240: cape.m.001
+    400242: cape.m.002
+    400244: cape.m.003
+    400246: cape.m.004
+    400248: cape.m.005
+    400250: cape.m.006
+    400252: cape.r1
+    400254: cape.r1.001
+    400256: cape.r1.002
+    400258: cape.r1.003
+    400260: cape.r1.004
+    400262: cape.r1.005
+    400264: cape.r1.006
+    400266: cape.r2
+    400268: cape.r2.001
+    400270: cape.r2.002
+    400272: cape.r2.003
+    400274: cape.r2.004
+    400276: cape.r2.005
+    400278: cape.r2.006
+    400280: CapeBase
+    400282: meshCape
     2100000: matSword
     2100002: matPaladin
+    2100004: matPaladin.004
     4300000: meshSword
     4300002: meshPaladin
     4300004: remeshPaladin
     4300006: remeshCloth
+    4300008: meshCape
     7400000: Armature|0backClothFix
     7400002: Armature|0CSS
     7400004: Armature|0IdleCombat
@@ -335,6 +411,8 @@ ModelImporter:
     13700002: meshSword
     13700004: remeshCloth
     13700006: remeshPaladin
+    13700008: meshCape
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1

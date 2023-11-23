@@ -1,0 +1,603 @@
+fileFormatVersion: 2
+guid: 28a6174e658ed964cbec1a661d4e1710
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Armature.002
+    100004: ArmatureNkuhanaArmsLeft
+    100006: ArmatureNkuhanaArmsRight
+    100008: base
+    100010: base 1
+    100012: Bone
+    100014: Bone.001
+    100016: Bone.002
+    100018: Bone.003
+    100020: Bone.004
+    100022: Bone.005
+    100024: Bone.006
+    100026: Bone.007
+    100028: Bone.008
+    100030: calf.L
+    100032: calf.R
+    100034: cape.01
+    100036: cape.02
+    100038: cape.03
+    100040: cape.l1
+    100042: cape.l1.001
+    100044: cape.l1.002
+    100046: cape.l1.003
+    100048: cape.l1.004
+    100050: cape.l1.005
+    100052: cape.l1.006
+    100054: cape.l2
+    100056: cape.l2.001
+    100058: cape.l2.002
+    100060: cape.l2.003
+    100062: cape.l2.004
+    100064: cape.l2.005
+    100066: cape.l2.006
+    100068: cape.m
+    100070: cape.m.001
+    100072: cape.m.002
+    100074: cape.m.003
+    100076: cape.m.004
+    100078: cape.m.005
+    100080: cape.m.006
+    100082: cape.r1
+    100084: cape.r1.001
+    100086: cape.r1.002
+    100088: cape.r1.003
+    100090: cape.r1.004
+    100092: cape.r1.005
+    100094: cape.r1.006
+    100096: cape.r2
+    100098: cape.r2.001
+    100100: cape.r2.002
+    100102: cape.r2.003
+    100104: cape.r2.004
+    100106: cape.r2.005
+    100108: cape.r2.006
+    100110: CapeArmature
+    100112: chimsword
+    100114: cloak1
+    100116: cloak2
+    100118: elbow.ik.L
+    100120: elbow.ik.R
+    100122: elbowIK.L
+    100124: elbowIK.R
+    100126: f_index.01.L
+    100128: f_index.01.L 1
+    100130: f_index.01.R
+    100132: f_index.01.R 1
+    100134: f_index.02.L
+    100136: f_index.02.L 1
+    100138: f_index.02.R
+    100140: f_index.02.R 1
+    100142: f_index.03.L
+    100144: f_index.03.R
+    100146: f_middle.01.L
+    100148: f_middle.01.L 1
+    100150: f_middle.01.R
+    100152: f_middle.01.R 1
+    100154: f_middle.02.L
+    100156: f_middle.02.L 1
+    100158: f_middle.02.R
+    100160: f_middle.02.R 1
+    100162: f_middle.03.L
+    100164: f_middle.03.R
+    100166: f_pinky.01.L
+    100168: f_pinky.01.L 1
+    100170: f_pinky.01.R
+    100172: f_pinky.01.R 1
+    100174: f_pinky.02.L
+    100176: f_pinky.02.L 1
+    100178: f_pinky.02.R
+    100180: f_pinky.02.R 1
+    100182: f_pinky.03.L
+    100184: f_pinky.03.R
+    100186: f_ring.01.L
+    100188: f_ring.01.L 1
+    100190: f_ring.01.R
+    100192: f_ring.01.R 1
+    100194: f_ring.02.L
+    100196: f_ring.02.L 1
+    100198: f_ring.02.R
+    100200: f_ring.02.R 1
+    100202: f_ring.03.L
+    100204: f_ring.03.R
+    100206: f_thumb.01.L
+    100208: f_thumb.01.R
+    100210: f_thumb.02.L
+    100212: f_thumb.02.R
+    100214: foot.L
+    100216: foot.R
+    100218: footIK.L
+    100220: footIK.R
+    100222: hand.L
+    100224: hand.L 1
+    100226: hand.R
+    100228: hand.R 1
+    100230: hand_ik.L
+    100232: hand_ik.R
+    100234: handIK.L
+    100236: handIK.R
+    100238: head
+    100240: heel.02.L
+    100242: heel.02.R
+    100244: HolsterBack
+    100246: kingroot
+    100248: kneeIK.L
+    100250: kneeIK.R
+    100252: loin1
+    100254: loin2
+    100256: loin3
+    100258: loin4
+    100260: lower_arm.L
+    100262: lower_arm.L 1
+    100264: lower_arm.R
+    100266: lower_arm.R 1
+    100268: meshAphelian
+    100270: meshAphelianSword
+    100272: meshCapeGMSexy
+    100274: meshCapeOldForReference
+    100276: meshNkuhana
+    100278: meshNkuhanaArmsLeft
+    100280: meshNkuhanaArmsRight
+    100282: meshNkuhanaScythe
+    100284: meshPaladinBrother
+    100286: meshPaladinGMSexy
+    100288: meshSpecter
+    100290: meshSpecterScythe
+    100292: meshSwordGMFuck.001
+    100294: meshSwordGMSexy
+    100296: neck
+    100298: //RootNode
+    100300: palm.01.L
+    100302: palm.01.L 1
+    100304: palm.01.R
+    100306: palm.01.R 1
+    100308: palm.02.L
+    100310: palm.02.L 1
+    100312: palm.02.R
+    100314: palm.02.R 1
+    100316: palm.03.L
+    100318: palm.03.L 1
+    100320: palm.03.R
+    100322: palm.03.R 1
+    100324: palm.04.L
+    100326: palm.04.L 1
+    100328: palm.04.R
+    100330: palm.04.R 1
+    100332: pelvis.L
+    100334: pelvis.R
+    100336: pelvis_controller
+    100338: shoulder.L
+    100340: shoulder.L 1
+    100342: shoulder.R
+    100344: shoulder.R 1
+    100346: spine
+    100348: spine.001
+    100350: spine.002
+    100352: spine.003
+    100354: spine.004
+    100356: spine_controller
+    100358: swordBase
+    100360: swordBottom.01
+    100362: swordBottom.02
+    100364: swordBottom.03
+    100366: swordTip
+    100368: swordTop.01
+    100370: swordTop.02
+    100372: swordTop.03
+    100374: thigh.L
+    100376: thigh.R
+    100378: thumb.01.L
+    100380: thumb.01.R
+    100382: thumb.02.L
+    100384: thumb.02.R
+    100386: thumb.03.L
+    100388: thumb.03.R
+    100390: toe.L
+    100392: toe.R
+    100394: upper_arm.L
+    100396: upper_arm.L 1
+    100398: upper_arm.R
+    100400: upper_arm.R 1
+    100402: viewTarget
+    100404: wrap1
+    100406: wrap2
+    100408: wrap3
+    100410: wrap4
+    100412: Bone.E
+    100414: Bone.E.001
+    100416: Bone.N
+    100418: Bone.N.001
+    100420: Bone.NE
+    100422: Bone.NE.001
+    100424: Bone.NEE
+    100426: Bone.NEE.001
+    100428: Bone.NNE
+    100430: Bone.NNE.001
+    100432: Bone.NNW
+    100434: Bone.NNW.001
+    100436: Bone.NW
+    100438: Bone.NW.001
+    100440: Bone.NWW
+    100442: Bone.NWW.001
+    100444: Bone.W
+    100446: Bone.W.001
+    100448: NArmature
+    100450: meshCapeGM
+    100452: meshCrystals
+    100454: meshPaladinGM
+    100456: meshSwordGM
+    100458: meshCape
+    400000: Armature
+    400002: Armature.002
+    400004: ArmatureNkuhanaArmsLeft
+    400006: ArmatureNkuhanaArmsRight
+    400008: base
+    400010: base 1
+    400012: Bone
+    400014: Bone.001
+    400016: Bone.002
+    400018: Bone.003
+    400020: Bone.004
+    400022: Bone.005
+    400024: Bone.006
+    400026: Bone.007
+    400028: Bone.008
+    400030: calf.L
+    400032: calf.R
+    400034: cape.01
+    400036: cape.02
+    400038: cape.03
+    400040: cape.l1
+    400042: cape.l1.001
+    400044: cape.l1.002
+    400046: cape.l1.003
+    400048: cape.l1.004
+    400050: cape.l1.005
+    400052: cape.l1.006
+    400054: cape.l2
+    400056: cape.l2.001
+    400058: cape.l2.002
+    400060: cape.l2.003
+    400062: cape.l2.004
+    400064: cape.l2.005
+    400066: cape.l2.006
+    400068: cape.m
+    400070: cape.m.001
+    400072: cape.m.002
+    400074: cape.m.003
+    400076: cape.m.004
+    400078: cape.m.005
+    400080: cape.m.006
+    400082: cape.r1
+    400084: cape.r1.001
+    400086: cape.r1.002
+    400088: cape.r1.003
+    400090: cape.r1.004
+    400092: cape.r1.005
+    400094: cape.r1.006
+    400096: cape.r2
+    400098: cape.r2.001
+    400100: cape.r2.002
+    400102: cape.r2.003
+    400104: cape.r2.004
+    400106: cape.r2.005
+    400108: cape.r2.006
+    400110: CapeArmature
+    400112: chimsword
+    400114: cloak1
+    400116: cloak2
+    400118: elbow.ik.L
+    400120: elbow.ik.R
+    400122: elbowIK.L
+    400124: elbowIK.R
+    400126: f_index.01.L
+    400128: f_index.01.L 1
+    400130: f_index.01.R
+    400132: f_index.01.R 1
+    400134: f_index.02.L
+    400136: f_index.02.L 1
+    400138: f_index.02.R
+    400140: f_index.02.R 1
+    400142: f_index.03.L
+    400144: f_index.03.R
+    400146: f_middle.01.L
+    400148: f_middle.01.L 1
+    400150: f_middle.01.R
+    400152: f_middle.01.R 1
+    400154: f_middle.02.L
+    400156: f_middle.02.L 1
+    400158: f_middle.02.R
+    400160: f_middle.02.R 1
+    400162: f_middle.03.L
+    400164: f_middle.03.R
+    400166: f_pinky.01.L
+    400168: f_pinky.01.L 1
+    400170: f_pinky.01.R
+    400172: f_pinky.01.R 1
+    400174: f_pinky.02.L
+    400176: f_pinky.02.L 1
+    400178: f_pinky.02.R
+    400180: f_pinky.02.R 1
+    400182: f_pinky.03.L
+    400184: f_pinky.03.R
+    400186: f_ring.01.L
+    400188: f_ring.01.L 1
+    400190: f_ring.01.R
+    400192: f_ring.01.R 1
+    400194: f_ring.02.L
+    400196: f_ring.02.L 1
+    400198: f_ring.02.R
+    400200: f_ring.02.R 1
+    400202: f_ring.03.L
+    400204: f_ring.03.R
+    400206: f_thumb.01.L
+    400208: f_thumb.01.R
+    400210: f_thumb.02.L
+    400212: f_thumb.02.R
+    400214: foot.L
+    400216: foot.R
+    400218: footIK.L
+    400220: footIK.R
+    400222: hand.L
+    400224: hand.L 1
+    400226: hand.R
+    400228: hand.R 1
+    400230: hand_ik.L
+    400232: hand_ik.R
+    400234: handIK.L
+    400236: handIK.R
+    400238: head
+    400240: heel.02.L
+    400242: heel.02.R
+    400244: HolsterBack
+    400246: kingroot
+    400248: kneeIK.L
+    400250: kneeIK.R
+    400252: loin1
+    400254: loin2
+    400256: loin3
+    400258: loin4
+    400260: lower_arm.L
+    400262: lower_arm.L 1
+    400264: lower_arm.R
+    400266: lower_arm.R 1
+    400268: meshAphelian
+    400270: meshAphelianSword
+    400272: meshCapeGMSexy
+    400274: meshCapeOldForReference
+    400276: meshNkuhana
+    400278: meshNkuhanaArmsLeft
+    400280: meshNkuhanaArmsRight
+    400282: meshNkuhanaScythe
+    400284: meshPaladinBrother
+    400286: meshPaladinGMSexy
+    400288: meshSpecter
+    400290: meshSpecterScythe
+    400292: meshSwordGMFuck.001
+    400294: meshSwordGMSexy
+    400296: neck
+    400298: //RootNode
+    400300: palm.01.L
+    400302: palm.01.L 1
+    400304: palm.01.R
+    400306: palm.01.R 1
+    400308: palm.02.L
+    400310: palm.02.L 1
+    400312: palm.02.R
+    400314: palm.02.R 1
+    400316: palm.03.L
+    400318: palm.03.L 1
+    400320: palm.03.R
+    400322: palm.03.R 1
+    400324: palm.04.L
+    400326: palm.04.L 1
+    400328: palm.04.R
+    400330: palm.04.R 1
+    400332: pelvis.L
+    400334: pelvis.R
+    400336: pelvis_controller
+    400338: shoulder.L
+    400340: shoulder.L 1
+    400342: shoulder.R
+    400344: shoulder.R 1
+    400346: spine
+    400348: spine.001
+    400350: spine.002
+    400352: spine.003
+    400354: spine.004
+    400356: spine_controller
+    400358: swordBase
+    400360: swordBottom.01
+    400362: swordBottom.02
+    400364: swordBottom.03
+    400366: swordTip
+    400368: swordTop.01
+    400370: swordTop.02
+    400372: swordTop.03
+    400374: thigh.L
+    400376: thigh.R
+    400378: thumb.01.L
+    400380: thumb.01.R
+    400382: thumb.02.L
+    400384: thumb.02.R
+    400386: thumb.03.L
+    400388: thumb.03.R
+    400390: toe.L
+    400392: toe.R
+    400394: upper_arm.L
+    400396: upper_arm.L 1
+    400398: upper_arm.R
+    400400: upper_arm.R 1
+    400402: viewTarget
+    400404: wrap1
+    400406: wrap2
+    400408: wrap3
+    400410: wrap4
+    400412: Bone.E
+    400414: Bone.E.001
+    400416: Bone.N
+    400418: Bone.N.001
+    400420: Bone.NE
+    400422: Bone.NE.001
+    400424: Bone.NEE
+    400426: Bone.NEE.001
+    400428: Bone.NNE
+    400430: Bone.NNE.001
+    400432: Bone.NNW
+    400434: Bone.NNW.001
+    400436: Bone.NW
+    400438: Bone.NW.001
+    400440: Bone.NWW
+    400442: Bone.NWW.001
+    400444: Bone.W
+    400446: Bone.W.001
+    400448: NArmature
+    400450: meshCapeGM
+    400452: meshCrystals
+    400454: meshPaladinGM
+    400456: meshSwordGM
+    400458: meshCape
+    2100000: matPaladin.012
+    2100002: matNkuhanaScythe
+    2100004: matSpecter
+    2100006: matSpecterScythe.001
+    2100008: MatAphelian
+    2100010: Material
+    2100012: matPaladin.003
+    2100014: matPaladinGM
+    2100016: matSword.002
+    2100018: matPaladin.004
+    4300000: meshNkuhana
+    4300002: meshNkuhanaScythe
+    4300004: meshNkuhanaArmsLeft
+    4300006: meshNkuhanaArmsRight
+    4300008: meshSpecter
+    4300010: meshSpecterScythe
+    4300012: meshAphelian
+    4300014: meshAphelianSword
+    4300016: chimsword
+    4300018: meshPaladinBrother
+    4300020: meshPaladinGMSexy
+    4300022: meshSwordGMSexy
+    4300024: meshCapeGMSexy
+    4300026: meshCapeOldForReference
+    4300028: meshSwordGMFuck.001
+    4300030: meshPaladinGM
+    4300032: meshSwordGM
+    4300034: meshCapeGM
+    4300036: meshCrystals
+    4300038: meshCape
+    9500000: //RootNode
+    13700000: chimsword
+    13700002: meshAphelian
+    13700004: meshAphelianSword
+    13700006: meshCapeGMSexy
+    13700008: meshCapeOldForReference
+    13700010: meshNkuhana
+    13700012: meshNkuhanaArmsLeft
+    13700014: meshNkuhanaArmsRight
+    13700016: meshNkuhanaScythe
+    13700018: meshPaladinBrother
+    13700020: meshPaladinGMSexy
+    13700022: meshSpecter
+    13700024: meshSpecterScythe
+    13700026: meshSwordGMFuck.001
+    13700028: meshSwordGMSexy
+    13700030: meshCapeGM
+    13700032: meshCrystals
+    13700034: meshPaladinGM
+    13700036: meshSwordGM
+    13700038: meshCape
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

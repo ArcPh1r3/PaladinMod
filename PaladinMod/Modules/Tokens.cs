@@ -7,7 +7,8 @@ namespace PaladinMod.Modules {
     {
         internal static class LanguageAPI {
             public static void Add(string token, string text) {
-                Languages.Add(token, text);
+                R2API.LanguageAPI.Add(token, text);
+                //Languages.Add(token, text);
             }
         }
 

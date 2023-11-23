@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 805672450
+CRC: 400320085
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6eff2db378086d8df4b311ed3e9a1e95
+    Hash: b7d354dc0b628bc12e3e9144f80bd868
   TypeTreeHash:
     serializedVersion: 2
     Hash: 041388fe7ef74db63a68f1d40bd5d735
@@ -100,7 +100,6 @@ Assets:
 - Assets/NemPaladin/NemPaladinDisplay.prefab
 - Assets/Uh oh/archbod.mat
 - Assets/Paladin/Effects/SwingEffects/PaladinSwingClay.prefab
-- Assets/Paladin/Mesh/meshSwordGMFuck.003.mesh
 - Assets/Paladin/Textures/texPaladinNkuhana.png
 - Assets/Paladin/Animations/Old/ChannelSpell.anim
 - Assets/Paladin/Animations/Old/Descend.anim
@@ -119,13 +118,11 @@ Assets:
 - Assets/Paladin/Materials/matPaladinGMOld.mat
 - Assets/Paladin/Effects/HitEffects/ImpactPaladinSwingPurple.prefab
 - Assets/Paladin/Textures/Shields/texHavelShieldNormal.dds
-- Assets/Paladin/Mesh/meshSwordGMFuck.005.mesh
 - Assets/Paladin/VFX/matRedSlash.mat
 - Assets/Paladin/Materials/matPaladinNkuhanaLegacy.mat
 - Assets/Paladin/Animations/Old/handMask.mask
 - Assets/Paladin/Animations/Old/PraiseTheSun.anim
 - Assets/Paladin/Textures/texLunarPaladinSword.png
-- Assets/Paladin/Mesh/meshCapeGM.mesh
 - Assets/Uh oh/archcloth.mat
 - Assets/Paladin/Shields/DisplayGiantShield.prefab
 - Assets/Paladin/VFX/texPaladinHitFlash.png
@@ -153,6 +150,7 @@ Assets:
 - Assets/LunarKnight/Animations/Ascend.anim
 - Assets/Paladin/Textures/texPaladinEmission.png
 - Assets/Paladin/Animations/Old/Jump.anim
+- Assets/Paladin/Mesh/meshPaladinGM.mesh
 - Assets/Paladin/Animations/Old/IdleIn.anim
 - Assets/Paladin/Materials/matPaladinGMSword.mat
 - Assets/Paladin/Animations/Old/ThrowLunarSecondary.anim
@@ -197,7 +195,6 @@ Assets:
 - Assets/LunarKnight/Animations/Descend.anim
 - Assets/Paladin/VFX/matPaladinHitSparkGreen.mat
 - Assets/Paladin/Mesh/meshPaladinLunarKnight.mesh
-- Assets/Paladin/Mesh/meshSwordGM.mesh
 - Assets/Paladin/Animations/Old/CastRuin.anim
 - Assets/Paladin/Shields/DisplayHavelShield.prefab
 - Assets/NemPaladin/Animations/AimYaw.anim
@@ -334,7 +331,6 @@ Assets:
 - Assets/Paladin/VFX/matHeal.mat
 - Assets/Paladin/VFX/matPaladinSwing3.mat
 - Assets/NemPaladin/Animations/SprintF.anim
-- Assets/Paladin/Mesh/meshSwordGMFuck.001.mesh
 - Assets/Paladin/Animations/Old/ThrowSpearGesture.anim
 - Assets/Paladin/Animations/Old/RestIdleIn.anim
 - Assets/Paladin/VFX/texSmoke.png
@@ -352,6 +348,7 @@ Assets:
 - Assets/Paladin/Icons/texPaladinIcon.png
 - Assets/LunarKnight/Animations/MaceSlam.anim
 - Assets/Paladin/Effects/HitEffects/ImpactPaladinSwingBlunt.prefab
+- Assets/Paladin/Mesh/meshCapeGM.mesh
 - Assets/Uh oh/T_Archangel_Body.png
 - Assets/NemPaladin/Animations/AnimeSprint.anim
 - Assets/Paladin/Animations/Old/RageChargeM1.anim
@@ -395,6 +392,7 @@ Assets:
 - Assets/Paladin/Effects/SwingEffects/EmpSpinSlashEffect.prefab
 - Assets/Paladin/Animations/Extras/Crystal_NNE.controller
 - Assets/Paladin/Icons/HealZoneIcon.png
+- Assets/Paladin/Mesh/meshSwordGM.mesh
 - Assets/Paladin/Effects/LightningSpear.prefab
 - Assets/Paladin/Mesh/meshPaladinNkuhanaLegacy.mesh
 - Assets/Paladin/Textures/texPaladinGMEmissionSword.png
@@ -415,7 +413,6 @@ Assets:
 - Assets/Paladin/Animations/Old/impactMask.mask
 - Assets/Paladin/Animations/Old/RestEmote.anim
 - Assets/Paladin/Textures/texPaladinGM.png
-- Assets/Paladin/Mesh/meshSwordGMFuck.002.mesh
 - Assets/Paladin/PaladinDisplay2.prefab
 - Assets/Paladin/Textures/texPaladinNkuhanaLegacy.png
 - Assets/Paladin/VFX/matPaladinSwing4.mat
@@ -443,7 +440,6 @@ Assets:
 - Assets/Paladin/Animations/Extras/animPaladinArmsLeft.controller
 - Assets/Paladin/Effects/SwingEffects/PaladinSwingFlame.prefab
 - Assets/Paladin/VFX/matLunarEmber.mat
-- Assets/Paladin/Mesh/meshPaladinGM.mesh
 - Assets/Paladin/Textures/texPaladinLunar.png
 - Assets/LunarKnight/Animations/animLunarKnight.controller
 - Assets/Paladin/Icons/texLunarShardAchievement.png
@@ -489,6 +485,5 @@ Assets:
 - Assets/NemPaladin/Textures/texHereticFeatherEmission.png
 - Assets/Paladin/Textures/texPaladinLunarEmissionOld.png
 - Assets/Paladin/Effects/SwingEffects/PaladinSwingGreen.prefab
-- Assets/Paladin/Mesh/meshSwordGMFuck.004.mesh
 - Assets/Paladin/Animations/Extras/Crystals_FuckMe.anim
 Dependencies: []
