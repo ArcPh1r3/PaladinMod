@@ -274,7 +274,7 @@ namespace PaladinMod.Modules
 
             skinDefs = new List<SkinDef>();
 
-            GameObject cape = childLocator.FindChild("Cape").gameObject;
+            GameObject cape = childLocator.FindChild("CapeModel").gameObject;
             GameObject armLeft = childLocator.FindChild("CreepyArmsLeft").gameObject;
             GameObject armRight = childLocator.FindChild("CreepyArmsRight").gameObject;
             GameObject fuckingCrystalCrown = childLocator.FindChild("FuckMe").gameObject;
@@ -288,7 +288,7 @@ namespace PaladinMod.Modules
             SkinDef.GameObjectActivation[] capeActivations = getActivations(cape);
             SkinDef.GameObjectActivation[] nkuhanaActivations = getActivations(armLeft, armRight);
             SkinDef.GameObjectActivation[] GMActivations = getActivations(cape, fuckingCrystalCrown);
-
+            
             #region DefaultSkin
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
             int lastRend = defaultRenderers.Length - 1;
@@ -315,7 +315,7 @@ namespace PaladinMod.Modules
             if (Modules.Config.cape.Value)
             {
                 defaultSkin.gameObjectActivations = capeActivations;
-                childLocator.FindChild("Cape").gameObject.SetActive(true);
+                childLocator.FindChild("CapeModel").gameObject.SetActive(true);
             }
             else defaultSkin.gameObjectActivations = defaultActivations;
 
@@ -715,7 +715,7 @@ namespace PaladinMod.Modules
             {
                 SkinIdices[(uint)i] = skinDefs[i].name;
             }
-
+            
             InitializeNemSkins();
         }
 

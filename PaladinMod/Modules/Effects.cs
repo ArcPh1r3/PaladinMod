@@ -32,7 +32,7 @@ namespace PaladinMod.Modules
         public static void RegisterEffects()
         {
             skinList = new List<PaladinSkinInfo>();
-
+            
             #region Skins
             skinList.Add(new PaladinSkinInfo {
                 skinName = "PALADINBODY_DEFAULT_SKIN_NAME",

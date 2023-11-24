@@ -233,6 +233,7 @@ ModelImporter:
     100454: meshPaladinGM
     100456: meshSwordGM
     100458: meshCape
+    100460: CapeBase
     400000: Armature
     400002: Armature.002
     400004: ArmatureNkuhanaArmsLeft
@@ -463,6 +464,7 @@ ModelImporter:
     400454: meshPaladinGM
     400456: meshSwordGM
     400458: meshCape
+    400460: CapeBase
     2100000: matPaladin.012
     2100002: matNkuhanaScythe
     2100004: matSpecter

@@ -3525,7 +3525,7 @@ ModelImporter:
       name: Armature|WalkRAlt
       takeName: Armature|WalkRAlt
       firstFrame: 1
-      lastFrame: 1
+      lastFrame: 31
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

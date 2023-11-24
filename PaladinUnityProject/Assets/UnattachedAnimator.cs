@@ -3,72 +3,116 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UnattachedAnimator : MonoBehaviour {
+    [System.Serializable]
+    public class UnattachedAnimation {
+        public string animationState;
+        public int layer;
+    }
+
+    [System.Serializable]
+    public class UnattachedAnimations {
+        public List<UnattachedAnimation> animations;
+    }
+
+    [System.Serializable]
+    public class UnattachedAnimationCombo {
+        public string name;
+        public KeyCode keyCode;
+        public List<UnattachedAnimations> comboAnimations;
+        [HideInInspector]
+        public float comboTimer;
+        [HideInInspector]
+        public int comboStep;
+    }
+
     [SerializeField]
-    private Animator animator;
+    protected Animator[] animators;
+
+    [SerializeField, Space]
+    List<UnattachedAnimationCombo> animationCombos;
 
     [Header("whyt he fuck aren't these in the animator")]
     [SerializeField, Range(0, 0.999f)]
-    private float aimPitch = 0.5f;
+    protected float aimPitch = 0.5f;
     [SerializeField, Range(0, 0.999f)]
-    private float aimYaw = 0.5f;
+    protected float aimYaw = 0.5f;
 
-    private float combatTim;
-    private float jumpTim;
+    protected float _combatTim;
+    protected float _jumpTim;
+    private bool wasInCombat;
 
-    void Update() {
-        if (!animator)
-            return;
+    private void Moob() {
+        //man it's been so long since I've written a moob function
+
+        float hori = Input.GetAxis("Horizontal");
+        float veri = Input.GetAxis("Vertical");
+        for (int i = 0; i < animators.Length; i++) {
+
+            animators[i].SetBool("isMoving", Mathf.Abs(hori) + Mathf.Abs(veri) > 0.01f);
+            animators[i].SetFloat("forwardSpeed", veri);
+            animators[i].SetFloat("rightSpeed", hori);
+                    
+            animators[i].SetBool("isSprinting", Input.GetKey(KeyCode.LeftControl));
+        }
+    }
+
+    private void Jumb() {
+
+        for (int i = 0; i < animators.Length; i++) {
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                animators[i].Play("Jump");
+                animators[i].SetBool("isGrounded", false);
+                _jumpTim = 1.5f;
+            }
+
+            _jumpTim -= Time.deltaTime;
+
+            animators[i].SetFloat("upSpeed", Mathf.Lerp(-48, 16, _jumpTim / 2f));
+
+            if (_jumpTim <= 0) {
+                if (!animators[i].GetBool("isGrounded")) {
+                    animators[i].Play("LightImpact", 1);
+                }
+                animators[i].SetBool("isGrounded", true);
+            }
+        }
+    }
+
+    private void Timers() {
+        _combatTim -= Time.deltaTime;
+        bool inCombat = _combatTim > 0;
+
+        for (int i = 0; i < animators.Length; i++) {
+            animators[i].SetBool("inCombat", inCombat);
+
+            if (inCombat) animators[i].SetLayerWeight(animators[i].GetLayerIndex("Body, Combat"), 1f);
+            else animators[i].SetLayerWeight(animators[i].GetLayerIndex("Body, Combat"), 0f);
+
+            if (inCombat != this.wasInCombat) {
+                if (animators[i].GetBool("isGrounded") && !animators[i].GetBool("isMoving")) {
+                    if (!inCombat) animators[i].Play("ToRestIdle", animators[i].GetLayerIndex("Body"));
+                } else if (animators[i].GetBool("isGrounded") && animators[i].GetBool("isSprinting")) {
+                    if (!inCombat) animators[i].Play("SprintToRest2", animators[i].GetLayerIndex("Body"));
+                } else {
+                    if (inCombat) animators[i].Play("ToCombat", animators[i].GetLayerIndex("Transition"));
+                    else animators[i].Play("ToRest", animators[i].GetLayerIndex("Transition"));
+                }
+            }
+        }
+
+        this.wasInCombat = inCombat;
+    }
+
+    protected virtual void Update() {
+        //if (!animator)
+        //    return;
 
         Moob();
         Jumb();
         Shooting();
         Aiming();
         Timers();
-
-        Tim();
     }
-
-    private void Moob() {
-        //man it's been so long since I've written a moob function
-
-
-        Debug.DrawLine(Vector3.zero, Vector3.one * 100);
-
-        float hori = Input.GetAxis("Horizontal");
-        float veri = Input.GetAxis("Vertical");
-
-        float horiHard = Input.GetAxisRaw("Horizontal");
-        float veriHard = Input.GetAxisRaw("Vertical");
-
-        animator.SetBool("isMoving", Mathf.Abs(horiHard) + Mathf.Abs(veriHard) > 0.01f);
-        animator.SetFloat("forwardSpeed", veri);
-        animator.SetFloat("rightSpeed", hori);
-
-        animator.SetBool("isSprinting", Input.GetKey(KeyCode.LeftShift));
-    }
-
-    private void Jumb() {
-
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            animator.Play("Jump");
-            animator.SetBool("isGrounded", false);
-            jumpTim = 1.5f;
-        }
-
-        jumpTim -= Time.deltaTime;
-
-        animator.SetFloat("upSpeed", Mathf.Lerp(-48, 16, jumpTim / 2f));
-
-        if (jumpTim <= 0) {
-            animator.SetBool("isGrounded", true);
-        }
-    }
-
-    private void Timers() {
-        combatTim -= Time.deltaTime;
-        animator.SetBool("inCombat", combatTim > 0);
-    }
-
     private void Aiming() {
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -79,56 +123,43 @@ public class UnattachedAnimator : MonoBehaviour {
 
         aimYaw = Mathf.Clamp(aimYaw, 0, 0.999f);
 
-        animator.SetFloat("aimYawCycle", aimYaw);
-        animator.SetFloat("aimPitchCycle", aimPitch);
-    }
-
-    private void Shooting() {
-        if (Input.GetMouseButtonDown(0)) {
-
-            animator.Play("Slash1", 2);
-            animator.Play("Slash1", 4);
-            //animator.Play("Shock", 2);
-            combatTim = 2;
+        for (int i = 0; i < animators.Length; i++) {
+            animators[i].SetFloat("aimYawCycle", aimYaw);
+            animators[i].SetFloat("aimPitchCycle", aimPitch);
         }
-
-        //if (Input.GetMouseButtonDown(1)) {
-
-        //    animator.SetBool("isHandOut", true);
-        //}
-
-        //if (Input.GetMouseButtonUp(1)) {
-
-        //    animator.Play("Shock", 2);
-        //    animator.SetBool("isHandOut", false);
-        //    combatTim = 2;
-        //}
     }
 
-    private void setTimeScale(float tim) {
-        Time.timeScale = tim;
-
-        Debug.Log($"set tim: {Time.timeScale}");
+    protected virtual void Shooting() {
+        for (int i = 0; i < animationCombos.Count; i++) {
+            RunCombo(animationCombos[i]);
+        }
     }
 
-    private void Tim() {
-        //time keys
-        if (Input.GetKeyDown(KeyCode.I)) {
-            if (Time.timeScale == 0) {
-                setTimeScale(Time.timeScale + 0.1f);
-            } else {
-                setTimeScale(Time.timeScale + 0.5f);
+    protected virtual void RunCombo(UnattachedAnimationCombo combo) {
+        if (Input.GetKeyDown(combo.keyCode)) {
+
+            List<UnattachedAnimation> animations = combo.comboAnimations[combo.comboStep].animations;
+            for (int i = 0; i < animations.Count; i++) {
+
+                for (int j = 0; j < animators.Length; j++) {
+                    animators[j].Play(animations[i].animationState, animations[i].layer);
+                }
             }
-        }
-        if (Input.GetKeyDown(KeyCode.K)) {
 
-            setTimeScale(Time.timeScale - 0.1f);
+            combo.comboTimer = 2;
+
+            combo.comboStep++;
+            if (combo.comboStep >= combo.comboAnimations.Count) {
+                combo.comboStep = 0;
+            }
+
+            _combatTim = 6;
         }
-        if (Input.GetKeyDown(KeyCode.O)) {
-            setTimeScale(1);
-        }
-        if (Input.GetKeyDown(KeyCode.L)) {
-            setTimeScale(0);
+
+        combo.comboTimer -= Time.deltaTime;
+
+        if (combo.comboTimer <= 0) {
+            combo.comboStep = 0;
         }
     }
 }
