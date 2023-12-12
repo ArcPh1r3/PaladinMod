@@ -80,7 +80,7 @@
     "PALADIN_LUNARSHARDUNLOCKABLE_ACHIEVEMENT_DESC" : "En tant que Paladin, portez simultanément 8 objets lunaires.",
     "PALADIN_LUNARSHARDUNLOCKABLE_UNLOCKABLE_NAME" : "Héraut du Roi Perdu",
     "PALADIN_HEALUNLOCKABLE_ACHIEVEMENT_NAME" : "Étreinte Chaleureuse",
-    "PALADIN_HEALUNLOCKABLE_ACHIEVEMENT_DESC" : "En tant que Paladin, soignez un allié avec une Fée des bois noueuse. <color=#c11>Hôte uniquement</color>",
+    "PALADIN_HEALUNLOCKABLE_ACHIEVEMENT_DESC" : "En tant que Paladin, soignez un allié avec un Esprit des bois noueux. <color=#c11>Hôte uniquement</color>",
     "PALADIN_HEALUNLOCKABLE_UNLOCKABLE_NAME" : "Étreinte Chaleureuse",
     "PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_NAME" : "Suppression",
     "PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_DESC" : "En tant que Paladin, cumulez 4 affaiblissements sur un ennemi.",
