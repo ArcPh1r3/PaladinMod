@@ -3497,7 +3497,7 @@ ModelImporter:
       name: Armature|WalkR
       takeName: Armature|WalkR
       firstFrame: 0
-      lastFrame: 33
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -3524,8 +3524,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|WalkRAlt
       takeName: Armature|WalkRAlt
-      firstFrame: 1
-      lastFrame: 31
+      firstFrame: 0
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

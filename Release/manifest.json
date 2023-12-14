@@ -1,8 +1,8 @@
 {
     "name": "PaladinMod",
-    "version_number": "1.6.3",
+    "version_number": "1.9.9",
     "website_url": "https://github.com/ArcPh1r3/PaladinMod",
-    "description": "Adds Paladin, a fully fleshed out custom survivor (models by Zenta and SkeletorChampion).",
+    "description": "Adds Paladin, a fully fleshed out custom survivor | 2.0.0 - Animation Update",
     "dependencies": [
         "bbepis-BepInExPack-5.4.1905",
         "tristanmcpherson-R2API-4.3.21"

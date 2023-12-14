@@ -63,6 +63,78 @@ AvatarMask:
     m_Weight: 0
   - m_Path: Armature/base/spine.001/spine.002/spine.003/cape.01/cape.02/cape.03
     m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.l1
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.l1/cape.l1.004
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.l1/cape.l1.004/cape.l1.002
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.l1/cape.l1.004/cape.l1.002/cape.l1.006
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.l1/cape.l1.004/cape.l1.002/cape.l1.006/cape.l1.001
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.l1/cape.l1.004/cape.l1.002/cape.l1.006/cape.l1.001/cape.l1.005
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.l1/cape.l1.004/cape.l1.002/cape.l1.006/cape.l1.001/cape.l1.005/cape.l1.003
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.l2
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.l2/cape.l2.004
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.l2/cape.l2.004/cape.l2.002
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.l2/cape.l2.004/cape.l2.002/cape.l2.006
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.l2/cape.l2.004/cape.l2.002/cape.l2.006/cape.l2.001
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.l2/cape.l2.004/cape.l2.002/cape.l2.006/cape.l2.001/cape.l2.005
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.l2/cape.l2.004/cape.l2.002/cape.l2.006/cape.l2.001/cape.l2.005/cape.l2.003
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.m
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.m/cape.m.004
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.m/cape.m.004/cape.m.002
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.m/cape.m.004/cape.m.002/cape.m.006
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.m/cape.m.004/cape.m.002/cape.m.006/cape.m.001
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.m/cape.m.004/cape.m.002/cape.m.006/cape.m.001/cape.m.005
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.m/cape.m.004/cape.m.002/cape.m.006/cape.m.001/cape.m.005/cape.m.003
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.r1
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.r1/cape.r1.004
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.r1/cape.r1.004/cape.r1.002
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.r1/cape.r1.004/cape.r1.002/cape.r1.006
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.r1/cape.r1.004/cape.r1.002/cape.r1.006/cape.r1.001
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.r1/cape.r1.004/cape.r1.002/cape.r1.006/cape.r1.001/cape.r1.005
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.r1/cape.r1.004/cape.r1.002/cape.r1.006/cape.r1.001/cape.r1.005/cape.r1.003
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.r2
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.r2/cape.r2.004
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.r2/cape.r2.004/cape.r2.002
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.r2/cape.r2.004/cape.r2.002/cape.r2.006
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.r2/cape.r2.004/cape.r2.002/cape.r2.006/cape.r2.001
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.r2/cape.r2.004/cape.r2.002/cape.r2.006/cape.r2.001/cape.r2.005
+    m_Weight: 0
+  - m_Path: Armature/base/spine.001/spine.002/spine.003/CapeBase/cape.r2/cape.r2.004/cape.r2.002/cape.r2.006/cape.r2.001/cape.r2.005/cape.r2.003
+    m_Weight: 0
   - m_Path: Armature/base/spine.001/spine.002/spine.003/HolsterBack
     m_Weight: 0
   - m_Path: Armature/base/spine.001/spine.002/spine.003/shoulder.L
@@ -210,6 +282,8 @@ AvatarMask:
   - m_Path: Armature/kneeIK.R
     m_Weight: 0
   - m_Path: Armature/viewTarget
+    m_Weight: 0
+  - m_Path: meshCape
     m_Weight: 0
   - m_Path: meshPaladin
     m_Weight: 0

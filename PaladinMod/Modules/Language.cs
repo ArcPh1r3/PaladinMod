@@ -27,12 +27,12 @@ namespace PaladinMod.Modules {
         }
 
         private static void HookRegisterLanguageTokens() {
-            On.RoR2.Language.SetFolders += fixme;
+            On.RoR2.Language.SetFolders += SetFolders;
         }
 
         //Credits to Moffein for this credit
         //Credits to Anreol for this code
-        private static void fixme(On.RoR2.Language.orig_SetFolders orig, RoR2.Language self, System.Collections.Generic.IEnumerable<string> newFolders) {
+        private static void SetFolders(On.RoR2.Language.orig_SetFolders orig, RoR2.Language self, System.Collections.Generic.IEnumerable<string> newFolders) {
             if (System.IO.Directory.Exists(Languages.languageRoot)) {
                 var dirs = System.IO.Directory.EnumerateDirectories(System.IO.Path.Combine(Languages.languageRoot), self.name);
                 orig(self, newFolders.Union(dirs));

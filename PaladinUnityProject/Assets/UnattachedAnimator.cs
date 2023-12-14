@@ -53,6 +53,7 @@ public class UnattachedAnimator : MonoBehaviour {
             animators[i].SetFloat("rightSpeed", hori);
                     
             animators[i].SetBool("isSprinting", Input.GetKey(KeyCode.LeftControl));
+            animators[i].SetFloat("walkSpeed", Input.GetKey(KeyCode.LeftControl) ? 11 : 7);
         }
     }
 

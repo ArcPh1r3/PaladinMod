@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3042774411
+CRC: 266306383
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 45bc12759a248b096410a7e69c17003a
+    Hash: 6f0dc07cab9a15b5be45e1bdd9a31c1d
   TypeTreeHash:
     serializedVersion: 2
     Hash: 041388fe7ef74db63a68f1d40bd5d735
@@ -155,7 +155,6 @@ Assets:
 - Assets/Paladin/Animations/Old/ThrowLunarSecondary.anim
 - Assets/Paladin/Animations/Old/ThrowSpear.anim
 - Assets/NemPaladin/Textures/T_NemPaladinCloth_C.png
-- Assets/Paladin/Mesh/meshPaladin.mesh
 - Assets/Uh oh/T_Archangel_Cloth.png
 - Assets/Paladin/Materials/matMinecraftPaladin.mat
 - Assets/Paladin/Effects/SwingEffects/SpinSlashEffect.prefab
@@ -179,7 +178,6 @@ Assets:
 - Assets/Paladin/VFX/texEmber2.png
 - Assets/NemPaladin/Animations/maskNemAimPitch.mask
 - Assets/Paladin/Textures/texPaladinDrip.png
-- Assets/Paladin/Mesh/meshCape.mesh
 - Assets/Paladin/Textures/texPaladinNkuhana_old.png
 - Assets/Paladin/Icons/texLunarKnightIcon.png
 - Assets/Paladin/VFX/matEmber.mat
@@ -270,7 +268,6 @@ Assets:
 - Assets/NemPaladin/Animations/FireChain.anim
 - Assets/NemPaladin/Animations/RunF.anim
 - Assets/Paladin/VFX/matChargeSphere.mat
-- Assets/Paladin/Mesh/meshSword.mesh
 - Assets/Paladin/Textures/texPaladinLunarBak.png
 - Assets/Paladin/Shields/DisplayGoldenShield.prefab
 - Assets/Paladin/Animations/Extras/Crystal_NEE.controller
@@ -294,6 +291,7 @@ Assets:
 - Assets/Paladin/Textures/texPaladinGMOld.png
 - Assets/Paladin/Animations/Old/MenuIdleIn.anim
 - Assets/Paladin/Animations/Old/FireLunarShard.anim
+- Assets/Paladin/Mesh/meshCape.mesh
 - Assets/Paladin/Icons/PassiveIcon.png
 - Assets/Paladin/Mesh/meshLunarKnightMace.mesh
 - Assets/Paladin/Textures/texNormalBumpyRock.png
@@ -345,6 +343,7 @@ Assets:
 - Assets/NemPaladin/Icons/texNemPaladinPlayerIcon.png
 - Assets/Paladin/Animations/Old/ChargeSpearGesture.anim
 - Assets/Paladin/Mesh/meshSwordNkuhanaLegacy.mesh
+- Assets/Paladin/Mesh/meshSword.mesh
 - Assets/Paladin/Icons/texPaladinIcon.png
 - Assets/LunarKnight/Animations/MaceSlam.anim
 - Assets/Paladin/Effects/HitEffects/ImpactPaladinSwingBlunt.prefab
@@ -420,6 +419,7 @@ Assets:
 - Assets/Paladin/Animations/Extras/CreepyArmsLeft.anim
 - Assets/Paladin/VFX/matTorpor2.mat
 - Assets/Paladin/VFX/matFullCharge.mat
+- Assets/Paladin/Mesh/meshPaladin.mesh
 - Assets/Paladin/Mesh/meshSwordGMOld.mesh
 - Assets/Paladin/Animations/Old/DripPose.anim
 - Assets/Paladin/Effects/SwingEffects/SpinSlashEffectYellow.prefab
