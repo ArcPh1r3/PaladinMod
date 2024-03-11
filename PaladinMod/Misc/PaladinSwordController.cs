@@ -53,7 +53,7 @@ namespace PaladinMod.Misc
             if (this.body)
             {
                 this.skinInfo = Modules.Effects.GetSkinInfo(this.model.GetComponent<ModelSkinController>().skins[this.body.skinIndex].nameToken);
-                this.skinName = this.skinInfo.skinName;
+                this.skinName = this.skinInfo.skinNameToken;
                 this.isBlunt = this.skinInfo.isWeaponBlunt;
                 this.EditEyeTrail();
             }
@@ -126,7 +126,10 @@ namespace PaladinMod.Misc
 
         public void ApplyLightningBuff()
         {
-            if (!this.body.HasBuff(Modules.Buffs.overchargeBuff) && NetworkServer.active) this.body.AddBuff(Modules.Buffs.overchargeBuff);
+            if (!this.body.HasBuff(Modules.Buffs.overchargeBuff) && NetworkServer.active) {
+                Debug.LogWarning("applying lightning");
+                this.body.AddBuff(Modules.Buffs.overchargeBuff);
+            }
 
             this.hasLightningBuff = true;
             this.lightningBuffTimer = 4f;

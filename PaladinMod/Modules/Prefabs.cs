@@ -234,16 +234,27 @@ namespace PaladinMod.Modules
             Modules.Helpers.CreateHitbox(model, childLocator.FindChild("SpinSlashLargeHitbox"), "SpinSlashLarge");
         }
 
-        public static GameObject CreateDisplayPrefab(string modelName, GameObject prefab)
+        public static GameObject CreateDisplayPrefab(string modelName, GameObject bodyPrefab)
         {
-            GameObject newPrefab = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), modelName + "Prefab");
+            //GameObject newPrefab = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), modelName + "Prefab", false);
 
-            GameObject model = CreateModel(newPrefab, modelName);
-            Transform modelBaseTransform = SetupModel(newPrefab, model.transform);
+            //GameObject model = CreateModel(newPrefab, modelName);
+            //Transform modelBaseTransform = SetupModel(newPrefab, model.transform);
 
-            model.AddComponent<CharacterModel>().baseRendererInfos = prefab.GetComponentInChildren<CharacterModel>().baseRendererInfos;
+            //model.AddComponent<CharacterModel>().baseRendererInfos = prefab.GetComponentInChildren<CharacterModel>().baseRendererInfos;
 
-            return model.gameObject;
+            GameObject display = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(modelName);
+
+            CharacterModel characterModel = display.GetComponent<CharacterModel>();
+            if (!characterModel)
+            {
+                characterModel = display.AddComponent<CharacterModel>();
+            }
+            characterModel.baseRendererInfos = bodyPrefab.GetComponentInChildren<CharacterModel>().baseRendererInfos;
+
+            Assets.ConvertAllRenderersToHopooShader(display);
+
+            return display;
         }
 
         public static void SetupCharacterModel(GameObject prefab, CustomRendererInfo[] rendererInfo, int mainRendererIndex)

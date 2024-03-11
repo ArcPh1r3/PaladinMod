@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 266306383
+CRC: 444196293
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6f0dc07cab9a15b5be45e1bdd9a31c1d
+    Hash: 94e148f1ff459787fe2a31d885661324
   TypeTreeHash:
     serializedVersion: 2
     Hash: 041388fe7ef74db63a68f1d40bd5d735
@@ -136,7 +136,6 @@ Assets:
 - Assets/Paladin/Effects/SwingEffects/SpinSlashEffectBlack.prefab
 - Assets/Paladin/Textures/Shields/texPursuerShield.png
 - Assets/Paladin/Effects/SwingEffects/EmpSpinSlashEffectClay.prefab
-- Assets/Paladin/Mesh/meshSwordSpecter.mesh
 - Assets/NemPaladin/Textures/T_NemPaladin_C.png
 - Assets/Paladin/Textures/Shields/tex_WatcherDagger.png
 - Assets/Paladin/Textures/Shields/texHavelShield.dds
@@ -196,7 +195,6 @@ Assets:
 - Assets/Paladin/Shields/DisplayHavelShield.prefab
 - Assets/NemPaladin/Animations/AimYaw.anim
 - Assets/Paladin/Animations/Old/AimPitch.anim
-- Assets/Paladin/Mesh/meshPaladinSpecter.mesh
 - Assets/Paladin/Mesh/meshBat.mesh
 - Assets/Paladin/Textures/texPaladinNkuhanaSwordEmission.png
 - Assets/Paladin/Textures/texPaladinSpecterSwordEmission.png
@@ -411,7 +409,7 @@ Assets:
 - Assets/Paladin/Animations/Old/impactMask.mask
 - Assets/Paladin/Animations/Old/RestEmote.anim
 - Assets/Paladin/Textures/texPaladinGM.png
-- Assets/Paladin/PaladinDisplay2.prefab
+- Assets/Paladin/PaladinDisplayOld.prefab
 - Assets/Paladin/Textures/texPaladinNkuhanaLegacy.png
 - Assets/Paladin/VFX/matPaladinSwing4.mat
 - Assets/Paladin/Textures/texPaladinGMSword.png
@@ -454,6 +452,7 @@ Assets:
 - Assets/Paladin/Mesh/meshSwordGM.mesh
 - Assets/Paladin/Animations/Old/CloseHand.anim
 - Assets/Paladin/Icons/WarcryIcon.png
+- Assets/Paladin/Mesh/meshSwordSpecter.mesh
 - Assets/Paladin/Animations/Old/CastSunLoop.anim
 - Assets/Paladin/VFX/matEmber2.mat
 - Assets/Paladin/Animations/Old/MenuIdle.anim
@@ -486,5 +485,6 @@ Assets:
 - Assets/NemPaladin/Textures/texHereticFeatherEmission.png
 - Assets/Paladin/Textures/texPaladinLunarEmissionOld.png
 - Assets/Paladin/Effects/SwingEffects/PaladinSwingGreen.prefab
+- Assets/Paladin/Mesh/meshPaladinSpecter.mesh
 - Assets/Paladin/Animations/Extras/Crystals_FuckMe.anim
 Dependencies: []

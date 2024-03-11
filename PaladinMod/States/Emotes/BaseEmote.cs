@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using BepInEx.Configuration;
+using EntityStates;
 using PaladinMod.Misc;
 using RoR2;
 using UnityEngine;
@@ -27,7 +28,7 @@ namespace PaladinMod.States.Emotes
             this.animator = base.GetModelAnimator();
             this.childLocator = base.GetModelChildLocator();
             this.swordController = base.GetComponent<PaladinSwordController>();
-            this.localUser = LocalUserManager.readOnlyLocalUsersList[0];
+            FindLocalUser();
             
             base.characterBody.hideCrosshair = true;
 
@@ -107,26 +108,16 @@ namespace PaladinMod.States.Emotes
             }
 
             //emote cancels
-            if (base.isAuthority && base.characterMotor.isGrounded && !this.localUser.isUIFocused)
+            if (base.isAuthority && base.characterMotor.isGrounded)
             {
-                if (Input.GetKeyDown(Modules.Config.praiseKeybind.Value))
-                {
-                    this.outer.SetInterruptState(new PraiseTheSun(), InterruptPriority.Any);
+                if (CheckEmote<PraiseTheSun>(Modules.Config.praiseKeybind))
                     return;
-                }
-                else if (Input.GetKeyDown(Modules.Config.restKeybind.Value))
-                {
-                    this.outer.SetInterruptState(new Rest(), InterruptPriority.Any);
+                if (CheckEmote<Rest>(Modules.Config.restKeybind))
                     return;
-                }
-                else if (Input.GetKeyDown(Modules.Config.pointKeybind.Value))
-                {
-                    this.outer.SetInterruptState(new PointDown(), InterruptPriority.Any);
+                if (CheckEmote<PointDown>(Modules.Config.pointKeybind))
                     return;
-                } else if (Input.GetKeyDown(Modules.Config.swordPoseKeybind.Value)) {
-                    this.outer.SetInterruptState(new TestPose(), InterruptPriority.Any);
+                if (CheckEmote<TestPose>(Modules.Config.swordPoseKeybind))
                     return;
-                }
             }
 
             if (this.duration > 0 && base.fixedAge >= this.duration) flag = true;
@@ -136,6 +127,32 @@ namespace PaladinMod.States.Emotes
             if (flag)
             {
                 this.outer.SetNextStateToMain();
+            }
+        }
+
+        private bool CheckEmote<T>(ConfigEntry<KeyCode> keybind) where T : EntityState, new() {
+            if (Input.GetKeyDown(keybind.Value)) {
+
+                FindLocalUser();
+
+                if (localUser != null && !localUser.isUIFocused) {
+                    outer.SetInterruptState(new T(), InterruptPriority.Any);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void FindLocalUser() {
+            if (localUser == null) {
+                if (base.characterBody) {
+                    foreach (LocalUser lu in LocalUserManager.readOnlyLocalUsersList) {
+                        if (lu.cachedBody == base.characterBody) {
+                            this.localUser = lu;
+                            break;
+                        }
+                    }
+                }
             }
         }
 

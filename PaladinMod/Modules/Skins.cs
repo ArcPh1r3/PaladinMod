@@ -14,48 +14,15 @@ namespace PaladinMod.Modules
         private static CharacterSelectSurvivorPreviewDisplayController paladinCSSPreviewController;
         private static SkinChangeResponse[] defaultResponses;
 
-
-        public enum paladinCSSEffect {
-            DEFAULT,
-            LUNAR,
-            BEEFY,
-            TAR,
-            YELLOW,
-            GREEN,
-            GREENSCYTHE,
-            RED,
-            REDSCYTHE,
-            PURPLE,
-            FLAME
-        }
-
-        /// <summary>
-        /// use this to add a skin change event for the sword effects in css
-        /// <para> otherwise in css your skin won't show the sword effect properly </para>
-        /// </summary>
-        /// 
-        /// <param name="def">
-        /// pass in your skilldef here
-        /// </param>
-        /// 
-        /// <param name="cssEffect">
-        /// use an entry in this enum to choose an effect
-        /// <para> DEFAULT, LUNAR, BEEFY, TAR, YELLOW, GREEN, GREENSCYTHE, RED, REDSCYTHE, PURPLE, FLAME </para>
-        /// <para> if you want me to add a new one fuck it let me know </para>
-        /// </param>
-        public static void AddCSSSkinChangeResponse(SkinDef def, paladinCSSEffect cssEffect) {
+        private static void AddCSSSkinChangeResponse(SkinDef def, PaladinCSSEffect cssEffect) {
 
             //duplicating a skinchangeresponse from defaults that I set up in editor
+            //gotta do this song and dance instead of simply adding our own custom skinchangeresponses because for some reason adding to unityevents in code doesn't work
+            //or at least didn't work last time i tried
             SkinChangeResponse newSkinResponse = defaultResponses[(int)cssEffect];
             newSkinResponse.triggerSkin = def;
 
-            //gotta do this song and dance instead of simply adding our own custom skinchangeresponses because for some reason adding to unityevents in code doesn't work
-            //or at least didn't work last time i tried
-            SkinChangeResponse[] addedSkinchange = new SkinChangeResponse[] { 
-                newSkinResponse
-            };
-
-            paladinCSSPreviewController.skinChangeResponses = paladinCSSPreviewController.skinChangeResponses.Concat(addedSkinchange).ToArray();
+            HG.ArrayUtils.ArrayAppend(ref paladinCSSPreviewController.skinChangeResponses, newSkinResponse);
         }
 
         #region tools
@@ -319,7 +286,7 @@ namespace PaladinMod.Modules
             }
             else defaultSkin.gameObjectActivations = defaultActivations;
 
-            AddCSSSkinChangeResponse(defaultSkin, paladinCSSEffect.DEFAULT);
+            AddCSSSkinChangeResponse(defaultSkin, PaladinCSSEffect.DEFAULT);
 
             skinDefs.Add(defaultSkin);
             #endregion
@@ -418,7 +385,7 @@ namespace PaladinMod.Modules
 
             grandMasterySkin.gameObjectActivations = GMActivations;
 
-            AddCSSSkinChangeResponse(grandMasterySkin, paladinCSSEffect.BEEFY);
+            AddCSSSkinChangeResponse(grandMasterySkin, PaladinCSSEffect.BEEFY);
 
             skinDefs.Add(grandMasterySkin);
 
@@ -498,45 +465,44 @@ namespace PaladinMod.Modules
             #endregion
 
             #region SpecterSkin
-            //CharacterModel.RendererInfo[] specterRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
-            //defaultRenderers.CopyTo(specterRendererInfos, 0);
+            CharacterModel.RendererInfo[] specterRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
+            defaultRenderers.CopyTo(specterRendererInfos, 0);
 
-            //specterRendererInfos[0].defaultMaterial = CreateMaterial("matPaladinSpecterScythe", StaticValues.maxSwordGlow, Color.white);
-            //specterRendererInfos[1].defaultMaterial = CreateMaterial("matPaladinGMOld"); //HACK
-            //specterRendererInfos[lastRend].defaultMaterial = CreateMaterial("matPaladinSpecter");
+            specterRendererInfos[0].defaultMaterial = CreateMaterial("matPaladinSpecterScythe", StaticValues.maxSwordGlow, Color.white);
+            specterRendererInfos[lastRend].defaultMaterial = CreateMaterial("matPaladinSpecter");
 
-            //SkinDef specterSkin = CreateSkinDef("PALADINBODY_SPECTER_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecterSkin"), specterRendererInfos, mainRenderer, model);
-            //specterSkin.meshReplacements = new SkinDef.MeshReplacement[]  
-            //{
-            //    new SkinDef.MeshReplacement
-            //    {
-            //        mesh = Assets.specterMesh,
-            //        renderer = defaultRenderers[lastRend].renderer
-            //    },
-            //    new SkinDef.MeshReplacement
-            //    {
-            //        mesh = Assets.specterSwordMesh,
-            //        renderer = defaultRenderers[0].renderer 
-            //    },
-            //    new SkinDef.MeshReplacement
-            //    {
-            //        mesh = Assets.defaultCapeMesh,
-            //        renderer = defaultRenderers[1].renderer
-            //    }
-            //};
+            SkinDef specterSkin = CreateSkinDef("PALADINBODY_SPECTER_SKIN_NAME", Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecterSkin"), specterRendererInfos, mainRenderer, model);
+            specterSkin.meshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.specterMesh,
+                    renderer = defaultRenderers[lastRend].renderer
+                },
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.specterSwordMesh,
+                    renderer = defaultRenderers[0].renderer
+                },
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.defaultCapeMesh,
+                    renderer = defaultRenderers[1].renderer
+                }
+            };
 
-            //specterSkin.gameObjectActivations = capeActivations;
+            specterSkin.gameObjectActivations = capeActivations;
 
-            //specterSkin.projectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[] {
-            //    new SkinDef.ProjectileGhostReplacement{
-            //        projectilePrefab = Projectiles.swordBeamProjectile,
-            //        projectileGhostReplacementPrefab = Projectiles.CloneAndColorSwordBeam(Color.red, 0.669f)//slightly darker blue than normal
-            //    }
-            //};
+            specterSkin.projectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[] {
+                new SkinDef.ProjectileGhostReplacement{
+                    projectilePrefab = Projectiles.swordBeamProjectile,
+                    projectileGhostReplacementPrefab = Projectiles.CloneAndColorSwordBeam(Color.red, 0.669f)
+                }
+            };
 
-            //AddCSSSkinChangeResponse(specterSkin, paladinCSSEffect.REDSCYTHE);
+            AddCSSSkinChangeResponse(specterSkin, PaladinCSSEffect.REDSCYTHE);
 
-            //if (Modules.Config.cursed.Value) skinDefs.Add(specterSkin);
+            if (Modules.Config.cursed.Value) skinDefs.Add(specterSkin);
 
             #endregion
             /*
@@ -708,15 +674,65 @@ namespace PaladinMod.Modules
                 skinDefs.Add(poisonLegacySkin);
             #endregion
             */
-            
+
             skinController.skins = skinDefs.ToArray();
 
             for (int i = 0; i < skinDefs.Count; i++)
             {
                 SkinIdices[(uint)i] = skinDefs[i].name;
             }
-            
-            InitializeNemSkins();
+
+            On.RoR2.ProjectileGhostReplacementManager.Init += ProjectileGhostReplacementManager_Init;
+
+            //InitializeNemSkins();
+        }
+
+        private static void ProjectileGhostReplacementManager_Init(On.RoR2.ProjectileGhostReplacementManager.orig_Init orig) {
+
+            ModelSkinController skinController = Prefabs.paladinPrefab.GetComponentInChildren<ModelSkinController>();
+
+            for (int i = 1; i < skinController.skins.Length; i++) {
+                SkinDef skin = skinController.skins[i];
+
+                Effects.PaladinSkinInfo skinInfo = Effects.GetSkinInfo(skin.nameToken);
+
+                FinalizeSkinChangeResponse(skin, skinInfo);
+
+                //if there is no custom skinInfo it will default to default skinInfo
+                if (skinInfo.skinNameToken == "PALADINBODY_DEFAULT_SKIN_NAME")
+                    continue;
+
+                FinalizeSkinProjectileGhost(skin, skinInfo);
+            }
+
+            orig();
+        }
+
+        private static void FinalizeSkinChangeResponse(SkinDef skin, Effects.PaladinSkinInfo skinInfo)
+        {
+            for (int i = 0; i < paladinCSSPreviewController.skinChangeResponses.Length; i++)
+            {
+                if (paladinCSSPreviewController.skinChangeResponses[i].triggerSkin == skin)
+                    return;
+            }
+            AddCSSSkinChangeResponse(skin, skinInfo.CSSEffect);
+        }
+
+        private static void FinalizeSkinProjectileGhost(SkinDef skin, Effects.PaladinSkinInfo skinInfo)
+        {
+            if (skin.projectileGhostReplacements.Length > 0)
+                return; ;
+
+            GameObject newGhost = skinInfo.swordBeamProjectileGhost;
+
+            if (newGhost == null)
+                return; ;
+
+            HG.ArrayUtils.ArrayAppend(ref skin.projectileGhostReplacements, new SkinDef.ProjectileGhostReplacement
+            {
+                projectilePrefab = Projectiles.swordBeamProjectile,
+                projectileGhostReplacementPrefab = newGhost,
+            });
         }
 
         private static void InitializeNemSkins()

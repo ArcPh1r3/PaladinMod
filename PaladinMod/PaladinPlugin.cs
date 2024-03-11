@@ -84,8 +84,8 @@ namespace PaladinMod
             Modules.Config.ReadConfig();
 
             Modules.Files.Init(Info); //store path to assembly
-            //Modules.Languages.Init(); //register language file to be read
-            Modules.Tokens.Init(); // print language file from old tokens
+            Modules.Languages.Init(); //register language file to be read
+            //Modules.Tokens.Init(); // print language file from old tokens
         }
         
         public void Start() {

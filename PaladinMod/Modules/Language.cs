@@ -7,8 +7,6 @@ namespace PaladinMod.Modules {
 
     internal static class Languages {
 
-        public static SubFileSystem fileSystem;
-
         internal static string languageRoot => System.IO.Path.Combine(Files.assemblyDir, "Language");
         
         internal static string TokensOutput = "";

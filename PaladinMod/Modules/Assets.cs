@@ -61,6 +61,7 @@ namespace PaladinMod.Modules
         public static GameObject paladinScepterSunPrefab;
 
         //particle effects
+
         public static GameObject swordSwing;
         public static GameObject spinningSlashFX;
         public static GameObject spinningSlashEmpoweredFX;
@@ -72,10 +73,6 @@ namespace PaladinMod.Modules
         public static GameObject swordSwingYellow;
         public static GameObject spinningSlashFXYellow;
         public static GameObject spinningSlashEmpoweredFXYellow;
-
-        public static GameObject swordSwingWhite;
-
-        public static GameObject swordSwingBat;
 
         public static GameObject swordSwingRed;
         public static GameObject spinningSlashFXRed;
@@ -97,14 +94,24 @@ namespace PaladinMod.Modules
         public static GameObject spinningSlashFXBlack;
         public static GameObject spinningSlashEmpoweredFXBlack;
 
+        public static GameObject swordSwingWhite;
+
+        public static GameObject swordSwingBat;
+
         public static GameObject hitFX;
         public static GameObject hitFXGreen;
         public static GameObject hitFXYellow;
-        public static GameObject hitFXBlunt;
         public static GameObject hitFXRed;
         public static GameObject hitFXClay;
         public static GameObject hitFXPurple;
         public static GameObject hitFXBlack;
+        public static GameObject hitFXBlunt;
+
+        public static List<GameObject> hitEffects = new List<GameObject> ();
+        public static List<GameObject> swordSwingEffects = new List<GameObject>();
+        public static List<GameObject> spinSlashEffects = new List<GameObject>();
+        public static List<GameObject> spinSlashEmpoweredEffects = new List<GameObject>();
+
 
         public static GameObject lightningHitFX;
         public static GameObject lightningImpactFX;
@@ -334,6 +341,45 @@ namespace PaladinMod.Modules
             spinningSlashFXBlack = Assets.LoadEffect("SpinSlashEffectBlack", "");
             spinningSlashEmpoweredFXBlack = Assets.LoadEffect("EmpSpinSlashEffectBlack", "");
             hitFXBlack = Assets.LoadEffect("ImpactPaladinSwingBlack", "");
+
+            hitEffects.Add(hitFX);
+            hitEffects.Add(hitFXGreen);
+            hitEffects.Add(hitFXYellow);
+            hitEffects.Add(hitFXRed);
+            hitEffects.Add(hitFXClay);
+            hitEffects.Add(hitFXPurple);
+            hitEffects.Add(hitFXBlack);
+            hitEffects.Add(hitFXBlunt);
+
+            swordSwingEffects.Add(swordSwing);
+            swordSwingEffects.Add(swordSwingGreen);
+            swordSwingEffects.Add(swordSwingYellow);
+            swordSwingEffects.Add(swordSwingRed);
+            swordSwingEffects.Add(swordSwingClay);
+            swordSwingEffects.Add(swordSwingPurple);
+            swordSwingEffects.Add(swordSwingFlame);
+            swordSwingEffects.Add(swordSwingBlack);
+            swordSwingEffects.Add(swordSwingWhite);
+            swordSwingEffects.Add(swordSwingBat);
+
+            spinSlashEffects.Add(spinningSlashFX);
+            spinSlashEffects.Add(spinningSlashFXGreen);
+            spinSlashEffects.Add(spinningSlashFXYellow);
+            spinSlashEffects.Add(spinningSlashFXRed);
+            spinSlashEffects.Add(spinningSlashFXClay);
+            spinSlashEffects.Add(spinningSlashFXPurple);
+            spinSlashEffects.Add(spinningSlashFXBlack);
+            spinSlashEffects.Add(spinningSlashFXFlame);
+
+            spinSlashEmpoweredEffects.Add(spinningSlashEmpoweredFX);
+            spinSlashEmpoweredEffects.Add(spinningSlashEmpoweredFXGreen);
+            spinSlashEmpoweredEffects.Add(spinningSlashEmpoweredFXYellow);
+            spinSlashEmpoweredEffects.Add(spinningSlashEmpoweredFXRed);
+            spinSlashEmpoweredEffects.Add(spinningSlashEmpoweredFXClay);
+            spinSlashEmpoweredEffects.Add(spinningSlashEmpoweredFXPurple);
+            spinSlashEmpoweredEffects.Add(spinningSlashEmpoweredFXBlack);
+            spinSlashEmpoweredEffects.Add(spinningSlashEmpoweredFXFlame);
+
             #endregion
         }
 

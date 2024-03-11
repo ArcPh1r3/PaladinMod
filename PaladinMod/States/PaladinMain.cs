@@ -3,6 +3,8 @@ using EntityStates;
 using UnityEngine;
 using PaladinMod.Misc;
 using System;
+using BepInEx.Configuration;
+using PaladinMod.States.Emotes;
 
 namespace PaladinMod.States
 {
@@ -71,29 +73,17 @@ namespace PaladinMod.States
         public override void Update()
         {
             base.Update();
-
-            if (base.isAuthority && base.characterMotor.isGrounded && !this.localUser.isUIFocused)
+            
+            if (base.isAuthority && base.characterMotor.isGrounded)
             {
-                if (Input.GetKeyDown(Modules.Config.praiseKeybind.Value))
-                {
-                    this.outer.SetInterruptState(new Emotes.PraiseTheSun(), InterruptPriority.Any);
+                if (CheckEmote<PraiseTheSun>(Modules.Config.praiseKeybind))
                     return;
-                }
-                else if (Input.GetKeyDown(Modules.Config.restKeybind.Value))
-                {
-                    this.outer.SetInterruptState(new Emotes.Rest(), InterruptPriority.Any);
+                if (CheckEmote<Rest>(Modules.Config.restKeybind))
                     return;
-                }
-                else if (Input.GetKeyDown(Modules.Config.pointKeybind.Value))
-                {
-                    this.outer.SetInterruptState(new Emotes.PointDown(), InterruptPriority.Any);
+                if (CheckEmote<PointDown>(Modules.Config.pointKeybind))
                     return;
-                } 
-                else if (Input.GetKeyDown(Modules.Config.swordPoseKeybind.Value)) 
-                {
-                    this.outer.SetInterruptState(new Emotes.TestPose(), InterruptPriority.Any);
+                if (CheckEmote<TestPose>(Modules.Config.swordPoseKeybind))
                     return;
-                }
             }
         }
 
@@ -220,6 +210,33 @@ namespace PaladinMod.States
         {
             base.OnExit();
             this.StopDraggingSword();
+        }
+
+
+        private bool CheckEmote<T>(ConfigEntry<KeyCode> keybind) where T : EntityState, new() {
+            if (Input.GetKeyDown(keybind.Value)) {
+
+                FindLocalUser();
+
+                if (localUser != null && !localUser.isUIFocused) {
+                    outer.SetInterruptState(new T(), InterruptPriority.Any);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void FindLocalUser() {
+            if (localUser == null) {
+                if (base.characterBody) {
+                    foreach (LocalUser lu in LocalUserManager.readOnlyLocalUsersList) {
+                        if (lu.cachedBody == base.characterBody) {
+                            this.localUser = lu;
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 }
