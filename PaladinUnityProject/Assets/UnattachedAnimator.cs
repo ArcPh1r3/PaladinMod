@@ -31,6 +31,9 @@ public class UnattachedAnimator : MonoBehaviour {
     [SerializeField, Space]
     List<UnattachedAnimationCombo> animationCombos;
 
+    [SerializeField, Space]
+    private float jumpTime = 5;
+
     [Header("whyt he fuck aren't these in the animator")]
     [SerializeField, Range(0, 0.999f)]
     protected float aimPitch = 0.5f;
@@ -46,9 +49,11 @@ public class UnattachedAnimator : MonoBehaviour {
 
         float hori = Input.GetAxis("Horizontal");
         float veri = Input.GetAxis("Vertical");
+        float horiRaw = Input.GetAxisRaw("Horizontal");
+        float veriRaw = Input.GetAxisRaw("Vertical");
         for (int i = 0; i < animators.Length; i++) {
 
-            animators[i].SetBool("isMoving", Mathf.Abs(hori) + Mathf.Abs(veri) > 0.01f);
+            animators[i].SetBool("isMoving", Mathf.Abs(horiRaw) + Mathf.Abs(veriRaw) > 0.01f);
             animators[i].SetFloat("forwardSpeed", veri);
             animators[i].SetFloat("rightSpeed", hori);
                     
@@ -63,7 +68,7 @@ public class UnattachedAnimator : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Space)) {
                 animators[i].Play("Jump");
                 animators[i].SetBool("isGrounded", false);
-                _jumpTim = 1.5f;
+                _jumpTim = jumpTime;
             }
 
             _jumpTim -= Time.deltaTime;
@@ -86,19 +91,19 @@ public class UnattachedAnimator : MonoBehaviour {
         for (int i = 0; i < animators.Length; i++) {
             animators[i].SetBool("inCombat", inCombat);
 
-            if (inCombat) animators[i].SetLayerWeight(animators[i].GetLayerIndex("Body, Combat"), 1f);
-            else animators[i].SetLayerWeight(animators[i].GetLayerIndex("Body, Combat"), 0f);
+            //if (inCombat) animators[i].SetLayerWeight(animators[i].GetLayerIndex("Body, Combat"), 1f);
+            //else animators[i].SetLayerWeight(animators[i].GetLayerIndex("Body, Combat"), 0f);
 
-            if (inCombat != this.wasInCombat) {
-                if (animators[i].GetBool("isGrounded") && !animators[i].GetBool("isMoving")) {
-                    if (!inCombat) animators[i].Play("ToRestIdle", animators[i].GetLayerIndex("Body"));
-                } else if (animators[i].GetBool("isGrounded") && animators[i].GetBool("isSprinting")) {
-                    if (!inCombat) animators[i].Play("SprintToRest2", animators[i].GetLayerIndex("Body"));
-                } else {
-                    if (inCombat) animators[i].Play("ToCombat", animators[i].GetLayerIndex("Transition"));
-                    else animators[i].Play("ToRest", animators[i].GetLayerIndex("Transition"));
-                }
-            }
+            //if (inCombat != this.wasInCombat) {
+            //    if (animators[i].GetBool("isGrounded") && !animators[i].GetBool("isMoving")) {
+            //        if (!inCombat) animators[i].Play("ToRestIdle", animators[i].GetLayerIndex("Body"));
+            //    } else if (animators[i].GetBool("isGrounded") && animators[i].GetBool("isSprinting")) {
+            //        //if (!inCombat) animators[i].Play("SprintToRest2", animators[i].GetLayerIndex("Body"));
+            //    } else {
+            //        if (inCombat) animators[i].Play("ToCombat", animators[i].GetLayerIndex("Transition"));
+            //        else animators[i].Play("ToRest", animators[i].GetLayerIndex("Transition"));
+            //    }
+            //}
         }
 
         this.wasInCombat = inCombat;

@@ -27,7 +27,6 @@ namespace PaladinMod.Misc
         private bool hasLightningBuff;
         private float passiveBuffTimer;
         private PaladinPassiveBuffController buffController;
-        private bool wasInCombat;
 
         public Material buffMat;
 
@@ -92,35 +91,6 @@ namespace PaladinMod.Misc
                         if (this.buffController) this.buffController.TryBuff();
                     }
                 }
-            }
-
-            // combat animation shit
-            if (this.animator && this.body)
-            {
-                bool inCombat = true;
-                if (this.body.outOfDanger && this.body.outOfCombat) inCombat = false;
-
-                if (inCombat) this.animator.SetLayerWeight(this.animator.GetLayerIndex("Body, Combat"), 1f);
-                else this.animator.SetLayerWeight(this.animator.GetLayerIndex("Body, Combat"), 0f);
-
-                if (inCombat != this.wasInCombat)
-                {
-                    if (this.body.characterMotor.isGrounded && this.body.inputBank.moveVector == Vector3.zero)
-                    {
-                        if (!inCombat) EntityStates.EntityState.PlayAnimationOnAnimator(this.animator, "Body", "ToRestIdle");
-                    }
-                    else if (this.body.characterMotor.isGrounded && this.body.isSprinting)
-                    {
-                        if (!inCombat) EntityStates.EntityState.PlayAnimationOnAnimator(this.animator, "Body", "SprintToRest2");
-                    }
-                    else
-                    {
-                        if (inCombat) EntityStates.EntityState.PlayAnimationOnAnimator(this.animator, "Transition", "ToCombat");
-                        else EntityStates.EntityState.PlayAnimationOnAnimator(this.animator, "Transition", "ToRest");
-                    }
-                }
-
-                this.wasInCombat = inCombat;
             }
         }
 

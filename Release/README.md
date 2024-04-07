@@ -10,7 +10,6 @@
 join the discord to share feedback/bugs- https://discord.gg/WQzE983zfs
 
 feel free to ping/dm me with all your complaints- ~~@rob#2365~~ @TheTimesweeper#5727
-
 ## Overview
 The Paladin is a tanky melee hybrid survivor who uses a combination of powerful melee attacks and long range spells. Writing these descriptions is time consuming so just try the character out for yourself and find out what works. He's got enough skills and flexibility to support a myriad of different playstyles.
 
@@ -23,7 +22,7 @@ The Paladin is a tanky melee hybrid survivor who uses a combination of powerful 
 ## Skin Mod Devs:
 Some lovely folks have made some skins for Paladin which is rad. 
 If you'd like to make a paladin skin, there's some extra skin features for Paladin you can/should take advantage of.
-See the Custom Skin Guide section below
+See the Custom Skin wiki tab on github or thunderstore
 
 ## VR
 Paladin is now compatible with [Dr.Bibop's VRMod](https://thunderstore.io/package/DrBibop/VRMod/). (*Thanks PureDark!*)  
@@ -84,56 +83,6 @@ Clay skin and Nemesis Paladin by SkeletorChampion
 
 [![](https://i.imgur.com/c0Qbube.png)]()
 Berserk skin by Draymarc
-
-## Custom Skin Guide (Nerds Only):
-Any questions let me know, and/or need me to help I'd be glad to
-
-### Sword Glow Effect in CSS (important):
-In the lobby, switching skins will now show their respective Blessed sword effect on the display. Pretty rad ngl 
-
-For it to properly switch to your effect in CSS (even if you're using the default), use this function:
-`PaladinMod.Modules.Skins.AddCSSSkinChangeResponse(mySkinDef, paladinCSSEffect.DEFAULT);`
-
-This is separate from the actual effect in-game btw, which is handled by the `PaladinSkinInfo` below
-
-### Effects:
-Paladin's skins can take advantage of the custom effects present in the mod, using a `Modules.Effects.PaladinSkinInfo` field:
-```
-public struct PaladinSkinInfo
-{
-    //See the `Effects.cs` script for examples/more details.
-    public string skinName;
-
-    public string passiveEffectName; 
-
-    public string swingSoundString;
-    public bool isWeaponBlunt;
-
-    public GameObject hitEffect;
-    public GameObject swingEffect;
-    public GameObject spinSlashEffect;
-    public GameObject empoweredSpinSlashEffect;
-
-    public Color eyeTrailColor;
-}
-``` 
-Simply add a `new PaladinSkinInfo` to the `skinInfos` array
-Shoutouts to LilithPaladin skin that was based enough to do this
-
-### Custom Sword Beam Color:
-If you want the sword beam to have a custom color, you can add it as a `ProjectileGhostReplacement` when you're setting up your `SkinDef`:
-```
-mySkinDef.projectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[] {
-
-    new SkinDef.ProjectileGhostReplacement{
-
-        projectilePrefab = Modules.Projectiles.swordBeamProjectile,
-
-        //Use this function to easily create a projectileghost of paladin's sword beam with a color
-        projectileGhostReplacementPrefab = Modules.Projectiles.CloneAndColorSwordBeam(Color.red) 
-    }
-};
-```
 
 ## Changelog
 

@@ -29,4 +29,8 @@
     </Reference>
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy &quot;$(TargetPath)&quot; &quot;E:\r2modmanPlus-local\RiskOfRain2\profiles\Blinx Returns\BepInEx\plugins\Paladin_Alliance-PaladinMod&quot;" />
+  </Target>
+
 </Project>

@@ -116,6 +116,8 @@ namespace PaladinMod.Modules
 
             GameObject model = paladinPrefab.GetComponent<ModelLocator>().modelTransform.gameObject;
 
+            model.AddComponent<Misc.PaladinAnimationController>();
+
             Modules.Helpers.CreateHitbox(model, childLocator.FindChild("SwordHitbox"), "Sword");
             Modules.Helpers.CreateHitbox(model, childLocator.FindChild("LeapHitbox"), "LeapStrike");
             Modules.Helpers.CreateHitbox(model, childLocator.FindChild("SpinSlashHitbox"), "SpinSlash");
