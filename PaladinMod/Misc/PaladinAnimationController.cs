@@ -77,7 +77,7 @@ namespace PaladinMod.Misc
                     //from rest to combat
                     else
                     {
-                        BootlegPlayCrossfade(this.animator, "Transition", "ToRest");
+                        BootlegPlayCrossfade(this.animator, "Transition", "ToCombat", 0.05f);
                     }
                 }
                 //sprinting

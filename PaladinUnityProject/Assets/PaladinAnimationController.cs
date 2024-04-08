@@ -66,7 +66,7 @@ public class PaladinAnimationController : MonoBehaviour {
                     }
                     //from rest to combat
                     else {
-                        BootlegPlayCrossfade(animator, "Transition", "ToRest");
+                        BootlegPlayCrossfade(animator, "Transition", "ToCombat", 0.1f);
                     }
                 }
                 //sprinting
