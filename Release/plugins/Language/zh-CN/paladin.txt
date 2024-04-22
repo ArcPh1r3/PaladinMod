@@ -30,7 +30,7 @@
     "PALADIN_SECONDARY_LIGHTNING_DESCRIPTION" : "<style=cIsUtility>震荡</style>。<style=cIsUtility>灵活</style>。前冲并扔出一发<style=cIsUtility>雷霆</style>，造成<style=cIsDamage> 700% 伤害</style>。<style=cIsDamage>扔在脚下</style>可以给你的剑刃附魔<style=cIsDamage>雷电</style>持续<style=cIsUtility> 4 秒</style>。",
     "PALADIN_SECONDARY_LUNARSHARD_NAME" : "月之碎片",
     "PALADIN_SECONDARY_LUNARSHARD_DESCRIPTION" : "<style=cIsUtility>灵活</style>。 连续发射<style=cIsUtility>月之碎片</style>，每个造成<style=cIsDamage> 75% 伤害</style>。最多持有<style=cIsDamage> 12 </style> 个碎片。",
-    "PALADIN_UTILITY_DASH_NAME" : "疾行身法",
+    "PALADIN_UTILITY_DASH_NAME" : "疾行",
     "PALADIN_UTILITY_DASH_DESCRIPTION" : "<style=cIsUtility>前冲</style>一段距离并获得<style=cIsHealing> 15% 护盾</style>。<style=cIsDamage>神圣之剑</style>命中敌人时 <style=cIsUtility>减少</style><style=cIsDamage>1 秒</style>冷却。<style=cIsUtility>最多持有 2 次<style=cIsHealing>。",
     "PALADIN_UTILITY_HEAL_NAME" : "蓄势",
     "PALADIN_UTILITY_HEAL_DESCRIPTION" : "恢复<style=cIsHealing> 15% 最大生命值</style>并给予周围盟友<style=cIsHealing> 15% 护盾</style>。",
