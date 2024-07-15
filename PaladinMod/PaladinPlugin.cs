@@ -25,7 +25,7 @@ namespace PaladinMod
     [BepInDependency("com.johnedwa.RTAutoSprintEx", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "1.9.9")]    
+    [BepInPlugin(MODUID, "Paladin", "1.9.92")]    
     public class PaladinPlugin : BaseUnityPlugin
     {
         //keeping id the same so it versions over previous paladin

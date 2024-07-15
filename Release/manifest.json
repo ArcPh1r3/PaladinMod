@@ -1,16 +1,16 @@
 {
-    "name": "PaladinMod",
-    "author": "Paladin_Alliance",
-    "version_number": "1.9.969",
-    "website_url": "https://github.com/ArcPh1r3/PaladinMod",
-    "description": "JUST GET IT DOOOOONE THE TELLING SIGNS OF AGING ARE FUCKING SHOWING JUST GET IT DONE SO IT CAN BE OVER PLEASE GOD PLEASE",
-    "dependencies": [
-        "bbepis-BepInExPack-5.4.1905",
-        "RiskofThunder-R2API_Core-5.0.3",
-        "RiskofThunder-R2API_Prefab-1.0.0",
-        "RiskofThunder-R2API_Language-1.0.0",
-        "RiskofThunder-R2API_Sound-1.0.0",
-        "RiskofThunder-R2API_DamageType-1.0.0",
-        "RiskofThunder-R2API_RecalculateStats-1.0.0"
-    ]
+  "name": "PaladinMod",
+  "author": "Paladin_Alliance",
+  "version_number": "1.9.92",
+  "website_url": "https://github.com/ArcPh1r3/PaladinMod",
+  "description": "Adds Paladin, a fully fleshed out custom survivor | 2.0.0 animation overhaul",
+  "dependencies": [
+    "bbepis-BepInExPack-5.4.1905",
+    "RiskofThunder-R2API_Core-5.0.3",
+    "RiskofThunder-R2API_Prefab-1.0.0",
+    "RiskofThunder-R2API_Language-1.0.0",
+    "RiskofThunder-R2API_Sound-1.0.0",
+    "RiskofThunder-R2API_DamageType-1.0.0",
+    "RiskofThunder-R2API_RecalculateStats-1.0.0"
+  ]
 }
