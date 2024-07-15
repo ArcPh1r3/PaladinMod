@@ -4,28 +4,15 @@ using System;
 using UnityEngine;
 using R2API;
 
+using RoR2.Achievements;
+
 namespace PaladinMod.Achievements
 {
-    internal class ClayAchievement : ModdedUnlockable
+    [RegisterAchievement(identifier, unlockableIdentifier, "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID", null)]
+    internal class ClayAchievement : BaseAchievement
     {
-        public override string AchievementIdentifier { get; } = "PALADIN_CLAYUNLOCKABLE_ACHIEVEMENT_ID";
-        public override string UnlockableIdentifier { get; } = "PALADIN_CLAYUNLOCKABLE_REWARD_ID";
-        public override string AchievementNameToken { get; } = "PALADIN_CLAYUNLOCKABLE_ACHIEVEMENT_NAME";
-        public override string PrerequisiteUnlockableIdentifier { get; } = "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID";
-        public override string UnlockableNameToken { get; } = "PALADIN_CLAYUNLOCKABLE_UNLOCKABLE_NAME";
-        public override string AchievementDescToken { get; } = "PALADIN_CLAYUNLOCKABLE_ACHIEVEMENT_DESC";
-        public override Sprite Sprite { get; } = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texClayAchievement");
-
-        public override Func<string> GetHowToUnlock { get; } = (() => Language.GetStringFormatted("UNLOCK_VIA_ACHIEVEMENT_FORMAT", new object[]
-                            {
-                                Language.GetString("PALADIN_CLAYUNLOCKABLE_ACHIEVEMENT_NAME"),
-                                Language.GetString("PALADIN_CLAYUNLOCKABLE_ACHIEVEMENT_DESC")
-                            }));
-        public override Func<string> GetUnlocked { get; } = (() => Language.GetStringFormatted("UNLOCKED_FORMAT", new object[]
-                            {
-                                Language.GetString("PALADIN_CLAYUNLOCKABLE_ACHIEVEMENT_NAME"),
-                                Language.GetString("PALADIN_CLAYUNLOCKABLE_ACHIEVEMENT_DESC")
-                            }));
+        public const string identifier = "PALADIN_CLAYUNLOCKABLE_ACHIEVEMENT_ID";
+        public const string unlockableIdentifier = "PALADIN_CLAYUNLOCKABLE_REWARD_ID";
 
         public override BodyIndex LookUpRequiredBodyIndex()
         {

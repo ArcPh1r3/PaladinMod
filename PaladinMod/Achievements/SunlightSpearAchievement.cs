@@ -4,29 +4,16 @@ using System;
 using UnityEngine;
 using R2API;
 
+using RoR2.Achievements;
+
 namespace PaladinMod.Achievements
 {
-    internal class SunlightSpearAchievement : ModdedUnlockable
+    //[RegisterAchievement(identifier, unlockableIdentifier, "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID", null)]
+    internal class SunlightSpearAchievement : BaseAchievement
     {
-        public override string AchievementIdentifier { get; } = "PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_ID";
-        public override string UnlockableIdentifier { get; } = "PALADIN_LIGHTNINGSPEARUNLOCKABLE_REWARD_ID";
-        public override string AchievementNameToken { get; } = "PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_NAME";
-        public override string PrerequisiteUnlockableIdentifier { get; } = "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID";
-        public override string UnlockableNameToken { get; } = "PALADIN_LIGHTNINGSPEARUNLOCKABLE_UNLOCKABLE_NAME";
-        public override string AchievementDescToken { get; } = "PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_DESC";
-        public override Sprite Sprite { get; } = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texLightningSpearAchievement");
-
-        public override Func<string> GetHowToUnlock { get; } = (() => Language.GetStringFormatted("UNLOCK_VIA_ACHIEVEMENT_FORMAT", new object[]
-                            {
-                                Language.GetString("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_NAME"),
-                                Language.GetString("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_DESC")
-                            }));
-        public override Func<string> GetUnlocked { get; } = (() => Language.GetStringFormatted("UNLOCKED_FORMAT", new object[]
-                            {
-                                Language.GetString("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_NAME"),
-                                Language.GetString("PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_DESC")
-                            }));
-
+        public const string identifier = "PALADIN_LIGHTNINGSPEARUNLOCKABLE_ACHIEVEMENT_ID";
+        public const string unlockableIdentifier = "PALADIN_LIGHTNINGSPEARUNLOCKABLE_REWARD_ID";
+        //"texLightningSpearAchievement"
         public override BodyIndex LookUpRequiredBodyIndex()
         {
             return BodyCatalog.FindBodyIndex("RobPaladinBody");

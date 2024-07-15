@@ -4,28 +4,15 @@ using System;
 using UnityEngine;
 using R2API;
 
+using RoR2.Achievements;
+
 namespace PaladinMod.Achievements
 {
-    internal class TorporAchievement : ModdedUnlockable
+    [RegisterAchievement(identifier, unlockableIdentifier, "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID", null)]
+    internal class TorporAchievement : BaseAchievement
     {
-        public override string AchievementIdentifier { get; } = "PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_ID";
-        public override string UnlockableIdentifier { get; } = "PALADIN_TORPORUNLOCKABLE_REWARD_ID";
-        public override string AchievementNameToken { get; } = "PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_NAME";
-        public override string PrerequisiteUnlockableIdentifier { get; } = "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID";
-        public override string UnlockableNameToken { get; } = "PALADIN_TORPORUNLOCKABLE_UNLOCKABLE_NAME";
-        public override string AchievementDescToken { get; } = "PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_DESC";
-        public override Sprite Sprite { get; } = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texTorporAchievement");
-
-        public override Func<string> GetHowToUnlock { get; } = (() => Language.GetStringFormatted("UNLOCK_VIA_ACHIEVEMENT_FORMAT", new object[]
-                            {
-                                Language.GetString("PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_NAME"),
-                                Language.GetString("PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_DESC")
-                            }));
-        public override Func<string> GetUnlocked { get; } = (() => Language.GetStringFormatted("UNLOCKED_FORMAT", new object[]
-                            {
-                                Language.GetString("PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_NAME"),
-                                Language.GetString("PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_DESC")
-                            }));
+        public const string identifier = "PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_ID";
+        public const string unlockableIdentifier = "PALADIN_TORPORUNLOCKABLE_REWARD_ID";
 
         public override BodyIndex LookUpRequiredBodyIndex()
         {

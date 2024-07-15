@@ -1,10 +1,14 @@
-﻿namespace PaladinMod.Achievements
+﻿using RoR2;
+
+namespace PaladinMod.Achievements
 {
+    [RegisterAchievement(identifier, unlockableIdentifier, "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID", null)]
     internal class GrandMasteryAchievement : BaseMasteryUnlockable
     {
-        public override string AchievementTokenPrefix => "PALADIN_TYPHOON";
-        public override string PrerequisiteIdentifier => "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID";
-        public override string AchievementSpriteName => "texGrandMasteryAchievement";
+        public const string identifier = AchievementTokenPrefix + "UNLOCKABLE_ACHIEVEMENT_ID";
+        public const string unlockableIdentifier = AchievementTokenPrefix + "UNLOCKABLE_REWARD_ID";
+
+        public const string AchievementTokenPrefix = "PALADIN_TYPHOON";
 
         public override string RequiredCharacterBody => "RobPaladinBody";
 

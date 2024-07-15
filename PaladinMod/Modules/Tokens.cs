@@ -213,5 +213,21 @@ namespace PaladinMod.Modules {
             LanguageAPI.Add("BROTHER_KILL_PALADIN_2", "Look where your faith has brought you.");
             LanguageAPI.Add("BROTHER_KILL_PALADIN_3", "Return to nothing, foolish devotee.");
         }
+
+        /// <summary>
+        /// gets langauge token from achievement's registered identifier
+        /// </summary>
+        ///</BEARD SHAMPOO>
+        public static string GetAchievementNameToken(string identifier)
+        {
+            return $"ACHIEVEMENT_{identifier.ToUpperInvariant()}_NAME";
+        }
+        /// <summary>
+        /// gets langauge token from achievement's registered identifier
+        /// </summary>
+        public static string GetAchievementDescriptionToken(string identifier)
+        {
+            return $"ACHIEVEMENT_{identifier.ToUpperInvariant()}_DESCRIPTION";
+        }
     }
 }

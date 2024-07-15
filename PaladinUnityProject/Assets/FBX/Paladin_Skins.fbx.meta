@@ -234,6 +234,78 @@ ModelImporter:
     100456: meshSwordGM
     100458: meshCape
     100460: CapeBase
+    100462: Bone.E_end
+    100464: Bone.N_end
+    100466: Bone.NE_end
+    100468: Bone.NEE_end
+    100470: Bone.NNE_end
+    100472: Bone.NNW_end
+    100474: Bone.NW_end
+    100476: Bone.NWW_end
+    100478: Bone.W_end
+    100480: cape.03_end
+    100482: cape.l1.003_end
+    100484: cape.l2.003_end
+    100486: cape.m.003_end
+    100488: cape.r1.003_end
+    100490: cape.r2.003_end
+    100492: cloak2_end
+    100494: elbow.ik.L_end
+    100496: elbow.ik.R_end
+    100498: elbowIK.L_end
+    100500: elbowIK.R_end
+    100502: f_index.02.L_end
+    100504: f_index.02.R_end
+    100506: f_index.03.L_end
+    100508: f_index.03.R_end
+    100510: f_middle.02.L_end
+    100512: f_middle.02.R_end
+    100514: f_middle.03.L_end
+    100516: f_middle.03.R_end
+    100518: f_pinky.02.L_end
+    100520: f_pinky.02.R_end
+    100522: f_pinky.03.L_end
+    100524: f_pinky.03.R_end
+    100526: f_ring.02.L_end
+    100528: f_ring.02.R_end
+    100530: f_ring.03.L_end
+    100532: f_ring.03.R_end
+    100534: f_thumb.02.L_end
+    100536: f_thumb.02.R_end
+    100538: footIK.L_end
+    100540: footIK.R_end
+    100542: hand_ik.L_end
+    100544: hand_ik.R_end
+    100546: handIK.L_end
+    100548: handIK.R_end
+    100550: head_end
+    100552: heel.02.L_end
+    100554: heel.02.R_end
+    100556: HolsterBack_end
+    100558: kneeIK.L_end
+    100560: kneeIK.R_end
+    100562: loin2_end
+    100564: loin4_end
+    100566: meshPaladin
+    100568: meshSword
+    100570: pelvis.L_end
+    100572: pelvis.R_end
+    100574: pelvis_controller_end
+    100576: spine_controller_end
+    100578: swordBottom.01_end
+    100580: swordBottom.02_end
+    100582: swordBottom.03_end
+    100584: swordTip_end
+    100586: swordTop.01_end
+    100588: swordTop.02_end
+    100590: swordTop.03_end
+    100592: thumb.03.L_end
+    100594: thumb.03.R_end
+    100596: toe.L_end
+    100598: toe.R_end
+    100600: viewTarget_end
+    100602: wrap2_end
+    100604: wrap4_end
     400000: Armature
     400002: Armature.002
     400004: ArmatureNkuhanaArmsLeft
@@ -465,6 +537,78 @@ ModelImporter:
     400456: meshSwordGM
     400458: meshCape
     400460: CapeBase
+    400462: Bone.E_end
+    400464: Bone.N_end
+    400466: Bone.NE_end
+    400468: Bone.NEE_end
+    400470: Bone.NNE_end
+    400472: Bone.NNW_end
+    400474: Bone.NW_end
+    400476: Bone.NWW_end
+    400478: Bone.W_end
+    400480: cape.03_end
+    400482: cape.l1.003_end
+    400484: cape.l2.003_end
+    400486: cape.m.003_end
+    400488: cape.r1.003_end
+    400490: cape.r2.003_end
+    400492: cloak2_end
+    400494: elbow.ik.L_end
+    400496: elbow.ik.R_end
+    400498: elbowIK.L_end
+    400500: elbowIK.R_end
+    400502: f_index.02.L_end
+    400504: f_index.02.R_end
+    400506: f_index.03.L_end
+    400508: f_index.03.R_end
+    400510: f_middle.02.L_end
+    400512: f_middle.02.R_end
+    400514: f_middle.03.L_end
+    400516: f_middle.03.R_end
+    400518: f_pinky.02.L_end
+    400520: f_pinky.02.R_end
+    400522: f_pinky.03.L_end
+    400524: f_pinky.03.R_end
+    400526: f_ring.02.L_end
+    400528: f_ring.02.R_end
+    400530: f_ring.03.L_end
+    400532: f_ring.03.R_end
+    400534: f_thumb.02.L_end
+    400536: f_thumb.02.R_end
+    400538: footIK.L_end
+    400540: footIK.R_end
+    400542: hand_ik.L_end
+    400544: hand_ik.R_end
+    400546: handIK.L_end
+    400548: handIK.R_end
+    400550: head_end
+    400552: heel.02.L_end
+    400554: heel.02.R_end
+    400556: HolsterBack_end
+    400558: kneeIK.L_end
+    400560: kneeIK.R_end
+    400562: loin2_end
+    400564: loin4_end
+    400566: meshPaladin
+    400568: meshSword
+    400570: pelvis.L_end
+    400572: pelvis.R_end
+    400574: pelvis_controller_end
+    400576: spine_controller_end
+    400578: swordBottom.01_end
+    400580: swordBottom.02_end
+    400582: swordBottom.03_end
+    400584: swordTip_end
+    400586: swordTop.01_end
+    400588: swordTop.02_end
+    400590: swordTop.03_end
+    400592: thumb.03.L_end
+    400594: thumb.03.R_end
+    400596: toe.L_end
+    400598: toe.R_end
+    400600: viewTarget_end
+    400602: wrap2_end
+    400604: wrap4_end
     2100000: matPaladin.012
     2100002: matNkuhanaScythe
     2100004: matSpecter
@@ -485,6 +629,8 @@ ModelImporter:
     2100034: matPaladin.005
     2100036: matPaladinGM.001
     2100038: matSword.003
+    2100040: matSword.004
+    2100042: matPaladin.006
     4300000: meshNkuhana
     4300002: meshNkuhanaScythe
     4300004: meshNkuhanaArmsLeft
@@ -505,6 +651,125 @@ ModelImporter:
     4300034: meshCapeGM
     4300036: meshCrystals
     4300038: meshCape
+    4300040: meshSword
+    4300042: meshPaladin
+    7400000: Armature|0backClothFix
+    7400002: Armature|0CSS
+    7400004: Armature|0IdleCombat
+    7400006: Armature|0IdleRest
+    7400008: Armature|0idleSwordPose
+    7400010: Armature|0JumpCombat
+    7400012: Armature|0RageAir
+    7400014: Armature|0RagePose
+    7400016: Armature|AimPitch
+    7400018: Armature|AimYaw
+    7400020: Armature|Ascend
+    7400022: Armature|AscendCombat
+    7400024: Armature|AscendDrag
+    7400026: Armature|CastHeal
+    7400028: Armature|CastRuin
+    7400030: Armature|CastSpellCombat
+    7400032: Armature|CastSpellRest
+    7400034: Armature|CastSun
+    7400036: Armature|CastSunEnd
+    7400038: Armature|CastSunLoop
+    7400040: Armature|ChannelHeal
+    7400042: Armature|ChannelSpellCombat
+    7400044: Armature|ChannelSpellRest
+    7400046: Armature|ChannelSun
+    7400048: Armature|ChargeLunarSecondary
+    7400050: Armature|ChargeSpearHold
+    7400052: Armature|ChargeSpearWindup
+    7400054: Armature|CloseHand
+    7400056: Armature|DashB
+    7400058: Armature|DashF
+    7400060: Armature|DashL
+    7400062: Armature|DashR
+    7400064: Armature|Descend
+    7400066: Armature|DescendCombat
+    7400068: Armature|DescendDrag
+    7400070: Armature|DripPose
+    7400072: Armature|FireLunarShard
+    7400074: Armature|FireVisions
+    7400076: Armature|GroundSweep
+    7400078: Armature|GroundSweepContinuous
+    7400080: Armature|Idle
+    7400082: Armature|IdleIn
+    7400084: Armature|IdleInFromDrag
+    7400086: Armature|IdleToRest
+    7400088: Armature|Jump
+    7400090: Armature|JumpCombat
+    7400092: Armature|LeapSlam
+    7400094: Armature|LeapSlamTwo
+    7400096: Armature|LeapSlamVoid
+    7400098: Armature|LeapSlamVoidSPEEN
+    7400100: Armature|LightImpact
+    7400102: Armature|LimitBreak
+    7400104: Armature|meme
+    7400106: Armature|MenuIdle
+    7400108: Armature|MenuIdleIn
+    7400110: Armature|PointDown
+    7400112: Armature|PraiseTheSun
+    7400114: Armature|RageAimPitch
+    7400116: Armature|RageAimYaw
+    7400118: Armature|RageAscend
+    7400120: Armature|RageDescend
+    7400122: Armature|RageEnter
+    7400124: Armature|RageFinisher
+    7400126: Armature|RageFinisherMeter1Cast
+    7400128: Armature|RageFinisherMeter2Pull
+    7400130: Armature|RageFinisherMeter3End
+    7400132: Armature|RageIdle
+    7400134: Armature|RageIdlePeek
+    7400136: Armature|RageIdleShudder
+    7400138: Armature|RageImpact
+    7400140: Armature|RageJump
+    7400142: Armature|RageM1Empowered
+    7400144: Armature|RageM1Left
+    7400146: Armature|RageM1Right
+    7400148: Armature|RageM2AirAttack
+    7400150: Armature|RageM2AirLatch
+    7400152: Armature|RageM2AirLeap1
+    7400154: Armature|RageM2AirLeap2
+    7400156: Armature|RageM2Spin
+    7400158: Armature|RageRunB
+    7400160: Armature|RageRunF
+    7400162: Armature|RageRunL
+    7400164: Armature|RageRunR
+    7400166: Armature|RageShake
+    7400168: Armature|RageSlash1
+    7400170: Armature|RageSprint
+    7400172: Armature|RageSwingM1
+    7400174: Armature|RestEmote
+    7400176: Armature|RestIdle
+    7400178: Armature|RestIdleIn
+    7400180: Armature|RestPose
+    7400182: Armature|Slash1
+    7400184: Armature|Slash1 WEIGHT
+    7400186: Armature|Slash1Combo
+    7400188: Armature|Slash2
+    7400190: Armature|Spawn
+    7400192: Armature|SpawnClay
+    7400194: Armature|SprintAlt
+    7400196: Armature|SprintAtD
+    7400198: Armature|SprintDrag
+    7400200: Armature|SprintRest
+    7400202: Armature|SprintRtD
+    7400204: Armature|swordDragToRun
+    7400206: Armature|swordToCombat
+    7400208: Armature|swordToRest
+    7400210: Armature|ThrowLunarSecondary
+    7400212: Armature|ThrowSpear
+    7400214: Armature|ThrowSpearWeak
+    7400216: Armature|WalkB
+    7400218: Armature|WalkBAlt
+    7400220: Armature|WalkF
+    7400222: Armature|WalkFAlt
+    7400224: Armature|WalkL
+    7400226: Armature|WalkLAlt
+    7400228: Armature|WalkR
+    7400230: Armature|WalkRAlt
+    7400232: ArmatureNkuhanaArmsLeft|CreepyArmsWeightPaint
     9500000: //RootNode
     13700000: chimsword
     13700002: meshAphelian
@@ -526,6 +791,8 @@ ModelImporter:
     13700034: meshPaladinGM
     13700036: meshSwordGM
     13700038: meshCape
+    13700040: meshPaladin
+    13700042: meshSword
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:

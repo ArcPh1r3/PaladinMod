@@ -3,76 +3,55 @@ using RoR2;
 using System;
 using UnityEngine;
 using R2API;
+using RoR2.Achievements;
 
 namespace PaladinMod.Achievements
 {
-    internal abstract class BaseMasteryUnlockable : ModdedUnlockable
+    public abstract class BaseMasteryUnlockable : BaseAchievement
     {
-        public abstract string AchievementTokenPrefix { get; }
-        public abstract string AchievementSpriteName { get; }
-        public abstract float RequiredDifficultyCoefficient { get; }
         public abstract string RequiredCharacterBody { get; }
-        public abstract string PrerequisiteIdentifier { get; }
+        public abstract float RequiredDifficultyCoefficient { get; }
 
-        public override string AchievementIdentifier { get => AchievementTokenPrefix + "UNLOCKABLE_ACHIEVEMENT_ID"; }
-        public override string UnlockableIdentifier { get => AchievementTokenPrefix + "UNLOCKABLE_REWARD_ID"; }
-        public override string PrerequisiteUnlockableIdentifier { get => PrerequisiteIdentifier; }
-        public override string AchievementNameToken { get => AchievementTokenPrefix + "UNLOCKABLE_ACHIEVEMENT_NAME"; }
-        public override string AchievementDescToken { get => AchievementTokenPrefix + "UNLOCKABLE_ACHIEVEMENT_DESC"; }
-        public override string UnlockableNameToken { get => AchievementTokenPrefix + "UNLOCKABLE_UNLOCKABLE_NAME"; }
-
-        public override Sprite Sprite { get => Modules.Assets.mainAssetBundle.LoadAsset<Sprite>(AchievementSpriteName); }
-
-        public override Func<string> GetHowToUnlock
+        public override BodyIndex LookUpRequiredBodyIndex()
         {
-            get
-            {
-                return () => Language.GetStringFormatted("UNLOCK_VIA_ACHIEVEMENT_FORMAT", new object[]
-                            {
-                                Language.GetString(AchievementTokenPrefix + "UNLOCKABLE_ACHIEVEMENT_NAME"),
-                                Language.GetString(AchievementTokenPrefix + "UNLOCKABLE_ACHIEVEMENT_DESC")
-                            });
-            }
-        }
-        public override Func<string> GetUnlocked
-        {
-            get
-            {
-                return () => Language.GetStringFormatted("UNLOCKED_FORMAT", new object[]
-                            {
-                                Language.GetString(AchievementTokenPrefix + "UNLOCKABLE_ACHIEVEMENT_NAME"),
-                                Language.GetString(AchievementTokenPrefix + "UNLOCKABLE_ACHIEVEMENT_DESC")
-                            });
-            }
+            return BodyCatalog.FindBodyIndex(RequiredCharacterBody);
         }
 
         public override void OnBodyRequirementMet()
         {
             base.OnBodyRequirementMet();
-            Run.onClientGameOverGlobal += OnClientGameOverGlobal;
+            Run.onClientGameOverGlobal += this.OnClientGameOverGlobal;
         }
+
         public override void OnBodyRequirementBroken()
         {
-            Run.onClientGameOverGlobal -= OnClientGameOverGlobal;
+            Run.onClientGameOverGlobal -= this.OnClientGameOverGlobal;
             base.OnBodyRequirementBroken();
         }
+
         private void OnClientGameOverGlobal(Run run, RunReport runReport)
         {
-            if ((bool)runReport.gameEnding && runReport.gameEnding.isWin) {
-
+            if (!runReport.gameEnding)
+            {
+                return;
+            }
+            if (runReport.gameEnding.isWin)
+            {
                 DifficultyIndex difficultyIndex = runReport.ruleBook.FindDifficulty();
-                DifficultyDef runDifficulty = DifficultyCatalog.GetDifficultyDef(runReport.ruleBook.FindDifficulty());
-                if ((runDifficulty.countsAsHardMode && runDifficulty.scalingValue >= RequiredDifficultyCoefficient) ||
-                    (difficultyIndex >= DifficultyIndex.Eclipse1 && difficultyIndex <= DifficultyIndex.Eclipse8) ||
-                    (runDifficulty.nameToken == "INFERNO_NAME")) {
-                    Grant();
+                DifficultyDef difficultyDef = DifficultyCatalog.GetDifficultyDef(difficultyIndex);
+                if (difficultyDef != null)
+                {
+
+                    bool isDifficulty = difficultyDef.countsAsHardMode && difficultyDef.scalingValue >= RequiredDifficultyCoefficient;
+                    bool isInferno = difficultyDef.nameToken == "INFERNO_NAME";
+                    bool isEclipse = difficultyIndex >= DifficultyIndex.Eclipse1 && difficultyIndex <= DifficultyIndex.Eclipse8;
+
+                    if (isDifficulty || isInferno || isEclipse)
+                    {
+                        base.Grant();
+                    }
                 }
             }
-        }
-
-        public override BodyIndex LookUpRequiredBodyIndex()
-        {
-            return BodyCatalog.FindBodyIndex(RequiredCharacterBody);
         }
     }
 }

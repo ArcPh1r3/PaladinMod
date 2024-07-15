@@ -2,12 +2,9 @@
 using BepInEx;
 using System;
 using System.IO;
-using Zio.FileSystems;
 
 namespace PaladinMod.Modules {
     internal static class Files {
-
-        public static SubFileSystem fileSystem;
 
         public static PluginInfo PluginInfo;
         

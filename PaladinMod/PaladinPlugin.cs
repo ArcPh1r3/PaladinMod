@@ -18,21 +18,13 @@ using UnityEngine.AddressableAssets;
 
 namespace PaladinMod
 {
-    [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.DestroyedClone.AncientScepter", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.KomradeSpectre.Aetherium", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInDependency("com.Sivelos.SivsItems", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.K1454.SupplyDrop", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInDependency("com.TeamMoonstorm.Starstorm2", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.DrBibop.VRAPI", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.johnedwa.RTAutoSprintEx", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [R2APISubmoduleDependency(new string[]
-    {
-        "PrefabAPI",
-        "LanguageAPI",
-        "SoundAPI",
-        "UnlockableAPI"
-    })]
     [BepInPlugin(MODUID, "Paladin", "1.9.9")]    
     public class PaladinPlugin : BaseUnityPlugin
     {
@@ -256,6 +248,7 @@ namespace PaladinMod
         private void Hook()
         {
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+            //todo recalcstats R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
             On.RoR2.CharacterModel.UpdateOverlays += CharacterModel_UpdateOverlays;
             On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
             //todo rewrite lifesteal
@@ -478,6 +471,58 @@ namespace PaladinMod
 
                 EffectManager.SimpleMuzzleFlash(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/MuzzleFlashes/MuzzleflashLunarNeedle"), self.gameObject, "HandL", false);
             }
+        }
+
+        //todo do math on this
+        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            //if (sender.HasBuff(Modules.Buffs.blessedBuff))
+            //{ 
+            //    self.regen += StaticValues.regenAmount + (self.level * 0.6f);
+            //    float armorBuff = StaticValues.armorPerLevel * self.level;
+            //    self.armor += armorBuff;
+            //}
+
+            //if (sender.HasBuff(Modules.Buffs.warcryBuff))
+            //{
+            //    float damageBuff = StaticValues.warcryDamageMultiplier * self.damage;
+            //    self.damage += damageBuff;
+            //    self.attackSpeed += StaticValues.warcryAttackSpeedBuff;
+            //}
+
+            //if (sender.HasBuff(Modules.Buffs.scepterWarcryBuff))
+            //{
+            //    float damageBuff = StaticValues.scepterWarcryDamageMultiplier * self.damage;
+            //    self.damage += damageBuff;
+            //    self.attackSpeed += StaticValues.scepterWarcryAttackSpeedBuff;
+            //}
+
+            //if (sender.HasBuff(Modules.Buffs.torporDebuff))
+            //{
+            //    self.moveSpeed *= (1 - StaticValues.torporSlowAmount);
+            //    self.attackSpeed *= (1 - StaticValues.torporSlowAmount);
+            //}
+
+            //if (sender.HasBuff(Modules.Buffs.scepterTorporDebuff))
+            //{
+            //    self.moveSpeed *= (1 - StaticValues.scepterTorporSlowAmount);
+            //    self.attackSpeed *= (1 - StaticValues.scepterTorporSlowAmount);
+            //}
+
+            //if (sender.HasBuff(Modules.Buffs.rageBuff))
+            //{
+            //    self.armor += 100f;
+            //    self.damage *= 1.5f;
+            //    self.moveSpeed += 6f;
+
+            //    //todo rage don't do a getcomponent in fuckin recalculatestats
+            //    //PaladinRageController rageComponent = self.GetComponent<PaladinRageController>();
+            //    //if (rageComponent)
+            //    //{
+            //    //    float regenAmount = rageComponent.currentRegen;
+            //    //    self.regen += regenAmount;
+            //    //}
+            //}
         }
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)

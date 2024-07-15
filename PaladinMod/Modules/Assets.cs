@@ -10,6 +10,8 @@ using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.AddressableAssets;
 using RoR2.Audio;
 using EntityStates;
+using Path = System.IO.Path;
+using System.Runtime.ExceptionServices;
 
 namespace PaladinMod.Modules
 {
@@ -203,17 +205,16 @@ namespace PaladinMod.Modules
 
         public static void loadVRBundle()
         {
-
-            if (VRAssetBundle == null)
+            try
             {
-                using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("PaladinMod.paladinvr"))
-                {
-                    VRAssetBundle = AssetBundle.LoadFromStream(assetStream);
-                }
-            }
+                VRAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Path.GetDirectoryName(PaladinPlugin.instance.Info.Location), "AssetBundles", "paladinvr"));
 
-            vrPaladinDominantHand = VRAssetBundle.LoadAsset<GameObject>("PaladinDominantHand");
-            vrPaladinNonDominantHand = VRAssetBundle.LoadAsset<GameObject>("PaladinNonDominantHand");   
+                vrPaladinDominantHand = VRAssetBundle.LoadAsset<GameObject>("PaladinDominantHand");
+                vrPaladinNonDominantHand = VRAssetBundle.LoadAsset<GameObject>("PaladinNonDominantHand");  
+            }
+            catch (System.Exception e) { 
+                PaladinPlugin.logger.LogError($"Error loading paladinvr bundle\n" + e);
+            } 
         }
         #endregion
 
@@ -222,18 +223,32 @@ namespace PaladinMod.Modules
 
         public static Material capeMat;
 
-        public static void PopulateAssets() {
-            if (mainAssetBundle == null) {
-                using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("PaladinMod.paladin")) {
-                    mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
-                }
-            }
+        private static void LoadSoundBank()
+        {
+            if (UnityEngine.Application.isBatchMode) 
+                return;
 
-            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("PaladinMod.Paladin.bnk")) {
-                byte[] array = new byte[manifestResourceStream2.Length];
-                manifestResourceStream2.Read(array, 0, array.Length);
-                SoundAPI.SoundBanks.Add(array);
+            AkSoundEngine.AddBasePath(Path.Combine(Path.GetDirectoryName(PaladinPlugin.instance.Info.Location), "SoundBank"));
+            AkSoundEngine.LoadBank("Paladin.bnk", out var _soundBankId);
+        }
+
+        public static void LoadAssetBundle()
+        {
+            try
+            {
+                mainAssetBundle = AssetBundle.LoadFromFile(Path.Combine(Path.GetDirectoryName(PaladinPlugin.instance.Info.Location), "AssetBundles", "paladin"));
             }
+            catch (System.Exception e)
+            {
+                PaladinPlugin.logger.LogError($"Error loading paladin bundle\n" + e);
+            }
+        }
+
+        public static void PopulateAssets() {
+
+            LoadAssetBundle();
+
+            LoadSoundBank();
 
             GatherMaterials();
 

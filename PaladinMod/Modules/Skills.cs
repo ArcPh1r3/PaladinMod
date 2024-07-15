@@ -192,7 +192,7 @@ namespace PaladinMod.Modules
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
             mySkillDef.cancelSprintingOnActivation = false;
-            mySkillDef.rechargeStock = 12;
+            mySkillDef.rechargeStock = 99;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Assets.icon2c;
