@@ -60,7 +60,7 @@ namespace PaladinMod.States.Spell
 
         protected override void PlayCastAnimation()
         {
-            base.PlayAnimation("Gesture, Override", "CastSun", "Spell.playbackRate", 0.25f);
+            base.PlayAnimation("Gesture, Underride", "CastSun", "Spell.playbackRate", 0.25f);
         }
 
         protected override void OnChanneledSpellExit()
@@ -71,7 +71,7 @@ namespace PaladinMod.States.Spell
                 this.sunInstance = null;
             }
 
-            base.PlayAnimation("Gesture, Override", "CastSunEnd", "Spell.playbackRate", 0.8f);
+            base.PlayAnimation("Gesture, Underride", "CastSunEnd", "Spell.playbackRate", 0.8f);
         }
 
         private GameObject CreateSun(Vector3 sunSpawnPosition)

@@ -27,7 +27,7 @@ namespace PaladinMod.States
 
             if (this.swordController) this.swordController.attacking = true;
 
-            base.PlayAnimation("Gesture, Override", "ThrowSpell", "ChargeSpell.playbackRate", this.duration);
+            base.PlayAnimation("Gesture, Underride", "ThrowSpell", "ChargeSpell.playbackRate", this.duration);
 
             if (this.muzzleflashEffectPrefab)
             {

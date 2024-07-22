@@ -61,14 +61,14 @@ namespace PaladinMod.States.Spell
             UpdateAreaIndicator();
             base.Update();
         }
-
+        
         protected override void OnChanneledSpellExit()
         {
             if (areaIndicatorInstance)
             {
                 Destroy(areaIndicatorInstance.gameObject);
                 Fire();
-                base.PlayAnimation("Gesture, Override", "ThrowSpell", "Spell.playbackRate", 0.5f);
+                base.PlayAnimation("Gesture, Underride", "ThrowSpell", "Spell.playbackRate", 0.5f);
             }
             else
             {
@@ -76,7 +76,7 @@ namespace PaladinMod.States.Spell
                 {
                     EffectManager.SimpleImpactEffect(Modules.Assets.paladinSunSpawnPrefab, sunInstance.transform.position, Vector3.up, transmit: true);
                 }
-                base.PlayAnimation("Gesture, Override", "CastSunEnd", "Spell.playbackRate", 0.8f);
+                base.PlayAnimation("Gesture, Underride", "CastSunEnd", "Spell.playbackRate", 0.8f);
             }
 
             if (NetworkServer.active && sunInstance)

@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 3336419687
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: paladin
+      Dependencies: {}

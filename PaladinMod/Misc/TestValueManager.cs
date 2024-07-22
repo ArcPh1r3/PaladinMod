@@ -5,7 +5,8 @@ public class TestValueManager : MonoBehaviour {
     //how do doing attributes
     //[debugfloat("valuename", KeyCode.U, KeyCode.J, 5)]
     //would be 
-    public static float testValue = 0.5f;
+    public static float testValue = 1f;
+    public static float testValue2 = 2f;
 
     private float tim;
     private float holdTime = 0.5f;
@@ -22,11 +23,8 @@ public class TestValueManager : MonoBehaviour {
         if (!Input.GetKey(KeyCode.LeftAlt))
             return;
 
-        manageTestValue(ref PaladinMod.StaticValues.cruelSunVfxSize, "vfx size", KeyCode.Keypad7, KeyCode.Keypad4, 0.01f);
-        manageTestValue(ref PaladinMod.StaticValues.cruelSunVfxCenterSize, "sun size", KeyCode.Keypad8, KeyCode.Keypad5, 0.1f);
-        manageTestValue(ref PaladinMod.StaticValues.cruelSunVfxLightIntensity, "vfx light", KeyCode.Keypad9, KeyCode.Keypad6, 0.01f);
-        manageTestValue(ref PaladinMod.StaticValues.cruelSunAoE, "aoe", KeyCode.Keypad1, KeyCode.Keypad0, 0.5f);
-        manageTestValue(ref PaladinMod.StaticValues.cruelSunAllyDamageMultiplier, "ally damage", KeyCode.Y, KeyCode.H, 0.01f);
+        manageTestValue(ref testValue, "tocombat", KeyCode.Keypad7, KeyCode.Keypad4, 0.1f);
+        manageTestValue(ref testValue2, "tonotcombat", KeyCode.Keypad8, KeyCode.Keypad5, 0.1f);
 
         //manageTestVector(ref testVector, "cam", 0.05f);
     }

@@ -1,428 +1,1268 @@
 fileFormatVersion: 2
 guid: d9193bdc819940541a5c8d259b6b44c2
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: Armature
-    100002: base
-    100004: calf.L
-    100006: calf.R
-    100008: cape.01
-    100010: cape.02
-    100012: cape.03
-    100014: cloak1
-    100016: cloak2
-    100018: elbowIK.L
-    100020: elbowIK.R
-    100022: f_index.01.L
-    100024: f_index.01.R
-    100026: f_index.02.L
-    100028: f_index.02.R
-    100030: f_index.03.L
-    100032: f_index.03.R
-    100034: f_middle.01.L
-    100036: f_middle.01.R
-    100038: f_middle.02.L
-    100040: f_middle.02.R
-    100042: f_middle.03.L
-    100044: f_middle.03.R
-    100046: f_pinky.01.L
-    100048: f_pinky.01.R
-    100050: f_pinky.02.L
-    100052: f_pinky.02.R
-    100054: f_pinky.03.L
-    100056: f_pinky.03.R
-    100058: f_ring.01.L
-    100060: f_ring.01.R
-    100062: f_ring.02.L
-    100064: f_ring.02.R
-    100066: f_ring.03.L
-    100068: f_ring.03.R
-    100070: foot.L
-    100072: foot.R
-    100074: footIK.L
-    100076: footIK.R
-    100078: hand.L
-    100080: hand.R
-    100082: handIK.L
-    100084: handIK.R
-    100086: head
-    100088: heel.02.L
-    100090: heel.02.R
-    100092: HolsterBack
-    100094: kneeIK.L
-    100096: kneeIK.R
-    100098: loin1
-    100100: loin2
-    100102: loin3
-    100104: loin4
-    100106: lower_arm.L
-    100108: lower_arm.R
-    100110: meshPaladin
-    100112: meshSword
-    100114: neck
-    100116: //RootNode
-    100118: palm.01.L
-    100120: palm.01.R
-    100122: palm.02.L
-    100124: palm.02.R
-    100126: palm.03.L
-    100128: palm.03.R
-    100130: palm.04.L
-    100132: palm.04.R
-    100134: pelvis.L
-    100136: pelvis.R
-    100138: pelvis_controller
-    100140: remeshCloth
-    100142: remeshPaladin
-    100144: shoulder.L
-    100146: shoulder.R
-    100148: spine
-    100150: spine.001
-    100152: spine.002
-    100154: spine.003
-    100156: spine.004
-    100158: spine_controller
-    100160: swordBase
-    100162: swordBottom.01
-    100164: swordBottom.02
-    100166: swordBottom.03
-    100168: swordTip
-    100170: swordTop.01
-    100172: swordTop.02
-    100174: swordTop.03
-    100176: thigh.L
-    100178: thigh.R
-    100180: thumb.01.L
-    100182: thumb.01.R
-    100184: thumb.02.L
-    100186: thumb.02.R
-    100188: thumb.03.L
-    100190: thumb.03.R
-    100192: toe.L
-    100194: toe.R
-    100196: upper_arm.L
-    100198: upper_arm.R
-    100200: viewTarget
-    100202: wrap1
-    100204: wrap2
-    100206: wrap3
-    100208: wrap4
-    100210: cape.l1
-    100212: cape.l1.001
-    100214: cape.l1.002
-    100216: cape.l1.003
-    100218: cape.l1.004
-    100220: cape.l1.005
-    100222: cape.l1.006
-    100224: cape.l2
-    100226: cape.l2.001
-    100228: cape.l2.002
-    100230: cape.l2.003
-    100232: cape.l2.004
-    100234: cape.l2.005
-    100236: cape.l2.006
-    100238: cape.m
-    100240: cape.m.001
-    100242: cape.m.002
-    100244: cape.m.003
-    100246: cape.m.004
-    100248: cape.m.005
-    100250: cape.m.006
-    100252: cape.r1
-    100254: cape.r1.001
-    100256: cape.r1.002
-    100258: cape.r1.003
-    100260: cape.r1.004
-    100262: cape.r1.005
-    100264: cape.r1.006
-    100266: cape.r2
-    100268: cape.r2.001
-    100270: cape.r2.002
-    100272: cape.r2.003
-    100274: cape.r2.004
-    100276: cape.r2.005
-    100278: cape.r2.006
-    100280: CapeBase
-    100282: meshCape
-    400000: Armature
-    400002: base
-    400004: calf.L
-    400006: calf.R
-    400008: cape.01
-    400010: cape.02
-    400012: cape.03
-    400014: cloak1
-    400016: cloak2
-    400018: elbowIK.L
-    400020: elbowIK.R
-    400022: f_index.01.L
-    400024: f_index.01.R
-    400026: f_index.02.L
-    400028: f_index.02.R
-    400030: f_index.03.L
-    400032: f_index.03.R
-    400034: f_middle.01.L
-    400036: f_middle.01.R
-    400038: f_middle.02.L
-    400040: f_middle.02.R
-    400042: f_middle.03.L
-    400044: f_middle.03.R
-    400046: f_pinky.01.L
-    400048: f_pinky.01.R
-    400050: f_pinky.02.L
-    400052: f_pinky.02.R
-    400054: f_pinky.03.L
-    400056: f_pinky.03.R
-    400058: f_ring.01.L
-    400060: f_ring.01.R
-    400062: f_ring.02.L
-    400064: f_ring.02.R
-    400066: f_ring.03.L
-    400068: f_ring.03.R
-    400070: foot.L
-    400072: foot.R
-    400074: footIK.L
-    400076: footIK.R
-    400078: hand.L
-    400080: hand.R
-    400082: handIK.L
-    400084: handIK.R
-    400086: head
-    400088: heel.02.L
-    400090: heel.02.R
-    400092: HolsterBack
-    400094: kneeIK.L
-    400096: kneeIK.R
-    400098: loin1
-    400100: loin2
-    400102: loin3
-    400104: loin4
-    400106: lower_arm.L
-    400108: lower_arm.R
-    400110: meshPaladin
-    400112: meshSword
-    400114: neck
-    400116: //RootNode
-    400118: palm.01.L
-    400120: palm.01.R
-    400122: palm.02.L
-    400124: palm.02.R
-    400126: palm.03.L
-    400128: palm.03.R
-    400130: palm.04.L
-    400132: palm.04.R
-    400134: pelvis.L
-    400136: pelvis.R
-    400138: pelvis_controller
-    400140: remeshCloth
-    400142: remeshPaladin
-    400144: shoulder.L
-    400146: shoulder.R
-    400148: spine
-    400150: spine.001
-    400152: spine.002
-    400154: spine.003
-    400156: spine.004
-    400158: spine_controller
-    400160: swordBase
-    400162: swordBottom.01
-    400164: swordBottom.02
-    400166: swordBottom.03
-    400168: swordTip
-    400170: swordTop.01
-    400172: swordTop.02
-    400174: swordTop.03
-    400176: thigh.L
-    400178: thigh.R
-    400180: thumb.01.L
-    400182: thumb.01.R
-    400184: thumb.02.L
-    400186: thumb.02.R
-    400188: thumb.03.L
-    400190: thumb.03.R
-    400192: toe.L
-    400194: toe.R
-    400196: upper_arm.L
-    400198: upper_arm.R
-    400200: viewTarget
-    400202: wrap1
-    400204: wrap2
-    400206: wrap3
-    400208: wrap4
-    400210: cape.l1
-    400212: cape.l1.001
-    400214: cape.l1.002
-    400216: cape.l1.003
-    400218: cape.l1.004
-    400220: cape.l1.005
-    400222: cape.l1.006
-    400224: cape.l2
-    400226: cape.l2.001
-    400228: cape.l2.002
-    400230: cape.l2.003
-    400232: cape.l2.004
-    400234: cape.l2.005
-    400236: cape.l2.006
-    400238: cape.m
-    400240: cape.m.001
-    400242: cape.m.002
-    400244: cape.m.003
-    400246: cape.m.004
-    400248: cape.m.005
-    400250: cape.m.006
-    400252: cape.r1
-    400254: cape.r1.001
-    400256: cape.r1.002
-    400258: cape.r1.003
-    400260: cape.r1.004
-    400262: cape.r1.005
-    400264: cape.r1.006
-    400266: cape.r2
-    400268: cape.r2.001
-    400270: cape.r2.002
-    400272: cape.r2.003
-    400274: cape.r2.004
-    400276: cape.r2.005
-    400278: cape.r2.006
-    400280: CapeBase
-    400282: meshCape
-    2100000: matSword
-    2100002: matPaladin
-    2100004: matPaladin.004
-    2100006: matSword.004
-    2100008: matPaladin.006
-    4300000: meshSword
-    4300002: meshPaladin
-    4300004: remeshPaladin
-    4300006: remeshCloth
-    4300008: meshCape
-    7400000: Armature|0backClothFix
-    7400002: Armature|0CSS
-    7400004: Armature|0IdleCombat
-    7400006: Armature|0IdleRest
-    7400008: Armature|0idleSwordPose
-    7400010: Armature|0JumpCombat
-    7400012: Armature|0RageAir
-    7400014: Armature|0RagePose
-    7400016: Armature|AimPitch
-    7400018: Armature|AimYaw
-    7400020: Armature|Ascend
-    7400022: Armature|AscendCombat
-    7400024: Armature|CastHeal
-    7400026: Armature|CastRuin
-    7400028: Armature|CastSpellCombat
-    7400030: Armature|CastSpellRest
-    7400032: Armature|CastSun
-    7400034: Armature|CastSunEnd
-    7400036: Armature|CastSunLoop
-    7400038: Armature|ChannelHeal
-    7400040: Armature|ChannelSpellCombat
-    7400042: Armature|ChannelSpellRest
-    7400044: Armature|ChannelSun
-    7400046: Armature|ChargeLunarSecondary
-    7400048: Armature|ChargeSpearHold
-    7400050: Armature|ChargeSpearWindup
-    7400052: Armature|CloseHand
-    7400054: Armature|DashB
-    7400056: Armature|DashF
-    7400058: Armature|DashL
-    7400060: Armature|DashR
-    7400062: Armature|Descend
-    7400064: Armature|DescendCombat
-    7400066: Armature|DripPose
-    7400068: Armature|FireLunarShard
-    7400070: Armature|FireVisions
-    7400072: Armature|GroundSweep
-    7400074: Armature|GroundSweepContinuous
-    7400076: Armature|Idle
-    7400078: Armature|IdleIn
-    7400080: Armature|IdleToRest
-    7400082: Armature|Jump
-    7400084: Armature|JumpCombat
-    7400086: Armature|LeapSlam
-    7400088: Armature|LeapSlamTwo
-    7400090: Armature|LeapSlamVoid
-    7400092: Armature|LeapSlamVoidSPEEN
-    7400094: Armature|LightImpact
-    7400096: Armature|meme
-    7400098: Armature|MenuIdle
-    7400100: Armature|MenuIdleIn
-    7400102: Armature|PointDown
-    7400104: Armature|PraiseTheSun
-    7400106: Armature|RageAimPitch
-    7400108: Armature|RageAimYaw
-    7400110: Armature|RageAscend
-    7400112: Armature|RageDescend
-    7400114: Armature|RageEnter
-    7400116: Armature|RageFinisher
-    7400118: Armature|RageFinisherMeter1Cast
-    7400120: Armature|RageFinisherMeter2Pull
-    7400122: Armature|RageFinisherMeter3End
-    7400124: Armature|RageIdle
-    7400126: Armature|RageIdlePeek
-    7400128: Armature|RageIdleShudder
-    7400130: Armature|RageImpact
-    7400132: Armature|RageJump
-    7400134: Armature|RageM1Empowered
-    7400136: Armature|RageM1Left
-    7400138: Armature|RageM1Right
-    7400140: Armature|RageM2AirAttack
-    7400142: Armature|RageM2AirLatch
-    7400144: Armature|RageM2AirLeap1
-    7400146: Armature|RageM2AirLeap2
-    7400148: Armature|RageM2Spin
-    7400150: Armature|RageRunB
-    7400152: Armature|RageRunF
-    7400154: Armature|RageRunL
-    7400156: Armature|RageRunR
-    7400158: Armature|RageShake
-    7400160: Armature|RageSlash1
-    7400162: Armature|RageSprint
-    7400164: Armature|RageSwingM1
-    7400166: Armature|RestEmote
-    7400168: Armature|RestIdle
-    7400170: Armature|RestIdleIn
-    7400172: Armature|RestPose
-    7400174: Armature|Slash1
-    7400176: Armature|Slash1 WEIGHT
-    7400178: Armature|Slash1Combo
-    7400180: Armature|Slash2
-    7400182: Armature|Spawn
-    7400184: Armature|SpawnClay
-    7400186: Armature|SprintAlt
-    7400188: Armature|SprintAtD
-    7400190: Armature|SprintDrag
-    7400192: Armature|SprintRest
-    7400194: Armature|SprintRtD
-    7400196: Armature|swordToCombat
-    7400198: Armature|swordToRest
-    7400200: Armature|ThrowLunarSecondary
-    7400202: Armature|ThrowSpear
-    7400204: Armature|ThrowSpearWeak
-    7400206: Armature|WalkB
-    7400208: Armature|WalkBAlt
-    7400210: Armature|WalkF
-    7400212: Armature|WalkFAlt
-    7400214: Armature|WalkL
-    7400216: Armature|WalkLAlt
-    7400218: Armature|WalkR
-    7400220: Armature|WalkRAlt
-    7400222: Armature|AscendDrag
-    7400224: Armature|DescendDrag
-    7400226: Armature|IdleInFromDrag
-    7400228: Armature|LimitBreak
-    7400230: Armature|swordDragToRun
-    9500000: //RootNode
-    13700000: meshPaladin
-    13700002: meshSword
-    13700004: remeshCloth
-    13700006: remeshPaladin
-    13700008: meshCape
-    2186277476908879412: ImportLogs
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Armature
+  - first:
+      1: 100002
+    second: base
+  - first:
+      1: 100004
+    second: calf.L
+  - first:
+      1: 100006
+    second: calf.R
+  - first:
+      1: 100008
+    second: cape.01
+  - first:
+      1: 100010
+    second: cape.02
+  - first:
+      1: 100012
+    second: cape.03
+  - first:
+      1: 100014
+    second: cloak1
+  - first:
+      1: 100016
+    second: cloak2
+  - first:
+      1: 100018
+    second: elbowIK.L
+  - first:
+      1: 100020
+    second: elbowIK.R
+  - first:
+      1: 100022
+    second: f_index.01.L
+  - first:
+      1: 100024
+    second: f_index.01.R
+  - first:
+      1: 100026
+    second: f_index.02.L
+  - first:
+      1: 100028
+    second: f_index.02.R
+  - first:
+      1: 100030
+    second: f_index.03.L
+  - first:
+      1: 100032
+    second: f_index.03.R
+  - first:
+      1: 100034
+    second: f_middle.01.L
+  - first:
+      1: 100036
+    second: f_middle.01.R
+  - first:
+      1: 100038
+    second: f_middle.02.L
+  - first:
+      1: 100040
+    second: f_middle.02.R
+  - first:
+      1: 100042
+    second: f_middle.03.L
+  - first:
+      1: 100044
+    second: f_middle.03.R
+  - first:
+      1: 100046
+    second: f_pinky.01.L
+  - first:
+      1: 100048
+    second: f_pinky.01.R
+  - first:
+      1: 100050
+    second: f_pinky.02.L
+  - first:
+      1: 100052
+    second: f_pinky.02.R
+  - first:
+      1: 100054
+    second: f_pinky.03.L
+  - first:
+      1: 100056
+    second: f_pinky.03.R
+  - first:
+      1: 100058
+    second: f_ring.01.L
+  - first:
+      1: 100060
+    second: f_ring.01.R
+  - first:
+      1: 100062
+    second: f_ring.02.L
+  - first:
+      1: 100064
+    second: f_ring.02.R
+  - first:
+      1: 100066
+    second: f_ring.03.L
+  - first:
+      1: 100068
+    second: f_ring.03.R
+  - first:
+      1: 100070
+    second: foot.L
+  - first:
+      1: 100072
+    second: foot.R
+  - first:
+      1: 100074
+    second: footIK.L
+  - first:
+      1: 100076
+    second: footIK.R
+  - first:
+      1: 100078
+    second: hand.L
+  - first:
+      1: 100080
+    second: hand.R
+  - first:
+      1: 100082
+    second: handIK.L
+  - first:
+      1: 100084
+    second: handIK.R
+  - first:
+      1: 100086
+    second: head
+  - first:
+      1: 100088
+    second: heel.02.L
+  - first:
+      1: 100090
+    second: heel.02.R
+  - first:
+      1: 100092
+    second: HolsterBack
+  - first:
+      1: 100094
+    second: kneeIK.L
+  - first:
+      1: 100096
+    second: kneeIK.R
+  - first:
+      1: 100098
+    second: loin1
+  - first:
+      1: 100100
+    second: loin2
+  - first:
+      1: 100102
+    second: loin3
+  - first:
+      1: 100104
+    second: loin4
+  - first:
+      1: 100106
+    second: lower_arm.L
+  - first:
+      1: 100108
+    second: lower_arm.R
+  - first:
+      1: 100110
+    second: meshPaladin
+  - first:
+      1: 100112
+    second: meshSword
+  - first:
+      1: 100114
+    second: neck
+  - first:
+      1: 100116
+    second: //RootNode
+  - first:
+      1: 100118
+    second: palm.01.L
+  - first:
+      1: 100120
+    second: palm.01.R
+  - first:
+      1: 100122
+    second: palm.02.L
+  - first:
+      1: 100124
+    second: palm.02.R
+  - first:
+      1: 100126
+    second: palm.03.L
+  - first:
+      1: 100128
+    second: palm.03.R
+  - first:
+      1: 100130
+    second: palm.04.L
+  - first:
+      1: 100132
+    second: palm.04.R
+  - first:
+      1: 100134
+    second: pelvis.L
+  - first:
+      1: 100136
+    second: pelvis.R
+  - first:
+      1: 100138
+    second: pelvis_controller
+  - first:
+      1: 100140
+    second: remeshCloth
+  - first:
+      1: 100142
+    second: remeshPaladin
+  - first:
+      1: 100144
+    second: shoulder.L
+  - first:
+      1: 100146
+    second: shoulder.R
+  - first:
+      1: 100148
+    second: spine
+  - first:
+      1: 100150
+    second: spine.001
+  - first:
+      1: 100152
+    second: spine.002
+  - first:
+      1: 100154
+    second: spine.003
+  - first:
+      1: 100156
+    second: spine.004
+  - first:
+      1: 100158
+    second: spine_controller
+  - first:
+      1: 100160
+    second: swordBase
+  - first:
+      1: 100162
+    second: swordBottom.01
+  - first:
+      1: 100164
+    second: swordBottom.02
+  - first:
+      1: 100166
+    second: swordBottom.03
+  - first:
+      1: 100168
+    second: swordTip
+  - first:
+      1: 100170
+    second: swordTop.01
+  - first:
+      1: 100172
+    second: swordTop.02
+  - first:
+      1: 100174
+    second: swordTop.03
+  - first:
+      1: 100176
+    second: thigh.L
+  - first:
+      1: 100178
+    second: thigh.R
+  - first:
+      1: 100180
+    second: thumb.01.L
+  - first:
+      1: 100182
+    second: thumb.01.R
+  - first:
+      1: 100184
+    second: thumb.02.L
+  - first:
+      1: 100186
+    second: thumb.02.R
+  - first:
+      1: 100188
+    second: thumb.03.L
+  - first:
+      1: 100190
+    second: thumb.03.R
+  - first:
+      1: 100192
+    second: toe.L
+  - first:
+      1: 100194
+    second: toe.R
+  - first:
+      1: 100196
+    second: upper_arm.L
+  - first:
+      1: 100198
+    second: upper_arm.R
+  - first:
+      1: 100200
+    second: viewTarget
+  - first:
+      1: 100202
+    second: wrap1
+  - first:
+      1: 100204
+    second: wrap2
+  - first:
+      1: 100206
+    second: wrap3
+  - first:
+      1: 100208
+    second: wrap4
+  - first:
+      1: 100210
+    second: cape.l1
+  - first:
+      1: 100212
+    second: cape.l1.001
+  - first:
+      1: 100214
+    second: cape.l1.002
+  - first:
+      1: 100216
+    second: cape.l1.003
+  - first:
+      1: 100218
+    second: cape.l1.004
+  - first:
+      1: 100220
+    second: cape.l1.005
+  - first:
+      1: 100222
+    second: cape.l1.006
+  - first:
+      1: 100224
+    second: cape.l2
+  - first:
+      1: 100226
+    second: cape.l2.001
+  - first:
+      1: 100228
+    second: cape.l2.002
+  - first:
+      1: 100230
+    second: cape.l2.003
+  - first:
+      1: 100232
+    second: cape.l2.004
+  - first:
+      1: 100234
+    second: cape.l2.005
+  - first:
+      1: 100236
+    second: cape.l2.006
+  - first:
+      1: 100238
+    second: cape.m
+  - first:
+      1: 100240
+    second: cape.m.001
+  - first:
+      1: 100242
+    second: cape.m.002
+  - first:
+      1: 100244
+    second: cape.m.003
+  - first:
+      1: 100246
+    second: cape.m.004
+  - first:
+      1: 100248
+    second: cape.m.005
+  - first:
+      1: 100250
+    second: cape.m.006
+  - first:
+      1: 100252
+    second: cape.r1
+  - first:
+      1: 100254
+    second: cape.r1.001
+  - first:
+      1: 100256
+    second: cape.r1.002
+  - first:
+      1: 100258
+    second: cape.r1.003
+  - first:
+      1: 100260
+    second: cape.r1.004
+  - first:
+      1: 100262
+    second: cape.r1.005
+  - first:
+      1: 100264
+    second: cape.r1.006
+  - first:
+      1: 100266
+    second: cape.r2
+  - first:
+      1: 100268
+    second: cape.r2.001
+  - first:
+      1: 100270
+    second: cape.r2.002
+  - first:
+      1: 100272
+    second: cape.r2.003
+  - first:
+      1: 100274
+    second: cape.r2.004
+  - first:
+      1: 100276
+    second: cape.r2.005
+  - first:
+      1: 100278
+    second: cape.r2.006
+  - first:
+      1: 100280
+    second: CapeBase
+  - first:
+      1: 100282
+    second: meshCape
+  - first:
+      4: 400000
+    second: Armature
+  - first:
+      4: 400002
+    second: base
+  - first:
+      4: 400004
+    second: calf.L
+  - first:
+      4: 400006
+    second: calf.R
+  - first:
+      4: 400008
+    second: cape.01
+  - first:
+      4: 400010
+    second: cape.02
+  - first:
+      4: 400012
+    second: cape.03
+  - first:
+      4: 400014
+    second: cloak1
+  - first:
+      4: 400016
+    second: cloak2
+  - first:
+      4: 400018
+    second: elbowIK.L
+  - first:
+      4: 400020
+    second: elbowIK.R
+  - first:
+      4: 400022
+    second: f_index.01.L
+  - first:
+      4: 400024
+    second: f_index.01.R
+  - first:
+      4: 400026
+    second: f_index.02.L
+  - first:
+      4: 400028
+    second: f_index.02.R
+  - first:
+      4: 400030
+    second: f_index.03.L
+  - first:
+      4: 400032
+    second: f_index.03.R
+  - first:
+      4: 400034
+    second: f_middle.01.L
+  - first:
+      4: 400036
+    second: f_middle.01.R
+  - first:
+      4: 400038
+    second: f_middle.02.L
+  - first:
+      4: 400040
+    second: f_middle.02.R
+  - first:
+      4: 400042
+    second: f_middle.03.L
+  - first:
+      4: 400044
+    second: f_middle.03.R
+  - first:
+      4: 400046
+    second: f_pinky.01.L
+  - first:
+      4: 400048
+    second: f_pinky.01.R
+  - first:
+      4: 400050
+    second: f_pinky.02.L
+  - first:
+      4: 400052
+    second: f_pinky.02.R
+  - first:
+      4: 400054
+    second: f_pinky.03.L
+  - first:
+      4: 400056
+    second: f_pinky.03.R
+  - first:
+      4: 400058
+    second: f_ring.01.L
+  - first:
+      4: 400060
+    second: f_ring.01.R
+  - first:
+      4: 400062
+    second: f_ring.02.L
+  - first:
+      4: 400064
+    second: f_ring.02.R
+  - first:
+      4: 400066
+    second: f_ring.03.L
+  - first:
+      4: 400068
+    second: f_ring.03.R
+  - first:
+      4: 400070
+    second: foot.L
+  - first:
+      4: 400072
+    second: foot.R
+  - first:
+      4: 400074
+    second: footIK.L
+  - first:
+      4: 400076
+    second: footIK.R
+  - first:
+      4: 400078
+    second: hand.L
+  - first:
+      4: 400080
+    second: hand.R
+  - first:
+      4: 400082
+    second: handIK.L
+  - first:
+      4: 400084
+    second: handIK.R
+  - first:
+      4: 400086
+    second: head
+  - first:
+      4: 400088
+    second: heel.02.L
+  - first:
+      4: 400090
+    second: heel.02.R
+  - first:
+      4: 400092
+    second: HolsterBack
+  - first:
+      4: 400094
+    second: kneeIK.L
+  - first:
+      4: 400096
+    second: kneeIK.R
+  - first:
+      4: 400098
+    second: loin1
+  - first:
+      4: 400100
+    second: loin2
+  - first:
+      4: 400102
+    second: loin3
+  - first:
+      4: 400104
+    second: loin4
+  - first:
+      4: 400106
+    second: lower_arm.L
+  - first:
+      4: 400108
+    second: lower_arm.R
+  - first:
+      4: 400110
+    second: meshPaladin
+  - first:
+      4: 400112
+    second: meshSword
+  - first:
+      4: 400114
+    second: neck
+  - first:
+      4: 400116
+    second: //RootNode
+  - first:
+      4: 400118
+    second: palm.01.L
+  - first:
+      4: 400120
+    second: palm.01.R
+  - first:
+      4: 400122
+    second: palm.02.L
+  - first:
+      4: 400124
+    second: palm.02.R
+  - first:
+      4: 400126
+    second: palm.03.L
+  - first:
+      4: 400128
+    second: palm.03.R
+  - first:
+      4: 400130
+    second: palm.04.L
+  - first:
+      4: 400132
+    second: palm.04.R
+  - first:
+      4: 400134
+    second: pelvis.L
+  - first:
+      4: 400136
+    second: pelvis.R
+  - first:
+      4: 400138
+    second: pelvis_controller
+  - first:
+      4: 400140
+    second: remeshCloth
+  - first:
+      4: 400142
+    second: remeshPaladin
+  - first:
+      4: 400144
+    second: shoulder.L
+  - first:
+      4: 400146
+    second: shoulder.R
+  - first:
+      4: 400148
+    second: spine
+  - first:
+      4: 400150
+    second: spine.001
+  - first:
+      4: 400152
+    second: spine.002
+  - first:
+      4: 400154
+    second: spine.003
+  - first:
+      4: 400156
+    second: spine.004
+  - first:
+      4: 400158
+    second: spine_controller
+  - first:
+      4: 400160
+    second: swordBase
+  - first:
+      4: 400162
+    second: swordBottom.01
+  - first:
+      4: 400164
+    second: swordBottom.02
+  - first:
+      4: 400166
+    second: swordBottom.03
+  - first:
+      4: 400168
+    second: swordTip
+  - first:
+      4: 400170
+    second: swordTop.01
+  - first:
+      4: 400172
+    second: swordTop.02
+  - first:
+      4: 400174
+    second: swordTop.03
+  - first:
+      4: 400176
+    second: thigh.L
+  - first:
+      4: 400178
+    second: thigh.R
+  - first:
+      4: 400180
+    second: thumb.01.L
+  - first:
+      4: 400182
+    second: thumb.01.R
+  - first:
+      4: 400184
+    second: thumb.02.L
+  - first:
+      4: 400186
+    second: thumb.02.R
+  - first:
+      4: 400188
+    second: thumb.03.L
+  - first:
+      4: 400190
+    second: thumb.03.R
+  - first:
+      4: 400192
+    second: toe.L
+  - first:
+      4: 400194
+    second: toe.R
+  - first:
+      4: 400196
+    second: upper_arm.L
+  - first:
+      4: 400198
+    second: upper_arm.R
+  - first:
+      4: 400200
+    second: viewTarget
+  - first:
+      4: 400202
+    second: wrap1
+  - first:
+      4: 400204
+    second: wrap2
+  - first:
+      4: 400206
+    second: wrap3
+  - first:
+      4: 400208
+    second: wrap4
+  - first:
+      4: 400210
+    second: cape.l1
+  - first:
+      4: 400212
+    second: cape.l1.001
+  - first:
+      4: 400214
+    second: cape.l1.002
+  - first:
+      4: 400216
+    second: cape.l1.003
+  - first:
+      4: 400218
+    second: cape.l1.004
+  - first:
+      4: 400220
+    second: cape.l1.005
+  - first:
+      4: 400222
+    second: cape.l1.006
+  - first:
+      4: 400224
+    second: cape.l2
+  - first:
+      4: 400226
+    second: cape.l2.001
+  - first:
+      4: 400228
+    second: cape.l2.002
+  - first:
+      4: 400230
+    second: cape.l2.003
+  - first:
+      4: 400232
+    second: cape.l2.004
+  - first:
+      4: 400234
+    second: cape.l2.005
+  - first:
+      4: 400236
+    second: cape.l2.006
+  - first:
+      4: 400238
+    second: cape.m
+  - first:
+      4: 400240
+    second: cape.m.001
+  - first:
+      4: 400242
+    second: cape.m.002
+  - first:
+      4: 400244
+    second: cape.m.003
+  - first:
+      4: 400246
+    second: cape.m.004
+  - first:
+      4: 400248
+    second: cape.m.005
+  - first:
+      4: 400250
+    second: cape.m.006
+  - first:
+      4: 400252
+    second: cape.r1
+  - first:
+      4: 400254
+    second: cape.r1.001
+  - first:
+      4: 400256
+    second: cape.r1.002
+  - first:
+      4: 400258
+    second: cape.r1.003
+  - first:
+      4: 400260
+    second: cape.r1.004
+  - first:
+      4: 400262
+    second: cape.r1.005
+  - first:
+      4: 400264
+    second: cape.r1.006
+  - first:
+      4: 400266
+    second: cape.r2
+  - first:
+      4: 400268
+    second: cape.r2.001
+  - first:
+      4: 400270
+    second: cape.r2.002
+  - first:
+      4: 400272
+    second: cape.r2.003
+  - first:
+      4: 400274
+    second: cape.r2.004
+  - first:
+      4: 400276
+    second: cape.r2.005
+  - first:
+      4: 400278
+    second: cape.r2.006
+  - first:
+      4: 400280
+    second: CapeBase
+  - first:
+      4: 400282
+    second: meshCape
+  - first:
+      21: 2100000
+    second: matSword
+  - first:
+      21: 2100002
+    second: matPaladin
+  - first:
+      21: 2100004
+    second: matPaladin.004
+  - first:
+      21: 2100006
+    second: matSword.004
+  - first:
+      21: 2100008
+    second: matPaladin.006
+  - first:
+      43: 4300000
+    second: meshSword
+  - first:
+      43: 4300002
+    second: meshPaladin
+  - first:
+      43: 4300004
+    second: remeshPaladin
+  - first:
+      43: 4300006
+    second: remeshCloth
+  - first:
+      43: 4300008
+    second: meshCape
+  - first:
+      74: 7400000
+    second: Armature|0backClothFix
+  - first:
+      74: 7400002
+    second: Armature|0CSS
+  - first:
+      74: 7400004
+    second: Armature|0IdleCombat
+  - first:
+      74: 7400006
+    second: Armature|0IdleRest
+  - first:
+      74: 7400008
+    second: Armature|0idleSwordPose
+  - first:
+      74: 7400010
+    second: Armature|0JumpCombat
+  - first:
+      74: 7400012
+    second: Armature|0RageAir
+  - first:
+      74: 7400014
+    second: Armature|0RagePose
+  - first:
+      74: 7400016
+    second: Armature|AimPitch
+  - first:
+      74: 7400018
+    second: Armature|AimYaw
+  - first:
+      74: 7400020
+    second: Armature|Ascend
+  - first:
+      74: 7400022
+    second: Armature|AscendCombat
+  - first:
+      74: 7400024
+    second: Armature|CastHeal
+  - first:
+      74: 7400026
+    second: Armature|CastRuin
+  - first:
+      74: 7400028
+    second: Armature|CastSpellCombat
+  - first:
+      74: 7400030
+    second: Armature|CastSpellRest
+  - first:
+      74: 7400032
+    second: Armature|CastSun
+  - first:
+      74: 7400034
+    second: Armature|CastSunEnd
+  - first:
+      74: 7400036
+    second: Armature|CastSunLoop
+  - first:
+      74: 7400038
+    second: Armature|ChannelHeal
+  - first:
+      74: 7400040
+    second: Armature|ChannelSpellCombat
+  - first:
+      74: 7400042
+    second: Armature|ChannelSpellRest
+  - first:
+      74: 7400044
+    second: Armature|ChannelSun
+  - first:
+      74: 7400046
+    second: Armature|ChargeLunarSecondary
+  - first:
+      74: 7400048
+    second: Armature|ChargeSpearHold
+  - first:
+      74: 7400050
+    second: Armature|ChargeSpearWindup
+  - first:
+      74: 7400052
+    second: Armature|CloseHand
+  - first:
+      74: 7400054
+    second: Armature|DashB
+  - first:
+      74: 7400056
+    second: Armature|DashF
+  - first:
+      74: 7400058
+    second: Armature|DashL
+  - first:
+      74: 7400060
+    second: Armature|DashR
+  - first:
+      74: 7400062
+    second: Armature|Descend
+  - first:
+      74: 7400064
+    second: Armature|DescendCombat
+  - first:
+      74: 7400066
+    second: Armature|DripPose
+  - first:
+      74: 7400068
+    second: Armature|FireLunarShard
+  - first:
+      74: 7400070
+    second: Armature|FireVisions
+  - first:
+      74: 7400072
+    second: Armature|GroundSweep
+  - first:
+      74: 7400074
+    second: Armature|GroundSweepContinuous
+  - first:
+      74: 7400076
+    second: Armature|Idle
+  - first:
+      74: 7400078
+    second: Armature|IdleIn
+  - first:
+      74: 7400080
+    second: Armature|IdleToRest
+  - first:
+      74: 7400082
+    second: Armature|Jump
+  - first:
+      74: 7400084
+    second: Armature|JumpCombat
+  - first:
+      74: 7400086
+    second: Armature|LeapSlam
+  - first:
+      74: 7400088
+    second: Armature|LeapSlamTwo
+  - first:
+      74: 7400090
+    second: Armature|LeapSlamVoid
+  - first:
+      74: 7400092
+    second: Armature|LeapSlamVoidSPEEN
+  - first:
+      74: 7400094
+    second: Armature|LightImpact
+  - first:
+      74: 7400096
+    second: Armature|meme
+  - first:
+      74: 7400098
+    second: Armature|MenuIdle
+  - first:
+      74: 7400100
+    second: Armature|MenuIdleIn
+  - first:
+      74: 7400102
+    second: Armature|PointDown
+  - first:
+      74: 7400104
+    second: Armature|PraiseTheSun
+  - first:
+      74: 7400106
+    second: Armature|RageAimPitch
+  - first:
+      74: 7400108
+    second: Armature|RageAimYaw
+  - first:
+      74: 7400110
+    second: Armature|RageAscend
+  - first:
+      74: 7400112
+    second: Armature|RageDescend
+  - first:
+      74: 7400114
+    second: Armature|RageEnter
+  - first:
+      74: 7400116
+    second: Armature|RageFinisher
+  - first:
+      74: 7400118
+    second: Armature|RageFinisherMeter1Cast
+  - first:
+      74: 7400120
+    second: Armature|RageFinisherMeter2Pull
+  - first:
+      74: 7400122
+    second: Armature|RageFinisherMeter3End
+  - first:
+      74: 7400124
+    second: Armature|RageIdle
+  - first:
+      74: 7400126
+    second: Armature|RageIdlePeek
+  - first:
+      74: 7400128
+    second: Armature|RageIdleShudder
+  - first:
+      74: 7400130
+    second: Armature|RageImpact
+  - first:
+      74: 7400132
+    second: Armature|RageJump
+  - first:
+      74: 7400134
+    second: Armature|RageM1Empowered
+  - first:
+      74: 7400136
+    second: Armature|RageM1Left
+  - first:
+      74: 7400138
+    second: Armature|RageM1Right
+  - first:
+      74: 7400140
+    second: Armature|RageM2AirAttack
+  - first:
+      74: 7400142
+    second: Armature|RageM2AirLatch
+  - first:
+      74: 7400144
+    second: Armature|RageM2AirLeap1
+  - first:
+      74: 7400146
+    second: Armature|RageM2AirLeap2
+  - first:
+      74: 7400148
+    second: Armature|RageM2Spin
+  - first:
+      74: 7400150
+    second: Armature|RageRunB
+  - first:
+      74: 7400152
+    second: Armature|RageRunF
+  - first:
+      74: 7400154
+    second: Armature|RageRunL
+  - first:
+      74: 7400156
+    second: Armature|RageRunR
+  - first:
+      74: 7400158
+    second: Armature|RageShake
+  - first:
+      74: 7400160
+    second: Armature|RageSlash1
+  - first:
+      74: 7400162
+    second: Armature|RageSprint
+  - first:
+      74: 7400164
+    second: Armature|RageSwingM1
+  - first:
+      74: 7400166
+    second: Armature|RestEmote
+  - first:
+      74: 7400168
+    second: Armature|RestIdle
+  - first:
+      74: 7400170
+    second: Armature|RestIdleIn
+  - first:
+      74: 7400172
+    second: Armature|RestPose
+  - first:
+      74: 7400174
+    second: Armature|Slash1
+  - first:
+      74: 7400176
+    second: Armature|Slash1 WEIGHT
+  - first:
+      74: 7400178
+    second: Armature|Slash1Combo
+  - first:
+      74: 7400180
+    second: Armature|Slash2
+  - first:
+      74: 7400182
+    second: Armature|Spawn
+  - first:
+      74: 7400184
+    second: Armature|SpawnClay
+  - first:
+      74: 7400186
+    second: Armature|SprintAlt
+  - first:
+      74: 7400188
+    second: Armature|SprintAtD
+  - first:
+      74: 7400190
+    second: Armature|SprintDrag
+  - first:
+      74: 7400192
+    second: Armature|SprintRest
+  - first:
+      74: 7400194
+    second: Armature|SprintRtD
+  - first:
+      74: 7400196
+    second: Armature|swordToCombat
+  - first:
+      74: 7400198
+    second: Armature|swordToRest
+  - first:
+      74: 7400200
+    second: Armature|ThrowLunarSecondary
+  - first:
+      74: 7400202
+    second: Armature|ThrowSpear
+  - first:
+      74: 7400204
+    second: Armature|ThrowSpearWeak
+  - first:
+      74: 7400206
+    second: Armature|WalkB
+  - first:
+      74: 7400208
+    second: Armature|WalkBAlt
+  - first:
+      74: 7400210
+    second: Armature|WalkF
+  - first:
+      74: 7400212
+    second: Armature|WalkFAlt
+  - first:
+      74: 7400214
+    second: Armature|WalkL
+  - first:
+      74: 7400216
+    second: Armature|WalkLAlt
+  - first:
+      74: 7400218
+    second: Armature|WalkR
+  - first:
+      74: 7400220
+    second: Armature|WalkRAlt
+  - first:
+      74: 7400222
+    second: Armature|AscendDrag
+  - first:
+      74: 7400224
+    second: Armature|DescendDrag
+  - first:
+      74: 7400226
+    second: Armature|IdleInFromDrag
+  - first:
+      74: 7400228
+    second: Armature|LimitBreak
+  - first:
+      74: 7400230
+    second: Armature|swordDragToRun
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: meshPaladin
+  - first:
+      137: 13700002
+    second: meshSword
+  - first:
+      137: 13700004
+    second: remeshCloth
+  - first:
+      137: 13700006
+    second: remeshPaladin
+  - first:
+      137: 13700008
+    second: meshCape
+  - first:
+      41386430: 2186277476908879412
+    second: ImportLogs
+  - first:
+      74: 8158539884105541035
+    second: Armature|RestIdleInFromDrag
+  - first:
+      74: -7750416275547500150
+    second: Armature|SprintDtWalk
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -451,6 +1291,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|0backClothFix
       takeName: Armature|0backClothFix
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -479,6 +1320,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|0CSS
       takeName: Armature|0CSS
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -507,6 +1349,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|0IdleCombat
       takeName: Armature|0IdleCombat
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -535,6 +1378,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|0IdleRest
       takeName: Armature|0IdleRest
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -563,6 +1407,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|0idleSwordPose
       takeName: Armature|0idleSwordPose
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -591,6 +1436,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|0JumpCombat
       takeName: Armature|0JumpCombat
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -619,6 +1465,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|0RageAir
       takeName: Armature|0RageAir
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -647,6 +1494,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|0RagePose
       takeName: Armature|0RagePose
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -675,6 +1523,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|AimPitch
       takeName: Armature|AimPitch
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -703,6 +1552,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|AimYaw
       takeName: Armature|AimYaw
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -731,6 +1581,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|Ascend
       takeName: Armature|Ascend
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -759,6 +1610,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|AscendCombat
       takeName: Armature|AscendCombat
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -787,6 +1639,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|CastHeal
       takeName: Armature|CastHeal
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -815,6 +1668,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|CastRuin
       takeName: Armature|CastRuin
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -843,6 +1697,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|CastSpellCombat
       takeName: Armature|CastSpellCombat
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -871,6 +1726,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|CastSpellRest
       takeName: Armature|CastSpellRest
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -899,6 +1755,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|CastSun
       takeName: Armature|CastSun
+      internalID: 0
       firstFrame: 0
       lastFrame: 10
       wrapMode: 0
@@ -927,6 +1784,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|CastSunEnd
       takeName: Armature|CastSunEnd
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -955,6 +1813,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|CastSunLoop
       takeName: Armature|CastSunLoop
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -983,6 +1842,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|ChannelHeal
       takeName: Armature|ChannelHeal
+      internalID: 0
       firstFrame: 0
       lastFrame: 25
       wrapMode: 0
@@ -1011,6 +1871,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|ChannelSpellCombat
       takeName: Armature|ChannelSpellCombat
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -1039,6 +1900,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|ChannelSpellRest
       takeName: Armature|ChannelSpellRest
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -1067,6 +1929,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|ChannelSun
       takeName: Armature|ChannelSun
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -1095,6 +1958,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|ChargeLunarSecondary
       takeName: Armature|ChargeLunarSecondary
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -1123,6 +1987,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|ChargeSpearHold
       takeName: Armature|ChargeSpearHold
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -1151,6 +2016,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|ChargeSpearWindup
       takeName: Armature|ChargeSpearWindup
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -1179,6 +2045,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|CloseHand
       takeName: Armature|CloseHand
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -1207,6 +2074,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|DashB
       takeName: Armature|DashB
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -1235,6 +2103,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|DashF
       takeName: Armature|DashF
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -1263,6 +2132,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|DashL
       takeName: Armature|DashL
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -1291,6 +2161,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|DashR
       takeName: Armature|DashR
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -1319,6 +2190,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|Descend
       takeName: Armature|Descend
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -1347,6 +2219,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|DescendCombat
       takeName: Armature|DescendCombat
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -1375,6 +2248,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|DripPose
       takeName: Armature|DripPose
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -1403,6 +2277,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|FireLunarShard
       takeName: Armature|FireLunarShard
+      internalID: 0
       firstFrame: 0
       lastFrame: 23
       wrapMode: 0
@@ -1431,6 +2306,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|FireVisions
       takeName: Armature|FireVisions
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -1459,6 +2335,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|GroundSweep
       takeName: Armature|GroundSweep
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -1487,6 +2364,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|GroundSweepContinuous
       takeName: Armature|GroundSweepContinuous
+      internalID: 0
       firstFrame: 0
       lastFrame: 45
       wrapMode: 0
@@ -1515,6 +2393,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|Idle
       takeName: Armature|Idle
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -1543,6 +2422,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|IdleIn
       takeName: Armature|IdleIn
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -1571,6 +2451,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|IdleToRest
       takeName: Armature|IdleToRest
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -1599,6 +2480,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|Jump
       takeName: Armature|Jump
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -1627,6 +2509,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|JumpCombat
       takeName: Armature|JumpCombat
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -1655,6 +2538,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|LeapSlam
       takeName: Armature|LeapSlam
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -1683,6 +2567,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|LeapSlamTwo
       takeName: Armature|LeapSlamTwo
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -1711,6 +2596,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|LeapSlamVoid
       takeName: Armature|LeapSlamVoid
+      internalID: 0
       firstFrame: 0
       lastFrame: 13
       wrapMode: 0
@@ -1739,6 +2625,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|LeapSlamVoidSPEEN
       takeName: Armature|LeapSlamVoidSPEEN
+      internalID: 0
       firstFrame: 0
       lastFrame: 8
       wrapMode: 0
@@ -1767,6 +2654,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|LightImpact
       takeName: Armature|LightImpact
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -1795,6 +2683,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|meme
       takeName: Armature|meme
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -1823,6 +2712,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|MenuIdle
       takeName: Armature|MenuIdle
+      internalID: 0
       firstFrame: 0
       lastFrame: 130
       wrapMode: 0
@@ -1851,6 +2741,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|MenuIdleIn
       takeName: Armature|MenuIdleIn
+      internalID: 0
       firstFrame: 0
       lastFrame: 77
       wrapMode: 0
@@ -1879,6 +2770,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|PointDown
       takeName: Armature|PointDown
+      internalID: 0
       firstFrame: 0
       lastFrame: 100
       wrapMode: 0
@@ -1907,6 +2799,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|PraiseTheSun
       takeName: Armature|PraiseTheSun
+      internalID: 0
       firstFrame: 0
       lastFrame: 91
       wrapMode: 0
@@ -1935,6 +2828,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageAimPitch
       takeName: Armature|RageAimPitch
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -1963,6 +2857,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageAimYaw
       takeName: Armature|RageAimYaw
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -1991,6 +2886,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageAscend
       takeName: Armature|RageAscend
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -2019,6 +2915,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageDescend
       takeName: Armature|RageDescend
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -2047,6 +2944,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageEnter
       takeName: Armature|RageEnter
+      internalID: 0
       firstFrame: 0
       lastFrame: 130
       wrapMode: 0
@@ -2075,6 +2973,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageFinisher
       takeName: Armature|RageFinisher
+      internalID: 0
       firstFrame: 0
       lastFrame: 130
       wrapMode: 0
@@ -2103,6 +3002,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageFinisherMeter1Cast
       takeName: Armature|RageFinisherMeter1Cast
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -2131,6 +3031,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageFinisherMeter2Pull
       takeName: Armature|RageFinisherMeter2Pull
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -2159,6 +3060,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageFinisherMeter3End
       takeName: Armature|RageFinisherMeter3End
+      internalID: 0
       firstFrame: 0
       lastFrame: 68
       wrapMode: 0
@@ -2187,6 +3089,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageIdle
       takeName: Armature|RageIdle
+      internalID: 0
       firstFrame: 0
       lastFrame: 160
       wrapMode: 0
@@ -2215,6 +3118,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageIdlePeek
       takeName: Armature|RageIdlePeek
+      internalID: 0
       firstFrame: 0
       lastFrame: 80
       wrapMode: 0
@@ -2243,6 +3147,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageIdleShudder
       takeName: Armature|RageIdleShudder
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -2271,6 +3176,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageImpact
       takeName: Armature|RageImpact
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -2299,6 +3205,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageJump
       takeName: Armature|RageJump
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -2327,6 +3234,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageM1Empowered
       takeName: Armature|RageM1Empowered
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -2355,6 +3263,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageM1Left
       takeName: Armature|RageM1Left
+      internalID: 0
       firstFrame: 0
       lastFrame: 35
       wrapMode: 0
@@ -2383,6 +3292,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageM1Right
       takeName: Armature|RageM1Right
+      internalID: 0
       firstFrame: 0
       lastFrame: 35
       wrapMode: 0
@@ -2411,6 +3321,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageM2AirAttack
       takeName: Armature|RageM2AirAttack
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -2439,6 +3350,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageM2AirLatch
       takeName: Armature|RageM2AirLatch
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -2467,6 +3379,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageM2AirLeap1
       takeName: Armature|RageM2AirLeap1
+      internalID: 0
       firstFrame: 0
       lastFrame: 50
       wrapMode: 0
@@ -2495,6 +3408,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageM2AirLeap2
       takeName: Armature|RageM2AirLeap2
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -2523,6 +3437,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageM2Spin
       takeName: Armature|RageM2Spin
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -2551,6 +3466,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageRunB
       takeName: Armature|RageRunB
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -2593,6 +3509,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageRunF
       takeName: Armature|RageRunF
+      internalID: 0
       firstFrame: 0
       lastFrame: 41
       wrapMode: 0
@@ -2635,6 +3552,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageRunL
       takeName: Armature|RageRunL
+      internalID: 0
       firstFrame: 0
       lastFrame: 41
       wrapMode: 0
@@ -2677,6 +3595,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageRunR
       takeName: Armature|RageRunR
+      internalID: 0
       firstFrame: 0
       lastFrame: 41
       wrapMode: 0
@@ -2719,6 +3638,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageShake
       takeName: Armature|RageShake
+      internalID: 0
       firstFrame: 0
       lastFrame: 100
       wrapMode: 0
@@ -2747,6 +3667,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageSlash1
       takeName: Armature|RageSlash1
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -2775,6 +3696,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageSprint
       takeName: Armature|RageSprint
+      internalID: 0
       firstFrame: 0
       lastFrame: 41
       wrapMode: 0
@@ -2817,6 +3739,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RageSwingM1
       takeName: Armature|RageSwingM1
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -2845,6 +3768,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RestEmote
       takeName: Armature|RestEmote
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -2880,6 +3804,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RestIdle
       takeName: Armature|RestIdle
+      internalID: 0
       firstFrame: 0
       lastFrame: 80
       wrapMode: 0
@@ -2888,7 +3813,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -2908,6 +3833,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RestIdleIn
       takeName: Armature|RestIdleIn
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -2950,6 +3876,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|RestPose
       takeName: Armature|RestPose
+      internalID: 0
       firstFrame: 0
       lastFrame: 2
       wrapMode: 0
@@ -2978,6 +3905,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|Slash1
       takeName: Armature|Slash1
+      internalID: 0
       firstFrame: 0
       lastFrame: 65
       wrapMode: 0
@@ -3006,6 +3934,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|Slash1 WEIGHT
       takeName: Armature|Slash1 WEIGHT
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -3034,6 +3963,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|Slash1Combo
       takeName: Armature|Slash1Combo
+      internalID: 0
       firstFrame: 0
       lastFrame: 65
       wrapMode: 0
@@ -3062,6 +3992,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|Slash2
       takeName: Armature|Slash2
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -3090,6 +4021,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|Spawn
       takeName: Armature|Spawn
+      internalID: 0
       firstFrame: 0
       lastFrame: 95
       wrapMode: 0
@@ -3118,6 +4050,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|SpawnClay
       takeName: Armature|SpawnClay
+      internalID: 0
       firstFrame: 0
       lastFrame: 90
       wrapMode: 0
@@ -3146,6 +4079,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|SprintAlt
       takeName: Armature|SprintAlt
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -3188,6 +4122,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|SprintAtD
       takeName: Armature|SprintAtD
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -3246,6 +4181,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|SprintDrag
       takeName: Armature|SprintDrag
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -3304,6 +4240,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|SprintRest
       takeName: Armature|SprintRest
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -3346,6 +4283,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|SprintRtD
       takeName: Armature|SprintRtD
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -3413,6 +4351,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|swordToCombat
       takeName: Armature|swordToCombat
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -3441,6 +4380,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|swordToRest
       takeName: Armature|swordToRest
+      internalID: 0
       firstFrame: 0
       lastFrame: 26
       wrapMode: 0
@@ -3469,6 +4409,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|ThrowLunarSecondary
       takeName: Armature|ThrowLunarSecondary
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -3497,6 +4438,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|ThrowSpear
       takeName: Armature|ThrowSpear
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -3525,6 +4467,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|ThrowSpearWeak
       takeName: Armature|ThrowSpearWeak
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -3553,6 +4496,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|WalkB
       takeName: Armature|WalkB
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -3595,6 +4539,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|WalkBAlt
       takeName: Armature|WalkBAlt
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -3637,6 +4582,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|WalkF
       takeName: Armature|WalkF
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -3679,6 +4625,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|WalkFAlt
       takeName: Armature|WalkFAlt
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -3721,6 +4668,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|WalkL
       takeName: Armature|WalkL
+      internalID: 0
       firstFrame: 0
       lastFrame: 31
       wrapMode: 0
@@ -3763,6 +4711,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|WalkLAlt
       takeName: Armature|WalkLAlt
+      internalID: 0
       firstFrame: 0
       lastFrame: 31
       wrapMode: 0
@@ -3805,6 +4754,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|WalkR
       takeName: Armature|WalkR
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -3847,6 +4797,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|WalkRAlt
       takeName: Armature|WalkRAlt
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -3889,6 +4840,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|AscendDrag
       takeName: Armature|AscendDrag
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -3942,6 +4894,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|DescendDrag
       takeName: Armature|DescendDrag
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -3995,6 +4948,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|IdleInFromDrag
       takeName: Armature|IdleInFromDrag
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -4062,6 +5016,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|LimitBreak
       takeName: Armature|LimitBreak
+      internalID: 0
       firstFrame: 0
       lastFrame: 49
       wrapMode: 0
@@ -4104,8 +5059,92 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|swordDragToRun
       takeName: Armature|swordDragToRun
+      internalID: 0
       firstFrame: 0
       lastFrame: 17
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|RestIdleInFromDrag
+      takeName: Armature|RestIdleInFromDrag
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 63
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves:
+      - name: IsDragging
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          preInfinity: 3
+          postInfinity: 3
+          rotationOrder: 4
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|SprintDtWalk
+      takeName: Armature|SprintDtWalk
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -4136,25 +5175,28 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 0
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -4163,10 +5205,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -4176,13 +5218,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

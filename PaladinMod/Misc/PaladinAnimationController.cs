@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using IL.RoR2.Projectile;
+using RoR2;
 using System;
 using UnityEngine;
 
@@ -17,10 +18,9 @@ namespace PaladinMod.Misc
         private int combatLayerIndex;
         private int draggeLayerIndex;
 
-        private float currentCombatLayerWeight = 1;
-        private float targetCombatLayerWeight = 1;
-
         private float combatBufferTimer = -1f;
+        private float combatLayerLerpTimer;
+        private float combatLerpDeltaMultiplier = -1;
 
         void Start()
         {
@@ -41,12 +41,6 @@ namespace PaladinMod.Misc
         {
         }
 
-        private void UpdateLayer()
-        {
-            currentCombatLayerWeight = Mathf.Lerp(currentCombatLayerWeight, targetCombatLayerWeight, 0.1f);
-            animator.SetLayerWeight(combatLayerIndex, currentCombatLayerWeight);
-        }
-
         private void UpdateAnimation()
         {
             // combat animation shit
@@ -57,12 +51,11 @@ namespace PaladinMod.Misc
             {
                 combatBufferTimer -= Time.fixedDeltaTime;
             }
+            combatLayerLerpTimer += Time.fixedDeltaTime * combatLerpDeltaMultiplier;
 
             bool inCombat = !this.body.outOfDanger || !this.body.outOfCombat;
             inCombat |= combatBufferTimer >= 0;
             bool isSprinting = body.isSprinting;
-
-            targetCombatLayerWeight = inCombat ? 1 : 0;
 
             if (inCombat != this.wasInCombat)
             {
@@ -72,12 +65,14 @@ namespace PaladinMod.Misc
                     //from combat to rest
                     if (!inCombat)
                     {
-                        BootlegPlayAnimation(this.animator, "Body", "ToRestIdle");
+                        BootlegPlayCrossfade(this.animator, "Body", "ToRestIdle", 0.05f);
+                        SetCombatLerp(false);
                     }
                     //from rest to combat
                     else
                     {
                         BootlegPlayCrossfade(this.animator, "Transition", "ToCombat", 0.05f);
+                        SetCombatLerp(true);
                     }
                 }
                 //sprinting
@@ -94,11 +89,13 @@ namespace PaladinMod.Misc
                     if (inCombat)
                     {
                         BootlegPlayCrossfade(this.animator, "Transition", "ToCombat", 0.1f);
+                        SetCombatLerp(true);
                     }
                     //from combat to rest
                     else
                     {
                         BootlegPlayCrossfade(this.animator, "Transition", "ToRest", 0.1f);
+                        SetCombatLerp(false);
                     }
                 }
             }
@@ -108,10 +105,10 @@ namespace PaladinMod.Misc
 
             bool isDragging = draggingParameter > 0.5f;
 
-            if (isDragging != wasDragging && !isDragging)
-            {
-                combatBufferTimer = 1;
-            }
+            //if (isDragging != wasDragging && !isDragging)
+            //{
+            //    combatBufferTimer = 1;
+            //}
 
             if (wasSprinting != isSprinting)
             {
@@ -122,10 +119,20 @@ namespace PaladinMod.Misc
                 }
             }
 
-
-
             this.wasInCombat = inCombat;
             this.wasSprinting = isSprinting;
+        }
+
+        private void SetCombatLerp(bool toCombat)
+        {
+            combatLayerLerpTimer = toCombat? 0: 1;
+            combatLerpDeltaMultiplier = toCombat ? 5 : -5;
+        }
+
+        private void UpdateLayer()
+        {
+            //PaladinPlugin.logger.LogWarning(currentCombatLayerWeight);
+            animator.SetLayerWeight(combatLayerIndex, Mathf.Lerp(0, 1, combatLayerLerpTimer));
         }
 
         private static void BootlegPlayCrossfade(Animator animator, string layerName, string animationStateName, float crossfadeDuration = 0.2f)

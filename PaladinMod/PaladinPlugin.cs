@@ -84,7 +84,7 @@ namespace PaladinMod
             Logger.LogInfo("[Initializing Paladin]");
             //Modules.States.FixStates();
 
-            //gameObject.AddComponent<TestValueManager>();
+            gameObject.AddComponent<TestValueManager>();
 
             // load assets
             Modules.Assets.PopulateAssets();
@@ -435,27 +435,31 @@ namespace PaladinMod
 
             if (self.characterBody.baseNameToken == "PALADIN_NAME")
             {
-                self.PlayAnimation("Gesture, Override", "FireVisions", "Visions.playbackRate", self.duration  * 2.5f);
+                self.PlayAnimation("Gesture, Underride", "FireVisions", "Visions.playbackRate", self.duration  * 2.5f);
             }
         }
 
         private void PlayChargeLunarAnimation(On.EntityStates.GlobalSkills.LunarNeedle.ChargeLunarSecondary.orig_PlayChargeAnimation orig, EntityStates.GlobalSkills.LunarNeedle.ChargeLunarSecondary self)
         {
-            orig(self);
-
             if (self.characterBody.baseNameToken == "PALADIN_NAME")
             {
-                self.PlayAnimation("Gesture, Override", "ChargeLunarSecondary", "LunarSecondary.playbackRate", self.duration * 0.5f);
+                self.PlayAnimation("Gesture, Underride", "ChargeLunarSecondary", "LunarSecondary.playbackRate", self.duration * 0.5f);
+            }
+            else
+            {
+                orig(self);
             }
         }
 
         private void PlayThrowLunarAnimation(On.EntityStates.GlobalSkills.LunarNeedle.ThrowLunarSecondary.orig_PlayThrowAnimation orig, EntityStates.GlobalSkills.LunarNeedle.ThrowLunarSecondary self)
         {
-            orig(self);
-
             if (self.characterBody.baseNameToken == "PALADIN_NAME")
             {
-                self.PlayAnimation("Gesture, Override", "ThrowLunarSecondary", "LunarSecondary.playbackRate", self.duration);
+                self.PlayAnimation("Gesture, Underride", "ThrowLunarSecondary", "LunarSecondary.playbackRate", self.duration);
+            } 
+            else
+            {
+                orig(self);
             }
         }
 
@@ -465,7 +469,7 @@ namespace PaladinMod
 
             if (self.characterBody.baseNameToken == "PALADIN_NAME")
             {
-                self.PlayAnimation("Gesture, Override", "CastRuin", "Ruin.playbackRate", self.duration * 0.5f);
+                self.PlayAnimation("Gesture, Underride", "CastRuin", "Ruin.playbackRate", self.duration * 0.5f);
                 Util.PlaySound("PaladinFingerSnap", self.gameObject);
                 self.StartAimMode(self.duration + 0.5f);
 
