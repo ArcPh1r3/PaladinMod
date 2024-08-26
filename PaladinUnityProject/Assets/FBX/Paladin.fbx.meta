@@ -1260,7 +1260,17 @@ ModelImporter:
   - first:
       74: -7750416275547500150
     second: Armature|SprintDtWalk
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: matPaladin.004
+    second: {fileID: 2100000, guid: 167fe43c31e5f7644bf1ee4537e852a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: matSword.004
+    second: {fileID: 2100000, guid: 8c713a528c8e94144970e6b818db9ce1, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

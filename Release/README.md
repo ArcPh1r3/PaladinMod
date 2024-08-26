@@ -19,7 +19,7 @@ The Paladin is a tanky melee hybrid survivor who uses a combination of powerful 
 ## Skin Mod Devs:
 See the [Custom Skin wiki](https://github.com/ArcPh1r3/PaladinMod/wiki/Custom-Skin-Stuff) tab on github  
 If you'd like to make a paladin skin, there's some extra skin features for Paladin you can/should take advantage of.  
-Thanks to those that have made skins for the man, and sorry they all broke 2.0.0. Reach out if you need help updating them to the new rig. 
+Thanks to those that have made skins for the man, and sorry they all broke 2.0.0. Reach out if you need help updating them to the new rig [here](https://github.com/ArcPh1r3/PaladinMod/blob/master/Blend/Paladin_rig_for_skins.blend). 
 
 ## VR
 Paladin is now compatible with [Dr.Bibop's VRMod](https://thunderstore.io/package/DrBibop/VRMod/). (*Thanks PureDark!*)  
@@ -52,7 +52,7 @@ KomradeSpectre - Helped get the Torpor debuff visuals working
 Varna - Cruel Sun Rework  
 PureDark - VR Implementation  
 Destructor - Mod icon  
-~~Dragonyck - Made the awesome Dark Souls skin pack (rip) that forced me to add a framework for custom skin VFX.~~  
+Dragonyck - ~~Made the awesome Dark Souls skin pack (rip)~~ that forced me to add a framework for custom skin VFX.   
 Domi - Incredible animation rework
 
 And thanks to everyone else for providing tons of valuable feedback, the mod wouldn't be the same without it
@@ -70,6 +70,8 @@ Italian - by oiakam
 - animation implementation may be faulty in some places. please reach out if you notice anything.
 
 ## Future Plans
+- finish animation rework
+- find another coder if anything else needs to be done
 - nothing more is needed. Have fun c:
 - any rough edges that need sanding down
 - pie in the sky, skills++
@@ -78,7 +80,7 @@ Italian - by oiakam
 ## Minecraft Skin
 Custom Paladin Minecraft skin by SalvadorBunny, free for anyone to use!
 
-[![](https://raw.githubusercontent.com/ArcPh1r3/PaladinMod/master/PaladinUnityProject/Assets/Paladin/Textures/texMinecraftPaladin.png)]()
+[![](https://raw.githubusercontent.com/ArcPh1r3/PaladinMod/master/PaladinUnityProject/Assets/Paladin/Textures/PaladinMinecraftSkin.png)]()
 
 [![](https://i.imgur.com/j2GIA9e.png)]()
 
@@ -97,10 +99,11 @@ Berserk skin by Draymarc
  - big ol animation update courtesy of domi and by courtesy I mean commissionned by jame and of domi I mean several months ago sorry it took so long and it's not even done
      - abslurdly high quality animations for everything
      - second set of animations for out of combat
-         - second and ahalf set of animations for dragging while sprinting
+         - second-and-a-half set of animations for dragging while sprinting
+     - *with this level of animation there are bound to be spots where transitions are off. please report on discord or github issues*
      - added a new "limit break" animation for use by other mods
  - All skins were broken and had to be redone to accomodate a new rig for the animations
-    - if you made a skin it is now broken, You'll have to skin it to the new rig, found here . reach out if you have any questions
+    - if you made a skin it is now broken, You'll have to skin it to the new rig, found [here](https://github.com/ArcPh1r3/PaladinMod/blob/master/Blend/Paladin_rig_for_skins.blend). reach out if you have any questions
  - Gameplay changes courtesy of rob
     - moved armor per level to passive while blessed
     - passive now applies its buff to all allies in an area
@@ -114,6 +117,14 @@ Berserk skin by Draymarc
     - added Brazilian Portuguese courtesy of Kauzok
     - added Chinese courtesy of MushroomEl
     - added Italian coutesy of oiakam
+- misc
+    - split assetbundle and all that good stuff
+    - finally addressed the ridiculous polycounts of the models
+    - adjusted paladin UVs and textures that absolutely no one will notice lol
+    - flipped symbol on GM cape it was upside down lol
+    - legacy nkuhana and lunar knight skins capes rigged to the new cape bones
+
+*VR was not tested at all, sorry. please report any issues to the github issues page. thank you*
 
 `1.6.3`
  - fixed eclipse not saving

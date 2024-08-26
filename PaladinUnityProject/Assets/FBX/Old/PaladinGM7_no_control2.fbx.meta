@@ -1,64 +1,170 @@
 fileFormatVersion: 2
 guid: 327741926541fc542a9a120b5f7da45d
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: meshSwordGMSexy.001
-    100002: meshSwordGMSexy.002
-    100004: meshSwordGMSexy.003
-    100006: meshSwordGMSexy.004
-    100008: meshSwordGMSexy.005
-    100010: //RootNode
-    100012: meshSwordGMFuck.001
-    100014: meshSwordGMFuck.002
-    100016: meshSwordGMFuck.003
-    100018: meshSwordGMFuck.004
-    100020: meshSwordGMFuck.005
-    400000: meshSwordGMSexy.001
-    400002: meshSwordGMSexy.002
-    400004: meshSwordGMSexy.003
-    400006: meshSwordGMSexy.004
-    400008: meshSwordGMSexy.005
-    400010: //RootNode
-    400012: meshSwordGMFuck.001
-    400014: meshSwordGMFuck.002
-    400016: meshSwordGMFuck.003
-    400018: meshSwordGMFuck.004
-    400020: meshSwordGMFuck.005
-    2100000: matSword
-    2300000: meshSwordGMSexy.001
-    2300002: meshSwordGMSexy.002
-    2300004: meshSwordGMSexy.003
-    2300006: meshSwordGMSexy.004
-    2300008: meshSwordGMSexy.005
-    2300010: meshSwordGMFuck.001
-    2300012: meshSwordGMFuck.002
-    2300014: meshSwordGMFuck.003
-    2300016: meshSwordGMFuck.004
-    2300018: meshSwordGMFuck.005
-    3300000: meshSwordGMSexy.001
-    3300002: meshSwordGMSexy.002
-    3300004: meshSwordGMSexy.003
-    3300006: meshSwordGMSexy.004
-    3300008: meshSwordGMSexy.005
-    3300010: meshSwordGMFuck.001
-    3300012: meshSwordGMFuck.002
-    3300014: meshSwordGMFuck.003
-    3300016: meshSwordGMFuck.004
-    3300018: meshSwordGMFuck.005
-    4300000: meshSwordGMSexy.001
-    4300002: meshSwordGMSexy.002
-    4300004: meshSwordGMSexy.003
-    4300006: meshSwordGMSexy.004
-    4300008: meshSwordGMSexy.005
-    4300010: meshSwordGMFuck.001
-    4300012: meshSwordGMFuck.002
-    4300014: meshSwordGMFuck.003
-    4300016: meshSwordGMFuck.004
-    4300018: meshSwordGMFuck.005
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: meshSwordGMSexy.001
+  - first:
+      1: 100002
+    second: meshSwordGMSexy.002
+  - first:
+      1: 100004
+    second: meshSwordGMSexy.003
+  - first:
+      1: 100006
+    second: meshSwordGMSexy.004
+  - first:
+      1: 100008
+    second: meshSwordGMSexy.005
+  - first:
+      1: 100010
+    second: //RootNode
+  - first:
+      1: 100012
+    second: meshSwordGMFuck.001
+  - first:
+      1: 100014
+    second: meshSwordGMFuck.002
+  - first:
+      1: 100016
+    second: meshSwordGMFuck.003
+  - first:
+      1: 100018
+    second: meshSwordGMFuck.004
+  - first:
+      1: 100020
+    second: meshSwordGMFuck.005
+  - first:
+      4: 400000
+    second: meshSwordGMSexy.001
+  - first:
+      4: 400002
+    second: meshSwordGMSexy.002
+  - first:
+      4: 400004
+    second: meshSwordGMSexy.003
+  - first:
+      4: 400006
+    second: meshSwordGMSexy.004
+  - first:
+      4: 400008
+    second: meshSwordGMSexy.005
+  - first:
+      4: 400010
+    second: //RootNode
+  - first:
+      4: 400012
+    second: meshSwordGMFuck.001
+  - first:
+      4: 400014
+    second: meshSwordGMFuck.002
+  - first:
+      4: 400016
+    second: meshSwordGMFuck.003
+  - first:
+      4: 400018
+    second: meshSwordGMFuck.004
+  - first:
+      4: 400020
+    second: meshSwordGMFuck.005
+  - first:
+      21: 2100000
+    second: matSword
+  - first:
+      23: 2300000
+    second: meshSwordGMSexy.001
+  - first:
+      23: 2300002
+    second: meshSwordGMSexy.002
+  - first:
+      23: 2300004
+    second: meshSwordGMSexy.003
+  - first:
+      23: 2300006
+    second: meshSwordGMSexy.004
+  - first:
+      23: 2300008
+    second: meshSwordGMSexy.005
+  - first:
+      23: 2300010
+    second: meshSwordGMFuck.001
+  - first:
+      23: 2300012
+    second: meshSwordGMFuck.002
+  - first:
+      23: 2300014
+    second: meshSwordGMFuck.003
+  - first:
+      23: 2300016
+    second: meshSwordGMFuck.004
+  - first:
+      23: 2300018
+    second: meshSwordGMFuck.005
+  - first:
+      33: 3300000
+    second: meshSwordGMSexy.001
+  - first:
+      33: 3300002
+    second: meshSwordGMSexy.002
+  - first:
+      33: 3300004
+    second: meshSwordGMSexy.003
+  - first:
+      33: 3300006
+    second: meshSwordGMSexy.004
+  - first:
+      33: 3300008
+    second: meshSwordGMSexy.005
+  - first:
+      33: 3300010
+    second: meshSwordGMFuck.001
+  - first:
+      33: 3300012
+    second: meshSwordGMFuck.002
+  - first:
+      33: 3300014
+    second: meshSwordGMFuck.003
+  - first:
+      33: 3300016
+    second: meshSwordGMFuck.004
+  - first:
+      33: 3300018
+    second: meshSwordGMFuck.005
+  - first:
+      43: 4300000
+    second: meshSwordGMSexy.001
+  - first:
+      43: 4300002
+    second: meshSwordGMSexy.002
+  - first:
+      43: 4300004
+    second: meshSwordGMSexy.003
+  - first:
+      43: 4300006
+    second: meshSwordGMSexy.004
+  - first:
+      43: 4300008
+    second: meshSwordGMSexy.005
+  - first:
+      43: 4300010
+    second: meshSwordGMFuck.001
+  - first:
+      43: 4300012
+    second: meshSwordGMFuck.002
+  - first:
+      43: 4300014
+    second: meshSwordGMFuck.003
+  - first:
+      43: 4300016
+    second: meshSwordGMFuck.004
+  - first:
+      43: 4300018
+    second: meshSwordGMFuck.005
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -90,26 +196,29 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    useSRGBMaterialColor: 1
+    useSRGBMaterialColor: 0
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 0
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 0
     normalImportMode: 1
@@ -118,10 +227,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -131,13 +240,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

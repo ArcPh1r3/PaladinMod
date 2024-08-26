@@ -1,137 +1,389 @@
 fileFormatVersion: 2
 guid: 4e4fefede25fddc41912f13ccb00ce40
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: ArmatureNkuhanaArmsLeft
-    100002: ArmatureNkuhanaArmsRight
-    100004: elbow.ik.L
-    100006: elbow.ik.L_end
-    100008: elbow.ik.R
-    100010: elbow.ik.R_end
-    100012: f_index.01.L
-    100014: f_index.01.R
-    100016: f_index.02.L
-    100018: f_index.02.L_end
-    100020: f_index.02.R
-    100022: f_index.02.R_end
-    100024: f_middle.01.L
-    100026: f_middle.01.R
-    100028: f_middle.02.L
-    100030: f_middle.02.L_end
-    100032: f_middle.02.R
-    100034: f_middle.02.R_end
-    100036: f_pinky.01.L
-    100038: f_pinky.01.R
-    100040: f_pinky.02.L
-    100042: f_pinky.02.L_end
-    100044: f_pinky.02.R
-    100046: f_pinky.02.R_end
-    100048: f_ring.01.L
-    100050: f_ring.01.R
-    100052: f_ring.02.L
-    100054: f_ring.02.L_end
-    100056: f_ring.02.R
-    100058: f_ring.02.R_end
-    100060: f_thumb.01.L
-    100062: f_thumb.01.R
-    100064: f_thumb.02.L
-    100066: f_thumb.02.L_end
-    100068: f_thumb.02.R
-    100070: f_thumb.02.R_end
-    100072: hand.L
-    100074: hand.R
-    100076: hand_ik.L
-    100078: hand_ik.L_end
-    100080: hand_ik.R
-    100082: hand_ik.R_end
-    100084: lower_arm.L
-    100086: lower_arm.R
-    100088: //RootNode
-    100090: palm.01.L
-    100092: palm.01.R
-    100094: palm.02.L
-    100096: palm.02.R
-    100098: palm.03.L
-    100100: palm.03.R
-    100102: palm.04.L
-    100104: palm.04.R
-    100106: shoulder.L
-    100108: shoulder.R
-    100110: upper_arm.L
-    100112: upper_arm.R
-    100114: meshPaladinNkuhanaArmsLeft
-    100116: meshPaladinNkuhanaArmsRight
-    400000: ArmatureNkuhanaArmsLeft
-    400002: ArmatureNkuhanaArmsRight
-    400004: elbow.ik.L
-    400006: elbow.ik.L_end
-    400008: elbow.ik.R
-    400010: elbow.ik.R_end
-    400012: f_index.01.L
-    400014: f_index.01.R
-    400016: f_index.02.L
-    400018: f_index.02.L_end
-    400020: f_index.02.R
-    400022: f_index.02.R_end
-    400024: f_middle.01.L
-    400026: f_middle.01.R
-    400028: f_middle.02.L
-    400030: f_middle.02.L_end
-    400032: f_middle.02.R
-    400034: f_middle.02.R_end
-    400036: f_pinky.01.L
-    400038: f_pinky.01.R
-    400040: f_pinky.02.L
-    400042: f_pinky.02.L_end
-    400044: f_pinky.02.R
-    400046: f_pinky.02.R_end
-    400048: f_ring.01.L
-    400050: f_ring.01.R
-    400052: f_ring.02.L
-    400054: f_ring.02.L_end
-    400056: f_ring.02.R
-    400058: f_ring.02.R_end
-    400060: f_thumb.01.L
-    400062: f_thumb.01.R
-    400064: f_thumb.02.L
-    400066: f_thumb.02.L_end
-    400068: f_thumb.02.R
-    400070: f_thumb.02.R_end
-    400072: hand.L
-    400074: hand.R
-    400076: hand_ik.L
-    400078: hand_ik.L_end
-    400080: hand_ik.R
-    400082: hand_ik.R_end
-    400084: lower_arm.L
-    400086: lower_arm.R
-    400088: //RootNode
-    400090: palm.01.L
-    400092: palm.01.R
-    400094: palm.02.L
-    400096: palm.02.R
-    400098: palm.03.L
-    400100: palm.03.R
-    400102: palm.04.L
-    400104: palm.04.R
-    400106: shoulder.L
-    400108: shoulder.R
-    400110: upper_arm.L
-    400112: upper_arm.R
-    400114: meshPaladinNkuhanaArmsLeft
-    400116: meshPaladinNkuhanaArmsRight
-    2100000: matPaladin.005
-    4300000: meshPaladinNkuhanaArmsLeft
-    4300002: meshPaladinNkuhanaArmsRight
-    7400000: ArmatureNkuhanaArmsLeft|CreepyArmsWeightPaint
-    7400002: ArmatureNkuhanaArmsRight|CreepyArmsWeightPaint
-    9500000: //RootNode
-    13700000: meshPaladinNkuhanaArmsLeft
-    13700002: meshPaladinNkuhanaArmsRight
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: ArmatureNkuhanaArmsLeft
+  - first:
+      1: 100002
+    second: ArmatureNkuhanaArmsRight
+  - first:
+      1: 100004
+    second: elbow.ik.L
+  - first:
+      1: 100006
+    second: elbow.ik.L_end
+  - first:
+      1: 100008
+    second: elbow.ik.R
+  - first:
+      1: 100010
+    second: elbow.ik.R_end
+  - first:
+      1: 100012
+    second: f_index.01.L
+  - first:
+      1: 100014
+    second: f_index.01.R
+  - first:
+      1: 100016
+    second: f_index.02.L
+  - first:
+      1: 100018
+    second: f_index.02.L_end
+  - first:
+      1: 100020
+    second: f_index.02.R
+  - first:
+      1: 100022
+    second: f_index.02.R_end
+  - first:
+      1: 100024
+    second: f_middle.01.L
+  - first:
+      1: 100026
+    second: f_middle.01.R
+  - first:
+      1: 100028
+    second: f_middle.02.L
+  - first:
+      1: 100030
+    second: f_middle.02.L_end
+  - first:
+      1: 100032
+    second: f_middle.02.R
+  - first:
+      1: 100034
+    second: f_middle.02.R_end
+  - first:
+      1: 100036
+    second: f_pinky.01.L
+  - first:
+      1: 100038
+    second: f_pinky.01.R
+  - first:
+      1: 100040
+    second: f_pinky.02.L
+  - first:
+      1: 100042
+    second: f_pinky.02.L_end
+  - first:
+      1: 100044
+    second: f_pinky.02.R
+  - first:
+      1: 100046
+    second: f_pinky.02.R_end
+  - first:
+      1: 100048
+    second: f_ring.01.L
+  - first:
+      1: 100050
+    second: f_ring.01.R
+  - first:
+      1: 100052
+    second: f_ring.02.L
+  - first:
+      1: 100054
+    second: f_ring.02.L_end
+  - first:
+      1: 100056
+    second: f_ring.02.R
+  - first:
+      1: 100058
+    second: f_ring.02.R_end
+  - first:
+      1: 100060
+    second: f_thumb.01.L
+  - first:
+      1: 100062
+    second: f_thumb.01.R
+  - first:
+      1: 100064
+    second: f_thumb.02.L
+  - first:
+      1: 100066
+    second: f_thumb.02.L_end
+  - first:
+      1: 100068
+    second: f_thumb.02.R
+  - first:
+      1: 100070
+    second: f_thumb.02.R_end
+  - first:
+      1: 100072
+    second: hand.L
+  - first:
+      1: 100074
+    second: hand.R
+  - first:
+      1: 100076
+    second: hand_ik.L
+  - first:
+      1: 100078
+    second: hand_ik.L_end
+  - first:
+      1: 100080
+    second: hand_ik.R
+  - first:
+      1: 100082
+    second: hand_ik.R_end
+  - first:
+      1: 100084
+    second: lower_arm.L
+  - first:
+      1: 100086
+    second: lower_arm.R
+  - first:
+      1: 100088
+    second: //RootNode
+  - first:
+      1: 100090
+    second: palm.01.L
+  - first:
+      1: 100092
+    second: palm.01.R
+  - first:
+      1: 100094
+    second: palm.02.L
+  - first:
+      1: 100096
+    second: palm.02.R
+  - first:
+      1: 100098
+    second: palm.03.L
+  - first:
+      1: 100100
+    second: palm.03.R
+  - first:
+      1: 100102
+    second: palm.04.L
+  - first:
+      1: 100104
+    second: palm.04.R
+  - first:
+      1: 100106
+    second: shoulder.L
+  - first:
+      1: 100108
+    second: shoulder.R
+  - first:
+      1: 100110
+    second: upper_arm.L
+  - first:
+      1: 100112
+    second: upper_arm.R
+  - first:
+      1: 100114
+    second: meshPaladinNkuhanaArmsLeft
+  - first:
+      1: 100116
+    second: meshPaladinNkuhanaArmsRight
+  - first:
+      4: 400000
+    second: ArmatureNkuhanaArmsLeft
+  - first:
+      4: 400002
+    second: ArmatureNkuhanaArmsRight
+  - first:
+      4: 400004
+    second: elbow.ik.L
+  - first:
+      4: 400006
+    second: elbow.ik.L_end
+  - first:
+      4: 400008
+    second: elbow.ik.R
+  - first:
+      4: 400010
+    second: elbow.ik.R_end
+  - first:
+      4: 400012
+    second: f_index.01.L
+  - first:
+      4: 400014
+    second: f_index.01.R
+  - first:
+      4: 400016
+    second: f_index.02.L
+  - first:
+      4: 400018
+    second: f_index.02.L_end
+  - first:
+      4: 400020
+    second: f_index.02.R
+  - first:
+      4: 400022
+    second: f_index.02.R_end
+  - first:
+      4: 400024
+    second: f_middle.01.L
+  - first:
+      4: 400026
+    second: f_middle.01.R
+  - first:
+      4: 400028
+    second: f_middle.02.L
+  - first:
+      4: 400030
+    second: f_middle.02.L_end
+  - first:
+      4: 400032
+    second: f_middle.02.R
+  - first:
+      4: 400034
+    second: f_middle.02.R_end
+  - first:
+      4: 400036
+    second: f_pinky.01.L
+  - first:
+      4: 400038
+    second: f_pinky.01.R
+  - first:
+      4: 400040
+    second: f_pinky.02.L
+  - first:
+      4: 400042
+    second: f_pinky.02.L_end
+  - first:
+      4: 400044
+    second: f_pinky.02.R
+  - first:
+      4: 400046
+    second: f_pinky.02.R_end
+  - first:
+      4: 400048
+    second: f_ring.01.L
+  - first:
+      4: 400050
+    second: f_ring.01.R
+  - first:
+      4: 400052
+    second: f_ring.02.L
+  - first:
+      4: 400054
+    second: f_ring.02.L_end
+  - first:
+      4: 400056
+    second: f_ring.02.R
+  - first:
+      4: 400058
+    second: f_ring.02.R_end
+  - first:
+      4: 400060
+    second: f_thumb.01.L
+  - first:
+      4: 400062
+    second: f_thumb.01.R
+  - first:
+      4: 400064
+    second: f_thumb.02.L
+  - first:
+      4: 400066
+    second: f_thumb.02.L_end
+  - first:
+      4: 400068
+    second: f_thumb.02.R
+  - first:
+      4: 400070
+    second: f_thumb.02.R_end
+  - first:
+      4: 400072
+    second: hand.L
+  - first:
+      4: 400074
+    second: hand.R
+  - first:
+      4: 400076
+    second: hand_ik.L
+  - first:
+      4: 400078
+    second: hand_ik.L_end
+  - first:
+      4: 400080
+    second: hand_ik.R
+  - first:
+      4: 400082
+    second: hand_ik.R_end
+  - first:
+      4: 400084
+    second: lower_arm.L
+  - first:
+      4: 400086
+    second: lower_arm.R
+  - first:
+      4: 400088
+    second: //RootNode
+  - first:
+      4: 400090
+    second: palm.01.L
+  - first:
+      4: 400092
+    second: palm.01.R
+  - first:
+      4: 400094
+    second: palm.02.L
+  - first:
+      4: 400096
+    second: palm.02.R
+  - first:
+      4: 400098
+    second: palm.03.L
+  - first:
+      4: 400100
+    second: palm.03.R
+  - first:
+      4: 400102
+    second: palm.04.L
+  - first:
+      4: 400104
+    second: palm.04.R
+  - first:
+      4: 400106
+    second: shoulder.L
+  - first:
+      4: 400108
+    second: shoulder.R
+  - first:
+      4: 400110
+    second: upper_arm.L
+  - first:
+      4: 400112
+    second: upper_arm.R
+  - first:
+      4: 400114
+    second: meshPaladinNkuhanaArmsLeft
+  - first:
+      4: 400116
+    second: meshPaladinNkuhanaArmsRight
+  - first:
+      21: 2100000
+    second: matPaladin.005
+  - first:
+      43: 4300000
+    second: meshPaladinNkuhanaArmsLeft
+  - first:
+      43: 4300002
+    second: meshPaladinNkuhanaArmsRight
+  - first:
+      74: 7400000
+    second: ArmatureNkuhanaArmsLeft|CreepyArmsWeightPaint
+  - first:
+      74: 7400002
+    second: ArmatureNkuhanaArmsRight|CreepyArmsWeightPaint
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: meshPaladinNkuhanaArmsLeft
+  - first:
+      137: 13700002
+    second: meshPaladinNkuhanaArmsRight
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -160,6 +412,7 @@ ModelImporter:
     - serializedVersion: 16
       name: ArmatureNkuhanaArmsLeft|CreepyArmsWeightPaint
       takeName: ArmatureNkuhanaArmsLeft|CreepyArmsWeightPaint
+      internalID: 0
       firstFrame: 50
       lastFrame: 100
       wrapMode: 0
@@ -188,6 +441,7 @@ ModelImporter:
     - serializedVersion: 16
       name: ArmatureNkuhanaArmsRight|CreepyArmsWeightPaint
       takeName: ArmatureNkuhanaArmsRight|CreepyArmsWeightPaint
+      internalID: 0
       firstFrame: 50
       lastFrame: 100
       wrapMode: 0
@@ -220,25 +474,28 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 0
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -247,10 +504,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -260,13 +517,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
