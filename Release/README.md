@@ -4,8 +4,7 @@
 - Unlockable skins and alt skills
 
 [![](https://i.imgur.com/OcvIJnZ.png)]()
-
-[![](https://cdn.discordapp.com/attachments/759508646966591528/793757713820811284/texPaladinIcon.png)]()
+[![](https://raw.githubusercontent.com/ArcPh1r3/PaladinMod/master/PaladinUnityProject/Assets/Paladin/Icons/texPaladinIcon.png)]()
 
 join the discord to share feedback/bugs- https://discord.gg/WQzE983zfs
 
@@ -13,16 +12,14 @@ feel free to ping/dm me with all your complaints- ~~@rob#2365~~ @TheTimesweeper#
 ## Overview
 The Paladin is a tanky melee hybrid survivor who uses a combination of powerful melee attacks and long range spells. Writing these descriptions is time consuming so just try the character out for yourself and find out what works. He's got enough skills and flexibility to support a myriad of different playstyles.
 
-[![](https://cdn.discordapp.com/attachments/469291841859092488/835315059755843594/unknown.png)]()
 [![](https://i.imgur.com/bwOBMQQ.png)]()
 
-[![](https://cdn.discordapp.com/attachments/469291841859092488/794060694945267772/unknown.png)]()
 [![](https://i.imgur.com/TYoqjxb.png)]()
 
 ## Skin Mod Devs:
-Some lovely folks have made some skins for Paladin which is rad. 
-If you'd like to make a paladin skin, there's some extra skin features for Paladin you can/should take advantage of.
-See the Custom Skin wiki tab on github or thunderstore
+See the [Custom Skin wiki](https://github.com/ArcPh1r3/PaladinMod/wiki/Custom-Skin-Stuff) tab on github  
+If you'd like to make a paladin skin, there's some extra skin features for Paladin you can/should take advantage of.  
+Thanks to those that have made skins for the man, and sorry they all broke 2.0.0. Reach out if you need help updating them to the new rig. 
 
 ## VR
 Paladin is now compatible with [Dr.Bibop's VRMod](https://thunderstore.io/package/DrBibop/VRMod/). (*Thanks PureDark!*)  
@@ -55,12 +52,22 @@ KomradeSpectre - Helped get the Torpor debuff visuals working
 Varna - Cruel Sun Rework  
 PureDark - VR Implementation  
 Destructor - Mod icon  
-Dragonyck - Made the awesome Dark Souls skin pack (rip) that forced me to add a framework for custom skin VFX.  
+~~Dragonyck - Made the awesome Dark Souls skin pack (rip) that forced me to add a framework for custom skin VFX.~~  
+Domi - Incredible animation rework
 
 And thanks to everyone else for providing tons of valuable feedback, the mod wouldn't be the same without it
 
+## Languages
+If you'd like to translate, language files are [here](https://github.com/ArcPh1r3/PaladinMod/tree/master/Release/plugins/Language)  
+Big thanks to those that have and in advance to those that may
+
+French - by StyleMyk  
+Brazilian Portuguese - by Kauzok  
+Chinese - by MushroomEl  
+Italian - by oiakam  
+
 ## Known Issues
-- no issues, the mod is perfect
+- animation implementation may be faulty in some places. please reach out if you notice anything.
 
 ## Future Plans
 - nothing more is needed. Have fun c:
@@ -71,7 +78,7 @@ And thanks to everyone else for providing tons of valuable feedback, the mod wou
 ## Minecraft Skin
 Custom Paladin Minecraft skin by SalvadorBunny, free for anyone to use!
 
-[![](https://cdn.discordapp.com/attachments/750883272065679552/800091794515427349/aae5f63173bfbc4d74a8101d504fd0bc53de88c3.png)]()
+[![](https://raw.githubusercontent.com/ArcPh1r3/PaladinMod/master/PaladinUnityProject/Assets/Paladin/Textures/texMinecraftPaladin.png)]()
 
 [![](https://i.imgur.com/j2GIA9e.png)]()
 
@@ -85,6 +92,28 @@ Clay skin and Nemesis Paladin by SkeletorChampion
 Berserk skin by Draymarc
 
 ## Changelog
+
+`2.0.0`
+ - big ol animation update courtesy of domi and by courtesy I mean commissionned by jame and of domi I mean several months ago sorry it took so long and it's not even done
+     - abslurdly high quality animations for everything
+     - second set of animations for out of combat
+         - second and ahalf set of animations for dragging while sprinting
+     - added a new "limit break" animation for use by other mods
+ - All skins were broken and had to be redone to accomodate a new rig for the animations
+    - if you made a skin it is now broken, You'll have to skin it to the new rig, found here . reach out if you have any questions
+ - Gameplay changes courtesy of rob
+    - moved armor per level to passive while blessed
+    - passive now applies its buff to all allies in an area
+    - added visual for characters with this buff applied
+    - primary damage to 320% (from 350%)
+    - secondary damage to 750% (from 1000%)
+    - lightning spear damage to 700% (from 800%)
+    - dash barrier amount to 15% (from 10%)
+ - added language support
+    - added French courtesy of StyleMyk
+    - added Brazilian Portuguese courtesy of Kauzok
+    - added Chinese courtesy of MushroomEl
+    - added Italian coutesy of oiakam
 
 `1.6.3`
  - fixed eclipse not saving

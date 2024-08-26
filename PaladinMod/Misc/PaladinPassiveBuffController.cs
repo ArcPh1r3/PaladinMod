@@ -10,7 +10,7 @@ namespace PaladinMod.Misc
     {
         [SyncVar]
         [Tooltip("The area of effect.")]
-        public float radius = 32f;
+        public float radius = 48;
         [Tooltip("The buff type to grant")]
         public BuffDef buffDef;
         [Tooltip("The buff duration")]
