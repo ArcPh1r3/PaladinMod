@@ -312,7 +312,7 @@ namespace PaladinMod.Modules
             paladinSkinInfos.Add(new PaladinSkinInfo
             {
                 skinNameToken = "PALADINBODY_MINECRAFT_SKIN_NAME",
-                passiveEffectName = "SwordActiveEffect",
+                passiveEffectName = "SwordActiveEffectGM",
                 swingSoundString = Sounds.Swing,
                 isWeaponBlunt = false,
                 hitEffect = Assets.hitFX,
@@ -460,7 +460,7 @@ namespace PaladinMod.Modules
 
             OnRegisterEffects?.Invoke();
         }
-
+        
         public static void AddSkinInfo(PaladinSkinInfo skinInfo)
         {
             skinInfo.FinalizeInfo();

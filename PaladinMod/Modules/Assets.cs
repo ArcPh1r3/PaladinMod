@@ -132,6 +132,7 @@ namespace PaladinMod.Modules
         public static Mesh lunarSwordMesh;
         public static Mesh lunarKnightMesh;
         public static Mesh lunarKnightSwordMesh;
+        public static Mesh lunarKnightCapeMesh;
         public static Mesh gmMesh;
         public static Mesh gmSwordMesh;
         public static Mesh gmCapeMesh;
@@ -141,6 +142,7 @@ namespace PaladinMod.Modules
         public static Mesh poisonSwordMesh;
         public static Mesh poisonLegacyMesh;
         public static Mesh poisonLegacySwordMesh;
+        public static Mesh poisonLegacyCapeMesh;
         public static Mesh specterMesh;
         public static Mesh specterSwordMesh;
         //public static Mesh hunterMesh;
@@ -410,31 +412,33 @@ namespace PaladinMod.Modules
         private static void PopulateMeshes() {
 
             #region Meshes
-            defaultMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladin");
-            defaultSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSword");
-            defaultCapeMesh = mainAssetBundle.LoadAsset<Mesh>("meshCape");
-            lunarMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinLunar");
-            lunarSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordLunar");
+            defaultMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinDefault");
+            defaultSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinDefault_Sword");
+            defaultCapeMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinDefault_Cape");
+            lunarMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinBrother");
+            lunarSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinBrother_Sword");
             lunarKnightMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinLunarKnight");
-            lunarKnightSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshLunarKnightMace");
+            lunarKnightSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinLunarKnight_Sword");
+            lunarKnightCapeMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinLunarKnight_Cape");
             gmMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinGM");
-            gmSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordGM");
-            gmLegacyMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinGMOld");
-            gmLegacySwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordGMOld");
-            gmCapeMesh = mainAssetBundle.LoadAsset<Mesh>("meshCapeGM");
+            gmSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinGM_Sword");
+            gmCapeMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinGM_Cape");
+            gmLegacyMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinGMLegacy");
+            gmLegacySwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinGMLegacy_Sword");
             poisonMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinNkuhana");
-            poisonSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordNkuhana");
+            poisonSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinNkuhana_Sword");
             poisonLegacyMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinNkuhanaLegacy");
-            poisonLegacySwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordNkuhanaLegacy");
+            poisonLegacySwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinNkuhanaLegacy_Sword");
+            poisonLegacyCapeMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinNkuhanaLegacy_Cape");
             specterMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinSpecter");
-            specterSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordSpecter");
+            specterSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinSpecter_Sword");
             //hunterMesh = mainAssetBundle.LoadAsset<Mesh>("HunterMesh");
             dripMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinDrip");
-            batMesh = mainAssetBundle.LoadAsset<Mesh>("meshBat");
-            clayMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinClay");
-            claySwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordClay");
+            batMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinDrip_Sword");
+            clayMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinAphelian");
+            claySwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinAphelian_Sword");
             minecraftMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinMinecraft");
-            minecraftSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshSwordMinecraft");
+            minecraftSwordMesh = mainAssetBundle.LoadAsset<Mesh>("meshPaladinMinecraft_Sword");
             #endregion
         }
 

@@ -2378,7 +2378,7 @@ ModelImporter:
     second: ImportLogs
   externalObjects: {}
   materials:
-    materialImportMode: 1
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
