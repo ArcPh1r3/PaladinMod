@@ -51,7 +51,7 @@ namespace PaladinMod.Modules
         {
             SteppedSkillDef mySkillDef = ScriptableObject.CreateInstance<SteppedSkillDef>();
             mySkillDef.stepCount = 4;
-            mySkillDef.stepGraceDuration = 0.5f;
+            mySkillDef.stepGraceDuration = 0.3f;
             mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Slash));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;

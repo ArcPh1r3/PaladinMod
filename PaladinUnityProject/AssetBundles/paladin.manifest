@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3726490950
+CRC: 3208461116
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1282ccf4c067e640cfd7f3473a9d0041
+    Hash: 7f980835e8f54050bb136765570dc584
   TypeTreeHash:
     serializedVersion: 2
     Hash: 92f3c6bb58272d32df9ceea5f870ee3b
@@ -358,6 +358,7 @@ Assets:
 - Assets/Paladin/Materials/Shields/matGiantShield.mat
 - Assets/Paladin/Icons/HealIcon.png
 - Assets/Paladin/Effects/SwingEffects/PaladinSwingWhite.prefab
+- Assets/Paladin/VFX/matTorpor3.mat
 - Assets/Paladin/Effects/HealZoneEffect.prefab
 - Assets/Paladin/Icons/LightningSpearIcon.png
 - Assets/Paladin/Textures/Shields/texSunlightShieldNormal.dds
