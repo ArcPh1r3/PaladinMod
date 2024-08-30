@@ -40,6 +40,11 @@ namespace PaladinMod.States
             this.animator = base.GetModelAnimator();
             this.childLocator = base.GetModelChildLocator();
 
+            if (this.characterBody && this.characterBody.HasBuff(Modules.Buffs.blessedBuff))
+            {
+                this.duration *= 0.8f;
+            }
+
             if (this.childLocator)
             {
                 Transform transform = this.childLocator.FindChild("HandL");

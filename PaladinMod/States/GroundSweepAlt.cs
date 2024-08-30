@@ -25,6 +25,7 @@ namespace PaladinMod.States
         private BaseState.HitStopCachedState hitStopCachedState;
         private PaladinSwordController swordController;
         private Vector3 storedVelocity;
+        private bool hasHit;
 
         public override void OnEnter()
         {
@@ -107,12 +108,20 @@ namespace PaladinMod.States
                 }
             }
 
-            if (this.attack.Fire()) {
-                if (!this.inHitPause) {
+            if (this.attack.Fire())
+            {
+                if (!this.inHitPause)
+                {
                     if (base.characterMotor.velocity != Vector3.zero) this.storedVelocity = base.characterMotor.velocity;
                     this.hitStopCachedState = base.CreateHitStopCachedState(base.characterMotor, this.animator, "Whirlwind.playbackRate");
                     this.hitPauseTimer = (4f * EntityStates.Merc.GroundLight.hitPauseDuration) / this.attackSpeedStat;
                     this.inHitPause = true;
+                }
+
+                if (!this.hasHit)
+                {
+                    this.hasHit = true;
+                    if (base.skillLocator.utility.skillDef.skillNameToken == "PALADIN_UTILITY_DASH_NAME") base.skillLocator.utility.RunRecharge(1f);
                 }
             }
         }
