@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -25,13 +25,13 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="BepInEx.Core" Version="5.4.19" />
-		<PackageReference Include="RiskOfRain2.GameLibs" Version="*-*" />
+		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.2.4.4-r.1" />
 		<PackageReference Include="UnityEngine.Modules" Version="2019.4.26" />
-		<PackageReference Include="R2API.Core" Version="5.*" />
-		<PackageReference Include="R2API.Prefab" Version="1.*" />
-		<PackageReference Include="R2API.Sound" Version="1.*" />
+		<PackageReference Include="R2API.Core" Version="5.1.0" />
+		<PackageReference Include="R2API.Prefab" Version="1.0.0" />
+		<PackageReference Include="R2API.Sound" Version="1.0.1" />
 		<PackageReference Include="R2API.DamageType" Version="1.*" />
-		<PackageReference Include="R2API.RecalculateStats" Version="1.*" />
+		<PackageReference Include="R2API.RecalculateStats" Version="1.3.*" />
 	</ItemGroup>
 	
   <ItemGroup>
@@ -55,6 +55,6 @@
     </Reference>
   </ItemGroup>
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="call &quot;$(ProjectDir)weave.bat&quot;&#xD;&#xA;&#xD;&#xA;copy &quot;$(TargetPath)&quot; &quot;$(ProjectDir)\..\Release\plugins&quot;&#xD;&#xA;copy /Y &quot;$(ProjectDir)..\PaladinUnityProject\AssetBundles\paladin&quot; &quot;$(ProjectDir)\..\Release\plugins\AssetBundles&quot;&#xD;&#xA;copy /Y &quot;$(ProjectDir)..\PaladinVRProject\AssetBundles\paladinvr&quot; &quot;$(ProjectDir)\..\Release\plugins\AssetBundles&quot;&#xD;&#xA;if &quot;$(Username)&quot; == &quot;Erikbir&quot; Xcopy /E /I /Y &quot;$(ProjectDir)\..\Release\plugins&quot; &quot;E:\r2Profiles\Blinx Returns\BepInEx\plugins\Paladin_Alliance-PaladinMod&quot;&#xD;&#xA;&#xD;&#xA;REM need to update to xcopy if in some universe they ever dev here again lol&#xD;&#xA;REM if &quot;$(Username)&quot; == &quot;Varna&quot; mkdir &quot;C:\Users\rylun\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\DevTest\BepInEx\plugins\DEVTEST&quot;&#xD;&#xA;REM if &quot;$(Username)&quot; == &quot;Varna&quot; copy /Y &quot;$(TargetPath)&quot; &quot;C:\Users\rylun\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\DevTest\BepInEx\plugins\DEVTEST&quot;&#xD;&#xA;&#xD;&#xA;REM if &quot;$(Username)&quot; == &quot;PureDark&quot; copy &quot;$(TargetPath)&quot; &quot;C:\Users\PureDark\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\Default\BepInEx\plugins\Paladin_Alliance-PaladinMod&quot;" />
+    <Exec Command="rem call &quot;$(ProjectDir)weave.bat&quot;&#xD;&#xA;&#xD;&#xA;copy &quot;$(TargetPath)&quot; &quot;$(ProjectDir)\..\Release\plugins&quot;&#xD;&#xA;copy /Y &quot;$(ProjectDir)..\PaladinUnityProject\AssetBundles\paladin&quot; &quot;$(ProjectDir)\..\Release\plugins\AssetBundles&quot;&#xD;&#xA;copy /Y &quot;$(ProjectDir)..\PaladinVRProject\AssetBundles\paladinvr&quot; &quot;$(ProjectDir)\..\Release\plugins\AssetBundles&quot;&#xD;&#xA;if &quot;$(Username)&quot; == &quot;Erikbir&quot; Xcopy /E /I /Y &quot;$(ProjectDir)\..\Release\plugins&quot; &quot;E:\r2Profiles\Blinx Returns\BepInEx\plugins\Paladin_Alliance-PaladinMod&quot;&#xD;&#xA;&#xD;&#xA;REM need to update to xcopy if in some universe they ever dev here again lol&#xD;&#xA;REM if &quot;$(Username)&quot; == &quot;Varna&quot; mkdir &quot;C:\Users\rylun\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\DevTest\BepInEx\plugins\DEVTEST&quot;&#xD;&#xA;REM if &quot;$(Username)&quot; == &quot;Varna&quot; copy /Y &quot;$(TargetPath)&quot; &quot;C:\Users\rylun\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\DevTest\BepInEx\plugins\DEVTEST&quot;&#xD;&#xA;&#xD;&#xA;REM if &quot;$(Username)&quot; == &quot;PureDark&quot; copy &quot;$(TargetPath)&quot; &quot;C:\Users\PureDark\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\Default\BepInEx\plugins\Paladin_Alliance-PaladinMod&quot;" />
   </Target>
 </Project>
