@@ -65,6 +65,7 @@ namespace PaladinMod.Modules
         //particle effects
 
         public static GameObject swordSwing;
+        public static GameObject swordSwingEmpowered;
         public static GameObject spinningSlashFX;
         public static GameObject spinningSlashEmpoweredFX;
 
@@ -120,6 +121,8 @@ namespace PaladinMod.Modules
         public static GameObject altLightningImpactFX;
 
         public static GameObject dashFX;
+        public static GameObject airSlamFX;
+        public static GameObject airSlamBoostedFX;
 
         public static GameObject torporVoidFX;
 
@@ -180,6 +183,7 @@ namespace PaladinMod.Modules
 
         #region Materials
         // vfx materials
+        // this is pointless after addressables but idc
         internal static Material supplyDropMat;
         internal static Material airStrikeMat;
         internal static Material crippleSphereMat;
@@ -282,8 +286,7 @@ namespace PaladinMod.Modules
             AddEffect(altLightningImpactFX, altLightningImpactFX.GetComponent<EffectComponent>().soundName);
 
             //clone mithrix's dash effect and resize it for my dash
-            dashFX = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/BrotherDashEffect"), "PaladinDashEffect", true);
-            dashFX.AddComponent<NetworkIdentity>();
+            dashFX = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/BrotherDashEffect"), "PaladinDashEffect", false);
             dashFX.GetComponent<EffectComponent>().applyScale = true;
             dashFX.transform.localScale *= 0.35f;
 
@@ -294,7 +297,48 @@ namespace PaladinMod.Modules
 
             AddEffect(dashFX);
 
-            //InitCustomItems();
+            airSlamFX = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("PaladinAirSlamImpact", true);
+
+            airSlamFX.transform.Find("ParticleInitial/Debris, 3D").localScale *= 0.75f;
+            airSlamFX.transform.Find("ParticleInitial/Debris").localScale *= 0.75f;
+            airSlamFX.transform.Find("ParticleInitial/DustRing").localScale = new Vector3(0.75f, 0.75f, 2f);
+            airSlamFX.transform.Find("ParticleInitial/Decal").localScale *= 0.75f;
+
+            airSlamFX.transform.Find("ParticleInitial/Spikes, Large").gameObject.SetActive(false);
+            airSlamFX.transform.Find("ParticleInitial/Spikes, Small").gameObject.SetActive(false);
+            airSlamFX.transform.Find("ParticleInitial/Flash").gameObject.SetActive(false);
+            airSlamFX.transform.Find("ParticleInitial/Dust").gameObject.SetActive(false);
+
+            airSlamFX.GetComponentInChildren<AnimateShaderAlpha>().timeMax = 5f;
+            airSlamFX.GetComponent<ShakeEmitter>().wave.amplitude *= 0.3f;
+
+            PaladinPlugin.Destroy(airSlamFX.GetComponent<DestroyOnParticleEnd>());
+            airSlamFX.AddComponent<DestroyOnTimer>().duration = 5f;
+
+            AddEffect(airSlamFX);
+
+            airSlamBoostedFX = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("PaladinAirSlamImpactBoosted", true);
+
+            airSlamBoostedFX.transform.Find("ParticleInitial/Debris, 3D").localScale *= 0.85f;
+            airSlamBoostedFX.transform.Find("ParticleInitial/Debris").localScale *= 0.85f;
+            airSlamBoostedFX.transform.Find("ParticleInitial/DustRing").localScale = new Vector3(0.5f, 0.5f, 3f);
+            airSlamBoostedFX.transform.Find("ParticleInitial/Decal").localScale *= 0.85f;
+
+            airSlamBoostedFX.transform.Find("ParticleInitial/DustRing").gameObject.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/LunarGolem/matLunarGolemExplosion.mat").WaitForCompletion();
+            airSlamFX.transform.Find("ParticleInitial/Dust").gameObject.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/LunarGolem/matLunarGolemSpawnDustLG.mat").WaitForCompletion();
+
+            airSlamBoostedFX.transform.Find("ParticleInitial/Spikes, Large").gameObject.SetActive(false);
+            airSlamBoostedFX.transform.Find("ParticleInitial/Spikes, Small").gameObject.SetActive(false);
+            //airSlamFX.transform.Find("ParticleInitial/Flash").gameObject.SetActive(false);
+            //airSlamFX.transform.Find("ParticleInitial/Dust").gameObject.SetActive(false);
+
+            airSlamBoostedFX.GetComponentInChildren<AnimateShaderAlpha>().timeMax = 5f;
+            airSlamBoostedFX.GetComponent<ShakeEmitter>().wave.amplitude *= 0.3f;
+
+            PaladinPlugin.Destroy(airSlamBoostedFX.GetComponent<DestroyOnParticleEnd>());
+            airSlamBoostedFX.AddComponent<DestroyOnTimer>().duration = 5f;
+
+            AddEffect(airSlamBoostedFX);
 
             swordHitSoundEventS = CreateNetworkSoundEventDef(Modules.Sounds.HitS);
             swordHitSoundEventM = CreateNetworkSoundEventDef(Modules.Sounds.HitM);
@@ -305,12 +349,40 @@ namespace PaladinMod.Modules
             batHitSoundEventL = CreateNetworkSoundEventDef(Modules.Sounds.HitBluntL);
         }
 
-        private static void PopulateSwordEffects() {
+        private static void PopulateSwordEffects()
+        {
 
             #region SwordEffects
-            swordSwing = Assets.LoadEffect("PaladinSwing", "");
-            //swordSwing.transform.Find("SwingTrail").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/VFX/matExpTrail.mat").WaitForCompletion();
-            swordSwing.transform.Find("SwingTrail").Find("SwingTrail2").GetComponent<ParticleSystemRenderer>().material = matDistortion;
+            swordSwing = Assets.LoadEffectFuck("PaladinSwing", "");
+            Material distortionMat = Addressables.LoadAssetAsync<Material>("RoR2/Base/Croco/matCrocoSlashDistortion.mat").WaitForCompletion();
+
+            Material ogSwingMat = swordSwing.transform.Find("SwingTrail").GetComponent<ParticleSystemRenderer>().material;
+            Material swingMat = Material.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Brother/matBrotherSwing.mat").WaitForCompletion());
+
+            swingMat.SetTexture("_MainTex", ogSwingMat.GetTexture("_MainTex"));
+            swingMat.SetTexture("_Cloud1Tex", Addressables.LoadAssetAsync<Texture>("RoR2/Base/Common/texCloudWaterFoam1.jpg").WaitForCompletion());
+            swingMat.SetFloat("_Boost", 2f);
+            swingMat.SetFloat("_AlphaBoost", 3f);
+            swingMat.SetFloat("_AlphaBias", 0.06053269f);
+
+            swordSwing.transform.Find("SwingTrail").localPosition = new Vector3(0f, 0f, -0.5f);
+            swordSwing.transform.Find("SwingTrail").localRotation = Quaternion.Euler(new Vector3(270f, 25f, 0f));
+            swordSwing.transform.Find("SwingTrail").localScale = new Vector3(1.35f, 1.5f, 1.4f);
+            swordSwing.transform.Find("SwingTrail").GetComponent<ParticleSystemRenderer>().material = swingMat;
+            swordSwing.transform.Find("SwingTrail").Find("SwingTrail2").GetComponent<ParticleSystemRenderer>().material = distortionMat;
+
+            swordSwingEmpowered = PrefabAPI.InstantiateClone(swordSwing, "PaladinSwingEmpowered");
+
+            Material swingMat2 = Material.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Brother/matBrotherSwing.mat").WaitForCompletion());
+            swingMat2.SetTexture("_MainTex", ogSwingMat.GetTexture("_MainTex"));
+            swingMat2.SetTexture("_Cloud1Tex", Addressables.LoadAssetAsync<Texture>("RoR2/Base/Common/texCloudWaterFoam1.jpg").WaitForCompletion());
+            swingMat2.SetFloat("_Boost", 8f);
+            swingMat2.SetFloat("_AlphaBoost", 3f);
+            swingMat2.SetFloat("_AlphaBias", 0.06053269f);
+
+            swordSwingEmpowered.transform.Find("SwingTrail").GetComponent<ParticleSystemRenderer>().material = swingMat2;
+
+            //AddEffect(swordSwingEmpowered);
 
             spinningSlashFX = Assets.LoadEffect("SpinSlashEffect", "");
             spinningSlashEmpoweredFX = Assets.LoadEffect("EmpSpinSlashEffect", "");
@@ -318,7 +390,20 @@ namespace PaladinMod.Modules
             spinningSlashEmpoweredFX.transform.Find("pog").Find("champ").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Loader/matLoaderLightningLarge.mat").WaitForCompletion();
             spinningSlashEmpoweredFX.transform.Find("pog").Find("Distortion").GetComponent<ParticleSystemRenderer>().material = matDistortion;
 
-            hitFX = Assets.LoadEffect("ImpactPaladinSwing", "");
+            //hitFX = Assets.LoadEffect("ImpactPaladinSwing", "");
+
+            hitFX = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/OmniImpactVFXSlashMerc.prefab").WaitForCompletion(), "PaladinImpactVFX", true);
+
+            hitFX.transform.Find("Flash, Hard").localScale = new Vector3(4f, 4f, 4f);
+            hitFX.transform.Find("Dash, Bright").localScale = new Vector3(5f, 3f, 3f);
+            hitFX.transform.Find("ScaledSmokeRing, Mesh").localScale = new Vector3(4f, 4f, 4f);
+            hitFX.transform.Find("ScaledSmokeRing, Mesh").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Junk/LunarWisp/matLunarWispBombClouds.mat").WaitForCompletion();
+            hitFX.transform.Find("Impact Slash").localScale = new Vector3(2f, 2f, 2f);
+            hitFX.transform.Find("Scaled Hitspark 4, Directional (Random Color)").localScale = new Vector3(2f, 2f, 2f);
+            hitFX.transform.Find("Scaled Hitspark 3, Radial (Random Color)").localScale = new Vector3(2f, 2f, 2f);
+            hitFX.transform.Find("Scaled Hitspark 2 (Random Color)").localScale = new Vector3(2f, 2f, 2f);
+
+            AddEffect(hitFX);
 
             swordSwingGreen = Assets.LoadEffect("PaladinSwingGreen", "");
             spinningSlashFXGreen = Assets.LoadEffect("SpinSlashEffectGreen", "");
@@ -369,6 +454,7 @@ namespace PaladinMod.Modules
             hitEffects.Add(hitFXBlunt);
 
             swordSwingEffects.Add(swordSwing);
+            swordSwingEffects.Add(swordSwingEmpowered);
             swordSwingEffects.Add(swordSwingGreen);
             swordSwingEffects.Add(swordSwingYellow);
             swordSwingEffects.Add(swordSwingRed);
@@ -450,6 +536,37 @@ namespace PaladinMod.Modules
             
             swordBeamGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/EvisProjectileGhost.prefab").WaitForCompletion().InstantiateClone("PaladinSwordBeamGhost", true);
             swordBeamGhost.transform.Find("Base").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/LunarWisp/matLunarWispBombTrail.mat").WaitForCompletion();
+            swordBeamGhost.transform.Find("Base").localScale = new Vector3(2f, 1f, 4f);
+
+            /*var h = swordBeamGhost.transform.Find("Base").gameObject.AddComponent<ObjectScaleCurve>();
+            h.timeMax = 0.3f;
+            h.baseScale = new Vector3(2f, 1f, 4f);
+            h.curveZ = new AnimationCurve
+            {
+                keys = new Keyframe[]
+                {
+                    new Keyframe(0f, 0f),
+                    new Keyframe(0.2f, 1.1f),
+                    new Keyframe(0.6f, 1f),
+                    new Keyframe(1f, 0f)
+                }
+            };
+            h.curveX = new AnimationCurve
+            {
+                keys = new Keyframe[]
+                {
+                    new Keyframe(0f, 1f),
+                    new Keyframe(1f, 1f)
+                }
+            };
+            h.curveY = new AnimationCurve
+            {
+                keys = new Keyframe[]
+                {
+                    new Keyframe(0f, 1f),
+                    new Keyframe(1f, 1f)
+                }
+            };*/
 
             tornadoEffect = mainAssetBundle.LoadAsset<GameObject>("PaladinTornadoEffect");
             tornadoEffect.AddComponent<ProjectileGhostController>();
@@ -632,41 +749,6 @@ namespace PaladinMod.Modules
             return networkSoundEventDef;
         }
 
-        private static void InitCustomItems()
-        {
-            //create item display prefabs for all of the shields
-            // but it's deprecated, sad
-            artoriasShield = CreateItemDisplay("DisplayArtoriasShield", "matArtyShield");
-            blackKnightShield = CreateItemDisplay("DisplayBKShield", "matBlackKnightShield");
-            giantShield = CreateItemDisplay("DisplayGiantShield", "matGiantShield");
-            goldenShield = CreateItemDisplay("DisplayGoldenShield", "matGoldenShield");
-            havelShield = CreateItemDisplay("DisplayHavelShield", "matHavelShield");
-            pursuerShield = CreateItemDisplay("DisplayPursuerShield", "matPursuerShield");
-            sunlightShield = CreateItemDisplay("DisplaySunlightShield", "matSunlightShield");
-            watcherDagger = CreateItemDisplay("DisplayWatcherDagger", "matWatcherDagger");
-        }
-
-        private static GameObject CreateItemDisplay(string prefabName, string matName)
-        {
-            GameObject displayPrefab = mainAssetBundle.LoadAsset<GameObject>(prefabName);
-            Material itemMat = Skins.CreateMaterial(matName, 0, Color.black, 0);
-            MeshRenderer renderer = displayPrefab.GetComponent<MeshRenderer>();
-
-            renderer.material = itemMat;
-            displayPrefab.AddComponent<ItemDisplay>().rendererInfos = new CharacterModel.RendererInfo[]
-            {
-                new CharacterModel.RendererInfo
-                {
-                    defaultMaterial = itemMat,
-                    renderer = renderer,
-                    ignoreOverlays = false,
-                    defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On
-                }
-            };
-
-            return displayPrefab;
-        }
-
         public static GameObject ConvertAllRenderersToHopooShader(this GameObject rootObject) {
             if (!rootObject) return rootObject;
 
@@ -700,6 +782,16 @@ namespace PaladinMod.Modules
             effect.soundName = soundName;
 
             AddEffect(newEffect);
+
+            return newEffect;
+        }
+
+        private static GameObject LoadEffectFuck(string resourceName, string soundName)
+        {
+            GameObject newEffect = mainAssetBundle.LoadAsset<GameObject>(resourceName);
+
+            newEffect.AddComponent<DestroyOnTimer>().duration = 12;
+            newEffect.AddComponent<NetworkIdentity>();
 
             return newEffect;
         }

@@ -38,7 +38,8 @@ namespace PaladinMod.Modules
             if (overlapAttack) overlapAttack.damageCoefficient = 1f;
         }
 
-        public static void RegisterProjectiles() {
+        public static void RegisterProjectiles()
+        {
             //would like to simplify this all eventually....
             #region SpinningSlashShockwave
             shockwave = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/BrotherSunderWave"), "PaladinShockwave", true);
@@ -51,9 +52,12 @@ namespace PaladinMod.Modules
             shockwaveGhost.transform.GetChild(1).transform.localScale = new Vector3(10, 1.5f, 1);
             PaladinPlugin.Destroy(shockwaveGhost.transform.GetChild(0).Find("Infection, World").gameObject);
             PaladinPlugin.Destroy(shockwaveGhost.transform.GetChild(0).Find("Water").gameObject);
+            PaladinPlugin.Destroy(shockwaveGhost.transform.GetChild(0).Find("Debris").gameObject);
 
             //Material shockwaveMat = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/LunarWispTrackingBomb").GetComponent<ProjectileController>().ghostPrefab.transform.GetChild(0).GetComponent<ParticleSystemRenderer>().material;
-            shockwaveGhost.transform.GetChild(1).GetComponent<MeshRenderer>().material = Modules.Assets.matMeteorIndicator;
+            shockwaveGhost.transform.GetChild(1).GetComponent<MeshRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/matTeamAreaIndicatorIntersectionPlayer.mat").WaitForCompletion();
+            shockwaveGhost.transform.GetChild(0).Find("Dust").gameObject.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC1/LunarSun/matLunarSunProjectileBackdrop.mat").WaitForCompletion();
+            shockwaveGhost.transform.GetChild(0).gameObject.AddComponent<PaladinMod.Misc.StupidFuckingBullshit>();
 
             shockwave.GetComponent<ProjectileController>().ghostPrefab = shockwaveGhost;
             #endregion

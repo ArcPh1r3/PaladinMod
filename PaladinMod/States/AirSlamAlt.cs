@@ -184,18 +184,26 @@ namespace PaladinMod.States
                 if (this.swordController && this.swordController.swordActive)
                 {
                     this.FireShockwave();
+
+                    EffectManager.SpawnEffect(Modules.Assets.airSlamBoostedFX, new EffectData
+                    {
+                        origin = this.characterBody.footPosition + (this.characterDirection.forward * 2.5f),
+                        scale = 1f
+                    }, true);
+                }
+                else
+                {
+                    EffectManager.SpawnEffect(Modules.Assets.airSlamFX, new EffectData
+                    {
+                        origin = this.characterBody.footPosition + (this.characterDirection.forward * 2.5f),
+                        scale = 1f
+                    }, true);
                 }
 
                 this.swordController.airSlamStacks = 1;
 
                 Util.PlaySound(Modules.Sounds.GroundImpact, base.gameObject);
                 Util.PlaySound(Modules.Sounds.LeapSlam, base.gameObject);
-
-                EffectData effectData = new EffectData();
-                effectData.origin = base.characterBody.footPosition;
-                effectData.scale = 2f;
-
-                EffectManager.SpawnEffect(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/ParentSlamEffect"), effectData, true);
             }
         }
 

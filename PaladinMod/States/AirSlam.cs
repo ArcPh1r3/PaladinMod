@@ -57,6 +57,12 @@ namespace PaladinMod.States
 
                 base.characterMotor.Motor.ForceUnground();
                 base.characterMotor.velocity = a + b + b2;
+
+                EffectManager.SpawnEffect(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/BoostJumpEffect"), new EffectData
+                {
+                    origin = base.characterBody.footPosition,
+                    rotation = Util.QuaternionSafeLookRotation(base.characterMotor.velocity)
+                }, true);
             }
 
             base.characterDirection.moveVector = direction;
@@ -177,7 +183,6 @@ namespace PaladinMod.States
 
         private void FireShockwave()
         {
-            Transform shockwaveTransform = base.FindModelChild("SwingCenter");
             Vector3 shockwavePosition = base.characterBody.footPosition;
             Vector3 forward = base.characterDirection.forward;
 
@@ -193,16 +198,24 @@ namespace PaladinMod.States
                 if (this.swordController && this.swordController.swordActive)
                 {
                     this.FireShockwave();
+
+                    EffectManager.SpawnEffect(Modules.Assets.airSlamBoostedFX, new EffectData
+                    {
+                        origin = this.characterBody.footPosition + (this.characterDirection.forward * 2.5f),
+                        scale = 1f
+                    }, true);
+                }
+                else
+                {
+                    EffectManager.SpawnEffect(Modules.Assets.airSlamFX, new EffectData
+                    {
+                        origin = this.characterBody.footPosition + (this.characterDirection.forward * 2.5f),
+                        scale = 1f
+                    }, true);
                 }
 
                 Util.PlaySound(Modules.Sounds.GroundImpact, base.gameObject);
                 Util.PlaySound(Modules.Sounds.LeapSlam, base.gameObject);
-
-                EffectData effectData = new EffectData();
-                effectData.origin = base.characterBody.footPosition;
-                effectData.scale = 2f;
-
-                EffectManager.SpawnEffect(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/ParentSlamEffect"), effectData, true);
             }
         }
 

@@ -11,7 +11,6 @@ namespace PaladinMod.States
 {
     public class Slash : BaseSkillState, SteppedSkillDef.IStepSetter
     {
-    
         public static float damageCoefficient = StaticValues.slashDamageCoefficient;
         public float baseDuration = 1.6f;
         public static float attackRecoil = 1.5f;
@@ -34,6 +33,7 @@ namespace PaladinMod.States
         private PaladinSwordController swordController;
         private Vector3 storedVelocity;
         private PaladinVRController vrController;
+        private GameObject swingEffectInstance;
 
         public override void OnEnter()
         {
@@ -171,6 +171,12 @@ namespace PaladinMod.States
                 this.hitStopCachedState = base.CreateHitStopCachedState(base.characterMotor, this.animator, "Slash.playbackRate");
                 this.hitPauseTimer = (2f * EntityStates.Merc.GroundLight.hitPauseDuration) / this.attackSpeedStat;
                 this.inHitPause = true;
+
+                if (this.swingEffectInstance)
+                {
+                    ScaleParticleSystemDuration fuck = this.swingEffectInstance.GetComponent<ScaleParticleSystemDuration>();
+                    if (fuck) fuck.newDuration = 20f;
+                }
             }
         }
 
@@ -196,7 +202,14 @@ namespace PaladinMod.States
                     else muzzleString = "SwingLeft";
 
                     base.AddRecoil(-1f * Slash.attackRecoil, -2f * Slash.attackRecoil, -0.5f * Slash.attackRecoil, 0.5f * Slash.attackRecoil);
-                    EffectManager.SimpleMuzzleFlash(this.swordController.swingEffect, base.gameObject, muzzleString, true);
+
+                    Transform muzzleTransform = this.FindModelChild(muzzleString);
+                    if (muzzleTransform)
+                    {
+                        this.swingEffectInstance = UnityEngine.Object.Instantiate<GameObject>(this.swordController.swingEffect, muzzleTransform);
+                        ScaleParticleSystemDuration fuck = this.swingEffectInstance.GetComponent<ScaleParticleSystemDuration>();
+                        if (fuck) fuck.newDuration = fuck.initialDuration;
+                    }
 
                     this.FireSwordBeam();
                 }
@@ -222,6 +235,12 @@ namespace PaladinMod.States
                 base.ConsumeHitStopCachedState(this.hitStopCachedState, base.characterMotor, this.animator);
                 this.inHitPause = false;
                 if (this.storedVelocity != Vector3.zero) base.characterMotor.velocity = this.storedVelocity;
+
+                if (this.swingEffectInstance)
+                {
+                    ScaleParticleSystemDuration fuck = this.swingEffectInstance.GetComponent<ScaleParticleSystemDuration>();
+                    if (fuck) fuck.newDuration = fuck.initialDuration;
+                }
             }
 
             if (!this.inHitPause)

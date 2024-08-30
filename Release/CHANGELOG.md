@@ -24,6 +24,7 @@
     - Spinning Slash NEW EFFECT: Now reduces Quickstep cooldown on hit (once per use)
     - Lightning Spear damage: 800% > 700%
     - Quickstep barrier amount: 10% > 15%
+     - *the aim is to shift power away from raw stats and damage and give him more durability when played well, as well as a team bolstering passive to make him a proper team player*
  - added language support
     - added French courtesy of StyleMyk
     - added Brazilian Portuguese courtesy of Kauzok
