@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo>
+	<Project Name="Paladin" GUID="{C41AF5CB-27DD-435D-A882-6BAA45F83BB5}" Generator="2023.1.4.8496"/>
+	<CacheRoot>../.cache</CacheRoot>
+	<Platforms>
+		<Platform Name="Windows" GUID="{471754AF-CA0C-480C-A26D-773F7503C8E9}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="Windows"/>
+	</Platforms>
+	<Languages>
+		<Language Name="English(US)" Id="684519430" GUID="{5CFCF476-2D88-4F70-B8D2-B977EDC9B64C}" Default="true" UseAsStandIn="true"/>
+	</Languages>
+	<FileHash>{F2E49995-12FF-7F81-922D-E58B402C9799}</FileHash>
+</ProjectInfo>

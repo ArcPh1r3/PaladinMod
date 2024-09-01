@@ -97,8 +97,8 @@ namespace PaladinMod.States
             this.attack.pushAwayForce = 750f;
             this.attack.hitBoxGroup = hitBoxGroup;
             this.attack.isCrit = base.RollCrit();
-            this.attack.impactSound = Modules.Assets.swordHitSoundEventS.index;
-            if (this.swordController.isBlunt) this.attack.impactSound = Modules.Assets.batHitSoundEventS.index;
+            this.attack.impactSound = Modules.Asset.swordHitSoundEventS.index;
+            if (this.swordController.isBlunt) this.attack.impactSound = Modules.Asset.batHitSoundEventS.index;
 
             if (base.characterBody.HasBuff(Modules.Buffs.overchargeBuff))
             {

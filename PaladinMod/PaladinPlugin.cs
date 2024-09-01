@@ -87,7 +87,7 @@ namespace PaladinMod
             gameObject.AddComponent<TestValueManager>();
 
             // load assets
-            Modules.Assets.PopulateAssets();
+            Modules.Asset.PopulateAssets();
             // create camera params for our character to use
             Modules.CameraParams.InitializeParams(); 
 
@@ -146,11 +146,11 @@ namespace PaladinMod
             if (!VRAPI.VR.enabled || !VRAPI.MotionControls.enabled) return;
 
             VREnabled = true;
-            Modules.Assets.loadVRBundle();
+            Modules.Asset.loadVRBundle();
 
 
-            VRAPI.MotionControls.AddHandPrefab(Modules.Assets.vrPaladinDominantHand);
-            VRAPI.MotionControls.AddHandPrefab(Modules.Assets.vrPaladinNonDominantHand);
+            VRAPI.MotionControls.AddHandPrefab(Modules.Asset.vrPaladinDominantHand);
+            VRAPI.MotionControls.AddHandPrefab(Modules.Asset.vrPaladinNonDominantHand);
 
             VRAPI.MotionControls.onHandPairSet += SetVRHandsMaterials;
 
@@ -619,7 +619,7 @@ namespace PaladinMod
                     overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                     overlay.animateShaderAlpha = true;
                     overlay.destroyComponentOnEnd = true;
-                    overlay.originalMaterial = Modules.Assets.blessingMat;
+                    overlay.originalMaterial = Modules.Asset.blessingMat;
                     overlay.AddToCharacerModel(self);
                     blessingTracker.Overlay = overlay;
                 }
@@ -742,7 +742,7 @@ namespace PaladinMod
 
             Misc.RageHUD rageHud = self.gameObject.AddComponent<Misc.RageHUD>();
 
-            GameObject rageGauge = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("RageGauge"), self.transform.Find("MainContainer").Find("MainUIArea").Find("SpringCanvas").Find("BottomLeftCluster"));
+            GameObject rageGauge = UnityEngine.Object.Instantiate<GameObject>(Modules.Asset.mainAssetBundle.LoadAsset<GameObject>("RageGauge"), self.transform.Find("MainContainer").Find("MainUIArea").Find("SpringCanvas").Find("BottomLeftCluster"));
             rageGauge.GetComponent<RectTransform>().localPosition = Vector3.zero;
             rageGauge.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -147.8f);
             rageGauge.GetComponent<RectTransform>().localScale = new Vector3(0.72f, 0.15f, 1f);
@@ -780,7 +780,7 @@ namespace PaladinMod
             scepterHealDef.rechargeStock = 1;
             scepterHealDef.requiredStock = 1;
             scepterHealDef.stockToConsume = 1;
-            scepterHealDef.icon = Modules.Assets.icon4S;
+            scepterHealDef.icon = Modules.Asset.icon4S;
             scepterHealDef.skillDescriptionToken = "PALADIN_SPECIAL_SCEPTERHEALZONE_DESCRIPTION";
             scepterHealDef.skillName = "PALADIN_SPECIAL_SCEPTERHEALZONE_NAME";
             scepterHealDef.skillNameToken = "PALADIN_SPECIAL_SCEPTERHEALZONE_NAME";
@@ -806,7 +806,7 @@ namespace PaladinMod
             scepterTorporDef.rechargeStock = 1;
             scepterTorporDef.requiredStock = 1;
             scepterTorporDef.stockToConsume = 1;
-            scepterTorporDef.icon = Modules.Assets.icon4bS;
+            scepterTorporDef.icon = Modules.Asset.icon4bS;
             scepterTorporDef.skillDescriptionToken = "PALADIN_SPECIAL_SCEPTERTORPOR_DESCRIPTION";
             scepterTorporDef.skillName = "PALADIN_SPECIAL_SCEPTERTORPOR_NAME";
             scepterTorporDef.skillNameToken = "PALADIN_SPECIAL_SCEPTERTORPOR_NAME";
@@ -835,7 +835,7 @@ namespace PaladinMod
             scepterWarcryDef.rechargeStock = 1;
             scepterWarcryDef.requiredStock = 1;
             scepterWarcryDef.stockToConsume = 1;
-            scepterWarcryDef.icon = Modules.Assets.icon4cS;
+            scepterWarcryDef.icon = Modules.Asset.icon4cS;
             scepterWarcryDef.skillDescriptionToken = "PALADIN_SPECIAL_SCEPTERWARCRY_DESCRIPTION";
             scepterWarcryDef.skillName = "PALADIN_SPECIAL_SCEPTERWARCRY_NAME";
             scepterWarcryDef.skillNameToken = "PALADIN_SPECIAL_SCEPTERWARCRY_NAME";
@@ -858,7 +858,7 @@ namespace PaladinMod
             scepterCruelSunDef.rechargeStock = 1;
             scepterCruelSunDef.requiredStock = 1;
             scepterCruelSunDef.stockToConsume = 1;
-            scepterCruelSunDef.icon = Modules.Assets.icon4dS;
+            scepterCruelSunDef.icon = Modules.Asset.icon4dS;
             scepterCruelSunDef.skillDescriptionToken = "PALADIN_SPECIAL_SCEPSUN_DESCRIPTION";
             scepterCruelSunDef.skillName = "PALADIN_SPECIAL_SCEPSUN_NAME";
             scepterCruelSunDef.skillNameToken = "PALADIN_SPECIAL_SCEPSUN_NAME";
@@ -884,7 +884,7 @@ namespace PaladinMod
             scepterCruelSunLegacyDef.rechargeStock = 1;
             scepterCruelSunLegacyDef.requiredStock = 1;
             scepterCruelSunLegacyDef.stockToConsume = 1;
-            scepterCruelSunLegacyDef.icon = Modules.Assets.icon4dS;
+            scepterCruelSunLegacyDef.icon = Modules.Asset.icon4dS;
             scepterCruelSunLegacyDef.skillDescriptionToken = "PALADIN_SPECIAL_SCEPSUN_LEGACY_DESCRIPTION";
             scepterCruelSunLegacyDef.skillName = "PALADIN_SPECIAL_SCEPSUN_LEGACY_NAME";
             scepterCruelSunLegacyDef.skillNameToken = "PALADIN_SPECIAL_SCEPSUN_LEGACY_NAME";

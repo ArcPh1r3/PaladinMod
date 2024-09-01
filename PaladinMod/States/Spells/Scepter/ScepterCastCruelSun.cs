@@ -12,7 +12,7 @@ namespace PaladinMod.States.Spell
         protected float aimTime;
         protected Vector3 sunTarget;
 
-        protected override GameObject sunPrefab => Modules.Assets.paladinScepterSunPrefab;
+        protected override GameObject sunPrefab => Modules.Asset.paladinScepterSunPrefab;
 
         protected GameObject areaIndicatorInstance { get; set; }
 
@@ -35,7 +35,7 @@ namespace PaladinMod.States.Spell
                 if (!sunAim) {
                     areaIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab);
                     areaIndicatorInstance.transform.localScale = new Vector3(StaticValues.prideFlareExplosionRadius * 0.33f, StaticValues.prideFlareExplosionRadius * 0.33f, StaticValues.prideFlareExplosionRadius * 0.33f);
-                    areaIndicatorInstance.GetComponentInChildren<MeshRenderer>().material = Modules.Assets.areaIndicatorMat;
+                    areaIndicatorInstance.GetComponentInChildren<MeshRenderer>().material = Modules.Asset.areaIndicatorMat;
                     sunAim = true;
                 }
                 base.StartAimMode(0.5f, true);
@@ -72,9 +72,9 @@ namespace PaladinMod.States.Spell
             }
             else
             {
-                if ((bool)Modules.Assets.paladinSunSpawnPrefab && NetworkServer.active)
+                if ((bool)Modules.Asset.paladinSunSpawnPrefab && NetworkServer.active)
                 {
-                    EffectManager.SimpleImpactEffect(Modules.Assets.paladinSunSpawnPrefab, sunInstance.transform.position, Vector3.up, transmit: true);
+                    EffectManager.SimpleImpactEffect(Modules.Asset.paladinSunSpawnPrefab, sunInstance.transform.position, Vector3.up, transmit: true);
                 }
                 base.PlayAnimation("Gesture, Underride", "CastSunEnd", "Spell.playbackRate", 0.8f);
             }

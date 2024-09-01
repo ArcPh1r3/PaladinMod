@@ -1,377 +1,581 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<RootPaths>
-		<ProjectRoot>E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\</ProjectRoot>
-		<SourceFilesRoot>E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinWwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
-	<StreamedFiles/>
-	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="2068881016">
-			<ObjectPath>Init</ObjectPath>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{118B7CD2-1817-6C50-0DE0-8843A1CAC2BF}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+					<Plugin Id="4230635974" Name="Default_Motion_Device" LibName="Wwise Motion" LibId="33226759"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="985987111" Name="Motion Factory Bus"/>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+			<GameParameters>
+				<GameParameter Id="796049864" Name="RPM"/>
+				<GameParameter Id="822163944" Name="SS_Air_RPM"/>
+				<GameParameter Id="1029930033" Name="SS_Air_Fury"/>
+				<GameParameter Id="1351367891" Name="SS_Air_Fear"/>
+				<GameParameter Id="1524500807" Name="Playback_Rate"/>
+				<GameParameter Id="2221076878" Name="Minigun_Speed"/>
+				<GameParameter Id="2648548617" Name="SS_Air_Month"/>
+				<GameParameter Id="3002758120" Name="SS_Air_Freefall"/>
+				<GameParameter Id="3074696722" Name="SS_Air_Size"/>
+				<GameParameter Id="3203397129" Name="SS_Air_TimeOfDay"/>
+				<GameParameter Id="3673881719" Name="Volume_SFX"/>
+				<GameParameter Id="3695994288" Name="Volume_Master"/>
+				<GameParameter Id="3715662592" Name="SS_Air_Storm"/>
+				<GameParameter Id="3847924954" Name="SS_Air_Presence"/>
+				<GameParameter Id="4160247818" Name="SS_Air_Turbulence"/>
+			</GameParameters>
+			<AcousticTextures>
+				<AcousticTexture Id="504532776" Name="Brick">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="12"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="18"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="23"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="513139656" Name="Mountain">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="0"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="841620460" Name="Concrete">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="14"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1755085759" Name="Wood_Deep">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="1"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="8"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="20"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1873957695" Name="Anechoic">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1970351858" Name="Fabric">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="3"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="13"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="48"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="72"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2058049674" Name="Wood">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="32"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="25"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="20"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2412606308" Name="Carpet">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="46"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="45"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="76"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2637588553" Name="Tile">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="67"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="41"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="12"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="0"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2928161104" Name="Curtains">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="7"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="60"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="84"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="3195498748" Name="Cork_Tiles">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="14"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="30"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="73"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="3670307564" Name="Drywall">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="2"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="4168643977" Name="Acoustic_Banner">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="37"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="4262522749" Name="Wood_Bright">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="32"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="25"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="10"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="9"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="1744638590" Language="SFX" Hash="1098606639">
-			<ObjectPath>\SoundBanks\Default Work Unit\Nemforcer</ObjectPath>
+		<SoundBank Id="1744638590" Type="User" Language="SFX" Hash="{0963C35F-D4C6-04B5-4C51-BE73DE632B9F}">
 			<ShortName>Nemforcer</ShortName>
 			<Path>Nemforcer.bnk</Path>
-			<IncludedEvents>
-				<Event Id="1396415473" Name="DededeGordoThrow" ObjectPath="\Events\Default Work Unit\nemforcer\DededeGordoThrow">
-					<IncludedMemoryFiles>
-						<File Id="239566699" Language="SFX">
-							<ShortName>se_dedede_gordo_throw.wav</ShortName>
-							<Path>SFX\se_dedede_gordo_throw_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+			<Media>
+				<File Id="51468599" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>se_dedede_hammer_attack_s.wav</ShortName>
+					<CachePath>SFX/se_dedede_hammer_attack_s_8E324C96.wem</CachePath>
+				</File>
+				<File Id="93215376" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NemforcerAxeSwing3.wav</ShortName>
+					<CachePath>SFX/NemforcerAxeSwing3_8E324C96.wem</CachePath>
+				</File>
+				<File Id="112176353" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>se_dedede_hammer_swing_m.wav</ShortName>
+					<CachePath>SFX/se_dedede_hammer_swing_m_8E324C96.wem</CachePath>
+				</File>
+				<File Id="160355544" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NemforcerAxeHit2.wav</ShortName>
+					<CachePath>SFX/NemforcerAxeHit2_8E324C96.wem</CachePath>
+				</File>
+				<File Id="238140023" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>se_dedede_hammer_attack_l.wav</ShortName>
+					<CachePath>SFX/se_dedede_hammer_attack_l_8E324C96.wem</CachePath>
+				</File>
+				<File Id="239566699" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>se_dedede_gordo_throw.wav</ShortName>
+					<CachePath>SFX/se_dedede_gordo_throw_8E324C96.wem</CachePath>
+				</File>
+				<File Id="318027046" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Play_Minigun_Shoot.wav</ShortName>
+					<CachePath>SFX/Play_Minigun_Shoot_56CEF360.wem</CachePath>
+				</File>
+				<File Id="329983460" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>se_dedede_hammer_swing_l.wav</ShortName>
+					<CachePath>SFX/se_dedede_hammer_swing_l_8E324C96.wem</CachePath>
+				</File>
+				<File Id="384598124" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>se_dedede_hammer_attack_ll.wav</ShortName>
+					<CachePath>SFX/se_dedede_hammer_attack_ll_8E324C96.wem</CachePath>
+				</File>
+				<File Id="393158346" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NemforcerMinigunSpinUp.wav</ShortName>
+					<CachePath>SFX/NemforcerMinigunSpinUp_8E324C96.wem</CachePath>
+				</File>
+				<File Id="414882283" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NemforcerAxeSwing4.wav</ShortName>
+					<CachePath>SFX/NemforcerAxeSwing4_8E324C96.wem</CachePath>
+				</File>
+				<File Id="435557966" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NemforcerMinigunSpinDown.wav</ShortName>
+					<CachePath>SFX/NemforcerMinigunSpinDown_8E324C96.wem</CachePath>
+				</File>
+				<File Id="474473547" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NemforcerAxeSwing.wav</ShortName>
+					<CachePath>SFX/NemforcerAxeSwing_8E324C96.wem</CachePath>
+				</File>
+				<File Id="566259440" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>se_dedede_special_H02.wav</ShortName>
+					<CachePath>SFX/se_dedede_special_H02_8E324C96.wem</CachePath>
+				</File>
+				<File Id="596827886" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>se_dedede_hammer_swing_s.wav</ShortName>
+					<CachePath>SFX/se_dedede_hammer_swing_s_8E324C96.wem</CachePath>
+				</File>
+				<File Id="658594982" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NemforcerAxeSwing2.wav</ShortName>
+					<CachePath>SFX/NemforcerAxeSwing2_8E324C96.wem</CachePath>
+				</File>
+				<File Id="661133510" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NemforcerAxeHit3.wav</ShortName>
+					<CachePath>SFX/NemforcerAxeHit3_8E324C96.wem</CachePath>
+				</File>
+				<File Id="665470741" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>se_dedede_hammer_swing_ll.wav</ShortName>
+					<CachePath>SFX/se_dedede_hammer_swing_ll_8E324C96.wem</CachePath>
+				</File>
+				<File Id="749060630" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>se_dedede_jump02.wav</ShortName>
+					<CachePath>SFX/se_dedede_jump02_8E324C96.wem</CachePath>
+				</File>
+				<File Id="948787278" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>se_dedede_special_H01.wav</ShortName>
+					<CachePath>SFX/se_dedede_special_H01_8E324C96.wem</CachePath>
+				</File>
+				<File Id="955932314" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>NemforcerAxeHit.wav</ShortName>
+					<CachePath>SFX/NemforcerAxeHit_8E324C96.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="1396415473" Name="DededeGordoThrow">
+					<MediaRefs>
+						<MediaRef Id="239566699"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="3901697920" Name="DededeJump" ObjectPath="\Events\Default Work Unit\nemforcer\DededeJump">
-					<IncludedMemoryFiles>
-						<File Id="749060630" Language="SFX">
-							<ShortName>se_dedede_jump02.wav</ShortName>
-							<Path>SFX\se_dedede_jump02_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="3901697920" Name="DededeJump">
+					<MediaRefs>
+						<MediaRef Id="749060630"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="4242037945" Name="NemforcerAxeHit" ObjectPath="\Events\Default Work Unit\nemforcer\NemforcerAxeHit">
-					<IncludedMemoryFiles>
-						<File Id="160355544" Language="SFX">
-							<ShortName>NemforcerAxeHit2.wav</ShortName>
-							<Path>SFX\NemforcerAxeHit2_3F75BDB9.wem</Path>
-						</File>
-						<File Id="661133510" Language="SFX">
-							<ShortName>NemforcerAxeHit3.wav</ShortName>
-							<Path>SFX\NemforcerAxeHit3_3F75BDB9.wem</Path>
-						</File>
-						<File Id="955932314" Language="SFX">
-							<ShortName>NemforcerAxeHit.wav</ShortName>
-							<Path>SFX\NemforcerAxeHit_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="4242037945" Name="NemforcerAxeHit">
+					<MediaRefs>
+						<MediaRef Id="160355544"/>
+						<MediaRef Id="661133510"/>
+						<MediaRef Id="955932314"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="252613388" Name="NemforcerAxeSwing" ObjectPath="\Events\Default Work Unit\nemforcer\NemforcerAxeSwing">
-					<IncludedMemoryFiles>
-						<File Id="93215376" Language="SFX">
-							<ShortName>NemforcerAxeSwing3.wav</ShortName>
-							<Path>SFX\NemforcerAxeSwing3_3F75BDB9.wem</Path>
-						</File>
-						<File Id="414882283" Language="SFX">
-							<ShortName>NemforcerAxeSwing4.wav</ShortName>
-							<Path>SFX\NemforcerAxeSwing4_3F75BDB9.wem</Path>
-						</File>
-						<File Id="474473547" Language="SFX">
-							<ShortName>NemforcerAxeSwing.wav</ShortName>
-							<Path>SFX\NemforcerAxeSwing_3F75BDB9.wem</Path>
-						</File>
-						<File Id="658594982" Language="SFX">
-							<ShortName>NemforcerAxeSwing2.wav</ShortName>
-							<Path>SFX\NemforcerAxeSwing2_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="252613388" Name="NemforcerAxeSwing">
+					<MediaRefs>
+						<MediaRef Id="93215376"/>
+						<MediaRef Id="414882283"/>
+						<MediaRef Id="474473547"/>
+						<MediaRef Id="658594982"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="4078425363" Name="NemforcerMinigunSpinDown" ObjectPath="\Events\Default Work Unit\nemforcer\NemforcerMinigunSpinDown">
-					<IncludedMemoryFiles>
-						<File Id="435557966" Language="SFX">
-							<ShortName>NemforcerMinigunSpinDown.wav</ShortName>
-							<Path>SFX\NemforcerMinigunSpinDown_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="4078425363" Name="NemforcerMinigunSpinDown">
+					<MediaRefs>
+						<MediaRef Id="435557966"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="223230356" Name="NemforcerMinigunSpinUp" ObjectPath="\Events\Default Work Unit\nemforcer\NemforcerMinigunSpinUp">
-					<IncludedMemoryFiles>
-						<File Id="393158346" Language="SFX">
-							<ShortName>NemforcerMinigunSpinUp.wav</ShortName>
-							<Path>SFX\NemforcerMinigunSpinUp_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="223230356" Name="NemforcerMinigunSpinUp">
+					<MediaRefs>
+						<MediaRef Id="393158346"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="547001894" Name="play_dedede_hammer_attack_l" ObjectPath="\Events\Default Work Unit\nemforcer\play_dedede_hammer_attack_l">
-					<IncludedMemoryFiles>
-						<File Id="238140023" Language="SFX">
-							<ShortName>se_dedede_hammer_attack_l.wav</ShortName>
-							<Path>SFX\se_dedede_hammer_attack_l_3F75BDB9.wem</Path>
-						</File>
-						<File Id="384598124" Language="SFX">
-							<ShortName>se_dedede_hammer_attack_ll.wav</ShortName>
-							<Path>SFX\se_dedede_hammer_attack_ll_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="547001894" Name="play_dedede_hammer_attack_l">
+					<MediaRefs>
+						<MediaRef Id="238140023"/>
+						<MediaRef Id="384598124"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="547001895" Name="play_dedede_hammer_attack_m" ObjectPath="\Events\Default Work Unit\nemforcer\play_dedede_hammer_attack_m">
-					<IncludedMemoryFiles>
-						<File Id="51468599" Language="SFX">
-							<ShortName>se_dedede_hammer_attack_s.wav</ShortName>
-							<Path>SFX\se_dedede_hammer_attack_s_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="547001895" Name="play_dedede_hammer_attack_m">
+					<MediaRefs>
+						<MediaRef Id="51468599"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="676420139" Name="Play_Minigun_Shoot2" ObjectPath="\Events\Default Work Unit\nemforcer\Play_Minigun_Shoot2">
-					<IncludedMemoryFiles>
-						<File Id="318027046" Language="SFX">
-							<ShortName>Play_Minigun_Shoot.wav</ShortName>
-							<Path>SFX\Play_Minigun_Shoot_9EDFC787.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="676420139" Name="Play_Minigun_Shoot2">
+					<MediaRefs>
+						<MediaRef Id="318027046"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="3555953518" Name="Play_se_dedede_hammer_swing_m" ObjectPath="\Events\Default Work Unit\nemforcer\Play_se_dedede_hammer_swing_m">
-					<IncludedMemoryFiles>
-						<File Id="112176353" Language="SFX">
-							<ShortName>se_dedede_hammer_swing_m.wav</ShortName>
-							<Path>SFX\se_dedede_hammer_swing_m_3F75BDB9.wem</Path>
-						</File>
-						<File Id="329983460" Language="SFX">
-							<ShortName>se_dedede_hammer_swing_l.wav</ShortName>
-							<Path>SFX\se_dedede_hammer_swing_l_3F75BDB9.wem</Path>
-						</File>
-						<File Id="596827886" Language="SFX">
-							<ShortName>se_dedede_hammer_swing_s.wav</ShortName>
-							<Path>SFX\se_dedede_hammer_swing_s_3F75BDB9.wem</Path>
-						</File>
-						<File Id="665470741" Language="SFX">
-							<ShortName>se_dedede_hammer_swing_ll.wav</ShortName>
-							<Path>SFX\se_dedede_hammer_swing_ll_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="3555953518" Name="Play_se_dedede_hammer_swing_m">
+					<MediaRefs>
+						<MediaRef Id="112176353"/>
+						<MediaRef Id="329983460"/>
+						<MediaRef Id="596827886"/>
+						<MediaRef Id="665470741"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="4082970534" Name="SuperDededeJumpEnd" ObjectPath="\Events\Default Work Unit\nemforcer\SuperDededeJumpEnd">
-					<IncludedMemoryFiles>
-						<File Id="566259440" Language="SFX">
-							<ShortName>se_dedede_special_H02.wav</ShortName>
-							<Path>SFX\se_dedede_special_H02_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="4082970534" Name="SuperDededeJumpEnd">
+					<MediaRefs>
+						<MediaRef Id="566259440"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="2454711181" Name="SuperDededeJumpStart" ObjectPath="\Events\Default Work Unit\nemforcer\SuperDededeJumpStart">
-					<IncludedMemoryFiles>
-						<File Id="948787278" Language="SFX">
-							<ShortName>se_dedede_special_H01.wav</ShortName>
-							<Path>SFX\se_dedede_special_H01_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="2454711181" Name="SuperDededeJumpStart">
+					<MediaRefs>
+						<MediaRef Id="948787278"/>
+					</MediaRefs>
 				</Event>
-			</IncludedEvents>
+			</Events>
 			<GameParameters>
-				<GameParameter Id="2221076878" Name="Minigun_Speed" ObjectPath="\Game Parameters\Default Work Unit\Minigun_Speed"/>
-				<GameParameter Id="3673881719" Name="Volume_SFX" ObjectPath="\Game Parameters\Default Work Unit\Volume_SFX"/>
+				<GameParameter Id="2221076878" Name="Minigun_Speed"/>
+				<GameParameter Id="3673881719" Name="Volume_SFX"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3024907506" Language="SFX" Hash="3507237500">
-			<ObjectPath>\SoundBanks\Default Work Unit\Paladin</ObjectPath>
+		<SoundBank Id="3024907506" Type="User" Language="SFX" Hash="{09BF24FE-DA08-82E0-26D4-B30E9E6121B9}">
 			<ShortName>Paladin</ShortName>
 			<Path>Paladin.bnk</Path>
-			<IncludedEvents>
-				<Event Id="2869508097" Name="PaladinCastHeal" ObjectPath="\Events\Default Work Unit\paladin\PaladinCastHeal">
-					<IncludedMemoryFiles>
-						<File Id="603731468" Language="SFX">
-							<ShortName>PaladinCastHeal.wav</ShortName>
-							<Path>SFX\PaladinCastHeal_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+			<Media>
+				<File Id="53309015" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinSpearThrow.wav</ShortName>
+					<CachePath>SFX/PaladinSpearThrow_8E324C96.wem</CachePath>
+				</File>
+				<File Id="129829374" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinSwing2.wav</ShortName>
+					<CachePath>SFX/PaladinSwing2_8E324C96.wem</CachePath>
+				</File>
+				<File Id="176360210" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinSwordActive.wav</ShortName>
+					<CachePath>SFX/PaladinSwordActive_8E324C96.wem</CachePath>
+				</File>
+				<File Id="215071040" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinHitBluntSS.wav</ShortName>
+					<CachePath>SFX/PaladinHitBluntSS_8E324C96.wem</CachePath>
+				</File>
+				<File Id="243176335" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinLunge.wav</ShortName>
+					<CachePath>SFX/PaladinLunge_8E324C96.wem</CachePath>
+				</File>
+				<File Id="266065062" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinHitL.wav</ShortName>
+					<CachePath>SFX/PaladinHitL_8E324C96.wem</CachePath>
+				</File>
+				<File Id="381079306" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinDrip.wav</ShortName>
+					<CachePath>SFX/PaladinDrip_8E324C96.wem</CachePath>
+				</File>
+				<File Id="395471021" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinChannelTorpor.wav</ShortName>
+					<CachePath>SFX/PaladinChannelTorpor_56CEF360.wem</CachePath>
+				</File>
+				<File Id="408188179" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinHitBluntM.wav</ShortName>
+					<CachePath>SFX/PaladinHitBluntM_8E324C96.wem</CachePath>
+				</File>
+				<File Id="512605586" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinSnap.wav</ShortName>
+					<CachePath>SFX/PaladinSnap_8E324C96.wem</CachePath>
+				</File>
+				<File Id="538800254" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinDrip2.wav</ShortName>
+					<CachePath>SFX/PaladinDrip2_8E324C96.wem</CachePath>
+				</File>
+				<File Id="543650420" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinCloth2.wav</ShortName>
+					<CachePath>SFX/PaladinCloth2_8E324C96.wem</CachePath>
+				</File>
+				<File Id="584181473" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinMenuSound.wav</ShortName>
+					<CachePath>SFX/PaladinMenuSound_8E324C96.wem</CachePath>
+				</File>
+				<File Id="584835422" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinCloth3.wav</ShortName>
+					<CachePath>SFX/PaladinCloth3_8E324C96.wem</CachePath>
+				</File>
+				<File Id="584904886" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinHitBluntS.wav</ShortName>
+					<CachePath>SFX/PaladinHitBluntS_8E324C96.wem</CachePath>
+				</File>
+				<File Id="591389793" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinLeapSlam.wav</ShortName>
+					<CachePath>SFX/PaladinLeapSlam_8E324C96.wem</CachePath>
+				</File>
+				<File Id="603731468" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinCastHeal.wav</ShortName>
+					<CachePath>SFX/PaladinCastHeal_8E324C96.wem</CachePath>
+				</File>
+				<File Id="607711604" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinSwing.wav</ShortName>
+					<CachePath>SFX/PaladinSwing_8E324C96.wem</CachePath>
+				</File>
+				<File Id="670118908" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinCastTorpor.wav</ShortName>
+					<CachePath>SFX/PaladinCastTorpor_8E324C96.wem</CachePath>
+				</File>
+				<File Id="749548995" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinChannelHeal.wav</ShortName>
+					<CachePath>SFX/PaladinChannelHeal_56CEF360.wem</CachePath>
+				</File>
+				<File Id="813446919" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinHitS.wav</ShortName>
+					<CachePath>SFX/PaladinHitS_8E324C96.wem</CachePath>
+				</File>
+				<File Id="863728932" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinHitM.wav</ShortName>
+					<CachePath>SFX/PaladinHitM_8E324C96.wem</CachePath>
+				</File>
+				<File Id="911301249" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinSwingBlunt.wav</ShortName>
+					<CachePath>SFX/PaladinSwingBlunt_8E324C96.wem</CachePath>
+				</File>
+				<File Id="948465750" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinCastWarcry.wav</ShortName>
+					<CachePath>SFX/PaladinCastWarcry_8E324C96.wem</CachePath>
+				</File>
+				<File Id="951721078" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinCloth1.wav</ShortName>
+					<CachePath>SFX/PaladinCloth1_8E324C96.wem</CachePath>
+				</File>
+				<File Id="954700323" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinExplosion.wav</ShortName>
+					<CachePath>SFX/PaladinExplosion_8E324C96.wem</CachePath>
+				</File>
+				<File Id="1020432476" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinCastHealZone.wav</ShortName>
+					<CachePath>SFX/PaladinCastHealZone_8E324C96.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="2869508097" Name="PaladinCastHeal">
+					<MediaRefs>
+						<MediaRef Id="603731468"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="2634331089" Name="PaladinCastTorpor" ObjectPath="\Events\Default Work Unit\paladin\PaladinCastTorpor">
-					<IncludedMemoryFiles>
-						<File Id="670118908" Language="SFX">
-							<ShortName>PaladinCastTorpor.wav</ShortName>
-							<Path>SFX\PaladinCastTorpor_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="2634331089" Name="PaladinCastTorpor">
+					<MediaRefs>
+						<MediaRef Id="670118908"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="4085864877" Name="PaladinChannelHeal" ObjectPath="\Events\Default Work Unit\paladin\PaladinChannelHeal">
-					<IncludedMemoryFiles>
-						<File Id="749548995" Language="SFX">
-							<ShortName>PaladinChannelHeal.wav</ShortName>
-							<Path>SFX\PaladinChannelHeal_9EDFC787.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="4085864877" Name="PaladinChannelHeal">
+					<MediaRefs>
+						<MediaRef Id="749548995"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="2258948407" Name="PaladinChannelMax" ObjectPath="\Events\Default Work Unit\paladin\PaladinChannelMax">
-					<IncludedMemoryFiles>
-						<File Id="948465750" Language="SFX">
-							<ShortName>PaladinCastWarcry.wav</ShortName>
-							<Path>SFX\PaladinCastWarcry_3F75BDB9.wem</Path>
-						</File>
-						<File Id="1020432476" Language="SFX">
-							<ShortName>PaladinCastHealZone.wav</ShortName>
-							<Path>SFX\PaladinCastHealZone_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="2258948407" Name="PaladinChannelMax">
+					<MediaRefs>
+						<MediaRef Id="948465750"/>
+						<MediaRef Id="1020432476"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="606421317" Name="PaladinChannelTorpor" ObjectPath="\Events\Default Work Unit\paladin\PaladinChannelTorpor">
-					<IncludedMemoryFiles>
-						<File Id="395471021" Language="SFX">
-							<ShortName>PaladinChannelTorpor.wav</ShortName>
-							<Path>SFX\PaladinChannelTorpor_9EDFC787.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="606421317" Name="PaladinChannelTorpor">
+					<MediaRefs>
+						<MediaRef Id="395471021"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="2424620207" Name="PaladinCloth1" ObjectPath="\Events\Default Work Unit\paladin\PaladinCloth1">
-					<IncludedMemoryFiles>
-						<File Id="951721078" Language="SFX">
-							<ShortName>PaladinCloth1.wav</ShortName>
-							<Path>SFX\PaladinCloth1_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="2424620207" Name="PaladinCloth1">
+					<MediaRefs>
+						<MediaRef Id="951721078"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="2424620204" Name="PaladinCloth2" ObjectPath="\Events\Default Work Unit\paladin\PaladinCloth2">
-					<IncludedMemoryFiles>
-						<File Id="543650420" Language="SFX">
-							<ShortName>PaladinCloth2.wav</ShortName>
-							<Path>SFX\PaladinCloth2_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="2424620204" Name="PaladinCloth2">
+					<MediaRefs>
+						<MediaRef Id="543650420"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="2424620205" Name="PaladinCloth3" ObjectPath="\Events\Default Work Unit\paladin\PaladinCloth3">
-					<IncludedMemoryFiles>
-						<File Id="584835422" Language="SFX">
-							<ShortName>PaladinCloth3.wav</ShortName>
-							<Path>SFX\PaladinCloth3_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="2424620205" Name="PaladinCloth3">
+					<MediaRefs>
+						<MediaRef Id="584835422"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="1004601327" Name="PaladinDrip" ObjectPath="\Events\Default Work Unit\paladin\PaladinDrip">
-					<IncludedMemoryFiles>
-						<File Id="381079306" Language="SFX">
-							<ShortName>PaladinDrip.wav</ShortName>
-							<Path>SFX\PaladinDrip_3F75BDB9.wem</Path>
-						</File>
-						<File Id="538800254" Language="SFX">
-							<ShortName>PaladinDrip2.wav</ShortName>
-							<Path>SFX\PaladinDrip2_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="1004601327" Name="PaladinDrip">
+					<MediaRefs>
+						<MediaRef Id="381079306"/>
+						<MediaRef Id="538800254"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="559541155" Name="PaladinExplosion" ObjectPath="\Events\Default Work Unit\paladin\PaladinExplosion">
-					<IncludedMemoryFiles>
-						<File Id="954700323" Language="SFX">
-							<ShortName>PaladinExplosion.wav</ShortName>
-							<Path>SFX\PaladinExplosion_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="559541155" Name="PaladinExplosion">
+					<MediaRefs>
+						<MediaRef Id="954700323"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="2819528845" Name="PaladinFingerSnap" ObjectPath="\Events\Default Work Unit\paladin\PaladinFingerSnap">
-					<IncludedMemoryFiles>
-						<File Id="512605586" Language="SFX">
-							<ShortName>PaladinSnap.wav</ShortName>
-							<Path>SFX\PaladinSnap_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="2819528845" Name="PaladinFingerSnap">
+					<MediaRefs>
+						<MediaRef Id="512605586"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="3664359810" Name="PaladinHitBluntL" ObjectPath="\Events\Default Work Unit\paladin\PaladinHitBluntL">
-					<IncludedMemoryFiles>
-						<File Id="408188179" Language="SFX">
-							<ShortName>PaladinHitBluntM.wav</ShortName>
-							<Path>SFX\PaladinHitBluntM_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="3664359810" Name="PaladinHitBluntL">
+					<MediaRefs>
+						<MediaRef Id="408188179"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="3664359811" Name="PaladinHitBluntM" ObjectPath="\Events\Default Work Unit\paladin\PaladinHitBluntM">
-					<IncludedMemoryFiles>
-						<File Id="215071040" Language="SFX">
-							<ShortName>PaladinHitBluntSS.wav</ShortName>
-							<Path>SFX\PaladinHitBluntSS_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="3664359811" Name="PaladinHitBluntM">
+					<MediaRefs>
+						<MediaRef Id="215071040"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="3664359837" Name="PaladinHitBluntS" ObjectPath="\Events\Default Work Unit\paladin\PaladinHitBluntS">
-					<IncludedMemoryFiles>
-						<File Id="584904886" Language="SFX">
-							<ShortName>PaladinHitBluntS.wav</ShortName>
-							<Path>SFX\PaladinHitBluntS_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="3664359837" Name="PaladinHitBluntS">
+					<MediaRefs>
+						<MediaRef Id="584904886"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="1818979851" Name="PaladinHitL" ObjectPath="\Events\Default Work Unit\paladin\PaladinHitL">
-					<IncludedMemoryFiles>
-						<File Id="266065062" Language="SFX">
-							<ShortName>PaladinHitL.wav</ShortName>
-							<Path>SFX\PaladinHitL_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="1818979851" Name="PaladinHitL">
+					<MediaRefs>
+						<MediaRef Id="266065062"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="1818979850" Name="PaladinHitM" ObjectPath="\Events\Default Work Unit\paladin\PaladinHitM">
-					<IncludedMemoryFiles>
-						<File Id="863728932" Language="SFX">
-							<ShortName>PaladinHitM.wav</ShortName>
-							<Path>SFX\PaladinHitM_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="1818979850" Name="PaladinHitM">
+					<MediaRefs>
+						<MediaRef Id="863728932"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="1818979860" Name="PaladinHitS" ObjectPath="\Events\Default Work Unit\paladin\PaladinHitS">
-					<IncludedMemoryFiles>
-						<File Id="813446919" Language="SFX">
-							<ShortName>PaladinHitS.wav</ShortName>
-							<Path>SFX\PaladinHitS_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="1818979860" Name="PaladinHitS">
+					<MediaRefs>
+						<MediaRef Id="813446919"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="1770827703" Name="PaladinLeapSlam" ObjectPath="\Events\Default Work Unit\paladin\PaladinLeapSlam">
-					<IncludedMemoryFiles>
-						<File Id="591389793" Language="SFX">
-							<ShortName>PaladinLeapSlam.wav</ShortName>
-							<Path>SFX\PaladinLeapSlam_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="1770827703" Name="PaladinLeapSlam">
+					<MediaRefs>
+						<MediaRef Id="591389793"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="61478347" Name="PaladinLunge" ObjectPath="\Events\Default Work Unit\paladin\PaladinLunge">
-					<IncludedMemoryFiles>
-						<File Id="243176335" Language="SFX">
-							<ShortName>PaladinLunge.wav</ShortName>
-							<Path>SFX\PaladinLunge_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="61478347" Name="PaladinLunge">
+					<MediaRefs>
+						<MediaRef Id="243176335"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="2259531664" Name="PaladinMenuSound" ObjectPath="\Events\Default Work Unit\paladin\PaladinMenuSound">
-					<IncludedMemoryFiles>
-						<File Id="584181473" Language="SFX">
-							<ShortName>PaladinMenuSound.wav</ShortName>
-							<Path>SFX\PaladinMenuSound_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="2259531664" Name="PaladinMenuSound">
+					<MediaRefs>
+						<MediaRef Id="584181473"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="266303471" Name="PaladinSpearThrow" ObjectPath="\Events\Default Work Unit\paladin\PaladinSpearThrow">
-					<IncludedMemoryFiles>
-						<File Id="53309015" Language="SFX">
-							<ShortName>PaladinSpearThrow.wav</ShortName>
-							<Path>SFX\PaladinSpearThrow_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="266303471" Name="PaladinSpearThrow">
+					<MediaRefs>
+						<MediaRef Id="53309015"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="2117360560" Name="PaladinSwing" ObjectPath="\Events\Default Work Unit\paladin\PaladinSwing">
-					<IncludedMemoryFiles>
-						<File Id="129829374" Language="SFX">
-							<ShortName>PaladinSwing2.wav</ShortName>
-							<Path>SFX\PaladinSwing2_3F75BDB9.wem</Path>
-						</File>
-						<File Id="607711604" Language="SFX">
-							<ShortName>PaladinSwing.wav</ShortName>
-							<Path>SFX\PaladinSwing_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="2117360560" Name="PaladinSwing">
+					<MediaRefs>
+						<MediaRef Id="129829374"/>
+						<MediaRef Id="607711604"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="3361364425" Name="PaladinSwingBlunt" ObjectPath="\Events\Default Work Unit\paladin\PaladinSwingBlunt">
-					<IncludedMemoryFiles>
-						<File Id="911301249" Language="SFX">
-							<ShortName>PaladinSwingBlunt.wav</ShortName>
-							<Path>SFX\PaladinSwingBlunt_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="3361364425" Name="PaladinSwingBlunt">
+					<MediaRefs>
+						<MediaRef Id="911301249"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="3953845295" Name="PaladinSwordActive" ObjectPath="\Events\Default Work Unit\paladin\PaladinSwordActive">
-					<IncludedMemoryFiles>
-						<File Id="176360210" Language="SFX">
-							<ShortName>PaladinSwordActive.wav</ShortName>
-							<Path>SFX\PaladinSwordActive_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="3953845295" Name="PaladinSwordActive">
+					<MediaRefs>
+						<MediaRef Id="176360210"/>
+					</MediaRefs>
 				</Event>
-			</IncludedEvents>
+			</Events>
 			<GameParameters>
-				<GameParameter Id="3673881719" Name="Volume_SFX" ObjectPath="\Game Parameters\Default Work Unit\Volume_SFX"/>
+				<GameParameter Id="3673881719" Name="Volume_SFX"/>
 			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
+	<FileHash>{4C9566B3-CA2A-EE38-8CD0-E829B7315E3B}</FileHash>
 </SoundBanksInfo>

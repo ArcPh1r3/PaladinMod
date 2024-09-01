@@ -15,7 +15,7 @@ namespace PaladinMod.States.Spell
             this.maxSpellRadius = CastCruelSunOld.sunPrefabDiameter * 0.5f;
             this.baseDuration = StaticValues.cruelSunChannelDurationOld;
             this.swordController = base.gameObject.GetComponent<PaladinSwordController>();
-            this.overrideAreaIndicatorMat = Modules.Assets.areaIndicatorMat;
+            this.overrideAreaIndicatorMat = Modules.Asset.areaIndicatorMat;
 
             base.OnEnter();
 

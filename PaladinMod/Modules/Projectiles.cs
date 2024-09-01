@@ -72,24 +72,24 @@ namespace PaladinMod.Modules
             lightningSpear = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/MageLightningBombProjectile"), "LightningSpear", true);
             lightningSpear.AddComponent<Misc.ProjectileOverchargeOnImpact>();
 
-            GameObject spearGhost = Assets.lightningSpear.InstantiateClone("LightningSpearGhost", false);
+            GameObject spearGhost = Asset.lightningSpear.InstantiateClone("LightningSpearGhost", false);
             spearGhost.AddComponent<ProjectileGhostController>();
 
             //vfx
             foreach (ParticleSystemRenderer i in spearGhost.GetComponentsInChildren<ParticleSystemRenderer>()) {
-                if (i) i.trailMaterial = Modules.Assets.matYellowLightningLong;
+                if (i) i.trailMaterial = Modules.Asset.matYellowLightningLong;
             }
             Light light = spearGhost.GetComponentInChildren<Light>();
             light.range = 16f;
             light.intensity = 32f;
-            spearGhost.GetComponentInChildren<TrailRenderer>().material = Modules.Assets.matYellowLightningLong;
+            spearGhost.GetComponentInChildren<TrailRenderer>().material = Modules.Asset.matYellowLightningLong;
 
             lightningSpear.transform.localScale *= 2f;
 
             lightningSpear.GetComponent<ProjectileController>().ghostPrefab = spearGhost;
             //lightningSpear.GetComponent<ProjectileOverlapAttack>().impactEffect = Assets.lightningImpactFX;
             lightningSpear.GetComponent<ProjectileDamage>().damageType = DamageType.Shock5s;
-            lightningSpear.GetComponent<ProjectileImpactExplosion>().impactEffect = Assets.altLightningImpactFX;
+            lightningSpear.GetComponent<ProjectileImpactExplosion>().impactEffect = Asset.altLightningImpactFX;
             lightningSpear.GetComponent<Rigidbody>().useGravity = false;
 
             PaladinPlugin.Destroy(lightningSpear.GetComponent<AntiGravityForce>());
@@ -105,7 +105,7 @@ namespace PaladinMod.Modules
             //swordBeam.GetComponent<ProjectileController>().ghostPrefab = Assets.swordBeamGhost; 
 
             //GameObject MercEvisProjectileGhost = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab;
-            swordBeamProjectile.GetComponent<ProjectileController>().ghostPrefab = Assets.swordBeamGhost;//MercEvisProjectileGhost;
+            swordBeamProjectile.GetComponent<ProjectileController>().ghostPrefab = Asset.swordBeamGhost;//MercEvisProjectileGhost;
             swordBeamProjectile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
 
             PaladinPlugin.Destroy(swordBeamProjectile.transform.Find("SweetSpotBehavior").gameObject);
@@ -132,7 +132,7 @@ namespace PaladinMod.Modules
             healController.barrierAmount = StaticValues.healBarrier;
 
             PaladinMod.PaladinPlugin.Destroy(heal.transform.GetChild(0).gameObject);
-            GameObject healFX = Assets.healEffectPrefab.InstantiateClone("HealEffect", false);
+            GameObject healFX = Asset.healEffectPrefab.InstantiateClone("HealEffect", false);
             healFX.transform.parent = heal.transform;
             healFX.transform.localPosition = Vector3.zero;
 
@@ -163,7 +163,7 @@ namespace PaladinMod.Modules
             healZoneController.freezeProjectiles = false;
 
             PaladinMod.PaladinPlugin.Destroy(healZone.transform.GetChild(0).gameObject);
-            GameObject healZoneFX = Assets.healZoneEffectPrefab.InstantiateClone("HealZoneEffect", false);
+            GameObject healZoneFX = Asset.healZoneEffectPrefab.InstantiateClone("HealZoneEffect", false);
             healZoneFX.transform.parent = healZone.transform;
             healZoneFX.transform.localPosition = Vector3.zero;
 
@@ -195,7 +195,7 @@ namespace PaladinMod.Modules
             scepterHealZoneController.cleanseDebuffs = true;
 
             PaladinMod.PaladinPlugin.Destroy(scepterHealZone.transform.GetChild(0).gameObject);
-            GameObject scepterHealZoneFX = Assets.healZoneEffectPrefab.InstantiateClone("ScepterHealZoneEffect", false);
+            GameObject scepterHealZoneFX = Asset.healZoneEffectPrefab.InstantiateClone("ScepterHealZoneEffect", false);
             scepterHealZoneFX.transform.parent = scepterHealZone.transform;
             scepterHealZoneFX.transform.localPosition = Vector3.zero;
 
@@ -227,7 +227,7 @@ namespace PaladinMod.Modules
             torporController.grounding = true;
 
             PaladinMod.PaladinPlugin.Destroy(torpor.transform.GetChild(0).gameObject);
-            GameObject torporFX = Assets.torporEffectPrefab.InstantiateClone("TorporEffect", false);
+            GameObject torporFX = Asset.torporEffectPrefab.InstantiateClone("TorporEffect", false);
             torporFX.transform.parent = torpor.transform;
             torporFX.transform.localPosition = Vector3.zero;
 
@@ -259,7 +259,7 @@ namespace PaladinMod.Modules
             scepterTorporController.grounding = true;
 
             PaladinMod.PaladinPlugin.Destroy(scepterTorpor.transform.GetChild(0).gameObject);
-            GameObject scepterTorporFX = Assets.torporEffectPrefab.InstantiateClone("ScepterTorporEffect", false);
+            GameObject scepterTorporFX = Asset.torporEffectPrefab.InstantiateClone("ScepterTorporEffect", false);
             scepterTorporFX.transform.parent = scepterTorpor.transform;
             scepterTorporFX.transform.localPosition = Vector3.zero;
 
@@ -288,7 +288,7 @@ namespace PaladinMod.Modules
             warcryController.animateRadius = false;
 
             PaladinMod.PaladinPlugin.Destroy(warcry.transform.GetChild(0).gameObject);
-            GameObject warcryFX = Assets.warcryEffectPrefab.InstantiateClone("WarcryEffect", false);
+            GameObject warcryFX = Asset.warcryEffectPrefab.InstantiateClone("WarcryEffect", false);
             warcryFX.transform.parent = warcry.transform;
             warcryFX.transform.localPosition = Vector3.zero;
 
@@ -317,7 +317,7 @@ namespace PaladinMod.Modules
             scepterWarcryController.animateRadius = false;
 
             PaladinMod.PaladinPlugin.Destroy(scepterWarcry.transform.GetChild(0).gameObject);
-            GameObject scepterWarcryFX = Assets.warcryEffectPrefab.InstantiateClone("ScepterWarcryEffect", false);
+            GameObject scepterWarcryFX = Asset.warcryEffectPrefab.InstantiateClone("ScepterWarcryEffect", false);
             scepterWarcryFX.transform.parent = scepterWarcry.transform;
             scepterWarcryFX.transform.localPosition = Vector3.zero;
 
@@ -326,7 +326,7 @@ namespace PaladinMod.Modules
 
             #region PrideFlare
             //Ghost
-            scepterCruelSunGhost = PrefabAPI.InstantiateClone(Assets.paladinScepterSunPrefab, "PaladinScepterSunProjectileGhost");
+            scepterCruelSunGhost = PrefabAPI.InstantiateClone(Asset.paladinScepterSunPrefab, "PaladinScepterSunProjectileGhost");
 
             Object.DestroyImmediate(scepterCruelSunGhost.GetComponent<EntityStateMachine>());
             Object.DestroyImmediate(scepterCruelSunGhost.GetComponent<NetworkStateMachine>());
@@ -361,7 +361,7 @@ namespace PaladinMod.Modules
             scsPE.falloffModel = BlastAttack.FalloffModel.Linear;
             scsPE.canRejectForce = false;
             scsPE.destroyOnEnemy = false;
-            scsPE.impactEffect = Assets.paladinSunSpawnPrefab;
+            scsPE.impactEffect = Asset.paladinSunSpawnPrefab;
 
             scepterCruelSun.AddComponent<AlignToNormal>();
             scepterCruelSun.GetComponent<AntiGravityForce>().antiGravityCoefficient = 0.95f;
@@ -369,7 +369,7 @@ namespace PaladinMod.Modules
             //maybe: delete meshfilter?
 
             //Transfering over some data we need to keep the burn AoE going.
-            PaladinSunController baseScript = Assets.paladinSunPrefab.GetComponent<PaladinSunController>();
+            PaladinSunController baseScript = Asset.paladinSunPrefab.GetComponent<PaladinSunController>();
             PaladinSunController newScript = scepterCruelSun.AddComponent<PaladinSunController>();
             newScript.buffApplyEffect = baseScript.buffApplyEffect;
             newScript.buffDef = baseScript.buffDef;

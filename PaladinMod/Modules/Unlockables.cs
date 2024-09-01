@@ -31,47 +31,47 @@ namespace PaladinMod.Modules
             paladinUnlockDef = CreateAndAddUnlockbleDef(
                 PaladinUnlockAchievement.unlockableIdentifier,
                 Modules.Tokens.GetAchievementNameToken(PaladinUnlockAchievement.identifier),
-                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPaladinAchievement"));
+                Modules.Asset.mainAssetBundle.LoadAsset<Sprite>("texPaladinAchievement"));
 
             paladinLunarShardSkillDef = CreateAndAddUnlockbleDef(
                 LunarShardAchievement.unlockableIdentifier,
                 Modules.Tokens.GetAchievementNameToken(LunarShardAchievement.identifier),
-                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texLunarShardAchievement"));
+                Modules.Asset.mainAssetBundle.LoadAsset<Sprite>("texLunarShardAchievement"));
 
             paladinHealSkillDefDef = CreateAndAddUnlockbleDef(
                 HealAchievement.unlockableIdentifier,
                 Modules.Tokens.GetAchievementNameToken(HealAchievement.identifier),
-                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texHealAchievement"));
+                Modules.Asset.mainAssetBundle.LoadAsset<Sprite>("texHealAchievement"));
 
             paladinTorporSkillDefDef = CreateAndAddUnlockbleDef(
                 TorporAchievement.unlockableIdentifier,
                 Modules.Tokens.GetAchievementNameToken(TorporAchievement.identifier),
-                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texTorporAchievement"));
+                Modules.Asset.mainAssetBundle.LoadAsset<Sprite>("texTorporAchievement"));
 
             paladinCruelSunSkillDefDef = CreateAndAddUnlockbleDef(
                 CruelSunAchievement.unlockableIdentifier,
                 Modules.Tokens.GetAchievementNameToken(CruelSunAchievement.identifier),
-                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCruelSunAchievement"));
+                Modules.Asset.mainAssetBundle.LoadAsset<Sprite>("texCruelSunAchievement"));
 
             paladinMasterySkinDef = CreateAndAddUnlockbleDef(
                 MasteryAchievement.unlockableIdentifier,
                 Modules.Tokens.GetAchievementNameToken(MasteryAchievement.identifier),
-                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"));
+                Modules.Asset.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"));
 
             paladinGrandMasterySkinDef = CreateAndAddUnlockbleDef(
                 GrandMasteryAchievement.unlockableIdentifier,
                 Modules.Tokens.GetAchievementNameToken(GrandMasteryAchievement.identifier),
-                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texGrandMasteryAchievement"));
+                Modules.Asset.mainAssetBundle.LoadAsset<Sprite>("texGrandMasteryAchievement"));
 
             paladinPoisonSkinDef = CreateAndAddUnlockbleDef(
                 PoisonAchievement.unlockableIdentifier,
                 Modules.Tokens.GetAchievementNameToken(PoisonAchievement.identifier),
-                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPoisonAchievement"));
+                Modules.Asset.mainAssetBundle.LoadAsset<Sprite>("texPoisonAchievement"));
 
             paladinClaySkinDef = CreateAndAddUnlockbleDef(
                 ClayAchievement.unlockableIdentifier,
                 Modules.Tokens.GetAchievementNameToken(ClayAchievement.identifier),
-                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texClayAchievement"));
+                Modules.Asset.mainAssetBundle.LoadAsset<Sprite>("texClayAchievement"));
         }
 
         public static void AddUnlockableDef(UnlockableDef unlockableDef)

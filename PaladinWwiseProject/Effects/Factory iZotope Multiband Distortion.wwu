@@ -1,136 +1,536 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{E0243ED6-C4CC-4FD8-B8E8-2E98F6DCF3A5}" SchemaVersion="97">
+<WwiseDocument Type="WorkUnit" ID="{E0243ED6-C4CC-4FD8-B8E8-2E98F6DCF3A5}" SchemaVersion="119">
 	<Effects>
 		<WorkUnit Name="Factory iZotope Multiband Distortion" ID="{E0243ED6-C4CC-4FD8-B8E8-2E98F6DCF3A5}" PersistMode="Standalone">
 			<ChildrenList>
 				<Effect Name="High_End_Sizzle_01" ID="{1FB3EE85-76D8-42C7-953E-9BEFC7CC47A0}" PluginName="iZotope Trash Multiband Distortion" CompanyID="259" PluginID="9" PluginType="3">
 					<PropertyList>
-						<Property Name="Distortion2Band2Mix" Type="Real32" Value="30"/>
-						<Property Name="Distortion2Band2OutputGain" Type="Real32" Value="-2"/>
-						<Property Name="Distortion2Band2Overdrive" Type="Real32" Value="4"/>
-						<Property Name="Distortion2Band2Type" Type="int32" Value="7"/>
+						<Property Name="Distortion2Band2Mix" Type="Real32">
+							<ValueList>
+								<Value>30</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2OutputGain" Type="Real32">
+							<ValueList>
+								<Value>-2</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2Overdrive" Type="Real32">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2Type" Type="int32">
+							<ValueList>
+								<Value>7</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 				</Effect>
 				<Effect Name="Big_Bottom_01" ID="{62BEFF08-8116-444E-9F4A-12C717B77005}" PluginName="iZotope Trash Multiband Distortion" CompanyID="259" PluginID="9" PluginType="3">
 					<PropertyList>
-						<Property Name="Distortion1Band1Trash" Type="Real32" Value="0.8"/>
-						<Property Name="Distortion1Band1Type" Type="int32" Value="3"/>
-						<Property Name="Distortion2Band1Mix" Type="Real32" Value="80"/>
-						<Property Name="Distortion2Band1OutputGain" Type="Real32" Value="-3"/>
-						<Property Name="Distortion2Band1Overdrive" Type="Real32" Value="6"/>
-						<Property Name="Distortion2Band1Trash" Type="Real32" Value="1"/>
-						<Property Name="Distortion2Band1Type" Type="int32" Value="4"/>
-						<Property Name="MultibandCrossover1" Type="Real32" Value="100"/>
+						<Property Name="Distortion1Band1Trash" Type="Real32">
+							<ValueList>
+								<Value>0.8</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band1Type" Type="int32">
+							<ValueList>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band1Mix" Type="Real32">
+							<ValueList>
+								<Value>80</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band1OutputGain" Type="Real32">
+							<ValueList>
+								<Value>-3</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band1Overdrive" Type="Real32">
+							<ValueList>
+								<Value>6</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band1Trash" Type="Real32">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band1Type" Type="int32">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MultibandCrossover1" Type="Real32">
+							<ValueList>
+								<Value>100</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 				</Effect>
 				<Effect Name="Talkie_Squelch_01" ID="{6C6AD722-F427-4B23-8F2B-FCDBEAF8AAAA}" PluginName="iZotope Trash Multiband Distortion" CompanyID="259" PluginID="9" PluginType="3">
 					<PropertyList>
-						<Property Name="Distortion1Band1InputGain" Type="Real32" Value="-30"/>
-						<Property Name="Distortion1Band1OutputGain" Type="Real32" Value="-30"/>
-						<Property Name="Distortion1Band1Overdrive" Type="Real32" Value="0"/>
-						<Property Name="Distortion1Band1Type" Type="int32" Value="1"/>
-						<Property Name="Distortion1Band2OutputGain" Type="Real32" Value="-1"/>
-						<Property Name="Distortion1Band2Overdrive" Type="Real32" Value="4"/>
-						<Property Name="Distortion1Band2Trash" Type="Real32" Value="0.9"/>
-						<Property Name="Distortion1Band2Type" Type="int32" Value="28"/>
-						<Property Name="Distortion1Band3OutputGain" Type="Real32" Value="-12"/>
-						<Property Name="Distortion1Band3Overdrive" Type="Real32" Value="4"/>
-						<Property Name="Distortion1Band3Trash" Type="Real32" Value="0.9"/>
-						<Property Name="Distortion1Band3Type" Type="int32" Value="34"/>
-						<Property Name="Distortion2Band1OutputGain" Type="Real32" Value="-4"/>
-						<Property Name="Distortion2Band2Mix" Type="Real32" Value="75"/>
-						<Property Name="Distortion2Band2OutputGain" Type="Real32" Value="1"/>
-						<Property Name="Distortion2Band2Overdrive" Type="Real32" Value="6"/>
-						<Property Name="Distortion2Band2Trash" Type="Real32" Value="0.4"/>
-						<Property Name="Distortion2Band2Type" Type="int32" Value="18"/>
-						<Property Name="Distortion2Band3OutputGain" Type="Real32" Value="-6"/>
-						<Property Name="Distortion2Band3Overdrive" Type="Real32" Value="4.5"/>
-						<Property Name="Distortion2Band3Trash" Type="Real32" Value="0.8"/>
-						<Property Name="Distortion2Band3Type" Type="int32" Value="1"/>
-						<Property Name="MultibandCrossover1" Type="Real32" Value="7000"/>
-						<Property Name="MultibandCrossover2" Type="Real32" Value="3000"/>
+						<Property Name="Distortion1Band1InputGain" Type="Real32">
+							<ValueList>
+								<Value>-30</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band1OutputGain" Type="Real32">
+							<ValueList>
+								<Value>-30</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band1Overdrive" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band1Type" Type="int32">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band2OutputGain" Type="Real32">
+							<ValueList>
+								<Value>-1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band2Overdrive" Type="Real32">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band2Trash" Type="Real32">
+							<ValueList>
+								<Value>0.9</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band2Type" Type="int32">
+							<ValueList>
+								<Value>28</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band3OutputGain" Type="Real32">
+							<ValueList>
+								<Value>-12</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band3Overdrive" Type="Real32">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band3Trash" Type="Real32">
+							<ValueList>
+								<Value>0.9</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band3Type" Type="int32">
+							<ValueList>
+								<Value>34</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band1OutputGain" Type="Real32">
+							<ValueList>
+								<Value>-4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2Mix" Type="Real32">
+							<ValueList>
+								<Value>75</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2OutputGain" Type="Real32">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2Overdrive" Type="Real32">
+							<ValueList>
+								<Value>6</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2Trash" Type="Real32">
+							<ValueList>
+								<Value>0.4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2Type" Type="int32">
+							<ValueList>
+								<Value>18</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band3OutputGain" Type="Real32">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band3Overdrive" Type="Real32">
+							<ValueList>
+								<Value>4.5</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band3Trash" Type="Real32">
+							<ValueList>
+								<Value>0.8</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band3Type" Type="int32">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MultibandCrossover1" Type="Real32">
+							<ValueList>
+								<Value>7000</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MultibandCrossover2" Type="Real32">
+							<ValueList>
+								<Value>3000</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 				</Effect>
 				<Effect Name="Exploder_01" ID="{251F8594-2BF0-43B3-A49B-C04EAFF6C82F}" PluginName="iZotope Trash Multiband Distortion" CompanyID="259" PluginID="9" PluginType="3">
 					<PropertyList>
-						<Property Name="Distortion1Band1Type" Type="int32" Value="27"/>
-						<Property Name="Distortion1Band2Mix" Type="Real32" Value="56"/>
-						<Property Name="Distortion1Band2Type" Type="int32" Value="19"/>
-						<Property Name="Distortion1Band3Mix" Type="Real32" Value="81"/>
-						<Property Name="Distortion1Band3Trash" Type="Real32" Value="0.3"/>
-						<Property Name="Distortion1Band3Type" Type="int32" Value="20"/>
-						<Property Name="Distortion2Band1Mix" Type="Real32" Value="45"/>
-						<Property Name="Distortion2Band1OutputGain" Type="Real32" Value="-4"/>
-						<Property Name="Distortion2Band1Type" Type="int32" Value="4"/>
-						<Property Name="Distortion2Band2OutputGain" Type="Real32" Value="-5"/>
-						<Property Name="Distortion2Band2Trash" Type="Real32" Value="0.9"/>
-						<Property Name="Distortion2Band2Type" Type="int32" Value="4"/>
-						<Property Name="Distortion2Band3Mix" Type="Real32" Value="44"/>
-						<Property Name="Distortion2Band3OutputGain" Type="Real32" Value="-4"/>
-						<Property Name="Distortion2Band3Type" Type="int32" Value="4"/>
-						<Property Name="MultibandCrossover1" Type="Real32" Value="125"/>
-						<Property Name="MultibandCrossover2" Type="Real32" Value="6000"/>
+						<Property Name="Distortion1Band1Type" Type="int32">
+							<ValueList>
+								<Value>27</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band2Mix" Type="Real32">
+							<ValueList>
+								<Value>56</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band2Type" Type="int32">
+							<ValueList>
+								<Value>19</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band3Mix" Type="Real32">
+							<ValueList>
+								<Value>81</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band3Trash" Type="Real32">
+							<ValueList>
+								<Value>0.3</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band3Type" Type="int32">
+							<ValueList>
+								<Value>20</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band1Mix" Type="Real32">
+							<ValueList>
+								<Value>45</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band1OutputGain" Type="Real32">
+							<ValueList>
+								<Value>-4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band1Type" Type="int32">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2OutputGain" Type="Real32">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2Trash" Type="Real32">
+							<ValueList>
+								<Value>0.9</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2Type" Type="int32">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band3Mix" Type="Real32">
+							<ValueList>
+								<Value>44</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band3OutputGain" Type="Real32">
+							<ValueList>
+								<Value>-4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band3Type" Type="int32">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MultibandCrossover1" Type="Real32">
+							<ValueList>
+								<Value>125</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MultibandCrossover2" Type="Real32">
+							<ValueList>
+								<Value>6000</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 				</Effect>
 				<Effect Name="Boost_Mobiles_01" ID="{01F3E831-F1EB-4B71-A937-C9EB2F5A4D0C}" PluginName="iZotope Trash Multiband Distortion" CompanyID="259" PluginID="9" PluginType="3">
 					<Comment>Tip: Great for boosting engine loops. Adjust crossovers to find favored frequncies in engine to enhance.
 </Comment>
 					<PropertyList>
-						<Property Name="Distortion1Band1OutputGain" Type="Real32" Value="-6"/>
-						<Property Name="Distortion1Band1Type" Type="int32" Value="10"/>
-						<Property Name="Distortion1Band2Overdrive" Type="Real32" Value="4"/>
-						<Property Name="Distortion1Band2Type" Type="int32" Value="16"/>
-						<Property Name="Distortion2Band2Mix" Type="Real32" Value="8"/>
-						<Property Name="Distortion2Band2OutputGain" Type="Real32" Value="-4"/>
-						<Property Name="Distortion2Band2Overdrive" Type="Real32" Value="3.5"/>
-						<Property Name="Distortion2Band2Type" Type="int32" Value="4"/>
-						<Property Name="MultibandCrossover1" Type="Real32" Value="250"/>
-						<Property Name="MultibandCrossover2" Type="Real32" Value="5400"/>
+						<Property Name="Distortion1Band1OutputGain" Type="Real32">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band1Type" Type="int32">
+							<ValueList>
+								<Value>10</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band2Overdrive" Type="Real32">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band2Type" Type="int32">
+							<ValueList>
+								<Value>16</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2Mix" Type="Real32">
+							<ValueList>
+								<Value>8</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2OutputGain" Type="Real32">
+							<ValueList>
+								<Value>-4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2Overdrive" Type="Real32">
+							<ValueList>
+								<Value>3.5</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2Type" Type="int32">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MultibandCrossover1" Type="Real32">
+							<ValueList>
+								<Value>250</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MultibandCrossover2" Type="Real32">
+							<ValueList>
+								<Value>5400</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 				</Effect>
 				<Effect Name="Big_Pistol_01" ID="{52CB45E8-B60B-4C32-A2AE-694A35C14D3D}" PluginName="iZotope Trash Multiband Distortion" CompanyID="259" PluginID="9" PluginType="3">
 					<PropertyList>
-						<Property Name="Distortion1Band1Mix" Type="Real32" Value="54"/>
-						<Property Name="Distortion1Band1Type" Type="int32" Value="29"/>
-						<Property Name="Distortion1Band2Mix" Type="Real32" Value="76"/>
-						<Property Name="Distortion1Band2Overdrive" Type="Real32" Value="10"/>
-						<Property Name="Distortion1Band2Type" Type="int32" Value="19"/>
-						<Property Name="Distortion1Band3Overdrive" Type="Real32" Value="4.5"/>
-						<Property Name="Distortion1Band3Trash" Type="Real32" Value="1"/>
-						<Property Name="Distortion1Band3Type" Type="int32" Value="4"/>
-						<Property Name="Distortion2Band1Mix" Type="Real32" Value="50"/>
-						<Property Name="Distortion2Band1OutputGain" Type="Real32" Value="-9"/>
-						<Property Name="Distortion2Band1Type" Type="int32" Value="4"/>
-						<Property Name="Distortion2Band2Type" Type="int32" Value="10"/>
-						<Property Name="MultibandCrossover1" Type="Real32" Value="1000"/>
-						<Property Name="MultibandCrossover2" Type="Real32" Value="5600"/>
+						<Property Name="Distortion1Band1Mix" Type="Real32">
+							<ValueList>
+								<Value>54</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band1Type" Type="int32">
+							<ValueList>
+								<Value>29</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band2Mix" Type="Real32">
+							<ValueList>
+								<Value>76</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band2Overdrive" Type="Real32">
+							<ValueList>
+								<Value>10</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band2Type" Type="int32">
+							<ValueList>
+								<Value>19</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band3Overdrive" Type="Real32">
+							<ValueList>
+								<Value>4.5</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band3Trash" Type="Real32">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band3Type" Type="int32">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band1Mix" Type="Real32">
+							<ValueList>
+								<Value>50</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band1OutputGain" Type="Real32">
+							<ValueList>
+								<Value>-9</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band1Type" Type="int32">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2Type" Type="int32">
+							<ValueList>
+								<Value>10</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MultibandCrossover1" Type="Real32">
+							<ValueList>
+								<Value>1000</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MultibandCrossover2" Type="Real32">
+							<ValueList>
+								<Value>5600</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 				</Effect>
 				<Effect Name="Screech_01" ID="{8C709F6C-D7A9-4B70-9AE8-9A1C9132B2DF}" PluginName="iZotope Trash Multiband Distortion" CompanyID="259" PluginID="9" PluginType="3">
 					<PropertyList>
-						<Property Name="Distortion1Band1Mix" Type="Real32" Value="84"/>
-						<Property Name="Distortion1Band1Overdrive" Type="Real32" Value="10"/>
-						<Property Name="Distortion1Band1Type" Type="int32" Value="20"/>
-						<Property Name="Distortion1Band2Mix" Type="Real32" Value="74"/>
-						<Property Name="Distortion1Band2Overdrive" Type="Real32" Value="3"/>
-						<Property Name="Distortion1Band2Type" Type="int32" Value="4"/>
-						<Property Name="Distortion1Band3Mix" Type="Real32" Value="75"/>
-						<Property Name="Distortion1Band3Overdrive" Type="Real32" Value="4"/>
-						<Property Name="Distortion1Band3Trash" Type="Real32" Value="0.1"/>
-						<Property Name="Distortion1Band3Type" Type="int32" Value="13"/>
-						<Property Name="Distortion2Band1OutputGain" Type="Real32" Value="-15"/>
-						<Property Name="Distortion2Band1Overdrive" Type="Real32" Value="7.5"/>
-						<Property Name="Distortion2Band1Trash" Type="Real32" Value="1"/>
-						<Property Name="Distortion2Band1Type" Type="int32" Value="2"/>
-						<Property Name="Distortion2Band2Mix" Type="Real32" Value="55"/>
-						<Property Name="Distortion2Band2OutputGain" Type="Real32" Value="-7"/>
-						<Property Name="Distortion2Band2Overdrive" Type="Real32" Value="0"/>
-						<Property Name="Distortion2Band2Type" Type="int32" Value="30"/>
-						<Property Name="Distortion2Band3Mix" Type="Real32" Value="46"/>
-						<Property Name="Distortion2Band3OutputGain" Type="Real32" Value="-15"/>
-						<Property Name="Distortion2Band3Type" Type="int32" Value="2"/>
-						<Property Name="MultibandCrossover1" Type="Real32" Value="500"/>
-						<Property Name="MultibandCrossover2" Type="Real32" Value="2000"/>
+						<Property Name="Distortion1Band1Mix" Type="Real32">
+							<ValueList>
+								<Value>84</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band1Overdrive" Type="Real32">
+							<ValueList>
+								<Value>10</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band1Type" Type="int32">
+							<ValueList>
+								<Value>20</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band2Mix" Type="Real32">
+							<ValueList>
+								<Value>74</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band2Overdrive" Type="Real32">
+							<ValueList>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band2Type" Type="int32">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band3Mix" Type="Real32">
+							<ValueList>
+								<Value>75</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band3Overdrive" Type="Real32">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band3Trash" Type="Real32">
+							<ValueList>
+								<Value>0.1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion1Band3Type" Type="int32">
+							<ValueList>
+								<Value>13</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band1OutputGain" Type="Real32">
+							<ValueList>
+								<Value>-15</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band1Overdrive" Type="Real32">
+							<ValueList>
+								<Value>7.5</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band1Trash" Type="Real32">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band1Type" Type="int32">
+							<ValueList>
+								<Value>2</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2Mix" Type="Real32">
+							<ValueList>
+								<Value>55</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2OutputGain" Type="Real32">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2Overdrive" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band2Type" Type="int32">
+							<ValueList>
+								<Value>30</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band3Mix" Type="Real32">
+							<ValueList>
+								<Value>46</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band3OutputGain" Type="Real32">
+							<ValueList>
+								<Value>-15</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Distortion2Band3Type" Type="int32">
+							<ValueList>
+								<Value>2</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MultibandCrossover1" Type="Real32">
+							<ValueList>
+								<Value>500</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MultibandCrossover2" Type="Real32">
+							<ValueList>
+								<Value>2000</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 				</Effect>
 			</ChildrenList>

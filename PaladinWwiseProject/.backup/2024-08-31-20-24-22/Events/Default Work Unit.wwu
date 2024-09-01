@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" SchemaVersion="97">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{2D6DB391-A340-4F4E-8CDE-96E16352F886}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="paladin" ID="{F2DB93A1-3CB1-4C2B-A888-F7966ADF0F96}" ShortID="343936100">
+					<ChildrenList>
+						<Event Name="PaladinFingerSnap" ID="{F08593DF-DC8D-4A91-9610-38484BE66662}">
+							<ChildrenList>
+								<Action Name="" ID="{F8C0FD50-C28E-4F72-97F5-15720E29E493}" ShortID="307730580">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinSnap" ID="{3F22F19B-CA9C-4FE4-B241-84455CD7BBA2}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinDrip" ID="{D4A48E3B-C434-4D23-9E0F-A42DC8361340}">
+							<ChildrenList>
+								<Action Name="" ID="{C3F29E53-9045-4E12-AA31-7DCEF544153E}" ShortID="405086463">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="drip" ID="{B346E577-FF7D-4A41-96D2-CDE664C72D10}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinChannelMax" ID="{81442A9F-09A1-4716-B706-A33FD37ED5E4}">
+							<ChildrenList>
+								<Action Name="" ID="{770E78FD-F779-426C-9DFE-57D07ED7E1D8}" ShortID="560416971">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="channelmax" ID="{F4F7C92D-C1CF-47AF-9689-DCF5342C2632}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinSwing" ID="{D42232C9-D60A-4337-8EA3-EA103B07C997}">
+							<ChildrenList>
+								<Action Name="" ID="{2F9193A9-77D2-4F36-9326-8DA22F967368}" ShortID="801029977">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="swing" ID="{6D61E78D-A04A-440C-8D16-7FD5F4242952}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinCastHeal" ID="{132B981E-01A3-4301-A199-3EBF71773D04}">
+							<ChildrenList>
+								<Action Name="" ID="{9FDB1BF6-333C-478C-A573-7725A2D31A96}" ShortID="651945836">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinCastHeal" ID="{07EF589E-AC4F-4500-93DC-6E1C954FA067}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinCastTorpor" ID="{129F97E1-7658-4F8B-BA68-5974D4F005C9}">
+							<ChildrenList>
+								<Action Name="" ID="{404C785C-7311-4204-970D-D5A883CC729D}" ShortID="296108383">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinCastTorpor" ID="{7D7546A8-5DC9-4D13-A057-60B415519007}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinChannelHeal" ID="{1CF1814B-F20E-4167-8957-D6EB8D411BD9}">
+							<ChildrenList>
+								<Action Name="" ID="{E2776AD1-AF3D-4A6C-A47F-22A24BF34393}" ShortID="221808112">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinChannelHeal" ID="{88216659-5472-4759-AF82-06279FA2AAA4}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinChannelTorpor" ID="{027E14F0-4E26-4FDA-9AC3-EC02211D1978}">
+							<ChildrenList>
+								<Action Name="" ID="{974B87E4-8254-4A88-BCB6-3E62F27CBE00}" ShortID="62281106">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinChannelTorpor" ID="{F9264082-C331-42E9-A06C-D15C61C39030}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinCloth1" ID="{527935FE-687D-4513-A8D3-CE0F50BE4D5E}">
+							<ChildrenList>
+								<Action Name="" ID="{AF40DB6B-D72B-48A0-8433-9C3AACC889CA}" ShortID="269828464">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinCloth1" ID="{FCB26D34-59ED-4260-9A42-F97BBD0D8827}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinCloth2" ID="{25AA752B-53E1-4B49-AB03-6C31FDECF138}">
+							<ChildrenList>
+								<Action Name="" ID="{6375001B-7313-4719-B3B2-F8365F397936}" ShortID="323460516">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinCloth2" ID="{8E226E8D-9E67-4618-BDF5-426E31F483EC}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinCloth3" ID="{A406A654-B213-4F04-A1C2-7EE95E81E771}">
+							<ChildrenList>
+								<Action Name="" ID="{C4784308-6CD9-4FB8-9E91-FE32F5D56AC3}" ShortID="887883053">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinCloth3" ID="{4AB7AC07-97F1-4F3D-94C3-9DF542C226D4}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinExplosion" ID="{E197DB3E-A984-4FA3-804C-9812AB116119}">
+							<ChildrenList>
+								<Action Name="" ID="{8093A7DD-0637-4810-B1D4-4A63F4F1A70A}" ShortID="766922067">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinExplosion" ID="{1561E15D-A4DB-47D3-A581-02B2CDC2AF63}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinHitBluntM" ID="{3BD88D1C-BCAF-49AE-9301-DFE93735C5B8}">
+							<ChildrenList>
+								<Action Name="" ID="{D64CB9CC-31C4-4DB5-AE89-5269D4607F38}" ShortID="523244044">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinHitBluntSS" ID="{E671F9F9-802A-4D6F-8D18-D90CC9C7B7E3}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinHitBluntS" ID="{E36C12F3-0328-4A4F-A378-61AE010F6307}">
+							<ChildrenList>
+								<Action Name="" ID="{2B061BD2-2363-4F37-84B8-E4B33F5BFB29}" ShortID="480298913">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinHitBluntS" ID="{A922A03E-549D-438F-BB16-2FA5DEA159FC}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinHitBluntL" ID="{456E730E-1C9C-4FC2-BABE-089440105E01}">
+							<ChildrenList>
+								<Action Name="" ID="{D82066C2-B896-4EE9-A9C1-A43FAD3EAFA7}" ShortID="723873763">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinHitBluntM" ID="{16218509-2384-4EFE-AE47-19600F3D929E}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinHitS" ID="{A9013906-FBB6-4AD2-BF16-EEB3A3FC685A}">
+							<ChildrenList>
+								<Action Name="" ID="{47790EB3-9F1C-40D6-80E8-DEB0A7A9ED03}" ShortID="780626540">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinHitS" ID="{D21A391F-9CA6-404A-8537-C88ABD8F3DD8}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinHitM" ID="{F13DAB75-42E9-4C54-A405-97FAF3E5EFD6}">
+							<ChildrenList>
+								<Action Name="" ID="{43FEDC72-7BD0-4561-A2D2-FA0EB9F836FB}" ShortID="271424635">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinHitM" ID="{A10F8A78-6F57-4490-AE13-376FB2A64EE2}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinHitL" ID="{0E7F5361-9F52-4FD4-8A56-95EBF827A049}">
+							<ChildrenList>
+								<Action Name="" ID="{1ADC6542-57EB-4ECA-86B5-1E42CDE3C766}" ShortID="1023493976">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinHitL" ID="{CF22794E-353E-4B35-B1D9-6156E6A50E87}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinLeapSlam" ID="{DAD9DA69-1F9B-4F19-A3F3-3C29E3A65F80}">
+							<ChildrenList>
+								<Action Name="" ID="{DEAADBCE-2EF6-4D04-AC32-AA9D40421C75}" ShortID="534167926">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinLeapSlam" ID="{E1E33627-E6C4-475B-A0BB-612AADEB9C28}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinLunge" ID="{70A36726-0FA5-4398-BE1B-7C66D332070B}">
+							<ChildrenList>
+								<Action Name="" ID="{00600586-EEC3-485C-BD57-AC19864C8FA7}" ShortID="911739810">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinLunge" ID="{86565206-4344-4CFD-91DB-298DB9FCD41C}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinSwordActive" ID="{FD6479BC-E284-4EDE-957F-0A2C96FF2622}">
+							<ChildrenList>
+								<Action Name="" ID="{843CB51B-6C8C-44F1-B91B-465DC804198F}" ShortID="767576111">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinSwordActive" ID="{45630C7A-462A-496A-A693-16AAF1A67280}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinSpearThrow" ID="{34587170-A622-4A34-9A26-A0A4A59B463E}">
+							<ChildrenList>
+								<Action Name="" ID="{52D427F2-EC26-41D0-AF81-AB9EC8A3AB07}" ShortID="792435821">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinSpearThrow" ID="{1327F7D8-DEDF-4B96-9AE0-18276B6F5469}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinMenuSound" ID="{D9EDA9B3-2E6F-4130-9BEC-386D8900D9B1}">
+							<ChildrenList>
+								<Action Name="" ID="{390D4E50-CE77-4C86-8C52-389E20695462}" ShortID="77316972">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinMenuSound" ID="{7A8973B4-BE37-4CEE-A2E6-41F50087A7D6}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinSwingBlunt" ID="{E7D1E197-8F13-415F-A544-AD0F7C749CCC}">
+							<ChildrenList>
+								<Action Name="" ID="{FB770037-E357-4126-A961-EB8F7AD75A30}" ShortID="1026197521">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinSwingBlunt" ID="{76A048D7-EF6D-42D4-BC70-204420047335}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="nemforcer" ID="{D0214027-8310-42E6-8119-C8A48FFEE3D3}" ShortID="793757402">
+					<ChildrenList>
+						<Event Name="NemforcerMinigunSpinDown" ID="{E0E8012F-EC68-4EC0-8D56-EB61D6E6B897}">
+							<ChildrenList>
+								<Action Name="" ID="{4B6D1DE6-2B22-4A86-8475-85834AC313AE}" ShortID="1045624609">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="NemforcerMinigunSpinDown" ID="{0A1BB104-2CF1-4015-B23B-45B9A66B4861}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="NemforcerMinigunSpinUp" ID="{16DA63B9-FE99-4C52-9B1A-61A4A11118FD}">
+							<ChildrenList>
+								<Action Name="" ID="{9C512229-4B4C-4072-9801-2B1D5E431369}" ShortID="584413764">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="NemforcerMinigunSpinUp" ID="{C2A00EC8-8034-4E07-B2C6-7F2E8C3F9504}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="NemforcerAxeSwing" ID="{17CEC6A4-FD31-4703-A9D0-28D763D0E673}">
+							<ChildrenList>
+								<Action Name="" ID="{A6A855B4-BD18-4757-A316-1EF2E4808317}" ShortID="29302307">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="swing" ID="{D088BEE5-A265-4600-818F-47695A8FE44D}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="NemforcerAxeHit" ID="{E2D37D92-9690-4B68-8541-9619D69DDE03}">
+							<ChildrenList>
+								<Action Name="" ID="{2D001E05-D787-43F9-82DE-A344426EEE1A}" ShortID="739989697">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="hit" ID="{BF3359D0-2EF2-47A0-A387-5163BA4AFAD7}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Minigun_Shoot2" ID="{4E6543F9-EF74-4DBD-B9F5-C0A6CDB86F5D}">
+							<ChildrenList>
+								<Action Name="" ID="{FE57758C-537A-494A-8508-87347BB28BD7}" ShortID="858810412">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Play_Minigun_Shoot" ID="{74ED9439-1599-4496-8533-816E31242776}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_se_dedede_hammer_swing_m" ID="{6A747787-846E-48FD-B1F1-8B5077BE0C29}">
+							<ChildrenList>
+								<Action Name="" ID="{1F83B39D-76C8-45D8-B12A-16490AA45333}" ShortID="903025172">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="dededeswing" ID="{91AE4976-A756-4257-8461-9700343C6913}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="play_dedede_hammer_attack_m" ID="{3E37F522-66F2-48C1-8058-14071FEB477E}">
+							<ChildrenList>
+								<Action Name="" ID="{518CEDE8-4591-4330-B6F1-31B01A1CC05E}" ShortID="219508715">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="se_dedede_hammer_attack_s" ID="{E7DE89D4-304F-405B-925E-CEA407EB50C8}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="play_dedede_hammer_attack_l" ID="{D9605489-59B9-4FD9-BD48-6E77669155E9}">
+							<ChildrenList>
+								<Action Name="" ID="{888BC592-601C-471D-8F88-0C9ECBC45500}" ShortID="338444300">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="dededehit" ID="{45CC1626-7ED0-4007-A716-8F284B9A7380}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="SuperDededeJumpStart" ID="{DE1DA2C5-7F04-43A1-A200-2FA687F97B7F}">
+							<ChildrenList>
+								<Action Name="" ID="{719D0256-7BC9-4DF8-8C9C-D2496FE89135}" ShortID="843384067">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="se_dedede_special_H01" ID="{42285548-A717-4CAD-A4C8-BAE9D487DD51}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="SuperDededeJumpEnd" ID="{592A5B66-3D98-42C7-B200-D68F7B956DA8}">
+							<ChildrenList>
+								<Action Name="" ID="{0DE9A009-CD0E-45A3-B4D8-C31FBDBA5CCE}" ShortID="392739776">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="se_dedede_special_H02" ID="{B2F2BC76-53FA-4D5F-8A71-B547BBDC057F}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="DededeJump" ID="{ACDCF8AF-CDD4-44DD-A464-FD65B5156B6F}">
+							<ChildrenList>
+								<Action Name="" ID="{7390A9D7-E47D-4655-855A-323EE0CF70EF}" ShortID="1027485840">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="se_dedede_jump02" ID="{2DFDBF4E-4457-4B06-AA44-BBAA18391AD9}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="DededeGordoThrow" ID="{FB69CF1D-40A2-4723-931E-63C49AD79DC7}">
+							<ChildrenList>
+								<Action Name="" ID="{70589C8F-C686-45AC-84DD-7FD0CACE2D7A}" ShortID="401561691">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="se_dedede_gordo_throw" ID="{055F4B80-2C08-4A78-9938-615E22ED8352}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

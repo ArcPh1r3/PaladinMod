@@ -9,7 +9,7 @@ namespace PaladinMod.States.Spell
 {
     public class CastCruelSun : BaseCastChanneledSpellState
     {
-        protected virtual GameObject sunPrefab => Modules.Assets.paladinSunPrefab;
+        protected virtual GameObject sunPrefab => Modules.Asset.paladinSunPrefab;
         protected GameObject sunInstance;
         private Vector3? sunSpawnPosition;
 
@@ -79,8 +79,8 @@ namespace PaladinMod.States.Spell
             if (NetworkServer.active) {
 
                 //Effect moved here so that Scepter version doesn't get an explosion when starting the throw.
-                if ((bool)Modules.Assets.paladinSunSpawnPrefab) {
-                    EffectManager.SimpleImpactEffect(Modules.Assets.paladinSunSpawnPrefab, sunInstance.transform.position, Vector3.up, transmit: true);
+                if ((bool)Modules.Asset.paladinSunSpawnPrefab) {
+                    EffectManager.SimpleImpactEffect(Modules.Asset.paladinSunSpawnPrefab, sunInstance.transform.position, Vector3.up, transmit: true);
                 }
                 this.sunInstance.GetComponent<GenericOwnership>().ownerObject = null;
                 this.sunInstance = null;

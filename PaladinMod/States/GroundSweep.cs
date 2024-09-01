@@ -69,8 +69,8 @@ namespace PaladinMod.States
             this.attack.pushAwayForce = -1500f;
             this.attack.hitBoxGroup = hitBoxGroup;
             this.attack.isCrit = base.RollCrit();
-            this.attack.impactSound = Modules.Assets.swordHitSoundEventM.index;
-            if (this.swordController.isBlunt) this.attack.impactSound = Modules.Assets.batHitSoundEventM.index;
+            this.attack.impactSound = Modules.Asset.swordHitSoundEventM.index;
+            if (this.swordController.isBlunt) this.attack.impactSound = Modules.Asset.batHitSoundEventM.index;
         }
 
         public override void OnExit()

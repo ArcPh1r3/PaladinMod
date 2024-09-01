@@ -22,9 +22,9 @@ namespace PaladinMod.States.Sun
 			sunController = GetComponent<PaladinSunController>();
 			sunController.enabled = shouldEnableSunController;
 			vfxRoot = base.transform.Find("VfxRoot");
-			if ((bool)Modules.Assets.paladinSunSpawnPrefab & shouldSpawnEffect)
+			if ((bool)Modules.Asset.paladinSunSpawnPrefab & shouldSpawnEffect)
 			{
-				EffectManager.SimpleImpactEffect(Modules.Assets.paladinSunSpawnPrefab, vfxRoot.position, Vector3.up, transmit: false);
+				EffectManager.SimpleImpactEffect(Modules.Asset.paladinSunSpawnPrefab, vfxRoot.position, Vector3.up, transmit: false);
 			}
 			SetVfxScale(desiredVfxScale);
 		}

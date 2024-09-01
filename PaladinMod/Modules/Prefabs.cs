@@ -37,7 +37,7 @@ namespace PaladinMod.Modules
                 armorGrowth = 0f,//StaticValues.armorPerLevel,
                 bodyName = "RobPaladinBody",
                 bodyNameToken = "PALADIN_NAME",
-                characterPortrait = Assets.charPortrait,
+                characterPortrait = Asset.charPortrait,
                 crosshair = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"),
                 damage = StaticValues.baseDamage,
                 healthGrowth = 44.4f,
@@ -104,12 +104,12 @@ namespace PaladinMod.Modules
 
             // lightning vfx
             #region VFX
-            childLocator.FindChild("SpearChargeEffect").Find("ChargeSphere").GetComponent<ParticleSystemRenderer>().material = Modules.Assets.matLoaderLightningSphere;
-            childLocator.FindChild("SpearChargeEffect").Find("ChargeSphere").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matYellowLightningLong;
-            childLocator.FindChild("SpearChargeEffect").Find("ChargeSphere").Find("Spear").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matYellowLightningLong;
-            childLocator.FindChild("SpearChargeEffect").Find("ChargeSphere").Find("Spear").Find("SpearLightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matYellowLightningLong;
+            childLocator.FindChild("SpearChargeEffect").Find("ChargeSphere").GetComponent<ParticleSystemRenderer>().material = Modules.Asset.matLoaderLightningSphere;
+            childLocator.FindChild("SpearChargeEffect").Find("ChargeSphere").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Asset.matYellowLightningLong;
+            childLocator.FindChild("SpearChargeEffect").Find("ChargeSphere").Find("Spear").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Asset.matYellowLightningLong;
+            childLocator.FindChild("SpearChargeEffect").Find("ChargeSphere").Find("Spear").Find("SpearLightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Asset.matYellowLightningLong;
 
-            childLocator.FindChild("SwordLightningEffect").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matYellowLightningLong;
+            childLocator.FindChild("SwordLightningEffect").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Asset.matYellowLightningLong;
             #endregion
 
             // create hitboxes
@@ -132,7 +132,7 @@ namespace PaladinMod.Modules
                 armorGrowth = StaticValues.armorPerLevel,
                 bodyName = "NemesisPaladinBody",
                 bodyNameToken = "NEMPALADIN_NAME",
-                characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texNemPaladinPlayerIcon"),
+                characterPortrait = Asset.mainAssetBundle.LoadAsset<Texture>("texNemPaladinPlayerIcon"),
                 crosshair = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"),
                 damage = StaticValues.baseDamage,
                 healthGrowth = 64,
@@ -199,7 +199,7 @@ namespace PaladinMod.Modules
                 armor = 20f,
                 bodyName = "LunarKnightBody",
                 bodyNameToken = "LUNAR_KNIGHT_BODY_NAME",
-                characterPortrait = Assets.charPortrait,
+                characterPortrait = Asset.charPortrait,
                 crosshair = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"),
                 damage = 12f,
                 healthGrowth = 144,
@@ -245,7 +245,7 @@ namespace PaladinMod.Modules
 
             //model.AddComponent<CharacterModel>().baseRendererInfos = prefab.GetComponentInChildren<CharacterModel>().baseRendererInfos;
 
-            GameObject display = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(modelName);
+            GameObject display = Modules.Asset.mainAssetBundle.LoadAsset<GameObject>(modelName);
 
             CharacterModel characterModel = display.GetComponent<CharacterModel>();
             if (!characterModel)
@@ -254,7 +254,7 @@ namespace PaladinMod.Modules
             }
             characterModel.baseRendererInfos = bodyPrefab.GetComponentInChildren<CharacterModel>().baseRendererInfos;
 
-            Assets.ConvertAllRenderersToHopooShader(display);
+            Asset.ConvertAllRenderersToHopooShader(display);
 
             return display;
         }
@@ -410,7 +410,7 @@ namespace PaladinMod.Modules
             PaladinPlugin.DestroyImmediate(main.transform.Find("CameraPivot").gameObject);
             PaladinPlugin.DestroyImmediate(main.transform.Find("AimOrigin").gameObject);
 
-            return Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(modelName);
+            return Modules.Asset.mainAssetBundle.LoadAsset<GameObject>(modelName);
         }
 
         private static void SetupCharacterDirection(GameObject prefab, Transform modelBaseTransform, Transform modelTransform)

@@ -18,7 +18,7 @@ namespace PaladinMod.Modules {
             }
 
             //Material mat = UnityEngine.Object.Instantiate<Material>(Assets.commandoMat);
-            tempMat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
+            tempMat = Asset.mainAssetBundle.LoadAsset<Material>(materialName);
 
             if (!tempMat) {
                 Debug.LogError("Failed to load material: " + materialName + " - Check to see that the name in your Unity project matches the one in this code");

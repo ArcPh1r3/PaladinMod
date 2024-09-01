@@ -234,7 +234,7 @@ namespace PaladinMod.Misc
                                 effectData.origin = projectile.transform.position;
                                 effectData.scale = 4;
 
-                                EffectManager.SpawnEffect(Modules.Assets.torporVoidFX, effectData, false);
+                                EffectManager.SpawnEffect(Modules.Asset.torporVoidFX, effectData, false);
 
                                 Destroy(projectile.gameObject);
                             }
@@ -247,7 +247,7 @@ namespace PaladinMod.Misc
                                 effectData.origin = projectile.transform.position;
                                 effectData.scale = 4;
 
-                                EffectManager.SpawnEffect(Modules.Assets.torporVoidFX, effectData, false);
+                                EffectManager.SpawnEffect(Modules.Asset.torporVoidFX, effectData, false);
 
                                 Destroy(projectile.gameObject);
                             }

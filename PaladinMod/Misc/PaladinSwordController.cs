@@ -39,7 +39,7 @@ namespace PaladinMod.Misc
             this.animator = model?.GetComponent<Animator>();
             this.childLocator = base.GetComponentInChildren<ChildLocator>();
 
-            this.buffMat = Modules.Assets.blessingMat;
+            this.buffMat = Modules.Asset.blessingMat;
 
             this.buffController = this.gameObject.AddComponent<PaladinPassiveBuffController>();
             this.buffController.buffDef = Modules.Buffs.blessedBuff;
@@ -256,7 +256,7 @@ namespace PaladinMod.Misc
         {
             get
             {
-                if (this.skinInfo.swingEffect == Modules.Assets.swordSwing && this.swordActive) return Modules.Assets.swordSwingEmpowered;
+                if (this.skinInfo.swingEffect == Modules.Asset.swordSwing && this.swordActive) return Modules.Asset.swordSwingEmpowered;
                 return this.skinInfo.swingEffect;
             }
         }

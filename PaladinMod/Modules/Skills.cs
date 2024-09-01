@@ -44,7 +44,7 @@ namespace PaladinMod.Modules
             skillLocator.passiveSkill.enabled = true;
             skillLocator.passiveSkill.skillNameToken = "PALADIN_PASSIVE_NAME";
             skillLocator.passiveSkill.skillDescriptionToken = "PALADIN_PASSIVE_DESCRIPTION";
-            skillLocator.passiveSkill.icon = Assets.iconP;
+            skillLocator.passiveSkill.icon = Asset.iconP;
         }
 
         private static void PrimarySetup(GameObject bodyPrefab)
@@ -67,7 +67,7 @@ namespace PaladinMod.Modules
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Assets.icon1;
+            mySkillDef.icon = Asset.icon1;
             mySkillDef.skillDescriptionToken = "PALADIN_PRIMARY_SLASH_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_PRIMARY_SLASH_NAME";
             mySkillDef.skillNameToken = "PALADIN_PRIMARY_SLASH_NAME";
@@ -121,7 +121,7 @@ namespace PaladinMod.Modules
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Assets.icon2;
+            mySkillDef.icon = Asset.icon2;
             mySkillDef.skillDescriptionToken = "PALADIN_SECONDARY_SPINSLASH_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SECONDARY_SPINSLASH_NAME";
             mySkillDef.skillNameToken = "PALADIN_SECONDARY_SPINSLASH_NAME";
@@ -161,7 +161,7 @@ namespace PaladinMod.Modules
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Assets.icon2b;
+            mySkillDef.icon = Asset.icon2b;
             mySkillDef.skillDescriptionToken = "PALADIN_SECONDARY_LIGHTNING_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SECONDARY_LIGHTNING_NAME";
             mySkillDef.skillNameToken = "PALADIN_SECONDARY_LIGHTNING_NAME";
@@ -195,7 +195,7 @@ namespace PaladinMod.Modules
             mySkillDef.rechargeStock = 99;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Assets.icon2c;
+            mySkillDef.icon = Asset.icon2c;
             mySkillDef.skillDescriptionToken = "PALADIN_SECONDARY_LUNARSHARD_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SECONDARY_LUNARSHARD_NAME";
             mySkillDef.skillNameToken = "PALADIN_SECONDARY_LUNARSHARD_NAME";
@@ -233,7 +233,7 @@ namespace PaladinMod.Modules
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Assets.icon3;
+            mySkillDef.icon = Asset.icon3;
             mySkillDef.skillDescriptionToken = "PALADIN_UTILITY_DASH_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_UTILITY_DASH_NAME";
             mySkillDef.skillNameToken = "PALADIN_UTILITY_DASH_NAME";
@@ -270,7 +270,7 @@ namespace PaladinMod.Modules
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Assets.icon3b;
+            mySkillDef.icon = Asset.icon3b;
             mySkillDef.skillDescriptionToken = "PALADIN_UTILITY_HEAL_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_UTILITY_HEAL_NAME";
             mySkillDef.skillNameToken = "PALADIN_UTILITY_HEAL_NAME";
@@ -304,7 +304,7 @@ namespace PaladinMod.Modules
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Assets.icon4;
+            mySkillDef.icon = Asset.icon4;
             mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_HEALZONE_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SPECIAL_HEALZONE_NAME";
             mySkillDef.skillNameToken = "PALADIN_SPECIAL_HEALZONE_NAME";
@@ -341,7 +341,7 @@ namespace PaladinMod.Modules
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Assets.icon4b;
+            mySkillDef.icon = Asset.icon4b;
             mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_TORPOR_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SPECIAL_TORPOR_NAME";
             mySkillDef.skillNameToken = "PALADIN_SPECIAL_TORPOR_NAME";
@@ -375,7 +375,7 @@ namespace PaladinMod.Modules
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Assets.icon4c;
+            mySkillDef.icon = Asset.icon4c;
             mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_WARCRY_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SPECIAL_WARCRY_NAME";
             mySkillDef.skillNameToken = "PALADIN_SPECIAL_WARCRY_NAME";
@@ -405,7 +405,7 @@ namespace PaladinMod.Modules
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;
-            mySkillDef.icon = Assets.icon4d;
+            mySkillDef.icon = Asset.icon4d;
             mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_SUN_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SPECIAL_SUN_NAME";
             mySkillDef.skillNameToken = "PALADIN_SPECIAL_SUN_NAME";
@@ -436,7 +436,7 @@ namespace PaladinMod.Modules
             cancelSunSkillDef.rechargeStock = 0;
             cancelSunSkillDef.requiredStock = 0;
             cancelSunSkillDef.stockToConsume = 0;
-            cancelSunSkillDef.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("CruelSunIconCancel");
+            cancelSunSkillDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("CruelSunIconCancel");
             cancelSunSkillDef.skillDescriptionToken = "PALADIN_SPECIAL_SUN_CANCEL_DESCRIPTION";
             cancelSunSkillDef.skillName = "PALADIN_SPECIAL_SUN_CANCEL_NAME";
             cancelSunSkillDef.skillNameToken = "PALADIN_SPECIAL_SUN_CANCEL_NAME";
@@ -459,7 +459,7 @@ namespace PaladinMod.Modules
                 mySkillDef.rechargeStock = 1;
                 mySkillDef.requiredStock = 1;
                 mySkillDef.stockToConsume = 1;
-                mySkillDef.icon = Assets.icon4d;
+                mySkillDef.icon = Asset.icon4d;
                 mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_SUN_LEGACY_DESCRIPTION";
                 mySkillDef.skillName = "PALADIN_SPECIAL_SUN_LEGACY_NAME";
                 mySkillDef.skillNameToken = "PALADIN_SPECIAL_SUN_LEGACY_NAME";
@@ -479,7 +479,7 @@ namespace PaladinMod.Modules
                 skillName = "PALADIN_SPECIAL_BERSERK_NAME",
                 skillNameToken = "PALADIN_SPECIAL_BERSERK_NAME",
                 skillDescriptionToken = "PALADIN_SPECIAL_BERSERK_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("BerserkIcon"),
+                skillIcon = Modules.Asset.mainAssetBundle.LoadAsset<Sprite>("BerserkIcon"),
                 activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Rage.RageEnter)),
                 activationStateMachineName = "Body",
                 baseMaxStock = 1,
@@ -503,7 +503,7 @@ namespace PaladinMod.Modules
                 skillName = "PALADIN_SPECIAL_BERSERK_NAME",
                 skillNameToken = "PALADIN_SPECIAL_BERSERK_NAME",
                 skillDescriptionToken = "PALADIN_SPECIAL_BERSERK_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("BerserkIcon"),
+                skillIcon = Modules.Asset.mainAssetBundle.LoadAsset<Sprite>("BerserkIcon"),
                 activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Rage.RageExit)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
@@ -527,7 +527,7 @@ namespace PaladinMod.Modules
                 skillName = "PALADIN_UTILITY_BLINK_NAME",
                 skillNameToken = "PALADIN_UTILITY_BLINK_NAME",
                 skillDescriptionToken = "PALADIN_UTILITY_BLINK_DESCRIPTION",
-                skillIcon = Assets.icon3,
+                skillIcon = Asset.icon3,
                 activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Quickstep.FlashStep)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 3,

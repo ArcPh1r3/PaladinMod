@@ -46,7 +46,7 @@ namespace PaladinMod.States.Quickstep
             effectData.rotation = Util.QuaternionSafeLookRotation(this.slipVector);
             effectData.origin = base.characterBody.corePosition;
 
-            EffectManager.SpawnEffect(Modules.Assets.dashFX, effectData, false);
+            EffectManager.SpawnEffect(Modules.Asset.dashFX, effectData, false);
         }
 
         public override void FixedUpdate()

@@ -27,7 +27,7 @@ namespace PaladinMod.States
             Util.PlayAttackSpeedSound(EntityStates.Merc.GroundLight.finisherAttackSoundString, base.gameObject, 0.5f);
             base.PlayAnimation("FullBody, Override", "SpinSlash", "Whirlwind.playbackRate", this.duration);
 
-            EffectManager.SimpleMuzzleFlash(Modules.Assets.spinningSlashFX, base.gameObject, "SwingCenter", true);
+            EffectManager.SimpleMuzzleFlash(Modules.Asset.spinningSlashFX, base.gameObject, "SwingCenter", true);
 
             HitBoxGroup hitBoxGroup = null;
             Transform modelTransform = base.GetModelTransform();
@@ -43,7 +43,7 @@ namespace PaladinMod.States
             this.attack.teamIndex = base.GetTeam();
             this.attack.damageType = DamageType.Stun1s;
             this.attack.damage = SpinSlashOld.chargeDamageCoefficient * this.damageStat;
-            this.attack.hitEffectPrefab = Modules.Assets.hitFX;
+            this.attack.hitEffectPrefab = Modules.Asset.hitFX;
             this.attack.forceVector = Vector3.up * EntityStates.Toolbot.ToolbotDash.upwardForceMagnitude;
             this.attack.pushAwayForce = EntityStates.Toolbot.ToolbotDash.awayForceMagnitude;
             this.attack.hitBoxGroup = hitBoxGroup;

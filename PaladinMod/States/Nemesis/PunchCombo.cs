@@ -75,12 +75,12 @@ namespace PaladinMod.States.Nemesis
             this.attack.teamIndex = base.GetTeam();
             this.attack.damage = dmg * this.damageStat;
             this.attack.procCoefficient = 1;
-            this.attack.hitEffectPrefab = Modules.Assets.hitFXBlunt;
+            this.attack.hitEffectPrefab = Modules.Asset.hitFXBlunt;
             this.attack.forceVector = Vector3.zero;
             this.attack.pushAwayForce = 750f;
             this.attack.hitBoxGroup = hitBoxGroup;
             this.attack.isCrit = base.RollCrit();
-            this.attack.impactSound = Modules.Assets.batHitSoundEventL.index;
+            this.attack.impactSound = Modules.Asset.batHitSoundEventL.index;
         }
 
         public override void OnExit()
@@ -135,7 +135,7 @@ namespace PaladinMod.States.Nemesis
                     muzzleString = "SwingLeft";
 
                     base.AddRecoil(-1f * PunchCombo.attackRecoil, -2f * PunchCombo.attackRecoil, -0.5f * PunchCombo.attackRecoil, 0.5f * PunchCombo.attackRecoil);
-                    EffectManager.SimpleMuzzleFlash(Modules.Assets.swordSwingPurple, base.gameObject, muzzleString, true);
+                    EffectManager.SimpleMuzzleFlash(Modules.Asset.swordSwingPurple, base.gameObject, muzzleString, true);
                 }
             }
 

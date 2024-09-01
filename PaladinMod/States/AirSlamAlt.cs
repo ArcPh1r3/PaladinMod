@@ -84,8 +84,8 @@ namespace PaladinMod.States
             this.attack.pushAwayForce = 500f;
             this.attack.hitBoxGroup = hitBoxGroup;
             this.attack.isCrit = base.RollCrit();
-            this.attack.impactSound = Modules.Assets.swordHitSoundEventL.index;
-            if (this.swordController.isBlunt) this.attack.impactSound = Modules.Assets.batHitSoundEventL.index;
+            this.attack.impactSound = Modules.Asset.swordHitSoundEventL.index;
+            if (this.swordController.isBlunt) this.attack.impactSound = Modules.Asset.batHitSoundEventL.index;
         }
 
         public override void OnExit()
@@ -185,7 +185,7 @@ namespace PaladinMod.States
                 {
                     this.FireShockwave();
 
-                    EffectManager.SpawnEffect(Modules.Assets.airSlamBoostedFX, new EffectData
+                    EffectManager.SpawnEffect(Modules.Asset.airSlamBoostedFX, new EffectData
                     {
                         origin = this.characterBody.footPosition + (this.characterDirection.forward * 2.5f),
                         scale = 1f
@@ -193,7 +193,7 @@ namespace PaladinMod.States
                 }
                 else
                 {
-                    EffectManager.SpawnEffect(Modules.Assets.airSlamFX, new EffectData
+                    EffectManager.SpawnEffect(Modules.Asset.airSlamFX, new EffectData
                     {
                         origin = this.characterBody.footPosition + (this.characterDirection.forward * 2.5f),
                         scale = 1f

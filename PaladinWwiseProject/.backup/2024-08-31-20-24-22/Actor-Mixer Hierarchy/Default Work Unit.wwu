@@ -1,0 +1,2190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E77F4F4A-3450-441E-BB48-E858DF14678D}" SchemaVersion="97">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{E77F4F4A-3450-441E-BB48-E858DF14678D}" PersistMode="Standalone">
+			<ChildrenList>
+				<ActorMixer Name="Master" ID="{BD776D73-1DE9-4E37-B348-61E3ACD010C0}" ShortID="235944452">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<ActorMixer Name="SFX" ID="{06D2E4F9-209D-4683-82E6-CBAB7C2C7564}" ShortID="776132014">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<RTPCList>
+										<RTPC Name="" ID="{E57EDC81-ED6B-435D-A87B-FDB2A240C7A8}" ShortID="910093570">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="Volume_SFX" ID="{F308A5CA-9E9A-408B-A873-DA1A48272710}" WorkUnitID="{EA2FAAC1-FFAE-41CA-A516-EC889434AA1F}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{F39451B1-0144-4336-8DFA-2BF65763BD8A}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-200</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Folder Name="paladin" ID="{0F9C48AA-5250-46A6-A151-72BF05C3BE70}" ShortID="702862835">
+									<ChildrenList>
+										<Sound Name="PaladinCastHeal" ID="{07EF589E-AC4F-4500-93DC-6E1C954FA067}" ShortID="437064275">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{55354174-FA87-4030-ABB2-826AD4414E66}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinCastHeal" ID="{63D0076E-2501-426C-95F3-DF99F8E36057}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinCastHeal.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="603731468"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinCastHeal" ID="{63D0076E-2501-426C-95F3-DF99F8E36057}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinCastTorpor" ID="{7D7546A8-5DC9-4D13-A057-60B415519007}" ShortID="130414761">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{28248575-C832-436C-AEBA-D39813A74408}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-100"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinCastTorpor" ID="{3148E082-0440-420F-8836-56A2AD8211AC}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinCastTorpor.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="670118908"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinCastTorpor" ID="{3148E082-0440-420F-8836-56A2AD8211AC}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinChannelHeal" ID="{88216659-5472-4759-AF82-06279FA2AAA4}" ShortID="1069372899">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{1E239E3F-9BEA-436E-A42A-7FD58CB06715}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="50"/>
+																	<Property Name="Min" Type="Real64" Value="-50"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>4</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinChannelHeal" ID="{2574A088-042C-45FA-93AA-6CAF63A6C4A5}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinChannelHeal.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="749548995"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinChannelHeal" ID="{2574A088-042C-45FA-93AA-6CAF63A6C4A5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinChannelTorpor" ID="{F9264082-C331-42E9-A06C-D15C61C39030}" ShortID="431436593">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{1A63DE01-F6B6-4302-99F1-88DB9653E859}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="50"/>
+																	<Property Name="Min" Type="Real64" Value="-50"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinChannelTorpor" ID="{65C13A8D-7AAA-45C8-B14C-C1C8834F61BF}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinChannelTorpor.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="395471021"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinChannelTorpor" ID="{65C13A8D-7AAA-45C8-B14C-C1C8834F61BF}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinCloth1" ID="{FCB26D34-59ED-4260-9A42-F97BBD0D8827}" ShortID="765049022">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{3D192934-A85B-4A46-BF4F-F920A72E2EB9}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="50"/>
+																	<Property Name="Min" Type="Real64" Value="-50"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinCloth1" ID="{8EE36270-247C-49C9-BA67-DB3DBD6EB721}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinCloth1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="951721078"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinCloth1" ID="{8EE36270-247C-49C9-BA67-DB3DBD6EB721}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinCloth2" ID="{8E226E8D-9E67-4618-BDF5-426E31F483EC}" ShortID="28944557">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{0FE1F13F-0601-480C-B2B2-AFEDE8C10530}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="50"/>
+																	<Property Name="Min" Type="Real64" Value="-50"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinCloth2" ID="{C3B9D8E5-4186-4412-A875-0613E2812B86}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinCloth2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="543650420"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinCloth2" ID="{C3B9D8E5-4186-4412-A875-0613E2812B86}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinCloth3" ID="{4AB7AC07-97F1-4F3D-94C3-9DF542C226D4}" ShortID="845163985">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{536EB583-A589-4713-B30B-1C81A0C3ACEC}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="50"/>
+																	<Property Name="Min" Type="Real64" Value="-50"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-7</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinCloth3" ID="{A6D9045F-0374-4AA9-A477-8826291B3B28}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinCloth3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="584835422"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinCloth3" ID="{A6D9045F-0374-4AA9-A477-8826291B3B28}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinExplosion" ID="{1561E15D-A4DB-47D3-A581-02B2CDC2AF63}" ShortID="12417973">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{174145AC-8495-4F3C-A796-AFFD1BE0A3DC}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-4</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinExplosion" ID="{7B840745-0457-493B-A3A1-05CB5EF37A0F}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinExplosion.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="954700323"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinExplosion" ID="{7B840745-0457-493B-A3A1-05CB5EF37A0F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinHitBluntM" ID="{16218509-2384-4EFE-AE47-19600F3D929E}" ShortID="332113396">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{173D8A5D-0984-4B1D-80BE-60E816D83311}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinHitBluntM" ID="{1B5A67D2-362C-4DF0-82A0-B4F6CE589D20}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinHitBluntM.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="408188179"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinHitBluntM" ID="{1B5A67D2-362C-4DF0-82A0-B4F6CE589D20}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinHitBluntS" ID="{A922A03E-549D-438F-BB16-2FA5DEA159FC}" ShortID="182778633">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{AED44C06-3930-4B47-BB6D-AEBD6767091B}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="300"/>
+																	<Property Name="Min" Type="Real64" Value="-300"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinHitBluntS" ID="{54A60876-6C5A-4419-ADDD-1E9BCC93A2E7}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinHitBluntS.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="584904886"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinHitBluntS" ID="{54A60876-6C5A-4419-ADDD-1E9BCC93A2E7}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinHitBluntSS" ID="{E671F9F9-802A-4D6F-8D18-D90CC9C7B7E3}" ShortID="947931473">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{C1BA85D9-8539-44FE-974A-0317277AF738}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinHitBluntSS" ID="{26507AA2-CA3B-4FD4-A0E5-D1217C191DB2}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinHitBluntSS.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="215071040"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinHitBluntSS" ID="{26507AA2-CA3B-4FD4-A0E5-D1217C191DB2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinHitL" ID="{CF22794E-353E-4B35-B1D9-6156E6A50E87}" ShortID="494060208">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{851A4F6B-BBA8-4DBE-BD53-B0891009FF44}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-1</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{912A422E-7075-4A68-B6F5-12E431FA682D}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="1"/>
+																	<Property Name="Min" Type="Real64" Value="-1"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinHitL" ID="{8A8C3DC1-C773-42FB-979D-93383711D644}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinHitL.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="266065062"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinHitL" ID="{8A8C3DC1-C773-42FB-979D-93383711D644}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinHitM" ID="{A10F8A78-6F57-4490-AE13-376FB2A64EE2}" ShortID="935006041">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{E5F27648-F9A0-4688-964F-D0B9FA5D7FB5}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="250"/>
+																	<Property Name="Min" Type="Real64" Value="-250"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-2</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{B0556C25-DD4B-45EE-B81D-1535FB6355E1}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="1"/>
+																	<Property Name="Min" Type="Real64" Value="-1"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinHitM" ID="{E180EDD0-FA61-4297-9116-F33160353C5F}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinHitM.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="863728932"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinHitM" ID="{E180EDD0-FA61-4297-9116-F33160353C5F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinHitS" ID="{D21A391F-9CA6-404A-8537-C88ABD8F3DD8}" ShortID="744933424">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{31CCC2EF-20AA-4344-BBE0-C8C2D4A1A542}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="250"/>
+																	<Property Name="Min" Type="Real64" Value="-250"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-1</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{1E8335F3-92AF-4334-BDBF-8B64825FA4A2}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="1"/>
+																	<Property Name="Min" Type="Real64" Value="-1"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinHitS" ID="{5D563779-B81A-4C3C-8C4F-349894313E85}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinHitS.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="813446919"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinHitS" ID="{5D563779-B81A-4C3C-8C4F-349894313E85}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinLeapSlam" ID="{E1E33627-E6C4-475B-A0BB-612AADEB9C28}" ShortID="518430243">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{EDF31B2E-D15C-4FB0-A647-7425487652BE}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-100"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinLeapSlam" ID="{A6B252A6-AD6F-4E2F-9ABD-80DECC8122B1}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinLeapSlam.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="591389793"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinLeapSlam" ID="{A6B252A6-AD6F-4E2F-9ABD-80DECC8122B1}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinLunge" ID="{86565206-4344-4CFD-91DB-298DB9FCD41C}" ShortID="284481018">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{39367704-C38E-4E9F-A845-A06E6B6F57BC}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="150"/>
+																	<Property Name="Min" Type="Real64" Value="-150"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinLunge" ID="{3C335E54-B39E-45AF-8D7B-19F0E2AFA089}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinLunge.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="243176335"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinLunge" ID="{3C335E54-B39E-45AF-8D7B-19F0E2AFA089}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinMenuSound" ID="{7A8973B4-BE37-4CEE-A2E6-41F50087A7D6}" ShortID="903613054">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinMenuSound" ID="{0D788460-6C27-449F-A9C1-8BC9E82B6E06}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinMenuSound.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="584181473"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinMenuSound" ID="{0D788460-6C27-449F-A9C1-8BC9E82B6E06}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinSnap" ID="{3F22F19B-CA9C-4FE4-B241-84455CD7BBA2}" ShortID="1062987468">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{2AB3380E-7381-453C-9EF1-43E49018BA81}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="50"/>
+																	<Property Name="Min" Type="Real64" Value="-50"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinSnap" ID="{A633920F-E02A-4B7A-8AC3-83B9E0E1B623}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinSnap.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="512605586"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinSnap" ID="{A633920F-E02A-4B7A-8AC3-83B9E0E1B623}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinSpearThrow" ID="{1327F7D8-DEDF-4B96-9AE0-18276B6F5469}" ShortID="602697435">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{B9BF68C6-821A-43E1-8C97-DA983A3C88D2}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="150"/>
+																	<Property Name="Min" Type="Real64" Value="-150"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinSpearThrow" ID="{A2678201-9992-4C43-8AFD-C4E4220E240C}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinSpearThrow.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="53309015"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinSpearThrow" ID="{A2678201-9992-4C43-8AFD-C4E4220E240C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinSwingBlunt" ID="{76A048D7-EF6D-42D4-BC70-204420047335}" ShortID="1063718095">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{1688077D-76D4-4B07-B317-C82EC2BD4831}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-4</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinSwingBlunt" ID="{D48CE709-5FB5-42EA-A7D7-BCBE98C667DE}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinSwingBlunt.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="911301249"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinSwingBlunt" ID="{D48CE709-5FB5-42EA-A7D7-BCBE98C667DE}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PaladinSwordActive" ID="{45630C7A-462A-496A-A693-16AAF1A67280}" ShortID="437353229">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{5858A2D6-4F67-40BC-BA7D-457E5C3473BF}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="50"/>
+																	<Property Name="Min" Type="Real64" Value="-50"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{361E9A25-B19A-49D1-9822-40EED19F2431}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="1"/>
+																	<Property Name="Min" Type="Real64" Value="-1"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PaladinSwordActive" ID="{6EBBA3AB-D943-4589-B6A2-512772EEADD1}">
+													<Language>SFX</Language>
+													<AudioFile>PaladinSwordActive.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="176360210"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PaladinSwordActive" ID="{6EBBA3AB-D943-4589-B6A2-512772EEADD1}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<RandomSequenceContainer Name="swing" ID="{6D61E78D-A04A-440C-8D16-7FD5F4242952}" ShortID="960309517">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{F78E2D2F-5C0E-437F-97E6-B56CDCE05D1F}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{7F32D1FC-047B-4E5B-8452-3C900875D101}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="1"/>
+																	<Property Name="Min" Type="Real64" Value="-1"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="PaladinSwing" ID="{3832A3AF-046A-4208-8D0A-059A903BCF95}" ShortID="196297252">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PaladinSwing" ID="{7E7C3DCD-FA8D-4357-99A8-509DB911F95E}">
+															<Language>SFX</Language>
+															<AudioFile>PaladinSwing.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="607711604"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PaladinSwing" ID="{7E7C3DCD-FA8D-4357-99A8-509DB911F95E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PaladinSwing2" ID="{49933F18-14CD-445B-8200-B0EDAB3B02B3}" ShortID="374998235">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PaladinSwing2" ID="{8AF97B90-2341-4922-BEDB-625FA74F9C3F}">
+															<Language>SFX</Language>
+															<AudioFile>PaladinSwing2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="129829374"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PaladinSwing2" ID="{8AF97B90-2341-4922-BEDB-625FA74F9C3F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="channelmax" ID="{F4F7C92D-C1CF-47AF-9689-DCF5342C2632}" ShortID="998839844">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{B98AF7DB-739D-4BCF-BE7D-3FF98AE9E9F3}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-100"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="PaladinChannelMax" ID="{94F793C6-7FDC-45AD-B7C4-1A88FFFD434E}" ShortID="636076953">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PaladinCastHealZone" ID="{09770ACD-BEC3-4E82-9294-A8EFAF1F35A6}">
+															<Language>SFX</Language>
+															<AudioFile>PaladinCastHealZone.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1020432476"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PaladinCastHealZone" ID="{09770ACD-BEC3-4E82-9294-A8EFAF1F35A6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PaladinChannelMax2" ID="{08FC484F-B359-4F61-8B51-640A1AA40ADD}" ShortID="386272407">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PaladinCastWarcry" ID="{A4D08FCF-42C6-4CE8-90E1-0858A3F453CA}">
+															<Language>SFX</Language>
+															<AudioFile>PaladinCastWarcry.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="948465750"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PaladinCastWarcry" ID="{A4D08FCF-42C6-4CE8-90E1-0858A3F453CA}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="drip" ID="{B346E577-FF7D-4A41-96D2-CDE664C72D10}" ShortID="433165982">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="PaladinDrip" ID="{144C3A05-42BF-41E6-B03B-B9F0E3041AD6}" ShortID="191033695">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="1"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PaladinDrip" ID="{26904297-7F55-4997-AA0A-F93E62E354D6}">
+															<Language>SFX</Language>
+															<AudioFile>PaladinDrip.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="381079306"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PaladinDrip" ID="{26904297-7F55-4997-AA0A-F93E62E354D6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="PaladinDrip2" ID="{49A0B593-8B59-4577-AB8B-DD75D6E04B26}" ShortID="532777677">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="1"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-8</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PaladinDrip2" ID="{3F8046D1-423A-4999-9CC7-F5C9CC7EB70E}">
+															<Language>SFX</Language>
+															<AudioFile>PaladinDrip2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="538800254"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PaladinDrip2" ID="{3F8046D1-423A-4999-9CC7-F5C9CC7EB70E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="nemforcer" ID="{6D872DB4-20EB-4CF8-B5C3-72563F7530C6}" ShortID="1038967697">
+									<ChildrenList>
+										<Sound Name="NemforcerMinigunSpinDown" ID="{0A1BB104-2CF1-4015-B23B-45B9A66B4861}" ShortID="275832978">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="NemforcerMinigunSpinDown" ID="{A30A7861-275B-4811-87B7-94EF61C00D3F}">
+													<Language>SFX</Language>
+													<AudioFile>NemforcerMinigunSpinDown.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="435557966"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="NemforcerMinigunSpinDown" ID="{A30A7861-275B-4811-87B7-94EF61C00D3F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="NemforcerMinigunSpinUp" ID="{C2A00EC8-8034-4E07-B2C6-7F2E8C3F9504}" ShortID="303099399">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="NemforcerMinigunSpinUp" ID="{A260CFD0-4FA5-45C8-AD65-21439931E946}">
+													<Language>SFX</Language>
+													<AudioFile>NemforcerMinigunSpinUp.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="393158346"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="NemforcerMinigunSpinUp" ID="{A260CFD0-4FA5-45C8-AD65-21439931E946}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Play_Minigun_Shoot" ID="{74ED9439-1599-4496-8533-816E31242776}" ShortID="874773969">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<RTPCList>
+														<RTPC Name="" ID="{BC335762-C01D-4A86-97BE-1D567B5F55D3}" ShortID="541641194">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="Minigun_Speed" ID="{0ECAE56C-2876-4BC3-89C7-6725A4403367}" WorkUnitID="{EA2FAAC1-FFAE-41CA-A516-EC889434AA1F}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{7CEBC068-923F-4148-8139-3519199028C9}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="65537"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-775</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>1</XPos>
+																		<YPos>0</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>5.43604</XPos>
+																		<YPos>688</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>100</XPos>
+																		<YPos>1216</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-1</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Play_Minigun_Shoot" ID="{7C294826-9B29-44EA-945F-2BE8FDC25E90}">
+													<Language>SFX</Language>
+													<AudioFile>Play_Minigun_Shoot.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="318027046"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Play_Minigun_Shoot" ID="{7C294826-9B29-44EA-945F-2BE8FDC25E90}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<RandomSequenceContainer Name="hit" ID="{BF3359D0-2EF2-47A0-A387-5163BA4AFAD7}" ShortID="461922085">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{876B0A53-874B-4A52-B89D-9DC3493A19D7}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{8CD6817C-EB33-4274-A98A-32E989C3336F}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="1"/>
+																	<Property Name="Min" Type="Real64" Value="-1"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="NemforcerAxeHit3" ID="{F99F16A9-D994-4437-86B8-2C3D72637468}" ShortID="844920960">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="NemforcerAxeHit3" ID="{400E23BE-39CA-45D9-A7F3-72CC1C5F0964}">
+															<Language>SFX</Language>
+															<AudioFile>NemforcerAxeHit3.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="661133510"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="NemforcerAxeHit3" ID="{400E23BE-39CA-45D9-A7F3-72CC1C5F0964}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="NemforcerAxeHit" ID="{5904BC92-6E79-427E-90D7-6AB37E0D8FCC}" ShortID="459898700">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="NemforcerAxeHit" ID="{1105BD9E-5674-447A-9742-540FAAF9B7AC}">
+															<Language>SFX</Language>
+															<AudioFile>NemforcerAxeHit.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="955932314"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="NemforcerAxeHit" ID="{1105BD9E-5674-447A-9742-540FAAF9B7AC}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="NemforcerAxeHit2" ID="{8451244F-D96B-42E8-B14E-16A9A2D07992}" ShortID="689805851">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="NemforcerAxeHit2" ID="{FDBC8404-DC5A-4DA5-87A0-C544D9B56426}">
+															<Language>SFX</Language>
+															<AudioFile>NemforcerAxeHit2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="160355544"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="NemforcerAxeHit2" ID="{FDBC8404-DC5A-4DA5-87A0-C544D9B56426}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="swing" ID="{D088BEE5-A265-4600-818F-47695A8FE44D}" ShortID="111531146">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{1D65204D-AF10-4204-AD43-8A828CD18283}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-1</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{CFCD3D96-0572-47FE-8BF2-CD4FB9ACD45B}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="1"/>
+																	<Property Name="Min" Type="Real64" Value="-1"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="NemforcerAxeSwing4" ID="{2CFB7FE8-BFAE-4C61-AFCA-F8E8AF20E847}" ShortID="980458409">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="NemforcerAxeSwing4" ID="{14C15158-08A6-4411-8A22-52AC6DCB0184}">
+															<Language>SFX</Language>
+															<AudioFile>NemforcerAxeSwing4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="414882283"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="NemforcerAxeSwing4" ID="{14C15158-08A6-4411-8A22-52AC6DCB0184}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="NemforcerAxeSwing3" ID="{1C6E890A-F071-43D7-BE96-0D9F6217F597}" ShortID="806332458">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="NemforcerAxeSwing3" ID="{C905D9D9-8C37-4D8B-8F00-D82952B6AE17}">
+															<Language>SFX</Language>
+															<AudioFile>NemforcerAxeSwing3.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="93215376"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="NemforcerAxeSwing3" ID="{C905D9D9-8C37-4D8B-8F00-D82952B6AE17}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="NemforcerAxeSwing" ID="{8AB3DDA1-3152-4DA1-AEE5-42D7D01264D7}" ShortID="14904440">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="NemforcerAxeSwing" ID="{2104FE45-C6C4-4B34-BEA1-8D1F1CE39A38}">
+															<Language>SFX</Language>
+															<AudioFile>NemforcerAxeSwing.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="474473547"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="NemforcerAxeSwing" ID="{2104FE45-C6C4-4B34-BEA1-8D1F1CE39A38}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="NemforcerAxeSwing2" ID="{E9299987-7008-4009-AC2B-EE122DB5B4AB}" ShortID="478316729">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="NemforcerAxeSwing2" ID="{D87D5A29-731D-4A51-AB97-128AF5AA6AEC}">
+															<Language>SFX</Language>
+															<AudioFile>NemforcerAxeSwing2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="658594982"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="NemforcerAxeSwing2" ID="{D87D5A29-731D-4A51-AB97-128AF5AA6AEC}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<Sound Name="se_dedede_gordo_throw" ID="{055F4B80-2C08-4A78-9938-615E22ED8352}" ShortID="635867617">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{9D01FF36-5EF4-4171-8C70-87ADCD3D5C16}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-100"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="se_dedede_gordo_throw" ID="{69CF3241-BDC9-4557-894E-6BF6D907FD1D}">
+													<Language>SFX</Language>
+													<AudioFile>se_dedede_gordo_throw.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="239566699"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="se_dedede_gordo_throw" ID="{69CF3241-BDC9-4557-894E-6BF6D907FD1D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="se_dedede_hammer_attack_s" ID="{E7DE89D4-304F-405B-925E-CEA407EB50C8}" ShortID="712106052">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{2D3F7D7E-BE06-44EF-A759-5B37B2DAD5D8}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{EF49D3EA-03CD-496D-B297-7B117E6F29DF}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="1"/>
+																	<Property Name="Min" Type="Real64" Value="-1"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="se_dedede_hammer_attack_s" ID="{5FA61897-9356-4D2A-9268-088C77988CC2}">
+													<Language>SFX</Language>
+													<AudioFile>se_dedede_hammer_attack_s.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="51468599"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="se_dedede_hammer_attack_s" ID="{5FA61897-9356-4D2A-9268-088C77988CC2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="se_dedede_jump02" ID="{2DFDBF4E-4457-4B06-AA44-BBAA18391AD9}" ShortID="473883888">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{4DEF9540-908F-448A-8594-41343C06687A}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-100"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="se_dedede_jump02" ID="{3216F351-ADDC-42D2-A4ED-43C2C5E4A9D6}">
+													<Language>SFX</Language>
+													<AudioFile>se_dedede_jump02.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="749060630"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="se_dedede_jump02" ID="{3216F351-ADDC-42D2-A4ED-43C2C5E4A9D6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="se_dedede_special_H01" ID="{42285548-A717-4CAD-A4C8-BAE9D487DD51}" ShortID="159799404">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{38365890-2EDC-417C-8F1A-55325D9DB2FE}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-100"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="se_dedede_special_H01" ID="{148F9483-B30A-49C4-AE1D-A2EF56E3423B}">
+													<Language>SFX</Language>
+													<AudioFile>se_dedede_special_H01.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="948787278"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="se_dedede_special_H01" ID="{148F9483-B30A-49C4-AE1D-A2EF56E3423B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="se_dedede_special_H02" ID="{B2F2BC76-53FA-4D5F-8A71-B547BBDC057F}" ShortID="939781772">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{ADF05855-1139-4AAF-825B-C4799626DA16}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-100"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="se_dedede_special_H02" ID="{44390332-8E1A-4D9D-AE71-56A446394348}">
+													<Language>SFX</Language>
+													<AudioFile>se_dedede_special_H02.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="566259440"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="se_dedede_special_H02" ID="{44390332-8E1A-4D9D-AE71-56A446394348}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<RandomSequenceContainer Name="dededehit" ID="{45CC1626-7ED0-4007-A716-8F284B9A7380}" ShortID="904682316">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{560739D0-3683-4977-970E-B373111DBD87}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-100"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="RandomAvoidRepeating" Type="bool" Value="False"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-2</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{C10B7289-26E4-4AA5-8B30-572323593B76}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="1"/>
+																	<Property Name="Min" Type="Real64" Value="-1"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="se_dedede_hammer_attack_l" ID="{5E41A782-2E6E-497C-9569-D86DEB0B168B}" ShortID="498343160">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="se_dedede_hammer_attack_l" ID="{FC90A044-CDA8-4E33-8224-4328945272ED}">
+															<Language>SFX</Language>
+															<AudioFile>se_dedede_hammer_attack_l.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="238140023"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="se_dedede_hammer_attack_l" ID="{FC90A044-CDA8-4E33-8224-4328945272ED}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="se_dedede_hammer_attack_ll" ID="{2BAF2142-C94C-4679-9852-1E4A1A36567A}" ShortID="1004877209">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="se_dedede_hammer_attack_ll" ID="{308E6A81-58E2-4BEC-B894-DBB09524FFEF}">
+															<Language>SFX</Language>
+															<AudioFile>se_dedede_hammer_attack_ll.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="384598124"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="se_dedede_hammer_attack_ll" ID="{308E6A81-58E2-4BEC-B894-DBB09524FFEF}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="dededeswing" ID="{91AE4976-A756-4257-8461-9700343C6913}" ShortID="32276379">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{7A5EBFEA-52C6-4DE4-9CCC-A5C50AE2D496}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{AC7C50CD-7297-4105-9DDF-BC2495B5D6E3}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="1"/>
+																	<Property Name="Min" Type="Real64" Value="-1"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="asfd" ID="{91D0EE59-62F3-42BF-A552-8EA33D9D8510}" WorkUnitID="{EBD83356-4912-4F86-968B-B46F0ACE7652}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="se_dedede_hammer_swing_l" ID="{1CC48C9C-21D6-4F0A-98D9-8E8F7E665767}" ShortID="640567872">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="se_dedede_hammer_swing_l" ID="{E999B6BF-09B0-41D2-B5B3-87DD835B33D4}">
+															<Language>SFX</Language>
+															<AudioFile>se_dedede_hammer_swing_l.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="329983460"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="se_dedede_hammer_swing_l" ID="{E999B6BF-09B0-41D2-B5B3-87DD835B33D4}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="se_dedede_hammer_swing_m" ID="{F9533178-4B92-4C7C-A07E-241DF6568546}" ShortID="868814958">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="se_dedede_hammer_swing_m" ID="{B79E3D01-B1B6-4303-ADD2-02D368050B8C}">
+															<Language>SFX</Language>
+															<AudioFile>se_dedede_hammer_swing_m.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="112176353"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="se_dedede_hammer_swing_m" ID="{B79E3D01-B1B6-4303-ADD2-02D368050B8C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="se_dedede_hammer_swing_ll" ID="{859B5CB5-CB9C-43C4-95AE-7277C0349496}" ShortID="89074726">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="se_dedede_hammer_swing_ll" ID="{7A91C1C7-26E4-4163-9F57-879647727F8C}">
+															<Language>SFX</Language>
+															<AudioFile>se_dedede_hammer_swing_ll.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="665470741"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="se_dedede_hammer_swing_ll" ID="{7A91C1C7-26E4-4163-9F57-879647727F8C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="se_dedede_hammer_swing_s" ID="{4BA31ABA-53DD-4C40-B338-739B41B2F857}" ShortID="607077224">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="se_dedede_hammer_swing_s" ID="{DF7586E7-262D-44D8-A8C1-6A052D446083}">
+															<Language>SFX</Language>
+															<AudioFile>se_dedede_hammer_swing_s.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="596827886"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="se_dedede_hammer_swing_s" ID="{DF7586E7-262D-44D8-A8C1-6A052D446083}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+								</Folder>
+							</ChildrenList>
+						</ActorMixer>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>
