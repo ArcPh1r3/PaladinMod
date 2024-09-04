@@ -16,6 +16,7 @@ using BepInEx.Logging;
 using System;
 using UnityEngine.AddressableAssets;
 using System.Collections;
+using PaladinMod.Modules;
 
 namespace PaladinMod
 {
@@ -106,6 +107,13 @@ namespace PaladinMod
             {
                 Modules.VRCompat.SetupVR();
             }
+
+            //emote
+            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.weliveinasociety.CustomEmotesAPI"))
+            {;
+                MemeCompat.Init();
+            }
+
 
             Modules.Unlockables.RegisterUnlockables(); // add unlockables
             Modules.States.RegisterStates(); // register states

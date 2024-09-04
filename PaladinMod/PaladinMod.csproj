@@ -45,6 +45,9 @@
     <Reference Include="AncientScepter">
       <HintPath>libs\Compat\AncientScepter.dll</HintPath>
     </Reference>
+    <Reference Include="CustomEmotesAPI">
+      <HintPath>libs\Compat\CustomEmotesAPI.dll</HintPath>
+    </Reference>
     <Reference Include="Skills">
       <HintPath>libs\Compat\Skills.dll</HintPath>
     </Reference>

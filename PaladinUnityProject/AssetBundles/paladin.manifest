@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 419543445
+CRC: 2584165333
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 7501f66661c37fdc4b598c4395f65fd5
+    Hash: c14cc991d484fe22f191991ded0559c4
   TypeTreeHash:
     serializedVersion: 2
     Hash: bb5dcd9ce2c9ba3226c851556626f367
@@ -361,6 +361,7 @@ Assets:
 - Assets/Paladin/Animations/Old/LeapSlam.anim
 - Assets/Paladin/Effects/SwingEffects/EmpSpinSlashEffectBlack.prefab
 - Assets/Paladin/UI/texRageGaugeBase.png
+- Assets/Paladin/Paladin_Meme.prefab
 - Assets/Paladin/Mesh/meshPaladinLunarKnight.mesh
 - Assets/Paladin/Materials/Shields/matPursuerShield.mat
 - Assets/Paladin/Animations/Old/animPaladinOld.controller
