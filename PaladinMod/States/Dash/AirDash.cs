@@ -39,7 +39,7 @@ namespace PaladinMod.States.Dash
             this.dashVector = this.GetDashVector();
             //this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
         }
-
+        
         protected virtual Vector3 GetDashVector()
         {
             return base.inputBank.aimDirection;
@@ -57,15 +57,15 @@ namespace PaladinMod.States.Dash
         {
             base.FixedUpdate();
             base.characterBody.isSprinting = true;
-            this.stopwatch += Time.fixedDeltaTime;
+            this.stopwatch += Time.deltaTime;
 
             if (base.characterMotor && base.characterDirection)
             {
                 base.characterMotor.velocity = Vector3.zero;
-                base.characterMotor.rootMotion += this.dashVector * (this.moveSpeedStat * AirDash.speedCoefficient * Time.fixedDeltaTime);
+                base.characterMotor.rootMotion += this.dashVector * (this.moveSpeedStat * AirDash.speedCoefficient * Time.deltaTime);
                 base.characterDirection.forward = this.dashVector;
             }
-
+            
             if (this.stopwatch >= AirDash.duration && base.isAuthority)
             {
                 this.outer.SetNextStateToMain();
@@ -81,13 +81,13 @@ namespace PaladinMod.States.Dash
 
                 if (this.modelTransform)
                 {
-                    TemporaryOverlay overlay = this.modelTransform.gameObject.AddComponent<TemporaryOverlay>();
+                    TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(this.modelTransform.gameObject);
                     overlay.duration = 0.6f;
                     overlay.animateShaderAlpha = true;
                     overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                     overlay.destroyComponentOnEnd = true;
                     overlay.originalMaterial = RoR2.LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashBright");
-                    overlay.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
+                    overlay.AddToCharacterModel(this.modelTransform.GetComponent<CharacterModel>());
                 }
             }
 

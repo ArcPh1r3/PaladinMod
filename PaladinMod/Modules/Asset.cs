@@ -229,15 +229,6 @@ namespace PaladinMod.Modules
 
         public static Material capeMat;
 
-        private static void LoadSoundBank()
-        {
-            if (UnityEngine.Application.isBatchMode) 
-                return;
-
-            AkSoundEngine.AddBasePath(Path.Combine(Path.GetDirectoryName(PaladinPlugin.instance.Info.Location), "SoundBank"));
-            AkSoundEngine.LoadBank("Paladin.bnk", out var _soundBankId);
-        }
-
         public static void LoadAssetBundle()
         {
             try
@@ -253,8 +244,6 @@ namespace PaladinMod.Modules
         public static void PopulateAssets() {
 
             LoadAssetBundle();
-
-            LoadSoundBank();
 
             GatherMaterials();
 

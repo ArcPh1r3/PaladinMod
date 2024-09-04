@@ -48,19 +48,19 @@ namespace PaladinMod.States.Spell
             Transform modelTransform = base.GetModelTransform();
             if (modelTransform)
             {
-                TemporaryOverlay temporaryOverlay = modelTransform.gameObject.AddComponent<TemporaryOverlay>();
+                TemporaryOverlayInstance temporaryOverlay = TemporaryOverlayManager.AddOverlay(modelTransform.gameObject); 
                 temporaryOverlay.duration = this.baseDuration;
                 temporaryOverlay.animateShaderAlpha = true;
                 temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                 temporaryOverlay.destroyComponentOnEnd = true;
                 temporaryOverlay.originalMaterial = RoR2.LegacyResourcesAPI.Load<Material>("Materials/matGrandparentTeleportOutBoom");
-                temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
+                temporaryOverlay.AddToCharacterModel(modelTransform.GetComponent<CharacterModel>());
             }
         }
 
         protected override void PlayCastAnimation()
         {
-            base.PlayAnimation("Gesture, Underride", "CastSun", "Spell.playbackRate", 0.25f);
+            base.PlayAnimation("Gesture, Override", "CastSun", "Spell.playbackRate", 0.25f);
         }
 
         protected override void OnChanneledSpellExit()
@@ -71,7 +71,7 @@ namespace PaladinMod.States.Spell
                 this.sunInstance = null;
             }
 
-            base.PlayAnimation("Gesture, Underride", "CastSunEnd", "Spell.playbackRate", 0.8f);
+            base.PlayAnimation("Gesture, Override", "CastSunEnd", "Spell.playbackRate", 0.8f);
         }
 
         private GameObject CreateSun(Vector3 sunSpawnPosition)

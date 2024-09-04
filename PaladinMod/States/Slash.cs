@@ -12,10 +12,13 @@ namespace PaladinMod.States
     public class Slash : BaseSkillState, SteppedSkillDef.IStepSetter
     {
         public static float damageCoefficient = StaticValues.slashDamageCoefficient;
-        public float baseDuration = 1.6f;
+        public float baseDuration = 2f;
         public static float attackRecoil = 1.5f;
         public static float hitHopVelocity = 5.5f;
-        public static float earlyExitTime = 0.575f;
+        private const float attackStartTime = 0.21f;
+        private const float attackStartTimAlt = 0.25f;
+        private const float attackEndTime = 0.35f;
+        public static float earlyExitTime = 0.46f;
         public int swingIndex;
 
         private bool inCombo;
@@ -75,10 +78,10 @@ namespace PaladinMod.States
                 animString = "SlashCombo1";
             }
 
-            base.PlayCrossfade("Gesture, Override", animString, "Slash.playbackRate", this.duration, 0.05f);
+            base.PlayCrossfade("Gesture, Override", animString, "Slash.playbackRate", this.duration, 0.05f * duration);
             if (!this.animator.GetBool("isMoving") && this.animator.GetBool("isGrounded")) 
             {
-                base.PlayCrossfade("FullBody, Override", animString, "Slash.playbackRate", this.duration, 0.05f);
+                base.PlayCrossfade("FullBody, Override", animString, "Slash.playbackRate", this.duration, 0.05f * duration);
             }
             
 
@@ -228,7 +231,7 @@ namespace PaladinMod.States
         {
             base.FixedUpdate();
             if (this.animator) this.animator.SetBool("inCombat", true);
-            this.hitPauseTimer -= Time.fixedDeltaTime;
+            this.hitPauseTimer -= Time.deltaTime;
 
             if (this.hitPauseTimer <= 0f && this.inHitPause)
             {
@@ -245,16 +248,17 @@ namespace PaladinMod.States
 
             if (!this.inHitPause)
             {
-                this.stopwatch += Time.fixedDeltaTime;
+                this.stopwatch += Time.deltaTime;
             }
             else
             {
-                this.stopwatch += 0.1f * Time.fixedDeltaTime;
+                this.stopwatch += 0.1f * Time.deltaTime;
                 if (base.characterMotor) base.characterMotor.velocity = Vector3.zero;
                 if (this.animator) this.animator.SetFloat("Slash.playbackRate", 0.05f);
             }
 
-            if (this.stopwatch >= this.duration * 0.23f && this.stopwatch <= this.duration * 0.4f || PaladinPlugin.IsLocalVRPlayer(characterBody))
+            float startTime = swingIndex == 1 ? attackStartTimAlt : attackStartTime;
+            if (this.stopwatch >= this.duration * startTime && this.stopwatch <= this.duration * attackEndTime || PaladinPlugin.IsLocalVRPlayer(characterBody))
             {
                 this.FireAttack(); 
             }

@@ -57,7 +57,7 @@ namespace PaladinMod.States.Quickstep
                 if (base.characterMotor)
                 {
                     float num = EntityStates.BrotherMonster.BaseSlideState.speedCoefficientCurve.Evaluate(base.fixedAge / BaseQuickstepState.baseDuration);
-                    base.characterMotor.rootMotion += 0.6f * (this.slideRotation * (num * this.moveSpeedStat * this.slideVector * Time.fixedDeltaTime));
+                    base.characterMotor.rootMotion += 0.6f * (this.slideRotation * (num * this.moveSpeedStat * this.slideVector * Time.deltaTime));
 
                     base.characterMotor.velocity.y = 0f;
                 }

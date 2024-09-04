@@ -8,7 +8,7 @@
 
 join the discord to share feedback/bugs- https://discord.gg/WQzE983zfs
 
-feel free to ping/dm me with all your complaints- ~~@rob#2365~~ @TheTimesweeper#5727
+feel free to ping/dm me with all your complaints- `thetimesweeper`
 ## Overview
 The Paladin is a tanky melee hybrid survivor who uses a combination of powerful melee attacks and long range spells. Writing these descriptions is time consuming so just try the character out for yourself and find out what works. He's got enough skills and flexibility to support a myriad of different playstyles.
 
@@ -51,9 +51,9 @@ TheTimesweeper - Helped with sword smears, maintaining
 KomradeSpectre - Helped get the Torpor debuff visuals working  
 Varna - Cruel Sun Rework  
 PureDark - VR Implementation  
-Destructor - Mod icon  
+Destructor - old Mod icon  
 Dragonyck - ~~Made the awesome Dark Souls skin pack (rip)~~ that forced me to add a framework for custom skin VFX.   
-Domi - Incredible animation rework
+Domi - Incredible animation rework and new icon. [Visit her ArtStation here](https://www.artstation.com/artwork/m8Kne9)
 
 And thanks to everyone else for providing tons of valuable feedback, the mod wouldn't be the same without it
 
@@ -61,6 +61,7 @@ And thanks to everyone else for providing tons of valuable feedback, the mod wou
 If you'd like to translate, language files are [here](https://github.com/ArcPh1r3/PaladinMod/tree/master/Release/plugins/Language)  
 Big thanks to those that have and in advance to those that may
 
+*languages currently disabled until they are updated to the new strings. if you would like to help, I'd be eternally grateful*
 French - by StyleMyk  
 Brazilian Portuguese - by Kauzok  
 Chinese - by MushroomEl  
@@ -68,6 +69,8 @@ Italian - by oiakam
 
 ## Known Issues
 - animation implementation may be faulty in some places. please reach out if you notice anything.
+- sots hotfix still in progress. please report any bugs on discord or github issues
+- translations not updated with new numbers
 
 ## Future Plans
 - finish animation rework

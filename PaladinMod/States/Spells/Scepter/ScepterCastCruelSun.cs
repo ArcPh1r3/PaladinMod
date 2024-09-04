@@ -40,8 +40,8 @@ namespace PaladinMod.States.Spell
                 }
                 base.StartAimMode(0.5f, true);
                 //Extend the duration of the skill while the player is aiming, but only to an upper limit.
-                base.duration += Time.fixedDeltaTime;
-                aimTime += Time.fixedDeltaTime;
+                base.duration += Time.deltaTime;
+                aimTime += Time.deltaTime;
             }
             if (sunAim && (!base.inputBank.skill4.down || aimTime >= StaticValues.prideFlareAimTimeMax))
             {
@@ -68,7 +68,7 @@ namespace PaladinMod.States.Spell
             {
                 Destroy(areaIndicatorInstance.gameObject);
                 Fire();
-                base.PlayAnimation("Gesture, Underride", "ThrowSpell", "Spell.playbackRate", 0.5f);
+                base.PlayAnimation("Gesture, Override", "ThrowSpell", "Spell.playbackRate", 0.5f);
             }
             else
             {
@@ -76,7 +76,7 @@ namespace PaladinMod.States.Spell
                 {
                     EffectManager.SimpleImpactEffect(Modules.Asset.paladinSunSpawnPrefab, sunInstance.transform.position, Vector3.up, transmit: true);
                 }
-                base.PlayAnimation("Gesture, Underride", "CastSunEnd", "Spell.playbackRate", 0.8f);
+                base.PlayAnimation("Gesture, Override", "CastSunEnd", "Spell.playbackRate", 0.8f);
             }
 
             if (NetworkServer.active && sunInstance)

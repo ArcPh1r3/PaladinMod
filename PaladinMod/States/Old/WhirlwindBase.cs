@@ -59,7 +59,7 @@ namespace PaladinMod.States
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            this.hitPauseTimer -= Time.fixedDeltaTime;
+            this.hitPauseTimer -= Time.deltaTime;
 
             if (base.fixedAge >= this.duration * 0.2f)
             {
@@ -106,7 +106,7 @@ namespace PaladinMod.States
                 else
                 {
                     base.characterMotor.velocity = Vector3.zero;
-                    this.hitPauseTimer -= Time.fixedDeltaTime;
+                    this.hitPauseTimer -= Time.deltaTime;
                     this.animator.SetFloat("Whirlwind.playbackRate", 0f);
                 }
 

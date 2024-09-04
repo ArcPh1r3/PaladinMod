@@ -17,7 +17,7 @@ namespace PaladinMod.States
 
         protected override void PlayCastAnimation()
         {
-            base.PlayAnimation("Gesture, Underride", "CastHeal", "Spell.playbackRate", this.baseDuration * 1.5f);
+            base.PlayAnimation("Gesture, Override", "CastHeal", "Spell.playbackRate", this.baseDuration * 1.5f);
         }
     }
 }

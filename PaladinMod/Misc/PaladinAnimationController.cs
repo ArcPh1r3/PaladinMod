@@ -21,6 +21,7 @@ namespace PaladinMod.Misc
         private float combatBufferTimer = -1f;
         private float combatLayerLerpTimer;
         private float combatLerpDeltaMultiplier = -1;
+        private float HACKStopDragTimer = -1;
 
         void Start()
         {
@@ -99,11 +100,22 @@ namespace PaladinMod.Misc
                     }
                 }
             }
+            HACKStopDragTimer -= Time.deltaTime;
+            if (animator.GetFloat("HACKStopDragging") < -0.1f)
+            {
+                HACKStopDragTimer = 1f;
+            }
 
             float draggingParameter = animator.GetFloat("isDragging");
-            this.animator.SetLayerWeight(draggeLayerIndex, draggingParameter);
+            if (HACKStopDragTimer < 0)
+            {
+                this.animator.SetLayerWeight(draggeLayerIndex, draggingParameter);
+            } else
+            {
+                this.animator.SetLayerWeight(draggeLayerIndex, 0);
+            }
 
-            bool isDragging = draggingParameter > 0.5f;
+            bool isDragging = draggingParameter > 0.5f  && HACKStopDragTimer < 0;
 
             //if (isDragging != wasDragging && !isDragging)
             //{

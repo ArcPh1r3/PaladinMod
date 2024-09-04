@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using BepInEx.Logging;
 using System;
 using UnityEngine.AddressableAssets;
+using System.Collections;
 
 namespace PaladinMod
 {
@@ -77,14 +78,14 @@ namespace PaladinMod
 
             Modules.Files.Init(Info); //store path to assembly
             Modules.Languages.Init(); //register language file to be read
-            //Modules.Tokens.Init(); // print language file from old tokens
+            Modules.Tokens.Init(); // add tokens to languageAPI (optinally print them)
         }
         
         public void Start() {
             Logger.LogInfo("[Initializing Paladin]");
             //Modules.States.FixStates();
 
-            gameObject.AddComponent<TestValueManager>();
+            //gameObject.AddComponent<TestValueManager>();
 
             // load assets
             Modules.Asset.PopulateAssets();
@@ -103,7 +104,7 @@ namespace PaladinMod
             //VR stuff
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DrBibop.VRAPI"))
             {
-                SetupVR();
+                Modules.VRCompat.SetupVR();
             }
 
             Modules.Unlockables.RegisterUnlockables(); // add unlockables
@@ -140,49 +141,15 @@ namespace PaladinMod
             Logger.LogInfo("[Initialized]");
         }
 
-        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        private void SetupVR()
-        {
-            if (!VRAPI.VR.enabled || !VRAPI.MotionControls.enabled) return;
-
-            VREnabled = true;
-            Modules.Asset.loadVRBundle();
-
-
-            VRAPI.MotionControls.AddHandPrefab(Modules.Asset.vrPaladinDominantHand);
-            VRAPI.MotionControls.AddHandPrefab(Modules.Asset.vrPaladinNonDominantHand);
-
-            VRAPI.MotionControls.onHandPairSet += SetVRHandsMaterials;
-
-            VRAPI.MotionControls.AddSkillBindingOverride("RobPaladinBody", SkillSlot.Primary, SkillSlot.Secondary, SkillSlot.Utility, SkillSlot.Special);
-        }
-        
-        private void SetVRHandsMaterials(CharacterBody body) {
-            if (body.baseNameToken == "PALADIN_NAME") {
-
-                SetVRHandRendererInfosToHopooShader(VRAPI.MotionControls.dominantHand);
-                SetVRHandRendererInfosToHopooShader(VRAPI.MotionControls.nonDominantHand);
-            }
-        }
-
-        private void SetVRHandRendererInfosToHopooShader(VRAPI.MotionControls.HandController hand) {
-
-            for (int i = 0; i < hand.rendererInfos.Length; i++) {
-                CharacterModel.RendererInfo rend = VRAPI.MotionControls.dominantHand.rendererInfos[i];
-                Modules.Materials.SetHotpooMaterial(rend.defaultMaterial);                
-            }
-        }
-
-
         private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
             Modules.Projectiles.LateSetup();
             Modules.ItemDisplays.SetItemDisplays();
         }
 
-        private void EntityStateCatalog_Init(On.RoR2.EntityStateCatalog.orig_Init orig)
+        private IEnumerator EntityStateCatalog_Init(On.RoR2.EntityStateCatalog.orig_Init orig)
         {
-            orig();
+            yield return orig();
 
             ChildLocator childLocator = Modules.Prefabs.paladinPrefab.GetComponentInChildren<ChildLocator>();
             ReplaceVFXMaterials(childLocator);
@@ -261,6 +228,7 @@ namespace PaladinMod
             On.EntityStates.GlobalSkills.LunarDetonator.Detonate.OnEnter += PlayRuinAnimation;
 
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.DoInitialSightResponse += BrotherSpeechDriver_DoInitialSightResponse;
+            On.RoR2.CharacterSpeech.FalseSonBossSpeechDriver.DoInitialSightResponse += FalseSonBossSpeechDriver_DoInitialSightResponse;
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.OnBodyKill += BrotherSpeechDriver_OnBodyKill;
 
             // this is fucking ridiculous
@@ -323,7 +291,7 @@ namespace PaladinMod
                     {
                         if (attackerBody.baseNameToken == "NEMPALADIN_NAME")
                         {
-                            if (damageInfo.damageType.HasFlag(DamageType.BlightOnHit))
+                            if (damageInfo.damageType.damageType.HasFlag(DamageType.BlightOnHit))
                             {
                                 damageInfo.damageType = DamageType.Generic;
                                 isHealing = true;
@@ -429,13 +397,59 @@ namespace PaladinMod
             orig(self);
         }
 
+        private void FalseSonBossSpeechDriver_DoInitialSightResponse(On.RoR2.CharacterSpeech.FalseSonBossSpeechDriver.orig_DoInitialSightResponse orig, RoR2.CharacterSpeech.FalseSonBossSpeechDriver self)
+        {
+            bool isThereAPaladin = false;
+
+            ReadOnlyCollection<CharacterBody> characterBodies = CharacterBody.readOnlyInstancesList;
+            for (int i = 0; i < characterBodies.Count; i++)
+            {
+                BodyIndex bodyIndex = characterBodies[i].bodyIndex;
+                isThereAPaladin |= (bodyIndex == BodyCatalog.FindBodyIndex(Modules.Prefabs.paladinPrefab));
+            }
+
+            if (isThereAPaladin)
+            {
+                RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo[] responsePool = new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo[]
+                {
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "FALSESON_SEE_PALADIN_1"
+                    },
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "FALSESON_SEE_PALADIN_2"
+                    },
+                    new RoR2.CharacterSpeech.CharacterSpeechController.SpeechInfo
+                    {
+                        duration = 1f,
+                        maxWait = 4f,
+                        mustPlay = true,
+                        priority = 0f,
+                        token = "FALSESON_SEE_PALADIN_3"
+                    }
+                };
+
+                self.SendReponseFromPool(responsePool);
+            }
+
+            orig(self);
+        }
         private void PlayVisionsAnimation(On.EntityStates.GlobalSkills.LunarNeedle.FireLunarNeedle.orig_OnEnter orig, EntityStates.GlobalSkills.LunarNeedle.FireLunarNeedle self)
         {
             orig(self);
 
             if (self.characterBody.baseNameToken == "PALADIN_NAME")
             {
-                self.PlayAnimation("Gesture, Underride", "FireVisions", "Visions.playbackRate", self.duration  * 2.5f);
+                self.PlayAnimation("Gesture, Override", "FireVisions", "Visions.playbackRate", self.duration  * 2.5f);
             }
         }
 
@@ -443,7 +457,7 @@ namespace PaladinMod
         {
             if (self.characterBody.baseNameToken == "PALADIN_NAME")
             {
-                self.PlayAnimation("Gesture, Underride", "ChargeLunarSecondary", "LunarSecondary.playbackRate", self.duration * 0.5f);
+                self.PlayCrossfade("Gesture, Override", "ChargeLunarSecondary", "LunarSecondary.playbackRate", self.duration * 0.5f, 0.05f);
             }
             else
             {
@@ -455,7 +469,7 @@ namespace PaladinMod
         {
             if (self.characterBody.baseNameToken == "PALADIN_NAME")
             {
-                self.PlayAnimation("Gesture, Underride", "ThrowLunarSecondary", "LunarSecondary.playbackRate", self.duration);
+                self.PlayAnimation("Gesture, Override", "ThrowLunarSecondary", "LunarSecondary.playbackRate", self.duration);
             } 
             else
             {
@@ -469,7 +483,7 @@ namespace PaladinMod
 
             if (self.characterBody.baseNameToken == "PALADIN_NAME")
             {
-                self.PlayAnimation("Gesture, Underride", "CastRuin", "Ruin.playbackRate", self.duration * 0.5f);
+                self.PlayCrossfade("Gesture, Override", "CastRuin", "Ruin.playbackRate", self.duration * 0.5f, 0.05f);
                 Util.PlaySound("PaladinFingerSnap", self.gameObject);
                 self.StartAimMode(self.duration + 0.5f);
 
@@ -597,13 +611,13 @@ namespace PaladinMod
                     else return;
 
                     torporController.Body = self.body;
-                    TemporaryOverlay overlay = self.gameObject.AddComponent<TemporaryOverlay>();
+                    TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(self.gameObject);
                     overlay.duration = float.PositiveInfinity;
                     overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                     overlay.animateShaderAlpha = true;
                     overlay.destroyComponentOnEnd = true;
                     overlay.originalMaterial = Addressables.LoadAssetAsync<Material>("RoR2/DLC1/EliteVoid/matEliteVoidOverlay.mat").WaitForCompletion();
-                    overlay.AddToCharacerModel(self);
+                    overlay.AddToCharacterModel(self);
                     torporController.Overlay = overlay;
                 }
 
@@ -614,13 +628,13 @@ namespace PaladinMod
                     else return;
 
                     blessingTracker.Body = self.body;
-                    TemporaryOverlay overlay = self.gameObject.AddComponent<TemporaryOverlay>();
+                    TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(self.gameObject);
                     overlay.duration = float.PositiveInfinity;
                     overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                     overlay.animateShaderAlpha = true;
                     overlay.destroyComponentOnEnd = true;
                     overlay.originalMaterial = Modules.Asset.blessingMat;
-                    overlay.AddToCharacerModel(self);
+                    overlay.AddToCharacterModel(self);
                     blessingTracker.Overlay = overlay;
                 }
 
@@ -631,13 +645,13 @@ namespace PaladinMod
                     else return;
                     
                     rageTracker.Body = self.body;
-                    TemporaryOverlay overlay = self.gameObject.AddComponent<TemporaryOverlay>();
+                    TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(self.gameObject);
                     overlay.duration = float.PositiveInfinity;
                     overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                     overlay.animateShaderAlpha = true;
                     overlay.destroyComponentOnEnd = true;
                     overlay.originalMaterial = RoR2.LegacyResourcesAPI.Load<Material>("Materials/matMercEvisTarget");
-                    overlay.AddToCharacerModel(self);
+                    overlay.AddToCharacterModel(self);
                     rageTracker.Overlay = overlay;
                 }
             }

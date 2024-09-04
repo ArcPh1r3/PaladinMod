@@ -156,7 +156,7 @@ namespace PaladinMod.States
         {
             base.FixedUpdate();
             base.StartAimMode(0.5f, false);
-            this.stopwatch += Time.fixedDeltaTime;
+            this.stopwatch += Time.deltaTime;
 
             if (this.stopwatch >= this.duration)
             {

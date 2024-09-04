@@ -90,8 +90,8 @@ namespace PaladinMod.States
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            this.sunSurvivalStopwatch -= Time.fixedDeltaTime;
-            this.passiveSoundCooldown -= Time.fixedDeltaTime;
+            this.sunSurvivalStopwatch -= Time.deltaTime;
+            this.passiveSoundCooldown -= Time.deltaTime;
 
             // cruel sun unlock
             if (base.characterBody.HasBuff(RoR2Content.Buffs.Overheat))
@@ -119,12 +119,12 @@ namespace PaladinMod.States
                 if (this.swordActive)
                 {
                     if (this.swordActiveEffect) this.swordActiveEffect.SetActive(true);
-                    this.swordTransition += StaticValues.swordGlowSpeed * Time.fixedDeltaTime;
+                    this.swordTransition += StaticValues.swordGlowSpeed * Time.deltaTime;
                 }
                 else
                 {
                     if (this.swordActiveEffect) this.swordActiveEffect.SetActive(false);
-                    this.swordTransition -= StaticValues.swordGlowSpeed * Time.fixedDeltaTime;
+                    this.swordTransition -= StaticValues.swordGlowSpeed * Time.deltaTime;
                 }
 
                 if (this.swordController) this.swordController.swordActive = this.swordActive;
@@ -147,7 +147,7 @@ namespace PaladinMod.States
 
             if (this.animator)
             {
-                //this.animator.SetFloat("sprintValue", base.characterBody.isSprinting ? -1 : 0, 0.2f, Time.fixedDeltaTime);
+                //this.animator.SetFloat("sprintValue", base.characterBody.isSprinting ? -1 : 0, 0.2f, Time.deltaTime);
                 this.animator.SetBool("inCombat", (!base.characterBody.outOfCombat || !base.characterBody.outOfDanger));
                 this.animator.SetBool("isAttacking", !base.characterBody.outOfCombat);
             }

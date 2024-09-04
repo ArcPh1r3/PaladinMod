@@ -2,7 +2,7 @@
 
 namespace PaladinMod.Achievements
 {
-    [RegisterAchievement(identifier, unlockableIdentifier, "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID", null)]
+    [RegisterAchievement(identifier, unlockableIdentifier, "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID", 12, null)]
     internal class GrandMasteryAchievement : BaseMasteryUnlockable
     {
         public const string identifier = AchievementTokenPrefix + "UNLOCKABLE_ACHIEVEMENT_ID";

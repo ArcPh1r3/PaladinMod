@@ -6,16 +6,28 @@ namespace PaladinMod.Modules {
     internal static class Languages {
 
         internal static string languageRoot => System.IO.Path.Combine(Files.assemblyDir, "Language");
+
+        internal static bool printOutput = false;
         
         internal static string TokensOutput = "";
 
-        public static void PrintOutput(string preface = "") {
-            PaladinPlugin.logger.LogWarning($"{preface}\n{{\n    strings:\n    {{{TokensOutput}\n    }}\n}}");
-            TokensOutput = "";
+        public static void PrintOutput(string preface = "")
+        {
+            if (printOutput)
+            {
+                PaladinPlugin.logger.LogWarning($"{preface}\n{{\n    strings:\n    {{{TokensOutput}\n    }}\n}}");
+                TokensOutput = "";
+            }
         }
 
-        public static void Add(string token, string text) {
-            Languages.TokensOutput += $"\n    \"{token}\" : \"{text.Replace(Environment.NewLine, "\\n").Replace("\n", "\\n").Replace("\"", "\\\"")}\",";
+        public static void Add(string token, string text)
+        {
+            R2API.LanguageAPI.Add(token, text);
+
+            if (printOutput)
+            {
+                Languages.TokensOutput += $"\n    \"{token}\" : \"{text.Replace(Environment.NewLine, "\\n").Replace("\n", "\\n").Replace("\"", "\\\"")}\",";
+            }
         }
 
         public static void Init() {

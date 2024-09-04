@@ -35,13 +35,13 @@ namespace PaladinMod.States
 
                 if (this.modelTransform)
                 {
-                    TemporaryOverlay overlay = this.modelTransform.gameObject.AddComponent<TemporaryOverlay>();
+                    TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(this.modelTransform.gameObject);
                     overlay.duration = SpawnState.duration;
                     overlay.animateShaderAlpha = true;
                     overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                     overlay.destroyComponentOnEnd = true;
                     overlay.originalMaterial = RoR2.LegacyResourcesAPI.Load<Material>("Materials/matClayGooDebuff");
-                    overlay.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
+                    overlay.AddToCharacterModel(this.modelTransform.GetComponent<CharacterModel>());
 
                     PrintController printController = this.modelTransform.gameObject.AddComponent<PrintController>();
                     printController.printTime = EntityStates.ClayBruiserMonster.SpawnState.printDuration;
@@ -62,13 +62,13 @@ namespace PaladinMod.States
 
                 if (this.modelTransform)
                 {
-                    TemporaryOverlay overlay = this.modelTransform.gameObject.AddComponent<TemporaryOverlay>();
+                    TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(this.modelTransform.gameObject);
                     overlay.duration = SpawnState.duration * 0.75f;
                     overlay.animateShaderAlpha = true;
                     overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                     overlay.destroyComponentOnEnd = true;
                     overlay.originalMaterial = RoR2.LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashBright");
-                    overlay.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
+                    overlay.AddToCharacterModel(this.modelTransform.GetComponent<CharacterModel>());
 
                     PrintController printController = this.modelTransform.gameObject.AddComponent<PrintController>();
                     printController.printTime = EntityStates.ClayBruiserMonster.SpawnState.printDuration;

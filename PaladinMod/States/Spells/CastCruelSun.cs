@@ -23,21 +23,25 @@ namespace PaladinMod.States.Spell
 
             base.OnEnter();
 
-            if (NetworkServer.active) {
+            if (NetworkServer.active)
+            {
                 this.sunSpawnPosition = this.characterBody.corePosition + new Vector3(0f, 11f, 0f);
-                if (sunPrefab && sunSpawnPosition != null) sunInstance = SpawnPaladinSun(sunPrefab, sunSpawnPosition.Value);
+                if (sunPrefab && sunSpawnPosition != null)
+                {
+                    sunInstance = SpawnPaladinSun(sunPrefab, sunSpawnPosition.Value);
+                }
             }
 
             //What does this do??? It's VFX but
             Transform modelTransform = base.GetModelTransform();
             if (modelTransform) {
-                TemporaryOverlay temporaryOverlay = modelTransform.gameObject.AddComponent<TemporaryOverlay>();
+                TemporaryOverlayInstance temporaryOverlay = TemporaryOverlayManager.AddOverlay(modelTransform.gameObject);
                 temporaryOverlay.duration = this.baseDuration;
                 temporaryOverlay.animateShaderAlpha = true;
                 temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                 temporaryOverlay.destroyComponentOnEnd = true;
                 temporaryOverlay.originalMaterial = RoR2.LegacyResourcesAPI.Load<Material>("Materials/matGrandparentTeleportOutBoom");
-                temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
+                temporaryOverlay.AddToCharacterModel(modelTransform.GetComponent<CharacterModel>());
             }
 
             base.cameraTargetParams.RemoveParamsOverride(camParamsOverrideHandle, 1f);
@@ -70,7 +74,7 @@ namespace PaladinMod.States.Spell
 
         protected override void PlayCastAnimation()
         {
-            base.PlayAnimation("Gesture, Underride", "CastSun", "Spell.playbackRate", 0.25f);
+            base.PlayAnimation("Gesture, Override", "CastSun", "Spell.playbackRate", 0.25f);
         }
 
         protected override void OnChanneledSpellExit()
@@ -88,7 +92,7 @@ namespace PaladinMod.States.Spell
 
             SetCancelSkillOverride(false);
 
-            base.PlayAnimation("Gesture, Underride", "CastSunEnd", "Spell.playbackRate", 0.8f);
+            base.PlayAnimation("Gesture, Override", "CastSunEnd", "Spell.playbackRate", 0.8f);
         }
 
         private GameObject SpawnPaladinSun(GameObject prefab, Vector3 spawnPosition)
@@ -97,6 +101,7 @@ namespace PaladinMod.States.Spell
             sun.GetComponent<GenericOwnership>().ownerObject = base.gameObject;
             NetworkServer.Spawn(sun);
             sun.GetComponent<PaladinSunNetworkController>().RpcPosition(gameObject);
+
             return sun;
         }
     }

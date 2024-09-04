@@ -94,7 +94,7 @@ namespace PaladinMod.States
                 else
                 {
                     base.characterMotor.velocity = Vector3.zero;
-                    this.hitPauseTimer -= Time.fixedDeltaTime;
+                    this.hitPauseTimer -= Time.deltaTime;
                     if (this.hitPauseTimer < 0f)
                     {
                         this.inHitPause = false;

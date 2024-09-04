@@ -43,7 +43,7 @@ namespace PaladinMod.States.Spell
 
             base.OnChanneledSpellExit();
 
-            base.PlayAnimation("Gesture, Underride", "CastSunEnd", "Spell.playbackRate", 1.5f);
+            base.PlayAnimation("Gesture, Override", "CastSunEnd", "Spell.playbackRate", 1.5f);
         }
     }
 }

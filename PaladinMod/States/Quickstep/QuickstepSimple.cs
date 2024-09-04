@@ -48,12 +48,12 @@ namespace PaladinMod.States.Quickstep
 
             EffectManager.SpawnEffect(Modules.Asset.dashFX, effectData, false);
         }
-
+        
         public override void FixedUpdate()
         {
             base.FixedUpdate();
             base.characterMotor.velocity = Vector3.zero;
-            base.characterMotor.rootMotion = this.slipVector * (this.moveSpeedStat * this.speedCoefficient * Time.fixedDeltaTime) * Mathf.Cos(base.fixedAge / (this.duration * 1.3f) * 1.57079637f);
+            base.characterMotor.rootMotion += this.slipVector * (this.moveSpeedStat * this.speedCoefficient * Time.deltaTime) * Mathf.Cos(base.fixedAge / (this.duration * 1.3f) * 1.57079637f);
 
             if (base.isAuthority)
             {

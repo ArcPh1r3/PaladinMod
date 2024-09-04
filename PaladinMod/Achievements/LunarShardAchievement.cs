@@ -7,7 +7,7 @@ using RoR2.Achievements;
 
 namespace PaladinMod.Achievements
 {
-    [RegisterAchievement(identifier, unlockableIdentifier, "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID", null)]
+    [RegisterAchievement(identifier, unlockableIdentifier, "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID", 3, null)]
     public class LunarShardAchievement : BaseAchievement
     {
         public const string identifier = "PALADIN_LUNARSHARDUNLOCKABLE_ACHIEVEMENT_ID";

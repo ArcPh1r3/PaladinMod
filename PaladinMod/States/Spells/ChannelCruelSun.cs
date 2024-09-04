@@ -28,7 +28,7 @@ namespace PaladinMod.States.Spell
 
         protected override void PlayChannelAnimation()
         {
-            base.PlayAnimation("Gesture, Underride", "ChannelSun", "Spell.playbackRate", 2f);
+            base.PlayCrossfade("Gesture, Override", "ChannelSun", "Spell.playbackRate", 2f, 0.05f);
         }
 
         public override void OnExit()

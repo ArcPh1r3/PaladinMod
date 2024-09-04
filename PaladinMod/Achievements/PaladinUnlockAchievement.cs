@@ -7,7 +7,7 @@ using RoR2.Achievements;
 
 namespace PaladinMod.Achievements
 {
-    [RegisterAchievement(identifier, unlockableIdentifier, null, null)]
+    [RegisterAchievement(identifier, unlockableIdentifier, null, 5, null)]
     public class PaladinUnlockAchievement : BaseAchievement
     {
         public const string identifier = "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID";

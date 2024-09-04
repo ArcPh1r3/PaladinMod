@@ -152,7 +152,7 @@ namespace PaladinMod.States.Nemesis
         {
             base.FixedUpdate();
             if (this.animator) this.animator.SetBool("inCombat", true);
-            this.hitPauseTimer -= Time.fixedDeltaTime;
+            this.hitPauseTimer -= Time.deltaTime;
 
             if (this.hitPauseTimer <= 0f && this.inHitPause)
             {
@@ -163,7 +163,7 @@ namespace PaladinMod.States.Nemesis
 
             if (!this.inHitPause)
             {
-                this.stopwatch += Time.fixedDeltaTime;
+                this.stopwatch += Time.deltaTime;
             }
             else
             {

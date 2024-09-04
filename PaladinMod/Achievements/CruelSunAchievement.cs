@@ -8,7 +8,7 @@ using RoR2.Achievements;
 
 namespace PaladinMod.Achievements
 {
-    [RegisterAchievement(identifier, unlockableIdentifier, "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID", null)]
+    [RegisterAchievement(identifier, unlockableIdentifier, "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID", 5, null)]
     internal class CruelSunAchievement : BaseAchievement
     {
         public const string identifier = "PALADIN_CRUELSUNUNLOCKABLE_ACHIEVEMENT_ID";

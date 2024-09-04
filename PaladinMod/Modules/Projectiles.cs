@@ -38,6 +38,14 @@ namespace PaladinMod.Modules
             if (overlapAttack) overlapAttack.damageCoefficient = 1f;
         }
 
+        public static void DontPool(this GameObject gob)
+        {
+            VFXAttributes vfx = gob.GetComponent<VFXAttributes>();
+            if (vfx == null)
+                vfx = gob.AddComponent<VFXAttributes>();
+            vfx.DoNotPool = true;
+        }
+
         public static void RegisterProjectiles()
         {
             //would like to simplify this all eventually....
@@ -59,6 +67,7 @@ namespace PaladinMod.Modules
             shockwaveGhost.transform.GetChild(0).Find("Dust").gameObject.GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/DLC1/LunarSun/matLunarSunProjectileBackdrop.mat").WaitForCompletion();
             shockwaveGhost.transform.GetChild(0).gameObject.AddComponent<PaladinMod.Misc.StupidFuckingBullshit>();
 
+            shockwaveGhost.DontPool();
             shockwave.GetComponent<ProjectileController>().ghostPrefab = shockwaveGhost;
             #endregion
 

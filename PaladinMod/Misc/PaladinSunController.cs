@@ -8,7 +8,7 @@ using RoR2.Projectile;
 using System;
 
 public class PaladinSunNetworkController : NetworkBehaviour {
-
+    
 	[ClientRpc]
 	public void RpcPosition(GameObject parentTransform) {
 		transform.SetParent(parentTransform.transform);

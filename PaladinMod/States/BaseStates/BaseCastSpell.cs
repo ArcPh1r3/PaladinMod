@@ -20,7 +20,7 @@ namespace PaladinMod.States
             base.OnEnter();
             this.duration = this.baseDuration / this.attackSpeedStat;
 
-            base.PlayAnimation("Gesture, Underride", "ThrowSpell", "Spell.playbackRate", this.duration);
+            base.PlayAnimation("Gesture, Override", "ThrowSpell", "Spell.playbackRate", this.duration);
 
             if (this.muzzleflashEffectPrefab)
             {

@@ -1,12 +1,15 @@
 ## Changelog
 
 `2.0.0`
- - big ol animation update courtesy of domi and by courtesy I mean commissionned by jame and of domi I mean several months ago sorry it took so long and it's not even done
+ - Updated for SotS. 
+     - *Generally working, but a lot of issues are still present. Some effects are missing, some error spams in the log* 
+     - *please report anything you can find, with logs, on discord or github issues*
+ - Big ol animation update courtesy of domi and by courtesy I mean commissionned by jame and by of domi I mean several months ago sorry it took so long and it's not even done
      - absurdly high quality animations for everything
      - second set of animations for out of combat
          - second-and-a-half set of animations for dragging while sprinting
      - *with this level of animation there are bound to be spots where transitions are off. please report on discord or github issues*
-     - added a new "limit break" animation for use by other mods
+     - added a new "LimitBreak" animation under "FullBody, Override" and "Gesture, Override" for use by other mods
  - All skins were broken and had to be redone to accommodate a new rig for the animations
     - if you made a skin it is now broken, You'll have to skin it to the new rig, found [here](https://github.com/ArcPh1r3/PaladinMod/blob/master/Blend/Paladin_rig_for_skins.blend). reach out if you have any questions
  - Gameplay changes courtesy of rob
@@ -26,6 +29,7 @@
     - Quickstep barrier amount: 10% > 15%
      - *the aim is to shift power away from raw stats and damage and give him more durability when played well, as well as a team bolstering passive to make him a proper team player*
  - added language support
+    - *currently disabled until they are updated to the new strings. if you would like to help, I'd be eternally grateful*
     - added French courtesy of StyleMyk
     - added Brazilian Portuguese courtesy of Kauzok
     - added Chinese courtesy of MushroomEl

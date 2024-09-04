@@ -1,7 +1,7 @@
 {
   "name": "PaladinMod",
   "author": "Paladin_Alliance",
-  "version_number": "1.9.92",
+  "version_number": "2.0.0",
   "website_url": "https://github.com/ArcPh1r3/PaladinMod",
   "description": "Adds Paladin, a fully fleshed out custom survivor | 2.0.0 animation overhaul",
   "dependencies": [
@@ -11,6 +11,7 @@
     "RiskofThunder-R2API_Language-1.0.0",
     "RiskofThunder-R2API_Sound-1.0.0",
     "RiskofThunder-R2API_DamageType-1.0.0",
-    "RiskofThunder-R2API_RecalculateStats-1.0.0"
+    "RiskofThunder-R2API_RecalculateStats-1.0.0",
+    "riskofresources-FixInvincibleMithrix-0.0.1"
   ]
 }

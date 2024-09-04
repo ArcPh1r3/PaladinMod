@@ -8,7 +8,7 @@ using RoR2.Achievements;
 
 namespace PaladinMod.Achievements
 {
-    [RegisterAchievement(identifier, unlockableIdentifier, "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID", null)]
+    [RegisterAchievement(identifier, unlockableIdentifier, "PALADIN_UNLOCKABLE_ACHIEVEMENT_ID", 3, null)]
     internal class TorporAchievement : BaseAchievement
     {
         public const string identifier = "PALADIN_TORPORUNLOCKABLE_ACHIEVEMENT_ID";

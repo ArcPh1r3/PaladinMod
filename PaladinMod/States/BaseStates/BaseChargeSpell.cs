@@ -55,7 +55,7 @@ namespace PaladinMod.States
                 }
             }
 
-            base.PlayAnimation("Gesture, Underride", "ChargeSpell", "ChargeSpell.playbackRate", this.duration);
+            base.PlayCrossfade("Gesture, Override", "ChargeSpell", "ChargeSpell.playbackRate", this.duration, 0.05f);
             this.loopSoundInstanceId = Util.PlayAttackSpeedSound(this.chargeSoundString, base.gameObject, this.attackSpeedStat);
             this.defaultCrosshairPrefab = base.characterBody._defaultCrosshairPrefab;
 
@@ -78,7 +78,7 @@ namespace PaladinMod.States
 
             if (!this.outer.destroying)
             {
-                base.PlayAnimation("Gesture, Underride", "BufferEmpty");
+                base.PlayAnimation("Gesture, Override", "BufferEmpty");
             }
 
             EntityState.Destroy(this.chargeEffectInstance);
