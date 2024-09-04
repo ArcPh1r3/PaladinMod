@@ -16,7 +16,7 @@ namespace PaladinMod.Modules
         {
             orig();
             GameObject skele = Modules.Asset.mainAssetBundle.LoadAsset<GameObject>("Paladin_Meme");
-            EmotesAPI.CustomEmotesAPI.ImportArmature(Prefabs.paladinPrefab, skele, false);
+            EmotesAPI.CustomEmotesAPI.ImportArmature(Prefabs.paladinPrefab, skele, true);
         }
     }
 }

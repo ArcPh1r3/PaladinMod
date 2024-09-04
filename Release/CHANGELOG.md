@@ -1,4 +1,6 @@
 ## Changelog
+`2.0.1`
+ - fixed emotes to new rig. disable paladin support config option in CustomEmotesApi config
 
 `2.0.0`
  - Updated for SotS. 
