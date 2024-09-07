@@ -160,7 +160,7 @@ namespace PaladinMod.Modules {
             Languages.Add(GetAchievementDescriptionToken(Achievements.PaladinUnlockAchievement.identifier), "Use the Beads of Fealty and become whole once more.");
 
             Languages.Add(GetAchievementNameToken(Achievements.MasteryAchievement.identifier), "Paladin: Mastery");
-            Languages.Add(GetAchievementNameToken(Achievements.MasteryAchievement.identifier), "As Paladin, beat the game or obliterate on Monsoon.");
+            Languages.Add(GetAchievementDescriptionToken(Achievements.MasteryAchievement.identifier), "As Paladin, beat the game or obliterate on Monsoon.");
 
             Languages.Add(GetAchievementNameToken(Achievements.GrandMasteryAchievement.identifier),        "Paladin: Grand Mastery");
             Languages.Add(GetAchievementDescriptionToken(Achievements.GrandMasteryAchievement.identifier), "As Paladin, beat the game or obliterate on Typhoon or Eclipse.\n<color=#8888>(Counts any difficulty Typhoon or higher)</color>");

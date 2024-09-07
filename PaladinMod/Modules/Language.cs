@@ -22,7 +22,7 @@ namespace PaladinMod.Modules {
 
         public static void Add(string token, string text)
         {
-            R2API.LanguageAPI.Add(token, text);
+            R2API.LanguageAPI.Add(token, text, "en");
 
             if (printOutput)
             {

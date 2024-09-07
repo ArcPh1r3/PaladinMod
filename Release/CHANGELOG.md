@@ -1,4 +1,13 @@
 ## Changelog
+`2.0.2`
+- fixed collision on corruption skin
+- fixed missing mastery unlock string
+- added Spanish (ES) (thanks Bagre)
+- added Spanish (LatAm) (thanks Juhnter)
+- added Russian (thanks Lecarde)
+- re-enabled French, Chinese, Italian, and Portuguese with correct numbers, but achievement translations are still incomplete.
+- removed FixInivincibleMithrix dependency
+
 `2.0.1`
  - fixed emotes to new rig. disable paladin support config option in CustomEmotesApi config
 

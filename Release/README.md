@@ -61,11 +61,13 @@ And thanks to everyone else for providing tons of valuable feedback, the mod wou
 If you'd like to translate, language files are [here](https://github.com/ArcPh1r3/PaladinMod/tree/master/Release/plugins/Language)  
 Big thanks to those that have and in advance to those that may
 
-*languages currently disabled until they are updated to the new strings. if you would like to help, I'd be eternally grateful*
+Spanish (Latam) - Juhnter
+Spanish (ES) - Bagre
+Russian - Mark Lecarde
 French - by StyleMyk  
-Brazilian Portuguese - by Kauzok  
-Chinese - by MushroomEl  
-Italian - by oiakam  
+Brazilian Portuguese (incomplete) - by Kauzok  
+Chinese (incomplete) - by MushroomEl  
+Italian (incomplete) - by oiakam  
 
 ## Known Issues
 - animation implementation may be faulty in some places. please reach out if you notice anything.
