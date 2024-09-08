@@ -629,12 +629,15 @@ namespace PaladinMod
                     torporController.Overlay = overlay;
                 }
 
-                if (self.body && self.body.HasBuff(Modules.Buffs.blessedBuff))
+                if (self.body && self.body.baseNameToken != "PALADIN_NAME")
                 {
-                    var blessingTracker = self.body.GetComponent<PaladinBlessingTracker>();
-                    if (!blessingTracker) blessingTracker = self.body.gameObject.AddComponent<PaladinBlessingTracker>();
-                    else return;
+                    if (self.body && self.body.HasBuff(Modules.Buffs.blessedBuff))
+                    {
+                        var blessingTracker = self.body.GetComponent<PaladinBlessingTracker>();
+                        if (!blessingTracker) blessingTracker = self.body.gameObject.AddComponent<PaladinBlessingTracker>();
+                        else return;
 
+<<<<<<< Updated upstream
                     blessingTracker.Body = self.body;
                     TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(self.gameObject);
                     overlay.duration = float.PositiveInfinity;
@@ -644,6 +647,18 @@ namespace PaladinMod
                     overlay.originalMaterial = Modules.Asset.blessingMat;
                     overlay.AddToCharacterModel(self);
                     blessingTracker.Overlay = overlay;
+=======
+                        blessingTracker.Body = self.body;
+                        TemporaryOverlay overlay = self.gameObject.AddComponent<TemporaryOverlay>();
+                        overlay.duration = float.PositiveInfinity;
+                        overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                        overlay.animateShaderAlpha = true;
+                        overlay.destroyComponentOnEnd = true;
+                        overlay.originalMaterial = Modules.Assets.blessingMat;
+                        overlay.AddToCharacerModel(self);
+                        blessingTracker.Overlay = overlay;
+                    }
+>>>>>>> Stashed changes
                 }
 
                 if (self.body && self.body.HasBuff(Modules.Buffs.rageBuff))
