@@ -211,6 +211,11 @@ localScale = new Vector3(1.2428F, 1.2428F, 1.2299F),
                             localAngles = new Vector3(80.42696F, 8.01645F, 347.4096F),
                             localScale = new Vector3(0.17124F, 0.16339F, 0.14453F),
                             limbMask = LimbFlags.None
+                        },
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.LimbMask,
+                            limbMask = LimbFlags.RightCalf
                         }
                     }
                 }

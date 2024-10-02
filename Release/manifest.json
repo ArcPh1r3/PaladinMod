@@ -1,7 +1,7 @@
 {
   "name": "PaladinMod",
   "author": "Paladin_Alliance",
-  "version_number": "2.0.2",
+  "version_number": "2.0.3",
   "website_url": "https://github.com/ArcPh1r3/PaladinMod",
   "description": "Adds Paladin, a fully fleshed out custom survivor | 2.0.0 animation overhaul",
   "dependencies": [

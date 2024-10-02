@@ -1,4 +1,7 @@
 ## Changelog
+`2.0.3`
+- fixed russian translation errors
+
 `2.0.2`
 - fixed collision on corruption skin
 - fixed missing mastery unlock string
