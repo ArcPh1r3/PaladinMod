@@ -28,6 +28,7 @@ namespace PaladinMod.States
                 fireProjectileInfo.rotation = Quaternion.LookRotation(aimRay.direction);
                 fireProjectileInfo.crit = base.characterBody.RollCrit();
                 fireProjectileInfo.damage = base.characterBody.damage * StaticValues.lunarShardDamageCoefficient;
+                fireProjectileInfo.damageTypeOverride = DamageTypeCombo.GenericSecondary;
                 fireProjectileInfo.damageColorIndex = DamageColorIndex.Default;
                 fireProjectileInfo.owner = base.gameObject;
                 fireProjectileInfo.procChainMask = default(ProcChainMask);

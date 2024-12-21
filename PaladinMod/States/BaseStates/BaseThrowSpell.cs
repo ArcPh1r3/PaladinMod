@@ -2,6 +2,7 @@
 using PaladinMod.Misc;
 using RoR2;
 using RoR2.Projectile;
+using System;
 using UnityEngine;
 
 namespace PaladinMod.States
@@ -78,6 +79,8 @@ namespace PaladinMod.States
                         speedOverride = 120f
                     };
 
+                    ModifyProjectileInfo(fireProjectileInfo);
+
                     ProjectileManager.instance.FireProjectile(fireProjectileInfo);
                 }
 
@@ -86,6 +89,10 @@ namespace PaladinMod.States
                     base.characterMotor.ApplyForce(aimRay.direction * (-this.selfForce * this.charge), false, false);
                 }
             }
+        }
+
+        protected virtual void ModifyProjectileInfo(FireProjectileInfo fireProjectileInfo)
+        {
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

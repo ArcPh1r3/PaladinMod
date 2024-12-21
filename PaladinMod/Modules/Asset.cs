@@ -286,7 +286,7 @@ namespace PaladinMod.Modules
 
             AddEffect(dashFX);
 
-            airSlamFX = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("PaladinAirSlamImpact", true);
+            airSlamFX = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("PaladinAirSlamImpact", false);
 
             airSlamFX.transform.Find("ParticleInitial/Debris, 3D").localScale *= 0.75f;
             airSlamFX.transform.Find("ParticleInitial/Debris").localScale *= 0.75f;
@@ -306,7 +306,7 @@ namespace PaladinMod.Modules
 
             AddEffect(airSlamFX);
 
-            airSlamBoostedFX = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("PaladinAirSlamImpactBoosted", true);
+            airSlamBoostedFX = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("PaladinAirSlamImpactBoosted", false);
 
             airSlamBoostedFX.transform.Find("ParticleInitial/Debris, 3D").localScale *= 0.85f;
             airSlamBoostedFX.transform.Find("ParticleInitial/Debris").localScale *= 0.85f;
@@ -342,7 +342,7 @@ namespace PaladinMod.Modules
         {
 
             #region SwordEffects
-            swordSwing = Asset.LoadEffectFuck("PaladinSwing", "");
+            swordSwing = Asset.LoadSwingNotEffectFuck("PaladinSwing", "");
             Material distortionMat = Addressables.LoadAssetAsync<Material>("RoR2/Base/Croco/matCrocoSlashDistortion.mat").WaitForCompletion();
 
             Material ogSwingMat = swordSwing.transform.Find("SwingTrail").GetComponent<ParticleSystemRenderer>().material;
@@ -360,7 +360,7 @@ namespace PaladinMod.Modules
             swordSwing.transform.Find("SwingTrail").GetComponent<ParticleSystemRenderer>().material = swingMat;
             swordSwing.transform.Find("SwingTrail").Find("SwingTrail2").GetComponent<ParticleSystemRenderer>().material = distortionMat;
 
-            swordSwingEmpowered = PrefabAPI.InstantiateClone(swordSwing, "PaladinSwingEmpowered");
+            swordSwingEmpowered = PrefabAPI.InstantiateClone(swordSwing, "PaladinSwingEmpowered", false);
 
             Material swingMat2 = Material.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/Base/Brother/matBrotherSwing.mat").WaitForCompletion());
             swingMat2.SetTexture("_MainTex", ogSwingMat.GetTexture("_MainTex"));
@@ -381,7 +381,7 @@ namespace PaladinMod.Modules
 
             //hitFX = Assets.LoadEffect("ImpactPaladinSwing", "");
 
-            hitFX = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/OmniImpactVFXSlashMerc.prefab").WaitForCompletion(), "PaladinImpactVFX", true);
+            hitFX = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/OmniImpactVFXSlashMerc.prefab").WaitForCompletion(), "PaladinImpactVFX", false);
 
             hitFX.transform.Find("Flash, Hard").localScale = new Vector3(4f, 4f, 4f);
             hitFX.transform.Find("Dash, Bright").localScale = new Vector3(5f, 3f, 3f);
@@ -394,45 +394,46 @@ namespace PaladinMod.Modules
 
             AddEffect(hitFX);
 
-            swordSwingGreen = Asset.LoadEffect("PaladinSwingGreen", "");
+            swordSwingGreen = Asset.LoadSwingNotEffectFuck("PaladinSwingGreen", "");
             spinningSlashFXGreen = Asset.LoadEffect("SpinSlashEffectGreen", "");
             spinningSlashEmpoweredFXGreen = Asset.LoadEffect("EmpSpinSlashEffectGreen", "");
             hitFXGreen = Asset.LoadEffect("ImpactPaladinSwingGreen", "");
 
-            swordSwingYellow = Asset.LoadEffect("PaladinSwingYellow", "");
+            swordSwingYellow = Asset.LoadSwingNotEffectFuck("PaladinSwingYellow", "");
             spinningSlashFXYellow = Asset.LoadEffect("SpinSlashEffectYellow", "");
             spinningSlashEmpoweredFXYellow = Asset.LoadEffect("EmpSpinSlashEffectYellow", "");
             hitFXYellow = Asset.LoadEffect("ImpactPaladinSwingYellow", "");
 
-            swordSwingWhite = Asset.LoadEffect("PaladinSwingWhite", "");
+            swordSwingWhite = Asset.LoadSwingNotEffectFuck("PaladinSwingWhite", "");
             hitFXBlunt = Asset.LoadEffect("ImpactPaladinSwingBlunt", "");
 
-            swordSwingBat = Asset.LoadEffect("PaladinSwingBat", "");
+            swordSwingBat = Asset.LoadSwingNotEffectFuck("PaladinSwingBat", "");
 
-            swordSwingRed = Asset.LoadEffect("PaladinSwingRed", "");
+            swordSwingRed = Asset.LoadSwingNotEffectFuck("PaladinSwingRed", "");
             spinningSlashFXRed = Asset.LoadEffect("SpinSlashEffectRed", "");
             spinningSlashEmpoweredFXRed = Asset.LoadEffect("EmpSpinSlashEffectRed", "");
             hitFXRed = Asset.LoadEffect("ImpactPaladinSwingRed", "");
 
-            swordSwingClay = Asset.LoadEffect("PaladinSwingClay", "");
+            swordSwingClay = Asset.LoadSwingNotEffectFuck("PaladinSwingClay", "");
             spinningSlashFXClay = Asset.LoadEffect("SpinSlashEffectClay", "");
             spinningSlashEmpoweredFXClay = Asset.LoadEffect("EmpSpinSlashEffectClay", "");
             hitFXClay = Asset.LoadEffect("ImpactPaladinSwingClay", "");
 
-            swordSwingPurple = Asset.LoadEffect("PaladinSwingPurple", "");
+            swordSwingPurple = Asset.LoadSwingNotEffectFuck("PaladinSwingPurple", "");
             spinningSlashFXPurple = Asset.LoadEffect("SpinSlashEffectPurple", "");
             spinningSlashEmpoweredFXPurple = Asset.LoadEffect("EmpSpinSlashEffectPurple", "");
             hitFXPurple = Asset.LoadEffect("ImpactPaladinSwingPurple", "");
 
-            swordSwingFlame = Asset.LoadEffect("PaladinSwingFlame", "");
+            swordSwingFlame = Asset.LoadSwingNotEffectFuck("PaladinSwingFlame", "");
             spinningSlashFXFlame = Asset.LoadEffect("SpinSlashEffectFlame", "");
             spinningSlashEmpoweredFXFlame = Asset.LoadEffect("EmpSpinSlashEffectFlame", "");
 
-            swordSwingBlack = Asset.LoadEffect("PaladinSwingBlack", "");
+            swordSwingBlack = Asset.LoadSwingNotEffectFuck("PaladinSwingBlack", "");
             spinningSlashFXBlack = Asset.LoadEffect("SpinSlashEffectBlack", "");
             spinningSlashEmpoweredFXBlack = Asset.LoadEffect("EmpSpinSlashEffectBlack", "");
             hitFXBlack = Asset.LoadEffect("ImpactPaladinSwingBlack", "");
 
+            //for custom skin effect stuff, in order of enum
             hitEffects.Add(hitFX);
             hitEffects.Add(hitFXGreen);
             hitEffects.Add(hitFXYellow);
@@ -523,7 +524,7 @@ namespace PaladinMod.Modules
             lightningSpear = mainAssetBundle.LoadAsset<GameObject>("LightningSpear");
             swordBeam = mainAssetBundle.LoadAsset<GameObject>("SwordBeam");
             
-            swordBeamGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/EvisProjectileGhost.prefab").WaitForCompletion().InstantiateClone("PaladinSwordBeamGhost", true);
+            swordBeamGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Merc/EvisProjectileGhost.prefab").WaitForCompletion().InstantiateClone("PaladinSwordBeamGhost", false);
             swordBeamGhost.transform.Find("Base").GetComponent<ParticleSystemRenderer>().material = Addressables.LoadAssetAsync<Material>("RoR2/Base/LunarWisp/matLunarWispBombTrail.mat").WaitForCompletion();
             swordBeamGhost.transform.Find("Base").localScale = new Vector3(2f, 1f, 4f);
 
@@ -756,14 +757,20 @@ namespace PaladinMod.Modules
             return rootObject;
         }
 
+        private static GameObject LoadSwingNotEffectFuck(string resourceName, string soundName)
+        {
+            GameObject newEffect = mainAssetBundle.LoadAsset<GameObject>(resourceName);
+            newEffect.AddComponent<DestroyOnTimer>().duration = 12;
+            return newEffect;
+        }
+
         private static GameObject LoadEffect(string resourceName, string soundName)
         {
             GameObject newEffect = mainAssetBundle.LoadAsset<GameObject>(resourceName);
 
             newEffect.AddComponent<DestroyOnTimer>().duration = 12;
-            newEffect.AddComponent<NetworkIdentity>();
             newEffect.AddComponent<VFXAttributes>().vfxPriority = VFXAttributes.VFXPriority.Always;
-            var effect = newEffect.AddComponent<EffectComponent>();
+            EffectComponent effect = newEffect.AddComponent<EffectComponent>();
             effect.applyScale = false;
             effect.effectIndex = EffectIndex.Invalid;
             effect.parentToReferencedTransform = true;
@@ -771,16 +778,6 @@ namespace PaladinMod.Modules
             effect.soundName = soundName;
 
             AddEffect(newEffect);
-
-            return newEffect;
-        }
-
-        private static GameObject LoadEffectFuck(string resourceName, string soundName)
-        {
-            GameObject newEffect = mainAssetBundle.LoadAsset<GameObject>(resourceName);
-
-            newEffect.AddComponent<DestroyOnTimer>().duration = 12;
-            newEffect.AddComponent<NetworkIdentity>();
 
             return newEffect;
         }

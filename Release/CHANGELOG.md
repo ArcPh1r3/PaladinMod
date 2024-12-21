@@ -1,4 +1,11 @@
 ## Changelog
+`2.0.4`
+- damagesource update
+- fixed green beam on sovereign
+- fixed wrong eye trails
+- fixed log spam on m1s
+- few animation tweaks
+
 `2.0.3`
 - fixed russian translation errors
 

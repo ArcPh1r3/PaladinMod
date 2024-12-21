@@ -256,7 +256,8 @@ namespace PaladinMod.Misc
         {
             get
             {
-                if (this.skinInfo.swingEffect == Modules.Asset.swordSwing && this.swordActive) return Modules.Asset.swordSwingEmpowered;
+                if (this.skinInfo.swingEffect == Modules.Asset.swordSwing && this.swordActive) 
+                    return Modules.Asset.swordSwingEmpowered;
                 return this.skinInfo.swingEffect;
             }
         }

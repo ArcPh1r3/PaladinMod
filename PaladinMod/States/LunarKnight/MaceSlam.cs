@@ -46,7 +46,7 @@ namespace PaladinMod.States.LunarKnight
                 overlapAttack.attacker = base.gameObject;
                 overlapAttack.damage = MaceSlam.damageCoefficient * this.damageStat;
                 overlapAttack.damageColorIndex = DamageColorIndex.Default;
-                overlapAttack.damageType = DamageType.Generic;
+                overlapAttack.damageType = DamageTypeCombo.GenericPrimary;
                 overlapAttack.hitEffectPrefab = EntityStates.BrotherMonster.WeaponSlam.weaponHitEffectPrefab;
                 overlapAttack.hitBoxGroup = Array.Find<HitBoxGroup>(this.modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == "LeapStrike");
                 overlapAttack.impactSound = EntityStates.BrotherMonster.WeaponSlam.weaponImpactSound.index;

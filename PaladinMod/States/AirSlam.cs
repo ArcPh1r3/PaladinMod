@@ -89,6 +89,7 @@ namespace PaladinMod.States
 
             this.attack = new OverlapAttack();
             this.attack.damageType = DamageType.Stun1s;
+            this.attack.damageType.damageSource = DamageSource.Secondary;
             this.attack.attacker = base.gameObject;
             this.attack.inflictor = base.gameObject;
             this.attack.teamIndex = base.GetTeam();
@@ -123,7 +124,8 @@ namespace PaladinMod.States
                 if (base.isAuthority)
                 {
                     base.AddRecoil(-1f * GroundSweep.attackRecoil, -2f * GroundSweep.attackRecoil, -0.5f * GroundSweep.attackRecoil, 0.5f * GroundSweep.attackRecoil);
-                    EffectManager.SimpleMuzzleFlash(this.swordController.swingEffect, base.gameObject, "SwingDown", true);
+                    //EffectManager.SimpleMuzzleFlash(this.swordController.swingEffect, base.gameObject, "SwingDown", true);
+                    UnityEngine.Object.Instantiate(this.swordController.swingEffect, FindModelChild("SwingDown"));
 
                     base.characterMotor.velocity *= 0.25f;
                     base.characterMotor.velocity += Vector3.up * -AirSlam.dropVelocity;
@@ -186,7 +188,18 @@ namespace PaladinMod.States
             Vector3 shockwavePosition = base.characterBody.footPosition;
             Vector3 forward = base.characterDirection.forward;
 
-            ProjectileManager.instance.FireProjectile(Modules.Projectiles.shockwave, shockwavePosition, Util.QuaternionSafeLookRotation(forward), base.gameObject, base.characterBody.damage * StaticValues.beamDamageCoefficient, EntityStates.BrotherMonster.WeaponSlam.waveProjectileForce, base.RollCrit(), DamageColorIndex.Default, null, -1f);
+            ProjectileManager.instance.FireProjectile(
+                Modules.Projectiles.shockwave, 
+                shockwavePosition, 
+                Util.QuaternionSafeLookRotation(forward),
+                base.gameObject,
+                base.characterBody.damage * StaticValues.beamDamageCoefficient,
+                EntityStates.BrotherMonster.WeaponSlam.waveProjectileForce, 
+                base.RollCrit(),
+                DamageColorIndex.Default,
+                null,
+                -1f,
+                DamageTypeCombo.GenericSecondary);
         }
 
         private void GroundImpact()

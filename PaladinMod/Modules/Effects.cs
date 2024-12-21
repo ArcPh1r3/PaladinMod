@@ -207,7 +207,7 @@ namespace PaladinMod.Modules
                 swingEffect = Asset.swordSwing,
                 spinSlashEffect = Asset.spinningSlashFX,
                 empoweredSpinSlashEffect = Asset.spinningSlashEmpoweredFX, 
-                eyeTrailColor = new Color(196 / 255, 255 / 255, 254 / 255)
+                eyeTrailColor = new Color(196f / 255f, 255f / 255f, 254f / 255f)
             });
             paladinSkinInfos.Add(new PaladinSkinInfo {
                 skinNameToken = "PALADINBODY_LUNARKNIGHT_SKIN_NAME",
@@ -218,7 +218,7 @@ namespace PaladinMod.Modules
                 swingEffect = Asset.swordSwing,
                 spinSlashEffect = Asset.spinningSlashFX,
                 empoweredSpinSlashEffect = Asset.spinningSlashEmpoweredFX,
-                eyeTrailColor = new Color(196 / 255, 255 / 255, 254 / 255)
+                eyeTrailColor = new Color(196f / 255f, 255f / 255f, 254f / 255f)
             });
 
             paladinSkinInfos.Add(new PaladinSkinInfo 
@@ -231,8 +231,7 @@ namespace PaladinMod.Modules
                 swingEffect = Asset.swordSwing,
                 spinSlashEffect = Asset.spinningSlashFX,
                 empoweredSpinSlashEffect = Asset.spinningSlashEmpoweredFX,
-                eyeTrailColor = new Color(255 / 255, 215 / 255, 0),
-                swordBeamProjectileGhost = Projectiles.CloneAndColorSwordBeam(Color.green)
+                eyeTrailColor = new Color(255f / 255f, 215f / 255f, 0),
             });
             paladinSkinInfos.Add(new PaladinSkinInfo {
                 skinNameToken = "PALADINBODY_TYPHOONLEGACY_SKIN_NAME",
@@ -243,7 +242,7 @@ namespace PaladinMod.Modules
                 swingEffect = Asset.swordSwing,
                 spinSlashEffect = Asset.spinningSlashFX,
                 empoweredSpinSlashEffect = Asset.spinningSlashEmpoweredFX,
-                eyeTrailColor = new Color(255 / 255, 215 / 255, 0)
+                eyeTrailColor = new Color(255f / 255f, 215f / 255f, 0)
             });
 
             paladinSkinInfos.Add(new PaladinSkinInfo
@@ -256,7 +255,7 @@ namespace PaladinMod.Modules
                 swingEffect = Asset.swordSwingGreen,
                 spinSlashEffect = Asset.spinningSlashFXGreen,
                 empoweredSpinSlashEffect = Asset.spinningSlashEmpoweredFXGreen, 
-                eyeTrailColor = new Color(133 / 255, 255 / 255, 147 / 255)
+                eyeTrailColor = new Color(133f / 255f, 255f / 255f, 147f / 255f)
             });
             paladinSkinInfos.Add(new PaladinSkinInfo {
                 skinNameToken = "PALADINBODY_POISONLEGACY_SKIN_NAME",
@@ -267,7 +266,7 @@ namespace PaladinMod.Modules
                 swingEffect = Asset.swordSwingGreen,
                 spinSlashEffect = Asset.spinningSlashFXGreen,
                 empoweredSpinSlashEffect = Asset.spinningSlashEmpoweredFXGreen,
-                eyeTrailColor = new Color(133 / 255, 255 / 255, 147 / 255)
+                eyeTrailColor = new Color(133f / 255f, 255f / 255f, 147f / 255f)
             });
 
             paladinSkinInfos.Add(new PaladinSkinInfo
@@ -280,7 +279,7 @@ namespace PaladinMod.Modules
                 swingEffect = Asset.swordSwingClay,
                 spinSlashEffect = Asset.spinningSlashFXClay,
                 empoweredSpinSlashEffect = Asset.spinningSlashEmpoweredFXClay,
-                eyeTrailColor = new Color(255 / 255, 64 / 255, 64 / 255)
+                eyeTrailColor = new Color(255f / 255f, 64f / 255f, 64f / 255f)
             });
 
             paladinSkinInfos.Add(new PaladinSkinInfo
@@ -293,7 +292,7 @@ namespace PaladinMod.Modules
                 swingEffect = Asset.swordSwingRed,
                 spinSlashEffect = Asset.spinningSlashFXRed,
                 empoweredSpinSlashEffect = Asset.spinningSlashEmpoweredFXRed,
-                //eyeTrailColor = new Color(248 / 255, 23 / 255, 83 / 255)
+                //eyeTrailColor = new Color(248f / 255f, 23f / 255f, 83f / 255f)
             });
 
             paladinSkinInfos.Add(new PaladinSkinInfo

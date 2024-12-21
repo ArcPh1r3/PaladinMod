@@ -89,7 +89,7 @@ namespace PaladinMod.States
             //14.5
             //20
             this.attack = new OverlapAttack();
-            this.attack.damageType = DamageType.Generic;
+            this.attack.damageType = DamageTypeCombo.GenericPrimary;
             this.attack.attacker = base.gameObject;
             this.attack.inflictor = base.gameObject;
             this.attack.teamIndex = base.GetTeam();

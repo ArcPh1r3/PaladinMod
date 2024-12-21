@@ -206,7 +206,7 @@ localScale = new Vector3(1.2428F, 1.2428F, 1.2299F),
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayHoof"),
-                            childName = "CalfL",
+                            childName = "CalfR",
                             localPos = new Vector3(-0.03586F, 0.49177F, -0.04191F),
                             localAngles = new Vector3(80.42696F, 8.01645F, 347.4096F),
                             localScale = new Vector3(0.17124F, 0.16339F, 0.14453F),
@@ -2184,6 +2184,11 @@ localPos = new Vector3(0F, 0F, 0F),
 localAngles = new Vector3(0F, 0F, 0F),
 localScale = new Vector3(1.1682F, 1.1682F, 1.1682F),
                             limbMask = LimbFlags.None
+                        },
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.LimbMask,
+                            limbMask = LimbFlags.RightArm
                         }
                     }
                 }
@@ -2758,7 +2763,8 @@ localScale = new Vector3(0.0761F, 0.0761F, 0.0761F),
                     "Chest",
                     new Vector3(-0.00334F, 0.38633F, 0.08729F),
                     new Vector3(11.54904F, 309.0327F, 353.434F),
-                    new Vector3(2.48852F, 2.48852F, 2.48852F))));
+                    new Vector3(2.48852F, 2.48852F, 2.48852F)),
+                CreateLimbMaskDisplayRule(LimbFlags.Head)));
             itemDisplayRules.Add(ItemDisplays.CreateGenericDisplayRule(DLC1Content.Items.MinorConstructOnKill, "DisplayDefenseNucleus",
                 "Base",
                 new Vector3(0.9848F, 1.43184F, 0.75031F),

@@ -730,12 +730,12 @@ namespace PaladinMod.Modules
         private static void FinalizeSkinProjectileGhost(SkinDef skin, Effects.PaladinSkinInfo skinInfo)
         {
             if (skin.projectileGhostReplacements.Length > 0)
-                return; ;
+                return;
 
             GameObject newGhost = skinInfo.swordBeamProjectileGhost;
 
             if (newGhost == null)
-                return; ;
+                return;
 
             HG.ArrayUtils.ArrayAppend(ref skin.projectileGhostReplacements, new SkinDef.ProjectileGhostReplacement
             {

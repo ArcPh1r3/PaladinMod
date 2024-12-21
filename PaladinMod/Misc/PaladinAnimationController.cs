@@ -64,16 +64,16 @@ namespace PaladinMod.Misc
                 if (this.body.characterMotor.isGrounded && this.body.inputBank.moveVector == Vector3.zero)
                 {
                     //from combat to rest
-                    if (!inCombat)
+                    if (inCombat)
                     {
-                        BootlegPlayCrossfade(this.animator, "Body", "ToRestIdle", 0.05f);
-                        SetCombatLerp(false);
+                        BootlegPlayCrossfade(this.animator, "Transition", "ToCombat", 0.1f);
+                        SetCombatLerp(true);
                     }
                     //from rest to combat
                     else
                     {
-                        BootlegPlayCrossfade(this.animator, "Transition", "ToCombat", 0.05f);
-                        SetCombatLerp(true);
+                        BootlegPlayCrossfade(this.animator, "Body", "ToRestIdle", 0.1f);
+                        SetCombatLerp(false);
                     }
                 }
                 //sprinting
@@ -122,7 +122,7 @@ namespace PaladinMod.Misc
             //    combatBufferTimer = 1;
             //}
 
-            if (wasSprinting != isSprinting)
+            if (wasSprinting != isSprinting && HACKStopDragTimer < 0)
             {
                 //is dragging and stopped sprinting
                 if (!isSprinting && isDragging && this.body.inputBank.moveVector != Vector3.zero)

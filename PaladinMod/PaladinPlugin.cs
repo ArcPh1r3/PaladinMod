@@ -17,6 +17,7 @@ using System;
 using UnityEngine.AddressableAssets;
 using System.Collections;
 using PaladinMod.Modules;
+using UnityEngine.Networking;
 
 namespace PaladinMod
 {
@@ -27,7 +28,7 @@ namespace PaladinMod
     [BepInDependency("com.johnedwa.RTAutoSprintEx", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "2.0.0")]
+    [BepInPlugin(MODUID, "Paladin", "2.0.4")]
     public class PaladinPlugin : BaseUnityPlugin
     {
         //keeping id the same so it versions over previous paladin
@@ -239,9 +240,23 @@ namespace PaladinMod
             On.RoR2.CharacterSpeech.FalseSonBossSpeechDriver.DoInitialSightResponse += FalseSonBossSpeechDriver_DoInitialSightResponse;
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.OnBodyKill += BrotherSpeechDriver_OnBodyKill;
 
+            //todo cruel sun proc
+            //On.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamageProcess;
+
             // this is fucking ridiculous
             //On.RoR2.UI.HUD.Awake += HUDAwake;
         }
+
+        //todo add CruelSunBurn dot type, make CruelSunController do it, and we got cruel sun proccing
+        //private void HealthComponent_TakeDamageProcess(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
+        //{
+        //    if(NetworkServer.active && damageInfo.dotIndex == Modules.Dots.CruelSunBurn && !damageInfo.rejected && self.alive)
+        //    {
+        //        GlobalEventManager.instance.OnHitEnemy(damageInfo, self.gameObject);
+        //    }
+
+        //    orig(self, damageInfo);
+        //}
 
         private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
         {
@@ -609,7 +624,7 @@ namespace PaladinMod
         private void CharacterModel_UpdateOverlays(On.RoR2.CharacterModel.orig_UpdateOverlays orig, CharacterModel self)
         {
             orig(self);
-
+            
             if (self)
             {
                 if (self.body && self.body.HasBuff(Modules.Buffs.torporDebuff))
@@ -629,7 +644,7 @@ namespace PaladinMod
                     torporController.Overlay = overlay;
                 }
 
-                if (self.body && self.body.baseNameToken != "PALADIN_NAME")
+                if (self.body)
                 {
                     if (self.body && self.body.HasBuff(Modules.Buffs.blessedBuff))
                     {
@@ -637,28 +652,16 @@ namespace PaladinMod
                         if (!blessingTracker) blessingTracker = self.body.gameObject.AddComponent<PaladinBlessingTracker>();
                         else return;
 
-<<<<<<< Updated upstream
-                    blessingTracker.Body = self.body;
-                    TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(self.gameObject);
-                    overlay.duration = float.PositiveInfinity;
-                    overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
-                    overlay.animateShaderAlpha = true;
-                    overlay.destroyComponentOnEnd = true;
-                    overlay.originalMaterial = Modules.Asset.blessingMat;
-                    overlay.AddToCharacterModel(self);
-                    blessingTracker.Overlay = overlay;
-=======
                         blessingTracker.Body = self.body;
-                        TemporaryOverlay overlay = self.gameObject.AddComponent<TemporaryOverlay>();
-                        overlay.duration = float.PositiveInfinity;
+                        TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(self.gameObject);
+                        overlay.duration = self.body.baseNameToken != "PALADIN_NAME" ? 1f : float.PositiveInfinity;
                         overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                         overlay.animateShaderAlpha = true;
                         overlay.destroyComponentOnEnd = true;
-                        overlay.originalMaterial = Modules.Assets.blessingMat;
-                        overlay.AddToCharacerModel(self);
+                        overlay.originalMaterial = Modules.Asset.blessingMat;
+                        overlay.AddToCharacterModel(self);
                         blessingTracker.Overlay = overlay;
                     }
->>>>>>> Stashed changes
                 }
 
                 if (self.body && self.body.HasBuff(Modules.Buffs.rageBuff))
