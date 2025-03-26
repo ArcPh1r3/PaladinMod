@@ -157,7 +157,7 @@ namespace PaladinMod.States
                 if (base.inputBank.sprint.wasDown)
                 {
                     base.characterBody.isSprinting = true;
-                    this.RefundCooldown();
+                    //this.RefundCooldown();
                     castSuccess = false;
                     this.outer.SetNextStateToMain();
                     return;
@@ -167,6 +167,7 @@ namespace PaladinMod.States
             if (base.isAuthority && (!base.IsKeyDownAuthority() || castAtMaxCharge ) && charge >= 1f)
             {
                 castSuccess = true;
+                base.activatorSkillSlot.DeductStock(1);
                 BaseCastChanneledSpellState nextState = this.GetNextState();
 
                 Transform indicatorTransform = this.areaIndicatorInstance ? this.areaIndicatorInstance.transform : transform;
