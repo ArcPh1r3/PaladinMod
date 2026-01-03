@@ -1,4 +1,8 @@
 ## Changelog
+`2.1.0`
+- fixed for memop update
+- *some borrowed game sounds may be missing*
+
 `2.0.4`
 - damagesource update
 - fixed green beam on sovereign

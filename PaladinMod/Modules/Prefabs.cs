@@ -2,6 +2,7 @@
 using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace PaladinMod.Modules
 {
@@ -92,7 +93,7 @@ namespace PaladinMod.Modules
             paladinPrefab.AddComponent<Misc.PaladinVRController>();
 
             ChildLocator childLocator = paladinPrefab.GetComponentInChildren<ChildLocator>();
-            Material eyeTrailMat = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/BrotherBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[4].defaultMaterial;
+            Material eyeTrailMat = Addressables.LoadAssetAsync<Material>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_Brother.matBrotherEyeTrail_mat).WaitForCompletion();
             childLocator.FindChild("EyeTrail").gameObject.GetComponentInChildren<TrailRenderer>().material = eyeTrailMat;
 
             paladinPrefab.GetComponent<CharacterBody>().sprintingSpeedMultiplier = 1.6f;

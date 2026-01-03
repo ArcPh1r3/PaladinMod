@@ -286,7 +286,7 @@ namespace PaladinMod.Modules
 
             AddEffect(dashFX);
 
-            airSlamFX = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("PaladinAirSlamImpact", false);
+            airSlamFX = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_BeetleGuard.BeetleGuardGroundSlam_prefab).WaitForCompletion().InstantiateClone("PaladinAirSlamImpact", false);
 
             airSlamFX.transform.Find("ParticleInitial/Debris, 3D").localScale *= 0.75f;
             airSlamFX.transform.Find("ParticleInitial/Debris").localScale *= 0.75f;
@@ -305,8 +305,7 @@ namespace PaladinMod.Modules
             airSlamFX.AddComponent<DestroyOnTimer>().duration = 5f;
 
             AddEffect(airSlamFX);
-
-            airSlamBoostedFX = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleGuardGroundSlam.prefab").WaitForCompletion().InstantiateClone("PaladinAirSlamImpactBoosted", false);
+            airSlamBoostedFX = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPaths.RoR2_Base_BeetleGuard.BeetleGuardGroundSlam_prefab).WaitForCompletion().InstantiateClone("PaladinAirSlamImpactBoosted", false);
 
             airSlamBoostedFX.transform.Find("ParticleInitial/Debris, 3D").localScale *= 0.85f;
             airSlamBoostedFX.transform.Find("ParticleInitial/Debris").localScale *= 0.85f;
