@@ -303,7 +303,7 @@ namespace PaladinMod.Modules
             mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
-            mySkillDef.stockToConsume = 1;
+            mySkillDef.stockToConsume = 0;
             mySkillDef.icon = Asset.icon4;
             mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_HEALZONE_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SPECIAL_HEALZONE_NAME";
@@ -340,7 +340,7 @@ namespace PaladinMod.Modules
             mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
-            mySkillDef.stockToConsume = 1;
+            mySkillDef.stockToConsume = 0;
             mySkillDef.icon = Asset.icon4b;
             mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_TORPOR_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SPECIAL_TORPOR_NAME";
@@ -374,7 +374,7 @@ namespace PaladinMod.Modules
             mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
-            mySkillDef.stockToConsume = 1;
+            mySkillDef.stockToConsume = 0;
             mySkillDef.icon = Asset.icon4c;
             mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_WARCRY_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SPECIAL_WARCRY_NAME";
@@ -404,7 +404,7 @@ namespace PaladinMod.Modules
             mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
-            mySkillDef.stockToConsume = 1;
+            mySkillDef.stockToConsume = 0;
             mySkillDef.icon = Asset.icon4d;
             mySkillDef.skillDescriptionToken = "PALADIN_SPECIAL_SUN_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SPECIAL_SUN_NAME";

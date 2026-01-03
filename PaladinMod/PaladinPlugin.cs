@@ -223,8 +223,8 @@ namespace PaladinMod
 
         private void Hook()
         {
-            On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
-            //todo recalcstats R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+            //On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+            R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients; 
             On.RoR2.CharacterModel.UpdateOverlays += CharacterModel_UpdateOverlays;
             On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
             //todo rewrite lifesteal
@@ -517,53 +517,65 @@ namespace PaladinMod
         //todo do math on this
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
         {
-            //if (sender.HasBuff(Modules.Buffs.blessedBuff))
-            //{ 
-            //    self.regen += StaticValues.regenAmount + (self.level * 0.6f);
-            //    float armorBuff = StaticValues.armorPerLevel * self.level;
-            //    self.armor += armorBuff;
-            //}
+            if (sender)
+            {
+                if (sender.HasBuff(Modules.Buffs.blessedBuff))
+                {
+                    args.baseRegenAdd += StaticValues.regenAmount;
+                    args.levelArmorAdd += StaticValues.armorPerLevel;
+                    //self.regen += StaticValues.regenAmount + (self.level * 0.6f);
+                    //float armorBuff = StaticValues.armorPerLevel * self.level;
+                    //self.armor += armorBuff;
+                }
 
-            //if (sender.HasBuff(Modules.Buffs.warcryBuff))
-            //{
-            //    float damageBuff = StaticValues.warcryDamageMultiplier * self.damage;
-            //    self.damage += damageBuff;
-            //    self.attackSpeed += StaticValues.warcryAttackSpeedBuff;
-            //}
+                if (sender.HasBuff(Modules.Buffs.warcryBuff))
+                {
+                    args.baseDamageAdd += StaticValues.warcryDamageMultiplier;
+                    args.attackSpeedMultAdd += StaticValues.warcryAttackSpeedBuff;
+                    //float damageBuff = StaticValues.warcryDamageMultiplier * self.damage;
+                }
 
-            //if (sender.HasBuff(Modules.Buffs.scepterWarcryBuff))
-            //{
-            //    float damageBuff = StaticValues.scepterWarcryDamageMultiplier * self.damage;
-            //    self.damage += damageBuff;
-            //    self.attackSpeed += StaticValues.scepterWarcryAttackSpeedBuff;
-            //}
+                if (sender.HasBuff(Modules.Buffs.scepterWarcryBuff))
+                {
+                    
+                    args.baseDamageAdd += StaticValues.scepterWarcryDamageMultiplier;
+                    args.attackSpeedMultAdd += StaticValues.scepterWarcryAttackSpeedBuff;
+                    //float damageBuff = StaticValues.scepterWarcryDamageMultiplier * self.damage;
+                    //self.attackSpeed += StaticValues.scepterWarcryAttackSpeedBuff;
+                }
 
-            //if (sender.HasBuff(Modules.Buffs.torporDebuff))
-            //{
-            //    self.moveSpeed *= (1 - StaticValues.torporSlowAmount);
-            //    self.attackSpeed *= (1 - StaticValues.torporSlowAmount);
-            //}
+                if (sender.HasBuff(Modules.Buffs.torporDebuff))
+                {
+                    args.moveSpeedReductionMultAdd += (1 - StaticValues.torporSlowAmount);
+                    args.attackSpeedReductionMultAdd += (1 - StaticValues.torporSlowAmount);
+                }
 
-            //if (sender.HasBuff(Modules.Buffs.scepterTorporDebuff))
-            //{
-            //    self.moveSpeed *= (1 - StaticValues.scepterTorporSlowAmount);
-            //    self.attackSpeed *= (1 - StaticValues.scepterTorporSlowAmount);
-            //}
+                if (sender.HasBuff(Modules.Buffs.scepterTorporDebuff))
+                {
+                    args.moveSpeedReductionMultAdd *= (1 - StaticValues.scepterTorporSlowAmount);
+                    args.attackSpeedReductionMultAdd += (1 - StaticValues.scepterTorporSlowAmount);
+                }
 
-            //if (sender.HasBuff(Modules.Buffs.rageBuff))
-            //{
-            //    self.armor += 100f;
-            //    self.damage *= 1.5f;
-            //    self.moveSpeed += 6f;
+                if (sender.HasBuff(Modules.Buffs.rageBuff)) // i love rage mode !!!
+                {
+                    args.armorAdd += 100f;
+                    args.baseDamageAdd += 1.5f;
+                    args.moveSpeedMultAdd += (sender.moveSpeed + 6) / sender.moveSpeed; // i think this does it. it doesn't matter anyway
 
-            //    //todo rage don't do a getcomponent in fuckin recalculatestats
-            //    //PaladinRageController rageComponent = self.GetComponent<PaladinRageController>();
-            //    //if (rageComponent)
-            //    //{
-            //    //    float regenAmount = rageComponent.currentRegen;
-            //    //    self.regen += regenAmount;
-            //    //}
-            //}
+                    //self.armor += 100f;
+                    //self.damage *= 1.5f;
+                    //self.moveSpeed += 6f;
+
+                    //todo rage don't do a getcomponent in fuckin recalculatestats
+                    //PaladinRageController rageComponent = self.GetComponent<PaladinRageController>();
+                    //if (rageComponent)
+                    //{
+                    //    float regenAmount = rageComponent.currentRegen;
+                    //    self.regen += regenAmount;
+                    //}
+                }
+            }
+
         }
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
@@ -593,17 +605,17 @@ namespace PaladinMod
                     self.attackSpeed += StaticValues.scepterWarcryAttackSpeedBuff;
                 }
 
-                if (self.HasBuff(Modules.Buffs.torporDebuff))
-                {
-                    self.moveSpeed *= (1 - StaticValues.torporSlowAmount);
-                    self.attackSpeed *= (1 - StaticValues.torporSlowAmount);
-                }
-
-                if (self.HasBuff(Modules.Buffs.scepterTorporDebuff))
-                {
-                    self.moveSpeed *= (1 - StaticValues.scepterTorporSlowAmount);
-                    self.attackSpeed *= (1 - StaticValues.scepterTorporSlowAmount);
-                }
+                //if (self.HasBuff(Modules.Buffs.torporDebuff))
+                //{
+                //    self.moveSpeed *= (1 - StaticValues.torporSlowAmount);
+                //    self.attackSpeed *= (1 - StaticValues.torporSlowAmount);
+                //}
+                //
+                //if (self.HasBuff(Modules.Buffs.scepterTorporDebuff))
+                //{
+                //    self.moveSpeed *= (1 - StaticValues.scepterTorporSlowAmount);
+                //    self.attackSpeed *= (1 - StaticValues.scepterTorporSlowAmount);
+                //}
 
                 if (self.HasBuff(Modules.Buffs.rageBuff))
                 {
