@@ -265,11 +265,11 @@ namespace PaladinMod.Modules
             mySkillDef.interruptPriority = InterruptPriority.PrioritySkill;
             mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = true;
-            mySkillDef.mustKeyPress = false;
+            mySkillDef.mustKeyPress = true;
             mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
-            mySkillDef.stockToConsume = 1;
+            mySkillDef.stockToConsume = 0;
             mySkillDef.icon = Asset.icon3b;
             mySkillDef.skillDescriptionToken = "PALADIN_UTILITY_HEAL_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_UTILITY_HEAL_NAME";
@@ -299,7 +299,7 @@ namespace PaladinMod.Modules
             mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = false;
-            mySkillDef.mustKeyPress = false;
+            mySkillDef.mustKeyPress = true;
             mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
@@ -336,7 +336,7 @@ namespace PaladinMod.Modules
             mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = false;
-            mySkillDef.mustKeyPress = false;
+            mySkillDef.mustKeyPress = true;
             mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
@@ -370,7 +370,7 @@ namespace PaladinMod.Modules
             mySkillDef.interruptPriority = InterruptPriority.Skill;
             mySkillDef.resetCooldownTimerOnUse = false;
             mySkillDef.isCombatSkill = false;
-            mySkillDef.mustKeyPress = false;
+            mySkillDef.mustKeyPress = true;
             mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;

@@ -33,6 +33,7 @@ namespace PaladinMod.Modules
             AddState(typeof(PointDown));
             AddState(typeof(Rest));
             AddState(typeof(Drip));
+            AddState(typeof(TestPose));
 
             AddState(typeof(Slash));
 

@@ -157,7 +157,8 @@ namespace PaladinMod.States
                 if (base.inputBank.sprint.wasDown)
                 {
                     base.characterBody.isSprinting = true;
-                    //this.RefundCooldown();
+                    //this.SetCooldownPenalty();
+
                     castSuccess = false;
                     this.outer.SetNextStateToMain();
                     return;
@@ -220,7 +221,7 @@ namespace PaladinMod.States
             base.PlayAnimation("Gesture, Override", "BufferEmpty");
         }
 
-        private void RefundCooldown()
+        private void SetCooldownPenalty()
         {
             base.activatorSkillSlot.rechargeStopwatch = (0.9f * base.activatorSkillSlot.finalRechargeInterval);
         }
