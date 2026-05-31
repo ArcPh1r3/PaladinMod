@@ -11,6 +11,7 @@ namespace PaladinMod.Modules
         public static ConfigEntry<bool> cape;
         public static ConfigEntry<bool> cursed;
         public static ConfigEntry<bool> legacySkins;
+        public static ConfigEntry<bool> toneDownPassive;
         //public static ConfigEntry<bool> spookyArms;
         public static ConfigEntry<KeyCode> praiseKeybind;
         public static ConfigEntry<KeyCode> pointKeybind;

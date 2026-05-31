@@ -1,4 +1,6 @@
-﻿namespace PaladinMod
+﻿using RoR2;
+
+namespace PaladinMod
 {
     class StaticValues
     {
@@ -113,15 +115,18 @@
         public const float cruelSunChannelDurationOld = 5f;
         public const float cruelSunChannelDuration = 2.0f;
         public const float cruelSunDuration = 12.5f;
-        public static float cruelSunVfxSize = 0.37f;
         public static float cruelSunVfxCenterSize = 9.5f;
         public static float cruelSunVfxLightIntensity = 0.225f;
-        public static float cruelSunAoE = 70f;
+        public static float cruelSunVfxSize = 0.37f*120f/70f;
+        public static float cruelSunAoE = 120f;
         public const float cruelSunCycleInterval = 0.5f;
         public const float cruelSunOverheatDuration = 1f;
         public const int cruelSunMinimumStacksBeforeApplyingBurns = 2;
         public const int cruelSunMaximumAllyStacks = 2;
-        public const float cruelSunBurnDamageCoefficient = 1.6f;
+        public static float cruelSunBurnDamageCoefficient = 0f; // 
+        public static float cruelSunBurnPercentCoefficient = 0.05f;
+        public const float cruelSunBurnStackDuration = 5f; // 
+        public static float cruelSunBurnDotInterval = 0.2f;
         public static float cruelSunAllyDamageMultiplier = 0.15f;
 
         //Pride Flare(Cruel Sun Scepter)

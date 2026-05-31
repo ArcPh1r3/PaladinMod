@@ -59,7 +59,6 @@ namespace PaladinMod.States.Spell
 
         public override void FixedUpdate()
         {
-            characterBody.isSprinting = false;
 
             if (base.isAuthority && base.inputBank && base.fixedAge >= 0.2f)
             {
@@ -68,6 +67,8 @@ namespace PaladinMod.States.Spell
                     return;
                 }
             }
+
+            characterBody.isSprinting = false;
 
             base.FixedUpdate();
         }

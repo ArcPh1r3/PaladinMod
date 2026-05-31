@@ -85,9 +85,9 @@ namespace PaladinMod
         
         public void Start() {
             Logger.LogInfo("[Initializing Paladin]");
-            //Modules.States.FixStates();
+            //Modules.States.FixStates();y
 
-            //gameObject.AddComponent<TestValueManager>();
+            gameObject.AddComponent<TestValueManager>();
 
             // load assets
             Modules.Asset.PopulateAssets();
@@ -130,6 +130,7 @@ namespace PaladinMod
             Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
             Modules.Skins.RegisterSkins(); // add skins
             Modules.Effects.RegisterEffects(); // add and register custom effects
+            Modules.DoTs.Init();
 
             CreateDoppelganger(); // artifact of vengeance
 
@@ -245,6 +246,40 @@ namespace PaladinMod
 
             // this is fucking ridiculous
             //On.RoR2.UI.HUD.Awake += HUDAwake;
+
+            On.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamageProcess;
+        }
+
+        private void HealthComponent_TakeDamageProcess(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
+        {
+            //thanks starstorm frens
+            bool triggerGougeProc = false;
+            if (NetworkServer.active)
+            {
+                if (damageInfo.dotIndex == DoTs.FuckingCruelSunBurn && self.alive)
+                {
+                    if (damageInfo.attacker)
+                    {
+                        CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+                        if (attackerBody)
+                        {
+                            damageInfo.crit = Util.CheckRoll(attackerBody.crit, attackerBody.master);
+                        }
+                    }
+                    damageInfo.procCoefficient = 0.5f;
+                    triggerGougeProc = true;
+                }
+            }
+
+            orig(self, damageInfo);
+
+            if (NetworkServer.active && !damageInfo.rejected && self.alive)
+            {
+                if (triggerGougeProc)
+                {
+                    GlobalEventManager.instance.OnHitEnemy(damageInfo, self.gameObject);
+                }
+            }
         }
 
         //todo add CruelSunBurn dot type, make CruelSunController do it, and we got cruel sun proccing

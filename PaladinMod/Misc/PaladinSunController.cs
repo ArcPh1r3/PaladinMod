@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 using PaladinMod;
 using RoR2.Projectile;
 using System;
+using PaladinMod.Modules;
 
 public class PaladinSunNetworkController : NetworkBehaviour {
     
@@ -62,7 +63,7 @@ public class PaladinSunController : MonoBehaviour
 		ownerObj = GetComponent<GenericOwnership>() ? GetComponent<GenericOwnership>().ownerObject : GetComponent<ProjectileController>().owner;
 
 		ownerBody = ownerObj.GetComponent<CharacterBody>();
-		cycleInterval = StaticValues.cruelSunCycleInterval/ownerBody.attackSpeed;
+		cycleInterval = StaticValues.cruelSunCycleInterval/*/ownerBody.attackSpeed*/;
 		crit = ownerBody.RollCrit();
 
 		if ((bool)activeLoopDef)
@@ -153,9 +154,9 @@ public class PaladinSunController : MonoBehaviour
 				if(ownerBody) {
 
 					bool isEnemy = (body.teamComponent.teamIndex != ownerBody.teamComponent.teamIndex);
-					bool affectPlayer = !isEnemy && StaticValues.cruelSunAllyDamageMultiplier > 0 && body.GetBuffCount(RoR2Content.Buffs.Overheat) < StaticValues.cruelSunMaximumAllyStacks;
+					bool affectAlly = !isEnemy && StaticValues.cruelSunAllyDamageMultiplier > 0 && body.GetBuffCount(RoR2Content.Buffs.Overheat) < StaticValues.cruelSunMaximumAllyStacks;
 					bool overrideEnemyImmune = ((body.bodyFlags & CharacterBody.BodyFlags.OverheatImmune) == 0 || body.teamComponent.teamIndex != TeamIndex.Player);
-                    if ((isEnemy || affectPlayer) && overrideEnemyImmune) {
+                    if ((isEnemy || affectAlly) && overrideEnemyImmune) {
 
 						Vector3 corePosition = body.corePosition;
 						Ray ray = new Ray(position, corePosition - position);
@@ -181,23 +182,27 @@ public class PaladinSunController : MonoBehaviour
 							if (overheatCount >= StaticValues.cruelSunMinimumStacksBeforeApplyingBurns)
 							{
 								InflictDotInfo dotInfo = default(InflictDotInfo);
-								dotInfo.dotIndex = DotController.DotIndex.Burn;
+								dotInfo.dotIndex = DoTs.FuckingCruelSunBurn;
 								dotInfo.attackerObject = ownerObj;
 								dotInfo.victimObject = body.gameObject;
 								if ((bool)ownerBody && (bool)ownerBody.inventory)
 								{
 									TeamDef teamDef = TeamCatalog.GetTeamDef(ownerBody.teamComponent.teamIndex);
-									float ffScale = 1f;
-									if (teamDef != null && teamDef.friendlyFireScaling > 0f) { 
-										ffScale *= teamDef.friendlyFireScaling; 
+									float friendlyFireScale = 1f;
+									if (!isEnemy && teamDef != null && teamDef.friendlyFireScaling > 0f) { 
+										friendlyFireScale *= teamDef.friendlyFireScaling; 
 									}
-									float critScale = isEnemy && crit ? 2 : 1; 
-									if (body.teamComponent.teamIndex == ownerBody.teamComponent.teamIndex & body != ownerBody){ ffScale *= StaticValues.cruelSunAllyDamageMultiplier; }
-									dotInfo.totalDamage = StaticValues.cruelSunBurnDamageCoefficient * ownerBody.damage * (float)overheatCount * ffScale * critScale;
-									dotInfo.damageMultiplier = 1f * ffScale;
-									StrengthenBurnUtils.CheckDotForUpgrade(ownerBody.inventory, ref dotInfo);
+									if (body.teamComponent.teamIndex == ownerBody.teamComponent.teamIndex & body != ownerBody){ friendlyFireScale *= StaticValues.cruelSunAllyDamageMultiplier; }
+
+                                    float burnBaseDamage = StaticValues.cruelSunBurnDamageCoefficient * ownerBody.damage;//burn dot damage coefficient is 0.01. no need to multiply by owner damage, cause the dotcontroller does it
+                                    float burnPercentDamage = StaticValues.cruelSunBurnPercentCoefficient * body.healthComponent.fullCombinedHealth;
+                                    dotInfo.duration = StaticValues.cruelSunBurnStackDuration;
+                                    dotInfo.damageMultiplier = (friendlyFireScale * (burnBaseDamage + burnPercentDamage)) / (dotInfo.duration * ownerBody.damage);
+
+
+                                    StrengthenBurnUtils.CheckDotForUpgrade(ownerBody.inventory, ref dotInfo);
 								}
-								if (dotInfo.totalDamage > 0) DotController.InflictDot(ref dotInfo);
+								if (dotInfo.damageMultiplier > 0) DotController.InflictDot(ref dotInfo);
 							}
 						}
 					}

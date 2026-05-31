@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PaladinMod;
+using UnityEngine;
 
 public class TestValueManager : MonoBehaviour {
 
@@ -23,8 +24,9 @@ public class TestValueManager : MonoBehaviour {
         if (!Input.GetKey(KeyCode.LeftAlt))
             return;
 
-        manageTestValue(ref testValue, "tocombat", KeyCode.Keypad7, KeyCode.Keypad4, 0.1f);
-        manageTestValue(ref testValue2, "tonotcombat", KeyCode.Keypad8, KeyCode.Keypad5, 0.1f);
+        manageTestValue(ref StaticValues.cruelSunBurnPercentCoefficient, "percend", KeyCode.Keypad7, KeyCode.Keypad4, 0.01f);
+        manageTestValue(ref StaticValues.cruelSunBurnDamageCoefficient,  "burnddd", KeyCode.Keypad8, KeyCode.Keypad5, 0.01f);
+        //manageTestValue(ref testValue2, "tonotcombat", KeyCode.Keypad8, KeyCode.Keypad5, 0.1f);
 
         //manageTestVector(ref testVector, "cam", 0.05f);
     }
