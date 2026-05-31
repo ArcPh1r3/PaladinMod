@@ -13,7 +13,7 @@ namespace PaladinMod.Modules
             Prefabs.paladinDisplayPrefab.AddComponent<NetworkIdentity>();
 
             UnlockableDef unlockDef = Modules.Unlockables.paladinUnlockDef;
-            if (Config.forceUnlock.Value) unlockDef = null;
+            if (PaladinConfig.forceUnlock.Value) unlockDef = null;
 
             SurvivorDef survivorDef = ScriptableObject.CreateInstance<SurvivorDef>();
             survivorDef.bodyPrefab = Prefabs.paladinPrefab;

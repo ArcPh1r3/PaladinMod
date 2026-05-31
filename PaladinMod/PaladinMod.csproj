@@ -49,6 +49,9 @@
     <Reference Include="CustomEmotesAPI">
       <HintPath>libs\Compat\CustomEmotesAPI.dll</HintPath>
     </Reference>
+    <Reference Include="RiskOfOptions">
+      <HintPath>E:\Abbas's stuff VII I think\1337 haxx\ror2lol\Chikara ga minegitte kuru\PaladinMod\PaladinMod\libs\Compat\RiskOfOptions.dll</HintPath>
+    </Reference>
     <Reference Include="Skills">
       <HintPath>libs\Compat\Skills.dll</HintPath>
     </Reference>

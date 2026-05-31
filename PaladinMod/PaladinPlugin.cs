@@ -26,6 +26,7 @@ namespace PaladinMod
     [BepInDependency("com.K1454.SupplyDrop", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.DrBibop.VRAPI", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.johnedwa.RTAutoSprintEx", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, "Paladin", "2.2.0")]
@@ -76,7 +77,8 @@ namespace PaladinMod
             instance = this;
             logger = base.Logger;
 
-            Modules.Config.ReadConfig();
+            Modules.PaladinConfig.ReadConfig();
+            StaticValues.InitConfig();
 
             Modules.Files.Init(Info); //store path to assembly
             Modules.Languages.Init(); //register language file to be read
@@ -217,7 +219,7 @@ namespace PaladinMod
             AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterTorporDef, "RobPaladinBody", SkillSlot.Special, 1);
             AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterWarcryDef, "RobPaladinBody", SkillSlot.Special, 2);
             AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterCruelSunDef, "RobPaladinBody", SkillSlot.Special, 3);
-            if (Modules.Config.legacyCruelSun.Value) {
+            if (Modules.PaladinConfig.legacyCruelSun.Value) {
                 AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterCruelSunLegacyDef, "RobPaladinBody", SkillSlot.Special, 4);
             }
         }

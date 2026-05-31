@@ -132,7 +132,7 @@ namespace PaladinMod.Modules {
             Languages.Add("PALADIN_SPECIAL_SUN_CANCEL_NAME", "Cancel Cruel Sun");
             Languages.Add("PALADIN_SPECIAL_SUN_CANCEL_DESCRIPTION", "Stop channelling the current Cruel Sun.");
 
-            desc += Helpers.ScepterDescription("Cast again and hold to aim, then release to throw the star, exploding for <style=cIsDamage>" + StaticValues.prideFlareDamageCoefficient * Config.prideFlareMultiplier.Value * 100f + "% damage</style> to <style=cDeath>EVERYTHING</style> around it.");
+            desc += Helpers.ScepterDescription("Cast again and hold to aim, then release to throw the star, exploding for <style=cIsDamage>" + StaticValues.prideFlareDamageCoefficient * PaladinConfig.prideFlareMultiplier.Value * 100f + "% damage</style> to <style=cDeath>EVERYTHING</style> around it.");
 
             Languages.Add("PALADIN_SPECIAL_SCEPSUN_NAME", "Pride Flare");
             Languages.Add("PALADIN_SPECIAL_SCEPSUN_DESCRIPTION", desc);

@@ -279,7 +279,7 @@ namespace PaladinMod.Modules
                 },
             }; 
 
-            if (Modules.Config.cape.Value)
+            if (Modules.PaladinConfig.cape.Value)
             {
                 defaultSkin.gameObjectActivations = capeActivations;
                 childLocator.FindChild("CapeModel").gameObject.SetActive(true);
@@ -502,7 +502,7 @@ namespace PaladinMod.Modules
 
             AddCSSSkinChangeResponse(specterSkin, PaladinCSSEffect.REDSCYTHE);
 
-            if (Modules.Config.cursed.Value) skinDefs.Add(specterSkin);
+            if (Modules.PaladinConfig.cursed.Value) skinDefs.Add(specterSkin);
 
             #endregion            
             #region DripSkin
@@ -531,7 +531,7 @@ namespace PaladinMod.Modules
 
             AddCSSSkinChangeResponse(dripSkin, PaladinCSSEffect.DEFAULT);
 
-            if (Modules.Config.cursed.Value) skinDefs.Add(dripSkin);
+            if (Modules.PaladinConfig.cursed.Value) skinDefs.Add(dripSkin);
             #endregion
             #region MinecraftSkin
             CharacterModel.RendererInfo[] minecraftRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
@@ -559,7 +559,7 @@ namespace PaladinMod.Modules
 
             AddCSSSkinChangeResponse(minecraftSkin, PaladinCSSEffect.BEEFY);
 
-            if (Modules.Config.cursed.Value) skinDefs.Add(minecraftSkin);
+            if (Modules.PaladinConfig.cursed.Value) skinDefs.Add(minecraftSkin);
             #endregion
 
             #region LunarKnightSkin(lunar)
@@ -601,7 +601,7 @@ namespace PaladinMod.Modules
 
             AddCSSSkinChangeResponse(lunarKnightSkin, PaladinCSSEffect.DEFAULT);
 
-            if (Config.legacySkins.Value) 
+            if (PaladinConfig.legacySkins.Value) 
                 skinDefs.Add(lunarKnightSkin);
             #endregion
             #region GrandMasterySkinLegacy
@@ -636,7 +636,7 @@ namespace PaladinMod.Modules
 
             AddCSSSkinChangeResponse(grandMasteryLegacySkin, PaladinCSSEffect.BEEFY);
 
-            if (Config.legacySkins.Value)
+            if (PaladinConfig.legacySkins.Value)
                 skinDefs.Add(grandMasteryLegacySkin);
 
             #endregion
@@ -679,7 +679,7 @@ namespace PaladinMod.Modules
 
             AddCSSSkinChangeResponse(poisonLegacySkin, PaladinCSSEffect.GREEN);
 
-            if (Config.legacySkins.Value) 
+            if (PaladinConfig.legacySkins.Value) 
                 skinDefs.Add(poisonLegacySkin);
             #endregion
             

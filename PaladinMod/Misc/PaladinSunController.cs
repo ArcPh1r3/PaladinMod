@@ -190,7 +190,7 @@ public class PaladinSunController : MonoBehaviour
 									TeamDef teamDef = TeamCatalog.GetTeamDef(ownerBody.teamComponent.teamIndex);
 									float friendlyFireScale = 1f;
 									if (!isEnemy && teamDef != null && teamDef.friendlyFireScaling > 0f) { 
-										friendlyFireScale *= teamDef.friendlyFireScaling; 
+										friendlyFireScale *= teamDef.friendlyFireScaling * StaticValues.cruelSunFriendlyFireScalingMultiplier; 
 									}
 									if (body.teamComponent.teamIndex == ownerBody.teamComponent.teamIndex & body != ownerBody){ friendlyFireScale *= StaticValues.cruelSunAllyDamageMultiplier; }
 

@@ -442,7 +442,7 @@ namespace PaladinMod.Modules
             cancelSunSkillDef.skillNameToken = "PALADIN_SPECIAL_SUN_CANCEL_NAME";
 
 
-            if (Config.legacyCruelSun.Value) {
+            if (PaladinConfig.legacyCruelSun.Value) {
                 mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
                 mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelCruelSunOld));
                 mySkillDef.activationStateMachineName = "Weapon";

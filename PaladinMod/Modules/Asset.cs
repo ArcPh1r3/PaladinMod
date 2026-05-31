@@ -713,7 +713,12 @@ namespace PaladinMod.Modules
             // no, i don't.
 
             blessingMat = Material.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidMegaCrab/matVoidCrabMatterOverlay.mat").WaitForCompletion());
-            blessingMat.SetColor("_TintColor", new Color(0f / 255f, 145f / 255f, 173f / 255f));
+            blessingMat.SetColor("_TintColor", new Color(
+                PaladinConfig.passiveIntensity * PaladinConfig.passiveIntensity * PaladinConfig.passiveIntensity * 82f / 255f, 
+                PaladinConfig.passiveIntensity * PaladinConfig.passiveIntensity * PaladinConfig.passiveIntensity * 125f / 255f, 
+                PaladinConfig.passiveIntensity * PaladinConfig.passiveIntensity * PaladinConfig.passiveIntensity * 173f / 255f, 
+                Mathf.Clamp01(PaladinConfig.passiveIntensity * 2)
+                ));
         }
 
         public static T LoadResources<T>(string assString) where T : UnityEngine.Object {

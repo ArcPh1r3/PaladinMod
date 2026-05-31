@@ -76,13 +76,13 @@ namespace PaladinMod.States
             
             if (base.isAuthority && base.characterMotor.isGrounded)
             {
-                if (CheckEmote<PraiseTheSun>(Modules.Config.praiseKeybind))
+                if (CheckEmote<PraiseTheSun>(Modules.PaladinConfig.praiseKeybind))
                     return;
-                if (CheckEmote<Rest>(Modules.Config.restKeybind))
+                if (CheckEmote<Rest>(Modules.PaladinConfig.restKeybind))
                     return;
-                if (CheckEmote<PointDown>(Modules.Config.pointKeybind))
+                if (CheckEmote<PointDown>(Modules.PaladinConfig.pointKeybind))
                     return;
-                if (CheckEmote<TestPose>(Modules.Config.swordPoseKeybind))
+                if (CheckEmote<TestPose>(Modules.PaladinConfig.swordPoseKeybind))
                     return;
             }
         }

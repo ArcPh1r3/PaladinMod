@@ -1,8 +1,9 @@
-﻿using RoR2;
+﻿using PaladinMod.Modules;
+using RoR2;
 
 namespace PaladinMod
 {
-    class StaticValues
+    public static class StaticValues
     {
         //
         public const string characterName = "Paladin";
@@ -123,8 +124,20 @@ namespace PaladinMod
         public const float cruelSunOverheatDuration = 1f;
         public const int cruelSunMinimumStacksBeforeApplyingBurns = 2;
         public const int cruelSunMaximumAllyStacks = 2;
-        public static float cruelSunBurnDamageCoefficient = 0f; // 
-        public static float cruelSunBurnPercentCoefficient = 0.05f;
+
+        [Configure(PaladinConfig.Section4Numbers, 
+            1.0f,
+            description = "damage coefficient (multiple of base damage) for each burn stack.\nFull successful cast will usually land 20 stacks.\nvalue 0.5 means each stack will do 50% damage")]
+        public static ConfigEntry<float> cruelSunBurnDamageCoefficient;
+        [Configure(PaladinConfig.Section4Numbers, 
+            0.025f,
+            description = "Fraction of enemy health done by each stack of burn. Added to damage coefficient.\nFull successful cast will usually land 20 stacks.\nvalue 0.1 means each stack will do 10% of the enemy's max health.")]
+        public static ConfigEntry<float> cruelSunBurnPercentCoefficient;
+        [Configure(PaladinConfig.Section4Numbers,
+            0.05f,
+            description = "Friendly Fire Scaling. Player team already has a value of 0.5 multiplied on top of this. I would balance this such that paladin takes about a quarter of his full health on full successful cast.")]
+        public static ConfigEntry<float> cruelSunFriendlyFireScalingMultiplier;
+
         public const float cruelSunBurnStackDuration = 5f; // 
         public static float cruelSunBurnDotInterval = 0.2f;
         public static float cruelSunAllyDamageMultiplier = 0.15f;
@@ -138,5 +151,10 @@ namespace PaladinMod
         public const float prideFlareSelfForce = 10f;
         public static float prideFlareSpeed = cruelSunAoE * 0.4f;
         public const float prideFlareAimTimeMax = 3f;
+
+        public static void InitConfig()
+        {
+            ConfigButEpic.InitConfigAttributes(typeof(StaticValues));
+        }
     }
 }

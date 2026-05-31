@@ -1,4 +1,21 @@
 ## Changelog
+`2.2.0`
+- fixed certain skills deducting stock immediately, affecting other modded items which triggered on such conditions
+  - *thanks Zenithrium!*
+- replaced the default sword to one more lore-fitting
+  - *thanks Zenta for the visit from old times*
+- added risk of options support
+- added config for blessed overlay intensity. toned down by default.
+- blacked out and when I woke up there was a Cruel Sun Buff
+  - burn stacks are now always 5 seconds 
+    - *(previously the overheat setup was doing fucky math that stretched damage over the same dps rather than just increasing damage)*
+  - now procs items
+    - *thanks swuff!*
+  - now does %hp damage on top of base damage
+  - no longer scales of attack speed (I forgot it did that)
+    - *goes way too crazy with % damage*
+  - if you still think it's too weak you're crazy
+
 `2.1.0`
 - fixed for memop update
 - *some borrowed game sounds may be missing*
