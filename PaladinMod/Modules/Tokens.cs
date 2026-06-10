@@ -124,7 +124,7 @@ namespace PaladinMod.Modules {
             Languages.Add("PALADIN_SPECIAL_SCEPTERWARCRY_NAME", "Sacred Oath (Scepter)");
             Languages.Add("PALADIN_SPECIAL_SCEPTERWARCRY_DESCRIPTION", desc);
 
-            desc = "<style=cIsHealth>Overheat</style>. <style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.cruelSunChannelDuration + "</style> seconds to create a <style=cIsUtility>miniature star</style> for <style=cIsDamage>" + StaticValues.cruelSunDuration + "</style> seconds that overheats <style=cDeath>EVERYTHING</style> around it. At <style=cIsHealth>" + StaticValues.cruelSunMinimumStacksBeforeApplyingBurns + "</style> stacks or more, targets burn for <style=cIsDamage>" + StaticValues.cruelSunBurnDamageCoefficient * 100f + "% damage</style>.";
+            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.cruelSunChannelDuration + "</style> seconds, then create a <style=cIsUtility>miniature star</style> for <style=cIsDamage>" + MathF.Round(StaticValues.cruelSunDuration) + "</style> seconds that <style=cDeath>overheats EVERYTHING</style> around it.Targets burn for <style=cIsDamage>" + StaticValues.cruelSunBurnDamageCoefficient * 100f + "% damage</style> + <style=cIsDamage>" + StaticValues.cruelSunBurnPercentCoefficient * 100 + "%</style> of their maximum health over 5 seconds.";
             
             Languages.Add("PALADIN_SPECIAL_SUN_NAME", "Cruel Sun");
             Languages.Add("PALADIN_SPECIAL_SUN_DESCRIPTION", desc);

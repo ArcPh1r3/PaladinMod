@@ -14,6 +14,7 @@ namespace PaladinMod.Modules
         public static ConfigEntry<bool> legacySkins;
         [Configure(Section1General,
             0.5f,
+            min = 0, max = 1,
             name = "Passive Intensity",
             description = "Intensity of the white body lines on the passive effect.\n0 to be basically invisible. 1 for full intensity",
             restartRequired = true)]
@@ -27,6 +28,7 @@ namespace PaladinMod.Modules
         public const string Section3Legacy = "03 - Legacy";
         public static ConfigEntry<bool> legacyCruelSun;
         public static ConfigEntry<float> prideFlareMultiplier;
+        //public const string Section4Body = "04 - Body";
         public const string Section4Numbers = "04 - Numbers";
         //used in staticvalues.cs
 

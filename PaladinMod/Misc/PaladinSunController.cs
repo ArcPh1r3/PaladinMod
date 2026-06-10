@@ -51,8 +51,6 @@ public class PaladinSunController : MonoBehaviour
 
 	private bool isLocalPlayerDamaged;
 
-	private bool crit;
-
 	private void Awake()
 	{
 		teamFilter = GetComponent<TeamFilter>();
@@ -64,7 +62,6 @@ public class PaladinSunController : MonoBehaviour
 
 		ownerBody = ownerObj.GetComponent<CharacterBody>();
 		cycleInterval = StaticValues.cruelSunCycleInterval/*/ownerBody.attackSpeed*/;
-		crit = ownerBody.RollCrit();
 
 		if ((bool)activeLoopDef)
 		{
@@ -144,7 +141,7 @@ public class PaladinSunController : MonoBehaviour
 			HurtBox hurtBox = cycleTargets[cycleIndex];
 			if ((bool)hurtBox && (bool)hurtBox.healthComponent)
 			{
-				CharacterBody body = hurtBox.healthComponent.body;
+				CharacterBody hitBody = hurtBox.healthComponent.body;
 				//Only perform extra logic IF ALL ARE TRUE:
 				//ownerBody still exists (avoids NRE)
 				//The target is an enemy OR The target is an ally and has less than 3 stacks of overheat (capping ally overheat at 3)
@@ -153,49 +150,55 @@ public class PaladinSunController : MonoBehaviour
 
 				if(ownerBody) {
 
-					bool isEnemy = (body.teamComponent.teamIndex != ownerBody.teamComponent.teamIndex);
-					bool affectAlly = !isEnemy && StaticValues.cruelSunAllyDamageMultiplier > 0 && body.GetBuffCount(RoR2Content.Buffs.Overheat) < StaticValues.cruelSunMaximumAllyStacks;
-					bool overrideEnemyImmune = ((body.bodyFlags & CharacterBody.BodyFlags.OverheatImmune) == 0 || body.teamComponent.teamIndex != TeamIndex.Player);
+                    bool isSelf = hitBody == ownerBody;
+                    bool isEnemy = FriendlyFireManager.ShouldDirectHitProceed(hurtBox.healthComponent, ownerBody.teamComponent.teamIndex);
+					bool affectAlly = !isEnemy && StaticValues.cruelSunFriendlyFireScalingMultiplier > 0 && hitBody.GetBuffCount(RoR2Content.Buffs.Overheat) < StaticValues.cruelSunMaximumAllyStacks;
+					bool overrideEnemyImmune = ((hitBody.bodyFlags & CharacterBody.BodyFlags.OverheatImmune) == 0 || hitBody.teamComponent.teamIndex != TeamIndex.Player);
                     if ((isEnemy || affectAlly) && overrideEnemyImmune) {
 
-						Vector3 corePosition = body.corePosition;
+						Vector3 corePosition = hitBody.corePosition;
 						Ray ray = new Ray(position, corePosition - position);
 						if (!Physics.Linecast(position, corePosition, out var hitInfo, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
 						{
 							//Grandparent's Overheat debuff duration gets longer the closer you are to it to discourage approaching, but this mechanic seems unneccessary here.
 							//float distanceFromSun = Mathf.Max(1f, hitInfo.distance);
 							//body.AddTimedBuff(buffDef, StaticValues.cruelSunOverheatDuration / distanceFromSun);
-							body.AddTimedBuff(buffDef, StaticValues.cruelSunOverheatDuration);
+							hitBody.AddTimedBuff(buffDef, StaticValues.cruelSunOverheatDuration);
 							if ((bool)buffApplyEffect)
 							{
 								EffectData effectData = new EffectData
 								{
 									origin = corePosition,
 									rotation = Util.QuaternionSafeLookRotation(-ray.direction),
-									scale = body.bestFitRadius
+									scale = hitBody.bestFitRadius
 								};
 								effectData.SetHurtBoxReference(hurtBox);
 								EffectManager.SpawnEffect(buffApplyEffect, effectData, transmit: true);
 							}
 
-							int overheatCount = body.GetBuffCount(buffDef);
+							int overheatCount = hitBody.GetBuffCount(buffDef);
 							if (overheatCount >= StaticValues.cruelSunMinimumStacksBeforeApplyingBurns)
 							{
 								InflictDotInfo dotInfo = default(InflictDotInfo);
 								dotInfo.dotIndex = DoTs.FuckingCruelSunBurn;
 								dotInfo.attackerObject = ownerObj;
-								dotInfo.victimObject = body.gameObject;
+								dotInfo.victimObject = hitBody.gameObject;
 								if ((bool)ownerBody && (bool)ownerBody.inventory)
 								{
 									TeamDef teamDef = TeamCatalog.GetTeamDef(ownerBody.teamComponent.teamIndex);
 									float friendlyFireScale = 1f;
+                                    //allies (via friendlyfiremanager)
 									if (!isEnemy && teamDef != null && teamDef.friendlyFireScaling > 0f) { 
-										friendlyFireScale *= teamDef.friendlyFireScaling * StaticValues.cruelSunFriendlyFireScalingMultiplier; 
+										friendlyFireScale = teamDef.friendlyFireScaling * StaticValues.cruelSunFriendlyFireScalingMultiplier; 
 									}
-									if (body.teamComponent.teamIndex == ownerBody.teamComponent.teamIndex & body != ownerBody){ friendlyFireScale *= StaticValues.cruelSunAllyDamageMultiplier; }
+                                    //self
+                                    if (isSelf)
+                                    {
+                                        friendlyFireScale = teamDef.friendlyFireScaling * StaticValues.cruelSunSelfDamageMultiplier;
+                                    }
 
                                     float burnBaseDamage = StaticValues.cruelSunBurnDamageCoefficient * ownerBody.damage;//burn dot damage coefficient is 0.01. no need to multiply by owner damage, cause the dotcontroller does it
-                                    float burnPercentDamage = StaticValues.cruelSunBurnPercentCoefficient * body.healthComponent.fullCombinedHealth;
+                                    float burnPercentDamage = StaticValues.cruelSunBurnPercentCoefficient * hitBody.healthComponent.fullCombinedHealth;
                                     dotInfo.duration = StaticValues.cruelSunBurnStackDuration;
                                     dotInfo.damageMultiplier = (friendlyFireScale * (burnBaseDamage + burnPercentDamage)) / (dotInfo.duration * ownerBody.damage);
 

@@ -98,6 +98,7 @@ namespace PaladinMod.Modules
             lightningSpear.GetComponent<ProjectileController>().ghostPrefab = spearGhost;
             //lightningSpear.GetComponent<ProjectileOverlapAttack>().impactEffect = Assets.lightningImpactFX;
             lightningSpear.GetComponent<ProjectileDamage>().damageType = DamageType.Shock5s;
+            lightningSpear.GetComponent<ProjectileDamage>().damageType |= DamageTypeExtended.Electrical;
             lightningSpear.GetComponent<ProjectileImpactExplosion>().impactEffect = Asset.altLightningImpactFX;
             lightningSpear.GetComponent<Rigidbody>().useGravity = false;
 

@@ -118,29 +118,33 @@ namespace PaladinMod
         public const float cruelSunDuration = 12.5f;
         public static float cruelSunVfxCenterSize = 9.5f;
         public static float cruelSunVfxLightIntensity = 0.225f;
-        public static float cruelSunVfxSize = 0.37f*120f/70f;
         public static float cruelSunAoE = 120f;
+        public static float cruelSunVfxSize = 0.37f * cruelSunAoE / 70f;//magic numbers based on testing. 
         public const float cruelSunCycleInterval = 0.5f;
         public const float cruelSunOverheatDuration = 1f;
         public const int cruelSunMinimumStacksBeforeApplyingBurns = 2;
         public const int cruelSunMaximumAllyStacks = 2;
 
-        [Configure(PaladinConfig.Section4Numbers, 
-            1.0f,
-            description = "damage coefficient (multiple of base damage) for each burn stack.\nFull successful cast will usually land 20 stacks.\nvalue 0.5 means each stack will do 50% damage")]
-        public static ConfigEntry<float> cruelSunBurnDamageCoefficient;
-        [Configure(PaladinConfig.Section4Numbers, 
-            0.025f,
-            description = "Fraction of enemy health done by each stack of burn. Added to damage coefficient.\nFull successful cast will usually land 20 stacks.\nvalue 0.1 means each stack will do 10% of the enemy's max health.")]
-        public static ConfigEntry<float> cruelSunBurnPercentCoefficient;
+        //[Configure(PaladinConfig.Section4Numbers,
+        //    1.0f,
+        //    description = "damage coefficient (multiple of base damage) for each burn stack.\nFull successful cast will usually land 20 stacks.\nvalue 0.5 means each stack will do 50% damage")]
+        public static /*ConfigEntry<float>*/ float cruelSunBurnDamageCoefficient = 1.0f;
+        //[Configure(PaladinConfig.Section4Numbers, 
+        //    0.025f,
+        //    description = "Fraction of enemy health done by each stack of burn. Added to damage coefficient.\nFull successful cast will usually land 20 stacks.\nvalue 0.1 means each stack will do 10% of the enemy's max health.")]
+        public static /*ConfigEntry<float>*/ float cruelSunBurnPercentCoefficient = 0.03f;
+
         [Configure(PaladinConfig.Section4Numbers,
             0.05f,
             description = "Friendly Fire Scaling. Player team already has a value of 0.5 multiplied on top of this. I would balance this such that paladin takes about a quarter of his full health on full successful cast.")]
-        public static ConfigEntry<float> cruelSunFriendlyFireScalingMultiplier;
+        public static ConfigEntry<float> /*float*/ cruelSunFriendlyFireScalingMultiplier;// = 0.225f;
+        [Configure(PaladinConfig.Section4Numbers,
+            0.05f,
+            description = "Friendly Fire Scaling. Player team already has a value of 0.5 multiplied on top of this. I would balance this such that paladin takes about a quarter of his full health on full successful cast.")]
+        public static ConfigEntry<float> /*float*/ cruelSunSelfDamageMultiplier;// = 0.15f;
 
         public const float cruelSunBurnStackDuration = 5f; // 
         public static float cruelSunBurnDotInterval = 0.2f;
-        public static float cruelSunAllyDamageMultiplier = 0.15f;
 
         //Pride Flare(Cruel Sun Scepter)
         public static float prideFlareExplosionRadius = cruelSunAoE;

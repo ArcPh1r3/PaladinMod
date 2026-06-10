@@ -718,7 +718,7 @@ namespace PaladinMod.Modules
                 PaladinConfig.passiveIntensity * PaladinConfig.passiveIntensity * PaladinConfig.passiveIntensity * 125f / 255f, 
                 PaladinConfig.passiveIntensity * PaladinConfig.passiveIntensity * PaladinConfig.passiveIntensity * 173f / 255f, 
                 Mathf.Clamp01(PaladinConfig.passiveIntensity * 2)
-                ));
+                )); 
         }
 
         public static T LoadResources<T>(string assString) where T : UnityEngine.Object {

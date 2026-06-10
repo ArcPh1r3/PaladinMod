@@ -260,16 +260,21 @@ namespace PaladinMod
             {
                 if (damageInfo.dotIndex == DoTs.FuckingCruelSunBurn && self.alive)
                 {
+                    damageInfo.procCoefficient = 0.5f;
+                    triggerGougeProc = true;
                     if (damageInfo.attacker)
                     {
                         CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
                         if (attackerBody)
                         {
                             damageInfo.crit = Util.CheckRoll(attackerBody.crit, attackerBody.master);
+                            //don't trigger items on teammates, as funny as that is
+                            if (attackerBody == self.body || !FriendlyFireManager.ShouldDirectHitProceed(self, attackerBody.teamComponent.teamIndex))
+                            {
+                                triggerGougeProc = false;
+                            }
                         }
                     }
-                    damageInfo.procCoefficient = 0.5f;
-                    triggerGougeProc = true;
                 }
             }
 
