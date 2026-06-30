@@ -12,9 +12,11 @@
   - now does %hp damage on top of base damage
   - no longer scales of attack speed (I forgot it did that)
     - *goes way too crazy with % damage*
-  - re-tuned self damage in the wake of all this danger
+  - re-tuned self damage
     - *thanks, Z, for testing help!*
+  - bumped cooldown so it's not so spammable, now that it's actually good
   - if you still think it's too weak you're crazy
+  - known issue: does not work with Ignition Tank anymore
 - added risk of options support
 - toned down by default blessed body overlay, added to config to revert or tone down further.
 - fixed lightning spear not working with faulty conductor

@@ -22,10 +22,5 @@ namespace PaladinMod.States
                 childLocator.FindChild("SpearThrowEffect").gameObject.SetActive(true);
             }*/
         }
-        protected override void ModifyProjectileInfo(FireProjectileInfo fireProjectileInfo)
-        {
-            base.ModifyProjectileInfo(fireProjectileInfo);
-            fireProjectileInfo.damageTypeOverride = RoR2.DamageTypeCombo.GenericSecondary;
-        }
     }
 }

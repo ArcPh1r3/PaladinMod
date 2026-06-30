@@ -125,23 +125,23 @@ namespace PaladinMod
         public const int cruelSunMinimumStacksBeforeApplyingBurns = 2;
         public const int cruelSunMaximumAllyStacks = 2;
 
-        //[Configure(PaladinConfig.Section4Numbers,
-        //    1.0f,
-        //    description = "damage coefficient (multiple of base damage) for each burn stack.\nFull successful cast will usually land 20 stacks.\nvalue 0.5 means each stack will do 50% damage")]
-        public static /*ConfigEntry<float>*/ float cruelSunBurnDamageCoefficient = 1.0f;
-        //[Configure(PaladinConfig.Section4Numbers, 
-        //    0.025f,
-        //    description = "Fraction of enemy health done by each stack of burn. Added to damage coefficient.\nFull successful cast will usually land 20 stacks.\nvalue 0.1 means each stack will do 10% of the enemy's max health.")]
-        public static /*ConfigEntry<float>*/ float cruelSunBurnPercentCoefficient = 0.03f;
+        [Configure(PaladinConfig.Section4Numbers,
+            1.0f,
+            description = "damage coefficient (multiple of base damage) for each burn stack.\nFull successful cast will usually land 20 stacks.\nvalue 0.5 means each stack will do 50% damage")]
+        public static ConfigEntry<float> /*float*/ cruelSunBurnDamageCoefficient /*= 1.0f*/;
+        [Configure(PaladinConfig.Section4Numbers,
+            0.03f,
+            description = "Fraction of enemy health done by each stack of burn. Added to damage coefficient.\nFull successful cast will usually land 20 stacks.\nvalue 0.1 means each stack will do 10% of the enemy's max health.")]
+        public static ConfigEntry<float> /*float*/ cruelSunBurnPercentCoefficient /*= 0.03f*/;
 
         [Configure(PaladinConfig.Section4Numbers,
             0.05f,
-            description = "Friendly Fire Scaling. Player team already has a value of 0.5 multiplied on top of this. I would balance this such that paladin takes about a quarter of his full health on full successful cast.")]
+            description = "Friendly Fire Scaling. Player team already has a value of 0.5 multiplied on top of this. It already doesn't proc items on allies and the burn is hella reduced. You can turn this to 0 if your friends are complaining, but make sure to call them boring first.")]
         public static ConfigEntry<float> /*float*/ cruelSunFriendlyFireScalingMultiplier;// = 0.225f;
         [Configure(PaladinConfig.Section4Numbers,
             0.05f,
-            description = "Friendly Fire Scaling. Player team already has a value of 0.5 multiplied on top of this. I would balance this such that paladin takes about a quarter of his full health on full successful cast.")]
-        public static ConfigEntry<float> /*float*/ cruelSunSelfDamageMultiplier;// = 0.15f;
+            description = "Ignores all other stats. does flat % of your own health. A value of 0.05 * generally 20 stacks with a full charge = 30% of your health done. Intended balance is that that paladin takes about a quarter or a third of his full health on full successful cast.")]
+        public static ConfigEntry<float> /*float*/ cruelSunSelfDamageOverride;// = 0.15f;
 
         public const float cruelSunBurnStackDuration = 5f; // 
         public static float cruelSunBurnDotInterval = 0.2f;

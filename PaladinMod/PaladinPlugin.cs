@@ -250,6 +250,22 @@ namespace PaladinMod
             //On.RoR2.UI.HUD.Awake += HUDAwake;
 
             On.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamageProcess;
+            On.RoR2.StrengthenBurnUtils.CheckDotForUpgrade += StrengthenBurnUtils_CheckDotForUpgrade;
+        }
+
+        private void StrengthenBurnUtils_CheckDotForUpgrade(On.RoR2.StrengthenBurnUtils.orig_CheckDotForUpgrade orig, Inventory inventory, ref InflictDotInfo dotInfo)
+        {
+            bool hackydumbshitsorryinadvance = false;
+            if(dotInfo.dotIndex == DoTs.FuckingCruelSunBurn)
+            {
+                dotInfo.dotIndex = DotController.DotIndex.Burn;
+                hackydumbshitsorryinadvance = true;
+            }
+            orig(inventory, ref dotInfo);
+            if (hackydumbshitsorryinadvance)
+            {
+                dotInfo.dotIndex = DoTs.FuckingCruelSunBurn;
+            }
         }
 
         private void HealthComponent_TakeDamageProcess(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)

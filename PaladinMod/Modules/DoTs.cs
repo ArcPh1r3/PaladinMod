@@ -12,7 +12,14 @@ namespace PaladinMod.Modules
 
         public static void Init()
         {
-            FuckingCruelSunBurn = R2API.DotAPI.RegisterDotDef(StaticValues.cruelSunBurnDotInterval, StaticValues.cruelSunBurnDotInterval, DamageColorIndex.Item, Addressables.LoadAsset<BuffDef>("RoR2/Base/Common/bdOnFire.asset").WaitForCompletion());
+            FuckingCruelSunBurn = R2API.DotAPI.RegisterDotDef(
+                interval: StaticValues.cruelSunBurnDotInterval, 
+                damageCoefficient: StaticValues.cruelSunBurnDotInterval, 
+                colorIndex: DamageColorIndex.Item, 
+                associatedBuff: Addressables.LoadAsset<BuffDef>("RoR2/Base/Common/bdOnFire.asset").WaitForCompletion(),
+                customDotBehaviour: null,
+                customDotVisual: null,
+                customDotDamageEvaluation: null);
         }
     }
 }

@@ -191,17 +191,18 @@ public class PaladinSunController : MonoBehaviour
 									if (!isEnemy && teamDef != null && teamDef.friendlyFireScaling > 0f) { 
 										friendlyFireScale = teamDef.friendlyFireScaling * StaticValues.cruelSunFriendlyFireScalingMultiplier; 
 									}
-                                    //self
+
+                                    dotInfo.duration = StaticValues.cruelSunBurnStackDuration;
                                     if (isSelf)
                                     {
-                                        friendlyFireScale = teamDef.friendlyFireScaling * StaticValues.cruelSunSelfDamageMultiplier;
+                                        dotInfo.damageMultiplier = (StaticValues.cruelSunSelfDamageOverride * hitBody.healthComponent.fullCombinedHealth) / (dotInfo.duration * ownerBody.damage);
                                     }
-
-                                    float burnBaseDamage = StaticValues.cruelSunBurnDamageCoefficient * ownerBody.damage;//burn dot damage coefficient is 0.01. no need to multiply by owner damage, cause the dotcontroller does it
-                                    float burnPercentDamage = StaticValues.cruelSunBurnPercentCoefficient * hitBody.healthComponent.fullCombinedHealth;
-                                    dotInfo.duration = StaticValues.cruelSunBurnStackDuration;
-                                    dotInfo.damageMultiplier = (friendlyFireScale * (burnBaseDamage + burnPercentDamage)) / (dotInfo.duration * ownerBody.damage);
-
+                                    else
+                                    {
+                                        float burnBaseDamage = StaticValues.cruelSunBurnDamageCoefficient * ownerBody.damage;//burn dot damage coefficient is 0.01. no need to multiply by owner damage, cause the dotcontroller does it
+                                        float burnPercentDamage = StaticValues.cruelSunBurnPercentCoefficient * hitBody.healthComponent.fullCombinedHealth;
+                                        dotInfo.damageMultiplier = (friendlyFireScale * (burnBaseDamage + burnPercentDamage)) / (dotInfo.duration * ownerBody.damage);
+                                    }
 
                                     StrengthenBurnUtils.CheckDotForUpgrade(ownerBody.inventory, ref dotInfo);
 								}
