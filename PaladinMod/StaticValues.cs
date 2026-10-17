@@ -116,7 +116,7 @@ namespace PaladinMod
         public const float cruelSunChannelDurationOld = 5f;
         public const float cruelSunChannelDuration = 2.0f;
         public const float cruelSunDuration = 12.5f;
-        public static float cruelSunVfxCenterSize = 9.5f;
+        public static float cruelSunVfxCenterSize = 9.0f;
         public static float cruelSunVfxLightIntensity = 0.225f;
         public static float cruelSunAoE = 120f;
         public static float cruelSunVfxSize = 0.37f * cruelSunAoE / 70f;//magic numbers based on testing. 
@@ -126,21 +126,24 @@ namespace PaladinMod
         public const int cruelSunMaximumAllyStacks = 2;
 
         [Configure(PaladinConfig.Section4Numbers,
-            1.0f,
-            description = "damage coefficient (multiple of base damage) for each burn stack.\nFull successful cast will usually land 20 stacks.\nvalue 0.5 means each stack will do 50% damage")]
+            0.3f,
+            description = "damage coefficient (multiple of base damage) for each burn stack.\nFull successful cast will usually land 20 stacks.\nvalue 0.5 means each stack will do 50% damage over its 5 second burn period")]
         public static ConfigEntry<float> /*float*/ cruelSunBurnDamageCoefficient /*= 1.0f*/;
         [Configure(PaladinConfig.Section4Numbers,
-            0.03f,
-            description = "Fraction of enemy health done by each stack of burn. Added to damage coefficient.\nFull successful cast will usually land 20 stacks.\nvalue 0.1 means each stack will do 10% of the enemy's max health.")]
+            0.04f,
+            description = "Fraction of enemy health done by each stack of burn. Added to damage coefficient.\nFull successful cast will usually land 20 stacks.\nvalue 0.1 means each stack will do 10% of the enemy's max health over its 5 second burn period.")]
         public static ConfigEntry<float> /*float*/ cruelSunBurnPercentCoefficient /*= 0.03f*/;
 
+        //the vale for us to tune based on our judgement
+        public static float friendlyFireScalingButActually = 2;
+        // the value that the user can adjust from a 0-1 range
         [Configure(PaladinConfig.Section4Numbers,
-            0.05f,
-            description = "Friendly Fire Scaling. Player team already has a value of 0.5 multiplied on top of this. It already doesn't proc items on allies and the burn is hella reduced. You can turn this to 0 if your friends are complaining, but make sure to call them boring first.")]
+            1f,
+            description = "Friendly Fire Scaling. Does not apply to self. Allies already only get 8 stacks of burn and player team already has a 0.5x friendly fire multiplier. You can turn this to 0 if your friends are complaining, but make sure to call them boring first.")]
         public static ConfigEntry<float> /*float*/ cruelSunFriendlyFireScalingMultiplier;// = 0.225f;
         [Configure(PaladinConfig.Section4Numbers,
-            0.05f,
-            description = "Ignores all other stats. does flat % of your own health. A value of 0.05 * generally 20 stacks with a full charge = 30% of your health done. Intended balance is that that paladin takes about a quarter or a third of his full health on full successful cast.")]
+            0.08f,
+            description = "Ignores all other stats. does consistent % of your own health. A value of 0.08 * generally 8 stacks with a full charge ~ 60% of your health done. There is a quirk with DoTs in this game that makes them do a minimum of 1 damage per tick, meaning if you lower this, you will only feel the effect late game. It's been balanced with this limitation in mind.")]
         public static ConfigEntry<float> /*float*/ cruelSunSelfDamageOverride;// = 0.15f;
 
         public const float cruelSunBurnStackDuration = 5f; // 

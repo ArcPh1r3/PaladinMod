@@ -255,16 +255,27 @@ namespace PaladinMod
 
         private void StrengthenBurnUtils_CheckDotForUpgrade(On.RoR2.StrengthenBurnUtils.orig_CheckDotForUpgrade orig, Inventory inventory, ref InflictDotInfo dotInfo)
         {
-            bool hackydumbshitsorryinadvance = false;
-            if(dotInfo.dotIndex == DoTs.FuckingCruelSunBurn)
-            {
-                dotInfo.dotIndex = DotController.DotIndex.Burn;
-                hackydumbshitsorryinadvance = true;
-            }
             orig(inventory, ref dotInfo);
-            if (hackydumbshitsorryinadvance)
+            CheckForDotUpgrade_CruelSun(inventory, ref dotInfo);
+        }
+
+        //even though we call this functuion ourselves, keep it attached to the hook in case something else wants to apply cruel sun burn idk
+        public static void CheckForDotUpgrade_CruelSun(Inventory inventory, ref InflictDotInfo dotInfo)
+        {
+            //manually un-future-proofed repeating the code for ourselves
+            if (dotInfo.dotIndex == DoTs.FuckingCruelSunBurn)
             {
-                dotInfo.dotIndex = DoTs.FuckingCruelSunBurn;
+                int itemCountEffective = inventory.GetItemCountEffective(DLC1Content.Items.StrengthenBurn);
+                CharacterBody component = dotInfo.victimObject.GetComponent<CharacterBody>();
+                bool oiled = component != null && component.HasBuff(DLC2Content.Buffs.Oiled);
+                if (itemCountEffective > 0 || oiled)
+                {
+                    dotInfo.preUpgradeDotIndex = new DotController.DotIndex?(dotInfo.dotIndex);
+                    dotInfo.dotIndex = DoTs.FuckingCruelSunBurnStrengthened;
+                    float num = (float)(1 + 3 * (oiled ? (1 + itemCountEffective) : itemCountEffective));
+                    dotInfo.damageMultiplier *= num;
+                    //dotInfo.totalDamage *= num; totalDamage stretches the DPS over a longer course of time so let us avoid that so as to not tank our DPS
+                }
             }
         }
 
@@ -274,9 +285,9 @@ namespace PaladinMod
             bool triggerGougeProc = false;
             if (NetworkServer.active)
             {
-                if (damageInfo.dotIndex == DoTs.FuckingCruelSunBurn && self.alive)
+                if ((damageInfo.dotIndex == DoTs.FuckingCruelSunBurn || damageInfo.dotIndex == DoTs.FuckingCruelSunBurnStrengthened) && self.alive)
                 {
-                    damageInfo.procCoefficient = 0.5f;
+                    damageInfo.procCoefficient = 0.2f;
                     triggerGougeProc = true;
                     if (damageInfo.attacker)
                     {
@@ -291,6 +302,14 @@ namespace PaladinMod
                             }
                         }
                     }
+                }
+
+                if (triggerGougeProc)
+                {
+                    DamageTypeCombo damageType = damageInfo.damageType;
+                    damageType.damageSource = DamageSource.Special;
+                    damageType |= DamageTypeExtended.FireNoIgnite;
+                    damageInfo.damageType = damageType;
                 }
             }
 
@@ -956,7 +975,7 @@ namespace PaladinMod
             scepterCruelSunDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ScepterChannelCruelSun));
             scepterCruelSunDef.activationStateMachineName = "Weapon";
             scepterCruelSunDef.baseMaxStock = 1;
-            scepterCruelSunDef.baseRechargeInterval = 20f;
+            scepterCruelSunDef.baseRechargeInterval = 40f;
             scepterCruelSunDef.beginSkillCooldownOnSkillEnd = true;
             scepterCruelSunDef.canceledFromSprinting = true;
             scepterCruelSunDef.fullRestockOnAssign = true;

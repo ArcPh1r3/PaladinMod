@@ -1,24 +1,25 @@
 ## Changelog
 `2.2.0`
+- update for HC. item displays temporarily disabled
 - fixed certain skills deducting stock immediately, affecting other modded items which triggered on such conditions
-  - *thanks Zenithrium!*
+  - *thanks and sorry Zenithrium!*
 - replaced the default sword to one more lore-fitting
   - *thanks Zenta for the visit from old times*
-- blacked out and when I woke up there was a Cruel Sun Buff
+- toned down by default blessed body overlay, added to config to revert or tone down further.
+- blacked out and when I woke up there was a Cruel Sun Buff/refactor
   - burn stacks are now always 5 seconds 
-    - *(previously the overheat setup was doing fucky math that stretched damage over the same dps rather than just increasing damage)*
+    - *(previously the overheat setup was doing fucky math that stretched time over the same dps rather than just increasing damage)*
   - now procs items when hitting enemies (not allies or self)
-    - *thanks swuff and StarStorm team!*
+    - *thanks swuff and Starstorm team!*
   - now does %hp damage on top of base damage
   - no longer scales of attack speed (I forgot it did that)
     - *goes way too crazy with % damage*
   - re-tuned self damage
     - *thanks, Z, for testing help!*
-  - bumped cooldown so it's not so spammable, now that it's actually good
-  - if you still think it's too weak you're crazy
-  - known issue: does not work with Ignition Tank anymore
+  - bumped cooldown to 40s so it's not so spammable, now that it's actually good
+  - fixed it not counting as skill damage
+  - if you still think it's still bad first of all you're crazy but also let us know why
 - added risk of options support
-- toned down by default blessed body overlay, added to config to revert or tone down further.
 - fixed lightning spear not working with faulty conductor
 
 `2.1.0`

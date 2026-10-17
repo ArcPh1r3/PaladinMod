@@ -152,7 +152,7 @@ public class PaladinSunController : MonoBehaviour
 
                     bool isSelf = hitBody == ownerBody;
                     bool isEnemy = FriendlyFireManager.ShouldDirectHitProceed(hurtBox.healthComponent, ownerBody.teamComponent.teamIndex);
-					bool affectAlly = !isEnemy && StaticValues.cruelSunFriendlyFireScalingMultiplier > 0 && hitBody.GetBuffCount(RoR2Content.Buffs.Overheat) < StaticValues.cruelSunMaximumAllyStacks;
+					bool affectAlly = !isEnemy && hitBody.GetBuffCount(RoR2Content.Buffs.Overheat) < StaticValues.cruelSunMaximumAllyStacks;
 					bool overrideEnemyImmune = ((hitBody.bodyFlags & CharacterBody.BodyFlags.OverheatImmune) == 0 || hitBody.teamComponent.teamIndex != TeamIndex.Player);
                     if ((isEnemy || affectAlly) && overrideEnemyImmune) {
 
@@ -183,35 +183,39 @@ public class PaladinSunController : MonoBehaviour
 								dotInfo.dotIndex = DoTs.FuckingCruelSunBurn;
 								dotInfo.attackerObject = ownerObj;
 								dotInfo.victimObject = hitBody.gameObject;
+                                dotInfo.duration = StaticValues.cruelSunBurnStackDuration;
 								if ((bool)ownerBody && (bool)ownerBody.inventory)
 								{
 									TeamDef teamDef = TeamCatalog.GetTeamDef(ownerBody.teamComponent.teamIndex);
-									float friendlyFireScale = 1f;
-                                    //allies (via friendlyfiremanager)
-									if (!isEnemy && teamDef != null && teamDef.friendlyFireScaling > 0f) { 
-										friendlyFireScale = teamDef.friendlyFireScaling * StaticValues.cruelSunFriendlyFireScalingMultiplier; 
-									}
 
-                                    dotInfo.duration = StaticValues.cruelSunBurnStackDuration;
-                                    if (isSelf)
+                                    //damage to others
+                                    if (!isSelf)
                                     {
-                                        dotInfo.damageMultiplier = (StaticValues.cruelSunSelfDamageOverride * hitBody.healthComponent.fullCombinedHealth) / (dotInfo.duration * ownerBody.damage);
+                                        float burnBaseDamage = StaticValues.cruelSunBurnDamageCoefficient * ownerBody.damage;
+                                        float burnPercentDamage = StaticValues.cruelSunBurnPercentCoefficient * hitBody.healthComponent.fullCombinedHealth;
+                                        float friendlyFireScale = 1;
+                                        //if ally, adjust damage scale
+                                        if (!isEnemy)
+                                        {
+                                            friendlyFireScale = StaticValues.cruelSunFriendlyFireScalingMultiplier * StaticValues.friendlyFireScalingButActually;
+                                        }
+                                        dotInfo.damageMultiplier = (friendlyFireScale * (burnBaseDamage + burnPercentDamage)) / (ownerBody.damage);
                                     }
+                                    //damage to self
                                     else
                                     {
-                                        float burnBaseDamage = StaticValues.cruelSunBurnDamageCoefficient * ownerBody.damage;//burn dot damage coefficient is 0.01. no need to multiply by owner damage, cause the dotcontroller does it
-                                        float burnPercentDamage = StaticValues.cruelSunBurnPercentCoefficient * hitBody.healthComponent.fullCombinedHealth;
-                                        dotInfo.damageMultiplier = (friendlyFireScale * (burnBaseDamage + burnPercentDamage)) / (dotInfo.duration * ownerBody.damage);
+                                        dotInfo.damageMultiplier = (StaticValues.cruelSunSelfDamageOverride * hitBody.healthComponent.fullCombinedHealth) / (ownerBody.damage) / teamDef.friendlyFireScaling;
                                     }
 
                                     StrengthenBurnUtils.CheckDotForUpgrade(ownerBody.inventory, ref dotInfo);
-								}
+
+                                    PaladinPlugin.logger.LogMessage(dotInfo.damageMultiplier + " damage multiplier inflicting to " + hitBody);
+                                }
 								if (dotInfo.damageMultiplier > 0) DotController.InflictDot(ref dotInfo);
 							}
 						}
 					}
 				}
-
 			}
 			cycleIndex++;
 		}

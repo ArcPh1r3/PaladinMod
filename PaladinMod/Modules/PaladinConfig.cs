@@ -29,7 +29,7 @@ namespace PaladinMod.Modules
         public static ConfigEntry<bool> legacyCruelSun;
         public static ConfigEntry<float> prideFlareMultiplier;
         //public const string Section4Body = "04 - Body";
-        public const string Section4Numbers = "04 - Numbers";
+        public const string Section4Numbers = "04 - Skill(s)";
         //used in staticvalues.cs
 
         public static void ReadConfig()

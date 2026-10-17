@@ -393,7 +393,7 @@ namespace PaladinMod.Modules
             mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelCruelSun));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
-            mySkillDef.baseRechargeInterval = 25f;
+            mySkillDef.baseRechargeInterval = 40f;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
             mySkillDef.canceledFromSprinting = true;
             mySkillDef.fullRestockOnAssign = false;

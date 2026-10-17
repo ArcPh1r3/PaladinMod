@@ -55,7 +55,7 @@ namespace PaladinMod.Modules
             shockwave.GetComponent<ProjectileCharacterController>().lifetime = 0.5f;
             shockwave.GetComponent<ProjectileDamage>().damageType = DamageType.Stun1s;
 
-            GameObject shockwaveGhost = PrefabAPI.InstantiateClone(shockwave.GetComponent<ProjectileController>().ghostPrefab, "PaladinShockwaveGhost", false);
+            GameObject shockwaveGhost = PrefabAPI.InstantiateClone(shockwave.GetComponent<ProjectileController>().ghostPrefabAddress.LoadAssetAsync().WaitForCompletion(), "PaladinShockwaveGhost", false);
             shockwaveGhost.transform.GetChild(0).transform.localScale = new Vector3(10, 1, 1);
             shockwaveGhost.transform.GetChild(1).transform.localScale = new Vector3(10, 1.5f, 1);
             PaladinPlugin.Destroy(shockwaveGhost.transform.GetChild(0).Find("Infection, World").gameObject);
@@ -96,6 +96,7 @@ namespace PaladinMod.Modules
             lightningSpear.transform.localScale *= 2f;
 
             lightningSpear.GetComponent<ProjectileController>().ghostPrefab = spearGhost;
+            lightningSpear.GetComponent<ProjectileController>().ghostPrefabAddress = null;
             //lightningSpear.GetComponent<ProjectileOverlapAttack>().impactEffect = Assets.lightningImpactFX;
             lightningSpear.GetComponent<ProjectileDamage>().damageType = DamageType.Shock5s;
             lightningSpear.GetComponent<ProjectileDamage>().damageType |= DamageTypeExtended.Electrical;
@@ -117,6 +118,7 @@ namespace PaladinMod.Modules
 
             //GameObject MercEvisProjectileGhost = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab;
             swordBeamProjectile.GetComponent<ProjectileController>().ghostPrefab = Asset.swordBeamGhost;//MercEvisProjectileGhost;
+            swordBeamProjectile.GetComponent<ProjectileController>().ghostPrefabAddress = null;
             swordBeamProjectile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
 
             PaladinPlugin.Destroy(swordBeamProjectile.transform.Find("SweetSpotBehavior").gameObject);
@@ -357,6 +359,7 @@ namespace PaladinMod.Modules
 
             ProjectileController scsPC = scepterCruelSun.GetComponent<ProjectileController>();
             scsPC.ghostPrefab = scepterCruelSunGhost;
+            scsPC.ghostPrefabAddress = null;
             scsPC.canImpactOnTrigger = false;
             scsPC.cannotBeDeleted = true;
             scsPC.procCoefficient = StaticValues.prideFlareProcCoefficient;
@@ -405,6 +408,9 @@ namespace PaladinMod.Modules
                 scepterCruelSun
             };
         }
+
+        public static GameObject MercGhost;
+
         /// <summary>
         /// To add a custom colored sword beam for your skin
         /// <para> create a projectileGhostReplacement in your skindef, and you can use this to easily get a new ProjectileGhost variation of Paladin's sword beam </para>
@@ -413,10 +419,11 @@ namespace PaladinMod.Modules
         /// <param name="lightBright"></param>
         /// <returns></returns>
         public static GameObject CloneAndColorSwordBeam(Color beamColor, float lightBright = 0.8f) {
-
-            GameObject MercEvisProjectileGhost = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab;
-
-            return CloneAndColorGhost(MercEvisProjectileGhost, beamColor, lightBright);
+            if (!MercGhost)
+            {
+                MercGhost = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_Merc.EvisProjectileGhost_prefab).WaitForCompletion();
+            }
+            return CloneAndColorGhost(MercGhost, beamColor, lightBright);
         }
 
         public static GameObject CloneAndColorGhost(GameObject projectileGhost, Color beamColor, float lightBright = 0.8f) {

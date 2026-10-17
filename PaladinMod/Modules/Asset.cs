@@ -655,9 +655,9 @@ namespace PaladinMod.Modules
             //Pride Flare base prefab, projectile is derived from this base
             paladinScepterSunPrefab = PrefabAPI.InstantiateClone(Asset.paladinSunPrefab, "PaladinScepterSun");
             //TODO: VFX changes here
-            paladinScepterSunPrefab.transform.Find("VfxRoot/Mesh/SunMesh").transform.localScale = new Vector3(5f, 5f, 5f);
-            paladinScepterSunPrefab.transform.Find("VfxRoot/Particles").transform.localScale = new Vector3(7.5f, 7.5f, 7.5f);
-            paladinScepterSunPrefab.transform.Find("VfxRoot/LightSpinner/LightSpinner/Point Light").GetComponent<Light>().colorTemperature = 3000f;
+            //paladinScepterSunPrefab.transform.Find("VfxRoot/Mesh/SunMesh").transform.localScale = new Vector3(5f, 5f, 5f);
+            //paladinScepterSunPrefab.transform.Find("VfxRoot/Particles").transform.localScale = new Vector3(7.5f, 7.5f, 7.5f);
+            paladinScepterSunPrefab.transform.Find("VfxRoot/LightSpinner/LightSpinner/Point Light").GetComponent<Light>().colorTemperature = 1100f;
             MeshRenderer pssMR = paladinScepterSunPrefab.transform.Find("VfxRoot/Mesh/SunMesh").GetComponent<MeshRenderer>();
             Material pssNewM = Object.Instantiate<Material>(pssMR.material);
             pssNewM.SetColor("_TintColor", new Color(0.33f,0.33f,0.33f));
@@ -705,7 +705,7 @@ namespace PaladinMod.Modules
             matJellyfishLightningLarge = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/VagrantCannonExplosion").transform.Find("Lightning, Radial").GetComponent<ParticleSystemRenderer>().material);
             matMageMatrixDirectionalLightning = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniImpactVFXLightningMage").transform.Find("Matrix, Directional").GetComponent<ParticleSystemRenderer>().material);
             matDistortion = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LoaderGroundSlam").transform.Find("Sphere, Distortion").GetComponent<ParticleSystemRenderer>().material);
-            matMercSwipe = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab.transform.Find("Base").GetComponent<ParticleSystemRenderer>().material);
+            matMercSwipe = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefabAddress.LoadAssetAsync().WaitForCompletion().transform.Find("Base").GetComponent<ParticleSystemRenderer>().material);
             matLoaderLightningSphere = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LoaderGroundSlam").transform.Find("Sphere, Expanding").GetComponent<ParticleSystemRenderer>().material);
             matYellowLightningLong = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/LoaderPylon").transform.Find("loader pylon").Find("LoaderPylonArmature").Find("ROOT").Find("ActiveParticles").Find("Sparks, Trail").GetComponent<ParticleSystemRenderer>().trailMaterial);
             matMeteorIndicator = UnityEngine.Object.Instantiate(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/MeteorStrikePredictionEffect").transform.Find("GroundSlamIndicator").GetComponent<MeshRenderer>().material);
