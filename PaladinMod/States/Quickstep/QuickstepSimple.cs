@@ -50,8 +50,8 @@ namespace PaladinMod.States.Quickstep
             EffectManager.SpawnEffect(Modules.Asset.dashFX, effectData, false);
 
             TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(this.modelLocator.modelTransform.gameObject);
-            overlay.duration = 0.5f;
-            overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+            overlay.duration = 1.5f;
+            overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 2f, 1f, 0f);
             overlay.animateShaderAlpha = true;
             overlay.destroyComponentOnEnd = true;
             overlay.originalMaterial = Modules.Asset.dashMat;

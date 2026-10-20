@@ -12,13 +12,15 @@ namespace PaladinMod.States
     public class Slash : BaseSkillState, SteppedSkillDef.IStepSetter
     {
         public static float damageCoefficient = StaticValues.slashDamageCoefficient;
-        public float baseDuration = 2f;
+        public float baseDuration = 1.8f;
         public static float attackRecoil = 1.5f;
         public static float hitHopVelocity = 5.5f;
         private const float attackStartTime = 0.21f;
         private const float attackStartTimAlt = 0.25f;
         private const float attackEndTime = 0.35f;
-        public static float earlyExitTime = 0.46f;
+        public static float earlyExitTime = 0.22f;
+        public static float earlyExitTime2 = 0.75f;
+        public static float earlyExitTimeORIGINAL = 0.46f;
         public int swingIndex;
 
         private bool inCombo;
@@ -42,7 +44,8 @@ namespace PaladinMod.States
         {
             base.OnEnter();
             this.duration = this.baseDuration / this.attackSpeedStat;
-            this.earlyExitDuration = this.duration * Slash.earlyExitTime;
+            if (this.swingIndex == 1) this.earlyExitDuration = this.duration * Slash.earlyExitTime2;
+            else this.earlyExitDuration = this.duration * Slash.earlyExitTime;
             this.hasFired = false;
             this.cancelling = false;
             this.animator = base.GetModelAnimator();
@@ -273,7 +276,7 @@ namespace PaladinMod.States
                 //    return;
                 //} 
 
-                if (base.fixedAge >= this.duration)
+                if (this.stopwatch >= this.duration)
                 {
                     this.outer.SetNextStateToMain();
                     return;

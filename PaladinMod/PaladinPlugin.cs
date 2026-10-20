@@ -845,7 +845,7 @@ namespace PaladinMod
 
                             blessingTracker.Body = self.body;
                             TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(self.gameObject);
-                            overlay.duration = self.body.baseNameToken == "PALADIN_NAME" ? 3f : float.PositiveInfinity;
+                            overlay.duration = self.body.baseNameToken == "PALADIN_NAME" ? 5f : float.PositiveInfinity;
                             overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                             overlay.animateShaderAlpha = true;
                             overlay.destroyComponentOnEnd = true;

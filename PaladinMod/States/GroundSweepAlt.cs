@@ -105,7 +105,7 @@ namespace PaladinMod.States
                         forwardDirection = forwardDirection.normalized;
                     }
 
-                    base.characterMotor.velocity += forwardDirection * 25f;
+                    base.characterMotor.velocity += forwardDirection * 10f + (this.inputBank.moveVector * 30f);
                 }
             }
 
@@ -150,9 +150,9 @@ namespace PaladinMod.States
                 if (this.animator) this.animator.SetFloat("Whirlwind.playbackRate", 0f);
             }
 
-            if (base.characterMotor && stopwatch < duration * 0.6f)
+            if (base.characterMotor && stopwatch < duration * 0.26f)
             {
-                base.characterMotor.moveDirection /= 2f;
+                base.characterMotor.moveDirection *= 0.1f;
             }
             
             bool skillStarted = this.stopwatch >= this.duration * 0.26f;
@@ -186,6 +186,7 @@ namespace PaladinMod.States
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             if (this.stopwatch >= this.duration * 0.41f) return InterruptPriority.PrioritySkill;
+            if (this.stopwatch >= this.duration * 0.65f) return InterruptPriority.Any;
             else return InterruptPriority.Frozen;
         }
     }

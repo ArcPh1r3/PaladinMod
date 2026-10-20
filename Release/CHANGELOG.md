@@ -2,16 +2,16 @@
 `2.3.0`
 - Added config: False Son Secondaries- adds both False Son secondary skills to Paladin, just for fun don't expect balance or anything
 - Reworked Lunar Shards: now has 1 stock, cast to fire a volley of 6 shards for 50% each. hitting all 6 on an enemy marks them, the next instance of skill damage on them detonates the mark for a brief AoE pull and explosion for 500%
-- Added config: Legacy Lunar Shard
+- Added config: Legacy Lunar Shards
 - Passive overlay now fades out on Paladin himself, permanent for affected allies, added some more oomph
 - Passive now has a 2 second grace period before deactivating
-- Primary sword beams now count as primary skill damage
+- Sword beams now count as primary skill damage
+- Primary no longer instantly hits if you cancel swing with another skill
+- Spinning Slash grounded endlag reduced, movement is now influenced by your input
 - Buffed radius of all spells, scepter upgrades now boost the radius even further
 - Rebalanced audio, added custom footstep and landing sfx courtesy of James (: added and changed a bunch more sfx too
 - New cursed config skill smite a motherfucker
 - Lunar Shard muzzle flash VFX reduced
-- Fixed IDRS
-- Fixed passive activation sound spam
 
 `2.2.0`
 - update for HC. item displays temporarily disabled
