@@ -291,6 +291,17 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="PaladinStepSprint" ID="{7560CD48-EB0B-49B6-B5B3-8BF63A5FEE8F}">
+							<ChildrenList>
+								<Action Name="" ID="{9235AE6E-1357-4230-8228-56DBBDEE26A6}" ShortID="951405635">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="step_01" ID="{F8014EA4-E2F4-44C0-A4D2-30F3DDF1C548}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="nemforcer" ID="{D0214027-8310-42E6-8119-C8A48FFEE3D3}" ShortID="793757402">

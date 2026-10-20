@@ -5,6 +5,7 @@
 - Added config: Legacy Lunar Shard
 - Passive overlay now fades out on Paladin himself, permanent for affected allies, added some more oomph
 - Passive now has a 2 second grace period before deactivating
+- Rebalanced audio, added custom footstep and landing sfx courtesy of James (:
 - Fixed IDRS
 - Fixed passive activation sound spam
 

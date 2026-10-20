@@ -1,4 +1,6 @@
 ﻿using RoR2;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace PaladinMod.States.Spell
 {
@@ -23,7 +25,9 @@ namespace PaladinMod.States.Spell
             {
                 origin = trackingTarget.transform.position
             };
-            EffectManager.SpawnEffect(Modules.Asset.airSlamFX, effect, false);
+            EffectManager.SpawnEffect(Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/meridian/DisableSkillsLightning/FalseSonLightningStrikeImpactEffect.prefab").WaitForCompletion(), effect, false);
+            EffectManager.SpawnEffect(Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/meridian/DisableSkillsLightning/LightningStrikeImpactEffect.prefab").WaitForCompletion(), effect, false);
+            EffectManager.SpawnEffect(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lightning/LightningStrikeImpact.prefab").WaitForCompletion(), effect, false);
         }
     }
 }
