@@ -26,6 +26,7 @@ namespace PaladinMod.Modules
 
         public static void RegisterStates()
         {
+            //primary
             AddState(typeof(PaladinMain));
             AddState(typeof(SpawnState));
             AddState(typeof(BaseEmote));
@@ -37,6 +38,7 @@ namespace PaladinMod.Modules
 
             AddState(typeof(Slash));
 
+            //secondary
             AddState(typeof(SpinSlashEntry));
             AddState(typeof(GroundSweep));
             AddState(typeof(GroundSweepAlt));
@@ -47,7 +49,8 @@ namespace PaladinMod.Modules
             AddState(typeof(ThrowLightningSpear));
 
             AddState(typeof(LunarShards));
-
+            
+            //util
             AddState(typeof(QuickstepSimple));
 
             //AddState(typeof(AimHeal));
@@ -55,6 +58,10 @@ namespace PaladinMod.Modules
             AddState(typeof(ChannelSmallHeal));
             AddState(typeof(CastSmallHeal));
 
+            AddState(typeof(ChannelSmiteAMotherfucker));
+            AddState(typeof(CastSmiteAMotherfucker));
+
+            //special
             AddState(typeof(ChannelHealZone));
             AddState(typeof(CastChanneledHealZone));
             AddState(typeof(ScepterChannelHealZone));
@@ -84,7 +91,8 @@ namespace PaladinMod.Modules
             AddState(typeof(CastCruelSunOld));
             AddState(typeof(ScepterChannelCruelSunOld));
             AddState(typeof(ScepterCastCruelSunOld));
-
+            
+            //misc
             AddState(typeof(RageEnter));
             AddState(typeof(RageEnterOut));
             AddState(typeof(RageExit));

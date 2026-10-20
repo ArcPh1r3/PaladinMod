@@ -28,6 +28,7 @@ namespace PaladinMod.Modules
         public const string Section3Legacy = "03 - Legacy";
         public static ConfigEntry<bool> legacyCruelSun;
         public static ConfigEntry<bool> legacyLunarShards;
+        public static ConfigEntry<bool> legacyHealUtility;
         public static ConfigEntry<bool> falseSonSecondary;
         public static ConfigEntry<float> prideFlareMultiplier;
         //public const string Section4Body = "04 - Body";
@@ -103,6 +104,11 @@ namespace PaladinMod.Modules
                                                          "Lunar Shards",
                                                          false,
                                                          "Add the old version of Lunar Shards.");
+            legacyHealUtility =
+                ConfigButEpic.BindAndOptions<bool>(Section3Legacy,
+                                                         "Heal Utility",
+                                                         false,
+                                                         "Add the old version of heal utility spell.");
             falseSonSecondary =
                 ConfigButEpic.BindAndOptions<bool>(Section3Legacy,
                                                          "False Son Secondary",

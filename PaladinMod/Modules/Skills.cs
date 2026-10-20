@@ -1,5 +1,6 @@
 ﻿using EntityStates;
 using PaladinMod.Misc;
+using PaladinMod.States;
 using RoR2;
 using RoR2.Skills;
 using System;
@@ -317,6 +318,7 @@ namespace PaladinMod.Modules
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
 
+            //heal util
             mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
             mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelSmallHeal));
             mySkillDef.activationStateMachineName = "Weapon";
@@ -347,6 +349,75 @@ namespace PaladinMod.Modules
                 unlockableDef = Modules.Unlockables.paladinHealSkillDefDef,
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
+
+            if (PaladinConfig.legacyHealUtility)
+            {
+                mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+                mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelSmallHeal));
+                mySkillDef.activationStateMachineName = "Weapon";
+                mySkillDef.baseMaxStock = 1;
+                mySkillDef.baseRechargeInterval = 8;
+                mySkillDef.beginSkillCooldownOnSkillEnd = true;
+                mySkillDef.canceledFromSprinting = false;
+                mySkillDef.fullRestockOnAssign = true;
+                mySkillDef.interruptPriority = InterruptPriority.PrioritySkill;
+                mySkillDef.resetCooldownTimerOnUse = false;
+                mySkillDef.isCombatSkill = true;
+                mySkillDef.mustKeyPress = true;
+                mySkillDef.cancelSprintingOnActivation = true;
+                mySkillDef.rechargeStock = 1;
+                mySkillDef.requiredStock = 1;
+                mySkillDef.stockToConsume = 0;
+                mySkillDef.icon = Asset.icon3b;
+                mySkillDef.skillDescriptionToken = "PALADIN_UTILITY_HEAL_DESCRIPTION";
+                mySkillDef.skillName = "PALADIN_UTILITY_HEAL_NAME";
+                mySkillDef.skillNameToken = "PALADIN_UTILITY_HEAL_NAME";
+
+                skillDefs.Add(mySkillDef);
+
+                Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+                skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+                {
+                    skillDef = mySkillDef,
+                    unlockableDef = Modules.Unlockables.paladinHealSkillDefDef,
+                    viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+                };
+            }
+
+            if (PaladinConfig.cursed)
+            {
+
+                mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+                mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelSmiteAMotherfucker));
+                mySkillDef.activationStateMachineName = "Weapon";
+                mySkillDef.baseMaxStock = 1;
+                mySkillDef.baseRechargeInterval = 8;
+                mySkillDef.beginSkillCooldownOnSkillEnd = true;
+                mySkillDef.canceledFromSprinting = false;
+                mySkillDef.fullRestockOnAssign = true;
+                mySkillDef.interruptPriority = InterruptPriority.PrioritySkill;
+                mySkillDef.resetCooldownTimerOnUse = false;
+                mySkillDef.isCombatSkill = true;
+                mySkillDef.mustKeyPress = true;
+                mySkillDef.cancelSprintingOnActivation = true;
+                mySkillDef.rechargeStock = 1;
+                mySkillDef.requiredStock = 1;
+                mySkillDef.stockToConsume = 0;
+                mySkillDef.icon = Asset.icon2b;
+                mySkillDef.skillDescriptionToken = "smite a motherfucker for 10,000,000% damage ";
+                mySkillDef.skillName = "smite a motherfucker";
+                mySkillDef.skillNameToken = "smite a motherfucker";
+
+                skillDefs.Add(mySkillDef);
+
+                Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+                skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+                {
+                    skillDef = mySkillDef,
+                    //unlockableDef = Modules.Unlockables.paladinHealSkillDefDef,
+                    viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+                };
+            }
         }
 
         private static void SpecialSetup(GameObject bodyPrefab)

@@ -170,16 +170,20 @@ namespace PaladinMod.States
                 castSuccess = true;
                 base.activatorSkillSlot.DeductStock(1);
                 BaseCastChanneledSpellState nextState = this.GetNextState();
-
-                Transform indicatorTransform = this.areaIndicatorInstance ? this.areaIndicatorInstance.transform : transform;
-
-                nextState.spellPosition = indicatorTransform.position;
-                nextState.spellRotation = indicatorTransform.rotation;
-                nextState.camParamsOverrideHandle = camParamsOverrideHandle;
-                nextState.aimRequest = aimRequest;
-
-                this.outer.SetNextState(nextState);
+                PerformCastSuccess(nextState);
             }
+        }
+
+        public virtual void PerformCastSuccess(BaseCastChanneledSpellState nextState)
+        {
+            Transform indicatorTransform = this.areaIndicatorInstance ? this.areaIndicatorInstance.transform : transform;
+
+            nextState.spellPosition = indicatorTransform.position;
+            nextState.spellRotation = indicatorTransform.rotation;
+            nextState.camParamsOverrideHandle = camParamsOverrideHandle;
+            nextState.aimRequest = aimRequest;
+
+            this.outer.SetNextState(nextState);
         }
 
         public override void Update() {
