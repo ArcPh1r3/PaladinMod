@@ -175,7 +175,9 @@ namespace PaladinMod.States
             {
                 if (base.characterMotor.velocity != Vector3.zero) this.storedVelocity = base.characterMotor.velocity;
                 this.hitStopCachedState = base.CreateHitStopCachedState(base.characterMotor, this.animator, "Slash.playbackRate");
-                this.hitPauseTimer = 0.225f / this.attackSpeedStat;
+                float g = 0.075f;
+                if (this.swingIndex == 1) g = 0.22f;
+                this.hitPauseTimer = g / this.attackSpeedStat;
                 this.inHitPause = true;
 
                 if (this.swingEffectInstance)
