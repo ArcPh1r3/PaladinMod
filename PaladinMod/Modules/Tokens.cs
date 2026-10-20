@@ -84,6 +84,11 @@ namespace PaladinMod.Modules {
             Languages.Add("PALADIN_SECONDARY_LUNARSHARD_NAME", "Lunar Shards");
             Languages.Add("PALADIN_SECONDARY_LUNARSHARD_DESCRIPTION", desc);
 
+            desc = "<style=cIsUtility>Agile.</style> Fire a volley of <style=cIsUtility>lunar shards</style>, dealing <style=cIsDamage>6x" + 100f * StaticValues.lunarShardNewDamageCoefficient + "% damage</style> each. Hitting one foe with <style=cIsDamage>6 shards</style> marks them for detonation.";
+
+            Languages.Add("PALADIN_SECONDARY_LUNARSHARDLEGACY_NAME", "Lunar Shards (Legacy)");
+            Languages.Add("PALADIN_SECONDARY_LUNARSHARDLEGACY_DESCRIPTION", desc);
+
             desc = "<style=cIsUtility>Dash</style> a short distance and gain <style=cIsHealing>" + StaticValues.dashBarrierAmount * 100f + "% barrier</style>. Successful hits from <style=cIsDamage>Divine Blade</style> <style=cIsUtility>lower cooldown</style> by <style=cIsDamage>1 second</style>. <style=cIsUtility>Store up to 2 dashes.<style=cIsHealing>";
 
             Languages.Add("PALADIN_UTILITY_DASH_NAME", "Quickstep");
@@ -94,14 +99,19 @@ namespace PaladinMod.Modules {
             Languages.Add("PALADIN_UTILITY_HEAL_NAME", "Replenish");
             Languages.Add("PALADIN_UTILITY_HEAL_DESCRIPTION", desc);
 
+            desc = "Link to an ally to share <style=cIsHealing>heals and barrier gain</style>, or an enemy heal for <style=cIsHealing>50%</style> of damage they take. Killing a linked enemy steals their soul as a permanent ally.";
+
+            Languages.Add("PALADIN_UTILITY_LINK_NAME", "Soul Bind");
+            Languages.Add("PALADIN_UTILITY_LINK_DESCRIPTION", desc);
+
             desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.healZoneChannelDuration + "</style> seconds, then release to <style=cIsUtility>Bless</style> an area for <style=cIsDamage>" + StaticValues.healZoneDuration + " seconds</style>, gradually <style=cIsHealing>restoring health</style> and granting <style=cIsHealing>barrier</style> to all allies inside.";
 
             Languages.Add("PALADIN_SPECIAL_HEALZONE_NAME", "Sacred Sunlight");
             Languages.Add("PALADIN_SPECIAL_HEALZONE_DESCRIPTION", desc);
 
-            desc += Helpers.ScepterDescription("Double healing. Double barrier. Cleanses debuffs.");
+            desc += Helpers.ScepterDescription("Boosted radius. Double healing. Double barrier. Cleanses debuffs.");
 
-            Languages.Add("PALADIN_SPECIAL_SCEPTERHEALZONE_NAME", "Hallowed Sunlight");
+            Languages.Add("PALADIN_SPECIAL_SCEPTERHEALZONE_NAME", "Consecrated Sunlight");
             Languages.Add("PALADIN_SPECIAL_SCEPTERHEALZONE_DESCRIPTION", desc);
 
             desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.torporChannelDuration + "</style> seconds, then release to <style=cIsUtility>Silence</style> an area for <style=cIsDamage>" + StaticValues.torporDuration + " seconds</style>, inflicting <style=cIsHealth>torpor</style> on all enemies in the vicinity.";
@@ -109,9 +119,9 @@ namespace PaladinMod.Modules {
             Languages.Add("PALADIN_SPECIAL_TORPOR_NAME", "Vow of Silence");
             Languages.Add("PALADIN_SPECIAL_TORPOR_DESCRIPTION", desc);
 
-            desc += Helpers.ScepterDescription("Stronger debuff. Larger radius. Destroys projectiles.");
+            desc += Helpers.ScepterDescription("Boosted radius. Stronger debuff. Larger radius. Destroys projectiles.");
 
-            Languages.Add("PALADIN_SPECIAL_SCEPTERTORPOR_NAME", "Oath of Silence");
+            Languages.Add("PALADIN_SPECIAL_SCEPTERTORPOR_NAME", "Mandate of Silence");
             Languages.Add("PALADIN_SPECIAL_SCEPTERTORPOR_DESCRIPTION", desc);
 
             desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.warcryChannelDuration + "</style> seconds, then release to <style=cIsUtility>Empower</style> an area for <style=cIsDamage>" + StaticValues.warcryDuration + " seconds</style>, increasing <style=cIsDamage>damage</style> and <style=cIsDamage>attack speed</style> for all allies inside.";
@@ -119,18 +129,18 @@ namespace PaladinMod.Modules {
             Languages.Add("PALADIN_SPECIAL_WARCRY_NAME", "Sacred Oath");
             Languages.Add("PALADIN_SPECIAL_WARCRY_DESCRIPTION", desc);
 
-            desc += Helpers.ScepterDescription("Faster cast speed. Double damage. Double attack speed.");
+            desc += Helpers.ScepterDescription("Boosted radius. Faster cast speed. Double damage. Double attack speed.");
 
-            Languages.Add("PALADIN_SPECIAL_SCEPTERWARCRY_NAME", "Sacred Oath (Scepter)");
+            Languages.Add("PALADIN_SPECIAL_SCEPTERWARCRY_NAME", "Divine Oath");
             Languages.Add("PALADIN_SPECIAL_SCEPTERWARCRY_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.cruelSunChannelDuration + "</style> seconds, then create a <style=cIsUtility>miniature star</style> for <style=cIsDamage>" + MathF.Round(StaticValues.cruelSunDuration) + "</style> seconds that <style=cDeath>overheats EVERYTHING</style> around it.Targets burn for <style=cIsDamage>" + StaticValues.cruelSunBurnDamageCoefficient * 100f + "% damage</style> + <style=cIsDamage>" + StaticValues.cruelSunBurnPercentCoefficient * 100 + "%</style> of their maximum health over 5 seconds.";
+            desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.cruelSunChannelDuration + "</style> seconds, then create a <style=cIsUtility>miniature star</style> for <style=cIsDamage>" + MathF.Round(StaticValues.cruelSunDuration) + "</style> seconds that <style=cDeath>overheats EVERYTHING</style> around it. Targets burn for <style=cIsDamage>" + StaticValues.cruelSunBurnDamageCoefficient * 100f + "% damage</style> + <style=cIsDamage>" + StaticValues.cruelSunBurnPercentCoefficient * 100 + "%</style> of their maximum health over 5 seconds.";
             
             Languages.Add("PALADIN_SPECIAL_SUN_NAME", "Cruel Sun");
             Languages.Add("PALADIN_SPECIAL_SUN_DESCRIPTION", desc);
 
             Languages.Add("PALADIN_SPECIAL_SUN_CANCEL_NAME", "Cancel Cruel Sun");
-            Languages.Add("PALADIN_SPECIAL_SUN_CANCEL_DESCRIPTION", "Stop channelling the current Cruel Sun.");
+            Languages.Add("PALADIN_SPECIAL_SUN_CANCEL_DESCRIPTION", "Stop channeling the current Cruel Sun.");
 
             desc += Helpers.ScepterDescription("Cast again and hold to aim, then release to throw the star, exploding for <style=cIsDamage>" + StaticValues.prideFlareDamageCoefficient * PaladinConfig.prideFlareMultiplier.Value * 100f + "% damage</style> to <style=cDeath>EVERYTHING</style> around it.");
 
@@ -162,7 +172,7 @@ namespace PaladinMod.Modules {
             Languages.Add(GetAchievementNameToken(Achievements.MasteryAchievement.identifier), "Paladin: Mastery");
             Languages.Add(GetAchievementDescriptionToken(Achievements.MasteryAchievement.identifier), "As Paladin, beat the game or obliterate on Monsoon.");
 
-            Languages.Add(GetAchievementNameToken(Achievements.GrandMasteryAchievement.identifier),        "Paladin: Grand Mastery");
+            Languages.Add(GetAchievementNameToken(Achievements.GrandMasteryAchievement.identifier), "Paladin: Grand Mastery");
             Languages.Add(GetAchievementDescriptionToken(Achievements.GrandMasteryAchievement.identifier), "As Paladin, beat the game or obliterate on Typhoon or Eclipse.\n<color=#8888>(Counts any difficulty Typhoon or higher)</color>");
 
             Languages.Add(GetAchievementNameToken(Achievements.PoisonAchievement.identifier), "Paladin: Her Disciple");
@@ -180,7 +190,7 @@ namespace PaladinMod.Modules {
             Languages.Add(GetAchievementNameToken(Achievements.TorporAchievement.identifier), "Paladin: Suppression");
             Languages.Add(GetAchievementDescriptionToken(Achievements.TorporAchievement.identifier), "As Paladin, stack 4 debuffs on one enemy.");
 
-            Languages.Add(GetAchievementNameToken(Achievements.CruelSunAchievement.identifier), "Paladin: Sunshine");
+            Languages.Add(GetAchievementNameToken(Achievements.CruelSunAchievement.identifier), "Paladin: Lion's Sin of Pride");
             Languages.Add(GetAchievementDescriptionToken(Achievements.CruelSunAchievement.identifier), "As Paladin, bear the full brunt of a Sun and survive.");
 
             Languages.Add(GetAchievementNameToken(Achievements.ClayAchievement.identifier), "Paladin: Ancient Relic");

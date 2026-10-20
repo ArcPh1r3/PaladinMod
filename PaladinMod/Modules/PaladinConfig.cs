@@ -27,6 +27,8 @@ namespace PaladinMod.Modules
         public static ConfigEntry<KeyCode> swordPoseKeybind;
         public const string Section3Legacy = "03 - Legacy";
         public static ConfigEntry<bool> legacyCruelSun;
+        public static ConfigEntry<bool> legacyLunarShards;
+        public static ConfigEntry<bool> falseSonSecondary;
         public static ConfigEntry<float> prideFlareMultiplier;
         //public const string Section4Body = "04 - Body";
         public const string Section4Numbers = "04 - Skill(s)";
@@ -84,6 +86,7 @@ namespace PaladinMod.Modules
                                                             "Keybind used to perform the Sword Pose emote (css pose)");
             //what is this?
             if (pointKeybind.Value == praiseKeybind.Value && pointKeybind.Value == KeyCode.Alpha2) pointKeybind.ActualConfigEntry.Value = KeyCode.Alpha3;
+            // huh?
 
             legacySkins =
                 ConfigButEpic.BindAndOptions<bool>(Section3Legacy,
@@ -95,6 +98,16 @@ namespace PaladinMod.Modules
                                                          "Cruel Sun",
                                                          false,
                                                          "Add the old version of Cruel Sun.");
+            legacyLunarShards =
+                ConfigButEpic.BindAndOptions<bool>(Section3Legacy,
+                                                         "Lunar Shards",
+                                                         false,
+                                                         "Add the old version of Lunar Shards.");
+            falseSonSecondary =
+                ConfigButEpic.BindAndOptions<bool>(Section3Legacy,
+                                                         "False Son Secondary",
+                                                         false,
+                                                         "Add False Son's secondary skills.");
 
             prideFlareMultiplier =
                 ConfigButEpic.BindAndOptions<float>(Section3Legacy,

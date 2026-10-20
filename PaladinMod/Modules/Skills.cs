@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace PaladinMod.Modules
 {
@@ -181,9 +182,9 @@ namespace PaladinMod.Modules
 
             mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
             mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.LunarShards));
-            mySkillDef.activationStateMachineName = "Slide";
-            mySkillDef.baseMaxStock = StaticValues.lunarShardMaxStock;
-            mySkillDef.baseRechargeInterval = 1.5f;
+            mySkillDef.activationStateMachineName = "Weapon";
+            mySkillDef.baseMaxStock = 1;
+            mySkillDef.baseRechargeInterval = 8f;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
             mySkillDef.canceledFromSprinting = false;
             mySkillDef.fullRestockOnAssign = true;
@@ -192,16 +193,14 @@ namespace PaladinMod.Modules
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
             mySkillDef.cancelSprintingOnActivation = false;
-            mySkillDef.rechargeStock = 99;
+            mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;
             mySkillDef.icon = Asset.icon2c;
             mySkillDef.skillDescriptionToken = "PALADIN_SECONDARY_LUNARSHARD_DESCRIPTION";
             mySkillDef.skillName = "PALADIN_SECONDARY_LUNARSHARD_NAME";
             mySkillDef.skillNameToken = "PALADIN_SECONDARY_LUNARSHARD_NAME";
-            mySkillDef.keywordTokens = new string[] {
-                "KEYWORD_AGILE"
-            };
+            mySkillDef.keywordTokens = new string[0];
 
             skillDefs.Add(mySkillDef);
 
@@ -212,6 +211,70 @@ namespace PaladinMod.Modules
                 unlockableDef = Modules.Unlockables.paladinLunarShardSkillDef,
                 viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
             };
+
+            if (Modules.PaladinConfig.legacyLunarShards)
+            {
+                mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+                mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.LunarShards));
+                mySkillDef.activationStateMachineName = "Slide";
+                mySkillDef.baseMaxStock = StaticValues.lunarShardMaxStock;
+                mySkillDef.baseRechargeInterval = 1.5f;
+                mySkillDef.beginSkillCooldownOnSkillEnd = true;
+                mySkillDef.canceledFromSprinting = false;
+                mySkillDef.fullRestockOnAssign = true;
+                mySkillDef.interruptPriority = InterruptPriority.Any;
+                mySkillDef.resetCooldownTimerOnUse = true;
+                mySkillDef.isCombatSkill = true;
+                mySkillDef.mustKeyPress = false;
+                mySkillDef.cancelSprintingOnActivation = false;
+                mySkillDef.rechargeStock = StaticValues.lunarShardMaxStock;
+                mySkillDef.requiredStock = 1;
+                mySkillDef.stockToConsume = 1;
+                mySkillDef.icon = Asset.icon2c;
+                mySkillDef.skillDescriptionToken = "PALADIN_SECONDARY_LUNARSHARDLEGACY_DESCRIPTION";
+                mySkillDef.skillName = "PALADIN_SECONDARY_LUNARSHARDLEGACY_NAME";
+                mySkillDef.skillNameToken = "PALADIN_SECONDARY_LUNARSHARDLEGACY_NAME";
+                mySkillDef.keywordTokens = new string[] {
+                "KEYWORD_AGILE"
+                };
+
+                skillDefs.Add(mySkillDef);
+
+                Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+                skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+                {
+                    skillDef = mySkillDef,
+                    unlockableDef = Modules.Unlockables.paladinLunarShardSkillDef,
+                    viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+                };
+            }
+
+            if (Modules.PaladinConfig.falseSonSecondary)
+            {
+                mySkillDef = Addressables.LoadAssetAsync<SkillDef>("RoR2/DLC2/FalseSon/FalseSonBodyLunarSpikes.asset").WaitForCompletion();
+
+                skillDefs.Add(mySkillDef);
+
+                Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+                skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+                {
+                    skillDef = mySkillDef,
+                    unlockableDef = null,
+                    viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+                };
+
+                mySkillDef = Addressables.LoadAssetAsync<SkillDef>("RoR2/DLC2/FalseSon/FalseSonLunarStake.asset").WaitForCompletion();
+
+                skillDefs.Add(mySkillDef);
+
+                Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+                skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+                {
+                    skillDef = mySkillDef,
+                    unlockableDef = null,
+                    viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+                };
+            }
         }
 
         private static void UtilitySetup(GameObject bodyPrefab)

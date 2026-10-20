@@ -29,7 +29,7 @@ namespace PaladinMod
     [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin(MODUID, "Paladin", "2.2.0")]
+    [BepInPlugin(MODUID, "Paladin", "2.3.0")]
     public class PaladinPlugin : BaseUnityPlugin
     {
         //keeping id the same so it versions over previous paladin
@@ -226,14 +226,10 @@ namespace PaladinMod
 
         private void Hook()
         {
-            //On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients; 
             On.RoR2.CharacterModel.UpdateOverlays += CharacterModel_UpdateOverlays;
             On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
-            //todo rewrite lifesteal
-            //On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
-            //On.RoR2.SceneDirector.Start += SceneDirector_Start;
             On.EntityStates.GlobalSkills.LunarNeedle.FireLunarNeedle.OnEnter += PlayVisionsAnimation;
             On.EntityStates.GlobalSkills.LunarNeedle.ChargeLunarSecondary.PlayChargeAnimation += PlayChargeLunarAnimation;
             On.EntityStates.GlobalSkills.LunarNeedle.ThrowLunarSecondary.PlayThrowAnimation += PlayThrowLunarAnimation;
@@ -242,9 +238,6 @@ namespace PaladinMod
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.DoInitialSightResponse += BrotherSpeechDriver_DoInitialSightResponse;
             On.RoR2.CharacterSpeech.FalseSonBossSpeechDriver.DoInitialSightResponse += FalseSonBossSpeechDriver_DoInitialSightResponse;
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.OnBodyKill += BrotherSpeechDriver_OnBodyKill;
-
-            //todo cruel sun proc
-            //On.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamageProcess;
 
             // this is fucking ridiculous
             //On.RoR2.UI.HUD.Awake += HUDAwake;
@@ -283,7 +276,7 @@ namespace PaladinMod
         {
             //thanks starstorm frens
             bool triggerGougeProc = false;
-            if (NetworkServer.active)
+            if (NetworkServer.active && self)
             {
                 if ((damageInfo.dotIndex == DoTs.FuckingCruelSunBurn || damageInfo.dotIndex == DoTs.FuckingCruelSunBurnStrengthened) && self.alive)
                 {
@@ -313,13 +306,48 @@ namespace PaladinMod
                 }
             }
 
+            bool addingBuff = false;
+
+            if ((damageInfo.damageType & DamageType.FruitOnHit) > DamageType.Generic)
+            {
+                if (damageInfo.attacker)
+                {
+                    damageInfo.damageType = DamageTypeCombo.GenericSecondary;
+
+                    // apply stacks of whatever the fuck
+                    addingBuff = true;
+                }
+            }
+
             orig(self, damageInfo);
 
-            if (NetworkServer.active && !damageInfo.rejected && self.alive)
+            if (NetworkServer.active && !damageInfo.rejected && self && self.alive)
             {
                 if (triggerGougeProc)
                 {
                     GlobalEventManager.instance.OnHitEnemy(damageInfo, self.gameObject);
+                }
+
+                if (addingBuff && self.body)
+                {
+                    self.body.AddTimedBuff(Modules.Buffs.lunarKaboomBuff, 3f);
+                    if (self.body.GetBuffCount(Modules.Buffs.lunarKaboomBuff) >= 6)
+                    {
+                        self.body.SetBuffCount(Modules.Buffs.lunarKaboomBuff.buffIndex, 0);
+                        if (!self.body.HasBuff(Modules.Buffs.lunarKaboomReadyBuff)) self.body.AddBuff(Modules.Buffs.lunarKaboomReadyBuff);
+                    }
+                }
+
+                if (self.body && !addingBuff && self.body.HasBuff(Modules.Buffs.lunarKaboomReadyBuff))
+                {
+                    // KABOOM
+                    // KABLOW
+                    self.body.RemoveBuff(Modules.Buffs.lunarKaboomReadyBuff);
+
+                    if (damageInfo.attacker)
+                    {
+
+                    }
                 }
             }
         }
@@ -374,38 +402,6 @@ namespace PaladinMod
                         }
                     }
                 }
-            }
-        }
-
-        //todo rewrite lifesteal
-        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
-        {
-            bool isHealing = false;
-
-            if (self)
-            {
-                if (damageInfo.attacker)
-                {
-                    CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
-                    if (attackerBody)
-                    {
-                        if (attackerBody.baseNameToken == "NEMPALADIN_NAME")
-                        {
-                            if (damageInfo.damageType.damageType.HasFlag(DamageType.BlightOnHit))
-                            {
-                                damageInfo.damageType = DamageType.Generic;
-                                isHealing = true;
-                            }
-                        }
-                    }
-                }
-            }
-
-            orig(self, damageInfo);
-
-            if (isHealing && !damageInfo.rejected)
-            {
-                damageInfo.attacker.GetComponent<HealthComponent>().Heal(damageInfo.damage * 0.2f, default(ProcChainMask));
             }
         }
 
@@ -614,7 +610,6 @@ namespace PaladinMod
 
                 if (sender.HasBuff(Modules.Buffs.scepterWarcryBuff))
                 {
-                    
                     args.baseDamageAdd += StaticValues.scepterWarcryDamageMultiplier;
                     args.attackSpeedMultAdd += StaticValues.scepterWarcryAttackSpeedBuff;
                     //float damageBuff = StaticValues.scepterWarcryDamageMultiplier * self.damage;
@@ -638,6 +633,7 @@ namespace PaladinMod
                     args.armorAdd += 100f;
                     args.baseDamageAdd += 1.5f;
                     args.moveSpeedMultAdd += (sender.moveSpeed + 6) / sender.moveSpeed; // i think this does it. it doesn't matter anyway
+                    //                                                                                                              Nothing matters anymore.
 
                     //self.armor += 100f;
                     //self.damage *= 1.5f;
@@ -652,7 +648,6 @@ namespace PaladinMod
                     //}
                 }
             }
-
         }
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
@@ -719,18 +714,20 @@ namespace PaladinMod
                 if (self.body && self.body.HasBuff(Modules.Buffs.torporDebuff))
                 {
                     var torporController = self.body.GetComponent<PaladinTorporTracker>();
-                    if (!torporController) torporController = self.body.gameObject.AddComponent<PaladinTorporTracker>();
-                    else return;
+                    if (!torporController)
+                    {
+                        torporController = self.body.gameObject.AddComponent<PaladinTorporTracker>();
 
-                    torporController.Body = self.body;
-                    TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(self.gameObject);
-                    overlay.duration = float.PositiveInfinity;
-                    overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
-                    overlay.animateShaderAlpha = true;
-                    overlay.destroyComponentOnEnd = true;
-                    overlay.originalMaterial = Addressables.LoadAssetAsync<Material>("RoR2/DLC1/EliteVoid/matEliteVoidOverlay.mat").WaitForCompletion();
-                    overlay.AddToCharacterModel(self);
-                    torporController.Overlay = overlay;
+                        torporController.Body = self.body;
+                        TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(self.gameObject);
+                        overlay.duration = float.PositiveInfinity;
+                        overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                        overlay.animateShaderAlpha = true;
+                        overlay.destroyComponentOnEnd = true;
+                        overlay.originalMaterial = Addressables.LoadAssetAsync<Material>("RoR2/DLC1/EliteVoid/matEliteVoidOverlay.mat").WaitForCompletion();
+                        overlay.AddToCharacterModel(self);
+                        torporController.Overlay = overlay;
+                    }
                 }
 
                 if (self.body)
@@ -738,36 +735,63 @@ namespace PaladinMod
                     if (self.body && self.body.HasBuff(Modules.Buffs.blessedBuff))
                     {
                         var blessingTracker = self.body.GetComponent<PaladinBlessingTracker>();
-                        if (!blessingTracker) blessingTracker = self.body.gameObject.AddComponent<PaladinBlessingTracker>();
-                        else return;
+                        if (!blessingTracker)
+                        {
+                            blessingTracker = self.body.gameObject.AddComponent<PaladinBlessingTracker>();
 
-                        blessingTracker.Body = self.body;
-                        TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(self.gameObject);
-                        overlay.duration = self.body.baseNameToken != "PALADIN_NAME" ? 1f : float.PositiveInfinity;
-                        overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
-                        overlay.animateShaderAlpha = true;
-                        overlay.destroyComponentOnEnd = true;
-                        overlay.originalMaterial = Modules.Asset.blessingMat;
-                        overlay.AddToCharacterModel(self);
-                        blessingTracker.Overlay = overlay;
+                            if (self.body.baseNameToken != "PALADIN_NAME")
+                            {
+                                TemporaryOverlayInstance overlay2 = TemporaryOverlayManager.AddOverlay(self.gameObject);
+                                overlay2.duration = 1f;
+                                overlay2.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                                overlay2.animateShaderAlpha = true;
+                                overlay2.destroyComponentOnEnd = true;
+                                overlay2.originalMaterial = Modules.Asset.blessingMat2;
+                                overlay2.AddToCharacterModel(self);
+                            }
+                            else
+                            {
+                                TemporaryOverlayInstance overlay2 = TemporaryOverlayManager.AddOverlay(self.gameObject);
+                                overlay2.duration = 1f;
+                                overlay2.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                                overlay2.animateShaderAlpha = true;
+                                overlay2.destroyComponentOnEnd = true;
+                                overlay2.originalMaterial = Modules.Asset.blessingMat2;
+                                overlay2.AddToCharacterModel(self);
+
+                                Util.PlaySound(Modules.Sounds.SwordActive, self.gameObject);
+                            }
+
+                            blessingTracker.Body = self.body;
+                            TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(self.gameObject);
+                            overlay.duration = self.body.baseNameToken == "PALADIN_NAME" ? 3f : float.PositiveInfinity;
+                            overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                            overlay.animateShaderAlpha = true;
+                            overlay.destroyComponentOnEnd = true;
+                            overlay.originalMaterial = Modules.Asset.blessingMat;
+                            overlay.AddToCharacterModel(self);
+                            blessingTracker.Overlay = overlay;
+                        }
                     }
                 }
 
                 if (self.body && self.body.HasBuff(Modules.Buffs.rageBuff))
                 {
                     var rageTracker = self.body.GetComponent<PaladinRageTracker>();
-                    if (!rageTracker) rageTracker = self.body.gameObject.AddComponent<PaladinRageTracker>();
-                    else return;
-                    
-                    rageTracker.Body = self.body;
-                    TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(self.gameObject);
-                    overlay.duration = float.PositiveInfinity;
-                    overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
-                    overlay.animateShaderAlpha = true;
-                    overlay.destroyComponentOnEnd = true;
-                    overlay.originalMaterial = RoR2.LegacyResourcesAPI.Load<Material>("Materials/matMercEvisTarget");
-                    overlay.AddToCharacterModel(self);
-                    rageTracker.Overlay = overlay;
+                    if (!rageTracker)
+                    {
+                        rageTracker = self.body.gameObject.AddComponent<PaladinRageTracker>();
+
+                        rageTracker.Body = self.body;
+                        TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(self.gameObject);
+                        overlay.duration = float.PositiveInfinity;
+                        overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                        overlay.animateShaderAlpha = true;
+                        overlay.destroyComponentOnEnd = true;
+                        overlay.originalMaterial = RoR2.LegacyResourcesAPI.Load<Material>("Materials/matMercEvisTarget");
+                        overlay.AddToCharacterModel(self);
+                        rageTracker.Overlay = overlay;
+                    }
                 }
             }
         }

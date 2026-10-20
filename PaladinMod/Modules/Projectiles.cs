@@ -10,11 +10,6 @@ namespace PaladinMod.Modules
     public static class Projectiles
     {
         public static GameObject swordBeamProjectile;
-        //public static GameObject beamGhostRed;
-        //public static GameObject beamGhostGreen;
-        //public static GameObject beamGhostYellow;
-        //public static GameObject beamGhostBlue;
-        //public static GameObject beamGhostPurple;
 
         public static GameObject shockwave; 
         public static GameObject lightningSpear;

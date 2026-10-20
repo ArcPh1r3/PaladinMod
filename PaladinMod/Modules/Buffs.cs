@@ -11,6 +11,9 @@ namespace PaladinMod.Modules
     {
         public static BuffDef blessedBuff;
 
+        public static BuffDef lunarKaboomBuff;
+        public static BuffDef lunarKaboomReadyBuff;
+
         public static BuffDef torporDebuff;
         public static BuffDef warcryBuff;
 
@@ -63,6 +66,20 @@ namespace PaladinMod.Modules
                            Color.yellow,
                            false,
                            false);
+
+            lunarKaboomBuff =
+                AddNewBuff("PaladinLunarKablow",
+                           LegacyResourcesAPI.Load<BuffDef>("BuffDefs/TeslaField").iconSprite,
+                           Color.blue,
+                           true,
+                           true);
+            lunarKaboomReadyBuff =
+                AddNewBuff("PaladinLunarKablowReady",
+                           LegacyResourcesAPI.Load<BuffDef>("BuffDefs/TeslaField").iconSprite,
+                           Color.blue,
+                           false,
+                           true);
+
             rageBuff = 
                 AddNewBuff("PaladinBerserk",
                            LegacyResourcesAPI.Load<BuffDef>("BuffDefs/HiddenInvincibility").iconSprite,

@@ -26,6 +26,7 @@ namespace PaladinMod.Modules
 
         //heheha
         public static Material blessingMat;
+        public static Material blessingMat2;
 
         //torpor material
         public static Material torporMat;
@@ -718,7 +719,17 @@ namespace PaladinMod.Modules
                 PaladinConfig.passiveIntensity * PaladinConfig.passiveIntensity * PaladinConfig.passiveIntensity * 125f / 255f, 
                 PaladinConfig.passiveIntensity * PaladinConfig.passiveIntensity * PaladinConfig.passiveIntensity * 173f / 255f, 
                 Mathf.Clamp01(PaladinConfig.passiveIntensity * 2)
-                )); 
+                ));
+
+            // separate one with default full intensity for allies
+            // main lower intensity one is permanent while buffed, this one flashes and fades out for more oomph
+            blessingMat2 = Material.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidMegaCrab/matVoidCrabMatterOverlay.mat").WaitForCompletion());
+            blessingMat2.SetColor("_TintColor", new Color(
+                82f / 255f,
+                125f / 255f,
+                173f / 255f,
+                1f
+                ));
         }
 
         public static T LoadResources<T>(string assString) where T : UnityEngine.Object {

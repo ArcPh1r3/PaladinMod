@@ -61,6 +61,7 @@ namespace PaladinMod
         public const float lightningSpearChargeTime = 1.25f;
 
         //Lunar Shards
+        public const float lunarShardNewDamageCoefficient = 0.5f;
         public const float lunarShardDamageCoefficient = 0.75f;
         public const int lunarShardMaxStock = 12;
 

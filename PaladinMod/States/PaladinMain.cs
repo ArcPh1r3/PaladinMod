@@ -90,8 +90,8 @@ namespace PaladinMod.States
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            this.sunSurvivalStopwatch -= Time.deltaTime;
-            this.passiveSoundCooldown -= Time.deltaTime;
+            this.sunSurvivalStopwatch -= Time.fixedDeltaTime;
+            this.passiveSoundCooldown -= Time.fixedDeltaTime;
 
             // cruel sun unlock
             if (base.characterBody.HasBuff(RoR2Content.Buffs.Overheat))
@@ -102,6 +102,7 @@ namespace PaladinMod.States
                     this.sunSurvivalStopwatch = 1.5f;
                 }
             }
+
             if (this.hasBeenBurned == this.sunSurvivalStopwatch <= 0f)
             {
                 onSunSurvived(Run.instance);
@@ -119,12 +120,12 @@ namespace PaladinMod.States
                 if (this.swordActive)
                 {
                     if (this.swordActiveEffect) this.swordActiveEffect.SetActive(true);
-                    this.swordTransition += StaticValues.swordGlowSpeed * Time.deltaTime;
+                    this.swordTransition += StaticValues.swordGlowSpeed * Time.fixedDeltaTime;
                 }
                 else
                 {
                     if (this.swordActiveEffect) this.swordActiveEffect.SetActive(false);
-                    this.swordTransition -= StaticValues.swordGlowSpeed * Time.deltaTime;
+                    this.swordTransition -= StaticValues.swordGlowSpeed * Time.fixedDeltaTime;
                 }
 
                 if (this.swordController) this.swordController.swordActive = this.swordActive;
@@ -133,14 +134,13 @@ namespace PaladinMod.States
 
                 this.swordMat.SetFloat("_EmPower", this.swordTransition);
 
-                if (this.passiveSoundCooldown <= 0f)
+                /*if (this.passiveSoundCooldown <= 0f)
                 {
                     if (this.swordActive && !this.wasActive)
                     {
-                        Util.PlaySound(Modules.Sounds.SwordActive, this.gameObject);
                         this.passiveSoundCooldown = 0.15f;
                     }
-                }
+                }*/
                 
                 this.wasActive = this.swordActive;
             }

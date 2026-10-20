@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace PaladinMod.Modules {
 
@@ -2991,23 +2992,29 @@ localScale = new Vector3(0.0761F, 0.0761F, 0.0761F),
 
         private static void PopulateFromBody(string bodyName)
         {
-            ItemDisplayRuleSet itemDisplayRuleSet = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyName + "Body").GetComponent<ModelLocator>().modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet;
+            ItemDisplayRuleSet itemDisplayRuleSet = Addressables.LoadAssetAsync<ItemDisplayRuleSet>(bodyName).WaitForCompletion();
+            if (!itemDisplayRuleSet) return;
 
-            ItemDisplayRuleSet.KeyAssetRuleGroup[] itemRuleGroups = itemDisplayRuleSet.keyAssetRuleGroups;
+            ItemDisplayRuleSet.KeyAssetRuleGroup[] item = itemDisplayRuleSet.keyAssetRuleGroups;
 
-            for (int i = 0; i < itemRuleGroups.Length; i++)
+            for (int i = 0; i < item.Length; i++)
             {
-                ItemDisplayRule[] rules = itemRuleGroups[i].displayRuleGroup.rules;
+                ItemDisplayRule[] rules = item[i].displayRuleGroup.rules;
+
                 for (int j = 0; j < rules.Length; j++)
                 {
-                    GameObject followerPrefab = rules[j].followerPrefab;
-                    if (followerPrefab)
+                    AssetReferenceGameObject followerPrefabAddress = rules[j].followerPrefabAddress;
+                    if (followerPrefabAddress != null && followerPrefabAddress.IsValid())
                     {
-                        string name = followerPrefab.name;
-                        string key = (name != null) ? name.ToLower() : null;
-                        if (!itemDisplayPrefabs.ContainsKey(key))
+                        GameObject followerPrefab = followerPrefabAddress.LoadAssetAsync().WaitForCompletion();
+                        if (followerPrefab)
                         {
-                            itemDisplayPrefabs[key] = followerPrefab;
+                            string name = followerPrefab.name;
+                            string key = (name != null) ? name.ToLower() : null;
+                            if (!itemDisplayPrefabs.ContainsKey(key))
+                            {
+                                itemDisplayPrefabs[key] = followerPrefab;
+                            }
                         }
                     }
                 }
@@ -3018,12 +3025,14 @@ localScale = new Vector3(0.0761F, 0.0761F, 0.0761F),
         {
             if (itemDisplayPrefabs.ContainsKey(name.ToLower()))
             {
-                if (itemDisplayPrefabs[name.ToLower()]) return itemDisplayPrefabs[name.ToLower()];
+                return itemDisplayPrefabs[name.ToLower()];
             }
+
+            Debug.LogError("Could not find display prefab " + name);
 
             return null;
         }
-        
+
         #region add rule helpers
 
         private static Object GetKeyAssetFromString(string itemName) {
@@ -3065,7 +3074,7 @@ localScale = new Vector3(0.0761F, 0.0761F, 0.0761F),
                 ruleType = ItemDisplayRuleType.LimbMask,
                 limbMask = limb,
                 childName = "",
-                followerPrefab = null
+                followerPrefabAddress = null
                 //localPos = Vector3.zero,
                 //localAngles = Vector3.zero,
                 //localScale = Vector3.zero
