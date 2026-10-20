@@ -391,7 +391,7 @@ namespace PaladinMod.Modules
                 mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelSmiteAMotherfucker));
                 mySkillDef.activationStateMachineName = "Weapon";
                 mySkillDef.baseMaxStock = 1;
-                mySkillDef.baseRechargeInterval = 8;
+                mySkillDef.baseRechargeInterval = 100;
                 mySkillDef.beginSkillCooldownOnSkillEnd = true;
                 mySkillDef.canceledFromSprinting = false;
                 mySkillDef.fullRestockOnAssign = true;
@@ -404,7 +404,7 @@ namespace PaladinMod.Modules
                 mySkillDef.requiredStock = 1;
                 mySkillDef.stockToConsume = 0;
                 mySkillDef.icon = Asset.icon2b;
-                mySkillDef.skillDescriptionToken = "smite a motherfucker for 10,000,000% damage ";
+                mySkillDef.skillDescriptionToken = "smite a motherfucker for 10,000,000% damage";
                 mySkillDef.skillName = "smite a motherfucker";
                 mySkillDef.skillNameToken = "smite a motherfucker";
 
