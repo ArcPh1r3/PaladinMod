@@ -21,7 +21,7 @@ namespace PaladinMod.States
         private CameraParamsOverrideHandle camParamsOverrideHandle;
         private AimRequest aimRequest;
 
-        private bool hasCharged;
+        protected bool hasCharged;
         protected bool castAtMaxCharge;
         private GameObject defaultCrosshairPrefab;
         private uint loopSoundInstanceId;

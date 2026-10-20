@@ -320,9 +320,9 @@ namespace PaladinMod.Modules
 
             //heal util
             mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
-            mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelSmallHeal));
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelSoulTether));
             mySkillDef.activationStateMachineName = "Weapon";
-            mySkillDef.baseMaxStock = 1;
+            mySkillDef.baseMaxStock = 2;
             mySkillDef.baseRechargeInterval = 8;
             mySkillDef.beginSkillCooldownOnSkillEnd = true;
             mySkillDef.canceledFromSprinting = false;
@@ -336,9 +336,9 @@ namespace PaladinMod.Modules
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 0;
             mySkillDef.icon = Asset.icon3b;
-            mySkillDef.skillDescriptionToken = "PALADIN_UTILITY_HEAL_DESCRIPTION";
-            mySkillDef.skillName = "PALADIN_UTILITY_HEAL_NAME";
-            mySkillDef.skillNameToken = "PALADIN_UTILITY_HEAL_NAME";
+            mySkillDef.skillDescriptionToken = "PALADIN_UTILITY_SOULTETHER_DESCRIPTION";
+            mySkillDef.skillName = "PALADIN_UTILITY_SOULTETHER_NAME";
+            mySkillDef.skillNameToken = "PALADIN_UTILITY_SOULTETHER_NAME";
 
             skillDefs.Add(mySkillDef);
 

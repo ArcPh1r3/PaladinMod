@@ -53,6 +53,9 @@ namespace PaladinMod.Modules
             //util
             AddState(typeof(QuickstepSimple));
 
+            AddState(typeof(ChannelSoulTether));
+            AddState(typeof(CastSoulTether));
+
             //AddState(typeof(AimHeal));
             //AddState(typeof(CastHeal));
             AddState(typeof(ChannelSmallHeal));

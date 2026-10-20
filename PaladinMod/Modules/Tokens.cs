@@ -96,13 +96,13 @@ namespace PaladinMod.Modules {
 
             desc = "Restore <style=cIsHealing>" + StaticValues.healAmount * 100f + "% max health</style> and grant <style=cIsHealing>" + StaticValues.healBarrier * 100f + "% barrier</style> to all allies in an area.";
 
-            Languages.Add("PALADIN_UTILITY_HEAL_NAME", "Replenish");
+            Languages.Add("PALADIN_UTILITY_HEAL_NAME", "Replenish (Legacy)");
             Languages.Add("PALADIN_UTILITY_HEAL_DESCRIPTION", desc);
 
-            desc = "Link to an ally to share <style=cIsHealing>heals and barrier gain</style>, or an enemy heal for <style=cIsHealing>50%</style> of damage they take. Killing a linked enemy steals their soul as a permanent ally.";
+            desc = "Link to an ally to share <style=cIsHealing>heals and barrier gain</style>, or link to an enemy to gain <style=cIsHealing>" + StaticValues.SoulTetherLifeStealFraction * 100f + "</style> of damage they take as <style=cIsHealing>both health and barrier</style>. When the linked target dies, <style=cIsUtility>steal their soul</style> as a permanent ally.";
 
-            Languages.Add("PALADIN_UTILITY_LINK_NAME", "Soul Bind");
-            Languages.Add("PALADIN_UTILITY_LINK_DESCRIPTION", desc);
+            Languages.Add("PALADIN_UTILITY_SOULTETHER_NAME", "Soul Bind");
+            Languages.Add("PALADIN_UTILITY_SOULTETHER_DESCRIPTION", desc);
 
             desc = "<style=cIsUtility>Channel</style> for <style=cIsDamage>" + StaticValues.healZoneChannelDuration + "</style> seconds, then release to <style=cIsUtility>Bless</style> an area for <style=cIsDamage>" + StaticValues.healZoneDuration + " seconds</style>, gradually <style=cIsHealing>restoring health</style> and granting <style=cIsHealing>barrier</style> to all allies inside.";
 

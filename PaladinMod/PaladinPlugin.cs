@@ -75,6 +75,9 @@ namespace PaladinMod
         // eh
         public static uint claySkinIndex = 4;
 
+        public delegate void OnBarrierAddedDelegate(HealthComponent healthComponent, float amount);
+        public static event OnBarrierAddedDelegate GlobalOnBarrierAddedServer;
+
         public void Awake() {
             instance = this;
             logger = base.Logger;
@@ -135,6 +138,7 @@ namespace PaladinMod
             Modules.Skins.RegisterSkins(); // add skins
             Modules.Effects.RegisterEffects(); // add and register custom effects
             Modules.DoTs.Init();
+            Modules.ProcTypes.Init();
 
             CreateDoppelganger(); // artifact of vengeance
 
@@ -257,6 +261,14 @@ namespace PaladinMod
 
             On.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamageProcess;
             On.RoR2.StrengthenBurnUtils.CheckDotForUpgrade += StrengthenBurnUtils_CheckDotForUpgrade;
+
+            On.RoR2.HealthComponent.AddBarrier += HealthComponent_AddBarrier;
+        }
+
+        private void HealthComponent_AddBarrier(On.RoR2.HealthComponent.orig_AddBarrier orig, HealthComponent self, float value)
+        {
+            GlobalOnBarrierAddedServer?.Invoke(self, value);
+            orig(self, value);
         }
 
         private void LunarStake_OnExit(On.EntityStates.FalseSon.LunarStake.orig_OnExit orig, EntityStates.FalseSon.LunarStake self)

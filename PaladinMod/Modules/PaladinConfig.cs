@@ -116,7 +116,7 @@ namespace PaladinMod.Modules
                                                          "Add False Son's secondary skills.");
 
             prideFlareMultiplier =
-                ConfigButEpic.BindAndOptions<float>(Section3Legacy,
+                ConfigButEpic.BindAndOptions<float>(Section4Numbers,
                                                           "Pride Flare Damage",
                                                           4000f,
                                                           0,

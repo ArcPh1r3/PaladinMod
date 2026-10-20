@@ -12,6 +12,8 @@ using RoR2.Audio;
 using EntityStates;
 using Path = System.IO.Path;
 using System.Runtime.ExceptionServices;
+using PaladinMod.Misc;
+using RoR2BepInExPack.GameAssetPathsBetter;
 
 namespace PaladinMod.Modules
 {
@@ -132,6 +134,9 @@ namespace PaladinMod.Modules
         public static GameObject airSlamBoostedFX;
 
         public static GameObject torporVoidFX;
+
+        public static GameObject SoulTetherAttachmentAlly;
+        public static GameObject SoulTetherAttachmentEnemy;
 
         #region Mesh
         //skin meshes
@@ -350,6 +355,25 @@ namespace PaladinMod.Modules
             batHitSoundEventS = CreateNetworkSoundEventDef(Modules.Sounds.HitBluntS);
             batHitSoundEventM = CreateNetworkSoundEventDef(Modules.Sounds.HitBluntM);
             batHitSoundEventL = CreateNetworkSoundEventDef(Modules.Sounds.HitBluntL);
+
+            Addressables.LoadAssetAsync<GameObject>(RoR2_DLC1_EliteEarth.AffixEarthBodyAttachment_prefab).Completed +=
+                (loadResult) =>
+                {
+                    SoulTetherAttachmentAlly = PrefabAPI.InstantiateClone(loadResult.Result, "PaladinSoulTetherAttachment", true);
+                    GameObject.Destroy(SoulTetherAttachmentAlly.GetComponent<HealNearbyController>());
+                    SoulTetherAttachmentAlly.AddComponent<PaladinSoulTetherBodyAttachmentAlly>();
+
+                    SoulTetherAttachmentEnemy = PrefabAPI.InstantiateClone(loadResult.Result, "PaladinSoulTetherAttachment", true);
+                    GameObject.Destroy(SoulTetherAttachmentEnemy.GetComponent<HealNearbyController>());
+                    SoulTetherAttachmentEnemy.AddComponent<PaladinSoulTetherBodyAttachmentEnemy>();
+
+                    Addressables.LoadAssetAsync<GameObject>(RoR2_DLC3_Collective.AffixCollectiveTetherVFX_prefab).Completed +=
+                        (loadResult2) =>
+                        {
+                            PaladinPlugin.logger.LogWarning(loadResult2.Result);
+                            SoulTetherAttachmentEnemy.GetComponent<TetherVfxOrigin>().tetherPrefab = loadResult2.Result;
+                        };
+                };
         }
 
         private static void PopulateSwordEffects()

@@ -73,6 +73,17 @@ namespace PaladinMod
         public const float healAmount = 0.15f;
         public const float healBarrier = 0.15f;
 
+        //Soul Tether
+        [Configure("section debug do not publish",
+            0.3f)]
+        public static ConfigEntry<float> SoulTetherHealInterval;
+        [Configure("section debug do not publish",
+            10f)]
+        public static ConfigEntry<float> SoulTetherLifetime;
+        [Configure("section debug do not publish",
+            0.1f)]
+        public static ConfigEntry<float> SoulTetherLifeStealFraction;
+
         //Sacred Sunlight
         public const float healZoneChannelDuration = 1.5f;
         public const float healZoneRadius = 24f;

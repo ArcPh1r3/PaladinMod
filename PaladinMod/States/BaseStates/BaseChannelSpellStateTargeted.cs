@@ -94,7 +94,7 @@ namespace PaladinMod.States
             }
             foreach (Renderer targetRenderer in targetRenderers)
             {
-                outlineHighlight.AddHighlight(targetRenderer, AimSacrifice.targetHighlightColor);
+                outlineHighlight.AddHighlight(targetRenderer, base.hasCharged ? AimSacrifice.targetHighlightColor : Color.gray);
             }
         }
 
@@ -147,7 +147,6 @@ namespace PaladinMod.States
         public virtual void SearchForTarget(Ray aimRay)
         {
             HurtBox hurtBox2 = null;
-            TeamMask teamFilter = TeamMask.GetUnprotectedTeams(base.teamComponent.teamIndex);
             if (Util.CharacterSpherecast(base.gameObject, aimRay, AimSacrifice.sphereCastRadius, out var hitInfo, AimSacrifice.searchDistance, LayerIndex.CommonMasks.bullet, QueryTriggerInteraction.Ignore) && hitInfo.collider.TryGetComponent<HurtBox>(out var component) && (bool)component.healthComponent && component.healthComponent.alive && IsValidTarget(component))
             {
                 if ((bool)component.hurtBoxGroup && (bool)component.hurtBoxGroup.mainHurtBox)
@@ -190,25 +189,30 @@ namespace PaladinMod.States
             {
                 SetTarget(hurtBox2);
             }
-            bool IsValidTarget(HurtBox hurtBox)
+        }
+
+        bool IsValidTarget(HurtBox hurtBox)
+        {
+            if (!hurtBox || !hurtBox.healthComponent)
             {
-                if (!hurtBox || !hurtBox.healthComponent)
-                {
-                    return false;
-                }
-                if (hurtBox.healthComponent.godMode)
-                {
-                    return false;
-                }
-                if ((bool)hurtBox.healthComponent.GetComponent<ProjectileController>())
-                {
-                    return false;
-                }
-                bool num = teamFilter.HasTeam(hurtBox.teamIndex);
-                ExtractedSoulController component2;
-                bool flag = hurtBox.healthComponent.TryGetComponent<ExtractedSoulController>(out component2) && (object)component2.genericOwnership.ownerObject == base.gameObject;
-                return num || flag;
+                return false;
             }
+            if (hurtBox.healthComponent.godMode)
+            {
+                return false;
+            }
+            if ((bool)hurtBox.healthComponent.GetComponent<ProjectileController>())
+            {
+                return false;
+            }
+            return VerifyValidTarget(hurtBox);
+        }
+
+        protected virtual bool VerifyValidTarget(HurtBox hurtBox)
+        {
+            TeamMask teamFilter = TeamMask.GetUnprotectedTeams(base.teamComponent.teamIndex);
+            bool flag = teamFilter.HasTeam(hurtBox.teamIndex);
+            return flag;
         }
     }
 }
