@@ -115,7 +115,7 @@ namespace PaladinMod.States
                 {
                     if (base.characterMotor.velocity != Vector3.zero) this.storedVelocity = base.characterMotor.velocity;
                     this.hitStopCachedState = base.CreateHitStopCachedState(base.characterMotor, this.animator, "Whirlwind.playbackRate");
-                    this.hitPauseTimer = (4f * EntityStates.Merc.GroundLight.hitPauseDuration) / this.attackSpeedStat;
+                    this.hitPauseTimer = 0.4f / this.attackSpeedStat;
                     this.inHitPause = true;
                 }
 

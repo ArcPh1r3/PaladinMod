@@ -175,7 +175,7 @@ namespace PaladinMod.States
             {
                 if (base.characterMotor.velocity != Vector3.zero) this.storedVelocity = base.characterMotor.velocity;
                 this.hitStopCachedState = base.CreateHitStopCachedState(base.characterMotor, this.animator, "Slash.playbackRate");
-                this.hitPauseTimer = (2f * EntityStates.Merc.GroundLight.hitPauseDuration) / this.attackSpeedStat;
+                this.hitPauseTimer = 0.225f / this.attackSpeedStat;
                 this.inHitPause = true;
 
                 if (this.swingEffectInstance)
@@ -255,7 +255,7 @@ namespace PaladinMod.States
             }
             else
             {
-                this.stopwatch += 0.1f * Time.deltaTime;
+                this.stopwatch += 0.05f * Time.deltaTime;
                 if (base.characterMotor) base.characterMotor.velocity = Vector3.zero;
                 if (this.animator) this.animator.SetFloat("Slash.playbackRate", 0.05f);
             }
@@ -289,7 +289,7 @@ namespace PaladinMod.States
             if (this.cancelling) 
                 return InterruptPriority.Any;
 
-            if (base.fixedAge >= this.earlyExitDuration)
+            if (this.stopwatch >= this.earlyExitDuration)
                 return InterruptPriority.Any;
 
             return InterruptPriority.Skill;
