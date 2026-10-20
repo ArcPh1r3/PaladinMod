@@ -333,7 +333,7 @@
 				<GameParameter Id="3673881719" Name="Volume_SFX"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3024907506" Type="User" Language="SFX" Hash="{E44F2117-F569-32AF-61FC-2F1072919B1F}">
+		<SoundBank Id="3024907506" Type="User" Language="SFX" Hash="{8EAB4B03-4E56-7B6E-2609-69748264397F}">
 			<ShortName>Paladin</ShortName>
 			<Path>Paladin.bnk</Path>
 			<Media>
@@ -576,5 +576,5 @@
 			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{8507B8F1-9052-B88C-A068-B193EEA21FCE}</FileHash>
+	<FileHash>{CDBD65EE-06AD-8DD5-7A6A-0B081741B6F5}</FileHash>
 </SoundBanksInfo>

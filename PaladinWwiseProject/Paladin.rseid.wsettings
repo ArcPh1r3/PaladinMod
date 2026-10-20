@@ -3,7 +3,7 @@
 	<UserProjectSettingsInfo>
 		<UserProjectSettings Name="" ID="{6E20AFBE-93A6-49AB-A725-BF53896470E7}">
 			<PropertyList>
-				<Property Name="AudioFilesImporter\Path" Type="string" Value="C:\Users\rseid\Downloads\pally sounds\NemforcerBank2\"/>
+				<Property Name="AudioFilesImporter\Path" Type="string" Value="C:\Users\rseid\Desktop\MotherFUCKER\sfx\paladin\"/>
 				<Property Name="Event Action List\{027E14F0-4E26-4FDA-9AC3-EC02211D1978}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{0E7F5361-9F52-4FD4-8A56-95EBF827A049}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{129F97E1-7658-4F8B-BA68-5974D4F005C9}\x64_Expand States" Type="string" Value=""/>
@@ -19,10 +19,12 @@
 				<Property Name="Event Action List\{4E6543F9-EF74-4DBD-B9F5-C0A6CDB86F5D}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{527935FE-687D-4513-A8D3-CE0F50BE4D5E}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{592A5B66-3D98-42C7-B200-D68F7B956DA8}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{647B29C7-3621-4A6D-9C0F-54ED2BB6774B}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{6A747787-846E-48FD-B1F1-8B5077BE0C29}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{70A36726-0FA5-4398-BE1B-7C66D332070B}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{81442A9F-09A1-4716-B706-A33FD37ED5E4}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{A406A654-B213-4F04-A1C2-7EE95E81E771}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{A5BDB4A6-7122-4991-8624-6610C4100EAA}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{A9013906-FBB6-4AD2-BF16-EEB3A3FC685A}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{ACDCF8AF-CDD4-44DD-A464-FD65B5156B6F}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{D42232C9-D60A-4337-8EA3-EA103B07C997}\x64_Expand States" Type="string" Value=""/>

@@ -89,6 +89,10 @@ namespace PaladinMod.Modules
             paladinPrefab.AddComponent<Misc.PaladinRageController>();
             paladinPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.AddComponent<Misc.PaladinAnimationEvents>();
 
+            SfxLocator sfxLocator = paladinPrefab.GetComponent<SfxLocator>();
+            sfxLocator.landingSound = "PaladinLanding";
+            sfxLocator.jumpSound = "PaladinCloth3";
+
             //VR 
             paladinPrefab.AddComponent<Misc.PaladinVRController>();
 
@@ -482,10 +486,10 @@ namespace PaladinMod.Modules
         private static void SetupFootstepController(GameObject model)
         {
             FootstepHandler footstepHandler = model.AddComponent<FootstepHandler>();
-            footstepHandler.baseFootstepString = "Play_player_footstep";
-            footstepHandler.sprintFootstepOverrideString = "";
+            footstepHandler.baseFootstepString = "PaladinStep";
+            footstepHandler.sprintFootstepOverrideString = "PaladinStepSprint";
             footstepHandler.enableFootstepDust = true;
-            footstepHandler.footstepDustPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/GenericFootstepDust");
+            footstepHandler.footstepDustPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/GenericLargeFootstepDust.prefab").WaitForCompletion();
         }
 
         private static void SetupRagdoll(GameObject model)

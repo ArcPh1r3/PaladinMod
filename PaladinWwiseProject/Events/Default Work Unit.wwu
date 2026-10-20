@@ -269,6 +269,28 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="PaladinStep" ID="{647B29C7-3621-4A6D-9C0F-54ED2BB6774B}">
+							<ChildrenList>
+								<Action Name="" ID="{4F1098A4-1F63-4CA7-AA3B-75E19A26B085}" ShortID="866187382">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="step" ID="{51B6EBD3-1936-4C9A-B8D7-6D9098F9E640}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinLanding" ID="{A5BDB4A6-7122-4991-8624-6610C4100EAA}">
+							<ChildrenList>
+								<Action Name="" ID="{671112E2-3201-4BC8-850D-0BD0F1C1129B}" ShortID="666691221">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="landing" ID="{F4ECEDF9-EAF1-44F2-9BEA-7713FD2879E9}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="nemforcer" ID="{D0214027-8310-42E6-8119-C8A48FFEE3D3}" ShortID="793757402">

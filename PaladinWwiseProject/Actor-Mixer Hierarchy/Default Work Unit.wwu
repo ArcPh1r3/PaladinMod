@@ -229,7 +229,7 @@
 												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>2</Value>
+														<Value>-1</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -276,7 +276,7 @@
 												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-2</Value>
+														<Value>-4</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -323,7 +323,7 @@
 												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-7</Value>
+														<Value>-10</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -1059,7 +1059,7 @@
 												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-3</Value>
+														<Value>-10</Value>
 													</ValueList>
 													<ModifierList>
 														<ModifierInfo>
@@ -1315,6 +1315,602 @@
 												</Sound>
 											</ChildrenList>
 										</RandomSequenceContainer>
+										<ActorMixer Name="RandomPitch" ID="{987CAE28-1B2E-4372-900F-D794AA8F4DD2}" ShortID="1072553320">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{520097D7-0A47-4614-A320-686842A32621}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="250"/>
+																	<Property Name="Min" Type="Real64" Value="-250"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{E21D2F9D-3F50-407B-BE3A-F4FC90560CA0}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="1"/>
+																	<Property Name="Min" Type="Real64" Value="-1"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<RandomSequenceContainer Name="step" ID="{51B6EBD3-1936-4C9A-B8D7-6D9098F9E640}" ShortID="554298769">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>-100</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-8</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="sfx_paladin_step_01" ID="{D825A6E3-7B80-4DE6-AFE5-E8FF98642E51}" ShortID="585040799">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_step_01" ID="{47B14293-924C-4B8C-95FF-C7CD35A5B240}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_step_01.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1050419466"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_step_01" ID="{47B14293-924C-4B8C-95FF-C7CD35A5B240}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_step_02" ID="{74276C89-0658-431D-BEDF-45C1F291ED02}" ShortID="351924077">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_step_02" ID="{67F10236-C86C-46E7-A5DC-B4496910491B}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_step_02.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="326825236"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_step_02" ID="{67F10236-C86C-46E7-A5DC-B4496910491B}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_step_03" ID="{1A8C77B8-3AD6-494C-AA07-929593F7E2BA}" ShortID="90916180">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_step_03" ID="{55FD3B53-D4FE-41FB-BCF6-57548CE89665}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_step_03.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="516715227"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_step_03" ID="{55FD3B53-D4FE-41FB-BCF6-57548CE89665}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_step_04" ID="{7D0AD0DE-6558-4A3F-BDA2-BC8FCF7C9E48}" ShortID="593544210">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_step_04" ID="{60707428-DC88-4BE3-81A8-E33FBA8BFB8E}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_step_04.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="883074103"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_step_04" ID="{60707428-DC88-4BE3-81A8-E33FBA8BFB8E}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_step_05" ID="{DA7E7E14-9266-4FF8-8368-BC8F202803E0}" ShortID="806347415">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_step_05" ID="{624B4812-C73A-441C-898C-FFF6D01C249E}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_step_05.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="119241170"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_step_05" ID="{624B4812-C73A-441C-898C-FFF6D01C249E}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_step_06" ID="{22C5CD57-A385-46E4-BBB3-EAF2240F31B5}" ShortID="422417879">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_step_06" ID="{9CD07AC6-947C-44C5-9B93-C5E62F95D2D9}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_step_06.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="280968950"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_step_06" ID="{9CD07AC6-947C-44C5-9B93-C5E62F95D2D9}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_step_07" ID="{89806568-C312-45DC-B908-E0B243A7EA21}" ShortID="1009465815">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_step_07" ID="{403BF551-F3BD-4A7A-9123-737A79F5929E}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_step_07.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="295455385"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_step_07" ID="{403BF551-F3BD-4A7A-9123-737A79F5929E}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_step_08" ID="{5909D632-4EBA-4703-B9B9-7931EBF72566}" ShortID="322941234">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_step_08" ID="{4DFA15AC-A676-4D34-BB1F-9A0AA09DED18}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_step_08.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="485513839"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_step_08" ID="{4DFA15AC-A676-4D34-BB1F-9A0AA09DED18}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="landing" ID="{F4ECEDF9-EAF1-44F2-9BEA-7713FD2879E9}" ShortID="289563147">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>-100</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-12</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="sfx_paladin_landing_01" ID="{5972ACD9-497F-4563-9698-91B738E450AF}" ShortID="499831872">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_landing_01" ID="{390C8D02-1F2D-4E3B-89F8-75EE9F15E6FF}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_landing_01.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="533992799"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_landing_01" ID="{390C8D02-1F2D-4E3B-89F8-75EE9F15E6FF}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_landing_02" ID="{0808F575-C693-4803-A75B-FAF476BCA210}" ShortID="993929841">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_landing_02" ID="{122F7869-81BC-472A-947F-A7E05CEDAE92}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_landing_02.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="301822172"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_landing_02" ID="{122F7869-81BC-472A-947F-A7E05CEDAE92}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_landing_03" ID="{398C8BE3-2A88-42C7-A759-EAD8F437B5E6}" ShortID="471794225">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_landing_03" ID="{F6D33ED7-AB7F-4B17-81BE-19657F493062}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_landing_03.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1021029062"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_landing_03" ID="{F6D33ED7-AB7F-4B17-81BE-19657F493062}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_landing_04" ID="{CDDB16AC-4EDB-4F89-960F-55E9C3E4A4A3}" ShortID="980432259">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_landing_04" ID="{B9A6E59A-8EFB-474B-87F3-2BEC670F0F45}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_landing_04.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="69582020"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_landing_04" ID="{B9A6E59A-8EFB-474B-87F3-2BEC670F0F45}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_landing_05" ID="{6F0310DA-C7FC-45AC-9A83-0648D7C4C3AD}" ShortID="911935267">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_landing_05" ID="{926429E2-BBF9-4AAD-BF31-0ED44D5A46FE}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_landing_05.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="157731923"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_landing_05" ID="{926429E2-BBF9-4AAD-BF31-0ED44D5A46FE}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_landing_06" ID="{B6120E11-15DB-477C-9E6C-3537D2353D2A}" ShortID="440327560">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_landing_06" ID="{48682712-FDED-402B-948B-C85B99607683}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_landing_06.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="497249731"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_landing_06" ID="{48682712-FDED-402B-948B-C85B99607683}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="step_01" ID="{F8014EA4-E2F4-44C0-A4D2-30F3DDF1C548}" ShortID="768630911">
+													<PropertyList>
+														<Property Name="Pitch" Type="int32">
+															<ValueList>
+																<Value>150</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="sfx_paladin_step_01" ID="{E314E300-79E6-4AEC-9C2F-67CC0EBA7486}" ShortID="417636428">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_step_01" ID="{519394B7-73B8-41FD-9CD1-49FDED27D127}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_step_01.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1050419466"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_step_01" ID="{519394B7-73B8-41FD-9CD1-49FDED27D127}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_step_02" ID="{63A9B2E1-6946-47AA-BE7D-DF98B5E9A719}" ShortID="242581208">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_step_02" ID="{43A6C84D-1F7E-47AB-BC2C-C60A02A6E754}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_step_02.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="326825236"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_step_02" ID="{43A6C84D-1F7E-47AB-BC2C-C60A02A6E754}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_step_03" ID="{A1866571-7173-4FC5-BD69-2975A12532B8}" ShortID="379626951">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_step_03" ID="{0504C26A-9108-4718-86FE-9B80E792C8D6}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_step_03.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="516715227"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_step_03" ID="{0504C26A-9108-4718-86FE-9B80E792C8D6}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_step_04" ID="{6DDE751F-1A10-49A4-B705-BB97BC989BF0}" ShortID="482549172">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_step_04" ID="{E8F368C3-6920-4469-BAAB-65F7D01310AE}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_step_04.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="883074103"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_step_04" ID="{E8F368C3-6920-4469-BAAB-65F7D01310AE}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_step_05" ID="{0A0AE5A0-62DD-4BAE-84F3-8A2DDD050F52}" ShortID="194986063">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_step_05" ID="{D811F12B-E480-4767-A59E-8ADF71184716}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_step_05.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="119241170"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_step_05" ID="{D811F12B-E480-4767-A59E-8ADF71184716}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_step_06" ID="{05F817A4-FB42-45D1-95CA-EDCA0C00DC63}" ShortID="498337039">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_step_06" ID="{9502C2BC-4820-4156-A867-49033361CBA4}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_step_06.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="280968950"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_step_06" ID="{9502C2BC-4820-4156-A867-49033361CBA4}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_step_07" ID="{7C87267E-C3C0-4110-9E62-CAA35A13FA49}" ShortID="754140501">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_step_07" ID="{2DB8CBAE-6301-4181-A72B-A464F6FC92AF}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_step_07.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="295455385"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_step_07" ID="{2DB8CBAE-6301-4181-A72B-A464F6FC92AF}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="sfx_paladin_step_08" ID="{EA9250C5-2774-4D9F-8DEC-8C7D4088EE97}" ShortID="912144143">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="sfx_paladin_step_08" ID="{A632F7EE-B944-4A27-B31A-44EC452DC801}">
+																	<Language>SFX</Language>
+																	<AudioFile>sfx_paladin_step_08.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="485513839"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="sfx_paladin_step_08" ID="{A632F7EE-B944-4A27-B31A-44EC452DC801}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+											</ChildrenList>
+										</ActorMixer>
 									</ChildrenList>
 								</Folder>
 								<Folder Name="nemforcer" ID="{6D872DB4-20EB-4CF8-B5C3-72563F7530C6}" ShortID="1038967697">
