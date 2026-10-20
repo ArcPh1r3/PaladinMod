@@ -333,17 +333,37 @@
 				<GameParameter Id="3673881719" Name="Volume_SFX"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3024907506" Type="User" Language="SFX" Hash="{8EAB4B03-4E56-7B6E-2609-69748264397F}">
+		<SoundBank Id="3024907506" Type="User" Language="SFX" Hash="{8D16B44F-495C-0895-0A19-8BAE61CDF088}">
 			<ShortName>Paladin</ShortName>
 			<Path>Paladin.bnk</Path>
 			<Media>
+				<File Id="47638363" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinNewSwing1.wav</ShortName>
+					<CachePath>SFX/PaladinNewSwing1_8E324C96.wem</CachePath>
+				</File>
 				<File Id="53309015" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PaladinSpearThrow.wav</ShortName>
 					<CachePath>SFX/PaladinSpearThrow_8E324C96.wem</CachePath>
 				</File>
+				<File Id="69582020" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_paladin_landing_04.wav</ShortName>
+					<CachePath>SFX/sfx_paladin_landing_04_8E324C96.wem</CachePath>
+				</File>
+				<File Id="119241170" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_paladin_step_05.wav</ShortName>
+					<CachePath>SFX/sfx_paladin_step_05_8E324C96.wem</CachePath>
+				</File>
 				<File Id="129829374" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PaladinSwing2.wav</ShortName>
 					<CachePath>SFX/PaladinSwing2_8E324C96.wem</CachePath>
+				</File>
+				<File Id="157731923" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_paladin_landing_05.wav</ShortName>
+					<CachePath>SFX/sfx_paladin_landing_05_8E324C96.wem</CachePath>
+				</File>
+				<File Id="165362469" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinDash2.wav</ShortName>
+					<CachePath>SFX/PaladinDash2_8E324C96.wem</CachePath>
 				</File>
 				<File Id="176360210" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PaladinSwordActive.wav</ShortName>
@@ -353,6 +373,10 @@
 					<ShortName>PaladinHitBluntSS.wav</ShortName>
 					<CachePath>SFX/PaladinHitBluntSS_8E324C96.wem</CachePath>
 				</File>
+				<File Id="237695089" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinHeavySwing.wav</ShortName>
+					<CachePath>SFX/PaladinHeavySwing_8E324C96.wem</CachePath>
+				</File>
 				<File Id="243176335" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PaladinLunge.wav</ShortName>
 					<CachePath>SFX/PaladinLunge_8E324C96.wem</CachePath>
@@ -360,6 +384,26 @@
 				<File Id="266065062" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PaladinHitL.wav</ShortName>
 					<CachePath>SFX/PaladinHitL_8E324C96.wem</CachePath>
+				</File>
+				<File Id="280968950" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_paladin_step_06.wav</ShortName>
+					<CachePath>SFX/sfx_paladin_step_06_8E324C96.wem</CachePath>
+				</File>
+				<File Id="295455385" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_paladin_step_07.wav</ShortName>
+					<CachePath>SFX/sfx_paladin_step_07_8E324C96.wem</CachePath>
+				</File>
+				<File Id="301822172" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_paladin_landing_02.wav</ShortName>
+					<CachePath>SFX/sfx_paladin_landing_02_8E324C96.wem</CachePath>
+				</File>
+				<File Id="317755923" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinFireBeam2.wav</ShortName>
+					<CachePath>SFX/PaladinFireBeam2_8E324C96.wem</CachePath>
+				</File>
+				<File Id="326825236" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_paladin_step_02.wav</ShortName>
+					<CachePath>SFX/sfx_paladin_step_02_8E324C96.wem</CachePath>
 				</File>
 				<File Id="381079306" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PaladinDrip.wav</ShortName>
@@ -373,9 +417,37 @@
 					<ShortName>PaladinHitBluntM.wav</ShortName>
 					<CachePath>SFX/PaladinHitBluntM_8E324C96.wem</CachePath>
 				</File>
+				<File Id="485513839" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_paladin_step_08.wav</ShortName>
+					<CachePath>SFX/sfx_paladin_step_08_8E324C96.wem</CachePath>
+				</File>
+				<File Id="497249731" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_paladin_landing_06.wav</ShortName>
+					<CachePath>SFX/sfx_paladin_landing_06_8E324C96.wem</CachePath>
+				</File>
+				<File Id="501281662" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinNewSwing2.wav</ShortName>
+					<CachePath>SFX/PaladinNewSwing2_8E324C96.wem</CachePath>
+				</File>
 				<File Id="512605586" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PaladinSnap.wav</ShortName>
 					<CachePath>SFX/PaladinSnap_8E324C96.wem</CachePath>
+				</File>
+				<File Id="514658614" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinNewSwing3.wav</ShortName>
+					<CachePath>SFX/PaladinNewSwing3_8E324C96.wem</CachePath>
+				</File>
+				<File Id="516715227" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_paladin_step_03.wav</ShortName>
+					<CachePath>SFX/sfx_paladin_step_03_8E324C96.wem</CachePath>
+				</File>
+				<File Id="526007305" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinFireBeam3.wav</ShortName>
+					<CachePath>SFX/PaladinFireBeam3_8E324C96.wem</CachePath>
+				</File>
+				<File Id="533992799" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_paladin_landing_01.wav</ShortName>
+					<CachePath>SFX/sfx_paladin_landing_01_8E324C96.wem</CachePath>
 				</File>
 				<File Id="538800254" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PaladinDrip2.wav</ShortName>
@@ -384,6 +456,10 @@
 				<File Id="543650420" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PaladinCloth2.wav</ShortName>
 					<CachePath>SFX/PaladinCloth2_8E324C96.wem</CachePath>
+				</File>
+				<File Id="553255128" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinDash1.wav</ShortName>
+					<CachePath>SFX/PaladinDash1_8E324C96.wem</CachePath>
 				</File>
 				<File Id="584181473" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PaladinMenuSound.wav</ShortName>
@@ -425,9 +501,21 @@
 					<ShortName>PaladinHitM.wav</ShortName>
 					<CachePath>SFX/PaladinHitM_8E324C96.wem</CachePath>
 				</File>
+				<File Id="865032660" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinFireBeam1.wav</ShortName>
+					<CachePath>SFX/PaladinFireBeam1_8E324C96.wem</CachePath>
+				</File>
+				<File Id="883074103" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_paladin_step_04.wav</ShortName>
+					<CachePath>SFX/sfx_paladin_step_04_8E324C96.wem</CachePath>
+				</File>
 				<File Id="911301249" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PaladinSwingBlunt.wav</ShortName>
 					<CachePath>SFX/PaladinSwingBlunt_8E324C96.wem</CachePath>
+				</File>
+				<File Id="927124742" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinNewSwing4.wav</ShortName>
+					<CachePath>SFX/PaladinNewSwing4_8E324C96.wem</CachePath>
 				</File>
 				<File Id="948465750" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PaladinCastWarcry.wav</ShortName>
@@ -441,9 +529,25 @@
 					<ShortName>PaladinExplosion.wav</ShortName>
 					<CachePath>SFX/PaladinExplosion_8E324C96.wem</CachePath>
 				</File>
+				<File Id="989319236" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinSwordGroundImpact1.wav</ShortName>
+					<CachePath>SFX/PaladinSwordGroundImpact1_8E324C96.wem</CachePath>
+				</File>
+				<File Id="1018662874" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PaladinSwordGroundImpact2.wav</ShortName>
+					<CachePath>SFX/PaladinSwordGroundImpact2_8E324C96.wem</CachePath>
+				</File>
 				<File Id="1020432476" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PaladinCastHealZone.wav</ShortName>
 					<CachePath>SFX/PaladinCastHealZone_8E324C96.wem</CachePath>
+				</File>
+				<File Id="1021029062" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_paladin_landing_03.wav</ShortName>
+					<CachePath>SFX/sfx_paladin_landing_03_8E324C96.wem</CachePath>
+				</File>
+				<File Id="1050419466" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sfx_paladin_step_01.wav</ShortName>
+					<CachePath>SFX/sfx_paladin_step_01_8E324C96.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -488,6 +592,12 @@
 						<MediaRef Id="584835422"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1175481850" Name="PaladinDash">
+					<MediaRefs>
+						<MediaRef Id="165362469"/>
+						<MediaRef Id="553255128"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1004601327" Name="PaladinDrip">
 					<MediaRefs>
 						<MediaRef Id="381079306"/>
@@ -502,6 +612,18 @@
 				<Event Id="2819528845" Name="PaladinFingerSnap">
 					<MediaRefs>
 						<MediaRef Id="512605586"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2539237695" Name="PaladinFireBeam">
+					<MediaRefs>
+						<MediaRef Id="317755923"/>
+						<MediaRef Id="526007305"/>
+						<MediaRef Id="865032660"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1541025675" Name="PaladinHeavySwing">
+					<MediaRefs>
+						<MediaRef Id="237695089"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="3664359810" Name="PaladinHitBluntL">
@@ -534,6 +656,16 @@
 						<MediaRef Id="813446919"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1366378427" Name="PaladinLanding">
+					<MediaRefs>
+						<MediaRef Id="69582020"/>
+						<MediaRef Id="157731923"/>
+						<MediaRef Id="301822172"/>
+						<MediaRef Id="497249731"/>
+						<MediaRef Id="533992799"/>
+						<MediaRef Id="1021029062"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="1770827703" Name="PaladinLeapSlam">
 					<MediaRefs>
 						<MediaRef Id="591389793"/>
@@ -549,9 +681,41 @@
 						<MediaRef Id="584181473"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="318293794" Name="PaladinNewSwing">
+					<MediaRefs>
+						<MediaRef Id="47638363"/>
+						<MediaRef Id="501281662"/>
+						<MediaRef Id="514658614"/>
+						<MediaRef Id="927124742"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="266303471" Name="PaladinSpearThrow">
 					<MediaRefs>
 						<MediaRef Id="53309015"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3357867980" Name="PaladinStep">
+					<MediaRefs>
+						<MediaRef Id="119241170"/>
+						<MediaRef Id="280968950"/>
+						<MediaRef Id="295455385"/>
+						<MediaRef Id="326825236"/>
+						<MediaRef Id="485513839"/>
+						<MediaRef Id="516715227"/>
+						<MediaRef Id="883074103"/>
+						<MediaRef Id="1050419466"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2016537320" Name="PaladinStepSprint">
+					<MediaRefs>
+						<MediaRef Id="119241170"/>
+						<MediaRef Id="280968950"/>
+						<MediaRef Id="295455385"/>
+						<MediaRef Id="326825236"/>
+						<MediaRef Id="485513839"/>
+						<MediaRef Id="516715227"/>
+						<MediaRef Id="883074103"/>
+						<MediaRef Id="1050419466"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="2117360560" Name="PaladinSwing">
@@ -570,11 +734,17 @@
 						<MediaRef Id="176360210"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="3623758266" Name="PaladinSwordGroundImpact">
+					<MediaRefs>
+						<MediaRef Id="989319236"/>
+						<MediaRef Id="1018662874"/>
+					</MediaRefs>
+				</Event>
 			</Events>
 			<GameParameters>
 				<GameParameter Id="3673881719" Name="Volume_SFX"/>
 			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{CDBD65EE-06AD-8DD5-7A6A-0B081741B6F5}</FileHash>
+	<FileHash>{ED21812C-ECFD-A623-0A63-76802EE33F20}</FileHash>
 </SoundBanksInfo>

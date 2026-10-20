@@ -23,7 +23,7 @@ namespace PaladinMod.States.Spell
 
             EffectData effect = new EffectData
             {
-                origin = trackingTarget.transform.position
+                origin = trackingTarget.healthComponent.transform.position
             };
             EffectManager.SpawnEffect(Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/meridian/DisableSkillsLightning/FalseSonLightningStrikeImpactEffect.prefab").WaitForCompletion(), effect, false);
             EffectManager.SpawnEffect(Addressables.LoadAssetAsync<GameObject>("RoR2/DLC2/meridian/DisableSkillsLightning/LightningStrikeImpactEffect.prefab").WaitForCompletion(), effect, false);

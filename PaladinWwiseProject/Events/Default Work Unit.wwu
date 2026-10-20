@@ -302,6 +302,61 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="PaladinHeavySwing" ID="{2FC93B8E-9E87-483E-9894-A4124DC657A7}">
+							<ChildrenList>
+								<Action Name="" ID="{797BD08C-2251-4623-8C4C-2C08DEA79E95}" ShortID="1036892065">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PaladinHeavySwing" ID="{B77342D6-F30E-46AB-B562-37FA8DAC64D3}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinSwordGroundImpact" ID="{A4BE4555-0D18-48B0-ABEB-BFAF70AC5829}">
+							<ChildrenList>
+								<Action Name="" ID="{E81D79B5-914D-4182-9F31-372D204920CC}" ShortID="227796731">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="GroundImpact" ID="{67F5121E-417B-4F27-8F52-84F4C607B85C}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinNewSwing" ID="{1619DF71-CA34-4752-9785-D91DECF674A3}">
+							<ChildrenList>
+								<Action Name="" ID="{B60A5A58-22D6-4C37-9FD2-EFF7FF24B37F}" ShortID="502681189">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="NewSwing" ID="{85D1B802-2306-4A61-ABF9-10CFE903DC97}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinFireBeam" ID="{51089E1A-5BD0-4D44-B1BF-D80F3ACA11F7}">
+							<ChildrenList>
+								<Action Name="" ID="{1FEAFA38-0038-4B74-A995-C30A469CAD18}" ShortID="209160990">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="FireBeam" ID="{E7D25015-13BC-4804-B332-954292C6A21D}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="PaladinDash" ID="{AAEF6887-23F5-40E8-B683-DD3DFFF1F3F3}">
+							<ChildrenList>
+								<Action Name="" ID="{888B7B2D-6341-4BBD-913A-70ECD69E9173}" ShortID="458465443">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Dash" ID="{786822A0-5FA5-468C-A0CA-54D110E00B85}" WorkUnitID="{E77F4F4A-3450-441E-BB48-E858DF14678D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="nemforcer" ID="{D0214027-8310-42E6-8119-C8A48FFEE3D3}" ShortID="793757402">

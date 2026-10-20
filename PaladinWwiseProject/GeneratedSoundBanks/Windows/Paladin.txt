@@ -1,23 +1,31 @@
 Event	ID	Name			Wwise Object Path	Notes
 	61478347	PaladinLunge			\Default Work Unit\paladin\PaladinLunge	
 	266303471	PaladinSpearThrow			\Default Work Unit\paladin\PaladinSpearThrow	
+	318293794	PaladinNewSwing			\Default Work Unit\paladin\PaladinNewSwing	
 	559541155	PaladinExplosion			\Default Work Unit\paladin\PaladinExplosion	
 	606421317	PaladinChannelTorpor			\Default Work Unit\paladin\PaladinChannelTorpor	
 	1004601327	PaladinDrip			\Default Work Unit\paladin\PaladinDrip	
+	1175481850	PaladinDash			\Default Work Unit\paladin\PaladinDash	
+	1366378427	PaladinLanding			\Default Work Unit\paladin\PaladinLanding	
+	1541025675	PaladinHeavySwing			\Default Work Unit\paladin\PaladinHeavySwing	
 	1770827703	PaladinLeapSlam			\Default Work Unit\paladin\PaladinLeapSlam	
 	1818979850	PaladinHitM			\Default Work Unit\paladin\PaladinHitM	
 	1818979851	PaladinHitL			\Default Work Unit\paladin\PaladinHitL	
 	1818979860	PaladinHitS			\Default Work Unit\paladin\PaladinHitS	
+	2016537320	PaladinStepSprint			\Default Work Unit\paladin\PaladinStepSprint	
 	2117360560	PaladinSwing			\Default Work Unit\paladin\PaladinSwing	
 	2258948407	PaladinChannelMax			\Default Work Unit\paladin\PaladinChannelMax	
 	2259531664	PaladinMenuSound			\Default Work Unit\paladin\PaladinMenuSound	
 	2424620204	PaladinCloth2			\Default Work Unit\paladin\PaladinCloth2	
 	2424620205	PaladinCloth3			\Default Work Unit\paladin\PaladinCloth3	
 	2424620207	PaladinCloth1			\Default Work Unit\paladin\PaladinCloth1	
+	2539237695	PaladinFireBeam			\Default Work Unit\paladin\PaladinFireBeam	
 	2634331089	PaladinCastTorpor			\Default Work Unit\paladin\PaladinCastTorpor	
 	2819528845	PaladinFingerSnap			\Default Work Unit\paladin\PaladinFingerSnap	
 	2869508097	PaladinCastHeal			\Default Work Unit\paladin\PaladinCastHeal	
+	3357867980	PaladinStep			\Default Work Unit\paladin\PaladinStep	
 	3361364425	PaladinSwingBlunt			\Default Work Unit\paladin\PaladinSwingBlunt	
+	3623758266	PaladinSwordGroundImpact			\Default Work Unit\paladin\PaladinSwordGroundImpact	
 	3664359810	PaladinHitBluntL			\Default Work Unit\paladin\PaladinHitBluntL	
 	3664359811	PaladinHitBluntM			\Default Work Unit\paladin\PaladinHitBluntM	
 	3664359837	PaladinHitBluntS			\Default Work Unit\paladin\PaladinHitBluntS	
@@ -28,18 +36,37 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	47638363	PaladinNewSwing1	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinNewSwing1_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\NewSwing\PaladinNewSwing1		6477
 	53309015	PaladinSpearThrow	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinSpearThrow_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinSpearThrow		13809
+	69582020	sfx_paladin_landing_04	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\sfx_paladin_landing_04_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\landing\sfx_paladin_landing_04		10593
+	119241170	sfx_paladin_step_05	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\sfx_paladin_step_05_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\step\sfx_paladin_step_05		11608
 	129829374	PaladinSwing2	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinSwing2_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\swing\PaladinSwing2		5691
+	157731923	sfx_paladin_landing_05	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\sfx_paladin_landing_05_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\landing\sfx_paladin_landing_05		11822
+	165362469	PaladinDash2	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinDash2_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\Dash\PaladinDash2		10960
 	176360210	PaladinSwordActive	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinSwordActive_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinSwordActive		20610
 	215071040	PaladinHitBluntSS	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinHitBluntSS_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinHitBluntSS		6892
+	237695089	PaladinHeavySwing	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinHeavySwing_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\PaladinHeavySwing		5964
 	243176335	PaladinLunge	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinLunge_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinLunge		6859
 	266065062	PaladinHitL	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinHitL_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinHitL		10219
+	280968950	sfx_paladin_step_06	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\sfx_paladin_step_06_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\step_01\sfx_paladin_step_06		10048
+	295455385	sfx_paladin_step_07	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\sfx_paladin_step_07_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\step_01\sfx_paladin_step_07		9928
+	301822172	sfx_paladin_landing_02	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\sfx_paladin_landing_02_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\landing\sfx_paladin_landing_02		10543
+	317755923	PaladinFireBeam2	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinFireBeam2_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\FireBeam\PaladinFireBeam2		7985
+	326825236	sfx_paladin_step_02	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\sfx_paladin_step_02_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\step\sfx_paladin_step_02		12571
 	381079306	PaladinDrip	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinDrip_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\drip\PaladinDrip		306164
 	395471021	PaladinChannelTorpor	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinChannelTorpor_56CEF360.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinChannelTorpor		32027
 	408188179	PaladinHitBluntM	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinHitBluntM_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinHitBluntM		6064
+	485513839	sfx_paladin_step_08	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\sfx_paladin_step_08_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\step_01\sfx_paladin_step_08		8923
+	497249731	sfx_paladin_landing_06	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\sfx_paladin_landing_06_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\landing\sfx_paladin_landing_06		10367
+	501281662	PaladinNewSwing2	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinNewSwing2_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\NewSwing\PaladinNewSwing2		5284
 	512605586	PaladinSnap	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinSnap_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinSnap		12270
+	514658614	PaladinNewSwing3	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinNewSwing3_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\NewSwing\PaladinNewSwing3		5473
+	516715227	sfx_paladin_step_03	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\sfx_paladin_step_03_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\step\sfx_paladin_step_03		14727
+	526007305	PaladinFireBeam3	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinFireBeam3_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\FireBeam\PaladinFireBeam3		7587
+	533992799	sfx_paladin_landing_01	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\sfx_paladin_landing_01_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\landing\sfx_paladin_landing_01		9975
 	538800254	PaladinDrip2	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinDrip2_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\drip\PaladinDrip2		312261
 	543650420	PaladinCloth2	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinCloth2_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinCloth2		11145
+	553255128	PaladinDash1	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinDash1_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\Dash\PaladinDash1		11934
 	584181473	PaladinMenuSound	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinMenuSound_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinMenuSound		8517
 	584835422	PaladinCloth3	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinCloth3_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinCloth3		8097
 	584904886	PaladinHitBluntS	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinHitBluntS_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinHitBluntS		4312
@@ -50,9 +77,16 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	749548995	PaladinChannelHeal	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinChannelHeal_56CEF360.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinChannelHeal		37581
 	813446919	PaladinHitS	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinHitS_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinHitS		5242
 	863728932	PaladinHitM	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinHitM_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinHitM		8400
+	865032660	PaladinFireBeam1	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinFireBeam1_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\FireBeam\PaladinFireBeam1		7674
+	883074103	sfx_paladin_step_04	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\sfx_paladin_step_04_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\step_01\sfx_paladin_step_04		13395
 	911301249	PaladinSwingBlunt	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinSwingBlunt_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinSwingBlunt		3601
+	927124742	PaladinNewSwing4	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinNewSwing4_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\NewSwing\PaladinNewSwing4		6049
 	948465750	PaladinChannelMax2	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinCastWarcry_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\channelmax\PaladinChannelMax2		10312
 	951721078	PaladinCloth1	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinCloth1_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinCloth1		7827
 	954700323	PaladinExplosion	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinExplosion_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\PaladinExplosion		21065
+	989319236	PaladinSwordGroundImpact1	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinSwordGroundImpact1_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\GroundImpact\PaladinSwordGroundImpact1		5716
+	1018662874	PaladinSwordGroundImpact2	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinSwordGroundImpact2_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\GroundImpact\PaladinSwordGroundImpact2		6764
 	1020432476	PaladinChannelMax	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\PaladinCastHealZone_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\channelmax\PaladinChannelMax		10606
+	1021029062	sfx_paladin_landing_03	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\sfx_paladin_landing_03_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\landing\sfx_paladin_landing_03		11352
+	1050419466	sfx_paladin_step_01	C:\Users\rseid\Documents\GitHub\PaladinMod\PaladinWwiseProject\.cache\Windows\SFX\sfx_paladin_step_01_8E324C96.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master\SFX\paladin\RandomPitch\step_01\sfx_paladin_step_01		11280
 

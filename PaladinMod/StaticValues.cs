@@ -69,20 +69,20 @@ namespace PaladinMod
         public const float dashBarrierAmount = 0.15f;
 
         //Replenish
-        public const float healRadius = 16f;
+        public const float healRadius = 24f;
         public const float healAmount = 0.15f;
         public const float healBarrier = 0.15f;
 
         //Sacred Sunlight
         public const float healZoneChannelDuration = 1.5f;
-        public const float healZoneRadius = 16f;
+        public const float healZoneRadius = 24f;
         public const float healZoneAmount = 0.01f;
         public const float healZoneBarrier = 0.01f;
         public const float healZoneDuration = 12f;
 
         //Hallowed Sunlight
         public const float scepterHealZoneChannelDuration = 1.5f;
-        public const float scepterHealZoneRadius = 16f;
+        public const float scepterHealZoneRadius = 32f;
         public const float scepterHealZoneAmount = 0.02f;
         public const float scepterHealZoneBarrier = 0.02f;
         public const float scepterHealZoneDuration = 12f;
@@ -101,14 +101,14 @@ namespace PaladinMod
 
         //Sacred Oath
         public const float warcryChannelDuration = 2f;
-        public const float warcryRadius = 20f;
+        public const float warcryRadius = 24f;
         public const float warcryDamageMultiplier = 0.25f;
         public const float warcryAttackSpeedBuff = 1;
         public const float warcryDuration = 8;
 
         //Sacred Oath(Scepter)
         public const float scepterWarcryChannelDuration = 1f;
-        public const float scepterWarcryRadius = 20f;
+        public const float scepterWarcryRadius = 32f;
         public const float scepterWarcryDamageMultiplier = 0.5f;
         public const float scepterWarcryAttackSpeedBuff = 2f;
         public const float scepterWarcryDuration = 8;

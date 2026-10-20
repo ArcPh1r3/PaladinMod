@@ -71,7 +71,7 @@ namespace PaladinMod.States.Spells.Lunar
 
             if (this.stopwatch >= this.duration)
             {
-                if (this.shardCount < FireBarrage.totalShardCount)
+                if (this.shardCount > FireBarrage.totalShardCount)
                 {
                     if (base.isAuthority) this.outer.SetNextStateToMain();
                 }
@@ -80,11 +80,6 @@ namespace PaladinMod.States.Spells.Lunar
                     this.stopwatch = 0f;
                     this.FireShard();
                 }
-            }
-
-            if (base.isAuthority && base.fixedAge >= this.duration && this.shardCount >= FireBarrage.totalShardCount)
-            {
-                this.outer.SetNextStateToMain();
             }
         }
 

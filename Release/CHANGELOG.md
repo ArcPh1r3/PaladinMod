@@ -5,7 +5,11 @@
 - Added config: Legacy Lunar Shard
 - Passive overlay now fades out on Paladin himself, permanent for affected allies, added some more oomph
 - Passive now has a 2 second grace period before deactivating
-- Rebalanced audio, added custom footstep and landing sfx courtesy of James (:
+- Primary sword beams now count as primary skill damage
+- Buffed radius of all spells, scepter upgrades now boost the radius even further
+- Rebalanced audio, added custom footstep and landing sfx courtesy of James (: added and changed a bunch more sfx too
+- New cursed config skill smite a motherfucker
+- Lunar Shard muzzle flash VFX reduced
 - Fixed IDRS
 - Fixed passive activation sound spam
 

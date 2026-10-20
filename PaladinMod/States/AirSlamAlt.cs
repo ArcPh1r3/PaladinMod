@@ -102,7 +102,7 @@ namespace PaladinMod.States
             if (!this.hasFired)
             {
                 this.hasFired = true;
-                this.swordController.PlaySwingSound();
+                Util.PlaySound("PaladinHeavySwing", this.gameObject);
 
                 if (base.isAuthority)
                 {
@@ -216,6 +216,7 @@ namespace PaladinMod.States
 
                 Util.PlaySound(Modules.Sounds.GroundImpact, base.gameObject);
                 Util.PlaySound(Modules.Sounds.LeapSlam, base.gameObject);
+                Util.PlaySound("PaladinSwordGroundImpact", this.gameObject);
             }
         }
 

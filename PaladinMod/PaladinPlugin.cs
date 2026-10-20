@@ -1,23 +1,25 @@
 ﻿using BepInEx;
+using BepInEx.Logging;
+using EntityStates;
+using PaladinMod.Misc;
+using PaladinMod.Modules;
 using R2API;
 using R2API.Utils;
-using EntityStates;
 using RoR2;
-using RoR2.Skills;
-using UnityEngine;
-using System.Runtime.CompilerServices;
-using System.Collections.ObjectModel;
-using RoR2.UI;
-using UnityEngine.UI;
-using PaladinMod.Misc;
 using RoR2.Orbs;
-using System.Collections.Generic;
-using BepInEx.Logging;
+using RoR2.Projectile;
+using RoR2.Skills;
+using RoR2.UI;
 using System;
-using UnityEngine.AddressableAssets;
 using System.Collections;
-using PaladinMod.Modules;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using UnityEngine.UI;
+using static RoR2.SolusWing.SolusWingPodAI.Simulation.SimulationState;
 
 namespace PaladinMod
 {
@@ -378,7 +380,7 @@ namespace PaladinMod
                     GlobalEventManager.instance.OnHitEnemy(damageInfo, self.gameObject);
                 }
 
-                if (addingBuff && self.body)
+                if (addingBuff && self.body && !self.body.HasBuff(Modules.Buffs.lunarKaboomReadyBuff))
                 {
                     self.body.AddTimedBuff(Modules.Buffs.lunarKaboomBuff, 3f);
                     if (self.body.GetBuffCount(Modules.Buffs.lunarKaboomBuff) >= 6)
@@ -388,7 +390,7 @@ namespace PaladinMod
                     }
                 }
 
-                if (self.body && !addingBuff && self.body.HasBuff(Modules.Buffs.lunarKaboomReadyBuff))
+                if (self.body && !addingBuff && self.body.HasBuff(Modules.Buffs.lunarKaboomReadyBuff) && damageInfo.damageType.IsDamageSourceSkillBased)
                 {
                     // KABOOM
                     // KABLOW
@@ -396,7 +398,24 @@ namespace PaladinMod
 
                     if (damageInfo.attacker)
                     {
-
+                        CharacterBody cb = damageInfo.attacker.GetComponent<CharacterBody>();
+                        // projectile or something idk
+                        ProjectileManager.instance.FireProjectileServer(new FireProjectileInfo
+                        {
+                            crit = Util.CheckRoll(cb.crit),
+                            damage = 5f * cb.damage,
+                            damageColorIndex = DamageColorIndex.DeathMark,
+                            force = 2000f,
+                            owner = damageInfo.attacker,
+                            position = self.body.mainHurtBox.transform.position,
+                            procChainMask = default(ProcChainMask),
+                            projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/ElementalRingVoid/ElementalRingVoidBlackHole.prefab").WaitForCompletion(),
+                            rotation = self.transform.rotation,
+                            speedOverride = 0f,
+                            _speedOverride = 0f,
+                            useFuseOverride = false,
+                            useSpeedOverride = true
+                        });
                     }
                 }
             }

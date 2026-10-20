@@ -88,7 +88,7 @@ namespace PaladinMod.States
             if (!this.hasFired)
             {
                 this.hasFired = true;
-                this.swordController.PlaySwingSound();
+                Util.PlaySound("PaladinHeavySwing", this.gameObject);
 
                 if (base.isAuthority)
                 {

@@ -1,6 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace PaladinMod.States.Quickstep
 {
@@ -29,7 +30,7 @@ namespace PaladinMod.States.Quickstep
             base.PlayCrossfade("FullBody, Override", "Dash", "Whirlwind.playbackRate", this.duration,  0.05f);
             //base.PlayAnimation("Gesture, Override", "BufferEmpty");
 
-            Util.PlaySound(EntityStates.BrotherMonster.BaseSlideState.soundString, base.gameObject);
+            Util.PlaySound("PaladinDash", base.gameObject);
 
             this.ApplyBuff();
             this.CreateDashEffect();
@@ -47,6 +48,14 @@ namespace PaladinMod.States.Quickstep
             effectData.origin = base.characterBody.corePosition;
 
             EffectManager.SpawnEffect(Modules.Asset.dashFX, effectData, false);
+
+            TemporaryOverlayInstance overlay = TemporaryOverlayManager.AddOverlay(this.modelLocator.modelTransform.gameObject);
+            overlay.duration = 0.5f;
+            overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+            overlay.animateShaderAlpha = true;
+            overlay.destroyComponentOnEnd = true;
+            overlay.originalMaterial = Modules.Asset.dashMat;
+            overlay.AddToCharacterModel(this.GetModelTransform().GetComponent<CharacterModel>());
         }
         
         public override void FixedUpdate()

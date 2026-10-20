@@ -558,7 +558,7 @@
 												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-1</Value>
+														<Value>-6</Value>
 													</ValueList>
 													<ModifierList>
 														<ModifierInfo>
@@ -616,7 +616,7 @@
 												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-2</Value>
+														<Value>-8</Value>
 													</ValueList>
 													<ModifierList>
 														<ModifierInfo>
@@ -674,7 +674,7 @@
 												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-1</Value>
+														<Value>-6</Value>
 													</ValueList>
 													<ModifierList>
 														<ModifierInfo>
@@ -1059,7 +1059,7 @@
 												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-10</Value>
+														<Value>-8</Value>
 													</ValueList>
 													<ModifierList>
 														<ModifierInfo>
@@ -1362,7 +1362,7 @@
 														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-8</Value>
+																<Value>-11</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -1718,7 +1718,7 @@
 														</Property>
 														<Property Name="Volume" Type="Real64">
 															<ValueList>
-																<Value>-6</Value>
+																<Value>-9</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -1909,6 +1909,482 @@
 														</Sound>
 													</ChildrenList>
 												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Dash" ID="{786822A0-5FA5-468C-A0CA-54D110E00B85}" ShortID="659999457">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-7</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="PaladinDash1" ID="{FE5C0581-A942-43E7-97CC-FBC5537646B8}" ShortID="673443357">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PaladinDash1" ID="{CE5AA1E8-DBB7-4FCB-977B-E2B304632260}">
+																	<Language>SFX</Language>
+																	<AudioFile>PaladinDash1.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="553255128"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PaladinDash1" ID="{CE5AA1E8-DBB7-4FCB-977B-E2B304632260}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PaladinDash2" ID="{E916179C-9D79-4E93-BE75-D991039B2C82}" ShortID="1072075740">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PaladinDash2" ID="{EAA8EFED-3F43-4464-9461-833E4522AE61}">
+																	<Language>SFX</Language>
+																	<AudioFile>PaladinDash2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="165362469"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PaladinDash2" ID="{EAA8EFED-3F43-4464-9461-833E4522AE61}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="NewSwing" ID="{85D1B802-2306-4A61-ABF9-10CFE903DC97}" ShortID="867920245">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-7</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="PaladinNewSwing1" ID="{3618E341-CA36-4C53-8643-EF7CA9BEF9C6}" ShortID="735350344">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PaladinNewSwing1" ID="{A9440BDA-C34C-4150-99B9-750B37C91092}">
+																	<Language>SFX</Language>
+																	<AudioFile>PaladinNewSwing1.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="47638363"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PaladinNewSwing1" ID="{A9440BDA-C34C-4150-99B9-750B37C91092}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PaladinNewSwing2" ID="{8706519B-C5E9-4524-A379-450109838620}" ShortID="934775802">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PaladinNewSwing2" ID="{171F6451-2936-42B8-91E1-C462E33E1749}">
+																	<Language>SFX</Language>
+																	<AudioFile>PaladinNewSwing2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="501281662"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PaladinNewSwing2" ID="{171F6451-2936-42B8-91E1-C462E33E1749}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PaladinNewSwing3" ID="{AFCD4F86-CAC3-4D7B-8A47-5F6CBD90BA95}" ShortID="91717745">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PaladinNewSwing3" ID="{F1404E81-E194-4CD7-811E-CC624086BC13}">
+																	<Language>SFX</Language>
+																	<AudioFile>PaladinNewSwing3.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="514658614"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PaladinNewSwing3" ID="{F1404E81-E194-4CD7-811E-CC624086BC13}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PaladinNewSwing4" ID="{3BCF23F6-9305-46AD-BDEE-1FE3EFE66297}" ShortID="542171381">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PaladinNewSwing4" ID="{77163CD4-C368-47EC-A395-7C90EAD7C592}">
+																	<Language>SFX</Language>
+																	<AudioFile>PaladinNewSwing4.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="927124742"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PaladinNewSwing4" ID="{77163CD4-C368-47EC-A395-7C90EAD7C592}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="GroundImpact" ID="{67F5121E-417B-4F27-8F52-84F4C607B85C}" ShortID="27150895">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="PaladinSwordGroundImpact1" ID="{1220F822-BD57-4150-938F-9974F09B8F4F}" ShortID="516956886">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PaladinSwordGroundImpact1" ID="{48E58EE5-E70E-400D-A65E-2FC8663D2968}">
+																	<Language>SFX</Language>
+																	<AudioFile>PaladinSwordGroundImpact1.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="989319236"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PaladinSwordGroundImpact1" ID="{48E58EE5-E70E-400D-A65E-2FC8663D2968}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PaladinSwordGroundImpact2" ID="{D76950FD-93EA-440C-A9AA-AB74C96B1198}" ShortID="944566833">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PaladinSwordGroundImpact2" ID="{D94AA65E-CD4F-484A-BE86-90768B757482}">
+																	<Language>SFX</Language>
+																	<AudioFile>PaladinSwordGroundImpact2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1018662874"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PaladinSwordGroundImpact2" ID="{D94AA65E-CD4F-484A-BE86-90768B757482}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="FireBeam" ID="{E7D25015-13BC-4804-B332-954292C6A21D}" ShortID="554929523">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-8</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="PaladinFireBeam1" ID="{412F9E7C-1205-41FB-9906-EC3CC8DA3937}" ShortID="656615413">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PaladinFireBeam1" ID="{74C24CE3-CBE2-4CD3-A353-89C50C5E6A1E}">
+																	<Language>SFX</Language>
+																	<AudioFile>PaladinFireBeam1.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="865032660"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PaladinFireBeam1" ID="{74C24CE3-CBE2-4CD3-A353-89C50C5E6A1E}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PaladinFireBeam2" ID="{7E1CCC90-E6B4-4035-9795-C5F3E339991E}" ShortID="490173416">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PaladinFireBeam2" ID="{92BA226F-7C8F-49DA-8AFD-1655A3614EA1}">
+																	<Language>SFX</Language>
+																	<AudioFile>PaladinFireBeam2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="317755923"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PaladinFireBeam2" ID="{92BA226F-7C8F-49DA-8AFD-1655A3614EA1}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PaladinFireBeam3" ID="{25AB8879-893A-4CF7-8924-AE0434E32C81}" ShortID="800146818">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PaladinFireBeam3" ID="{0677C42B-C993-4482-94FB-DAE4951DDEC4}">
+																	<Language>SFX</Language>
+																	<AudioFile>PaladinFireBeam3.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="526007305"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PaladinFireBeam3" ID="{0677C42B-C993-4482-94FB-DAE4951DDEC4}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="FireElec" ID="{371E91D2-F9B7-4D34-B9F3-38AF8AB16E64}" ShortID="286715334">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-10</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="PaladinFireElec1" ID="{EDE2ECCC-7665-4E67-84FD-B7EBD7304E50}" ShortID="889921404">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PaladinFireElec1" ID="{6CD63C03-0890-4562-993E-C24917684109}">
+																	<Language>SFX</Language>
+																	<AudioFile>PaladinFireElec1.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="858315885"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PaladinFireElec1" ID="{6CD63C03-0890-4562-993E-C24917684109}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PaladinFireElec2" ID="{C18F79C5-6556-4A18-B911-55316E1C2AE5}" ShortID="614948858">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PaladinFireElec2" ID="{4E111BE8-E1C0-4BEE-9E56-D6E2AE5DD991}">
+																	<Language>SFX</Language>
+																	<AudioFile>PaladinFireElec2.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1039200864"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PaladinFireElec2" ID="{4E111BE8-E1C0-4BEE-9E56-D6E2AE5DD991}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PaladinFireElec3" ID="{9249C723-8E03-4272-AADC-B21762D45E39}" ShortID="819156779">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PaladinFireElec3" ID="{04D28B72-1971-4535-8497-83C254F811BD}">
+																	<Language>SFX</Language>
+																	<AudioFile>PaladinFireElec3.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="637592244"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PaladinFireElec3" ID="{04D28B72-1971-4535-8497-83C254F811BD}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PaladinFireElec4" ID="{7C6F5631-8AE1-4820-9F5B-90F28B738982}" ShortID="480054114">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PaladinFireElec4" ID="{96619A69-77FF-424E-9034-C9E173289701}">
+																	<Language>SFX</Language>
+																	<AudioFile>PaladinFireElec4.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="651277848"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PaladinFireElec4" ID="{96619A69-77FF-424E-9034-C9E173289701}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="PaladinFireElec5" ID="{334C4E94-3274-473B-B81C-0936A27A1701}" ShortID="815708057">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="PaladinFireElec5" ID="{EBA09EC4-FB3F-4568-B21E-5418FE56C439}">
+																	<Language>SFX</Language>
+																	<AudioFile>PaladinFireElec5.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="264409850"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="PaladinFireElec5" ID="{EBA09EC4-FB3F-4568-B21E-5418FE56C439}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+												<Sound Name="PaladinHeavySwing" ID="{B77342D6-F30E-46AB-B562-37FA8DAC64D3}" ShortID="1506283">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{6E073580-7F8C-4515-90F2-3A6061DA5CB4}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E66D685-6FBA-439B-AB0F-58D6D7E66846}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PaladinHeavySwing" ID="{4251B392-35E8-4B7B-A58D-2908264C2160}">
+															<Language>SFX</Language>
+															<AudioFile>PaladinHeavySwing.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="237695089"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PaladinHeavySwing" ID="{4251B392-35E8-4B7B-A58D-2908264C2160}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
 										</ActorMixer>
 									</ChildrenList>

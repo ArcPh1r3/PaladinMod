@@ -27,9 +27,13 @@ namespace PaladinMod.Modules
         //heheha
         public static Material blessingMat;
         public static Material blessingMat2;
+        public static Material dashMat;
 
         //torpor material
         public static Material torporMat;
+
+        // LE CROSSHAIRE
+        public static GameObject channelingCrosshairPrefab;
 
         //skill icons
         public static Sprite iconP;
@@ -738,6 +742,14 @@ namespace PaladinMod.Modules
                 82f / 255f,
                 125f / 255f,
                 173f / 255f,
+                1f
+                ));
+
+            dashMat = Material.Instantiate(Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidMegaCrab/matVoidCrabMatterOverlay.mat").WaitForCompletion());
+            dashMat.SetColor("_TintColor", new Color(
+                1f,
+                165f / 255f,
+                15f / 255f,
                 1f
                 ));
         }

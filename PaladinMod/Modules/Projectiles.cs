@@ -106,6 +106,7 @@ namespace PaladinMod.Modules
             #region SwordBeam
             swordBeamProjectile = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/FMJ"), "PaladinSwordBeam", true);
             swordBeamProjectile.transform.localScale = new Vector3(6, 3, 2);
+            swordBeamProjectile.GetComponent<ProjectileController>().startSound = "PaladinFireBeam";
             //GameObject beamGhost = Assets.swordBeam.InstantiateClone("SwordBeamGhost", false);
             //beamGhost.AddComponent<ProjectileGhostController>();
 
@@ -114,7 +115,7 @@ namespace PaladinMod.Modules
             //GameObject MercEvisProjectileGhost = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab;
             swordBeamProjectile.GetComponent<ProjectileController>().ghostPrefab = Asset.swordBeamGhost;//MercEvisProjectileGhost;
             swordBeamProjectile.GetComponent<ProjectileController>().ghostPrefabAddress = null;
-            swordBeamProjectile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
+            swordBeamProjectile.GetComponent<ProjectileDamage>().damageType = DamageTypeCombo.GenericPrimary;
 
             PaladinPlugin.Destroy(swordBeamProjectile.transform.Find("SweetSpotBehavior").gameObject);
 
