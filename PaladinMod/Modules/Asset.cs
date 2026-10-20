@@ -121,6 +121,8 @@ namespace PaladinMod.Modules
         public static GameObject lightningImpactFX;
         public static GameObject altLightningImpactFX;
 
+        public static GameObject lunarShardMuzzleFlash;
+
         public static GameObject dashFX;
         public static GameObject airSlamFX;
         public static GameObject airSlamBoostedFX;
@@ -328,6 +330,14 @@ namespace PaladinMod.Modules
             airSlamBoostedFX.AddComponent<DestroyOnTimer>().duration = 5f;
 
             AddEffect(airSlamBoostedFX);
+
+            lunarShardMuzzleFlash = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Brother/MuzzleflashLunarShard.prefab").WaitForCompletion().InstantiateClone("PaladinLunarShardMuzzleFlash", false);
+
+            lunarShardMuzzleFlash.transform.Find("Flash").localScale *= 0.75f;
+            lunarShardMuzzleFlash.transform.Find("Ring").localScale *= 0.25f;
+            lunarShardMuzzleFlash.transform.Find("Explosion").localScale *= 0.75f;
+
+            AddEffect(lunarShardMuzzleFlash);
 
             swordHitSoundEventS = CreateNetworkSoundEventDef(Modules.Sounds.HitS);
             swordHitSoundEventM = CreateNetworkSoundEventDef(Modules.Sounds.HitM);

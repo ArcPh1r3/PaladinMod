@@ -230,10 +230,21 @@ namespace PaladinMod
             On.RoR2.CharacterModel.UpdateOverlays += CharacterModel_UpdateOverlays;
             On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
             On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
+
+            // skill animations
             On.EntityStates.GlobalSkills.LunarNeedle.FireLunarNeedle.OnEnter += PlayVisionsAnimation;
             On.EntityStates.GlobalSkills.LunarNeedle.ChargeLunarSecondary.PlayChargeAnimation += PlayChargeLunarAnimation;
             On.EntityStates.GlobalSkills.LunarNeedle.ThrowLunarSecondary.PlayThrowAnimation += PlayThrowLunarAnimation;
             On.EntityStates.GlobalSkills.LunarDetonator.Detonate.OnEnter += PlayRuinAnimation;
+
+            if (Modules.PaladinConfig.falseSonSecondary)
+            {
+                On.EntityStates.FalseSon.LunarSpikes.OnEnter += LunarSpikes_OnEnter;
+                On.EntityStates.FalseSon.LunarSpikes.FireLunarSpike += LunarSpikes_FireLunarSpike;
+
+                On.EntityStates.FalseSon.LunarStake.OnEnter += LunarStake_OnEnter;
+                On.EntityStates.FalseSon.LunarStake.OnExit += LunarStake_OnExit;
+            }
 
             On.RoR2.CharacterSpeech.BrotherSpeechDriver.DoInitialSightResponse += BrotherSpeechDriver_DoInitialSightResponse;
             On.RoR2.CharacterSpeech.FalseSonBossSpeechDriver.DoInitialSightResponse += FalseSonBossSpeechDriver_DoInitialSightResponse;
@@ -244,6 +255,45 @@ namespace PaladinMod
 
             On.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamageProcess;
             On.RoR2.StrengthenBurnUtils.CheckDotForUpgrade += StrengthenBurnUtils_CheckDotForUpgrade;
+        }
+
+        private void LunarStake_OnExit(On.EntityStates.FalseSon.LunarStake.orig_OnExit orig, EntityStates.FalseSon.LunarStake self)
+        {
+            if (self != null && self.characterBody && self.characterBody.baseNameToken == "PALADIN_NAME")
+            {
+                self.PlayCrossfade("Gesture, Override", "CastRuin", "Ruin.playbackRate", 0.75f, 0.05f);
+                Util.PlaySound("PaladinFingerSnap", self.gameObject);
+                self.StartAimMode(self.duration + 0.5f);
+            }
+            orig(self);
+        }
+
+        private void LunarStake_OnEnter(On.EntityStates.FalseSon.LunarStake.orig_OnEnter orig, EntityStates.FalseSon.LunarStake self)
+        {
+            if (self != null && self.characterBody && self.characterBody.baseNameToken == "PALADIN_NAME")
+            {
+                self.muzzleString = "HandL";
+                self.PlayCrossfade("Gesture, Override", "ChargeSpell", "Spell.playbackRate", 0.2f, 0.05f);
+            }
+            orig(self);
+        }
+
+        private void LunarSpikes_OnEnter(On.EntityStates.FalseSon.LunarSpikes.orig_OnEnter orig, EntityStates.FalseSon.LunarSpikes self)
+        {
+            if (self != null && self.characterBody && self.characterBody.baseNameToken == "PALADIN_NAME")
+            {
+                self.muzzleString = "HandL";
+            }
+            orig(self);
+        }
+
+        private void LunarSpikes_FireLunarSpike(On.EntityStates.FalseSon.LunarSpikes.orig_FireLunarSpike orig, EntityStates.FalseSon.LunarSpikes self)
+        {
+            if (self != null && self.characterBody && self.characterBody.baseNameToken == "PALADIN_NAME")
+            {
+                self.PlayAnimation("LeftArm, Override", "LunarShard", "LunarShard.playbackRate", 0.5f);
+            }
+            orig(self);
         }
 
         private void StrengthenBurnUtils_CheckDotForUpgrade(On.RoR2.StrengthenBurnUtils.orig_CheckDotForUpgrade orig, Inventory inventory, ref InflictDotInfo dotInfo)
@@ -545,7 +595,7 @@ namespace PaladinMod
 
             if (self.characterBody.baseNameToken == "PALADIN_NAME")
             {
-                self.PlayAnimation("Gesture, Override", "FireVisions", "Visions.playbackRate", self.duration  * 2.5f);
+                self.PlayAnimation("Gesture, Override", "FireVisions", "Visions.playbackRate", self.duration  * 5f);
             }
         }
 

@@ -9,14 +9,13 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{118B7CD2-1817-6C50-0DE0-8843A1CAC2BF}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{FD37CE40-E4EB-2005-5568-FA6C2C7E683F}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
 				<AudioDevices>
 					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
 					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
-					<Plugin Id="4230635974" Name="Default_Motion_Device" LibName="Wwise Motion" LibId="33226759"/>
 				</AudioDevices>
 			</Plugins>
 			<Busses>
@@ -334,7 +333,7 @@
 				<GameParameter Id="3673881719" Name="Volume_SFX"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3024907506" Type="User" Language="SFX" Hash="{09BF24FE-DA08-82E0-26D4-B30E9E6121B9}">
+		<SoundBank Id="3024907506" Type="User" Language="SFX" Hash="{E44F2117-F569-32AF-61FC-2F1072919B1F}">
 			<ShortName>Paladin</ShortName>
 			<Path>Paladin.bnk</Path>
 			<Media>
@@ -577,5 +576,5 @@
 			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{4C9566B3-CA2A-EE38-8CD0-E829B7315E3B}</FileHash>
+	<FileHash>{8507B8F1-9052-B88C-A068-B193EEA21FCE}</FileHash>
 </SoundBanksInfo>

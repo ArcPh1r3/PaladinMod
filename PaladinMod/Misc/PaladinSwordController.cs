@@ -8,7 +8,7 @@ namespace PaladinMod.Misc
 {
     public class PaladinSwordController : MonoBehaviour
     {
-        public bool swordActive;
+        public bool swordActive = true;
         public bool attacking;
 
         public int airSlamStacks;
@@ -64,6 +64,8 @@ namespace PaladinMod.Misc
         {
             this.lightningBuffTimer -= Time.fixedDeltaTime;
             this.passiveBuffTimer -= Time.fixedDeltaTime;
+
+            if (this.body) this.swordActive = this.body.HasBuff(Modules.Buffs.blessedBuff);
 
             if (this.lightningBuffTimer <= 0f)
             {

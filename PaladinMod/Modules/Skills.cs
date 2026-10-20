@@ -181,7 +181,7 @@ namespace PaladinMod.Modules
             };
 
             mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
-            mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.LunarShards));
+            mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spells.Lunar.FireBarrage));
             mySkillDef.activationStateMachineName = "Weapon";
             mySkillDef.baseMaxStock = 1;
             mySkillDef.baseRechargeInterval = 8f;
@@ -192,7 +192,7 @@ namespace PaladinMod.Modules
             mySkillDef.resetCooldownTimerOnUse = true;
             mySkillDef.isCombatSkill = true;
             mySkillDef.mustKeyPress = false;
-            mySkillDef.cancelSprintingOnActivation = false;
+            mySkillDef.cancelSprintingOnActivation = true;
             mySkillDef.rechargeStock = 1;
             mySkillDef.requiredStock = 1;
             mySkillDef.stockToConsume = 1;

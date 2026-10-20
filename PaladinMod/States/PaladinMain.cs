@@ -110,12 +110,7 @@ namespace PaladinMod.States
 
             if (base.healthComponent && this.swordMat)
             {
-                // set to fullCombinedHealth to count shields- check for supply drop and aetherium when those are working again
-                if (base.healthComponent.combinedHealth >= (0.9f * base.healthComponent.fullHealth) || base.healthComponent.barrier > 0)
-                {
-                    this.swordActive = true;
-                }
-                else this.swordActive = false;
+                if (this.swordController) this.swordActive = this.swordController.swordActive;
 
                 if (this.swordActive)
                 {
@@ -127,8 +122,6 @@ namespace PaladinMod.States
                     if (this.swordActiveEffect) this.swordActiveEffect.SetActive(false);
                     this.swordTransition -= StaticValues.swordGlowSpeed * Time.fixedDeltaTime;
                 }
-
-                if (this.swordController) this.swordController.swordActive = this.swordActive;
 
                 this.swordTransition = Mathf.Clamp(this.swordTransition, 0, StaticValues.maxSwordGlow);
 

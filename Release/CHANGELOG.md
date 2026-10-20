@@ -4,6 +4,7 @@
 - Reworked Lunar Shards: now has 1 stock, cast to fire a volley of 6 shards for 50% each. hitting all 6 on an enemy marks them, the next instance of skill damage on them detonates the mark for a brief AoE pull and explosion for 500%
 - Added config: Legacy Lunar Shard
 - Passive overlay now fades out on Paladin himself, permanent for affected allies, added some more oomph
+- Passive now has a 2 second grace period before deactivating
 - Fixed IDRS
 - Fixed passive activation sound spam
 

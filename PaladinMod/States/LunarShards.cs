@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using PaladinMod.Modules;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
@@ -48,7 +49,7 @@ namespace PaladinMod.States
 
             // Too shiny in VR
             if (!PaladinPlugin.IsLocalVRPlayer(characterBody))
-                EffectManager.SimpleMuzzleFlash(EntityStates.BrotherMonster.Weapon.FireLunarShards.muzzleFlashEffectPrefab, base.gameObject, "HandL", false);
+                EffectManager.SimpleMuzzleFlash(Asset.lunarShardMuzzleFlash, base.gameObject, "HandL", false);
             Util.PlaySound(EntityStates.BrotherMonster.Weapon.FireLunarShards.fireSound, base.gameObject);
 
             base.skillLocator.secondary.rechargeStopwatch = 0f;
@@ -57,6 +58,7 @@ namespace PaladinMod.States
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            this.StartAimMode(0.5f);
 
             if (base.isAuthority && base.fixedAge >= this.duration)
             {

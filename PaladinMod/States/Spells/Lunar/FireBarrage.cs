@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using PaladinMod.Modules;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
@@ -32,7 +33,7 @@ namespace PaladinMod.States.Spells.Lunar
 
             // Too shiny in VR
             if (!PaladinPlugin.IsLocalVRPlayer(characterBody))
-                EffectManager.SimpleMuzzleFlash(EntityStates.BrotherMonster.Weapon.FireLunarShards.muzzleFlashEffectPrefab, base.gameObject, "HandL", false);
+                EffectManager.SimpleMuzzleFlash(Asset.lunarShardMuzzleFlash, base.gameObject, "HandL", false);
             Util.PlaySound(EntityStates.BrotherMonster.Weapon.FireLunarShards.fireSound, base.gameObject);
 
             if (base.isAuthority)
@@ -66,6 +67,7 @@ namespace PaladinMod.States.Spells.Lunar
         {
             base.FixedUpdate();
             this.stopwatch += Time.fixedDeltaTime;
+            this.StartAimMode(0.5f);
 
             if (this.stopwatch >= this.duration)
             {
@@ -80,7 +82,7 @@ namespace PaladinMod.States.Spells.Lunar
                 }
             }
 
-            if (base.isAuthority && base.fixedAge >= this.duration)
+            if (base.isAuthority && base.fixedAge >= this.duration && this.shardCount >= FireBarrage.totalShardCount)
             {
                 this.outer.SetNextStateToMain();
             }

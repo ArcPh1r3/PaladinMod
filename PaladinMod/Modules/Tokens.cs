@@ -79,12 +79,12 @@ namespace PaladinMod.Modules {
             Languages.Add("PALADIN_SECONDARY_LIGHTNING_NAME", "Lightning Spear");
             Languages.Add("PALADIN_SECONDARY_LIGHTNING_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Agile.</style> Fire a volley of <style=cIsUtility>lunar shards</style>, dealing <style=cIsDamage>" + 100f * StaticValues.lunarShardDamageCoefficient + "% damage</style> each. Hold up to <style=cIsDamage>" + StaticValues.lunarShardMaxStock + "</style> shards.";
+            desc = "Fire a volley of <style=cIsUtility>lunar shards</style>, dealing <style=cIsDamage>6x" + 100f * StaticValues.lunarShardNewDamageCoefficient + "% damage</style> each. Hitting one foe with <style=cIsDamage>6 shards</style> marks them for detonation.";
 
             Languages.Add("PALADIN_SECONDARY_LUNARSHARD_NAME", "Lunar Shards");
             Languages.Add("PALADIN_SECONDARY_LUNARSHARD_DESCRIPTION", desc);
 
-            desc = "<style=cIsUtility>Agile.</style> Fire a volley of <style=cIsUtility>lunar shards</style>, dealing <style=cIsDamage>6x" + 100f * StaticValues.lunarShardNewDamageCoefficient + "% damage</style> each. Hitting one foe with <style=cIsDamage>6 shards</style> marks them for detonation.";
+            desc = "<style=cIsUtility>Agile.</style> Fire a volley of <style=cIsUtility>lunar shards</style>, dealing <style=cIsDamage>" + 100f * StaticValues.lunarShardDamageCoefficient + "% damage</style> each. Hold up to <style=cIsDamage>" + StaticValues.lunarShardMaxStock + "</style> shards.";
 
             Languages.Add("PALADIN_SECONDARY_LUNARSHARDLEGACY_NAME", "Lunar Shards (Legacy)");
             Languages.Add("PALADIN_SECONDARY_LUNARSHARDLEGACY_DESCRIPTION", desc);
