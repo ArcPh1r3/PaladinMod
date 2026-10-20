@@ -81,6 +81,8 @@ namespace PaladinMod.States
             if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.Slow50);
 
             if (this.swordController) this.swordController.attacking = false;
+
+            base.PlayCrossfade("FullBody, Override", "BufferEmpty", 0.5f);
         }
 
         public void FireAttack()
@@ -185,9 +187,9 @@ namespace PaladinMod.States
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            if (this.stopwatch >= this.duration * 0.41f) return InterruptPriority.PrioritySkill;
-            if (this.stopwatch >= this.duration * 0.65f) return InterruptPriority.Any;
-            else return InterruptPriority.Frozen;
+            if (this.stopwatch < this.duration * 0.41f) return InterruptPriority.Frozen;
+            if (this.stopwatch < this.duration * 0.65f) return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Any;
         }
     }
 }
