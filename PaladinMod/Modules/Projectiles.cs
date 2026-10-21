@@ -47,7 +47,7 @@ namespace PaladinMod.Modules
             #region SpinningSlashShockwave
             shockwave = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/BrotherSunderWave"), "PaladinShockwave", true);
             shockwave.transform.GetChild(0).transform.localScale = new Vector3(21, 1.5f, 1);//actual hitbox
-            shockwave.GetComponent<ProjectileCharacterController>().lifetime = 0.7f;
+            shockwave.GetComponent<ProjectileCharacterController>().lifetime = 0.6f;
             shockwave.GetComponent<ProjectileDamage>().damageType = DamageType.Stun1s;
 
             GameObject shockwaveGhost = PrefabAPI.InstantiateClone(shockwave.GetComponent<ProjectileController>().ghostPrefabAddress.LoadAssetAsync().WaitForCompletion(), "PaladinShockwaveGhost", false);

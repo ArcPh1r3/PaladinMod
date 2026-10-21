@@ -6,6 +6,7 @@
 - Primary now swings with a faster 1-2 cadence with most of the endlag after the second swing, rewarding well-timed cancels
 - Sword beams now count as primary skill damage
 - Spinning Slash grounded endlag reduced, movement is now influenced by your input
+- Air Spinning Slash ground wave widened and length extended
 - Buffed radius of all spells, scepter upgrades now boost the radius even further
 - they dont understand the things i say on twitter
 - Rebalanced audio, added custom footstep and landing sfx courtesy of James (: added and changed a bunch more sfx too
