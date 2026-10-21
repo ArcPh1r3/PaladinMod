@@ -182,6 +182,42 @@ namespace PaladinMod.Modules
             };
 
             //todo lunar shards and heal util update
+            if (PaladinConfig.cursed)
+            {
+                mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+                mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spells.Lunar.FireBarrage));
+                mySkillDef.activationStateMachineName = "Weapon";
+                mySkillDef.baseMaxStock = 1;
+                mySkillDef.baseRechargeInterval = 8f;
+                mySkillDef.beginSkillCooldownOnSkillEnd = true;
+                mySkillDef.canceledFromSprinting = false;
+                mySkillDef.fullRestockOnAssign = true;
+                mySkillDef.interruptPriority = InterruptPriority.Skill;
+                mySkillDef.resetCooldownTimerOnUse = true;
+                mySkillDef.isCombatSkill = true;
+                mySkillDef.mustKeyPress = false;
+                mySkillDef.cancelSprintingOnActivation = true;
+                mySkillDef.rechargeStock = 1;
+                mySkillDef.requiredStock = 1;
+                mySkillDef.stockToConsume = 1;
+                mySkillDef.icon = Asset.icon2c;
+                mySkillDef.skillDescriptionToken = "PALADIN_SECONDARY_LUNARSHARD_DESCRIPTION";
+                mySkillDef.skillName = "PALADIN_SECONDARY_LUNARSHARD_NAME";
+                mySkillDef.skillNameToken = "PALADIN_SECONDARY_LUNARSHARD_NAME";
+                mySkillDef.keywordTokens = new string[0];
+
+                skillDefs.Add(mySkillDef);
+
+                Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+                skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+                {
+                    skillDef = mySkillDef,
+                    unlockableDef = Modules.Unlockables.paladinLunarShardSkillDef,
+                    viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+                };
+            }
+
+            //todo lunar shards and heal util update
             //if (Modules.PaladinConfig.legacyLunarShards)
             //{
             mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
@@ -219,41 +255,6 @@ namespace PaladinMod.Modules
                 };
             //}
 
-            //todo lunar shards and heal util update
-            if (PaladinConfig.cursed)
-            {
-                mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
-                mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spells.Lunar.FireBarrage));
-                mySkillDef.activationStateMachineName = "Weapon";
-                mySkillDef.baseMaxStock = 1;
-                mySkillDef.baseRechargeInterval = 8f;
-                mySkillDef.beginSkillCooldownOnSkillEnd = true;
-                mySkillDef.canceledFromSprinting = false;
-                mySkillDef.fullRestockOnAssign = true;
-                mySkillDef.interruptPriority = InterruptPriority.Skill;
-                mySkillDef.resetCooldownTimerOnUse = true;
-                mySkillDef.isCombatSkill = true;
-                mySkillDef.mustKeyPress = false;
-                mySkillDef.cancelSprintingOnActivation = true;
-                mySkillDef.rechargeStock = 1;
-                mySkillDef.requiredStock = 1;
-                mySkillDef.stockToConsume = 1;
-                mySkillDef.icon = Asset.icon2c;
-                mySkillDef.skillDescriptionToken = "PALADIN_SECONDARY_LUNARSHARD_DESCRIPTION";
-                mySkillDef.skillName = "PALADIN_SECONDARY_LUNARSHARD_NAME";
-                mySkillDef.skillNameToken = "PALADIN_SECONDARY_LUNARSHARD_NAME";
-                mySkillDef.keywordTokens = new string[0];
-
-                skillDefs.Add(mySkillDef);
-
-                Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
-                skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
-                {
-                    skillDef = mySkillDef,
-                    unlockableDef = Modules.Unlockables.paladinLunarShardSkillDef,
-                    viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
-                };
-            }
 
             if (Modules.PaladinConfig.falseSonSecondary)
             {
@@ -278,40 +279,6 @@ namespace PaladinMod.Modules
                 {
                     skillDef = mySkillDef,
                     unlockableDef = null,
-                    viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
-                };
-            }
-
-            if (PaladinConfig.cursed)
-            {
-                mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
-                mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelSmiteAMotherfucker));
-                mySkillDef.activationStateMachineName = "Weapon";
-                mySkillDef.baseMaxStock = 1;
-                mySkillDef.baseRechargeInterval = 100;
-                mySkillDef.beginSkillCooldownOnSkillEnd = true;
-                mySkillDef.canceledFromSprinting = false;
-                mySkillDef.fullRestockOnAssign = true;
-                mySkillDef.interruptPriority = InterruptPriority.PrioritySkill;
-                mySkillDef.resetCooldownTimerOnUse = false;
-                mySkillDef.isCombatSkill = true;
-                mySkillDef.mustKeyPress = true;
-                mySkillDef.cancelSprintingOnActivation = true;
-                mySkillDef.rechargeStock = 1;
-                mySkillDef.requiredStock = 1;
-                mySkillDef.stockToConsume = 0;
-                mySkillDef.icon = Asset.icon2b;
-                mySkillDef.skillDescriptionToken = "smite a motherfucker for 10,000,000% damage";
-                mySkillDef.skillName = "smite a motherfucker";
-                mySkillDef.skillNameToken = "smite a motherfucker";
-
-                skillDefs.Add(mySkillDef);
-
-                Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
-                skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
-                {
-                    skillDef = mySkillDef,
-                    //unlockableDef = Modules.Unlockables.paladinHealSkillDefDef,
                     viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
                 };
             }
@@ -427,6 +394,40 @@ namespace PaladinMod.Modules
                     viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
                 };
             //}
+
+            if (PaladinConfig.cursed)
+            {
+                mySkillDef = ScriptableObject.CreateInstance<SkillDef>();
+                mySkillDef.activationState = new SerializableEntityStateType(typeof(PaladinMod.States.Spell.ChannelSmiteAMotherfucker));
+                mySkillDef.activationStateMachineName = "Weapon";
+                mySkillDef.baseMaxStock = 1;
+                mySkillDef.baseRechargeInterval = 100;
+                mySkillDef.beginSkillCooldownOnSkillEnd = true;
+                mySkillDef.canceledFromSprinting = false;
+                mySkillDef.fullRestockOnAssign = true;
+                mySkillDef.interruptPriority = InterruptPriority.PrioritySkill;
+                mySkillDef.resetCooldownTimerOnUse = false;
+                mySkillDef.isCombatSkill = true;
+                mySkillDef.mustKeyPress = true;
+                mySkillDef.cancelSprintingOnActivation = true;
+                mySkillDef.rechargeStock = 1;
+                mySkillDef.requiredStock = 1;
+                mySkillDef.stockToConsume = 0;
+                mySkillDef.icon = Asset.icon2b;
+                mySkillDef.skillDescriptionToken = "smite a motherfucker for 10,000,000% damage";
+                mySkillDef.skillName = "paladinsmiteamotherfucker";
+                mySkillDef.skillNameToken = "smite a motherfucker";
+
+                skillDefs.Add(mySkillDef);
+
+                Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+                skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+                {
+                    skillDef = mySkillDef,
+                    //unlockableDef = Modules.Unlockables.paladinHealSkillDefDef,
+                    viewableNode = new ViewablesCatalog.Node(mySkillDef.skillNameToken, false, null)
+                };
+            }
         }
 
         private static void SpecialSetup(GameObject bodyPrefab)

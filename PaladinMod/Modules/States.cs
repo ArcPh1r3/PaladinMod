@@ -4,6 +4,7 @@ using PaladinMod.States.Quickstep;
 using PaladinMod.States.Rage;
 using PaladinMod.States.Spell;
 using PaladinMod.States.LunarKnight;
+using PaladinMod.States.Spells.Lunar;
 
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using EntityStates;
 using MonoMod.RuntimeDetour;
 using RoR2;
 using System.Reflection;
+
 
 namespace PaladinMod.Modules
 {
@@ -49,7 +51,9 @@ namespace PaladinMod.Modules
             AddState(typeof(ThrowLightningSpear));
 
             AddState(typeof(LunarShards));
-            
+
+            AddState(typeof(FireBarrage));
+
             //util
             AddState(typeof(QuickstepSimple));
 

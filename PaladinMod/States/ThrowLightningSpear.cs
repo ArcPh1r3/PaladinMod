@@ -1,4 +1,5 @@
-﻿using RoR2.Projectile;
+﻿using EntityStates;
+using RoR2.Projectile;
 
 namespace PaladinMod.States
 {
@@ -21,6 +22,18 @@ namespace PaladinMod.States
             {
                 childLocator.FindChild("SpearThrowEffect").gameObject.SetActive(true);
             }*/
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            if (fixedAge < baseDuration * 0.6f)
+            {
+                return base.GetMinimumInterruptPriority();
+            }
+            else
+            {
+                return InterruptPriority.Any;
+            }
         }
     }
 }

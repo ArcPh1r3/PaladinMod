@@ -82,6 +82,10 @@ namespace PaladinMod
             logger = base.Logger;
 
             Modules.PaladinConfig.ReadConfig();
+            if (!PaladinConfig.cursed)
+            {
+                ConfigButEpic.DisableSection("section debug do not publish");
+            }
             StaticValues.InitConfig();
 
             Modules.Files.Init(Info); //store path to assembly

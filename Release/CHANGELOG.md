@@ -9,12 +9,13 @@
 - Buffed radius of all spells, scepter upgrades now boost the radius even further
 - they dont understand the things i say on twitter
 - Rebalanced audio, added custom footstep and landing sfx courtesy of James (: added and changed a bunch more sfx too
-- New cursed config skill smite a motherfucker
 - Lunar Shard muzzle flash VFX reduced
 - Fixed primary hitpause eating your jump input
 - Fixed primary hitpause
+- Slightly lowered lightningspear end lag
 - Experimental under cursed config: Reworked Lunar Shards: now has 1 stock, cast to fire a volley of 6 shards for 50% each. hitting all 6 on an enemy marks them, the next instance of skill damage on them detonates the mark for a brief AoE pull and explosion for 500%
 - Experimental under cursed config: Reworked Replenish -> Soul Bind
+- New cursed config skill smite a motherfucker
 - Attempted to fix IDRS but didn't actually fix them
 
 `2.2.0`

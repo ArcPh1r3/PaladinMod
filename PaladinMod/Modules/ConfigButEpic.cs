@@ -62,7 +62,8 @@ namespace PaladinMod.Modules
 
         private static List<string> disabledSections = new List<string>();
 
-        private static bool enableAll = true;
+        //override any sections that are disabled for dev
+        private static bool enableAllSections = false;
 
         private static bool loadedIcon;
 
@@ -196,7 +197,7 @@ namespace PaladinMod.Modules
                 description += "\n(restart required)";
             }
 
-            if(!enableAll && SectionDisabled(section))
+            if(!enableAllSections && SectionDisabled(section))
                 return new ConfigEntry<T>(null, defaultValue);
 
             BepInEx.Configuration.ConfigEntry<T> configEntry = MyConfig.Bind(section, name, defaultValue, description);

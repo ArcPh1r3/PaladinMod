@@ -46,13 +46,13 @@ namespace PaladinMod.Modules
             //would like to simplify this all eventually....
             #region SpinningSlashShockwave
             shockwave = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/BrotherSunderWave"), "PaladinShockwave", true);
-            shockwave.transform.GetChild(0).transform.localScale = new Vector3(10, 1.5f, 1);
-            shockwave.GetComponent<ProjectileCharacterController>().lifetime = 0.5f;
+            shockwave.transform.GetChild(0).transform.localScale = new Vector3(21, 1.5f, 1);//actual hitbox
+            shockwave.GetComponent<ProjectileCharacterController>().lifetime = 0.7f;
             shockwave.GetComponent<ProjectileDamage>().damageType = DamageType.Stun1s;
 
             GameObject shockwaveGhost = PrefabAPI.InstantiateClone(shockwave.GetComponent<ProjectileController>().ghostPrefabAddress.LoadAssetAsync().WaitForCompletion(), "PaladinShockwaveGhost", false);
-            shockwaveGhost.transform.GetChild(0).transform.localScale = new Vector3(10, 1, 1);
-            shockwaveGhost.transform.GetChild(1).transform.localScale = new Vector3(10, 1.5f, 1);
+            shockwaveGhost.transform.GetChild(0).transform.localScale = new Vector3(21, 1, 1);
+            shockwaveGhost.transform.GetChild(1).transform.localScale = new Vector3(21, 1.5f, 1);//ghost hitbox (ground square)
             PaladinPlugin.Destroy(shockwaveGhost.transform.GetChild(0).Find("Infection, World").gameObject);
             PaladinPlugin.Destroy(shockwaveGhost.transform.GetChild(0).Find("Water").gameObject);
             PaladinPlugin.Destroy(shockwaveGhost.transform.GetChild(0).Find("Debris").gameObject);
@@ -64,6 +64,7 @@ namespace PaladinMod.Modules
 
             shockwaveGhost.DontPool();
             shockwave.GetComponent<ProjectileController>().ghostPrefab = shockwaveGhost;
+            shockwave.GetComponent<ProjectileController>().ghostPrefabAddress = null;
             #endregion
 
             #region LunarShard

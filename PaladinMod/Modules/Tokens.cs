@@ -80,9 +80,9 @@ namespace PaladinMod.Modules
             Languages.Add("PALADIN_SECONDARY_LIGHTNING_NAME", "Lightning Spear");
             Languages.Add("PALADIN_SECONDARY_LIGHTNING_DESCRIPTION", desc);
 
-            desc = "Fire a volley of <style=cIsUtility>lunar shards</style>, dealing <style=cIsDamage>6x" + 100f * StaticValues.lunarBarrageDamageCoefficient + "% damage</style> each. Hitting one foe with <style=cIsDamage>6 shards</style> marks them for detonation.";
+            desc = "Fire a volley of <style=cIsUtility>lunar shards</style>, dealing <style=cIsDamage>6x" + 100f * StaticValues.lunarBarrageDamageCoefficient + "% damage</style> each. Hitting foes marks them for detonation on hit for <style=cIsDamage>" + 100f * StaticValues.LunarKablowBaseDamageCoeff + "% damage per stack</style>.";
 
-            Languages.Add("PALADIN_SECONDARY_LUNARSHARD_NAME", "Lunar Shards");
+            Languages.Add("PALADIN_SECONDARY_LUNARSHARD_NAME", "Lunar Shards (Experimental)");
             Languages.Add("PALADIN_SECONDARY_LUNARSHARD_DESCRIPTION", desc);
 
             desc = "<style=cIsUtility>Agile.</style> Fire a volley of <style=cIsUtility>lunar shards</style>, dealing <style=cIsDamage>" + 100f * StaticValues.lunarShardDamageCoefficient + "% damage</style> each. Hold up to <style=cIsDamage>" + StaticValues.lunarShardMaxStock + "</style> shards.";
@@ -101,7 +101,7 @@ namespace PaladinMod.Modules
             Languages.Add("PALADIN_UTILITY_HEAL_NAME", "Replenish");
             Languages.Add("PALADIN_UTILITY_HEAL_DESCRIPTION", desc);
 
-            desc = "Link to an ally to share <style=cIsHealing>heals and barrier gain</style>, or link to an enemy to gain <style=cIsHealing>" + StaticValues.SoulTetherLifeStealFraction * 100f + "</style> of damage they take as <style=cIsHealing>both health and barrier</style>. When the linked target dies, <style=cIsUtility>steal their soul</style> as a permanent ally.";
+            desc = "Link to an ally to share <style=cIsHealing>heals and barrier gain</style>, or link to an enemy to gain <style=cIsHealing>" + StaticValues.SoulTetherLifeStealFraction * 100f + "%</style> of damage they take as <style=cIsHealing>both health and barrier</style>. When the linked target dies, <style=cIsUtility>steal their soul</style> as a permanent ally.";
 
             Languages.Add("PALADIN_UTILITY_SOULTETHER_NAME", "Soul Bind");
             Languages.Add("PALADIN_UTILITY_SOULTETHER_DESCRIPTION", desc);
