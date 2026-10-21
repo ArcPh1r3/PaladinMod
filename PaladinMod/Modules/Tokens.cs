@@ -1,15 +1,15 @@
-﻿//using R2API;
-using System;
+﻿using System;
 
-namespace PaladinMod.Modules {
-
+namespace PaladinMod.Modules
+{
     public static class Tokens
     {
-
-        public static void Init() {
+        public static void Init()
+        {
             AddTokens();
             Languages.PrintOutput("paladin.txt");
         }
+
         public static void AddTokens()
         {
             string desc = "The Paladin is a versatile spellblade that can opt for otherworldly magic or devastating swordsmanship to aid allies and decimate foes.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine;
@@ -19,8 +19,9 @@ namespace PaladinMod.Modules {
             desc = desc + "< ! > Vow of Silence is a great way to deal with flying enemies, as it drags all affected down to the ground." + Environment.NewLine + Environment.NewLine;
 
             //string desc = "Paladin" + Environment.NewLine + Environment.NewLine;
-
-            Languages.Add("PALADIN_NAME", StaticValues.characterName);
+            string poop = StaticValues.characterName;
+            if (UnityEngine.Random.value <= 0.01f) poop = "True Son";
+            Languages.Add("PALADIN_NAME", poop);
             Languages.Add("PALADIN_DESCRIPTION", desc);
             Languages.Add("PALADIN_SUBTITLE", StaticValues.characterSubtitle);
             Languages.Add("PALADIN_LORE", StaticValues.characterLore);

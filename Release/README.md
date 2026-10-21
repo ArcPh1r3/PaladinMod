@@ -2,6 +2,7 @@
 - Adds the Paladin, a fully custom playable survivor with a powerful greatsword and various spells in his arsenal
 - Fully multiplayer compatible
 - Unlockable skins and alt skills
+- Does not replace Mercenary or any other survivor
 
 [![](https://i.imgur.com/OcvIJnZ.png)]()
 [![](https://raw.githubusercontent.com/ArcPh1r3/PaladinMod/master/PaladinUnityProject/Assets/Paladin/Icons/texPaladinIcon.png)]()
@@ -10,7 +11,7 @@ join the discord to share feedback/bugs- https://discord.gg/WQzE983zfs
 
 feel free to ping/dm me with all your complaints- `thetimesweeper`
 ## Overview
-The Paladin is a tanky melee hybrid survivor who uses a combination of powerful melee attacks and long range spells. Writing these descriptions is time consuming so just try the character out for yourself and find out what works. He's got enough skills and flexibility to support a myriad of different playstyles.
+The True Son is a tanky motherfucker who uses a combination of powerful melee attacks and long range spells. Writing these descriptions is time consuming so just try the character out for yourself and find out what works. He's got enough skills and flexibility to support a myriad of different playstyles.
 
 [![](https://i.imgur.com/bwOBMQQ.png)]()
 

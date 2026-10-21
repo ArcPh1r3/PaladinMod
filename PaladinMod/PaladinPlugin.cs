@@ -19,7 +19,6 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-using static RoR2.SolusWing.SolusWingPodAI.Simulation.SimulationState;
 
 namespace PaladinMod
 {
