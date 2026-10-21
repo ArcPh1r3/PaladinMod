@@ -128,7 +128,8 @@ namespace PaladinMod
 
             Modules.Prefabs.CreatePrefabs(); // create body and display prefabs
             characterPrefab = Modules.Prefabs.paladinPrefab; // cache this for other mods to use it
-            Modules.ItemDisplays.InitializeItemDisplays(); // add item displays(pain)
+            //todo dlc4 itemdisplays
+            //Modules.ItemDisplays.InitializeItemDisplays(); // add item displays(pain)
             Modules.Skills.SetupSkills(Modules.Prefabs.paladinPrefab);
             Modules.Skills.SetupSkills(Modules.Prefabs.lunarKnightPrefab);
             //Modules.Skills.SetupSkills(Modules.Prefabs.nemPaladinPrefab);
@@ -154,7 +155,8 @@ namespace PaladinMod
 
             Hook();
 
-            RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
+            //todo dlc4 itemdisplays
+            //RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
             On.RoR2.EntityStateCatalog.Init += EntityStateCatalog_Init;
             Logger.LogInfo("[Initialized]");
         }
@@ -392,42 +394,75 @@ namespace PaladinMod
                     GlobalEventManager.instance.OnHitEnemy(damageInfo, self.gameObject);
                 }
 
-                if (addingBuff && self.body && !self.body.HasBuff(Modules.Buffs.lunarKaboomReadyBuff))
+                if (addingBuff && self.body)
                 {
-                    self.body.AddTimedBuff(Modules.Buffs.lunarKaboomBuff, 3f);
+                    self.body.AddBuff(Modules.Buffs.lunarKaboomBuff);
                     if (self.body.GetBuffCount(Modules.Buffs.lunarKaboomBuff) >= 6)
                     {
-                        self.body.SetBuffCount(Modules.Buffs.lunarKaboomBuff.buffIndex, 0);
                         if (!self.body.HasBuff(Modules.Buffs.lunarKaboomReadyBuff)) self.body.AddBuff(Modules.Buffs.lunarKaboomReadyBuff);
                     }
                 }
 
-                if (self.body && !addingBuff && self.body.HasBuff(Modules.Buffs.lunarKaboomReadyBuff) && damageInfo.damageType.IsDamageSourceSkillBased)
+                int kaboomBuffCount = self.body.GetBuffCount(Buffs.lunarKaboomBuff);
+                if (self.body && !addingBuff && kaboomBuffCount > 0 && damageInfo.damageType.IsDamageSourceSkillBased)
                 {
-                    // KABOOM
-                    // KABLOW
-                    self.body.RemoveBuff(Modules.Buffs.lunarKaboomReadyBuff);
+                    CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+                    float kaboomDamageAmount = kaboomBuffCount * (attackerBody.damage * StaticValues.LunarKaboomBaseDamageCoeff + damageInfo.damage * StaticValues.LunarKaboomTotalDamageMultiplier);
 
-                    if (damageInfo.attacker)
+                    for (int i = 0; i < kaboomBuffCount; i++)
                     {
-                        CharacterBody cb = damageInfo.attacker.GetComponent<CharacterBody>();
-                        // projectile or something idk
-                        ProjectileManager.instance.FireProjectileServer(new FireProjectileInfo
+                        self.body.RemoveBuff(Modules.Buffs.lunarKaboomBuff);
+                    }
+
+                    // KABOOM
+                    if (self.body.HasBuff(Modules.Buffs.lunarKaboomReadyBuff))
+                    {
+                        // KABLOW
+                        self.body.RemoveBuff(Modules.Buffs.lunarKaboomReadyBuff);
+
+                        if (damageInfo.attacker)
                         {
-                            crit = Util.CheckRoll(cb.crit),
-                            damage = 5f * cb.damage,
-                            damageColorIndex = DamageColorIndex.DeathMark,
-                            force = 2000f,
-                            owner = damageInfo.attacker,
-                            position = self.body.mainHurtBox.transform.position,
-                            procChainMask = default(ProcChainMask),
-                            projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/ElementalRingVoid/ElementalRingVoidBlackHole.prefab").WaitForCompletion(),
-                            rotation = self.transform.rotation,
-                            speedOverride = 0f,
-                            _speedOverride = 0f,
-                            useFuseOverride = false,
-                            useSpeedOverride = true
-                        });
+                            // projectile or something idk
+                            ProjectileManager.instance.FireProjectileServer(new FireProjectileInfo
+                            {
+                                crit = Util.CheckRoll(attackerBody.crit),
+                                damage = kaboomDamageAmount,
+                                damageColorIndex = DamageColorIndex.DeathMark,
+                                force = 2000f,
+                                owner = damageInfo.attacker,
+                                position = self.body.mainHurtBox.transform.position,
+                                procChainMask = default(ProcChainMask),
+                                projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/ElementalRingVoid/ElementalRingVoidBlackHole.prefab").WaitForCompletion(),
+                                rotation = self.transform.rotation,
+                                speedOverride = 0f,
+                                _speedOverride = 0f,
+                                useFuseOverride = false,
+                                useSpeedOverride = true
+                            });
+                        }
+                    }
+                    else
+                    {
+                        DamageInfo kaboomDamageInfo = new DamageInfo
+                        {
+                            damage = kaboomDamageAmount,
+                            damageColorIndex = DamageColorIndex.WeakPoint,
+                            attacker = damageInfo.attacker,
+                            crit = damageInfo.crit,
+                            damageType = DamageTypeCombo.Generic | damageInfo.damageType.damageSource,
+                            position = self.body.corePosition
+                        };
+
+                        self.body.healthComponent.TakeDamage(kaboomDamageInfo);
+                        GlobalEventManager.instance.OnHitEnemy(damageInfo, self.gameObject);
+
+                        EffectData data = new EffectData
+                        {
+                            origin = self.body.corePosition,
+                        };
+                        var effect = Addressables.LoadAssetAsync<GameObject>(RoR2BepInExPack.GameAssetPathsBetter.RoR2_Base_LunarSkillReplacements.LunarDetonatorEffect_prefab).WaitForCompletion();
+                        EffectManager.SpawnEffect(effect, data, true);
+
                     }
                 }
             }

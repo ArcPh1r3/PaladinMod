@@ -6,12 +6,12 @@
 - Passive overlay now fades out on Paladin himself, permanent for affected allies, added some more oomph
 - Passive now has a 2 second grace period before deactivating
 - Sword beams now count as primary skill damage
-- Primary no longer instantly hits if you cancel swing with another skill
 - Spinning Slash grounded endlag reduced, movement is now influenced by your input
 - Buffed radius of all spells, scepter upgrades now boost the radius even further
 - Rebalanced audio, added custom footstep and landing sfx courtesy of James (: added and changed a bunch more sfx too
 - New cursed config skill smite a motherfucker
 - Lunar Shard muzzle flash VFX reduced
+- Fixed primary hitpause eating your jump input
 
 `2.2.0`
 - update for HC. item displays temporarily disabled

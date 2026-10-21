@@ -39,6 +39,7 @@ namespace PaladinMod.States
         private Vector3 storedVelocity;
         private PaladinVRController vrController;
         private GameObject swingEffectInstance;
+        private bool storedJump;
 
         public override void OnEnter()
         {
@@ -54,6 +55,8 @@ namespace PaladinMod.States
             base.StartAimMode(0.5f + this.duration, false);
             base.characterBody.isSprinting = false;
             base.characterBody.outOfCombatStopwatch = 0f;
+
+            characterBody.OnJump += CharacterBody_OnJump;
 
             if (this.swordController) this.swordController.attacking = true;
 
@@ -110,6 +113,15 @@ namespace PaladinMod.States
             {
                 this.attack.damageType = DamageType.Stun1s;
                 this.attack.damage = 4f * this.damageStat;
+            }
+        }
+
+        private void CharacterBody_OnJump()
+        {
+            if (inHitPause)
+            {
+                storedVelocity = characterMotor.velocity;
+                storedJump = true;
             }
         }
 
@@ -242,8 +254,11 @@ namespace PaladinMod.States
             {
                 base.ConsumeHitStopCachedState(this.hitStopCachedState, base.characterMotor, this.animator);
                 this.inHitPause = false;
-                if (this.storedVelocity != Vector3.zero) base.characterMotor.velocity = this.storedVelocity;
-
+                if (this.storedVelocity != Vector3.zero)
+                {
+                    characterMotor.Motor.ForceUnground();
+                    base.characterMotor.velocity = this.storedVelocity;
+                }
                 if (this.swingEffectInstance)
                 {
                     ScaleParticleSystemDuration fuck = this.swingEffectInstance.GetComponent<ScaleParticleSystemDuration>();

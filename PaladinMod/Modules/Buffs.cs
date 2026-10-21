@@ -79,6 +79,7 @@ namespace PaladinMod.Modules
                            Color.blue,
                            false,
                            true);
+            lunarKaboomReadyBuff.isHidden = true;
 
             rageBuff = 
                 AddNewBuff("PaladinBerserk",

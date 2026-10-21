@@ -65,6 +65,16 @@ namespace PaladinMod
         public const float lunarShardDamageCoefficient = 0.75f;
         public const int lunarShardMaxStock = 12;
 
+        //lunar kaboom
+        
+        [Configure("section debug do not publish",
+            0.1f)]
+        public static ConfigEntry<float> LunarKaboomBaseDamageCoeff;
+
+        [Configure("section debug do not publish",
+            0.1f)]
+        public static ConfigEntry<float> LunarKaboomTotalDamageMultiplier;
+
         //Quickstep
         public const float dashBarrierAmount = 0.15f;
 
@@ -173,6 +183,7 @@ namespace PaladinMod
 
         public static void InitConfig()
         {
+            ConfigButEpic.DisableSection("section debug do not publish");
             ConfigButEpic.InitConfigAttributes(typeof(StaticValues));
         }
     }
