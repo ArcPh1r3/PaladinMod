@@ -183,7 +183,7 @@ namespace PaladinMod
 
         public static void InitConfig()
         {
-            ConfigButEpic.DisableSection("section debug do not publish");
+            //ConfigButEpic.DisableSection("section debug do not publish");
             ConfigButEpic.InitConfigAttributes(typeof(StaticValues));
         }
     }
