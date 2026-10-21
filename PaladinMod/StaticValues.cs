@@ -61,19 +61,32 @@ namespace PaladinMod
         public const float lightningSpearChargeTime = 1.25f;
 
         //Lunar Shards
-        public const float lunarShardNewDamageCoefficient = 0.5f;
         public const float lunarShardDamageCoefficient = 0.75f;
         public const int lunarShardMaxStock = 12;
 
-        //lunar kaboom
-        
         [Configure("section debug do not publish",
-            0.1f)]
-        public static ConfigEntry<float> LunarKaboomBaseDamageCoeff;
+            0.5f)]
+        public static ConfigEntry<float> lunarBarrageDamageCoefficient;
+        [Configure("section debug do not publish",
+            0f,
+            min = 0,
+            max = 180)]
+        public static ConfigEntry<float> LunarBarrageSpread;
+        [Configure("section debug do not publish",
+            0.15f)]
+        public static ConfigEntry<float> LunarBarrageBaseDuration;
+        [Configure("section debug do not publish",
+            1)]
+        public static ConfigEntry<int> LunarBarrageFirePer;
+
+        //lunar kaboom
+        [Configure("section debug do not publish",
+            3f)]
+        public static ConfigEntry<float> LunarKablowBaseDamageCoeff;
 
         [Configure("section debug do not publish",
-            0.1f)]
-        public static ConfigEntry<float> LunarKaboomTotalDamageMultiplier;
+            0f)]
+        public static ConfigEntry<float> LunarKablowTotalDamageMultiplier;
 
         //Quickstep
         public const float dashBarrierAmount = 0.15f;
@@ -183,7 +196,10 @@ namespace PaladinMod
 
         public static void InitConfig()
         {
-            //ConfigButEpic.DisableSection("section debug do not publish");
+            if (!PaladinConfig.cursed)
+            {
+                ConfigButEpic.DisableSection("section debug do not publish");
+            }
             ConfigButEpic.InitConfigAttributes(typeof(StaticValues));
         }
     }

@@ -99,16 +99,17 @@ namespace PaladinMod.Modules
                                                          "Cruel Sun",
                                                          false,
                                                          "Add the old version of Cruel Sun.");
-            legacyLunarShards =
-                ConfigButEpic.BindAndOptions<bool>(Section3Legacy,
-                                                         "Lunar Shards",
-                                                         false,
-                                                         "Add the old version of Lunar Shards.");
-            legacyHealUtility =
-                ConfigButEpic.BindAndOptions<bool>(Section3Legacy,
-                                                         "Heal Utility",
-                                                         false,
-                                                         "Add the old version of heal utility spell.");
+            //todo lunar shards and heal util update
+            //legacyLunarShards =
+            //    ConfigButEpic.BindAndOptions<bool>(Section3Legacy,
+            //                                             "Lunar Shards",
+            //                                             false,
+            //                                             "Add the old version of Lunar Shards.");
+            //legacyHealUtility =
+            //    ConfigButEpic.BindAndOptions<bool>(Section3Legacy,
+            //                                             "Heal Utility",
+            //                                             false,
+            //                                             "Add the old version of heal utility spell.");
             falseSonSecondary =
                 ConfigButEpic.BindAndOptions<bool>(Section3Legacy,
                                                          "False Son Secondary",

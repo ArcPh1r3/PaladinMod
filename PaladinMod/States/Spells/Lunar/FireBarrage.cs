@@ -13,7 +13,7 @@ namespace PaladinMod.States.Spells.Lunar
         public static float spreadBloomValue = 1f;
         public static string muzzleString = "HandL";
         public static int totalShardCount = 6;
-        public static float angle => StaticValues.LunarBarrageAngle
+        public static float totalAngle => StaticValues.LunarBarrageSpread;
 
         private float duration;
         private float stopwatch;
@@ -22,25 +22,28 @@ namespace PaladinMod.States.Spells.Lunar
         public override void OnEnter()
         {
             base.OnEnter();
-            this.duration = LunarShards.baseDuration / this.attackSpeedStat;
+            this.duration = StaticValues.LunarBarrageBaseDuration / this.attackSpeedStat;
 
             this.FireShard();
         }
 
         private void FireShard()
         {
-            this.shardCount++;
-            base.PlayAnimation("LeftArm, Override", "LunarShard", "LunarShard.playbackRate", this.duration * 5f);
+                              //180 -> -90
+            float fireAngle = (totalAngle * -0.5f) + (totalAngle / totalShardCount * shardCount);
+            if(totalShardCount % 1 == 0)
+            {
+                fireAngle += totalAngle / totalShardCount * 0.5f;
+            }
 
-            // Too shiny in VR
-            if (!PaladinPlugin.IsLocalVRPlayer(characterBody))
-                EffectManager.SimpleMuzzleFlash(Asset.lunarShardMuzzleFlash, base.gameObject, "HandL", false);
-            Util.PlaySound(EntityStates.BrotherMonster.Weapon.FireLunarShards.fireSound, base.gameObject);
+            Ray aimRay = base.GetAimRay();
+            Quaternion rotation = Quaternion.AngleAxis(fireAngle, Vector3.Cross(aimRay.direction, Vector3.Cross(Vector3.up, aimRay.direction)));
+            aimRay.direction = rotation * aimRay.direction;
+
+            this.shardCount++;
 
             if (base.isAuthority)
             {
-                Ray aimRay = base.GetAimRay();
-
                 FireProjectileInfo fireProjectileInfo = default(FireProjectileInfo);
                 fireProjectileInfo.position = aimRay.origin;
                 fireProjectileInfo.rotation = Quaternion.LookRotation(aimRay.direction);
@@ -64,6 +67,16 @@ namespace PaladinMod.States.Spells.Lunar
             base.characterBody.AddSpreadBloom(LunarShards.spreadBloomValue);
         }
 
+        private void PlayFireShard()
+        {
+            base.PlayAnimation("LeftArm, Override", "LunarShard", "LunarShard.playbackRate", this.duration * 5f);
+
+            // Too shiny in VR
+            if (!PaladinPlugin.IsLocalVRPlayer(characterBody))
+                EffectManager.SimpleMuzzleFlash(Asset.lunarShardMuzzleFlash, base.gameObject, "HandL", false);
+            Util.PlaySound(EntityStates.BrotherMonster.Weapon.FireLunarShards.fireSound, base.gameObject);
+        }
+
         public override void FixedUpdate()
         {
             base.FixedUpdate();
@@ -72,14 +85,21 @@ namespace PaladinMod.States.Spells.Lunar
 
             if (this.stopwatch >= this.duration)
             {
-                if (this.shardCount > FireBarrage.totalShardCount)
+                if (this.shardCount >= FireBarrage.totalShardCount)
                 {
                     if (base.isAuthority) this.outer.SetNextStateToMain();
                 }
                 else
                 {
                     this.stopwatch = 0f;
-                    this.FireShard();
+
+                    PlayFireShard();
+                    int remainingFire = Mathf.Min(totalShardCount - shardCount, StaticValues.LunarBarrageFirePer);
+
+                    for (int i = 0; i < remainingFire; i++)
+                    {
+                        this.FireShard();
+                    }
                 }
             }
         }

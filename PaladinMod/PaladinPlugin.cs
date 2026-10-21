@@ -396,29 +396,28 @@ namespace PaladinMod
 
                 if (addingBuff && self.body)
                 {
-                    self.body.AddBuff(Modules.Buffs.lunarKaboomBuff);
-                    if (self.body.GetBuffCount(Modules.Buffs.lunarKaboomBuff) >= 6)
+                    self.body.AddBuff(Modules.Buffs.lunarKablowBuff);
+                    if (self.body.GetBuffCount(Modules.Buffs.lunarKablowBuff) >= 6)
                     {
-                        if (!self.body.HasBuff(Modules.Buffs.lunarKaboomReadyBuff)) self.body.AddBuff(Modules.Buffs.lunarKaboomReadyBuff);
+                        if (!self.body.HasBuff(Modules.Buffs.lunarKablowReadyBuff)) self.body.AddBuff(Modules.Buffs.lunarKablowReadyBuff);
                     }
                 }
 
-                int kaboomBuffCount = self.body.GetBuffCount(Buffs.lunarKaboomBuff);
+                int kaboomBuffCount = self.body.GetBuffCount(Buffs.lunarKablowBuff);
                 if (self.body && !addingBuff && kaboomBuffCount > 0 && damageInfo.damageType.IsDamageSourceSkillBased)
                 {
                     CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
-                    float kaboomDamageAmount = kaboomBuffCount * (attackerBody.damage * StaticValues.LunarKaboomBaseDamageCoeff + damageInfo.damage * StaticValues.LunarKaboomTotalDamageMultiplier);
+                    float kaboomDamageAmount = kaboomBuffCount * ((attackerBody.damage * StaticValues.LunarKablowBaseDamageCoeff) + (damageInfo.damage * StaticValues.LunarKablowTotalDamageMultiplier));
 
                     for (int i = 0; i < kaboomBuffCount; i++)
                     {
-                        self.body.RemoveBuff(Modules.Buffs.lunarKaboomBuff);
+                        self.body.RemoveBuff(Modules.Buffs.lunarKablowBuff);
                     }
 
                     // KABOOM
-                    if (self.body.HasBuff(Modules.Buffs.lunarKaboomReadyBuff))
+                    if (self.body.HasBuff(Modules.Buffs.lunarKablowReadyBuff))
                     {
-                        // KABLOW
-                        self.body.RemoveBuff(Modules.Buffs.lunarKaboomReadyBuff);
+                        self.body.RemoveBuff(Modules.Buffs.lunarKablowReadyBuff);
 
                         if (damageInfo.attacker)
                         {
@@ -441,6 +440,7 @@ namespace PaladinMod
                             });
                         }
                     }
+                    // KABLOW
                     else
                     {
                         DamageInfo kaboomDamageInfo = new DamageInfo
