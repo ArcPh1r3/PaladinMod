@@ -10,6 +10,7 @@ namespace PaladinMod.Misc
     {
         private PaladinSwordController swordController;
         private Transform weaponTip;
+        private Camera mainCamera;
 
         void OnEnable()
         {
@@ -17,6 +18,8 @@ namespace PaladinMod.Misc
             {
                 SubscribeToHandPairEvent();
             }
+
+            mainCamera = Camera.main;
         }
 
         void OnDisable()
@@ -228,7 +231,7 @@ namespace PaladinMod.Misc
         {
             if (weaponTip)
             {
-                Vector3 newPoint = Camera.main.transform.InverseTransformPoint(weaponTip.position);
+                Vector3 newPoint = mainCamera.transform.InverseTransformPoint(weaponTip.position);
 
                 if (newPoint != tipPath[0])
                 {
@@ -248,7 +251,7 @@ namespace PaladinMod.Misc
             }
         }
 
-        public Vector3 GetSwordPointing()
+        public Vector3 GetSwordPointingVR()
         {
             LinkedListNode<Vector3> node = swordPointings.First;
             Vector3 pointingDirection = node.Value;
@@ -260,7 +263,7 @@ namespace PaladinMod.Misc
             return pointingDirection;
         }
 
-        public Vector3 GetSlashUpward()
+        public Vector3 GetSlashUpwardVR()
         {
             var zAxis = Camera.main.transform.forward;
             var xAxis = swordPointings.Last.Value - swordPointings.Last.Previous.Value;

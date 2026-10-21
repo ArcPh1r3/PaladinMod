@@ -13,6 +13,7 @@ namespace PaladinMod.States.Spells.Lunar
         public static float spreadBloomValue = 1f;
         public static string muzzleString = "HandL";
         public static int totalShardCount = 6;
+        public static float angle => StaticValues.LunarBarrageAngle
 
         private float duration;
         private float stopwatch;
@@ -44,7 +45,7 @@ namespace PaladinMod.States.Spells.Lunar
                 fireProjectileInfo.position = aimRay.origin;
                 fireProjectileInfo.rotation = Quaternion.LookRotation(aimRay.direction);
                 fireProjectileInfo.crit = base.characterBody.RollCrit();
-                fireProjectileInfo.damage = base.characterBody.damage * StaticValues.lunarShardNewDamageCoefficient;
+                fireProjectileInfo.damage = base.characterBody.damage * StaticValues.lunarBarrageDamageCoefficient;
                 fireProjectileInfo.damageTypeOverride = DamageTypeCombo.GenericSecondary | DamageType.FruitOnHit;
                 fireProjectileInfo.damageColorIndex = DamageColorIndex.Default;
                 fireProjectileInfo.owner = base.gameObject;

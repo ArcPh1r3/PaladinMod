@@ -150,12 +150,13 @@ namespace PaladinMod.States
                 if (this.swordController && this.swordController.swordActive)
                 {
                     // using mainly the camera's looking direction, but mixed with a little of sword pointing direaction
-                    Camera.main.transform.Rotate(5, 0, 0);
-                    Vector3 direction = Vector3.Lerp(Camera.main.transform.forward, vrController.GetSwordPointing(), 0.1f);
-                    Camera.main.transform.Rotate(-5, 0, 0);
+                    Camera mainCamera = Camera.main;
+                    mainCamera.transform.Rotate(5, 0, 0);
+                    Vector3 direction = Vector3.Lerp(mainCamera.transform.forward, vrController.GetSwordPointingVR(), 0.1f);
+                    mainCamera.transform.Rotate(-5, 0, 0);
                     // try to make the sword beam match slash direction
-                    var rotation = Util.QuaternionSafeLookRotation(direction, vrController.GetSlashUpward());
-                    ProjectileManager.instance.FireProjectile(Modules.Projectiles.swordBeamProjectile, Camera.main.transform.position, rotation, base.gameObject, StaticValues.beamDamageCoefficient * this.damageStat, 0f, Util.CheckRoll(this.critStat, base.characterBody.master), DamageColorIndex.WeakPoint, null, StaticValues.beamSpeed);
+                    var rotation = Util.QuaternionSafeLookRotation(direction, vrController.GetSlashUpwardVR());
+                    ProjectileManager.instance.FireProjectile(Modules.Projectiles.swordBeamProjectile, mainCamera.transform.position, rotation, base.gameObject, StaticValues.beamDamageCoefficient * this.damageStat, 0f, Util.CheckRoll(this.critStat, base.characterBody.master), DamageColorIndex.WeakPoint, null, StaticValues.beamSpeed);
                 }
             }
             else
