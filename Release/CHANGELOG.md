@@ -1,4 +1,7 @@
 ## Changelog
+`2.3.1`
+- added missing dependency on r2api.proctype woops haha
+  
 `2.3.0`
 - Added config: False Son Secondaries- adds both False Son secondary skills to Paladin, just for fun don't expect balance or anything
 - Passive overlay now fades out on Paladin himself, permanent for affected allies, added some more oomph
